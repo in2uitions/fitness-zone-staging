@@ -4,8 +4,8 @@ import CompAccordion from '../pages/components/compAccordion';
 import CompCarousel from '../pages/components/compCarousel';
 import CompFullWidth from '../pages/components/compFullWidth';
 import CompContact from '../pages/components/compContact';
-import CompCarouselRight from '../pages/components/CompCarouselRightSide';
-import CompTimeline from '../pages/components/CompTimeline';
+import CompCarouselRight from '../pages/components/compCarouselRightSide';
+import CompTimeline from '../pages/components/compTimeline';
 export default function Sections({ data = {} }) {
     return (
         <div>

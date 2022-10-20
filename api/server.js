@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Directus } from '@directus/sdk';
-import $ from 'jquery';
-import { URL } from '../global'
+import { URL } from '../global';
 
 const directus = new Directus(URL);
 
