@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { image_url } from '../global'
 
+
 export default function HeadTag({ data = {} }) {
     return (
         <Head>
