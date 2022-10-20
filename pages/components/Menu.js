@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import Header from './Header';
+import Header from './header';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })

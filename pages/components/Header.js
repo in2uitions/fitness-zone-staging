@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
-import Menu from "./Menu";
+import Menu from "./menu";
 
 export default function Header(data = {}, about = []) {
   const [showModal, setShowModal] = useState(false);
