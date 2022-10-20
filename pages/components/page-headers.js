@@ -9,26 +9,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 export default function Header({ color = "orange", data = {} }) {
 
 
-    // const handleMouseMove = event => {
-    //     var wx = $(window).width();
-    //     var wy = $(window).height();
-    //     var x = event.pageX;
-    //     var y = event.pageY;
-    //     var newx = x - wx / 2;
-    //     var newy = y - wy / 2;
-
-    //     if ($(window).width() > 500) {
-    //         $('#wrapper img').each(function () {
-    //             var speed = $(this).attr('data-speed');
-    //             if ($(this).attr('data-revert')) speed *= -1;
-
-    //             gsap.to($(this), 1, { x: (1 - newx * speed), y: 0 });
-
-    //         });
-    //     }
-
-    // }
-
     const [alternateImage, setAlternateImage] = useState(true);
 
     const changeImage = () => {

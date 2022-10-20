@@ -27,8 +27,6 @@ export default function Footer(data={}) {
   }
 
   setTimeout(() => {
-    // console.log('retrieved country code from next')
-    // console.log(nextConfig.country_code)
     if (nextConfig.country_code == 'AE') {
       setShowPopup(true)
       setShowForm(true)
@@ -46,32 +44,6 @@ export default function Footer(data={}) {
   }, 1000);
   const submitSignUp = async event => {
     event.preventDefault();
-    // if (event.target.enquire_request.value == "popup-request"){
-    // console.log(event.target.enquire_request.value)
-    // console.log(event.target.pp_first_name.value);
-    // console.log(event.target.pp_last_name.value);
-    // console.log(phoneValue);
-    // console.log(event.target.pp_email.value);
-    // console.log(phoneValue.substring(3));
-    // }
-    // else{
-    // console.log(event.target.firstname.value);
-    // console.log(event.target.lastname.value);
-    // console.log(phone);
-    // console.log(event.target.email.value);
-    // console.log(phone.substring(3));
-    // }
-
-    //const response = await axios.post('https://api.fitnessclubapp.com/api/account/login?Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1';
-    // axios.post('https://reqres.in/invalid-url')
-    //       .then(
-    //         response => {
-    //           console.log(response)
-    //         })
-    //       .catch(error => {
-    //           this.setState({ errorMessage: error.message });
-    //           console.error('There was an error!', error);
-    //       });
 
 
     const getTokenAPI = async () => {
@@ -89,22 +61,6 @@ export default function Footer(data={}) {
 
         const submitContactForm = async () => {
           try {
-            // if(event.target.enquire_request.value == "popup-request"){
-            //           var registraitonRawData = JSON.stringify({
-            //             "GuestRegisterId": 0,
-            //             "FirstName": event.target.pp_first_name.value,
-            //             "LastName": event.target.pp_last_name.value,
-            //             "Mobile": phoneValue.substring(3),
-            //             "Email": event.target.pp_email.value,
-            //             "Source": {
-            //               "VisitSourceId": 9
-            //             },
-            //             "LocationCode": 1
-            //           });
-
-            //           // console.log(registraitonRawData);
-            //         }
-            //         else{
             var registraitonRawData = JSON.stringify({
               "GuestRegisterId": 0,
               "FirstName": event.target.firstname.value,

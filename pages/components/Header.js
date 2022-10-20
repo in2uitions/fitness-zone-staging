@@ -32,32 +32,6 @@ export default function Header(data = {}, about = []) {
           </div>
         ) : null}
       </nav>
-
-      {/* <div class="hidden sm:block">
-        <img src="Path 133.png" id="path" className={styles.media} />
-
-        <a href="https://www.facebook.com/FitnessZoneLB/" target="_blank" rel="noreferrer">
-          <img src="Path 131.png" className={styles.mediaiconsfb} />
-        </a>
-
-        <a href="https://www.instagram.com/fitnesszonelb/" target="_blank" rel="noreferrer">
-          <img src="Group 28.png" className={styles.mediaiconsinsta} />
-        </a>
-
-        <a
-          href="https://www.linkedin.com/company/fitness-zone/"
-          target="_blank" rel="noreferrer"
-        >
-          <img src="Group 29.png" className={styles.mediaiconslinkedin} />
-        </a>
-
-        <a
-          href="https://www.youtube.com/channel/UCxaK9VYi8cBP_Y1rgRfwumw"
-          target="_blank" rel="noreferrer"
-        >
-          <img src="Path 132.png" className={styles.mediaiconsyt} />
-        </a>
-      </div> */}
     </div>
   );
 }
