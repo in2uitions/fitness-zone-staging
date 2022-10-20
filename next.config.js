@@ -5,4 +5,12 @@ const nextConfig = {
   country_code: 'AE',
 }
 
-module.exports = nextConfig
+
+module.exports = {
+  images: {
+      domains: [
+          'fzcms.diastora.com'
+        ],
+  },
+  nextConfig
+}
