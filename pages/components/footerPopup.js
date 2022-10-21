@@ -165,7 +165,7 @@ export default function FooterPopup() {
                                 {/* {isNotSent ? notSentMessage : submitmsg } */}
                             </div>
                             <div className="width-phone">
-                                <img src="pop-upImgg.jpeg" className="image-popup none-event" />
+                                {/* <img src="pop-upImgg.jpeg" className="image-popup none-event" /> */}
                             </div>
                         </div>
                     </form>
