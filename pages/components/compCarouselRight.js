@@ -55,7 +55,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                 // width:345
             };
         else if (index < activeSlide - 2)
-            return {
+            return { 
                 opacity: 0,
                 transform: "translateX(480px) translateZ(-500px) rotateY(35deg)",
                 zIndex: 7

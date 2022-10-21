@@ -10,7 +10,7 @@ export default function HeaderContent(data = {}, about = []) {
             <nav className={styles.nav}>
                 <a href="/"><img src="/logo.png" /></a>
                 <Popup
-                    trigger={
+                    trigger={ 
                         <button className="img-btn">
                             <img src="/blue-rectangle.png" />
                         </button>
