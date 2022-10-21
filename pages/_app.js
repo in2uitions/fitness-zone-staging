@@ -11,7 +11,7 @@ import nextConfig from "../next.config";
 import { handleApi } from "../api/server";
 // import Menu from "./components/menu-items";
 
-const Menu = dynamic(() => import('./components/menu-items'), { ssr: false })
+// const Menu = dynamic(() => import('./components/menu-items'), { ssr: false })
 function MyApp({ Component, pageProps, data = {}, about=[] }) {
  const getVisitorLocationAPI = async () => {
     try {
