@@ -5,7 +5,7 @@ import CompCarousel from '../pages/components/compCarousel';
 import CompFullWidth from '../pages/components/compFullWidth';
 import CompContact from '../pages/components/compContact';
 import CompCarouselRight from '../pages/components/compCarouselRight';
-import CompTimeline from '../pages/components/compTimeline';
+import CompTimeline from '../pages/components/compTimelineContent';
 export default function Sections({ data = {} }) {
     return (
         <div>

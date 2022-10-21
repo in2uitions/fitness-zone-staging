@@ -147,7 +147,7 @@ export default function CompTimeline(data = {}) {
                                                     <p className="text-white">
                                                         {step.eventDescription}
                                                     </p>
-                                                </div>
+                                                </div> 
                                                 <div className="lg:w-1/2">
                                                     <img className="pt-10 pb-10 imageStep" src={step.image}
                                                     />
