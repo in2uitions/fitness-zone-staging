@@ -381,7 +381,7 @@ export default function Footer(data = {}) {
                                 target="_blank"
                                 className="mt-0.5"
                             >
-                                <img src="fb.png" className="mr-5 w-3.5" />
+                                <img src="/fb.png" className="mr-5 w-3.5" />
                             </a>
 
                             <a
@@ -389,7 +389,7 @@ export default function Footer(data = {}) {
                                 target="_blank"
                                 className="mt-0.5"
                             >
-                                <img src="insta.png" className="mr-5 w-7" />
+                                <img src="/insta.png" className="mr-5 w-7" />
                             </a>
 
                             <a
@@ -397,7 +397,7 @@ export default function Footer(data = {}) {
                                 target="_blank"
                                 className="mt-0"
                             >
-                                <img src="linkedin.png" className="mr-5 w-7" />
+                                <img src="/linkedin.png" className="mr-5 w-7" />
                             </a>
 
                             <a
@@ -405,7 +405,7 @@ export default function Footer(data = {}) {
                                 target="_blank"
                                 className="mt-1"
                             >
-                                <img src="youtubechannel.png" className="w-8" />
+                                <img src="/youtubechannel.png" className="w-8" />
                             </a>
                         </div>
                     </div>

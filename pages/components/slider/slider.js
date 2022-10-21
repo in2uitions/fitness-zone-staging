@@ -1,7 +1,8 @@
 import React from "react";
 import ReactSlider from "react-slider";
 const Slider = ({ onChange, currentIndex }) => {
-    return (<div  data-tip data-for="submit">
+    return (
+    <div className=""  data-tip data-for="submit">
         <ReactSlider
             className=""
             markClassName="example-mark"

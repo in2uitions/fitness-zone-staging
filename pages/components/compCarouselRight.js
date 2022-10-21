@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 
-export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false, }) {
+export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)

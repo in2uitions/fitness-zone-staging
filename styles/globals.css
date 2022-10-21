@@ -877,9 +877,11 @@ li.category.isActive {
 .form-container {
   justify-content: center;
   display: flex;
-  position: relative;
+  /* position: absolute; */
   align-items: center;
   left: -3rem;
+  margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .timelineBack {
@@ -908,25 +910,22 @@ li.category.isActive {
   cursor: pointer;
 }
 
-.example-mark {
-  background-image: url(/slider-button.svg);
+
+/* .example-mark {
   width: 40px;
   height: 40px;
-  top: -20px;
-  /* border: 2px solid rgb(0, 0, 0); */
-  /* background-color: rgb(255, 255, 255); */
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
   object-fit: contain;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
+  background-image: url(/slider-button.svg);
   border-radius: 50%;
   vertical-align: middle;
-  margin: 0px calc(200px);
-  bottom: calc(50% - 6px);
-}
-
+  margin: 0px calc(19px);
+  bottom: calc(50% - 20px);
+} */
 .arrows {
   width: 30px;
   height: 30px;
@@ -1006,7 +1005,9 @@ li.category.isActive {
 } */
 
 .steps-container {
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .timeline-items {
@@ -1028,7 +1029,7 @@ li.category.isActive {
 } */
 
 .steps-item {
-  padding: 5px;
+  padding: 7px;
   min-height: 80px;
 }
 
@@ -1800,9 +1801,9 @@ li {
     margin-top: 45rem !important;
   }
 
-  .imageStep {
+  /* .imageStep {
     padding-top: 14.5rem;
-  }
+  } */
 
   .btnss .butn {
     margin-left: 2.5rem !important;
@@ -1854,9 +1855,9 @@ li {
     margin-top: 50rem !important;
   }
 
-  .imageStep {
+  /* .imageStep {
     padding-top: 14.5rem;
-  }
+  } */
 
   .btnss .butn {
     margin-left: 2.5rem !important;
@@ -2508,3 +2509,126 @@ iframe {
     -moz-transition: opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
   }
+
+  .form-container {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .form {
+    margin: auto;
+  }
+  
+  .btn-primary {
+    width: 120px;
+    border: 0;
+    padding: 8px;
+    border-radius: 15px;
+    color: white;
+    background: #00d4ff;
+    cursor: pointer;
+  }
+  .App {
+    display: flex;
+    font-family: sans-serif;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+ 
+  .container {
+    width: 100%;
+  }
+  
+  .form-container {
+    width: 100%;
+  }
+  
+  .steps-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  
+  .vertical-slider {
+    height: 380px;
+    width: 25%;
+    /* border: 1px solid grey; */
+  }
+  .example-mark {
+    background-image: url(/slider-button.svg);
+    object-fit: contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    /* border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255); */
+    cursor: pointer;
+    border-radius: 50%;
+    vertical-align: middle;
+    
+    margin: 0px calc(19px);
+    bottom: calc(50% - 19px);
+  }
+  /* .example-mark {
+  background-image: url(/slider-button.svg);
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  cursor: pointer;
+  object-fit: contain;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0px calc(200px);
+  bottom: calc(50% - 6px);
+} */
+  .example-mark.example-mark-active {
+    border: 2px solid #00d4ff;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .example-mark.example-mark-completed {
+    border: 2px solid rgb(255, 255, 255);
+    background-color: #00d4ff;
+  }
+  
+  .example-thumb {
+    font-size: 0.9em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  
+  .example-thumb.active {
+    background-color: grey;
+  }
+  
+  .example-track {
+    position: relative;
+    background: #ddd;
+  }
+  
+  .example-track.example-track-0 {
+    background: #00d4ff;
+  }
+  
+  .vertical-slider .example-thumb {
+    left: 1px;
+    width: 48px;
+    line-height: 40px;
+    height: 50px;
+  }
+  
+  .vertical-slider .example-track {
+    left: 23px;
+    width: 3px;
+  }
+  

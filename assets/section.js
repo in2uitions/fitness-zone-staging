@@ -6,6 +6,7 @@ import CompFullWidth from '../pages/components/compFullWidth';
 import CompContact from '../pages/components/compContact';
 import CompCarouselRight from '../pages/components/compCarouselRight';
 import CompTimeline from '../pages/components/compTimelineContent';
+import CompMap from '../pages/components/compMap';
 export default function Sections({ data = {} }) {
     return (
         <div>
@@ -30,7 +31,10 @@ export default function Sections({ data = {} }) {
                     return <CompContact data={section.item} />;
                 }
                 if (section.collection == "comp_timeline") {
-                    return <CompTimeline data={section.item} />;
+                    return <CompTimeline data={section.item}  style={section.item?.background_color} isFlipped={section.item?.image_position == "left"}/>;
+                }
+                if (section.collection == "comp_map") {
+                    return <CompMap key="" h="550px" data={section.item}  style={section.item?.background_color} isFlipped={section.item?.image_position == "left"}/>;
                 }
             })}
         </div>
