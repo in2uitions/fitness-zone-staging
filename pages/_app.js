@@ -3,7 +3,7 @@ import "../styles/globals.scss";
 import "../styles/Header.module.css"
 import Script from "next/script";
 import Head from "next/head";
-import Header from "./components/Header";
+import HeaderContent from "./components/header-component";
 import Footer from "./components/Footer";
 import dynamic from "next/dynamic";
 import React from "react";
@@ -76,7 +76,7 @@ return <>
 height="0" width="0" style="display:none;visibility:hidden"></iframe>   `,
         }}
       />
-    <Header />
+    <HeaderContent />
     <Component {...pageProps} />
     <Footer />
   </>;

@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import Header from './header';
+import HeaderContent from './header-component';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })
@@ -117,7 +117,7 @@ export default function Menu(data = {}) {
 
     return (
         <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade">
-            <Header />
+            <HeaderContent />
             <div className="lg:grid lg:grid-cols-2">
                 <div className="mt-52 lg:ml-40 md:ml-40 ml-10">
                     <MetisMenu
