@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { image_url } from '../../global';
+import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 
 export default function CompCarousel({ data = {}, style = 'white', isFlipped = false, }) {

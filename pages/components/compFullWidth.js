@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-import { image_url } from "../../global";
+import { image_url } from "../../global_vars";
 
 export default function CompFullWidth({ data = {}, style = 'white' }) {
 

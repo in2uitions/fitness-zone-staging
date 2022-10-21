@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Directus } from '@directus/sdk';
-import { URL } from '../global';
+import { URL } from '../global_vars';
 
 const directus = new Directus(URL);
 

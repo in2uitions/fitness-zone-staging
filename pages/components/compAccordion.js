@@ -1,4 +1,4 @@
-import { image_url } from '../../global';
+import { image_url } from '../../global_vars';
 import { useState } from 'react';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { image_url } from '../global'
+import { image_url } from '../global_vars'
 
 
 export default function HeadTag({ data = {} }) {

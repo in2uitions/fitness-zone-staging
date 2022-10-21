@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { gsap } from "gsap";
 import { useState } from 'react';
 import $ from 'jquery';
-import { image_url } from '../../global';
+import { image_url } from '../../global_vars';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 export default function Header({ color = "orange", data = {} }) {

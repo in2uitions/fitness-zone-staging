@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React, { Component } from 'react';
-import { image_url } from '../../global'
+import { image_url } from '../../global_vars';
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
