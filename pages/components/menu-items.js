@@ -11,6 +11,7 @@ export default function Menu(data = {}) {
     };
 
 
+    
     const [search, updateSearch] = useState('');
     const [index, updateIndex] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);

@@ -9,9 +9,9 @@ import dynamic from "next/dynamic";
 import React from "react";
 import nextConfig from "../next.config";
 import { handleApi } from "../api/server";
-import Menu from "./components/Menu";
+// import Menu from "./components/menu-items";
 
-const Nav = dynamic(() => import('./components/menu'), { ssr: false })
+const Menu = dynamic(() => import('./components/menu-items'), { ssr: false })
 function MyApp({ Component, pageProps, data = {}, about=[] }) {
  const getVisitorLocationAPI = async () => {
     try {
