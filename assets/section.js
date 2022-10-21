@@ -20,9 +20,9 @@ export default function Sections({ data = {} }) {
                 if (section.collection == "comp_carousel") {
                     return <CompCarousel data={section.item} index={0} isFlipped={section.item?.image_position == "left"} />;
                 }
-                {/* if (section.collection == "comp_carousel_rightside") {
+                if (section.collection == "comp_carousel_rightside") {
                     return <CompCarouselRight data={section.item} />;
-                } */}
+                }
                 if (section.collection == "comp_fullwidthimage") {
                     return <CompFullWidth data={section.item} />;
                 }
