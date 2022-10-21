@@ -180,7 +180,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                         ))}
 
 
-                        {/* <div className="btns" >
+                        <div className="btns" >
                             <img src="/ArrowLeft.png"
                                 className="btn arrow"
                                 onClick={prev}
@@ -193,7 +193,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                 color="#fff"
                                 size="2x"
                             />
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,11 +8,11 @@ export default function HeaderContent(data = {}, about = []) {
   return (
     <div className={styles.container}>
       <nav className={styles.nav}>
-        {/* <a href="/"><img src="/logo.png" /></a> */}
+        <a href="/"><img src="/logo.png" /></a>
         <Popup
           trigger={
             <button className="img-btn">
-              {/* <img src="/blue-rectangle.png" /> */}
+              <img src="/blue-rectangle.png" />
             </button>
           } modal
           position=""

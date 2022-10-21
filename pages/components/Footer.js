@@ -169,7 +169,7 @@ useEffect(() => {
   return (
     <>
       <section>
-        {/* <div className="flex flex-col space-y-10 justify-start items-center fixed right-0 bg-[#009FE3] box">
+        <div className="flex flex-col space-y-10 justify-start items-center fixed right-0 bg-[#009FE3] box">
           <a href={facebookLink} target="_blank" rel="noreferrer">
             <img src="/path.png" className="w-4" />
           </a>
@@ -191,8 +191,8 @@ useEffect(() => {
           >
             <img src="/youtube.png" className="w-8" />
           </a>
-        </div> */}
-        {/* <div className="flex justify-end m-10 wtsp-widget">
+        </div>
+        <div className="flex justify-end m-10 wtsp-widget">
           <BrowserView>
             <a href={whatsappNumber} target="_blank">
               <img src="/wtspwidget.png" className="h-28" />
@@ -203,7 +203,7 @@ useEffect(() => {
               <img src="/wtspWidgetMobile.png" className="h-16" />
             </a>
           </MobileView>
-        </div> */}
+        </div>
       </section>
       <div className=" bg-black">
         <div className="lg:grid lg:grid-cols-12 space-x-4">
@@ -213,41 +213,6 @@ useEffect(() => {
     className="mt-3 ml-4 lg:ml-0 md:ml-0 futura-book footer-link"
     content={content} activeLinkFromLocation
 />
-              {/* <div className="mt-3 ml-4 lg:ml-0 md:ml-0">
-                <a href="#">
-                  <p className="futura-bold">HOME</p>
-                  <div className="line-blue w-11"></div>
-                </a>
-              </div>
-              <div className="mt-3 ml-4 lg:ml-0 md:ml-0">
-                <a href="/aboutUs">
-                  <p className="futura-book">ABOUT US</p>
-                </a>
-              </div>
-
-              <div className="mt-3 ml-4 lg:ml-0 md:ml-0">
-                <a href="/services">
-                  <p className="futura-book">SERVICES</p>
-                </a>
-              </div>
-
-              <div className="mt-3 ml-4 lg:ml-0 md:ml-0">
-                <a href="/PT">
-                  <p className="futura-book">PT</p>
-                </a>
-              </div>
-
-              <div className="mt-3 ml-4 lg:ml-0 md:ml-0">
-                <a href="/classes">
-                  <p className="futura-book">CLASSES</p>
-                </a>
-              </div>
-
-              <div className="mt-3 ml-4 lg:ml-0 md:ml-0">
-                <a href="/contactUs">
-                  <p className="futura-book">CONTACT US</p>
-                </a>
-              </div> */}
             </div>
           </div>
           <div className="lg:col-span-4 sm:col-span-12">
@@ -416,7 +381,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-0.5"
               >
-                {/* <img src="fb.png" className="mr-5 w-3.5" /> */}
+                <img src="fb.png" className="mr-5 w-3.5" />
               </a>
 
               <a
@@ -424,7 +389,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-0.5"
               >
-                {/* <img src="insta.png" className="mr-5 w-7" /> */}
+                <img src="insta.png" className="mr-5 w-7" />
               </a>
 
               <a
@@ -432,7 +397,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-0"
               >
-                {/* <img src="linkedin.png" className="mr-5 w-7" /> */}
+                <img src="linkedin.png" className="mr-5 w-7" />
               </a>
 
               <a
@@ -440,7 +405,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-1"
               >
-                {/* <img src="youtubechannel.png" className="w-8" /> */}
+                <img src="youtubechannel.png" className="w-8" />
               </a>
             </div>
           </div>

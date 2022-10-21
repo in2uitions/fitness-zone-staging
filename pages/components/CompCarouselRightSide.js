@@ -148,7 +148,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                         ))}
                     </div>
 
-                    {/* <div className="newsbtns">
+                    <div className="newsbtns">
                         <img src="/ArrowLeft.png"
                             className="newsbtn prevbtn arrow"
                             onClick={next}
@@ -161,7 +161,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                             color="#fff"
                             size="2x"
                         />
-                    </div> */}
+                    </div>
                 </div>
                 <div className="lg:w-1/2 md:w-1/2 pr-52">
                     <div className="slideCC">
