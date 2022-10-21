@@ -171,31 +171,31 @@ useEffect(() => {
       <section>
         <div className="flex flex-col space-y-10 justify-start items-center fixed right-0 bg-[#009FE3] box">
           <a href={facebookLink} target="_blank" rel="noreferrer">
-            <img src="/Path 131.png" className="w-4" />
+            <img src="/path.png" className="w-4" />
           </a>
 
           <a href={instaLink} target="_blank" rel="noreferrer">
-            <img src="/Group 28.png" className="w-7" />
+            <img src="/fblink.png" className="w-7" />
           </a>
 
           <a
             href="https://www.linkedin.com/company/fitness-zone/"
             target="_blank" rel="noreferrer"
           >
-            <img src="/Group 29.png" className="w-6" />
+            <img src="/linkedinlink.png" className="w-6" />
           </a>
 
           <a
             href="https://www.youtube.com/channel/UCxaK9VYi8cBP_Y1rgRfwumw"
             target="_blank" rel="noreferrer"
           >
-            <img src="/Path 132.png" className="w-8" />
+            <img src="/youtube.png" className="w-8" />
           </a>
         </div>
         <div className="flex justify-end m-10 wtsp-widget">
           <BrowserView>
             <a href={whatsappNumber} target="_blank">
-              <img src="/Group 31.png" className="h-28" />
+              <img src="/wtspwidget.png" className="h-28" />
             </a>
           </BrowserView>
           <MobileView>
@@ -416,7 +416,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-0.5"
               >
-                <img src="Path 115.png" className="mr-5 w-3.5" />
+                <img src="fb.png" className="mr-5 w-3.5" />
               </a>
 
               <a
@@ -424,7 +424,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-0.5"
               >
-                <img src="Group 14.png" className="mr-5 w-7" />
+                <img src="insta.png" className="mr-5 w-7" />
               </a>
 
               <a
@@ -432,7 +432,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-0"
               >
-                <img src="Group 20.png" className="mr-5 w-7" />
+                <img src="linkedin.png" className="mr-5 w-7" />
               </a>
 
               <a
@@ -440,7 +440,7 @@ useEffect(() => {
                 target="_blank"
                 className="mt-1"
               >
-                <img src="Path 117.png" className="w-8" />
+                <img src="youtubechannel.png" className="w-8" />
               </a>
             </div>
           </div>

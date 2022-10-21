@@ -12,7 +12,7 @@ export default function Header(data = {}, about = []) {
         <Popup
           trigger={
             <button className="img-btn">
-              <img src="/Group 17.png" />
+              <img src="/blue-rectangle.png" />
             </button>
           } modal
           position=""
