@@ -19,7 +19,7 @@ export const handleApi = async ({ url, query = {}, fields, slug, load = true }) 
         }
     }
 
-    const res = await directus.items(url).readMany({ fields: fields, query, filter })
+    const res = await directus.items(url).readByQuery({ fields: fields, query, filter })
 
     return res.data;
 }
