@@ -78,9 +78,9 @@ export default function PopupContent() {
                         placeholder="PHONE NUMBER"
                     />
 
-                    <div className="lg:ml-14 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 flex justify-center items-center rounded-md futura-bold">
+                    {/* <div className="lg:ml-14 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 flex justify-center items-center rounded-md futura-bold">
                         <a href="#">REQUEST A CALL</a>
-                    </div>
+                    </div> */}
 
                     {/* <img src="Group 36.png" className="mt-16" /> */}
                 </div>

@@ -11,7 +11,7 @@ const Step = ({ currentIndex, handleNext, handlePrevious, handleComplete }) => {
                     onClick={() => handleComplete(currentIndex)}
                 />
             ) : ( */}
-            <div className="flex space-x-52 justify-evenly absolute top-2">
+            <div className="flex space-x-60 justify-evenly absolute top-2">
                 <button disabled={currentIndex === 0} className="timelineBack" onClick={() => handlePrevious(currentIndex)}>
                     <img
                         src="/ArrowBack.svg"

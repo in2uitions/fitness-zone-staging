@@ -16,7 +16,7 @@ export default function CompAccordion({ data = {}, style = 'white' }) {
                             onMouseLeave={() => setSelected(null)} key={i}>
                             {item.comp_accordion_items_id?.title ?<div className='absolute left-16 top-8'>
                                 <p className="font-bold text-4xl futura-bold text-white">{item.comp_accordion_items_id?.title}</p>
-                                <div className='line-blue w-24 mt-1'></div>
+                                <div className='line-blue w-32 mt-1'></div>
                             </div>:null}
 
                             <div className='' >
@@ -31,7 +31,7 @@ export default function CompAccordion({ data = {}, style = 'white' }) {
                                             </div>
                                         </div>
                                         {item.comp_accordion_items_id?.brief ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2"> {item.comp_accordion_items_id?.brief}  </p> : null}
-                                        {item.comp_accordion_items_id?.button_title ? <a href='/' className="futura-bold">{item.comp_accordion_items_id?.button_title}<ChevronRightIcon /></a> : null}
+                                        {item.comp_accordion_items_id?.button_title ? <a href={item.comp_accordion_items_id?.button_url} className="futura-bold">{item.comp_accordion_items_id?.button_title}<ChevronRightIcon /></a> : null}
                                     </div>
                                 )}
                             </div>
