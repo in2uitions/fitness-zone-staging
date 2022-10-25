@@ -7,7 +7,7 @@ export default function CompAccordion({ data = {}, style = 'white' }) {
     return (
         <>
             
-            <div className="container-imgs lg:py-0 md:py-0 py-12">
+            <div className="container-imgs lg:py-12 md:py-12 py-12">
 
                 <div className="gallery-wrap">
                     {data.accordion_items?.map((item, i) => (

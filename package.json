@@ -42,6 +42,7 @@
     "react-responsive": "^9.0.0",
     "react-responsive-carousel": "^3.2.23",
     "react-show-more": "^2.0.0",
+    "react-slick": "^0.29.0",
     "react-slider": "^2.0.4",
     "react-slideshow-image": "^3.7.0",
     "react-tooltip": "^4.4.2",

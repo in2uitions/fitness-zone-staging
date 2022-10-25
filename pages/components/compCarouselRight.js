@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -177,7 +178,12 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                         }}
                                     >
                                         <div className="sliderContent">
+                                        <div className="flex items-center space-x-5">
+                                            {item.comp_carousel_items_id.icon?<img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                        </div>
                                             {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
+                                            {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
                                         </div>
                                     </div>
                                 </div>

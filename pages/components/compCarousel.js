@@ -118,7 +118,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                 <div className=" flex flex-col justify-center items-center  md:mt-32 relative trainers-mobile">
                     {data.title ? <p className="lg:text-5xl md:text-4xl text-3xl font-bold futura-bold mb-5 text-white">{data.title}</p> : null}
                     {data.subtitle ? <p className="futura-book text-center w-3/4 text-[#D8D8D8] mb-5">
-                    {parse(`${data.subtitle}`)}</p> : null}
+                    {parse(`${data.subtitle}`)} </p> : null}
                 </div>
             </div>
             <div className={`lg:flex relative items-center px-14 container mt-60 mb-96 ${isFlipped ? 'flex-row-reverse' : ''}`}>
