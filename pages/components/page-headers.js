@@ -27,7 +27,7 @@ export default function Header({ color = "orange", data = {} }) {
                     <div className="">
                         <div id="" className="" >
 
-                            <img src={`${image_url}${data.image?.id}`} className="w-screen" />
+                            <img src={`${image_url}${data.image?.id}`} className=" aboutUs-bg" />
 
                         </div>
                     </div>

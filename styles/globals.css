@@ -865,10 +865,9 @@ li.category.isActive {
 }
 
 .aboutUs-bg {
-  background-image: url(/Aboutusbanner.JPG);
   height: 86vh;
   width: 100vw;
-  background-size: cover;
+  object-fit: cover;
   background-position: top;
   background-repeat: no-repeat;
   position: relative;
@@ -881,10 +880,10 @@ li.category.isActive {
   align-items: center;
   left: -3rem;
   margin-bottom: 10px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
-.timelineBack {
+/* .timelineBack {
   position: absolute;
   top: -54px;
 }
@@ -893,7 +892,7 @@ li.category.isActive {
   position: absolute;
   top: -54px;
   right: 43rem;
-}
+} */
 
 .form {
   margin: auto;
@@ -929,11 +928,11 @@ li.category.isActive {
 .arrows {
   width: 30px;
   height: 30px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 .example-mark.example-mark-active {
-  background-image: url(/slider-button.svg);
+  background-image: url(/slider-button-active.png);
   width: 80px;
   cursor: pointer;
   object-fit: contain;
@@ -1005,7 +1004,7 @@ li.category.isActive {
 } */
 
 .steps-container {
-  /* margin-top: 5rem; */
+  /* margin-top: -1rem; */
   display: flex;
   justify-content: space-between;
 }
@@ -2532,7 +2531,6 @@ iframe {
     display: flex;
     font-family: sans-serif;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
  
   .container {
@@ -2594,7 +2592,7 @@ iframe {
   }
   
   .example-mark.example-mark-completed {
-    border: 2px solid rgb(255, 255, 255);
+    /* border: 2px solid rgb(255, 255, 255); */
     background-color: #00d4ff;
   }
   

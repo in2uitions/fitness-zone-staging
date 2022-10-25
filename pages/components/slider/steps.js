@@ -3,7 +3,7 @@ import React from "react";
 const formEls = ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"];
 const Step = ({ currentIndex, handleNext, handlePrevious, handleComplete }) => {
     return (
-        <div className="">
+        <div className="flex justify-evenly items-center">
             {/* <h3>{formEls[currentIndex]}</h3> */}
             {/* {currentIndex === formEls.length - 1 ? (
                 <FormElement
@@ -11,7 +11,7 @@ const Step = ({ currentIndex, handleNext, handlePrevious, handleComplete }) => {
                     onClick={() => handleComplete(currentIndex)}
                 />
             ) : ( */}
-            <div className="flex">
+            <div className="flex space-x-52 justify-evenly absolute top-2">
                 <button disabled={currentIndex === 0} className="timelineBack" onClick={() => handlePrevious(currentIndex)}>
                     <img
                         src="/ArrowBack.svg"
@@ -19,7 +19,7 @@ const Step = ({ currentIndex, handleNext, handlePrevious, handleComplete }) => {
                         
                     />{" "}
                 </button>
-                <button disabled={currentIndex === 4} className="timelineForward" onClick={() => handleNext(currentIndex)}>
+                <button disabled={currentIndex === 5} className="timelineForward" onClick={() => handleNext(currentIndex)}>
                     <img
                         src="/ArrowForward.svg"
                         className="arrows"

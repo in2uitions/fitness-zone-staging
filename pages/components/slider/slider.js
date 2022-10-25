@@ -11,7 +11,7 @@ const Slider = ({ onChange, currentIndex }) => {
             defaultValue={2}
             value={currentIndex}
             min={0}
-            max={4}
+            max={6}
             marks
             renderMark={(props) => {
                 if (props.key < currentIndex) {

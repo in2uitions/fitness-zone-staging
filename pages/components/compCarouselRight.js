@@ -132,7 +132,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             ...getStyles(i),
                                         }}
                                     >
-                                        <div className="sliderContentImage">
+                                        <div className="">
                                             {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="tintImg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
                                         </div>
                                     </div>

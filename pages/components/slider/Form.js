@@ -61,17 +61,11 @@ export default function Form({ data = {}, currentIndex, style = 'white', isFlipp
                 {
                     console.log("color", opacity);
                 }
-                {/* let width = currentIndex === index ? "100vw" : "0px";
-                let height = currentIndex === index ? "100%" : "0px";
-                let marginTop = currentIndex === index ? "1.5rem" : "0px"; */}
                 return (
                     <div
                         className="lg:flex absolute inset-0 justify-center items-center w-screen lg:px-40"
                         style={{
                             opacity: opacity,
-                            // width:width,
-                            // height:height,
-                            // marginTop : marginTop
                         }}
                     >
                     <div className="flex flex-col mt-20  lg:px-40">
@@ -79,9 +73,6 @@ export default function Form({ data = {}, currentIndex, style = 'white', isFlipp
                                 }`}
                             style={{
                                 opacity: opacity,
-                                //     width:width,
-                                // height:height,
-                                // marginTop : marginTop
                             }}>
                             {aa.map((step, index) => {
                                 let color = currentIndex === index ? "#ffffff" : "white";
@@ -105,9 +96,6 @@ export default function Form({ data = {}, currentIndex, style = 'white', isFlipp
                                 }`}
                             style={{
                                 opacity: opacity,
-                                //     width:width,
-                                // height:height,
-                                // marginTop : marginTop
                             }}
                         >
                             <div className="lg:w-1/2 lg:py-16 lg:px-24 mt-24">
