@@ -22,13 +22,13 @@ export default function Sections({ data = {} }) {
                     return <CompAccordion data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} />;
                 }
                 if (section.collection == "comp_carousel") {
-                    return <><BrowserView><CompCarousel data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>
-                    {/* <MobileView><CompCarouselMobile data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></MobileView> */}
+                    return <><BrowserView><CompCarouselMobile data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>
+                    <MobileView><CompCarouselMobile data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></MobileView>
                     </>
                 }
                 if (section.collection == "comp_carousel_rightside") {
                     return <><BrowserView><CompCarouselRight data={section.item} /></BrowserView>
-                    {/* <MobileView><CompCarouselRightMobile data={section.item} /></MobileView> */}
+                    <MobileView><CompCarouselRightMobile data={section.item} /></MobileView>
                     </>
                 }
                 if (section.collection == "comp_fullwidthimage") {

@@ -4,13 +4,6 @@ const formEls = ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"];
 const Step = ({ currentIndex, handleNext, handlePrevious, handleComplete }) => {
     return (
         <div className="flex justify-evenly items-center">
-            {/* <h3>{formEls[currentIndex]}</h3> */}
-            {/* {currentIndex === formEls.length - 1 ? (
-                <FormElement
-                    value={"Complete"}
-                    onClick={() => handleComplete(currentIndex)}
-                />
-            ) : ( */}
             <div className="flex space-x-60 justify-evenly absolute top-2">
                 <button disabled={currentIndex === 0} className="timelineBack" onClick={() => handlePrevious(currentIndex)}>
                     <img
@@ -27,7 +20,6 @@ const Step = ({ currentIndex, handleNext, handlePrevious, handleComplete }) => {
                     />
                 </button>
             </div>
-            {/* )} */}
         </div>
     );
 };

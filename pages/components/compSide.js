@@ -31,8 +31,8 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                                 <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
                         </div>
                     </div>
-                    <div className=" lg:w-1/2  lg:pt-0 lg:hidden">
-                        <div id="wrapper" className={`main-image-center m-5`} >
+                    <div className=" lg:w-1/2 pt-6 lg:pt-0 lg:hidden">
+                        <div id="wrapper" className={`main-image-center`} >
 
                             <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
 

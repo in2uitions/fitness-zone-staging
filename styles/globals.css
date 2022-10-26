@@ -489,7 +489,16 @@ p {
   position: absolute;
   z-index: 999;
 }
-
+.Mobilearrow {
+  /* border: 2px solid #009fe3; */
+  background-color: transparent;
+  color: #009fe3;
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  z-index: 999;
+}
 .newsarrow {
   border: 2px solid #009fe3;
   background-color: transparent;
@@ -535,9 +544,26 @@ p {
 .menu-items {
   line-height: 40px;
 }
-
+.embla__button, .embla__button:before {
+    /* position: absolute; */
+    width: 50px;
+    height: 50px;
+}
+.embla{
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  position: relative;
+  flex: 0 0 100% !important;
+}
 .metismenu-item {
   margin-bottom: 15px;
+}
+.react-carousel-responsive__slide{
+  display: flex !important;
 }
 /* 
 .swiper {
@@ -1602,14 +1628,6 @@ li {
     margin-top: 22rem;
   }
 
-  /* .text-homePage {
-    top: 14rem;
-  }
-
-  .sound {
-    top: 20rem;
-  } */
-
   .btns-mobile .btn-mobile:last-child {
     right: 0;
   }
@@ -1641,10 +1659,19 @@ li {
 }
 
 @media screen and (max-width: 480px) {
+  .manifesto{
+    bottom: 0rem;
+    left: 0rem;
+  }
   .contact-inputs {
     width: 100%;
   }
-
+  .aboutUs-bg{
+    height: 60vh;
+  }
+  .about-image{
+    height: 45vh;
+  }
   .textArea {
     width: 100%;
   }
@@ -1748,7 +1775,7 @@ li {
   }
 
   .text-homePage {
-    top: 19rem;
+    top: 17rem;
   }
 
   .sound {
