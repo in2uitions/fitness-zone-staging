@@ -5,7 +5,7 @@ export default function PopupContent() {
         
         <div className="backdrop-blur-xl rounded-lg shadow-xl w-screen h-screen overflow-y-auto">
             <div className="lg:grid lg:grid-cols-2">
-                <div className="grid lg:grid-rows-8 gap-6 mt-52 lg:ml-40 md:ml-40 ml-10">
+                <div className="grid lg:grid-rows-8 gap-6 lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-10">
                     <a href="/" className="font-bold text-4xl futura-book menu-items">
                         HOME
                     </a>

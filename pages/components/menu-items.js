@@ -119,7 +119,7 @@ export default function Menu(data = {}) {
         <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade">
             <HeaderContent />
             <div className="lg:grid lg:grid-cols-2">
-                <div className="mt-52 lg:ml-40 md:ml-40 ml-10">
+                <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-10">
                     <MetisMenu
                         className="font-bold futura-book text-4xl menu-items"
                         content={content} activeLinkFromLocation
@@ -139,11 +139,11 @@ export default function Menu(data = {}) {
                         </a>
                     </div>
                 </div>
-                <div className="mt-52 flex flex-col justify-center">
-                    <div className="flex flex-row ml-14">
+                <div className="lg:mt-52 md:mt-52 mt-5 flex flex-col justify-center">
+                    <div className="flex flex-row lg:ml-14 md:ml-14 ml-10">
                         <a
                             href="#"
-                            className="bg-[#009FE3] h-9 flex justify-center items-center p-2 rounded mr-4"
+                            className="bg-[#009FE3] h-9 flex justify-center text-sm items-center p-2 rounded mr-4"
                         >
                             BECOME A MEMBER
                         </a>
@@ -155,17 +155,17 @@ export default function Menu(data = {}) {
                         </a>
                     </div>
 
-                    <p className="pt-7 futura-bold ml-14 text-white">ENQUIRE NOW</p>
+                    <p className="pt-7 futura-bold lg:ml-14 md:ml-14 ml-10 text-white">ENQUIRE NOW</p>
                     <input
-                        className="ml-14 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 py-2 mb-3"
+                        className="lg:ml-14 md:ml-14 ml-10 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
                         placeholder="FULL NAME"
                     />
                     <input
-                        className="ml-14 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 py-2 mb-3"
+                        className="lg:ml-14 md:ml-14 ml-10 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
                         placeholder="PHONE NUMBER"
                     />
 
-                    <div className="lg:ml-14 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 flex justify-center items-center rounded-md futura-bold">
+                    <div className="lg:ml-14 md:ml-14 ml-10 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 md:w-40 w-40 mb-20 flex justify-center items-center rounded-md futura-bold">
                         <a href="#">REQUEST A CALL</a>
                     </div>
                 </div>

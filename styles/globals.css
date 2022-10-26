@@ -1664,6 +1664,9 @@ li {
 }
 
 @media screen and (max-width: 480px) {
+  .classes{
+    top:1rem;
+  }
   .manifesto{
     bottom: 0rem;
     left: 0rem;
@@ -1780,7 +1783,7 @@ li {
   }
 
   .text-homePage {
-    top: 17rem;
+    top: 14rem;
   }
 
   .sound {

@@ -14,7 +14,7 @@ export default function CompAccordion({ data = {}, style = 'white' }) {
                         <div className="item item-1 relative" style={{ backgroundImage: `url(${image_url}${item.comp_accordion_items_id?.image?.id})`}}
                             onMouseEnter={() => setSelected(i)}
                             onMouseLeave={() => setSelected(null)} key={i}>
-                            {item.comp_accordion_items_id?.title ?<div className='absolute left-16 top-8'>
+                            {item.comp_accordion_items_id?.title ?<div className='absolute left-16 top-8 classes'>
                                 <p className="font-bold text-4xl futura-bold text-white">{item.comp_accordion_items_id?.title}</p>
                                 <div className='line-blue w-32 mt-1'></div>
                             </div>:null}
