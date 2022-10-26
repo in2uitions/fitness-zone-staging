@@ -3,7 +3,7 @@ export default function CompContact({ data = {}, style = 'white' }) {
 
     return (
         <div>
-            <div className="lg:flex mt-40 mb-20 px-14">
+            <div className="lg:flex mt-20 mb-20 lg:px-14 md:px-14 px-6">
                 <div className="lg:w-1/2">
                     <p className="text-color text-2xl futura-bold mb-5">{data.title}</p>
                     <div className="pb-5">
@@ -21,7 +21,7 @@ export default function CompContact({ data = {}, style = 'white' }) {
                 </div>
                 <div className="lg:w-1/2">
                     <p className="text-color text-2xl futura-bold">{data.get_in_touch}</p>
-                    <div className="grid grid-rows-2 grid-flow-col gap-4">
+                    <div className="grid lg:grid-rows-2 md:grid-rows-2 grid-rows-3 grid-flow-col gap-4">
                         {/* <div className="lg:w-1/3 text-white" ></div>  */}
                         {data.contact?.map((item, i) => (
                             <div className="flex flex-col text-white">
@@ -30,14 +30,14 @@ export default function CompContact({ data = {}, style = 'white' }) {
                             </div>
                         ))}
                     </div>
-                    <div className="lg:flex space-x-3 mt-20">
+                    <div className="flex space-x-3 mt-20">
                         <div className="">
                             <button className="p-2 bg-[#009FE3] text-white flex items-center flex-row justify-around rounded-md futura">
                                 BECOME A MEMBER
                             </button>
                         </div>
                         <div className="">
-                            <button className="border-[#009FE3] text-white border-2 p-2 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 mt-2">Work With Us</button>
+                            <button className="border-[#009FE3] text-white border-2 p-2 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">Work With Us</button>
                         </div>
                     </div>
                     <div className="mt-10">
