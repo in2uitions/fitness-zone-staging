@@ -24,6 +24,7 @@ export default function Menu(data = {}) {
         {
             "id": 1,
             "label": "HOME",
+            "to":'/'
         },
         {
             "id": 2,

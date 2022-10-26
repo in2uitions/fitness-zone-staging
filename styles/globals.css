@@ -1664,6 +1664,13 @@ li {
 }
 
 @media screen and (max-width: 480px) {
+  .menu-items{font-size: 2rem;}
+  .logo{
+    width: 11rem;
+  }
+  .menu-icon{
+    width: 4rem;
+  }
   .classes{
     top:1rem;
   }

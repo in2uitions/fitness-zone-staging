@@ -6,33 +6,33 @@ export default function PopupContent() {
         <div className="backdrop-blur-xl rounded-lg shadow-xl w-screen h-screen overflow-y-auto">
             <div className="lg:grid lg:grid-cols-2">
                 <div className="grid lg:grid-rows-8 gap-6 lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-10">
-                    <a href="/" className="font-bold text-4xl futura-book menu-items">
+                    <a href="/" className="font-bold lg:text-4xl md:text-4xl text-3xl futura-book menu-items">
                         HOME
                     </a>
                     <a
                         href="/aboutUs"
-                        className="font-bold futura-book text-4xl menu-items"
+                        className="font-bold futura-book lg:text-4xl md:text-4xl text-3xl menu-items"
                     >
                         ABOUT US
                     </a>
                     <a
                         href="/services"
-                        className="font-bold futura-book text-4xl menu-items"
+                        className="font-bold futura-book lg:text-4xl md:text-4xl text-3xl menu-items"
                     >
                         SERVICES
                     </a>
-                    <a href="/PT" className="font-bold futura-book text-4xl menu-items">
+                    <a href="/PT" className="font-bold futura-book lg:text-4xl md:text-4xl text-3xl menu-items">
                         PT
                     </a>
                     <a
                         href="/classes"
-                        className="font-bold futura-book text-4xl menu-items"
+                        className="font-bold futura-book lg:text-4xl md:text-4xl text-3xl menu-items"
                     >
                         CLASSES
                     </a>
                     <a
                         href="/contactUs"
-                        className="font-bold futura-book text-4xl menu-items"
+                        className="font-bold futura-book lg:text-4xl md:text-4xl text-3xl menu-items"
                     >
                         CONTACT US
                     </a>
