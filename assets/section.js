@@ -22,7 +22,7 @@ export default function Sections({ data = {} }) {
                     return <CompAccordion data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} />;
                 }
                 if (section.collection == "comp_carousel") {
-                    return <><BrowserView><CompCarouselMobile data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>
+                    return <><BrowserView><CompCarousel data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>
                     <MobileView><CompCarouselMobile data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></MobileView>
                     </>
                 }

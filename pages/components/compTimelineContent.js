@@ -34,7 +34,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
 
                         <Slider onChange={_handleIndexChange} currentIndex={currentIndex} />
                         <div className="container relative">
-                            <div className="relative h-screen">
+                            <div className="relative h-screen h-mobile">
             {data.timeline.map((step, index) => {
                 let opacity = currentIndex === index ? "1" : "0";
                 {
