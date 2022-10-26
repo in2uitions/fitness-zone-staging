@@ -42,7 +42,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                 }
                 return (
                     <div
-                        className="lg:flex absolute inset-0 justify-center items-center w-screen lg:px-40"
+                        className="lg:flex absolute inset-0 justify-center items-center w-screen lg:px-40 md:px-40 px-6"
                         style={{
                             opacity: opacity,
                         }}
@@ -70,12 +70,12 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                             })}
                         </div>
                         <div
-                            className={`shadow-lg container -mt-2 transition duration-1000 ease-in-out timeline-items flex`}
+                            className={`shadow-lg container -mt-2 transition duration-1000 ease-in-out timeline-items flex timeline-mobile`}
                             style={{
                                 opacity: opacity,
                             }}
                         >
-                            <div className="lg:w-1/2 lg:py-16 lg:px-24 mt-24">
+                            <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
                                 {/* <h3>{step.timeline_items_id?.title}</h3> */}
                                 <p className="text-white">{step.timeline_items_id?.date}</p>
                                 <br></br>
