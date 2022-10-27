@@ -39,7 +39,7 @@ export default function Sections({ data = {} }) {
         },
         {
             name: "Fitness Zone Dubai",
-            country:"Lebanon",
+            country:"UAE",
             location: [25.207770051628184, 55.263979545518836]
         }
     ];
