@@ -1,26 +1,43 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react';
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
-export default function CompMap({data={}, key , h='100vh'}) {
+const CompMap = ({ center, zoom, data = {}, mapLocations }) => {
+
+    const pin = "/marker.png"
+
+    const googleAPIKey = "";
+
+    const markerStyle = {
+        position: "absolute",
+        top: "100%",
+        left: "100%",
+        transform: "translate(-50%, -100%)"
+    };
     return (
         <>
-            <div className='container lg:mt-32 md:mt-32 mt-0 mb-32 mx-auto xl:pb-0 lg:px-5 md:px-5 px-5 ' style={{ height: h, width: '100%' }}>
-            {data.title? <p className="font-bold futura-bold lg:text-5xl text-3xl text-white mb-10">{data.title}</p>:null}
+            <div className='container lg:mt-32 md:mt-32 mt-0 mb-32 mx-auto xl:pb-0 lg:px-5 md:px-5 px-5 ' style={{ height: '100vh', width: '100%' }}>
+                {data.title ? <p className="font-bold futura-bold lg:text-5xl text-3xl text-white mb-10">{data.title}</p> : null}
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: key }}
-                    defaultCenter={{
-                        lat: 59.95,
-                        lng: 30.33
-                    }}
-                    defaultZoom={11}
+                    bootstrapURLKeys={{ key: googleAPIKey }}
+                    yesIWantToUseGoogleMapApiInternals={true}
+                    defaultZoom={zoom}
+                    defaultCenter={center}
                 >
-                    <AnyReactComponent
-                        lat={59.955413}
-                        lng={30.337844}
-                        text="Location"
-                    />
+                    {mapLocations.map(item => {
+                        return (
+                            <div lat={item.location[0]} lng={item.location[1]}>
+                          
+                                <img style={markerStyle} className="w-7" src={pin} alt="pin" />
+                                <div className=''>
+                                <p className='text-white'> {item.name}</p>
+                            <p className='text-white'>{item.country}</p>
+                            </div>
+                            </div>
+                        );
+                    })}
                 </GoogleMapReact>
             </div>
         </>
     )
 }
+export default CompMap;
