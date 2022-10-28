@@ -69,57 +69,57 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
 
     return (
         <section id={`${data.title}`} className="mt-20">
-          <div className="">
+            <div className="">
                 {data.image_title ? <div className=" flex flex-col justify-center items-center pt-20 relative trainers-mobile">
-                    <img src={`${image_url}${data.image_title?.id}`} className="w-56" altv={data.image_title?.title} /> 
-                </div>: null}
+                    <img src={`${image_url}${data.image_title?.id}`} className="w-56" altv={data.image_title?.title} />
+                </div> : null}
             </div>
             <div className={`lg:flex relative items-center container`}>
-            <div className="embla " ref={emblaRef}>
-                        <div className="embla__container w-screen">
-                            {data.carousel?.map((item, i) => (
-                                <div className={`embla__slide  lg:flex  items-center`}>
+                <div className="embla " ref={emblaRef}>
+                    <div className="embla__container w-screen">
+                        {data.carousel?.map((item, i) => (
+                            <div className={`embla__slide  lg:flex  items-center`}>
 
-                <div className="lg:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 ">
-                    <div className="">
-                            <>
-                                <div className="">
+                                <div className="lg:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 ">
+                                    <div className="">
+                                        <>
+                                            <div className="">
 
-                                    <div key={item.id}
-                                        className=""
-                                    >
-                                        <div className="relative">
+                                                <div key={item.id}
+                                                    className=""
+                                                >
+                                                    <div className="relative">
                                                         {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="w-screen px-6" altv={item.comp_carousel_items_id?.title} /> : null}
                                                         <div className="flex justify-between items-center absolute top-0 left-0 w-full h-full ">
-                                                    <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-                                                    <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-                                                </div>
+                                                            <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+                                                            <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </>
                                     </div>
                                 </div>
-                            </>
-                    </div>
-                </div>
 
-                <div className="lg:w-1/2 mt-10">
-                    <div className="">
-                            <>
-                                <div className="">
-                                    <div key={item.id}
-                                        className=""
-                                    >
-                                        <div className="sliderContent">
-                                            {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-10 w-screen">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
-                                        </div>
+                                <div className="lg:w-1/2 mt-10">
+                                    <div className="">
+                                        <>
+                                            <div className="">
+                                                <div key={item.id}
+                                                    className=""
+                                                >
+                                                    <div className="sliderContent">
+                                                        {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-10 w-screen">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </>
                                     </div>
                                 </div>
-                            
-                            </>
+                            </div>
+                        ))}
                     </div>
-                </div>
-                </div>
-                            ))}
-                </div>
                 </div>
             </div>
         </section>

@@ -406,7 +406,37 @@ p {
   transform: translateX(-50%);
   transition: all 0.5s ease;
 }
+.rec.rec-slider-container {
+  overflow: visible;
+}
+.rec-dot {
+  visibility: hidden;
+}
+.rec-arrow-right{
+  visibility: hidden;
 
+}
+.rec-arrow-left
+{
+  visibility: hidden;
+}
+.test {
+  font-family: sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  object-fit: cover;
+  width: 90%;
+  /* background-color: #00008b; */
+  color: #fff;
+  margin: 0 15px;
+  font-size: 4em;
+}
 .slideCoaching {
   position: absolute;
   margin-top: 5rem;
@@ -1234,7 +1264,17 @@ li.category.isActive {
   width: 500px;
   top: 7rem;
 }
-
+.btnsMap {
+  position: relative;
+  width: 260px;
+  top: 3.75rem;
+}
+.btnLeftMap{
+  left: 4.5rem;
+}
+.btnRightMap{
+  right: -1rem;
+}
 .newsbtns {
   position: relative;
 }
