@@ -16,6 +16,7 @@ export default function Footer(data = {}) {
     const [phoneValue, setPhoneValue] = useState()
     const [phone, setPhone] = useState()
     const [whatsappNumber, setWhatsappNumber] = useState();
+    const [scrollPosition, setScrollPosition] = useState(0);
     const [facebookLink, setFaceBookLink] = useState();
     const [instaLink, setInstaLink] = useState();
     const [isSent, setIsSent] = useState(false);
@@ -211,7 +212,7 @@ export default function Footer(data = {}) {
                     <div className="lg:col-span-2 sm:col-span-12">
                         <div className="lg:ml-28">
                             <MetisMenu
-                                className="mt-3 ml-4 lg:ml-0 md:ml-0 futura-book footer-link"
+                                className="mt-3 ml-4 lg:ml-0 md:ml-0 futura-book footer-link lg:pt-0 md:pt-0 pt-5"
                                 content={content} activeLinkFromLocation
                             />
                         </div>

@@ -10,6 +10,7 @@ import CompCarouselRight from '../pages/components/compCarouselRight';
 import CompCarouselRightMobile from '../pages/components/compCarouselRightMobile';
 import CompTimeline from '../pages/components/compTimelineContent';
 import CompMap from '../pages/components/compMap';
+import Classes from '../pages/components/classes';
 export default function Sections({ data = {} }) {
     const mapLocations = [
         {
@@ -96,6 +97,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "comp_fullwidthimage") {
                     return <CompFullWidth data={section.item} />;
+                }
+                if (section.collection == "classes") {
+                    return <Classes data={section.item}  isFlipped={section.item?.image_position == "left"}/>;
                 }
                 if (section.collection == "comp_contact") {
                     return <CompContact data={section.item} />;

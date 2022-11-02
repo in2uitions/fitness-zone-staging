@@ -312,9 +312,9 @@ html,
 body {
   background-image: url(/solid-concrete-wall-textured-backdrop.jpg);
   background-size: cover;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  /* position: absolute; */
   overflow-x: hidden;
   overflow-y: scroll;
   display: flex;
@@ -628,18 +628,30 @@ p {
 .metismenu-item {
   margin-bottom: 15px;
 }
-/* .active{
+.active{
   font-family: "Futura BdCn BT";
   height: 24px;
+  /* font-size: 18px; */
+  left: 0;
+  top: 0;
+  border-bottom: 2px solid #009fe3;
+  width: 3rem;
+}
+/* .focus{
+  font-family: "Futura BdCn BT";
+  height: 2.25rem;
   font-size: 18px;
   left: 0;
   top: 0;
   border-bottom: 2px solid #009fe3;
   width: 3rem;
+}
+.menu-items li:focus{
+
 } */
-.metismenu-link a:active {
+.metismenu-link li:active {
   font-family: "Futura BdCn BT";
-  height: 24px;
+  /* height: 24px; */
   font-size: 18px;
   left: 0;
   top: 0;
@@ -1814,7 +1826,7 @@ li {
     top:1rem;
   }
   .manifesto{
-    bottom: 0rem;
+    top: 0rem;
     left: 0rem;
   }
   .contact-inputs {

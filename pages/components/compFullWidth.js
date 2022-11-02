@@ -18,6 +18,12 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                     </p>
 
                 </div> : null}
+                {data.brief ? <div className="absolute bottom-16 right-0 text-center manifesto-txt">
+                    <p className="text-[#D8D8D8] futura-book">
+                        {parse(`${data.brief}`)}
+                    </p>
+
+                </div> : null}
             </div>
 
         </div>

@@ -47,6 +47,7 @@
     "react-slick": "^0.29.0",
     "react-slider": "^2.0.4",
     "react-slideshow-image": "^3.7.0",
+    "react-tabs": "^5.1.0",
     "react-tooltip": "^4.4.2",
     "reactjs-popup": "^2.0.5",
     "sass": "^1.55.0",
