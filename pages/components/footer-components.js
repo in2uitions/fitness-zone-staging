@@ -125,6 +125,7 @@ export default function Footer(data = {}) {
         {
             "id": 1,
             "label": "HOME",
+            "to":"/"
         },
         {
             "id": 2,
@@ -370,7 +371,7 @@ export default function Footer(data = {}) {
 
                     <div className="flex flex-row">
                         <p className="text-[#009FE3] font-bold mr-2">E</p>
-                        <p className="futura-book text-white">info@fitnesszone.me</p>
+                        <p><a href="mailto:" className="futura-book text-white">info@fitnesszone.me</a></p>
                     </div>
 
                     <div className="lg:ml-24">

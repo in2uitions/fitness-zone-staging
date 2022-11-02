@@ -16,60 +16,60 @@ export default function Sections({ data = {} }) {
             name: "BAABDA",
             country:"Lebanon",
             location: [33.85290929046017, 35.533113284230346],
-            images:[
-                "/exercise.png",
-                "/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg",
-                "/exercise.png"
+            images:[{
+                image:"/exercise.png"},
+                {image:"/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg"},
+                {image:"/exercise.png"}
             ],
         },
         {
             name: "MANARA",
             country:"Lebanon",
             location: [33.9002473, 35.472562],
-            images:[
-                "/exercise.png",
-                "/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg",
-                "/exercise.png"
+            images:[{
+                image:"/exercise.png"},
+                {image:"/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg"},
+                {image:"/exercise.png"}
             ],
         },
         {
             name: "DBAYEH",
             country:"Lebanon",
             location: [33.937694552709, 35.59059464931414],
-            images:[
-                "/exercise.png",
-                "/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg",
-                "/exercise.png"
+            images:[{
+                image:"/exercise.png"},
+                {image:"/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg"},
+                {image:"/exercise.png"}
             ],
         },
         {
             name: "HAMRA",
             country:"Lebanon",
             location: [33.895780018596206, 35.47930674005219],
-            images:[
-                "/exercise.png",
-                "/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg",
-                "/exercise.png"
+            images:[{
+                image:"/exercise.png"},
+                {image:"/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg"},
+                {image:"/exercise.png"}
             ],
         },
         {
             name: "ABC ACHRAFIEH",
             country:"Lebanon",
             location: [33.88908092357919, 35.51961005311003],
-            images:[
-                "/exercise.png",
-                "/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg",
-                "/exercise.png"
+            images:[{
+                image:"/exercise.png"},
+                {image:"/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg"},
+                {image:"/exercise.png"}
             ],
         },
         {
             name: "Dubai",
             country:"UAE",
             location: [25.207770051628184, 55.263979545518836],
-            images:[
-                "/exercise.png",
-                "/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg",
-                "/exercise.png"
+            images:[{
+                image:"/exercise.png"},
+                {image:"/disassembled-barbell-medicine-ball-kettlebell-dumbbell-lying-floor-gym-sports-equipment-workout-with-free-weight-functional-training.jpg"},
+                {image:"/exercise.png"}
             ],
         }
     ];
@@ -104,7 +104,7 @@ export default function Sections({ data = {} }) {
                     return <CompTimeline data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} />;
                 }
                 if (section.collection == "comp_map") {
-                    return <> <div style={{  height: "700px" }}><CompMap mapLocations={mapLocations} key="" center={{ lat: 33.937694552709, lng: 35.59059464931414 }} zoom={13} data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></div></>
+                    return <> <CompMap mapLocations={mapLocations} key="" center={{ lat: 33.937694552709, lng: 35.59059464931414 }} zoom={13} data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></>
                 }
             })}
         </div>

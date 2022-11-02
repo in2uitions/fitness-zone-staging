@@ -55,61 +55,25 @@ const aa = [{ image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/t
 export default function Form({ data = {}, currentIndex, style = 'white', isFlipped = false }) {
     const [fade, setFade] = useState(true);
     return (
-        <div className="container relative h-screen">
+        <div className="flex justify-between relative">
             {steps.map((step, index) => {
                 let opacity = currentIndex === index ? "1" : "0";
                 {
                     console.log("color", opacity);
                 }
                 return (
-                    <div
-                        className="lg:flex absolute inset-0 justify-center items-center w-screen lg:px-40"
-                        style={{
-                            opacity: opacity,
-                        }}
-                    >
-                    <div className="flex flex-col mt-20  lg:px-40">
-                        <div className={`steps-container transition duration-1000 ease-in-out  ${fade == "true" ? "opacity-1" : "opacity-0"
-                                }`}
-                            style={{
-                                opacity: opacity,
-                            }}>
-                            {aa.map((step, index) => {
-                                let color = currentIndex === index ? "#ffffff" : "white";
-                                let opacity = currentIndex === index ? "1" : "0";
-                                console.log("color", color);
-                                return (
-                                    <div className="steps-item">
-                                        <img src={step.image}
-                                            style={{
-                                                margin: 0,
-                                                color: color,
-                                                opacity: opacity
-                                            }}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
                         <div
-                            className={`shadow-lg -mt-2 transition duration-1000 ease-in-out timeline-items flex ${fade == "true" ? "opacity-1" : "opacity-0"
+                            className={`${fade == "true" ? "opacity-1" : "opacity-0"
                                 }`}
                             style={{
                                 opacity: opacity,
                             }}
                         >
-                            <div className="lg:w-1/2 lg:py-16 lg:px-24 mt-24">
-                                <h3>{step.eventTitle}</h3>
+                            <div className="">
                                 <p className="text-white">{step.year}</p>
                                 <br></br>
-                                <p className="text-white">{step.eventDescription}</p>
-                            </div>
-                            <div className="lg:w-1/2">
-                                <img className="pt-10 pb-10 imageStep" src={step.image} />
                             </div>
                         </div>
-                        </div>
-                    </div>
                 );
             })}
         </div>

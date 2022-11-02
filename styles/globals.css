@@ -351,6 +351,12 @@ p {
 .about-image {
   height: 70vh;
   object-fit: cover;
+  background-size: cover;
+    background-position: top;
+    -o-object-fit: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 /* img{
@@ -396,7 +402,14 @@ p {
   height: 120px;
   margin: 0 auto;
 }
-
+.rec-arrow-left{
+  position: absolute !important;
+  right: -10rem !important;
+}
+.rec-arrow-right{
+  left: -10rem !important;
+  position: absolute !important;
+}
 .slide {
   position: absolute;
   margin-top: 5rem;
@@ -409,7 +422,30 @@ p {
 .rec.rec-slider-container {
   overflow: visible;
 }
+.cEFIaY {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  background-color: #009FE3 !important;
+  color: white !important;
+  box-shadow: 0 0 24px 0px #009fe3 !important;
+  border-radius: 50%;
+  border: none;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  z-index: 5000000 !important;
+  line-height: 40px !important;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+}
 .rec-dot {
+  visibility: hidden;
+}
+/* .rec-dot {
   visibility: hidden;
 }
 .rec-arrow-right{
@@ -419,7 +455,7 @@ p {
 .rec-arrow-left
 {
   visibility: hidden;
-}
+} */
 .test {
   font-family: sans-serif;
   text-align: center;
@@ -592,6 +628,43 @@ p {
 .metismenu-item {
   margin-bottom: 15px;
 }
+/* .active{
+  font-family: "Futura BdCn BT";
+  height: 24px;
+  font-size: 18px;
+  left: 0;
+  top: 0;
+  border-bottom: 2px solid #009fe3;
+  width: 3rem;
+} */
+.metismenu-link a:active {
+  font-family: "Futura BdCn BT";
+  height: 24px;
+  font-size: 18px;
+  left: 0;
+  top: 0;
+  border-bottom: 2px solid #009fe3;
+  width: 2.5rem;
+}
+/* .metismenu-container li:active{
+  font-family: "Futura BdCn BT";
+  height: 24px;
+  font-size: 18px;
+  left: 0;
+  top: 0;
+  border-bottom: 2px solid #009fe3;
+  width: 2.5rem;
+} */
+/* .metismenu-link:focus {
+  font-family: "Futura BdCn BT";
+  height: 24px;
+  font-size: 18px;
+  left: 0;
+  top: 0;
+  border-bottom: 2px solid #009fe3;
+  width: 2.5rem;
+} */
+
 .react-carousel-responsive__slide{
   display: flex !important;
 }
@@ -616,13 +689,13 @@ p {
 .metismenu-link:hover {
   /* border-bottom: 2px solid #009FE3; */
   /* width: 4rem; */
-  font-size: 36px;
+  /* font-size: 36px;
   font-family: "Futura BdCn BT";
-  color: white !important;
+  color: white !important; */
 
 }
 
-.footer-link .metismenu-item:first-child {
+/* .footer-link .metismenu-item:first-child {
   font-family: Futura;
   height: 24px;
   font-size: 18px;
@@ -630,17 +703,17 @@ p {
   top: 0;
   border-bottom: 2px solid #009fe3;
   width: 2.5rem;
-}
+} */
 
-.footer-link .metismenu-item:first-child:hover {
+/* .footer-link .metismenu-item:first-child:hover {
   font-family: "Futura" !important;
   font-size: 18px !important;
-}
+} */
 
-.footer-link .metismenu-link:hover {
+/* .footer-link .metismenu-link:hover {
   font-size: 14px !important;
   font-family: "Futura Bk BT" !important;
-}
+} */
 
 .swiper-pagination-bullet {
   visibility: hidden !important;
@@ -920,10 +993,12 @@ li.category.isActive {
 }
 
 .aboutUs-bg {
-  height: 86vh;
   width: 100vw;
-  object-fit: cover;
+  height: 86vh;
+  background-size: cover;
   background-position: top;
+  -o-object-fit: cover;
+  object-fit: cover;
   background-repeat: no-repeat;
   position: relative;
 }
@@ -1354,12 +1429,12 @@ li.category.isActive {
 
 .prevbtn {
   left: 0rem;
-  transform: translateX(500px);
+  transform: translateX(410px);
 }
 
 .newsbtns .newsbtn:last-child {
   right: 0rem;
-  transform: translateX(70px);
+  transform: translateX(160px);
 }
 
 .btnsPT .btnPT:last-child {
@@ -1865,11 +1940,11 @@ li {
 @media (min-width:1024px) and (max-width: 1299px) {
 
   .prevbtn {
-    left: -10.5rem;
+    left: -4.5rem;
   }
 
   .newsbtns .newsbtn:last-child {
-    right: -10.5rem;
+    right: -4.5rem;
   }
 }
 
@@ -1975,11 +2050,11 @@ li {
 
 @media (min-width:1300px) and (max-width: 1400px) {
   .prevbtn {
-    left: -8rem;
+    left: -4.5rem;
   }
 
   .newsbtns .newsbtn:last-child {
-    right: -8rem;
+    right: -4.5rem;
   }
 }
 
@@ -2149,20 +2224,17 @@ iframe {
 }
 
 .citywalk-dubai-ison-title {
-  /* line-height: 50px; */
-  background-color: #009FE3;
   border: none;
-  font-family: "Futura";
-  color: white;
-  border-radius: 0.375rem;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  font-size: 2.5rem;
+    font-family: Futura;
+    color: #fff;
+    border-radius: 0.375rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 

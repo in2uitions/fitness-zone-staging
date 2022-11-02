@@ -9,8 +9,8 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                 <p className="futura-bold text-3xl w-3/4 text-white md:text-6xl lg:text-6xl mx-auto">{data.title}</p>
             </div> : null}
             <div className="relative">
-                <div className=" w-screen">
-                    <img src={`${image_url}${data.image?.id}`} className="relative w-screen about-image" alt={`${data.image?.title}`} />
+                <div className=" w-screen about-image relative"  style={{ "backgroundImage": `url("${image_url}${data.image?.id}")` }}>
+                    {/* <img src={`${image_url}${data.image?.id}`} className="relative w-screen about-image" alt={`${data.image?.title}`} /> */}
                 </div>
                 {data.image_description ? <div className="absolute bottom-16 left-20 text-center manifesto">
                     <p className="text-[#D8D8D8] futura-book">

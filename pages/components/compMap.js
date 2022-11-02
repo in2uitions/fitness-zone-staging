@@ -26,9 +26,11 @@ const CompMap = ({ center, zoom, data = {}, mapLocations }) => {
         left: "100%",
         transform: "translate(-50%, -100%)"
     };
+    const length = mapLocations.length;
+    console.log(mapLocations.length + "test")
     const [activeSlide, setactiveSlide] = useState(0);
     const next = () =>
-    activeSlide < data.carousel.length - 1 && setactiveSlide(activeSlide + 1);
+    activeSlide < mapLocations.length - 1 && setactiveSlide(activeSlide + 1);
 
 const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
 
@@ -57,25 +59,26 @@ const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
                                         <p className='text-white'>{item.country}</p>
                                     </div></a>
                                     <div className="test">
-                                    <div className="btnsMap" >
+                                    {/* <div className="btnsMap" >
                             <img src="/ArrowLeft.png"
-                                className="btnLeftMap arrow"
-                                // onClick={prev}
+                                className="btnLeftMap arrow sc-bcXHqe dvzGLu rec rec-arrow rec rec-arrow-left"
+                                onClick={prev}
                                 color="#fff"
                                 size="2x"
                             />
                             <img src="/ArrowRight.png"
-                                className="btnRightMap arrow"
-                                // onClick={next}
+                                className="btnRightMap arrow sc-bcXHqe dvzGLu rec rec-arrow rec rec-arrow-right"
+                                onClick={next}
                                 color="#fff"
                                 size="2x"
                             />
-                        </div>
-                                    <Carousel itemsToShow={1} initialActiveIndex={3} activeSlide={2}>
+                        </div> */}
+                                    <Carousel itemsToShow={1} initialActiveIndex={3} activeSlide={2} isRTL
+={true} disableArrowsOnEnd={false}>
                                     {/* {item.images.map(image =>{ */}
-                                        <img className='div w-36' src={item.images?.[0]}/>
-                                        <img className='div w-36' src={item.images?.[1]}/>
-                                        <img className='div w-36' src={item.images?.[2]}/>
+                                        <img className='div w-36' src={item.images?.[0]?.image}/>
+                                        <img className='div w-36' src={item.images?.[1]?.image}/>
+                                        <img className='div w-36' src={item.images?.[2]?.image}/>
                                         {/* <img className='div w-36' src={item.image1} />
                                         <img className='div w-36' src={item.image2} /> */}
                                 

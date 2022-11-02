@@ -18,6 +18,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
     const _handlePrev = (currentIndex) => {
         setCurrentIndex(currentIndex - 1);
     };
+    const [fade, setFade] = useState(true);
     const _handleComplete = () => { };
     const triangle = [{ image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }];
     return (
@@ -25,14 +26,37 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             <div className="">
                 <div className="mt-40 mb-20 flex flex-col justify-center items-center text-center">
                     <p className="font-bold lg:text-5xl md:text-5xl text-3xl mb-5 futura-bold w-3/4 text-white">{data.title}</p>
-                    <p className="text-[#D8D8D8] w-3/4 futura-book">
+                    {data.subtitle ?<p className="text-[#D8D8D8] w-3/4 futura-book">
                     {parse(`${data.subtitle}`)}
-                    </p>
+                    </p>:null}
                 </div>
                 <div className="App relative">
                     <div className="flex flex-col w-screen">
-
+                    {/* <div className="flex flex-col">
+                    <div className="flex justify-between relative">
+            {data.timeline.map((step, index) => {
+                let opacity = currentIndex === index ? "1" : "0";
+                {
+                    console.log("color", opacity);
+                }
+                return (
+                        <div
+                            className={`${fade == "true" ? "opacity-1" : "opacity-0"
+                                }`}
+                            style={{
+                                opacity: opacity,
+                            }}
+                        >
+                            <div className="">
+                                <p className="text-white">{step.timeline_items_id?.date}</p>
+                                <br></br>
+                            </div>
+                        </div>
+                );
+            })}
+        </div> */}
                         <Slider onChange={_handleIndexChange} currentIndex={currentIndex} />
+                        {/* </div> */}
                         <div className="container relative">
                             <div className="relative h-screen h-mobile">
             {data.timeline.map((step, index) => {

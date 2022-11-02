@@ -20,7 +20,7 @@ export default function CompContact({ data = {}, style = 'white' }) {
                     </div>
                 </div>
                 <div className="lg:w-1/2">
-                    <p className="text-color text-2xl futura-bold">{data.get_in_touch}</p>
+                    <p className="text-color text-2xl futura-bold mb-5">{data.get_in_touch}</p>
                     <div className="grid lg:grid-rows-2 md:grid-rows-2 grid-rows-3 grid-flow-col gap-4">
                         {/* <div className="lg:w-1/3 text-white" ></div>  */}
                         {data.contact?.map((item, i) => (
@@ -37,7 +37,7 @@ export default function CompContact({ data = {}, style = 'white' }) {
                             </button>
                         </div>
                         <div className="">
-                            <button className="border-[#009FE3] text-white border-2 p-2 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">Work With Us</button>
+                            <button className="border-[#009FE3] text-white border-2 p-2 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">WORK WITH US</button>
                         </div>
                     </div>
                     <div className="mt-10">

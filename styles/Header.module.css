@@ -5,9 +5,9 @@
 }
 
 .nav {
-  width: 100%;
+  width: 100vw;
   position: absolute;
-  z-index: 999;
+  z-index: 1000;
   padding: 20px 8%;
   display: flex;
   align-items: center;

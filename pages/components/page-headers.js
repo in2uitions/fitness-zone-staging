@@ -25,9 +25,9 @@ export default function Header({ color = "orange", data = {} }) {
             <div className="overflow-hidden">
             {data.layout_type == 'regular' || data.layout_type == null ?
                     <div className="">
-                        <div id="" className="" >
+                        <div id="" style={{ "backgroundImage": `url("${image_url}${data.image?.id}")` }}  className=" aboutUs-bg" >
 
-                            <img src={`${image_url}${data.image?.id}`} className=" aboutUs-bg" />
+                            {/* <img src={`${image_url}${data.image?.id}`} className=" aboutUs-bg" /> */}
 
                         </div>
                     </div>

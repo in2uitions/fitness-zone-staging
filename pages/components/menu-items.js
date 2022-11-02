@@ -2,6 +2,8 @@ import dynamic from 'next/dynamic'
 import HeaderContent from './header-component';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import styles from "../../styles/Header.module.css";
+import Popup from "reactjs-popup";
 const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })
 
 export default function Menu(data = {}) {
@@ -11,7 +13,7 @@ export default function Menu(data = {}) {
     };
 
 
-    
+
     const [search, updateSearch] = useState('');
     const [index, updateIndex] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -24,7 +26,7 @@ export default function Menu(data = {}) {
         {
             "id": 1,
             "label": "HOME",
-            "to":'/'
+            "to": '/'
         },
         {
             "id": 2,
@@ -77,7 +79,6 @@ export default function Menu(data = {}) {
 
     }, [data]);
 
-
     useEffect(() => {
         const handleRouteChange = (url) => {
 
@@ -117,8 +118,8 @@ export default function Menu(data = {}) {
     }, []);
 
     return (
-        <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade">
-            <HeaderContent />
+        <>
+       <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade">
             <div className="lg:grid lg:grid-cols-2">
                 <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-10">
                     <MetisMenu
@@ -171,7 +172,8 @@ export default function Menu(data = {}) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>   
+        </>
     );
 }
 
