@@ -24,3 +24,32 @@ export const handleApi = async ({ url, query = {}, fields, slug, load = true }) 
     return res.data;
 }
 
+export const getClasses = async (value) => {
+    const classes = directus.items('classes');
+
+    var myfilter = '';
+    var max = '1'
+    if (value) {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            }
+        }
+    }
+    else {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            },
+
+
+        }
+
+    }
+
+
+    var myfields = ['*']
+    const classesPublished = await classes.readByQuery({ filter: myfilter, fields: myfields })
+console.log(classesPublished.data)
+    return classesPublished.data;
+}
