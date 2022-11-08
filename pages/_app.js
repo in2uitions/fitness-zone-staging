@@ -47,6 +47,7 @@ getVisitorLocationAPI();
 return <>
 
     <Head>
+    <link rel="icon" href="/favicon.png"/>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWF5H6GTPM" />
       <script
         dangerouslySetInnerHTML={{
