@@ -131,12 +131,12 @@ export default function Footer(data = {}) {
         {
             "id": 2,
             "label": "ABOUT US",
-            "to": '../about/about-us'
+            "to": '/about/about-us'
         },
         {
             "id": 3,
             "label": "SERVICES",
-            "to": '../about/services'
+            "to": '/about/services'
         },
         {
             "id": 4,

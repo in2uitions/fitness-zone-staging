@@ -116,11 +116,11 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
     return (
         <>
             <div className="">
-                <div className=" flex flex-col justify-center items-center pt-20 mb-28 relative trainers-mobile">
+                <div className=" flex flex-col justify-center items-center pb-28 relative trainers-mobile">
                     {data.image_title ? <img src={`${image_url}${data.image_title?.id}`} altv={data.image_title?.title} /> : null}
                 </div>
             </div>
-            <div className={`lg:flex relative items-center px-14 mb-52 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex relative items-center px-14 mb-52 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
                 <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block md:block ">
                     <div className="slideC">
                         {data.carousel.map((item, i) => (
@@ -133,8 +133,12 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             ...getStyles(i),
                                         }}
                                     >
-                                        <div className="">
+                                        <div className="relative">
                                             {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="tintImg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            <div className="flex space-x-2 absolute items-center left-8 bottom-8">
+                                            {item.comp_carousel_items_id.image_icon?<img src={`${image_url}${item.comp_carousel_items_id?.image_icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            {item.comp_carousel_items_id?.image_text ?<p className="text-white font-bold text-4xl">{item.comp_carousel_items_id?.image_text}</p>:null}
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

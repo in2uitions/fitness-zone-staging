@@ -58,44 +58,12 @@ const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
                                         <p className='text-white'> {item.name}</p>
                                         <p className='text-white'>{item.country}</p>
                                     </div></a>
-                                    <div className="test">
-                                    {/* <div className="btnsMap" >
-                            <img src="/ArrowLeft.png"
-                                className="btnLeftMap arrow sc-bcXHqe dvzGLu rec rec-arrow rec rec-arrow-left"
-                                onClick={prev}
-                                color="#fff"
-                                size="2x"
-                            />
-                            <img src="/ArrowRight.png"
-                                className="btnRightMap arrow sc-bcXHqe dvzGLu rec rec-arrow rec rec-arrow-right"
-                                onClick={next}
-                                color="#fff"
-                                size="2x"
-                            />
-                        </div> */}
-                                    <Carousel itemsToShow={2.5} initialActiveIndex={3} activeSlide={2} isRTL
-={true} disableArrowsOnEnd={false}>
-                                    {/* {item.images.map(image =>{ */}
-                                        <img className='images-map w-36' src={item.images?.[0]?.image}/>
-                                        <img className='images-map div w-36' src={item.images?.[1]?.image}/>
-                                        <img className=' images-map w-36' src={item.images?.[2]?.image}/>
-                                        {/* <img className='div w-36' src={item.image1} />
-                                        <img className='div w-36' src={item.image2} /> */}
-                                
-                                        {/* <img className='div w-36' src='/exercise.png' />
-                                        <img className='div w-36' src='/exercise.png' />
-                                        <img className='div w-36' src='/exercise.png' />
-                                        <img className='div w-36' src='/exercise.png' />
-                                        <img className='div w-36' src='/exercise.png' /> */}
-                                        {/* <div className="div">1</div>
-                                        <div className="div">2</div>
-                                        <div className="div">3</div>
-                                        <div className="div">4</div>
-                                        <div className="div">5</div>
-                                        <div className="div">6</div>
-                                        <div className="div">7</div> */}
-                                        
-                                    </Carousel>
+                                    <div className="testing">
+                        <Carousel itemsToShow={1} initialActiveIndex={1}>
+                        <img className='images-map diva w-36' src={item.images?.[0]?.image}/>
+                                        <img className='images-map diva w-36' src={item.images?.[1]?.image}/>
+                                        <img className=' images-map diva w-36' src={item.images?.[2]?.image}/>
+      </Carousel>
                                     
 </div>
                                 </div>

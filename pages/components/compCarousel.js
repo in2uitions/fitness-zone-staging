@@ -122,7 +122,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                     {parse(`${data.subtitle}`)} </p> : null}
                 </div>
             </div>
-            <div className={`lg:flex relative items-center px-14 container mt-60 mb-96 ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex relative items-center px-14 container mt-60 mb-96 pb-20 ${isFlipped ? 'flex-row-reverse' : ''}`}>
 
                 <div className="lg:w-1/2">
                     <div className="slideCC">
