@@ -58,11 +58,11 @@ const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
                                         <p className='text-white'> {item.name}</p>
                                         <p className='text-white'>{item.country}</p>
                                     </div></a>
-                                    <div className="testing">
+                                    <div className="map-container-images">
                         <Carousel itemsToShow={1} initialActiveIndex={1}>
-                        <img className='images-map diva w-36' src={item.images?.[0]?.image}/>
-                                        <img className='images-map diva w-36' src={item.images?.[1]?.image}/>
-                                        <img className=' images-map diva w-36' src={item.images?.[2]?.image}/>
+                        <img className='imagesmap w-36' src={item.images?.[0]?.image}/>
+                                        <img className='imagesmap w-36' src={item.images?.[1]?.image}/>
+                                        <img className=' imagesmap w-36' src={item.images?.[2]?.image}/>
       </Carousel>
                                     
 </div>

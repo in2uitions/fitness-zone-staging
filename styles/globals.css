@@ -501,13 +501,13 @@ p {
   margin: 0 15px;
   font-size: 4em;
 }
-.testing {
+.map-container-images {
   font-family: sans-serif;
   text-align: center;
   overflow-x: hidden;
 }
 
-.diva {
+.imagesmap {
   display: flex;
   justify-content: center;
   align-items: center;
