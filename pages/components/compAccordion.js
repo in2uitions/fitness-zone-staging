@@ -68,7 +68,7 @@ if (ListofClasses.length == 0){
                                         {item.comp_accordion_items_id?.brief ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2" > {item.comp_accordion_items_id?.brief}  </p> : null}
                                         {item.comp_accordion_items_id?.button_url?<a href={`${item.comp_accordion_items_id?.button_url}`} key={i} onClick={() => { setShow(true) }} className="futura-bold">{item.comp_accordion_items_id?.button_title}<ChevronRightIcon /></a>:null}
                                         
-                                        {item.comp_accordion_items_id?.section_button ?<button className='cursor-pointer futura-bold' onClick={handleCategoryChange} value={item.comp_accordion_items_id.value} >{item.comp_accordion_items_id?.section_button}<ChevronRightIcon /></button>:null}
+                                        {item.comp_accordion_items_id?.section_button ?<button className='cursor-pointer futura-bold text-white' onClick={handleCategoryChange} value={item.comp_accordion_items_id.value} >{item.comp_accordion_items_id?.section_button}<ChevronRightIcon /></button>:null}
                                     </div>
                                 )}
                             </div>

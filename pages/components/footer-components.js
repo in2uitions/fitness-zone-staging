@@ -212,7 +212,7 @@ export default function Footer(data = {}) {
                     <div className="lg:col-span-2 sm:col-span-12">
                         <div className="lg:ml-28">
                             <MetisMenu
-                                className="mt-3 ml-4 lg:ml-0 md:ml-0 futura-book footer-link lg:pt-0 md:pt-0 pt-5"
+                                className="mt-3 ml-4 lg:ml-0 md:ml-0 futura-book footer-link lg:pt-0 md:pt-0 pt-5 "
                                 content={content} activeLinkFromLocation
                             />
                         </div>

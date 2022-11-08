@@ -417,11 +417,11 @@ p {
 
 .rec-arrow-left {
   position: absolute !important;
-  right: -10rem !important;
+  /* right: -10rem !important; */
 }
 
 .rec-arrow-right {
-  left: -10rem !important;
+  left: -11rem !important;
   position: absolute !important;
 }
 
@@ -442,17 +442,17 @@ p {
 .cEFIaY {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.75rem !important;
   background-color: #009FE3 !important;
   color: white !important;
   box-shadow: 0 0 24px 0px #009fe3 !important;
   border-radius: 50%;
   border: none;
-  width: 40px !important;
-  height: 40px !important;
-  min-width: 40px !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
   z-index: 5000000 !important;
-  line-height: 40px !important;
+  line-height: 20px !important;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -480,18 +480,23 @@ p {
   text-align: center;
   overflow-x: hidden;
 }
-
+/* .cAHaGV{
+  width: 50%;
+} */
 .div {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;
+  /* height: 100px; */
   object-fit: cover;
   width: 90%;
   /* background-color: #00008b; */
   color: #fff;
   margin: 0 15px;
   font-size: 4em;
+}
+.images-map{
+  height: 100px;
 }
 
 .slideCoaching {
@@ -1524,19 +1529,19 @@ li.category.isActive {
 
 }
 
-.sliderContentImage {
+/* .sliderContentImage {
   transition: all .2s ease-in-out;
-}
+} */
 
 .sliderContentImage:hover {
   /* transform: translateX(calc(100% - 200px)); */
   /* animation-duration: 0.5s; */
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
   /* -webkit-transition: all 1s;
   transition: all 0.2s ease 0s; */
   /* -webkit-transition: top all 2s; */
   /* transition: top all 2s; */
-  left: 0px;
+  /* left: 0px; */
 }
 
 
@@ -1811,7 +1816,7 @@ li {
   visibility: hidden;
 }
 .forwardback {
-  left: 8rem !important;
+  left: 9rem !important;
 }
 }
 @media (min-width:481px) and (max-width:600px){
@@ -1820,6 +1825,9 @@ li {
     flex-direction: column;
     margin-top: -1.5rem !important;
     width: 100vw;
+}
+.steps-item{
+  visibility: hidden;
 }
 .forwardback {
   left: 13rem !important;

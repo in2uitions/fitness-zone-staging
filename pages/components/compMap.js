@@ -73,12 +73,12 @@ const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
                                 size="2x"
                             />
                         </div> */}
-                                    <Carousel itemsToShow={1} initialActiveIndex={3} activeSlide={2} isRTL
+                                    <Carousel itemsToShow={2.5} initialActiveIndex={3} activeSlide={2} isRTL
 ={true} disableArrowsOnEnd={false}>
                                     {/* {item.images.map(image =>{ */}
-                                        <img className='div w-36' src={item.images?.[0]?.image}/>
-                                        <img className='div w-36' src={item.images?.[1]?.image}/>
-                                        <img className='div w-36' src={item.images?.[2]?.image}/>
+                                        <img className='images-map w-36' src={item.images?.[0]?.image}/>
+                                        <img className='images-map div w-36' src={item.images?.[1]?.image}/>
+                                        <img className=' images-map w-36' src={item.images?.[2]?.image}/>
                                         {/* <img className='div w-36' src={item.image1} />
                                         <img className='div w-36' src={item.image2} /> */}
                                 

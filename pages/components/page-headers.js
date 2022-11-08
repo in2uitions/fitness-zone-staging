@@ -45,8 +45,8 @@ export default function Header({ color = "orange", data = {} }) {
                     <div className="absolute lg:left-36 md:left-36 left-2 lg:bottom-14 text-homePage">
                         {data.image_title ? <h1 className="text-[#009FE3] font-bold futura-bold lg:text-5xl md:text-4xl text-3xl">{data.image_title}</h1> : null}
                         {data.image_description ? <h1 className="font-bold lg:text-7xl md:text-6xl text-white text-5xl futura-bold">{data.image_description}</h1> : null}
-                        {data.button_title ? <a href="/" target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 w-36 flex justify-start items-center rounded-md futura-bold">{data.button_title}
-                            <ChevronRightIcon className="-ml-2" /></a> : null}
+                        {data.button_title ? <a href="/" target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 w-40 flex justify-start items-center rounded-md futura-bold">{data.button_title}
+                            <ChevronRightIcon className="ml-1" /></a> : null}
                     </div>
 
                     {data.icon_sound_off?<div className="absolute lg:right-44 lg:bottom-14 md:right-44  right-0 flex flex-row items-center sound">

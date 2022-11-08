@@ -78,37 +78,37 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
         else if (activeSlide - 1 === index)
             return {
                 opacity: 0,
-                transform: "translateX(240px) translateY(20px) rotateY(35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 9
             };
         else if (activeSlide + 1 === index)
             return {
                 opacity: 0,
-                transform: "translateX(-240px) translateY(20px) rotateY(-35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 9
             };
         else if (activeSlide - 2 === index)
             return {
                 opacity: 0,
-                transform: "translateX(480px) translateY(20px) rotateY(35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 8
             };
         else if (activeSlide + 2 === index)
             return {
                 opacity: 0,
-                transform: "translateX(-480px) translateY(20px) rotateY(-35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 8
             };
         else if (index < activeSlide - 2)
             return {
                 opacity: 0,
-                transform: "translateX(480px) translateZ(-500px) rotateY(35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 7
             };
         else if (index > activeSlide + 2)
             return {
                 opacity: 0,
-                transform: "translateX(-480px) translateY(60px) rotateY(-35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 7
             };
     };

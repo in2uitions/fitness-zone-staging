@@ -73,43 +73,43 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
         if (activeSlide === index)
             return {
                 opacity: 1,
-                transform: "translateX(0px) translateY(60px) rotateY(0deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 22
             };
         else if (activeSlide - 1 === index)
             return {
                 opacity: 0,
-                transform: "translateX(-240px) translateY(60px) rotateY(35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 9
             };
         else if (activeSlide + 1 === index)
             return {
                 opacity: 0,
-                transform: "translateX(240px) translateY(60px) rotateY(-35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 9
             };
         else if (activeSlide - 2 === index)
             return {
                 opacity: 0,
-                transform: "translateX(-480px) translateY(60px) rotateY(35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 8
             };
         else if (activeSlide + 2 === index)
             return {
                 opacity: 0,
-                transform: "translateX(480px) translateY(60px) rotateY(-35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 8
             };
         else if (index < activeSlide - 2)
             return {
                 opacity: 0,
-                transform: "translateX(-480px) translateY(60px) rotateY(35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 7
             };
         else if (index > activeSlide + 2)
             return {
                 opacity: 0,
-                transform: "translateX(480px) translateY(60px) rotateY(-35deg)",
+                transform: "translateX(0px) translateY(0px) rotateY(0deg)",
                 zIndex: 7
             };
     };
@@ -170,7 +170,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                             ...getStyles(i),
                                         }}
                                     >
-                                        <div className="sliderContentImage" onMouseLeave={() => setNextSlide(true)} onMouseOver={() => setClickTriggered(true)} >
+                                        <div className="sliderContentImage">
                                             {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`}  className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
                                         </div>
                                     </div>
