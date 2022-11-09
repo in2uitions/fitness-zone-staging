@@ -458,6 +458,26 @@ p {
   cursor: pointer;
   outline: none;
 }
+.hGRYOm{
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 0.75rem !important;
+  background-color: #009FE3 !important;
+  color: white !important;
+  box-shadow: 0 0 24px 0px #009fe3 !important;
+  border-radius: 50%;
+  border: none;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  z-index: 5000000 !important;
+  line-height: 20px !important;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+}
 .dvzGLu{
   visibility: hidden;
   width: 0px !important;
