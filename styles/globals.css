@@ -389,7 +389,9 @@ p {
   position: relative;
   top: 8rem;
 }
-
+.staticSlide{
+  transform: translateX(450px);
+}
 .btnsLeftSide .btnLeft {
   cursor: pointer;
 }

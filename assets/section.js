@@ -10,6 +10,10 @@ import CompCarouselRight from '../pages/components/compCarouselRight';
 import CompCarouselRightMobile from '../pages/components/compCarouselRightMobile';
 import CompTimeline from '../pages/components/compTimelineContent';
 import CompMap from '../pages/components/compMap';
+import CompCarouselStatic from '../pages/components/compCarouselStatic';
+import CompCarouselRightStatic from '../pages/components/compCarouselRightStatic';
+import CompCarouselStaticRightMobile from '../pages/components/compStaticRightMobile';
+import CompStaticMobile from '../pages/components/compStaticMobile';
 // import Classes from '../pages/components/classes';
 
 export default function Sections({ data = {} }) {
@@ -85,6 +89,16 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "comp_accordion") {
                     return <CompAccordion data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} />;
+                }
+                if (section.collection == "comp_static_right") {
+                    return <><BrowserView><CompCarouselRightStatic data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>
+                        <MobileView><CompCarouselStaticRightMobile data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></MobileView>
+                    </>
+                }
+                if (section.collection == "comp_static") {
+                    return <><BrowserView><CompCarouselStatic data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>
+                        <MobileView><CompStaticMobile data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></MobileView>
+                    </>
                 }
                 if (section.collection == "comp_carousel") {
                     return <><BrowserView><CompCarousel data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>
