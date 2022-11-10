@@ -1864,6 +1864,9 @@ li {
     margin-top: -6.5rem !important;
     width: 100vw;
 }
+.h-mobile{
+  height: 85vh;
+}
 .forwardback {
   left: 7rem !important;
   top: 5.3rem !important;
@@ -1878,6 +1881,9 @@ li {
     flex-direction: column;
     margin-top: -1.5rem !important;
     width: 100vw;
+}
+.h-mobile{
+  height: 90vh;
 }
 .steps-item{
   visibility: hidden;
@@ -2066,7 +2072,7 @@ li {
     left: 12rem;
   }
   /* .h-mobile{
-    height: 90vh;
+    height: 85vh;
   } */
   /* .timelineBack {
     visibility: hidden;
