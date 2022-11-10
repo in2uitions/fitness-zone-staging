@@ -21,7 +21,6 @@ export default function Menu(data = {}) {
     const [content, updateContent] = useState([]);
     const router = useRouter()
     const [show, setShow] = useState(false)
-
     var ct = [
         {
             "id": 1,
@@ -123,8 +122,8 @@ export default function Menu(data = {}) {
             <div className="lg:grid lg:grid-cols-2">
                 <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-10">
                     <MetisMenu
-                        className="font-bold futura-book text-4xl menu-items"
-                        content={content} activeLinkFromLocation
+                        className="font-bold futura-book text-4xl menu-items "
+                        content={content} activeLinkFromLocation 
                     />
                     <div className="flex flex-row mt-14">
                         <a

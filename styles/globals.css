@@ -740,6 +740,9 @@ p {
 .menu-items li:focus{
 
 } */
+.timeline-eventline{
+  top: 30px !important;
+}
 .metismenu-link li:active {
   font-family: "Futura BdCn BT";
   /* height: 24px; */
@@ -1189,7 +1192,7 @@ li.category.isActive {
   object-fit: contain;
   background-size: cover;
   background-position: center;
-  top: 15px !important;
+  top: 45px !important;
   background-repeat: no-repeat;
   position: relative;
   height: 40px !important;
@@ -1204,7 +1207,7 @@ li.category.isActive {
   object-fit: contain;
   background-size: cover;
   background-position: center;
-  top: 15px !important;
+  top: 45px !important;
   background-repeat: no-repeat;
   position: relative;
   height: 40px !important;
@@ -1214,6 +1217,9 @@ li.category.isActive {
 }
 .past{
   width: 78px !important;
+}
+.present{
+  width: 12rem !important;
 }
 .events {
   width: 100% !important;
@@ -1253,7 +1259,7 @@ li.category.isActive {
   object-fit: contain;
   background-size: cover;
   background-position: center;
-  top: -5px;
+  top: 25px;
   background-repeat: no-repeat;
   position: relative;
   height: 80px !important;
@@ -1845,6 +1851,11 @@ li {
   }
 
 }
+@media screen and (max-width:319px){
+  .steps-item{
+    visibility: hidden !important;
+  }
+}
 @media (min-width:320px) and (max-width:375px){
   .timeline-mobile {
     display: flex;
@@ -1854,10 +1865,10 @@ li {
 }
 .forwardback {
   left: 7rem !important;
-  top: 3.5rem !important;
+  top: 5.3rem !important;
 }
 .steps-item{
-  visibility: hidden;
+  visibility: hidden !important;
 }
 }
 @media (min-width:376px) and (max-width:480px){
@@ -1872,6 +1883,7 @@ li {
 }
 .forwardback {
   left: 9rem !important;
+  top: 5.3rem !important;
 }
 }
 @media (min-width:481px) and (max-width:600px){
@@ -1886,6 +1898,7 @@ li {
 }
 .forwardback {
   left: 13rem !important;
+  top: 5.3rem !important;
 }
 }
 @media (min-width:600px) and (max-width:800px){
@@ -1896,7 +1909,14 @@ li {
     width: 100vw;
 }
 .forwardback {
-  left: 13rem !important;
+  left: 23rem !important;
+  top: 5.3rem !important;
+}
+}
+@media (min-width:801px) and (max-width:1094px){
+.forwardback {
+  left: 23rem !important;
+  top: 5.3rem !important;
 }
 }
 @media (min-width:1095px) and (max-width:1500px){
@@ -1906,6 +1926,7 @@ li {
 }
 .forwardback {
   left: 19rem !important;
+  top: 5.3rem !important;
 }
 }
 @media screen and (max-width: 360px) {
@@ -2180,7 +2201,7 @@ li {
 
   .gallery-wrap {
     flex-direction: column !important;
-    height: 90vh !important;
+    height:120vh !important;
   }
 
 

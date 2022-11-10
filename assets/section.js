@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { BrowserView, MobileView } from 'react-device-detect';
 import CompSide from '../pages/components/compSide'
 import CompAccordion from '../pages/components/compAccordion';
+import CompAccordionMobile from '../pages/components/compAccordionMobile';
 import CompCarousel from '../pages/components/compCarousel';
 import CompFullWidth from '../pages/components/compFullWidth';
 import CompContact from '../pages/components/compContact';
@@ -88,7 +89,8 @@ export default function Sections({ data = {} }) {
                     return <CompSide data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} />;
                 }
                 if (section.collection == "comp_accordion") {
-                    return <CompAccordion data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} />;
+                    return <><BrowserView><CompAccordion data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></BrowserView>
+                    <MobileView><CompAccordionMobile data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></MobileView></>
                 }
                 if (section.collection == "comp_static_right") {
                     return <><BrowserView><CompCarouselRightStatic data={section.item} index={0} isFlipped={section.item?.image_position == "left"} /></BrowserView>

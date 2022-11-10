@@ -30,13 +30,13 @@ const CompMap = ({ center, zoom, data = {}, mapLocations }) => {
     console.log(mapLocations.length + "test")
     const [activeSlide, setactiveSlide] = useState(0);
     const next = () =>
-    activeSlide < mapLocations.length - 1 && setactiveSlide(activeSlide + 1);
+        activeSlide < mapLocations.length - 1 && setactiveSlide(activeSlide + 1);
 
-const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
+    const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
 
     return (
         <>
-            <div className='container lg:mt-32 md:mt-32 mt-0 mb-40 mx-auto xl:pb-0 lg:px-5 md:px-5 px-5 ' style={{ height: '100vh', width: '100%' }}>
+            <div className='container lg:mt-32 md:mt-32 mt-0 mb-52 mx-auto xl:pb-0 lg:px-5 md:px-5 px-5 ' style={{ height: '700px', width: '100%' }}>
                 {data.title ? <p className="font-bold futura-bold lg:text-5xl text-3xl text-white mb-10">{data.title}</p> : null}
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: googleAPIKey }}
@@ -53,19 +53,19 @@ const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
                                 <img src='/slider-button.svg' className='w-7' />
                                 <img src='/triangle.png' className='w-7' />
                                 <div className='w-96 bg-[#009FE3]'>
-                                
+
                                     <a href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + item.location} target="_blank"><div className="flex flex-col items-center">
                                         <p className='text-white'> {item.name}</p>
                                         <p className='text-white'>{item.country}</p>
                                     </div></a>
                                     <div className="map-container-images">
-                        <Carousel itemsToShow={1} initialActiveIndex={1}>
-                        <img className='imagesmap w-36' src={item.images?.[0]?.image}/>
-                                        <img className='imagesmap w-36' src={item.images?.[1]?.image}/>
-                                        <img className=' imagesmap w-36' src={item.images?.[2]?.image}/>
-      </Carousel>
-                                    
-</div>
+                                        <Carousel itemsToShow={1} initialActiveIndex={1}>
+                                            <img className='imagesmap w-36' src={item.images?.[0]?.image} />
+                                            <img className='imagesmap w-36' src={item.images?.[1]?.image} />
+                                            <img className=' imagesmap w-36' src={item.images?.[2]?.image} />
+                                        </Carousel>
+
+                                    </div>
                                 </div>
                             </div>
                         );

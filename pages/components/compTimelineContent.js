@@ -67,7 +67,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             })}
         </div> */}
                         <div className="flex flex-col w-screen">
-                            <div style={{ width: "100vw", height: "100px", margin: "0 auto" }}>
+                            <div style={{ width: "100vw", height: "120px", margin: "0 auto" }}>
                                 <HorizontalTimeline
                                     getLabel={function (date) { return date.slice(0, 4); }}
                                     index={currentIndex}
@@ -76,6 +76,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                         setPrevious(current);
                                     }}
                                     className=""
+                                    // values={data.timeline.map(step => step.timeline_items_id?.date)}
                                     values={data.timeline.map(step => step.timeline_items_id?.date)}
                                     maxEventPadding={200}
                                     minEventPadding={200}
