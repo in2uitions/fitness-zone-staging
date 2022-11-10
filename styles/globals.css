@@ -1307,7 +1307,8 @@ li.category.isActive {
   border: 1px solid white;
 }
 .forwardback{
-  left: 35rem;
+  left: 45rem;
+  top: 5.3rem;
 }
 /* .vertical-slider .example-thumb {
   left: 1px;
