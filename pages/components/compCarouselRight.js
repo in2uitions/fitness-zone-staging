@@ -155,13 +155,21 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
 
                     <div className="newsbtns">
                         <img src="/ArrowLeft.png"
-                            className="newsbtn prevbtn arrow"
+                            // className="newsbtn prevbtn arrow"
                             onClick={next}
+                            className={
+                                    // "newsbtn prevbtn arrow" +
+                                    (activeSlide < data.carousel.length - 1  ? "newsbtn prevbtn arrow" : "btn-disabled")
+                                }
                             color="#fff"
                             size="2x"
                         />
                         <img src="/ArrowRight.png"
-                            className="newsbtn arrow"
+                            // className="newsbtn arrow"
+                            className={
+                                    // "newsbtn arrow" +
+                                    (activeSlide > 0  ? "newsbtn arrow" : "btn-disabled")
+                                }
                             onClick={prev}
                             color="#fff"
                             size="2x"
@@ -181,7 +189,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             ...getTextStyles(i),
                                         }}
                                     >
-                                        <div className="sliderContent">
+                                        <div className="sliderContent pr-8">
                                         <div className="flex items-center space-x-5">
                                             {item.comp_carousel_items_id.icon?<img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
                                             <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>

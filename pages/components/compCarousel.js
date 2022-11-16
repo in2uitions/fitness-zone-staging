@@ -119,7 +119,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                 <div className=" flex flex-col justify-center items-center  md:mt-32 relative trainers-mobile">
                     {data.title ? <p className="lg:text-5xl md:text-4xl text-3xl font-bold futura-bold mb-5 text-white">{data.title}</p> : null}
                     {data.subtitle ? <p className="futura-book text-center w-3/4 text-[#D8D8D8] mb-5">
-                    {parse(`${data.subtitle}`)} </p> : null}
+                        {parse(`${data.subtitle}`)} </p> : null}
                 </div>
             </div>
             <div className={`lg:flex relative items-center px-14 container mt-60 mb-96 pb-24 ${isFlipped ? 'flex-row-reverse' : ''}`}>
@@ -138,10 +138,10 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                         }}
                                     >
                                         <div className="sliderContent">
-                                        <div className="flex items-center space-x-5">
-                                            {item.comp_carousel_items_id.icon?<img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
-                                            <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
-                                        </div>
+                                            <div className="flex items-center space-x-5">
+                                                {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                                <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                            </div>
                                             {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
                                             {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
                                         </div>
@@ -171,7 +171,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                         }}
                                     >
                                         <div className="sliderContentImage">
-                                            {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`}  className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
                                         </div>
                                     </div>
                                 </div>
@@ -188,13 +188,21 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
 
                         <div className="btns" >
                             <img src="/ArrowLeft.png"
-                                className="btn arrow"
+                                // className="btn arrow"
+                                className={
+                                    "btn arrow " +
+                                    (activeSlide > 0 ? " btn arrow" : "btn-disabled")
+                                }
                                 onClick={prev}
                                 color="#fff"
                                 size="2x"
                             />
                             <img src="/ArrowRight.png"
-                                className="btn arrow"
+                                // className="btn arrow"
+                                className={
+                                    "btn arrow " +
+                                    (activeSlide < data.carousel.length - 1  ? " btn arrow" : "btn-disabled")
+                                }
                                 onClick={next}
                                 color="#fff"
                                 size="2x"

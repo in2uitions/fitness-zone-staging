@@ -336,7 +336,21 @@ p {
 .classes-mobile {
   margin-bottom: 53rem;
 }
-
+#wtspIcon{
+  background: transparent !important;
+  margin-left: 4.3rem !important;
+  margin-top: -3rem !important;
+  opacity: 1 !important;
+  position: fixed !important;
+}
+#wtspIcon::after{
+  background: transparent !important;
+}
+/* .__react_component_tooltip.show{
+  opacity: 1 !important;
+  margin-top: -3rem !important;
+  margin-left: 1rem !important;
+} */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -364,7 +378,9 @@ p {
   width: 0px !important;
   height: 0px !important;
 }
-
+.btn-disabled{
+  display: none;
+}
 .button-forward {
   visibility: hidden;
   width: 0px !important;
@@ -581,7 +597,7 @@ p {
 }
 
 .box {
-  padding: 2.5rem;
+  padding: 1.75rem;
   top: 25%;
   clip-path: polygon(0% 0, 100% 12%, 100% 100%, 0% 88%);
 }

@@ -14,9 +14,12 @@ export default function HeaderContent(data = {}, about = []) {
                     <a href="/"><img src="/logo.png" className="logo" /></a>
                     <Popup ref={ref}
                         trigger={
+                            <div className="flex items-center space-x-2">
                             <button className="img-btn">
                                 <img src="/blue-rectangle.png" className="menu-icon" />
                             </button>
+                            <p className="font-bold text-white futura-book">Menu</p>
+                            </div>
                         } modal
                         closeOnDocumentClick
                         position=""

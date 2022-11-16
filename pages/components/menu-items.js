@@ -39,7 +39,7 @@ export default function Menu(data = {}) {
         },
         {
             "id": 4,
-            "label": "PT",
+            "label": "PERSONAL TRAINING",
             "to": '/about/personal-trainer'
         },
         {

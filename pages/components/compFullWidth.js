@@ -13,13 +13,13 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                     {/* <img src={`${image_url}${data.image?.id}`} className="relative w-screen about-image" alt={`${data.image?.title}`} /> */}
                 </div>
                 {data.image_description ? <div className="absolute bottom-16 left-20 text-center manifesto">
-                    <p className="text-[#D8D8D8] futura-book">
+                    <p className="text-[#fff5ee] futura-book">
                         {parse(`${data.image_description}`)}
                     </p>
 
                 </div> : null}
-                {data.brief ? <div className="absolute bottom-16 right-0 text-center manifesto-txt">
-                    <p className="text-[#D8D8D8] futura-book">
+                {data.brief ? <div className="absolute bottom-16 right-28 text-center manifesto-txt">
+                    <p className="text-[#fff5ee] futura-book">
                         {parse(`${data.brief}`)}
                     </p>
 

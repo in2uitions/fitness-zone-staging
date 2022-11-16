@@ -5,6 +5,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import nextConfig from "../../next.config.js"
 import FooterPopup from "./footerPopup";
+import ReactTooltip from 'react-tooltip';
 // import 'reactjs-popup/dist/index.css';
 import dynamic from "next/dynamic";
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
@@ -126,7 +127,7 @@ export default function Footer(data = {}) {
         {
             "id": 1,
             "label": "HOME",
-            "to":"/"
+            "to": "/"
         },
         {
             "id": 2,
@@ -140,7 +141,7 @@ export default function Footer(data = {}) {
         },
         {
             "id": 4,
-            "label": "PT",
+            "label": "PERSONAL TRAINING",
             "to": '/about/personal-trainer'
         },
         {
@@ -197,8 +198,11 @@ export default function Footer(data = {}) {
                 <div className="flex justify-end m-10 wtsp-widget">
                     <BrowserView>
                         <a href={whatsappNumber} target="_blank">
-                            <img src="/wtspwidget.png" className="h-28" />
+                            <img data-tip data-for="wtspIcon" src="/whatsappIcon.png" className="h-20" />
                         </a>
+                        <ReactTooltip id="wtspIcon" place="left" effect="solid" type="light">
+                            <img src="/help.png" className="w-44"/>
+                        </ReactTooltip>
                     </BrowserView>
                     <MobileView>
                         <a href={whatsappNumber} target="_blank">
@@ -213,7 +217,7 @@ export default function Footer(data = {}) {
                         <div className="lg:ml-28">
                             <MetisMenu
                                 className="mt-3 ml-4 lg:ml-0 md:ml-0 futura-book footer-link lg:pt-0 md:pt-0 pt-5 "
-                                content={content} activeLinkFromLocation 
+                                content={content} activeLinkFromLocation
                             />
                         </div>
                     </div>
@@ -360,22 +364,22 @@ export default function Footer(data = {}) {
                 <div className="border-b-2 border-[#009FE3] w-full my-14" />
 
                 <div className="lg:grid lg:grid-cols-4 px-10 lg:ml-28">
-                    <div className="flex flex-row">
+                    <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">M</p>
                         <p className="futura-book text-white">+961 3 505 250</p>
                     </div>
 
-                    <div className="flex flex-row">
+                    <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">FAX</p>
                         <p className="futura-book text-white">+961 5 958 058</p>
                     </div>
 
-                    <div className="flex flex-row">
+                    <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">E</p>
                         <p><a href="mailto:" className="futura-book text-white">info@fitnesszone.me</a></p>
                     </div>
 
-                    <div className="lg:ml-24">
+                    {/* <div className="lg:ml-24">
                         <p className="text-[#009FE3] mb-3 font-bold futura-bold">FOLLOW OUR SOCIALS</p>
                         <div className="flex flex-row mb-5">
                             <a
@@ -410,7 +414,7 @@ export default function Footer(data = {}) {
                                 <img src="/youtubechannel.png" className="w-8" />
                             </a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
