@@ -18,7 +18,7 @@ export default function HeaderContent(data = {}, about = []) {
                             <button className="img-btn">
                                 <img src="/blue-rectangle.png" className="menu-icon" />
                             </button>
-                            <p className="font-bold text-white futura-book">Menu</p>
+                            <p className="font-bold text-white futura-book cursor-pointer">Menu</p>
                             </div>
                         } modal
                         closeOnDocumentClick

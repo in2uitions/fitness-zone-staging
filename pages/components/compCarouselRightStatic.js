@@ -150,13 +150,19 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
 
                     <div className="newsbtns">
                         <img src="/ArrowLeft.png"
-                            className="newsbtn prevbtn arrow"
+                            className={
+                                    // "newsbtn prevbtn arrow" +
+                                    (activeSlide < data.static_items.length - 1  ? "newsbtn prevbtn arrow" : "btn-disabled")
+                                }
                             onClick={next}
                             color="#fff"
                             size="2x"
                         />
                         <img src="/ArrowRight.png"
-                            className="newsbtn arrow"
+                            className={
+                                    // "newsbtn arrow" +
+                                    (activeSlide > 0  ? "newsbtn arrow" : "btn-disabled")
+                                }
                             onClick={prev}
                             color="#fff"
                             size="2x"
