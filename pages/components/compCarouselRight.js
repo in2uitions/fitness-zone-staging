@@ -120,7 +120,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                     {data.image_title ? <img src={`${image_url}${data.image_title?.id}`} altv={data.image_title?.title} /> : null}
                 </div>
             </div>
-            <div className={`lg:flex relative items-center px-14 mb-52 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex md:flex relative items-center px-14 mb-52 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
                 <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block md:block ">
                     <div className="slideC">
                         {data.carousel.map((item, i) => (
@@ -182,14 +182,14 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                             <>
                                 <div className="">
                                     <div key={item.id}
-                                        className="slide"
+                                        className="slide content-responsive"
                                         style={{
                                             background: item.bgColor,
                                             boxShadow: `0 5px 20px ${item.bgColor}30`,
                                             ...getTextStyles(i),
                                         }}
                                     >
-                                        <div className="sliderContent pr-8">
+                                        <div className="sliderContent pr-20">
                                         <div className="flex items-center space-x-5">
                                             {item.comp_carousel_items_id.icon?<img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
                                             <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>

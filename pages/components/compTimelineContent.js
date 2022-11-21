@@ -6,7 +6,9 @@ import Slider from "./slider/slider";
 import Form from "./slider/Form";
 import HorizontalTimeline from "react-horizontal-timeline";
 import { Timeline, TimelineEvent } from "react-event-timeline";
-
+import Head from "next/head";
+import Script from "next/script";
+import $ from "jquery"
 export default function CompTimeline({ data = {}, style = 'white', isFlipped = false }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     function dateFrmt(dat, frag) {
@@ -32,6 +34,74 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
     const [fade, setFade] = useState(true);
     const _handleComplete = () => { };
     const triangle = [{ image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }, { image: "/triangle.png" }];
+    $(document).ready(function () {
+        $(".parc1").addClass("parcours-active");
+
+
+        $(".round1").on("click", function () {
+            $(".tl-round").css("background-image", "url(/slider-button-active.png)");
+            $(".round1").css("background-image", "url(/slider-button-active.png)");
+            $(".parcours-active").removeClass("parcours-active");
+            $(".parc1").addClass("parcours-active");
+            // $(".timeline-indicator").css("width", "0");
+        })
+
+        $(".round2").on("click", function () {
+            $(".tl-round").css("background-image", "url(/slider-button-active.png)");
+            // $(".tl-round").css("width", "80px");
+            // $(".tl-round").css("height", "80px");
+            $(".round1").css("background-image", "url(/slider-button-active.png)");
+            $(".round2").css("background-image", "url(/slider-button-active.png)");
+            $(".parcours-active").removeClass("parcours-active");
+            $(".parc2").addClass("parcours-active");
+            $(".timeline-indicator").css("width", "240");
+        })
+
+        $(".round3").on("click", function () {
+            $(".tl-round").css("background-image", "url(/slider-button-active.png)");
+            $(".round1").css("background-image", "url(/slider-button-active.png)");
+            $(".round2").css("background-image", "url(/slider-button-active.png)");
+            $(".round3").css("background-image", "url(/slider-button-active.png)");
+            $(".parcours-active").removeClass("parcours-active");
+            $(".parc3").addClass("parcours-active");
+            $(".timeline-indicator").css("width", "480");
+        })
+
+        $(".round4").on("click", function () {
+            $(".tl-round").css("background-image", "url(/slider-button-active.png)");
+            $(".round1").css("background-image", "url(/slider-button-active.png)");
+            $(".round2").css("background-image", "url(/slider-button-active.png)");
+            $(".round3").css("background-image", "url(/slider-button-active.png)");
+            $(".round4").css("background-image", "url(/slider-button-active.png)");
+            $(".parcours-active").removeClass("parcours-active");
+            $(".parc4").addClass("parcours-active");
+            $(".timeline-indicator").css("width", "720");
+        })
+        $(".round5").on("click", function () {
+            $(".tl-round").css("background-image", "url(/slider-button-active.png)");
+            $(".round1").css("background-image", "url(/slider-button-active.png)");
+            $(".round2").css("background-image", "url(/slider-button-active.png)");
+            $(".round3").css("background-image", "url(/slider-button-active.png)");
+            $(".round4").css("background-image", "url(/slider-button-active.png)");
+            $(".round5").css("background-image", "url(/slider-button-active.png)");
+            $(".parcours-active").removeClass("parcours-active");
+            $(".parc5").addClass("parcours-active");
+            $(".timeline-indicator").css("width", "720");
+        })
+        $(".round6").on("click", function () {
+            $(".tl-round").css("background-image", "url(/slider-button-active.png)");
+            $(".round1").css("background-image", "url(/slider-button-active.png)");
+            $(".round2").css("background-image", "url(/slider-button-active.png)");
+            $(".round3").css("background-image", "url(/slider-button-active.png)");
+            $(".round4").css("background-image", "url(/slider-button-active.png)");
+            $(".round5").css("background-image", "url(/slider-button-active.png)");
+            $(".round6").css("background-image", "url(/slider-button-active.png)");
+            $(".parcours-active").removeClass("parcours-active");
+            $(".parc6").addClass("parcours-active");
+            $(".timeline-indicator").css("width", "720");
+        })
+
+    });
     return (
         <>
             <div className="">
@@ -41,127 +111,150 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                         {parse(`${data.subtitle}`)}
                     </p> : null}
                 </div>
-                <div className="App relative">
-                    <div className="flex flex-col w-screen">
-                        {/* <div className="flex flex-col">
-                    <div className="flex justify-between relative">
-            {data.timeline.map((step, index) => {
-                let opacity = currentIndex === index ? "1" : "0";
-                {
-                    console.log("color", opacity);
-                }
-                return (
-                        <div
-                            className={`${fade == "true" ? "opacity-1" : "opacity-0"
-                                }`}
-                            style={{
-                                opacity: opacity,
-                            }}
-                        >
-                            <div className="">
-                                <p className="text-white">{step.timeline_items_id?.date}</p>
-                                <br></br>
-                            </div>
-                        </div>
-                );
-            })}
-        </div> */}
-                        <div className="flex flex-col w-screen">
-                            <div style={{ width: "100vw", height: "120px", margin: "0 auto" }}>
-                                <HorizontalTimeline
-                                    getLabel={function (date) { return date.slice(0, 4); }}
-                                    index={currentIndex}
-                                    indexClick={index => {
-                                        setCurrentIndex(index);
-                                        setPrevious(current);
-                                    }}
-                                    className=""
-                                    // values={data.timeline.map(step => step.timeline_items_id?.date)}
-                                    values={data.timeline.map(step => step.timeline_items_id?.date)}
-                                    maxEventPadding={200}
-                                    minEventPadding={200}
-                                    linePadding={350}
-                                    labelWidth={50}
-                                    styles={{
-                                        // background: "white",
-                                        width:"100vw",
-                                        foreground: "#BD3253",
-                                        outline: "#BFBFBF",
-                                        margin: "0 auto",
-                                        textAlign: "center"
-                                    }}
-                                />
-                            </div>
-                            <div className="container relative">
-                                <div className="relative h-screen h-mobile">
-                                    {data.timeline.map((step, index) => {
-                                        let opacity = currentIndex === index ? "1" : "0";
-                                        {
-                                            console.log("color", opacity);
-                                        }
-                                        return (
-                                            <div
-                                                className="lg:flex absolute inset-0 justify-center items-center w-screen lg:px-40 md:px-40 px-6"
-                                                style={{
-                                                    opacity: opacity,
-                                                }}
-                                            >
-                                                <div className="flex flex-col">
-                                                    <div className={`steps-container transition duration-1000 ease-in-out`}
-                                                        style={{
-                                                            opacity: opacity,
-                                                        }}>
-                                                        {triangle.map((step, index) => {
-                                                            let color = currentIndex === index ? "#ffffff" : "white";
-                                                            let opacity = currentIndex === index ? "1" : "0";
-                                                            console.log("color", color);
-                                                            return (
-                                                                <div className="steps-item">
-                                                                    <img src="/triangle.png"
-                                                                    className=""
-                                                                        style={{
-                                                                            margin: 0,
-                                                                            color: color,
-                                                                            opacity: opacity
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                            );
-                                                        })}
-                                                    </div>
-                                                    <div
-                                                        className={`shadow-lg container -mt-2 transition duration-1000 ease-in-out timeline-items flex timeline-mobile`}
-                                                        style={{
-                                                            opacity: opacity,
-                                                        }}
-                                                    >
-                                                        <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
-                                                            {/* <h3>{step.timeline_items_id?.title}</h3> */}
-                                                            {/* <p className="text-white">{step.timeline_items_id?.date}</p> */}
-                                                            <br></br>
-                                                            <p className="text-white">{parse(`${step.timeline_items_id?.description}`)} </p>
-                                                        </div>
-                                                        <div className="lg:w-1/2 px-14 py-14">
-                                                            <img src={`${image_url}${step.timeline_items_id?.image?.id}`} className="trainerimg none-event" altv={step.timeline_items_id?.title} />
-                                                            {/* <img className="pt-10 pb-10 imageStep" src={step.image} /> */}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                            <div>
-                            </div>
-                            <Step currentIndex={currentIndex} handleNext={_handleNext} handlePrevious={_handlePrev} />
-                        </div>
-                        {/* </div> */}
+                <div className="timeline-parcours">
 
-                        
+                    <div className="container-time-line">
+                        <div className="time-line-parcours">
+                            <div className="timeline-indicator">
+                                <p className="indicator-val"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="container-bulle">
+                        <div className="timeline-section-tl">
+                            <div className="tl-round round1"></div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="tl-round round2"></div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="tl-round round3"></div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="tl-round round4"></div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="tl-round round5"></div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="tl-round round6"></div>
+                        </div>
+                    </div>
+                    <div className="container-info relative">
+                        <div className="timeline-section-tl">
+                            <div className="parcours-box parc1">
+                                <div className="fleche-bloc"></div>
+                                <div className="infobox date1 lg:flex absolute inset-0 items-center w-screen lg:px-40 md:px-40 px-6">
+                                    <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
+                                        {/* <h3>{step.timeline_items_id?.title}</h3> */}
+                                        {/* <p className="text-white">{step.timeline_items_id?.date}</p> */}
+                                        <br></br>
+                                        <p className="text-white">Baabda branch became in motion</p>
+                                    </div>
+                                    <div className="lg:w-1/2 px-14 py-14">
+                                        <img src="/blurred-background-rows-black-dumbbells-rack-gym.jpg" className="trainerimg none-event" />
+                                        {/* <img className="pt-10 pb-10 imageStep" src={step.image} /> */}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="parcours-box parc2">
+                                <div className="fleche-bloc"></div>
+                                <div className="infobox date1 lg:flex absolute inset-0 items-center w-screen lg:px-40 md:px-40 px-6">
+                                    <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
+                                        {/* <h3>{step.timeline_items_id?.title}</h3> */}
+                                        {/* <p className="text-white">{step.timeline_items_id?.date}</p> */}
+                                        <br></br>
+                                        <p className="text-white">The expansion journey continued with the opening of kaslik branch</p>
+                                    </div>
+                                    <div className="lg:w-1/2 px-14 py-14">
+                                        <img src="/blurred-background-rows-black-dumbbells-rack-gym.jpg" className="trainerimg none-event" />
+                                        {/* <img className="pt-10 pb-10 imageStep" src={step.image} /> */}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="parcours-box parc3">
+                                <div className="fleche-bloc"></div>
+                                <div className="infobox date1 lg:flex absolute inset-0 items-center w-screen lg:px-40 md:px-40 px-6">
+                                    <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
+                                        {/* <h3>{step.timeline_items_id?.title}</h3> */}
+                                        {/* <p className="text-white">{step.timeline_items_id?.date}</p> */}
+                                        <br></br>
+                                        <p className="text-white">The dynamic attribute of Beirut has led Fitness Zone to open a branch in Beirut Souks, the hub of commercial and business activity in the capital</p>
+                                    </div>
+                                    <div className="lg:w-1/2 px-14 py-14">
+                                        <img src="/blurred-background-rows-black-dumbbells-rack-gym.jpg" className="trainerimg none-event" />
+                                        {/* <img className="pt-10 pb-10 imageStep" src={step.image} /> */}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="parcours-box parc4">
+                                <div className="fleche-bloc"></div>
+                                <div className="infobox date1 lg:flex absolute inset-0 items-center w-screen lg:px-40 md:px-40 px-6">
+                                    <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
+                                        {/* <h3>{step.timeline_items_id?.title}</h3> */}
+                                        {/* <p className="text-white">{step.timeline_items_id?.date}</p> */}
+                                        <br></br>
+                                        <p className="text-white">The dynamic attribute of Beirut has led Fitness Zone to open a branch in Beirut Souks, the hub of commercial and business activity in the capital</p>
+                                    </div>
+                                    <div className="lg:w-1/2 px-14 py-14">
+                                        <img src="/blurred-background-rows-black-dumbbells-rack-gym.jpg" className="trainerimg none-event" />
+                                        {/* <img className="pt-10 pb-10 imageStep" src={step.image} /> */}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="parcours-box parc5">
+                                <div className="fleche-bloc"></div>
+                                <div className="infobox date1 lg:flex absolute inset-0 items-center w-screen lg:px-40 md:px-40 px-6">
+                                    <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
+                                        {/* <h3>{step.timeline_items_id?.title}</h3> */}
+                                        {/* <p className="text-white">{step.timeline_items_id?.date}</p> */}
+                                        <br></br>
+                                        <p className="text-white">Dbayeh has become home to Fitness Zone's 7th branch</p>
+                                    </div>
+                                    <div className="lg:w-1/2 px-14 py-14">
+                                        <img src="/blurred-background-rows-black-dumbbells-rack-gym.jpg" className="trainerimg none-event" />
+                                        {/* <img className="pt-10 pb-10 imageStep" src={step.image} /> */}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="timeline-section-tl">
+                            <div className="parcours-box parc6">
+                                <div className="fleche-bloc"></div>
+                                <div className="infobox date1 lg:flex absolute inset-0 items-center w-screen lg:px-40 md:px-40 px-6">
+                                    <div className="lg:w-1/2 lg:py-16 lg:px-24 px-14 mt-24">
+                                        {/* <h3>{step.timeline_items_id?.title}</h3> */}
+                                        {/* <p className="text-white">{step.timeline_items_id?.date}</p> */}
+                                        <br></br>
+                                        <p className="text-white">The Fitness Zone experience is now expanding to the UAE with its first branch overseas in City Walk Dubai</p>
+                                    </div>
+                                    <div className="lg:w-1/2 px-14 py-14">
+                                        <img src="/blurred-background-rows-black-dumbbells-rack-gym.jpg" className="trainerimg none-event" />
+                                        {/* <img className="pt-10 pb-10 imageStep" src={step.image} /> */}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <Step currentIndex={currentIndex} handleNext={_handleNext} handlePrevious={_handlePrev} />
                     </div>
 
+
                 </div>
+
             </div></>
     );
 }
