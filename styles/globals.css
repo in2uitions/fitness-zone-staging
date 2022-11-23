@@ -1371,7 +1371,7 @@ li.category.isActive {
 
 .forwardback {
   left: 45rem;
-  top: -3.7rem;
+  top: -7.2rem;
 }
 
 /* .vertical-slider .example-thumb {
@@ -3249,22 +3249,30 @@ iframe {
 }
 
 .timeline-section-tl {
-  width: 220px;
+  width: 130px;
+  margin-left: 10rem;
   height: auto;
   min-height: 10px;
   display: inline-block;
+ 
 }
-
+/* .active {
+  background-color: red;
+} */
 .infobox {
-  width: 100vw;
-  height: 70vh;
+  /* width: 100vw; */
+  height: 60vh;
   min-height: 10px;
   margin-top: 2rem !important;
   background-color: #009fe3;
-  padding: 5px;
-  border-radius: 10px;
+  z-transition: all 2s ease-in-out;
+  -ms-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
+  /* padding: 5px; */
+  /* border-radius: 10px; */
   /* display:flex; */
-  margin: 0px 1px;
+  /* margin: 0px 1px; */
 }
 
 .fleche-bloc {
@@ -3279,10 +3287,10 @@ iframe {
 
 .parcours-box {
   opacity: 0;
-  z-transition: all 1s ease;
+  /* z-transition: all 1s ease;
   -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
-  transition: all 1s ease;
+  transition: all 1s ease; */
 }
 
 .container-time-line {
@@ -3307,14 +3315,19 @@ iframe {
   -o-transition: all 1s ease;
   transition: all 1s ease;
 }
-
+/* .inactive-btn{
+  top: -50px !important;
+}
+.active-btn{
+  top: -30px !important;
+} */
 .tl-round {
   margin: auto;
-  -webkit-transition: all 100ms ease;
+  /* -webkit-transition: all 100ms ease;
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease;
+  transition: all 500ms ease; */
   background-image: url(/slider-button-active.png);
   width: 40px;
   z-index: 22;
@@ -3323,14 +3336,14 @@ iframe {
   object-fit: contain;
   background-size: cover;
   background-position: 50%;
-  top: -12px !important;
+  top: 22px ;
   background-repeat: no-repeat;
   position: relative;
   height: 40px;
 }
 
 .container-bulle {
-  margin-top: -10px;
+  margin-top: -6rem;
 }
 
 /* animation classe */
@@ -3364,8 +3377,62 @@ iframe {
 
 .parcours-active {
   opacity: 1;
-  z-transition: all 1s ease;
+  /* z-transition: all 1s ease;
   -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
-  transition: all 1s ease;
+  transition: all 1s ease; */
+}
+.step {
+  display: none;
+}
+div.step:first-child {
+  display: block;
+}
+@media(min-width:320px) and (max-width:480px){
+  .timeline-section-tl{
+    width: 47px;
+    margin-left: 0rem;
+  }
+  .fleche-bloc{
+    visibility: hidden;
+  }
+}
+@media(min-width:480px) and (max-width:810px){
+  .timeline-section-tl {
+    width: 50px;
+    margin-left: 2rem;
+  }
+  .fleche-bloc{
+    visibility: hidden;
+  }
+}
+@media(min-width:540px) and (max-width:810px){
+  .timeline-section-tl{
+    width: 40px;
+    margin-left: 3.5rem;
+  }
+  .fleche-bloc{
+    visibility: hidden;
+  }
+}
+@media(min-width:810px) and (max-width:1080px){
+  .timeline-section-tl{
+    width: 0px;
+    margin-left: 7.5rem;
+  }
+}
+@media(min-width:1080px) and (max-width:1350px){
+  .timeline-section-tl{
+    width: 10px;
+  }
+}
+@media(min-width:1350px) and (max-width:1620px){
+  .timeline-section-tl{
+    width: 60px;
+  }
+}
+@media(min-width: 1620px) and (max-width:1690px){
+  .timeline-section-tl {
+    width: 115px;
+  }
 }
