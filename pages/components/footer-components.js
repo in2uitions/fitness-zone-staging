@@ -198,10 +198,10 @@ export default function Footer(data = {}) {
                 <div className="flex justify-end m-10 wtsp-widget">
                     <BrowserView>
                         <a href={whatsappNumber} target="_blank">
-                            <img data-tip data-for="wtspIcon" src="/whatsappIcon.png" className="h-16" />
+                            <img data-tip data-for="try" src="/whatsappIcon.png" className="h-16" />
                         </a>
-                        <ReactTooltip id="wtspIcon" place="left" effect="solid" type="light">
-                            <img src="/help.png" className="w-44"/>
+                        <ReactTooltip id="try" className="reactTooltip" place="left" effect="solid" type="light">
+                            <img src="/help.png" className="w-44 "/>
                         </ReactTooltip>
                     </BrowserView>
                     <MobileView>

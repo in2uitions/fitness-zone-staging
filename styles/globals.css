@@ -328,8 +328,15 @@ p {
   font-size: 18px;
   line-height: 28px;
 }
-
-.__react_component_tooltip {
+.reactTooltip{
+  background-color: transparent !important;
+  margin-left: 4.5rem !important;
+  margin-top: -3rem !important;
+}
+.reactTooltip::after{
+  background-color: transparent !important;
+}
+/* .__react_component_tooltip {
   position: relative !important;
   opacity: 1 !important;
   width: 100vw;
@@ -348,7 +355,7 @@ p {
   height: 10rem !important;
   background-color: #009FE3 !important;
   z-index: 1;
-}
+} */
 
 .coaching-mobile {
   margin-bottom: 45rem;
@@ -1371,7 +1378,7 @@ li.category.isActive {
 
 .forwardback {
   left: 45rem;
-  top: -7.2rem;
+  top: -11.6rem;
 }
 
 /* .vertical-slider .example-thumb {
@@ -3263,7 +3270,7 @@ iframe {
   /* width: 100vw; */
   height: 60vh;
   min-height: 10px;
-  margin-top: 2rem !important;
+  margin-top: 3rem !important;
   background-color: #009fe3;
   z-transition: all 2s ease-in-out;
   -ms-transition: all 2s ease-in-out;
@@ -3279,7 +3286,7 @@ iframe {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 40px 40px 0 40px;
+  border-width: 50px 50px 0 50px;
   border-color: #009fe3 transparent transparent transparent;
   margin: auto;
   transform: rotate(180deg);
@@ -3323,6 +3330,9 @@ iframe {
 } */
 .tl-round {
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* -webkit-transition: all 100ms ease;
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
@@ -3336,7 +3346,7 @@ iframe {
   object-fit: contain;
   background-size: cover;
   background-position: 50%;
-  top: 22px ;
+  top: -4px ;
   background-repeat: no-repeat;
   position: relative;
   height: 40px;
@@ -3346,34 +3356,6 @@ iframe {
   margin-top: -6rem;
 }
 
-/* animation classe */
-
-.anim-phase-1 {
-  width: 240px;
-  -webkit-transition: all 100ms ease;
-  -moz-transition: all 100ms ease;
-  -ms-transition: all 100ms ease;
-  -o-transition: all 100ms ease;
-  transition: all 100ms ease;
-}
-
-.anim-phase-2 {
-  width: 475px;
-  -webkit-transition: all 100ms ease;
-  -moz-transition: all 100ms ease;
-  -ms-transition: all 100ms ease;
-  -o-transition: all 100ms ease;
-  transition: all 100ms ease;
-}
-
-.anim-phase-3 {
-  width: 720px;
-  -webkit-transition: all 100ms ease;
-  -moz-transition: all 100ms ease;
-  -ms-transition: all 100ms ease;
-  -o-transition: all 100ms ease;
-  transition: all 100ms ease;
-}
 
 .parcours-active {
   opacity: 1;
@@ -3436,3 +3418,54 @@ div.step:first-child {
     width: 115px;
   }
 }
+
+.section {
+  display: none;
+  }
+  
+  .section.activate{
+  display: flex;
+  }
+  
+  .invisible {
+      display: none;
+  }
+  
+  ul {
+  list-style: none;
+  margin:0;
+  padding: 0;
+  /* display: flex; */
+  align-items: center;
+  }
+/*   
+  ul li {
+  background: #ccc;
+  padding: 10px 15px;
+  margin-left: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: .5;
+  } */
+  
+  ul li.activate{
+  opacity: 1 !important;
+  }
+  
+  /* .next,
+  .previous {
+  padding: 15px 10px;
+  border-radius: 6px;
+  background: deepskyblue;
+  color: white;
+  border:0;
+  outline: none;
+  cursor: pointer;
+  width: 100px;
+  } */
+  
+  .next.disable,
+  .previous.disable{
+    cursor: none;
+    opacity: .5;
+  }

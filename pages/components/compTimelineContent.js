@@ -21,6 +21,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
     }
     const [current, setCurrent] = useState(0);
     const [previous, setPrevious] = useState(0);
+    const [refresh, setRefresh] = useState(0)
     const _handleIndexChange = (index) => {
         setCurrentIndex(index);
     };
@@ -39,7 +40,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
         $(".round1").css("background-image", "url(/slider-button-active.png)");
         $(".round1").css("width", "80px");
         $(".round1").css("height", "80px");
-        $(".round1").css("top", "3rem");
+        $(".round1").css("top", "-1.75rem");
         $(".round1").on("click", function () {
             $(".tl-round").css("background-image", "url(/slider-button-active.png)");
             $(".round1").css("background-image", "url(/slider-button-active.png)");
@@ -48,30 +49,30 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             $(".round1").css("background-image", "url(/slider-button-active.png)");
             $(".round1").css("width", "80px");
             $(".round1").css("height", "80px");
-            $(".round1").css("top", "3rem");
+            $(".round1").css("top", "-1.75rem");
             $(".round1").addClass("active-btn");
             $(".round2").css("background-image", "url(/slider-button-active.png)");
             $(".round2").css("background-image", "url(/slider-button-active.png)");
             $(".round2").css("width", "40px");
             $(".round2").css("height", "40px");
-            $(".round2").css("top", "22px");
+            $(".round2").css("top", "-4px");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("width", "40px");
             $(".round3").css("height", "40px");
-            $(".round3").css("top", "22px");
+            $(".round3").css("top", "-4px");
             $(".round4").css("background-image", "url(/slider-button-active.png)");
             $(".round4").css("width", "40px");
             $(".round4").css("height", "40px");
-            $(".round4").css("top", "22px");
+            $(".round4").css("top", "-4px");
             $(".round5").css("background-image", "url(/slider-button-active.png)");
             $(".round5").css("width", "40px");
             $(".round5").css("height", "40px");
-            $(".round5").css("top", "22px");
+            $(".round5").css("top", "-4px");
             $(".round6").css("background-image", "url(/slider-button-active.png)");
             $(".round6").css("width", "40px");
             $(".round6").css("height", "40px");
-            $(".round6").css("top", "22px");
+            $(".round6").css("top", "-4px");
             // $(".timeline-indicator").css("width", "0");
         })
 
@@ -82,30 +83,30 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             $(".round1").css("background-image", "url(/slider-button-active.png)");
             $(".round1").css("width", "40px");
             $(".round1").css("height", "40px");
-            $(".round1").css("top", "22px");
+            $(".round1").css("top", "-4px");
             $(".round2").css("background-image", "url(/slider-button-active.png)");
             $(".round2").css("background-image", "url(/slider-button-active.png)");
             $(".round2").css("width", "80px");
             $(".round2").css("height", "80px");
-            $(".round2").css("top", "3rem");
+            $(".round2").css("top", "-1.75rem");
             $(".round2").addClass("active-btn");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("width", "40px");
             $(".round3").css("height", "40px");
-            $(".round3").css("top", "22px");
+            $(".round3").css("top", "-4px");
             $(".round4").css("background-image", "url(/slider-button-active.png)");
             $(".round4").css("width", "40px");
             $(".round4").css("height", "40px");
-            $(".round4").css("top", "22px");
+            $(".round4").css("top", "-4px");
             $(".round5").css("background-image", "url(/slider-button-active.png)");
             $(".round5").css("width", "40px");
             $(".round5").css("height", "40px");
-            $(".round5").css("top", "22px");
+            $(".round5").css("top", "-4px");
             $(".round6").css("background-image", "url(/slider-button-active.png)");
             $(".round6").css("width", "40px");
             $(".round6").css("height", "40px");
-            $(".round6").css("top", "22px");
+            $(".round6").css("top", "-4px");
             $(".parcours-active").removeClass("parcours-active");
             $(".timeline2").addClass("parcours-active");
             $(".timeline-indicator").css("width", "240");
@@ -116,29 +117,29 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             $(".round1").css("background-image", "url(/slider-button-active.png)");
             $(".round1").css("width", "40px");
             $(".round1").css("height", "40px");
-            $(".round1").css("top", "22px");
+            $(".round1").css("top", "-4px");
             $(".round2").css("background-image", "url(/slider-button-active.png)");
             $(".round2").css("width", "40px");
             $(".round2").css("height", "40px");
-            $(".round2").css("top", "22px");
+            $(".round2").css("top", "-4px");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("width", "80px");
             $(".round3").css("height", "80px");
-            $(".round3").css("top", "3rem");
+            $(".round3").css("top", "-1.75rem");
             $(".round3").addClass("active-btn");
             $(".round4").css("background-image", "url(/slider-button-active.png)");
             $(".round4").css("width", "40px");
             $(".round4").css("height", "40px");
-            $(".round4").css("top", "22px");
+            $(".round4").css("top", "-4px");
             $(".round5").css("background-image", "url(/slider-button-active.png)");
             $(".round5").css("width", "40px");
             $(".round5").css("height", "40px");
-            $(".round5").css("top", "22px");
+            $(".round5").css("top", "-4px");
             $(".round6").css("background-image", "url(/slider-button-active.png)");
             $(".round6").css("width", "40px");
             $(".round6").css("height", "40px");
-            $(".round6").css("top", "22px");
+            $(".round6").css("top", "-4px");
             $(".parcours-active").removeClass("parcours-active");
             $(".timeline3").addClass("parcours-active");
             $(".timeline-indicator").css("width", "480");
@@ -149,29 +150,29 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             $(".round1").css("background-image", "url(/slider-button-active.png)");
             $(".round1").css("width", "40px");
             $(".round1").css("height", "40px");
-            $(".round1").css("top", "22px");
+            $(".round1").css("top", "-4px");
             $(".round2").css("background-image", "url(/slider-button-active.png)");
             $(".round2").css("width", "40px");
             $(".round2").css("height", "40px");
-            $(".round2").css("top", "22px");
+            $(".round2").css("top", "-4px");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("width", "40px");
             $(".round3").css("height", "40px");
-            $(".round3").css("top", "22px");
+            $(".round3").css("top", "-4px");
             $(".round4").css("background-image", "url(/slider-button-active.png)");
             $(".round4").css("background-image", "url(/slider-button-active.png)");
             $(".round4").css("width", "80px");
             $(".round4").css("height", "80px");
-            $(".round4").css("top", "3rem");
+            $(".round4").css("top", "-1.75rem");
             $(".round4").addClass("active-btn");
             $(".round5").css("background-image", "url(/slider-button-active.png)");
             $(".round5").css("width", "40px");
             $(".round5").css("height", "40px");
-            $(".round5").css("top", "22px");
+            $(".round5").css("top", "-4px");
             $(".round6").css("background-image", "url(/slider-button-active.png)");
             $(".round6").css("width", "40px");
             $(".round6").css("height", "40px");
-            $(".round6").css("top", "22px");
+            $(".round6").css("top", "-4px");
             $(".parcours-active").removeClass("parcours-active");
             $(".timeline4").addClass("parcours-active");
             $(".timeline-indicator").css("width", "720");
@@ -181,29 +182,29 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             $(".round1").css("background-image", "url(/slider-button-active.png)");
             $(".round1").css("width", "40px");
             $(".round1").css("height", "40px");
-            $(".round1").css("top", "22px");
+            $(".round1").css("top", "-4px");
             $(".round2").css("background-image", "url(/slider-button-active.png)");
             $(".round2").css("width", "40px");
             $(".round2").css("height", "40px");
-            $(".round2").css("top", "22px");
+            $(".round2").css("top", "-4px");
             $(".round3").css("background-image", "url(/slider-button-active.png)");
             $(".round3").css("width", "40px");
             $(".round3").css("height", "40px");
-            $(".round3").css("top", "22px");
+            $(".round3").css("top", "-4px");
             $(".round4").css("background-image", "url(/slider-button-active.png)");
             $(".round4").css("width", "40px");
             $(".round4").css("height", "40px");
-            $(".round4").css("top", "22px");
+            $(".round4").css("top", "-4px");
             $(".round5").css("background-image", "url(/slider-button-active.png)");
             $(".round5").css("background-image", "url(/slider-button-active.png)");
             $(".round5").css("width", "80px");
             $(".round5").css("height", "80px");
-            $(".round5").css("top", "3rem");
+            $(".round5").css("top", "-1.75rem");
             $(".round5").addClass("active-btn");
             $(".round6").css("background-image", "url(/slider-button-active.png)");
             $(".round6").css("width", "40px");
             $(".round6").css("height", "40px");
-            $(".round6").css("top", "22px");
+            $(".round6").css("top", "-4px");
             $(".parcours-active").removeClass("parcours-active");
             $(".timeline5").addClass("parcours-active");
             $(".timeline-indicator").css("width", "720");
@@ -213,27 +214,27 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             $(".round1").css("background-image", "url(/slider-button.svg)");
             $(".round1").css("width", "40px");
             $(".round1").css("height", "40px");
-            $(".round1").css("top", "22px");
+            $(".round1").css("top", "-4px");
             $(".round2").css("background-image", "url(/slider-button.svg)");
             $(".round2").css("width", "40px");
             $(".round2").css("height", "40px");
-            $(".round2").css("top", "22px");
+            $(".round2").css("top", "-4px");
             $(".round3").css("background-image", "url(/slider-button.svg)");
             $(".round3").css("width", "40px");
             $(".round3").css("height", "40px");
-            $(".round3").css("top", "22px");
+            $(".round3").css("top", "-4px");
             $(".round4").css("background-image", "url(/slider-button.svg)");
             $(".round4").css("width", "40px");
             $(".round4").css("height", "40px");
-            $(".round4").css("top", "22px");
+            $(".round4").css("top", "-4px");
             $(".round5").css("background-image", "url(/slider-button.svg)");
             $(".round5").css("width", "40px");
             $(".round5").css("height", "40px");
-            $(".round5").css("top", "22px");
+            $(".round5").css("top", "-4px");
             $(".round6").css("background-image", "url(/slider-button-active.png)");
             $(".round6").css("width", "80px");
             $(".round6").css("height", "80px");
-            $(".round6").css("top", "3rem");
+            $(".round6").css("top", "-1.75rem");
             $(".round6").addClass("active-btn");
             $(".parcours-active").removeClass("parcours-active");
             $(".timeline6").addClass("parcours-active");
@@ -241,31 +242,57 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
         })
 
     });
-    // $(document).ready(function(){
-    //     $(".round1 ").each(function(e) {
-    //         if (e != 0)
-    //             $(this).show();
-    //     });
+    let currentSection = 0;
+    
+    let sections = document.querySelectorAll(".section ");
+    let sectionButtons = document.querySelectorAll(".nav > li");
+    let nextButton = document.querySelector(".next");
+    let previousButton = document.querySelector(".previous");
+    for (let i = 0; i < sectionButtons.length; i++) {
+        sectionButtons[i].addEventListener("click", function () {
+            setRefresh(refresh + 1)
+            sections[currentSection].classList.remove("activate");
+            sectionButtons[currentSection].classList.remove("activate");
+            sections[currentSection = i].classList.add("activate");
+            sectionButtons[currentSection].classList.add("activate");
+            if (i === 0) {
+                if (previousButton.className.split(" ").indexOf("disable")  < 0) {
+                    previousButton.classList.add("disable");
+                }
+            } else {
+                if (previousButton.className.split(" ").indexOf("disable") >= 0) {
+                    previousButton.classList.remove("disable");
+                }
+            }
+            if (i === sectionButtons.length - 1 ) {
+                if (nextButton.className.split(" ").indexOf("disable") < 0) {
+                    nextButton.classList.add("disable");
+                }
+            } else {
+                if (nextButton.className.split(" ").indexOf("disable") >= 0) {
+                    nextButton.classList.remove("disable");
+                } 
+            }
+        });
+    }
+    
+    nextButton?.addEventListener("click", function() {
+        if (currentSection < sectionButtons.length - 1) {
+            sectionButtons[currentSection + 1].click();
+        }
+    });
+    
+    previousButton?.addEventListener("click", function() {
+        if (currentSection > 0) {
+            sectionButtons[currentSection - 1].click();
+        }
+    });
+    if (currentSection != 0){
+        return <div>loading...</div>;
+    }  
 
-    //     $("#next").click(function(){
-    //         if ($(".round1:visible").next().length != 0)
-    //             $(".round1:visible").next().show().prev().hide();
-    //         else {
-    //             $(".round1:visible").hide();
-    //             $(".round1:first").show();
-    //         }
-    //         return false;
-    //     });
-
-    //     $("#prev").click(function(){
-    //         if ($(".round1:visible").prev().length != 0)
-    //             $(".round1:visible").prev().show().next().hide();
-    //         else {
-    //             $(".round1:visible").hide();
-    //             $(".round1:last").show();
-    //         }
-    //         return false;
-    //     });
+    // btn?.addEventListener('click', () => {
+    //     console.log('btn clicked');
     // });
 
     return (
@@ -273,11 +300,11 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
             <div className="" id="loading">
                 <div className="mt-40 mb-20 flex flex-col justify-center items-center text-center">
                     <p className="font-bold lg:text-5xl md:text-5xl text-3xl mb-5 futura-bold w-3/4 text-white">{data.title}</p>
-                    {data.subtitle ? <p className="text-[#D8D8D8] w-3/4 futura-book">
+                    {data.subtitle ? <p className="text-[#D8D8D8]  w-3/4 futura-book">
                         {parse(`${data.subtitle}`)}
                     </p> : null}
                 </div>
-                <div className="timeline-parcours mt-28">
+                <div className="timeline-parcours mt-36">
 
                     <div className="container-time-line">
                         <div className="time-line-parcours">
@@ -294,9 +321,12 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                     console.log("color", opacity);
                                 }
                                 return (
-                                    <div class="timeline-section-tl">
-                                        <div className={`tl-round ${step.timeline_items_id?.value}`}></div>
-                                    </div>
+                                    <ul className="timeline-section-tl nav">
+                                    {/* <div className="flex flex-col items-center"> */}
+                                        <li className={`tl-round ${step.timeline_items_id?.value}`} data-cont={step.timeline_items_id?.value}>
+                                        <p className="-mt-20">{step.timeline_items_id?.date}</p></li>
+                                        {/* </div> */}
+                                    </ul>
                                 );
                             })}
                         </div>
@@ -310,20 +340,20 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                     console.log("color", opacity);
                                 }
                                 return (
-                                    <div className="timeline-section-tl ">
+                                    <div className="timeline-section-tl">
                                         <div className={`parcours-box ${step.timeline_items_id?.name}`}>
                                             <div className="">
                                                 <div className="fleche-bloc"></div>
 
-                                                <div className="infobox date1 lg:flex absolute top-0 bottom-0 right-28 left-28 items-center">
+                                                <section className="section activate infobox date1 lg:flex absolute top-0 bottom-0 right-28 left-28 items-center" id={step.timeline_items_id?.value}>
                                                     <div className="lg:w-1/2 lg:py-16 lg:px-24 mt-24">
-                                                        <br></br>
+                                                        <br></br> 
                                                         <p className="text-white ">{parse(`${step.timeline_items_id?.description}`)} </p>
                                                     </div>
                                                     <div className="lg:w-1/2 lg:px-14 lg:py-14">
                                                         <img src={`${image_url}${step.timeline_items_id?.image?.id}`} className="trainerimg none-event" altv={step.timeline_items_id?.title} />
                                                     </div>
-                                                </div>
+                                                </section>
                                             </div>
                                         </div>
                                         <div className="flex justify-evenly items-center">
@@ -332,18 +362,38 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                     </div>
                                 );
                             })}
+                            {/* <ul class="nav">
+<li class="activate" data-cont="r1">1</li>
+<li data-cont="r2">2</li>
+<li data-cont="r3">3</li>
+<li data-cont="r4">4</li>
+</ul>
+
+
+<section id="r1" class="section section-one activate">
+<h2>section 1</h2>
+</section>
+<section id="r2" class="section section-two">
+<h2>section 2</h2>
+</section>
+<section id="r3" class="section section-three">
+<h2>section 3</h2>
+</section>
+<section id="r4" class="section section-fr">
+<h2>section 333</h2>
+</section> */}
                             <div className="flex items-center lg:space-x-60 space-x-32 justify-center absolute forwardback">
                                 <button className="timelineBack">
                                     <img
                                         src="/ArrowBack.svg"
-                                        className="arrows" id="prevBtn"
+                                        className="arrows previous disable" id="previous"
 
                                     />{" "}
                                 </button>
                                 <button className="timelineForward">
                                     <img
                                         src="/ArrowForward.svg"
-                                        className="arrows" id="nextBtn"
+                                        className="arrows next" id="next"
 
                                     />
                                 </button>
