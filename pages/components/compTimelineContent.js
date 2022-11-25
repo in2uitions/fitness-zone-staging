@@ -3,7 +3,6 @@ import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import Step from './slider/steps'
 import Slider from "./slider/slider";
-// import Form from "./slider/Form";
 import HorizontalTimeline from "react-horizontal-timeline";
 import { Timeline, TimelineEvent } from "react-event-timeline";
 import Head from "next/head";
@@ -338,7 +337,8 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                     </div>
                                 );
                             })}
-                            <div className="flex items-center lg:space-x-60 md:space-x-20 space-x-32 justify-center absolute forwardback">
+                            
+                            <div className="flex items-center lg:space-x-52 md:space-x-20 space-x-32 justify-center absolute forwardback">
                                 <button className="timelineBack">
                                     <img
                                         src="/ArrowBack.svg"
