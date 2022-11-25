@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import Step from './slider/steps'
@@ -242,58 +242,51 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
         })
 
     });
-    let currentSection = 0;
-    
-    let sections = document.querySelectorAll(".section ");
-    let sectionButtons = document.querySelectorAll(".nav > li");
-    let nextButton = document.querySelector(".next");
-    let previousButton = document.querySelector(".previous");
-    for (let i = 0; i < sectionButtons.length; i++) {
-        sectionButtons[i].addEventListener("click", function () {
-            setRefresh(refresh + 1)
-            sections[currentSection].classList.remove("activate");
-            sectionButtons[currentSection].classList.remove("activate");
-            sections[currentSection = i].classList.add("activate");
-            sectionButtons[currentSection].classList.add("activate");
-            if (i === 0) {
-                if (previousButton.className.split(" ").indexOf("disable")  < 0) {
-                    previousButton.classList.add("disable");
+    useEffect(() => {
+        let currentSection = 0;
+        let sections = document.querySelectorAll(".section");
+        let sectionButtons = document.querySelectorAll(".nav > li");
+        let nextButton = document.querySelector(".next");
+        let previousButton = document.querySelector(".previous");
+        for (let i = 0; i < sectionButtons.length; i++) {
+            sectionButtons[i].addEventListener("click", function() {
+                sections[currentSection].classList.remove("activate");
+                sectionButtons[currentSection].classList.remove("activate");
+                sections[currentSection = i].classList.add("activate");
+                sectionButtons[currentSection].classList.add("activate");
+                if (i === 0) {
+                    if (previousButton.className.split(" ").indexOf("disable") < 0) {
+                        previousButton.classList.add("disable");
+                    }
+                } else {
+                    if (previousButton.className.split(" ").indexOf("disable") >= 0) {
+                        previousButton.classList.remove("disable");
+                    }
                 }
-            } else {
-                if (previousButton.className.split(" ").indexOf("disable") >= 0) {
-                    previousButton.classList.remove("disable");
+                if (i === sectionButtons.length - 1) {
+                    if (nextButton.className.split(" ").indexOf("disable") < 0) {
+                        nextButton.classList.add("disable");
+                    }
+                } else {
+                    if (nextButton.className.split(" ").indexOf("disable") >= 0) {
+                        nextButton.classList.remove("disable");
+                    }
                 }
-            }
-            if (i === sectionButtons.length - 1 ) {
-                if (nextButton.className.split(" ").indexOf("disable") < 0) {
-                    nextButton.classList.add("disable");
-                }
-            } else {
-                if (nextButton.className.split(" ").indexOf("disable") >= 0) {
-                    nextButton.classList.remove("disable");
-                } 
+            });
+        }
+        
+        document.querySelector(".next").addEventListener("click", function() {
+            if (currentSection < sectionButtons.length - 1) {
+                sectionButtons[currentSection + 1].click();
             }
         });
-    }
-    
-    nextButton?.addEventListener("click", function() {
-        if (currentSection < sectionButtons.length - 1) {
-            sectionButtons[currentSection + 1].click();
-        }
-    });
-    
-    previousButton?.addEventListener("click", function() {
-        if (currentSection > 0) {
-            sectionButtons[currentSection - 1].click();
-        }
-    });
-    if (currentSection != 0){
-        return <div>loading...</div>;
-    }  
-
-    // btn?.addEventListener('click', () => {
-    //     console.log('btn clicked');
-    // });
+        
+        document.querySelector(".previous").addEventListener("click", function() {
+            if (currentSection > 0) {
+                sectionButtons[currentSection - 1].click();
+            }
+        });
+    })
 
     return (
         <>

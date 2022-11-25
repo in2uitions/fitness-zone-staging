@@ -783,7 +783,6 @@ p {
 .active {
   font-family: "Futura BdCn BT";
   height: 24px;
-  /* font-size: 18px; */
   left: 0;
   top: 0;
   border-bottom: 2px solid #009fe3;
@@ -2022,8 +2021,8 @@ li {
   }
 
   .forwardback {
-    left: 14rem !important;
-    top: -3.7rem !important;
+    left: 17rem !important;
+    top: -11.5rem !important;
 }
 }
 
