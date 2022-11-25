@@ -339,8 +339,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                                 <div className="fleche-bloc"></div>
 
                                                 <section className="section activate infobox date1 lg:flex absolute top-0 bottom-0 right-28 left-28 items-center" id={step.timeline_items_id?.value}>
-                                                    <div className="lg:w-1/2 lg:py-16 lg:px-24 mt-24">
-                                                        <br></br> 
+                                                    <div className="lg:w-1/2 lg:py-16 lg:px-24">
                                                         <p className="text-white ">{parse(`${step.timeline_items_id?.description}`)} </p>
                                                     </div>
                                                     <div className="lg:w-1/2 lg:px-14 lg:py-14">
