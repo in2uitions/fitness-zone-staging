@@ -37,7 +37,7 @@ const CompMap = ({ center, zoom,  datas, data={} }) => {
 
     return (
         <>
-            <div className='container lg:mt-32 md:mt-32 mt-0 mb-52 mx-auto xl:pb-0 lg:px-5 md:px-5 px-5 ' style={{ height: '700px', width: '100%' }}>
+            <div className='container lg:mt-32 md:mt-32 mt-36 mb-52 mx-auto xl:pb-0 lg:px-5 md:px-5 px-5 ' style={{ height: '700px', width: '100%' }}>
                 {data.title ? <p className="font-bold futura-bold lg:text-5xl text-3xl text-white mb-10">{data.title}</p> : null}
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: googleAPIKey }}

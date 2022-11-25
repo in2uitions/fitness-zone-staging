@@ -5,7 +5,7 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
 
     return (
         <div className="mt-10">
-            {data.title ? <div className=" mt-40 mb-40 flex flex-col justify-center items-center text-center">
+            {data.title ? <div className="lg:mt-40 md:mt-40 lg:mb-40 md:mb-40 mt-20 mb-20 flex flex-col justify-center items-center text-center">
                 <p className="futura-bold text-3xl w-3/4 text-white md:text-6xl lg:text-6xl mx-auto">{data.title}</p>
             </div> : null}
             <div className="relative">

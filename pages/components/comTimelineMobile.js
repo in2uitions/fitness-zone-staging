@@ -9,7 +9,7 @@ import { Timeline, TimelineEvent } from "react-event-timeline";
 import Head from "next/head";
 import Script from "next/script";
 import $ from "jquery"
-export default function CompTimeline({ data = {}, style = 'white', isFlipped = false }) {
+export default function CompTimelineMobile({ data = {}, style = 'white', isFlipped = false }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     function dateFrmt(dat, frag) {
         const monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
@@ -273,17 +273,16 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
         });
     })
 
-
     return (
         <>
             <div className="" id="loading">
-                <div className="mt-40 mb-20 flex flex-col justify-center items-center text-center">
+                <div className="mt-20 mb-10 flex flex-col justify-center items-center text-center">
                     <p className="font-bold lg:text-5xl md:text-5xl text-3xl mb-5 futura-bold w-3/4 text-white">{data.title}</p>
                     {data.subtitle ? <p className="text-[#D8D8D8]  w-3/4 futura-book">
                         {parse(`${data.subtitle}`)}
                     </p> : null}
                 </div>
-                <div className="timeline-parcours mt-36">
+                <div className="timeline-parcours ">
 
                     <div className="container-time-line">
                         <div className="time-line-parcours">
@@ -293,7 +292,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                         </div>
                     </div>
                     <div className="" id="slides">
-                        <div className="container-bulle mb-24">
+                        <div className="container-bulle">
                             {data.timeline.map((step, index) => {
                                 let opacity = currentIndex === index ? "1" : "0";
                                 {
@@ -323,10 +322,10 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                                 <div className="fleche-bloc"></div>
 
                                                 <section className="section activate infobox date1 lg:flex absolute top-0 bottom-0 right-28 left-28 items-center" id={step.timeline_items_id?.value}>
-                                                    <div className="lg:w-1/2 lg:py-16 lg:px-24">
-                                                        <p className="text-white ">{parse(`${step.timeline_items_id?.description}`)} </p>
+                                                    <div className="h-1/2">
+                                                        <p className="text-white px-4 py-4">{parse(`${step.timeline_items_id?.description}`)} </p>
                                                     </div>
-                                                    <div className="lg:w-1/2 lg:px-14 lg:py-14">
+                                                    <div className="h-1/2 lg:px-14 lg:py-14">
                                                         <img src={`${image_url}${step.timeline_items_id?.image?.id}`} className="trainerimg none-event" altv={step.timeline_items_id?.title} />
                                                     </div>
                                                 </section>
@@ -335,18 +334,19 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                                         <div className="flex justify-evenly items-center">
 
                                         </div>
+                                        
                                     </div>
                                 );
                             })}
-                            <div className="flex items-center lg:space-x-60 md:space-x-20 space-x-32 justify-center absolute forwardback">
-                                <button className="timelineBack">
+                            <div className="">
+                                <button className="absolute left-0">
                                     <img
                                         src="/ArrowBack.svg"
                                         className="arrows previous disable" id="previous"
 
                                     />{" "}
                                 </button>
-                                <button className="timelineForward">
+                                <button className="absolute right-0">
                                     <img
                                         src="/ArrowForward.svg"
                                         className="arrows next" id="next"
