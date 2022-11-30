@@ -18,6 +18,14 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                         <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold  careers text-white">{data.title}</h2>
                         </div>
                         <h3 className="py-7 subTitle"> {data.subtitle} </h3>
+                        {data.headline?<p className='text-[#009FE3] font-bold futura-bold citywalk-title'>{data.headline}</p>:null}
+                        {data.subhead?<p className='text-white font-bold futura-bold citywalk-dubai-title'>{data.subhead}</p>:null}
+                        <div className='flex space-x-4 items-baseline mb-4'>
+                            {data.sub_subhead?<p className='futura-bold citywalk-dubai-ison-title'>{data.sub_subhead}</p>:null}
+                            <div>
+                                {data.on_img?<img src={`${image_url}${data.on_img?.id}`} className="h-8"/>:null}
+                            </div>
+                        </div>
                         <h4 className="brief wysiwyg">{parse(`${data.brief}`)}</h4>
                         {data.button_title ? <a href="/" target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 w-40 flex justify-start items-center rounded-md futura-bold mt-4">{data.button_title}
                             <ChevronRightIcon className="ml-2" /></a> : null}

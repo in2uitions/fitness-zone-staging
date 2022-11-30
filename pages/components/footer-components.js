@@ -250,12 +250,12 @@ export default function Footer(data = {}) {
                                     )}
                                 </Popup>
 
-                                <a
+                                {/* <a
                                     href="#"
                                     className="border-[#009FE3] border-2 p-2 lg:h-9 md:h-9 h-12 rounded flex futura-bold justify-center items-center"
                                 >
                                     WORK WITH US
-                                </a>
+                                </a> */}
                             </div>
 
                             {showForm ?

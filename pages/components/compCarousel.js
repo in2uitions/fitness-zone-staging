@@ -138,9 +138,9 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                         }}
                                     >
                                         <div className="sliderContent px-20">
-                                            <div className="flex items-center space-x-5">
-                                                {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            <div className="flex items-baseline space-x-5">
                                                 <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                                {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
                                             </div>
                                             {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
                                             {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}

@@ -131,9 +131,9 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                 // }}
                                 >
                                     <div className="sliderContent">
-                                        <div className="flex items-center space-x-5">
-                                            {data.icon ? <img src={`${image_url}${data?.icon?.id}`} className="w-16 h-8" altv={data?.title} /> : null}
+                                        <div className="flex items-baseline space-x-5">
                                             <p className="font-bold futura-bold text-4xl">{data?.title}</p>
+                                            {data.icon ? <img src={`${image_url}${data?.icon?.id}`} className="w-16 h-8" altv={data?.title} /> : null}
                                         </div>
                                         {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}
                                         {data.button_title ? <a href={data.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
