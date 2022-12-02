@@ -27,13 +27,8 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                             </div>
                         </div>
                         <h4 className="brief wysiwyg">{parse(`${data.brief}`)}</h4>
-                        {data.button_title ? <a href="/" target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 w-40 flex justify-start items-center rounded-md futura-bold mt-4">{data.button_title}
+                        {data.button_url ? <a href={`${data.button_url}`} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 w-40 flex justify-start items-center rounded-md futura-bold mt-4">{data.button_title}
                             <ChevronRightIcon className="ml-2" /></a> : null}
-                        {/* <div className="flex py-4">
-                            {getCallToAction(1)}
-                            {getCallToAction(2)}
-
-                        </div> */}
 
                     </div>
                     <div className=" lg:w-1/2 pt-6 lg:pt-0 hidden lg:block">
