@@ -201,7 +201,7 @@ export default function Footer(data = {}) {
                             <img data-tip data-for="try" src="/whatsappIcon.png" className="h-16" />
                         </a>
                         <ReactTooltip id="try" className="reactTooltip" place="left" effect="solid" type="light">
-                            <img src="/help.png" className="w-44 "/>
+                            <img src="/help.png" className="w-44 " />
                         </ReactTooltip>
                     </BrowserView>
                     <MobileView>
@@ -211,7 +211,7 @@ export default function Footer(data = {}) {
                     </MobileView>
                 </div>
             </section>
-            <div className=" bg-black w-screen">
+            <div className=" bg-black w-screen ">
                 <div className="lg:grid lg:grid-cols-12 space-x-4">
                     <div className="lg:col-span-2 sm:col-span-12">
                         <div className="lg:ml-28">
@@ -283,10 +283,6 @@ export default function Footer(data = {}) {
                                                 placeholder="PHONE NUMBER"
                                                 required name="phone" id="phone"
                                             />
-                                            {/* <input
-                  className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 mb-3"
-                  placeholder="PHONE NUMBER"
-                /> */}
                                             <input
                                                 className="pl-2 lg:w-1/2 w-1/2 appearance-none h-10  bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 mb-3"
                                                 placeholder="EMAIL"
@@ -298,7 +294,6 @@ export default function Footer(data = {}) {
                                 </form>
                                 : null}
                             <div>
-                                {/* <a href="#">REQUEST A CALL</a> */}
 
                                 <Popup
                                     trigger={
@@ -352,9 +347,6 @@ export default function Footer(data = {}) {
                                 <p className="futura-book">+961 1 328 428 </p>
                                 <p className="font-bold mt-2 futura-bold">CITY WALK DUBAI</p>
                                 <p className="futura-book">+971 54 727 4777</p>
-                                {/* 
-                <p className="font-bold mt-2 futura-bold">ABC ACHRAFIYEH</p>
-                <p className="futura-book">+961 4 543 433</p> */}
                             </div>
                         </div>
                         <p className="futura-book mt-10 text-white">Copyright © 2022. All Rights Reserved.</p>

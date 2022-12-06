@@ -356,7 +356,20 @@ p {
   background-color: #009FE3 !important;
   z-index: 1;
 } */
-
+.react-tabs__tab-list{
+  display: flex !important;
+}
+.react-tabs__tab--selected{
+  background: transparent !important;
+  border-color: transparent !important;
+    color: #009FE3 !important;
+    border-radius: 5px 5px 0 0;
+}
+.react-tabs__tab{
+  border: 0px solid transparent !important;
+  bottom: 0px !important;
+  position: unset !important;
+}
 .coaching-mobile {
   margin-bottom: 45rem;
 }
@@ -372,7 +385,28 @@ p {
   opacity: 1 !important;
   position: fixed !important;
 }
+.react-tel-input{
+  width: 100% !important;
+}
 
+.flag-dropdown{
+  left: 0px !important;
+  top: 0px !important;
+  bottom: 0px !important;
+}
+.react-tel-input .flag-dropdown{
+  background: transparent !important;
+  border: 0px !important;
+}
+.react-tel-input .special-label{
+  background:transparent !important;
+}
+.react-tel-input .flag-dropdown.open .selected-flag{
+  background: transparent !important;
+}
+.selected-flag:hover{
+  background:transparent !important;
+}
 #wtspIcon::after {
   background: transparent !important;
 }
@@ -2582,25 +2616,26 @@ li {
   right: -0.5rem;
   top: -0.5rem;
 }
-
+.login-placeholder::placeholder{
+  color: white;
+  padding-left: 10px;
+}
+.form-control::placeholder{
+  color: white;
+  font-family: "Futura Bk BT";
+}
 .form-control {
   margin: 0 !important;
-  padding-left: 50px !important;
+  padding-left: 40px !important;
   border: 0px solid transparent !important;
   background-color: transparent !important;
 
   /* width: 40rem !important; */
-  height: 30px !important;
+  height: 40px !important;
 }
 
 .country-name {
   color: black !important;
-}
-
-.flag-dropdown {
-  top: -7px !important;
-  bottom: -3px !important;
-  left: -7px !important;
 }
 
 .none-event {

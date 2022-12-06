@@ -44,11 +44,9 @@ export default function FooterPopup() {
                     {
                         method: 'POST'
                     }
-                    //.then(() => setIsSent(true))
                 );
 
                 const tokenData = await res.json();
-                // console.log(tokenData);
 
                 const submitContactForm = async () => {
                     try {
