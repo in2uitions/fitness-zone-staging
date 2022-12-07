@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import HorizontalTimeline from "react-horizontal-timeline";
-import { Timeline, TimelineEvent } from "react-event-timeline";
 
 export default function App() {
     const data = [
@@ -31,7 +29,7 @@ export default function App() {
     return (
         <div className="flex flex-col">
             <div style={{ width: "100vw", height: "100px", margin: "0 auto" }}>
-                <HorizontalTimeline
+                {/* <HorizontalTimeline
                     getLabel={data => data}
                     index={current}
                     indexClick={index => {
@@ -48,7 +46,7 @@ export default function App() {
                         margin: "0 auto",
                         textAlign: "center"
                     }}
-                />
+                /> */}
             </div>
             <div className="shadow-lg container -mt-2 transition duration-1000 ease-in-out timeline-items flex timeline-mobile">{data[current].desc}</div>
             <div>

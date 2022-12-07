@@ -3,8 +3,6 @@ import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import Step from './slider/steps'
 import Slider from "./slider/slider";
-import HorizontalTimeline from "react-horizontal-timeline";
-import { Timeline, TimelineEvent } from "react-event-timeline";
 import Head from "next/head";
 import Script from "next/script";
 import $ from "jquery"
