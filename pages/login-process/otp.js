@@ -32,7 +32,30 @@ export default function Otp() {
         getTokenAPI();
     };
     const submit = () => {
-        console.log("button clicked");
+
+        const getTokenAPI = async () => {
+            try {
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${query.phoneNumber}`,
+                    {
+                        method: 'GET'
+                    }
+                );
+                const data = await res.json();
+                console.log(data + "otp")
+                if (data.isValid = true) {
+                    router.push({ pathname: "/dashboard" })
+                }
+                else {
+                    alert("Wrong OTP");
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getTokenAPI();
+        // console.log("button clicked");
     };
     return (
         <div>
@@ -48,6 +71,7 @@ export default function Otp() {
                         text=""
                         ButtonText="Resend Now"
                         resend={submit}
+                        onClick={submit}
                         textColor="#009FE3"
                         background="#00000000"
                         buttonColor="#009FE3"

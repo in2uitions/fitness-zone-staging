@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 import PopupContent from "./try-now";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 import nextConfig from "../../next.config.js"
 import FooterPopup from "./footerPopup";
 import ReactTooltip from 'react-tooltip';

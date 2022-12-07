@@ -127,7 +127,7 @@ export default function Menu(data = {}) {
                     />
                     <div className="flex flex-row mt-14">
                         <a
-                            href="#"
+                            href="/login-process/login"
                             className="border-[#009FE3] border-2 w-36 p-2 rounded flex justify-center items-center mr-5 futura-bold"
                         >
                             LOG IN

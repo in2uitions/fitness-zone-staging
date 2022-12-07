@@ -42,7 +42,7 @@
     "react-metismenu": "^1.4.0",
     "react-multi-carousel": "^2.8.2",
     "react-opacity-carousel": "^1.4.0",
-    "react-phone-input-2": "^2.15.1",
+    "react-phone-number-input": "^3.2.13",
     "react-responsive": "^9.0.0",
     "react-responsive-carousel": "^3.2.23",
     "react-show-more": "^2.0.0",
@@ -59,8 +59,7 @@
     "ua-parser-js": "^1.0.32",
     "uninstall": "0.0.0",
     "use-media": "^1.4.0",
-    "uuid": "^8.3.2",
-    "yup": "^0.32.11"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",

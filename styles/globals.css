@@ -373,7 +373,17 @@ p {
 .coaching-mobile {
   margin-bottom: 45rem;
 }
-
+.PhoneInputInput{
+  background-color: transparent;
+}
+.PhoneInputInput:focus{
+  border: 0px !important;
+  height: 100%;
+  width: 100%;
+  border-color: transparent;
+  outline: none;
+  background: transparent;
+}
 .classes-mobile {
   margin-bottom: 53rem;
 }

@@ -2,12 +2,20 @@ import { Router } from 'next/router';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-
+import PhoneInput, {
+    isPossiblePhoneNumber,
+    isValidPhoneNumber,
+    formatPhoneNumberIntl,
+    parsePhoneNumber
+} from "react-phone-number-input";
+import Input from "react-phone-number-input/input-mobile";
+import "react-phone-number-input/style.css";
 
 export default function Login() {
     const [isSent, setIsSent] = useState(false);
     const [isNotSent, setIsNotSent] = useState(false)
+    // const [value, setvalue] = useState();
+    const [value1, setValue1] = useState();
     const thankYouMessage = <h3>Thank you for your submission!</h3>;
     const MEMBER = 'memberId';
     const MOBILE = 'phoneNumber';
@@ -25,21 +33,28 @@ export default function Login() {
     //     [MEMBER]: 'phoneNumber',
     //     [MOBILE]: 'memberId'
     // }
+
     function handleTabsChange({ event, index }) {
         const object = {
             ...selectedTab,
-            [index]: event.target.value
+            [index]: event.target?.value
         }
-        const newObject = {}; 
-        Object.keys(object).sort().forEach(function(v,i){
-            newObject[v] = object[v]; 
+        console.log(event.target?.value + "test")
+        const newObject = {};
+        Object.keys(object).sort().forEach(function (v, i) {
+            newObject[v] = object[v];
         });
+        setValue1;
         setSelectedTab(newObject);
     }
-
+    function getValue(){
+        setValue1;
+    }
+    // const [value, setValue] = useState({
+    //     MOBILE: '',
+    //   })
     const submitLogIn = async event => {
         event.preventDefault();
-
         const getTokenAPI = async () => {
             try {
                 const res = await fetch(
@@ -91,7 +106,7 @@ export default function Login() {
                         const data = await res.json();
                         console.log(data);
                         const phoneNumber = '';
-                        if(data.isValid != true){
+                        if (data.isValid != true) {
                             alert("The member does not exist in our database")
                         }
                         if (apiEndPoint == MEMBER) {
@@ -114,7 +129,7 @@ export default function Login() {
                             event.target.country.value = '';
                             event.target.phone_member.value = '';
                             if (data.isValid == true) {
-                                router.push({ pathname:"/otp", query: {phoneNumber}})
+                                router.push({ pathname: "/login-process/otp", query: { phoneNumber } })
                             }
                         }
                         else {
@@ -146,8 +161,26 @@ export default function Login() {
                             <option value={LEBANON}>Lebanon</option>
                             <option value={UAE}>UAE</option>
                         </select>
+
+                        <PhoneInput
+                            international={false}
+                            countryCallingCodeEditable={true}
+                            defaultCountry="LB"
+                            countries={["LB", "AE"]}
+                            countrySelectProps={{ unicodeFlags: true }}
+                            value={value1}
+                            onSelect={(e) => handleTabsChange({ event: e, index: MOBILE })}
+                            onChange={setValue1}
+                            addInternationalOption={false}
+                            placeholder="Mobile Number" className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" id='phone'
+                        />
+                        <pre>
+                            {value1 && isValidPhoneNumber(value1) ? "Your phone number is valid" : ""}
+                        </pre>
+                        <label className='text-[#009FE3]'>OR</label>
                         <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='member' />
-                        <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' />
+
+                        {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
                         <button type='submit' className='bg-[#009FE3] rounded-md p-3 futura-bold'>LOGIN</button>
                         {isSent ? thankYouMessage : submitmsg}
                     </form>
@@ -157,5 +190,6 @@ export default function Login() {
         </div>
     );
 }
+
 
 
