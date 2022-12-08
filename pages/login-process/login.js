@@ -158,9 +158,9 @@ export default function Login() {
                         <pre>
                             {value1 && isValidPhoneNumber(value1) ? "Your phone number is valid" : ""}
                         </pre> */}
-                        <label className='text-[#009FE3]'>OR</label>
+                       
                         <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='member' />
-
+                        <label className='text-[#009FE3]'>OR</label>
                         <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' />
                         <button type='submit' className='bg-[#009FE3] rounded-md p-3 futura-bold'>LOGIN</button>
                         {isSent ? thankYouMessage : submitmsg}
