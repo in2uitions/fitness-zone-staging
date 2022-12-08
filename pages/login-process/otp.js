@@ -5,11 +5,16 @@ import OtpTimer from "otp-timer";
 export default function Otp() {
     const { query } = useRouter()
     const router = useRouter()
+
     const submitOTP = async event => {
         event.preventDefault();
 
-        const getTokenAPI = async () => {
+        const getValidOtp = async () => {
             try {
+                var registraitonRawData = JSON.stringify({
+                    "OTP": event.target.otp?.value
+                });
+                console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -22,8 +27,11 @@ export default function Otp() {
                     registrationRequestOptions
                 );
                 const data = await res.json();
-                console.log(data + "otp")
-                if (data.isValid = true) {
+                if (data.isValid == true) {
+                    localStorage.setItem("OTP", JSON.stringify(event.target.otp.value));
+                    localStorage.setItem("Country", JSON.stringify(event.target.country.value));
+                    localStorage.setItem("Phone", phoneNumber);
+                    localStorage.setItem("Member", JSON.stringify(event.target.member.value));
                     router.push({ pathname: "/login-process/dashboard" })
                 }
                 else {
@@ -34,11 +42,11 @@ export default function Otp() {
                 console.log(err);
             }
         };
-        getTokenAPI();
+        getValidOtp();
     };
-    const submit = () => {
+    const resendOTP = () => {
 
-        const getTokenAPI = async () => {
+        const getOTP = async () => {
             try {
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
@@ -52,9 +60,8 @@ export default function Otp() {
                     registrationRequestOptions
                 );
                 const data = await res.json();
-                console.log(data + "otp")
-                // if (data.isValid = true) {
-                //     router.push({ pathname: "/dashboard" })
+                // if (data.isValid == true) {
+                //     router.push({ pathname: "/login-process/dashboard" })
                 // }
                 // else {
                 //     alert("Wrong OTP");
@@ -64,7 +71,7 @@ export default function Otp() {
                 console.log(err);
             }
         };
-        getTokenAPI();
+        getOTP();
         // console.log("button clicked");
     };
     return (
@@ -76,12 +83,12 @@ export default function Otp() {
 
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2 mb-5"><span>Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
-                        // minutes={2}
-                        seconds={3}
+                        minutes={2}
+                        seconds={0}
                         text=""
                         ButtonText="Resend Now"
-                        resend={submit}
-                        onClick={submit}
+                        resend={resendOTP}
+                        onClick={resendOTP}
                         textColor="#009FE3"
                         background="#00000000"
                         buttonColor="#009FE3"

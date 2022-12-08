@@ -14,7 +14,6 @@ import "react-phone-number-input/style.css";
 export default function Login() {
     const [isSent, setIsSent] = useState(false);
     const [isNotSent, setIsNotSent] = useState(false)
-    // const [value, setvalue] = useState();
     const [value1, setValue1] = useState();
     const thankYouMessage = <h3>Thank you for your submission!</h3>;
     const MEMBER = 'memberId';
@@ -33,7 +32,7 @@ export default function Login() {
             ...selectedTab,
             [index]: event.target?.value
         }
-        console.log(event.target?.value + "test")
+        // console.log(event.target?.value + "test")
         const newObject = {};
         Object.keys(object).sort().forEach(function (v, i) {
             newObject[v] = object[v];
@@ -53,57 +52,52 @@ export default function Login() {
                 );
                 const tokenData = await res.json();
                 localStorage.setItem('token', tokenData.token);
-                const submitContactForm = async () => {
+                const submitLoginForm = async () => {
                     const params = '';
-                    const apiEndPoint = '';
+                    const endPoints = '';
 
                     for (const key in selectedTab) {
                         if (selectedTab[key] != 0 && selectedTab[key] != '') {
                             params = `${key}=${selectedTab[key]}`;
-                            apiEndPoint = key
+                            endPoints = key
                         }
 
                     }
-                    console.log(apiEndPoint)
+                    // console.log(endPoints)
                     try {
-                        var registraitonRawData = JSON.stringify({
+                        var registraitonLoginData = JSON.stringify({
                             "Country": event.target.country?.value,
                             "Phone_member": event.target.phone_member?.value,
                             "Member": event.target.member.value,
                             "Phone": event.target.phone.value,
                         });
-                        console.log(registraitonRawData);
-                        var registrationHeaders = new Headers();
-                        registrationHeaders.append("Authorization", "Bearer " + tokenData.token);
-                        registrationHeaders.append("Content-Type", "application/json");
+                        console.log(registraitonLoginData);
+                        var registrationLoginHeaders = new Headers();
+                        registrationLoginHeaders.append("Authorization", "Bearer " + tokenData.token);
+                        registrationLoginHeaders.append("Content-Type", "application/json");
                         var registrationRequestOptions = {
                             method: 'GET',
-                            headers: registrationHeaders
+                            headers: registrationLoginHeaders
                         };
-                        const res = await fetch(
+                        const memberValidation = await fetch(
                             `https://api.fitnessclubapp.com/api/Membership/Member/IsValid?${params}`, registrationRequestOptions);
-                        const data = await res.json();
-                        console.log(data);
+                        const data = await memberValidation.json();
                         const phoneNumber = '';
                         if (data.isValid != true) {
                             alert("The member does not exist in our database")
                         }
-                        if (apiEndPoint == MEMBER) {
-                            var registrationRequestOptions = {
-                                method: 'GET',
-                                headers: registrationHeaders,
-                            };
-                            const res = await fetch(
-                                `https://api.fitnessclubapp.com/api/Membership/Member/GetMobile/${selectedTab[apiEndPoint]}`, registrationRequestOptions);
-                            const data = await res.json();
+                        if (endPoints == MEMBER) {
+                            const getMobile = await fetch(
+                                `https://api.fitnessclubapp.com/api/Membership/Member/GetMobile/${selectedTab[endPoints]}`, registrationRequestOptions);
+                            const data = await getMobile.json();
                             phoneNumber = data;
 
-                        } else if (apiEndPoint == MOBILE) {
-                            phoneNumber = selectedTab[apiEndPoint]
+                        } else if (endPoints == MOBILE) {
+                            phoneNumber = selectedTab[endPoints]
                         }
                         if (data.isValid == true && phoneNumber) {
-                            const res = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
-                            const data = await res.json();
+                            const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
+                            const data = await SendOTPMessage.json();
                             setIsSent(true)
                             localStorage.setItem("Country", JSON.stringify(event.target.country.value));
                             localStorage.setItem("Phone", phoneNumber);
@@ -111,7 +105,7 @@ export default function Login() {
                             event.target.country.value = '';
                             event.target.phone.value = '';
                             event.target.member.value = '';
-                                router.push({ pathname: "/login-process/otp", query: { phoneNumber } })
+                            router.push({ pathname: "/login-process/otp", query: { phoneNumber } })
                         }
                         else {
                             setIsNotSent(true)
@@ -121,7 +115,7 @@ export default function Login() {
                     }
                 };
 
-                submitContactForm();
+                submitLoginForm();
 
             } catch (err) {
                 console.log(err);
@@ -158,7 +152,7 @@ export default function Login() {
                         <pre>
                             {value1 && isValidPhoneNumber(value1) ? "Your phone number is valid" : ""}
                         </pre> */}
-                       
+
                         <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='member' />
                         <label className='text-[#009FE3]'>OR</label>
                         <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' />
