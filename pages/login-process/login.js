@@ -28,12 +28,6 @@ export default function Login() {
         [LEBANON]: 'Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
         [UAE]: 'Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1'
     }
-
-    // const phone_member_credentials = {
-    //     [MEMBER]: 'phoneNumber',
-    //     [MOBILE]: 'memberId'
-    // }
-
     function handleTabsChange({ event, index }) {
         const object = {
             ...selectedTab,
@@ -44,15 +38,9 @@ export default function Login() {
         Object.keys(object).sort().forEach(function (v, i) {
             newObject[v] = object[v];
         });
-        setValue1;
         setSelectedTab(newObject);
     }
-    function getValue(){
-        setValue1;
-    }
-    // const [value, setValue] = useState({
-    //     MOBILE: '',
-    //   })
+
     const submitLogIn = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
@@ -64,6 +52,7 @@ export default function Login() {
                     }
                 );
                 const tokenData = await res.json();
+                localStorage.setItem('token', tokenData.token);
                 const submitContactForm = async () => {
                     const params = '';
                     const apiEndPoint = '';
@@ -76,12 +65,6 @@ export default function Login() {
 
                     }
                     console.log(apiEndPoint)
-                    // for(const key in selectedTab){
-                    //     if(selectedTab[key] !=0 && selectedTab[key] != ''){
-                    //     params = `${params}${key}=${selectedTab[key]}&`; 
-                    //     }
-                    // }
-                    // params = params.slice(0, params.length-1)
                     try {
                         var registraitonRawData = JSON.stringify({
                             "Country": event.target.country?.value,
@@ -95,12 +78,8 @@ export default function Login() {
                         registrationHeaders.append("Content-Type", "application/json");
                         var registrationRequestOptions = {
                             method: 'GET',
-                            headers: registrationHeaders,
-                            // body: registraitonRawData
+                            headers: registrationHeaders
                         };
-                        // console.log(selectedTab + "test")
-                        // const res = await fetch(
-                        //     `https://api.fitnessclubapp.com/api/Membership/IsValid?${phone_member_credentials[selectedTab]}=${event.target.phone_member.value}`, registrationRequestOptions);
                         const res = await fetch(
                             `https://api.fitnessclubapp.com/api/Membership/Member/IsValid?${params}`, registrationRequestOptions);
                         const data = await res.json();
@@ -126,11 +105,13 @@ export default function Login() {
                             const res = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
                             const data = await res.json();
                             setIsSent(true)
+                            localStorage.setItem("Country", JSON.stringify(event.target.country.value));
+                            localStorage.setItem("Phone", phoneNumber);
+                            localStorage.setItem("Member", JSON.stringify(event.target.member.value));
                             event.target.country.value = '';
-                            event.target.phone_member.value = '';
-                            if (data.isValid == true) {
+                            event.target.phone.value = '';
+                            event.target.member.value = '';
                                 router.push({ pathname: "/login-process/otp", query: { phoneNumber } })
-                            }
                         }
                         else {
                             setIsNotSent(true)
@@ -162,7 +143,7 @@ export default function Login() {
                             <option value={UAE}>UAE</option>
                         </select>
 
-                        <PhoneInput
+                        {/* <PhoneInput
                             international={false}
                             countryCallingCodeEditable={true}
                             defaultCountry="LB"
@@ -176,11 +157,11 @@ export default function Login() {
                         />
                         <pre>
                             {value1 && isValidPhoneNumber(value1) ? "Your phone number is valid" : ""}
-                        </pre>
+                        </pre> */}
                         <label className='text-[#009FE3]'>OR</label>
                         <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='member' />
 
-                        {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
+                        <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' />
                         <button type='submit' className='bg-[#009FE3] rounded-md p-3 futura-bold'>LOGIN</button>
                         {isSent ? thankYouMessage : submitmsg}
                     </form>

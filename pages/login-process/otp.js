@@ -10,16 +10,21 @@ export default function Otp() {
 
         const getTokenAPI = async () => {
             try {
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'GET',
+                    headers: registrationHeaders
+                };
                 const res = await fetch(
                     `https://api.fitnessclubapp.com/api/SMS/ValidateOTP?mobileNumber=${query.phoneNumber}&otpNumber=${event.target.otp.value}`,
-                    {
-                        method: 'GET'
-                    }
+                    registrationRequestOptions
                 );
                 const data = await res.json();
                 console.log(data + "otp")
                 if (data.isValid = true) {
-                    router.push({ pathname: "/dashboard" })
+                    router.push({ pathname: "/login-process/dashboard" })
                 }
                 else {
                     alert("Wrong OTP");
@@ -35,20 +40,25 @@ export default function Otp() {
 
         const getTokenAPI = async () => {
             try {
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'GET',
+                    headers: registrationHeaders
+                };
                 const res = await fetch(
                     `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${query.phoneNumber}`,
-                    {
-                        method: 'GET'
-                    }
+                    registrationRequestOptions
                 );
                 const data = await res.json();
                 console.log(data + "otp")
-                if (data.isValid = true) {
-                    router.push({ pathname: "/dashboard" })
-                }
-                else {
-                    alert("Wrong OTP");
-                }
+                // if (data.isValid = true) {
+                //     router.push({ pathname: "/dashboard" })
+                // }
+                // else {
+                //     alert("Wrong OTP");
+                // }
 
             } catch (err) {
                 console.log(err);
@@ -66,8 +76,8 @@ export default function Otp() {
 
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2 mb-5"><span>Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
-                        minutes={2}
-                        seconds={1}
+                        // minutes={2}
+                        seconds={3}
                         text=""
                         ButtonText="Resend Now"
                         resend={submit}
@@ -82,7 +92,7 @@ export default function Otp() {
                         <input className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" id="otp" placeholder="OTP" />
                         <button type="submit" className="bg-[#009FE3] w-full p-3 rounded-md futura-bold text-center items-center">SUBMIT OTP</button>
                     </form>
-                    <a href="/login" className='text-[#009FE3] futura-book mt-4 text-center'>Back to login</a>
+                    <a href="/login-process/login" className='text-[#009FE3] futura-book mt-4 text-center'>Back to login</a>
                 </div>
             </div>
         </div>
