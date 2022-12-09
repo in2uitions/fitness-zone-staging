@@ -60,31 +60,9 @@ export default function Membership({ data = {}, style = 'white' }) {
                 <div className='container mx-auto flex flex-col justify-center mt-40'>
                     <div className='flex flex-col justify-center items-center'>
                         <img src='/gold-member.png' />
-                        <p className='futura-bold  mt-5'>GOLD MEMBERSHIP</p>
+                        <p className='futura-bold mt-5'>GOLD MEMBERSHIP</p>
                     </div>
-                    {/* <div className='flex justify-between container mt-10'>
-                        <div className='flex flex-col'>
-                            <p className='text-sm'>Status</p>
-                            <p className='futura-bold'>ACTIVE</p>
-                        </div>
-                        <div className='flex flex-col'>
-                            <p className='text-sm'>Default Club</p>
-                            <p className='futura-bold'>CITY WALK</p>
-                        </div>
-                        <button className='bg-[#009FE3] futura-bold p-3 rounded-md'>RENEW MEMBERSHIP</button>
-                    </div>
-                    <div className='flex justify-between'>
-                        <div className='flex flex-col'>
-                            <p className='text-sm'>Start Date</p>
-                            <p className='futura-bold'>25/10/2022</p>
-                        </div>
-                        <div className='flex flex-col'>
-                            <p className='text-sm'>Expiry Date</p>
-                            <p className='futura-bold'>25/10/2023</p>
-                        </div>
-                        <button className='bg-white text-[#009FE3] p-3 rounded-md'>FREEZING REQUEST</button>
-                    </div> */}
-                    <div className='grid grid-cols-12 gap-x-10 items-center'>
+                    <div className='grid grid-cols-12 gap-x-1 items-center mt-10'>
                         <div className='col-span-4'>
                         <div className='flex flex-col'>
                             <p className='text-sm'>Status</p>
@@ -112,13 +90,13 @@ export default function Membership({ data = {}, style = 'white' }) {
                         </div>
                         </div>
                     </div>
-                    <div className='flex flex-col justify-center items-center mt-10 w-full'>
+                    <div className='flex flex-col mx-auto justify-center items-start mt-10 mb-20 '>
                         <p className='text-[#009FE3] futura-bold mb-3'>Payment History</p>
                         {membership.map((item) => (
                     <>
-                    <div className='flex justify-start items-start classes-box mb-3 p-3 '>
+                    <div className='flex justify-center w-full items-center classes-box mb-3 p-3'>
                     <div className='space-x-2 flex'>
-                        <p>{item.date}</p>
+                        <p className='border-r pr-1 border-[#009FE3]'>{item.date}</p>
                         <p>{item.text}</p>
                         </div>
                     </div>

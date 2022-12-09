@@ -84,7 +84,7 @@ export default function Otp() {
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2 mb-5"><span>Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
                         minutes={2}
-                        seconds={0}
+                        seconds={1}
                         text=""
                         ButtonText="Resend Now"
                         resend={resendOTP}

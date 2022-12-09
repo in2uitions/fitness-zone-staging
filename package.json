@@ -29,6 +29,7 @@
     "otp-timer": "^1.1.5",
     "pure-react-carousel": "^1.30.1",
     "react": "18.2.0",
+    "react-bootstrap": "^2.7.0",
     "react-carousel-responsive": "0.0.31",
     "react-carousel-slider": "^2.0.13",
     "react-device-detect": "^2.2.2",

@@ -21,55 +21,20 @@ class AdmissionForm extends Component {
         let formErrors = {};
         let formIsValid = true;
 
-        //Student name
-        if (!studName) {
-            formIsValid = false;
-            formErrors["studNameErr"] = "Name is required.";
-        }
-
-        //Email
-        if (!emailId) {
-            formIsValid = false;
-            formErrors["emailIdErr"] = "Email id is required.";
-        } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailId)) {
-            formIsValid = false;
-            formErrors["emailIdErr"] = "Invalid email id.";
-        }
-
-        //DOB
-        if (!dob) {
-            formIsValid = false;
-            formErrors["dobErr"] = "Date of birth is required.";
-        } else {
-            var pattern = /^(?:\+971|00971|0)?(?:50|51|52|55|56|2|3|4|6|7|9)\d{7}$/gm;
-            let reg = /^((\+[2][3][3]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-let intReg = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
-            if (!pattern.test(dob)) {
-                formIsValid = false;
-                formErrors["dobErr"] = "Invalid date of birth";
-            }
-        }
-
-        //Gender
-        if (gender === "" || gender === "select") {
-            formIsValid = false;
-            formErrors["genderErr"] = "Select gender.";
-        }
 
         //Phone number
         if (!phoneNumber) {
             formIsValid = false;
             formErrors["phoneNumberErr"] = "Phone number is required.";
         } else {
-            var mobPattern =/^(?:\+971|00971|0)?(?:50|51|52|55|56|2|3|4|6|7|9)\d{7}$/gm;
-            let reg = /^([+]|[00]{2})([0-9]|[ -])*/;
-// let intReg = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-            if (!reg.test(phoneNumber)) {
+            var mobPattern =  /^((\+?971)|0)?5[024568]\d{7}$/;
+            let reg = /^(?:\+961|961)?(1|0?3[0-9]?|[4-6]|70|71|76|78|79|7|81?|9)\d{6}$/;
+            // let intReg = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+            if (!mobPattern.test(phoneNumber) && !reg.test(phoneNumber)) {
                 formIsValid = false;
                 formErrors["phoneNumberErr"] = "Invalid phone number.";
             }
-            else{
+            else {
                 console.log("isValid")
             }
         }
@@ -111,11 +76,11 @@ let intReg = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0
         return (
             <div className="formDiv flex flex-col justify-center items-center w-screen h-screen">
                 <h3 style={{ textAlign: "center" }}>Student Admission Form </h3>
-               <div className="my-10">
+                <div className="my-10">
                     <form onSubmit={this.handleSubmit}>
-                 
-                     
-                       <div className="my-10">
+
+
+                        <div className="my-10">
                             <label htmlFor="phoneNumber my-10">Phone Number</label>
                             <input
                                 type="text"

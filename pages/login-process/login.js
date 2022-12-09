@@ -8,10 +8,16 @@ import PhoneInput, {
     formatPhoneNumberIntl,
     parsePhoneNumber
 } from "react-phone-number-input";
+import dynamic from 'next/dynamic';
 import Input from "react-phone-number-input/input-mobile";
 import "react-phone-number-input/style.css";
+// const AdmissionForm = dynamic(
+//     () => import('./AdmissionForm'),
+//     { ssr: false }
+// );
 
 export default function Login() {
+    
     const [isSent, setIsSent] = useState(false);
     const [isNotSent, setIsNotSent] = useState(false)
     const [value1, setValue1] = useState();

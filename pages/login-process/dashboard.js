@@ -4,10 +4,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import MagicSliderDots from 'react-magic-slider-dots';
 import 'react-magic-slider-dots/dist/magic-dots.css';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Close from '@material-ui/icons/Close';
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
+import { useState, useEffect } from 'react';
+import ToggleText from '../login-process/test'
 
 export default function Dashboard({ data = {}, style = 'white' }) {
+    
     var settings = {
         dots: true,
         infinite: false,
@@ -18,6 +22,7 @@ export default function Dashboard({ data = {}, style = 'white' }) {
             return <MagicSliderDots dots={dots} numDotsToShow={3} dotWidth={30} />;
         }
     };
+    const [limit, setLimit] = useState(4);
     const carousel_components = [
         {
             image: '/dashboard-pics.png',
@@ -50,86 +55,187 @@ export default function Dashboard({ data = {}, style = 'white' }) {
             desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard'
         }
     ]
-    const classes =[
+    const [classesList, setClassesList] = useState([
         {
-            time:'09:00',
-            step:'B.Step',
-            name:'Elie',
-            city:'Dbayeh'
+            time: '08:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
         },
         {
-            time:'09:00',
-            step:'B.Step',
-            name:'Elie',
-            city:'Dbayeh'
+            time: '09:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
         },
         {
-            time:'09:00',
-            step:'B.Step',
-            name:'Elie',
-            city:'Dbayeh'
+            time: '10:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
         },
         {
-            time:'09:00',
-            step:'B.Step',
-            name:'Elie',
-            city:'Dbayeh'
+            time: '11:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
         },
         {
-            time:'09:00',
-            step:'B.Step',
-            name:'Elie',
-            city:'Dbayeh'
+            time: '12:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
+        },
+        {
+            time: '01:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
+        },
+        {
+            time: '02:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
+        },
+        {
+            time: '03:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
+        },
+        {
+            time: '04:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
+        },
+        {
+            time: '05:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
+        },
+        {
+            time: '06:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
+        },
+        {
+            time: '07:00',
+            step: 'B.Step',
+            name: 'Elie',
+            city: 'Dbayeh'
         }
-    ]
-    const checkin =[
-        {
-            date:'18/10/2022',
-            time:'14:23:04',
-            city:'Dbayeh'
-        },
-        {
-            date:'18/10/2022',
-            time:'14:23:04',
-            city:'Dbayeh'
-        },
-        {
-            date:'18/10/2022',
-            time:'14:23:04',
-            city:'Dbayeh'
+    ])
+    useEffect(() => {
+        if (classesList.length > 0) {
+            classesList[classesList.length - 1].input === ""
         }
-    ]
+    })
+
+    const handleInputChange = (event, index) => {
+        const { value } = event.target
+        const newclassesList = [...classesList]
+        newclassesList[index].input = value
+        newclassesList[index].input_rank = index + 1
+        setClassesList(newclassesList)
+    }
+
+    const handleRemoveItem = (index) => {
+        const newList = [...classesList]
+        newList.splice(index, 1)
+        setClassesList(newList)
+    }
+
+    console.log(classesList)
+
+    const [checkInList, setCheckInList] = useState([
+        {
+            date: '18/10/2022',
+            time: '14:23:04',
+            city: 'Dbayeh'
+        },
+        {
+            date: '18/10/2022',
+            time: '14:23:04',
+            city: 'Dbayeh'
+        },
+        {
+            date: '18/10/2022',
+            time: '14:23:04',
+            city: 'Dbayeh'
+        },
+        {
+            date: '18/10/2022',
+            time: '14:23:04',
+            city: 'Dbayeh'
+        },
+        {
+            date: '18/10/2022',
+            time: '14:23:04',
+            city: 'Dbayeh'
+        },
+        {
+            date: '18/10/2022',
+            time: '14:23:04',
+            city: 'Dbayeh'
+        }
+    ])
+    const [noOfCheckInElements, setnoOfCheckInElements] = useState(3);
+    const sliceCheckIn = checkInList.slice(0, noOfCheckInElements);
+    const loadMoreLessCheckIn = () => {
+        if (noOfCheckInElements == 3) {
+            setnoOfCheckInElements(checkInList.length)
+        }
+        else {
+            setnoOfCheckInElements(3)
+        }
+    }
+    const [stateCheckIn, toggleCheckIn] = useState(true);
+    const [noOfElements, setnoOfElements] = useState(4);
+    const slice = classesList.slice(0, noOfElements);
+    const loadMoreLess = () => {
+        if (noOfElements == 4) {
+            setnoOfElements(classesList.length)
+        }
+        else {
+            setnoOfElements(4)
+        }
+    }
+    const [state, toggle] = useState(true);
     return (
         <>
-        <div className={styles.container}>
+            <div className={styles.container}>
                 <nav className={styles.nav}>
                     <a href="/"><img src="/logo.png" className="logo" /></a>
-                    <Popup 
+                    <Popup
                         trigger={
                             <div className="flex items-center space-x-2">
-                            <button className="img-btn">
-                                <img src="/blue-rectangle.png" className="menu-icon" />
-                            </button>
-                            <p className="font-bold text-white futura-book cursor-pointer">Menu</p>
+                                <button className="img-btn">
+                                    <img src="/blue-rectangle.png" className="menu-icon" />
+                                </button>
+                                <p className="font-bold text-white futura-book cursor-pointer">Menu</p>
                             </div>
                         } modal
                         closeOnDocumentClick
                         position=""
                     >
-                    <div className='w-screen h-screen container mx-auto flex flex-col justify-center items-center'>
-                        <img src='/icons-person.png'/>
-                        <p className='futura-bold text-[#009FE3] mt-5'>CHARLES KHOURY</p>
-                        <div className='flex flex-col   mt-10'>
-                        <div className='flex space-x-3'>
-                            <a href='#' className='futura-book menu-member flex items-center justify-between'> My Profile<ChevronRightIcon className='fill-[#009FE3]'/></a>
-                            <a href='/login-process/membership' className='futura-book menu-member flex items-center justify-between'>Membership Settings<ChevronRightIcon className='fill-[#009FE3]'/></a>
+                        <div className='w-screen h-screen container mx-auto flex flex-col justify-center items-center'>
+                            <img src='/icons-person.png' />
+                            <p className='futura-bold text-[#009FE3] mt-5'>CHARLES KHOURY</p>
+                            <div className='flex flex-col   mt-10'>
+                                <div className='flex space-x-3'>
+                                    <a href='#' className='futura-book menu-member flex items-center justify-between'> My Profile<ChevronRightIcon className='arrow-membership' /></a>
+                                    <a href='/login-process/membership' className='futura-book menu-member flex items-center justify-between'>Membership Settings<ChevronRightIcon className='arrow-membership' /></a>
+                                </div>
+                                <div className='flex space-x-3 mt-10'>
+                                    <a href='#' className='futura-book menu-member flex items-center justify-between'>Classes / Book a class<ChevronRightIcon className='arrow-membership'/></a>
+                                    <a href='#' className='futura-book menu-member flex items-center justify-between'>Trainers / Book a package<ChevronRightIcon className='arrow-membership' /></a>
+                                </div>
+                            </div>
                         </div>
-                        <div className='flex space-x-3 mt-10'>
-                            <a href='#' className='futura-book menu-member flex items-center justify-between'>Classes / Book a class<ChevronRightIcon className='fill-[#009FE3]'/></a>
-                            <a href='#' className='futura-book menu-member flex items-center justify-between'>Trainers / Book a package<ChevronRightIcon className='fill-[#009FE3]'/></a>
-                        </div>
-                        </div>
-                    </div>
                     </Popup>
 
 
@@ -162,55 +268,67 @@ export default function Dashboard({ data = {}, style = 'white' }) {
             </section>
             <section>
                 <div className='container mx-auto mt-10 mb-20 grid grid-cols-12 gap-x-10'>
-                <div className='col-span-3'>
-                <p className='text-[#009FE3] futura-bold'>Membership Details</p>
-                <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
-                <img src='/gold-member.png'/>
-                <p className="futura-bold">Gold Membership</p>
-                <p className='rounded-md flex space-x-2 text-white p-3 active-button'><span>Active till:</span><span className='text-white futura-bold'>25/10/2023</span></p>
-                <p className='futura-bold'>VIEW MEMBERSHIP DETAILS<ChevronRightIcon className='fill-[#009FE3]'/></p>
-                </div>
-                </div>
-                <div className='col-span-3'>
-                <p className='text-[#009FE3] futura-bold mb-10'>My Upcoming Classes</p>
-                {classes.map((item) => (
-                    <>
-                    <div className='flex justify-start items-start classes-box mb-3 p-3'>
-                    <div className='space-x-2 flex'>
-                        <p>{item.time}</p>
-                        <p>{item.step}</p>
-                        <p>{item.name}</p>
-                        </div>
-                        <div className='justify-end items-end ml-auto'>
-                    <p>{item.city}</p>
-                    </div>
-                    </div>
-                    </>
-                    ))}
-                </div>
-                <div className='col-span-3'>
-                <p className='text-[#009FE3] mb-10 futura-bold'>My Recent Checkins</p>
-                {checkin.map((item) => (
-                    <>
-                    <div className='flex justify-start items-start classes-box mb-3 p-3'>
-                    <div className='space-x-2 flex'>
-                        <p>{item.date}</p>
-                        <p>{item.time}</p>
-                        <p>{item.city}</p>
+                    <div className='col-span-3'>
+                        <p className='text-[#009FE3] futura-bold'>Membership Details</p>
+                        <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
+                            <img src='/gold-member.png' />
+                            <p className="futura-bold">Gold Membership</p>
+                            <p className='rounded-md flex space-x-2 text-white p-3 active-button'><span>Active till:</span><span className='text-white futura-bold'>25/10/2023</span></p>
+                            <p className='futura-bold'>VIEW MEMBERSHIP DETAILS<ChevronRightIcon className='arrow-membership' /></p>
                         </div>
                     </div>
-                    </>
-                    ))}
-                </div>
-                <div className='col-span-3'>
-                <p className='text-[#009FE3] futura-bold'>Training Packages</p>
-                <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
-                <img src='/trainer-package.png'/>
-                <p className="futura-bold">KAMEL RAAD</p>
-                <p className='rounded-md flex space-x-2 text-white p-3 active-button'><span>Sessions:</span><span className='text-white futura-bold'>09/15</span></p>
-                <p className='futura-bold'>VIEW PACKAGE DETAILS<ChevronRightIcon className='fill-[#009FE3]'/></p>
-                </div>
-                </div>
+                    <div className='col-span-3'>
+                        <p className='text-[#009FE3] futura-bold mb-10'>My Upcoming Classes</p>
+                        {slice.map((item, index) => (
+                            <>
+                                <div className='flex justify-start items-start classes-box mb-3 p-3' onChange={(event) => handleInputChange(event, index)}>
+                                    <div className='space-x-2 flex'>
+                                        <p className='futura-book pr-1 border-r border-[#009FE3]'>{item.time}</p>
+                                        <p className='futura-book pr-2 border-r border-white'>{item.step}</p>
+                                        <p className='futura-book'>{item.name}</p>
+                                    </div>
+                                    <div className='flex justify-end space-x-2 items-end ml-auto'>
+                                        <p className='futura-book' style={{ fontSize: 14 }}>{item.city}</p>
+                                        <button onClick={() => handleRemoveItem(index)}>
+                                            <p className='flex items-center text-[#8F8F8F] futura-bold text-sm'>Cancel<Close className='x-close' /></p>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </>
+                        ))}
+
+                        <div className='flex justify-center items-center futura-bold' onClick={() => { toggle(!state); loadMoreLess() }}>
+                            {state ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
+                        </div>
+
+                    </div>
+                    <div className='col-span-3'>
+                        <p className='text-[#009FE3] mb-10 futura-bold'>My Recent Checkins</p>
+                        {sliceCheckIn.map((item) => (
+                            <>
+                                <div className='flex justify-start items-start classes-box mb-3 p-3' >
+                                    <div className='space-x-2 flex'>
+                                        <p>{item.date}</p>
+                                        <p className='border-r border-[#009FE3]'>{item.time}</p>
+                                        <p>{item.city}</p>
+                                    </div>
+                                </div>
+                            </>
+                        ))}
+                        <div className='flex justify-center items-center futura-bold' onClick={() => { toggleCheckIn(!stateCheckIn); loadMoreLessCheckIn() }}>
+                            {stateCheckIn ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
+                        </div>
+                    </div>
+                    <div className='col-span-3'>
+                        <p className='text-[#009FE3] futura-bold'>Training Packages</p>
+                        <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
+                            <img src='/trainer-package.png' />
+                            <p className="futura-bold">KAMEL RAAD</p>
+                            <p className='rounded-md flex space-x-2 text-white p-3 active-button'><span>Sessions:</span><span className='text-white futura-bold'>09/15</span></p>
+                            <p className='futura-bold'>VIEW PACKAGE DETAILS<ChevronRightIcon className='arrow-membership' /></p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </>
