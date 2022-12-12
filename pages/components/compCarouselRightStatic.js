@@ -115,7 +115,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
 
     return (
         <>
-            <div className={`lg:flex relative items-center px-14 mt-32 mb-56 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex relative items-center px-14 pt-44 mb-56 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
                 <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block md:block ">
                     <div className="slideC">
                         {data.static_items.map((item, i) => (

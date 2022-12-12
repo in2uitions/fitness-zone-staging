@@ -39,6 +39,9 @@ export default function CompContact({ data = {}, style = 'white' }) {
                         <div className="">
                             <button className="border-[#009FE3] text-white border-2 p-2 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">WORK WITH US</button>
                         </div>
+                        <div className="">
+                            <a href="/about/franchise" className="border-[#009FE3] text-white border-2 p-2 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">GROW WITH US</a>
+                        </div>
                     </div>
                     <div className="mt-10">
                         <p className=" futura-bold text-white">ENQUIRE NOW</p>

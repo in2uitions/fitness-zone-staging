@@ -8,8 +8,6 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
 
-
-
     let timeout = setTimeout(() => {
         if (nextSlide == true && clickTiggered == true) {
             activeSlide < data.static_items.length - 1 && setactiveSlide(activeSlide + 1);
@@ -69,54 +67,11 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                 zIndex: 7
             };
     };
-    // const getTextStyles = (index) => {
-    //     if (activeSlide === index)
-    //         return {
-    //             opacity: 1,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 22
-    //         };
-    //     else if (activeSlide - 1 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 9
-    //         };
-    //     else if (activeSlide + 1 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 9
-    //         };
-    //     else if (activeSlide - 2 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 8
-    //         };
-    //     else if (activeSlide + 2 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 8
-    //         };
-    //     else if (index < activeSlide - 2)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 7
-    //         };
-    //     else if (index > activeSlide + 2)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 7
-    //         };
-    // };
+    
     return (
         <>
 
-            <div className={`lg:flex relative px-14 container mt-60 pb-20 ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex relative px-14 container mt-40 pb-24 ${isFlipped ? 'flex-row-reverse' : ''}`}>
 
                 <div className="lg:w-1/2">
                     <div className="slideCC">
@@ -124,11 +79,6 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                             <div className="">
                                 <div
                                     className=""
-                                // style={{
-                                //     background: item.bgColor,
-                                //     boxShadow: `0 5px 20px ${item.bgColor}30`,
-                                //     ...getTextStyles(i),
-                                // }}
                                 >
                                     <div className="sliderContent">
                                         <div className="flex items-baseline space-x-5">
@@ -140,13 +90,6 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                     </div>
                                 </div>
                             </div>
-                            {/* <div
-                                    className="reflection"
-                                    style={{
-                                        background: `linear-gradient(to bottom, ${item.bgColor}40, transparent)`,
-                                        ...getTextStyles(i),
-                                    }}
-                                /> */}
                         </>
                     </div>
                 </div>

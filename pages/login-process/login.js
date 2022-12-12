@@ -17,7 +17,7 @@ import "react-phone-number-input/style.css";
 // );
 
 export default function Login() {
-    
+
     const [isSent, setIsSent] = useState(false);
     const [isNotSent, setIsNotSent] = useState(false)
     const [value1, setValue1] = useState();
@@ -38,12 +38,13 @@ export default function Login() {
             ...selectedTab,
             [index]: event.target?.value
         }
-        // console.log(event.target?.value + "test")
         const newObject = {};
         Object.keys(object).sort().forEach(function (v, i) {
             newObject[v] = object[v];
         });
         setSelectedTab(newObject);
+        const { name, value } = event.target;
+        setState({ [name]: value });
     }
 
     const submitLogIn = async event => {
@@ -69,7 +70,6 @@ export default function Login() {
                         }
 
                     }
-                    // console.log(endPoints)
                     try {
                         var registraitonLoginData = JSON.stringify({
                             "Country": event.target.country?.value,
@@ -128,7 +128,47 @@ export default function Login() {
             }
         };
         getTokenAPI();
+
+
+        if (handleFormValidation()) {
+            alert("You have been successfully registered.");
+            setState(initialState);
+            event.target.value='';
+        }
     };
+    const [state, setState] = useState({
+        phoneNumber: '',
+        formErrors: {}
+    })
+    const [
+        phoneNumberErr, setphoneNumberErr
+    ] = useState(formErrors);
+    const initialState = state;
+
+    const formErrors = '';
+    function handleFormValidation() {
+        const { phoneNumber } = state;
+        let formErrors = {};
+        let formIsValid = true;
+
+
+        if (!phoneNumber) {
+            formIsValid = false;
+            setphoneNumberErr("Phone number is required.");
+        } else {
+            var mobPattern = /^((\+?971)|0)?5[024568]\d{7}$/;
+            let reg = /^(?:\+961|961)?(1|0?3[0-9]?|[4-6]|70|71|76|78|79|7|81?|9)\d{6}$/;
+            if (!mobPattern.test(phoneNumber) && !reg.test(phoneNumber)) {
+                formIsValid = false;
+                setphoneNumberErr("Invalid phone number.");
+            }
+            else {
+                console.log("isValid")
+            }
+        }
+        setState({ formErrors: formErrors });
+        return formIsValid;
+    }
     return (
         <div>
 
@@ -161,7 +201,21 @@ export default function Login() {
 
                         <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='member' />
                         <label className='text-[#009FE3]'>OR</label>
-                        <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' />
+                        {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
+
+                        <input
+                            type="input"
+                            name="phoneNumber"
+                            onChange={(e) => handleTabsChange({ event: e, index: MOBILE })}
+                            value={state.phoneNumber}
+                            placeholder="Mobile Number" id='phone'
+                            className={phoneNumberErr ? " showError border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" : "border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder"}
+                        />
+                        {phoneNumberErr && (
+                            <div style={{ color: "red", paddingBottom: 10 }}>
+                                {phoneNumberErr}
+                            </div>
+                        )}
                         <button type='submit' className='bg-[#009FE3] rounded-md p-3 futura-bold'>LOGIN</button>
                         {isSent ? thankYouMessage : submitmsg}
                     </form>

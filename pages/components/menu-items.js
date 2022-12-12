@@ -51,6 +51,16 @@ export default function Menu(data = {}) {
             "id": 6,
             "label": "CONTACT US",
             "to": '/about/contact-us'
+        }, 
+        {
+            "id":7,
+            "label": "",
+            "to":'/about/franchise'
+        },
+        {
+            "id":8,
+            "label":"",
+            "to":"/about/career"
         }
     ];
 

@@ -16,6 +16,7 @@ import CompCarouselStatic from '../pages/components/compCarouselStatic';
 import CompCarouselRightStatic from '../pages/components/compCarouselRightStatic';
 import CompCarouselStaticRightMobile from '../pages/components/compStaticRightMobile';
 import CompStaticMobile from '../pages/components/compStaticMobile';
+import CompCareers from '../pages/components/compCareers';
 // import Classes from '../pages/components/classes';
 
 export default function Sections({ data = {} }) {
@@ -140,6 +141,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "comp_map") {
                     return <> <CompMap data={section.item} key="" center={{ lat: 33.937694552709, lng: 35.59059464931414 }} zoom={13} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></>
+                }
+                if (section.collection == "comp_careers"){
+                    return <CompCareers data={section.item} style={section.item?.background_color}/>
                 }
             })}
         </div>
