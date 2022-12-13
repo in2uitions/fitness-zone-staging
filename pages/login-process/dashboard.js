@@ -316,7 +316,7 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                                 </div>
                             </>
                         ))}
-                        <div className='flex justify-center items-center cursor-pointer futura-bold' onClick={() => { toggleCheckIn(!stateCheckIn); loadMoreLessCheckIn() }}>
+                        <div className='flex justify-center items-center cursor-pointer futura-bold text-white' onClick={() => { toggleCheckIn(!stateCheckIn); loadMoreLessCheckIn() }}>
                             {stateCheckIn ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
                         </div>
                     </div>

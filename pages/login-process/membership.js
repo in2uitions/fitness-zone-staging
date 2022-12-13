@@ -65,27 +65,27 @@ export default function Membership({ data = {}, style = 'white' }) {
                     <div className='grid grid-cols-12 gap-x-1 items-center mt-10'>
                         <div className='col-span-4'>
                         <div className='flex flex-col'>
-                            <p className='text-sm'>Status</p>
-                            <p className='futura-bold'>ACTIVE</p>
+                            <p className='text-sm text-white'>Status</p>
+                            <p className='futura-bold text-white'>ACTIVE</p>
                         </div>
                         <div className='flex flex-col  mt-5'>
-                            <p className='text-sm'>Start Date</p>
-                            <p className='futura-bold'>25/10/2022</p>
+                            <p className='text-sm text-white'>Start Date</p>
+                            <p className='futura-bold text-white'>25/10/2022</p>
                         </div>
                         </div>
                         <div className='col-span-4'>
                         <div className='flex flex-col'>
-                            <p className='text-sm'>Default Club</p>
-                            <p className='futura-bold'>CITY WALK</p>
+                            <p className='text-sm text-white'>Default Club</p>
+                            <p className='futura-bold text-white'>CITY WALK</p>
                         </div>
                         <div className='flex flex-col  mt-5'>
-                            <p className='text-sm'>Expiry Date</p>
-                            <p className='futura-bold'>25/10/2023</p>
+                            <p className='text-sm text-white'>Expiry Date</p>
+                            <p className='futura-bold text-white'>25/10/2023</p>
                         </div>
                         </div>
                         <div className='col-span-4'>
                         <div className='flex flex-col'>
-                        <button className='bg-[#009FE3] futura-bold p-3 rounded-md'>RENEW MEMBERSHIP</button>
+                        <button className='bg-[#009FE3] futura-bold p-3 rounded-md text-white'>RENEW MEMBERSHIP</button>
                         <button className='bg-white text-[#009FE3] p-3 rounded-md  mt-5'>FREEZING REQUEST</button>
                         </div>
                         </div>
@@ -96,8 +96,8 @@ export default function Membership({ data = {}, style = 'white' }) {
                     <>
                     <div className='flex justify-start w-full items-center classes-box mb-3 p-3'>
                     <div className='space-x-2 flex'>
-                        <p className='border-r pr-1 border-[#009FE3]'>{item.date}</p>
-                        <p>{item.text}</p>
+                        <p className='border-r pr-1 border-[#009FE3] text-white'>{item.date}</p>
+                        <p className='text-white'>{item.text}</p>
                         </div>
                     </div>
                     </>
