@@ -216,7 +216,7 @@ export default function Login() {
                                 {phoneNumberErr}
                             </div>
                         )}
-                        <button type='submit' className='bg-[#009FE3] rounded-md p-3 futura-bold'>LOGIN</button>
+                        <button type='submit' className='bg-[#009FE3] rounded-md p-3 futura-bold text-white'>LOGIN</button>
                         {isSent ? thankYouMessage : submitmsg}
                     </form>
                     <a href="/" className='text-[#009FE3] futura-book mt-4 text-center'>Back to website</a>

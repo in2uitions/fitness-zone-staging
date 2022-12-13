@@ -82,7 +82,7 @@ export default function Otp() {
                     <img src="/logo.png" className='w-full h-auto' />
 
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
-                    <p className="flex items-center space-x-2 mb-5"><span>Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
+                    <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
                         minutes={2}
                         seconds={1}
                         text=""
@@ -97,7 +97,7 @@ export default function Otp() {
                     <label className="text-[#009FE3] futura-bold">ENTER OTP</label>
                     <form onSubmit={submitOTP}>
                         <input className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" id="otp" placeholder="OTP" />
-                        <button type="submit" className="bg-[#009FE3] w-full p-3 rounded-md futura-bold text-center items-center">SUBMIT OTP</button>
+                        <button type="submit" className="bg-[#009FE3] w-full p-3 rounded-md futura-bold text-center items-center text-white">SUBMIT OTP</button>
                     </form>
                     <a href="/login-process/login" className='text-[#009FE3] futura-book mt-4 text-center'>Back to login</a>
                 </div>

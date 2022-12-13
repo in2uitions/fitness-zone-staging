@@ -9,7 +9,7 @@ import CompContact from '../pages/components/compContact';
 import CompCarouselMobile from '../pages/components/compCarouselMobile';
 import CompCarouselRight from '../pages/components/compCarouselRight';
 import CompCarouselRightMobile from '../pages/components/compCarouselRightMobile';
-import CompTimeline from '../pages/components/compTimelineContent';
+// import CompTimeline from '../pages/components/compTimelineContent';
 import CompTimelineMobile from '../pages/components/comTimelineMobile';
 import CompMap from '../pages/components/compMap';
 import CompCarouselStatic from '../pages/components/compCarouselStatic';
@@ -135,10 +135,10 @@ export default function Sections({ data = {} }) {
                 if (section.collection == "comp_contact") {
                     return <CompContact data={section.item} />;
                 }
-                if (section.collection == "comp_timeline") {
+                {/* if (section.collection == "comp_timeline") {
                     return <><BrowserView><CompTimeline data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></BrowserView>
                     <MobileView><CompTimelineMobile data={section.item} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></MobileView></>
-                }
+                } */}
                 if (section.collection == "comp_map") {
                     return <> <CompMap data={section.item} key="" center={{ lat: 33.937694552709, lng: 35.59059464931414 }} zoom={13} style={section.item?.background_color} isFlipped={section.item?.image_position == "left"} /></>
                 }

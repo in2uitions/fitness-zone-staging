@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Popup from "reactjs-popup";
 
 export default function CompCarouselStatic({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
+
+    const [count, setCount] = useState(0);
+    const [scrollOver, setScroll] = useState(false);
+
+    useEffect(() => {
+        if (scrollOver) {
+            const timer = setInterval(() => {
+                setactiveSlide((prevCount) => (prevCount + 1) % data.static_items.length);
+            }, 3000);
+            return () => clearInterval(timer);
+        } else {
+            setCount(0);
+        }
+    }, [scrollOver]);
 
     let timeout = setTimeout(() => {
         if (nextSlide == true && clickTiggered == true) {
@@ -67,11 +82,11 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                 zIndex: 7
             };
     };
-    
+
     return (
         <>
 
-            <div className={`lg:flex relative px-14 container mt-40 pb-24 ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex relative items-center px-14 pt-24 mb-44 pb-24 container ${isFlipped ? 'flex-row-reverse' : ''}`}>
 
                 <div className="lg:w-1/2">
                     <div className="slideCC">
@@ -86,6 +101,26 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                             {data.icon ? <img src={`${image_url}${data?.icon?.id}`} className="w-16 h-8" altv={data?.title} /> : null}
                                         </div>
                                         {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}
+                                        {data.show_more_description ? <Popup
+                                            trigger={
+                                                <button>
+                                                    <p className="bg-transparent text-md text-[#D8D8D8] futura-book mt-2">Read more ...</p>
+                                                </button>
+                                            } modal
+                                            position="center"
+                                            closeOnDocumentClick={false}
+                                        >
+                                            {close => (
+                                                <div className="container w-screen h-screen flex flex-col justify-center items-center">
+                                                    <button className="flex w-full justify-end mb-3" onClick={close}>
+                                                        &times;
+                                                    </button>
+                                                    {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}
+                                                    {data.show_more_description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.show_more_description}`)} </p> : null}
+                                                    {/* <FooterPopup /> */}
+                                                </div>
+                                            )}
+                                        </Popup> : null}
                                         {data.button_title ? <a href={data.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
                                     </div>
                                 </div>
@@ -105,9 +140,13 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                             ...getStyles(i),
                                         }}
                                     >
-                                        <div className="sliderContentImage">
+                                        {data.with_timer ?<div className="sliderContentImage" onLoad={() => setScroll(true)}>
                                             {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="trainerimg none-event" altv={item.static_items_id?.title} /> : null}
-                                        </div>
+
+                                        </div> : null}
+                                        {data.without_timer ?<div className="sliderContentImage">
+                                            {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="trainerimg none-event" altv={item.static_items_id?.title} /> : null}
+                                        </div>:null}
                                     </div>
                                 </div>
                                 <div

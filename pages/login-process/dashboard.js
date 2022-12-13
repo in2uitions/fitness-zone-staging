@@ -246,7 +246,7 @@ export default function Dashboard({ data = {}, style = 'white' }) {
             <section>
                 <div className='container mx-auto flex flex-col justify-center mt-40'>
                     <p className='text-[#009FE3] futura-bold'>HELLO</p>
-                    <p className='futura-book'>Let’s burn some calories</p>
+                    <p className='futura-book text-white'>Let’s burn some calories</p>
                     <Slider className='mt-10' {...settings}>
                         {carousel_components.map((item) => (
                             <>
@@ -255,9 +255,9 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                                     <div className='absolute flex flex-col bottom-8 px-10'>
                                         <div className='flex space-x-2 items-start'>
                                             <img src={item.on_icon} className="h-6" />
-                                            <p className='futura-bold text-3xl'>{item.text}</p>
+                                            <p className='futura-bold text-3xl text-white'>{item.text}</p>
                                         </div>
-                                        <p className='desc-dashboard'>{item.desc}</p>
+                                        <p className='desc-dashboard text-white'>{item.desc}</p>
                                     </div>
                                 </div>
 
@@ -272,9 +272,9 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                         <p className='text-[#009FE3] futura-bold'>Membership Details</p>
                         <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
                             <img src='/gold-member.png' />
-                            <p className="futura-bold">Gold Membership</p>
-                            <p className='rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button'><span>Active till:</span><span className='text-white futura-bold'>25/10/2023</span></p>
-                            <p className='futura-bold cursor-pointer'>VIEW MEMBERSHIP DETAILS<ChevronRightIcon className='arrow-membership' /></p>
+                            <p className="futura-bold text-white">Gold Membership</p>
+                            <p className='rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button'><span className='text-white'>Active till:</span><span className='text-white futura-bold'>25/10/2023</span></p>
+                            <p className='futura-bold cursor-pointer text-white'>VIEW MEMBERSHIP DETAILS<ChevronRightIcon className='arrow-membership' /></p>
                         </div>
                     </div>
                     <div className='col-span-3'>
@@ -283,12 +283,12 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                             <>
                                 <div className='flex justify-start items-start classes-box mb-3 p-3' onChange={(event) => handleInputChange(event, index)}>
                                     <div className='space-x-2 flex'>
-                                        <p className='futura-book pr-1 border-r border-[#009FE3]'>{item.time}</p>
-                                        <p className='futura-book pr-2 border-r border-white'>{item.step}</p>
-                                        <p className='futura-book'>{item.name}</p>
+                                        <p className='futura-book pr-1 border-r border-[#009FE3] text-white'>{item.time}</p>
+                                        <p className='futura-book pr-2 border-r border-white text-white'>{item.step}</p>
+                                        <p className='futura-book text-white'>{item.name}</p>
                                     </div>
                                     <div className='flex justify-end space-x-2 items-end ml-auto'>
-                                        <p className='futura-book' style={{ fontSize: 14 }}>{item.city}</p>
+                                        <p className='futura-book text-white' style={{ fontSize: 14 }}>{item.city}</p>
                                         <button onClick={() => handleRemoveItem(index)}>
                                             <p className='flex items-center text-[#8F8F8F] futura-bold text-sm'>Cancel<Close className='x-close' /></p>
                                         </button>
@@ -298,7 +298,7 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                             </>
                         ))}
 
-                        <div className='flex justify-center items-center cursor-pointer futura-bold' onClick={() => { toggle(!state); loadMoreLess() }}>
+                        <div className='flex justify-center text-white items-center cursor-pointer futura-bold' onClick={() => { toggle(!state); loadMoreLess() }}>
                             {state ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
                         </div>
 
@@ -309,9 +309,9 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                             <>
                                 <div className='flex justify-start items-start classes-box mb-3 p-3' >
                                     <div className='space-x-2 flex'>
-                                        <p>{item.date}</p>
-                                        <p className='border-r border-[#009FE3]'>{item.time}</p>
-                                        <p>{item.city}</p>
+                                        <p className='text-white'>{item.date}</p>
+                                        <p className='border-r border-[#009FE3] text-white'>{item.time}</p>
+                                        <p className='text-white'>{item.city}</p>
                                     </div>
                                 </div>
                             </>
@@ -324,9 +324,9 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                         <p className='text-[#009FE3] futura-bold'>Training Packages</p>
                         <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
                             <img src='/trainer-package.png' />
-                            <p className="futura-bold">KAMEL RAAD</p>
-                            <p className='rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button'><span>Sessions:</span><span className='text-white futura-bold'>09/15</span></p>
-                            <p className='futura-bold cursor-pointer'>VIEW PACKAGE DETAILS<ChevronRightIcon className='arrow-membership' /></p>
+                            <p className="futura-bold text-white">KAMEL RAAD</p>
+                            <p className='rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button'><span className='text-white'>Sessions:</span><span className='text-white futura-bold'>09/15</span></p>
+                            <p className='futura-bold cursor-pointer text-white'>VIEW PACKAGE DETAILS<ChevronRightIcon className='arrow-membership' /></p>
                         </div>
                     </div>
                 </div>
