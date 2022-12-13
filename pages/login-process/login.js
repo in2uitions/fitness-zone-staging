@@ -74,7 +74,7 @@ export default function Login() {
                         var registraitonLoginData = JSON.stringify({
                             "Country": event.target.country?.value,
                             "Phone_member": event.target.phone_member?.value,
-                            "Member": event.target.member.value,
+                            "Member": event.target.memberId.value,
                             "Phone": event.target.phone.value,
                         });
                         console.log(registraitonLoginData);
@@ -89,7 +89,7 @@ export default function Login() {
                             `https://api.fitnessclubapp.com/api/Membership/Member/IsValid?${params}`, registrationRequestOptions);
                         const data = await memberValidation.json();
                         const phoneNumber = '';
-                        if (data.isValid != true) {
+                        if (data.isValid == false) {
                             alert("The member does not exist in our database")
                         }
                         if (endPoints == MEMBER) {
@@ -107,10 +107,10 @@ export default function Login() {
                             setIsSent(true)
                             localStorage.setItem("Country", JSON.stringify(event.target.country.value));
                             localStorage.setItem("Phone", phoneNumber);
-                            localStorage.setItem("Member", JSON.stringify(event.target.member.value));
+                            localStorage.setItem("Member", JSON.stringify(event.target.memberId.value));
                             event.target.country.value = '';
                             event.target.phone.value = '';
-                            event.target.member.value = '';
+                            event.target.memberId.value = '';
                             router.push({ pathname: "/login-process/otp", query: { phoneNumber } })
                         }
                         else {
@@ -199,7 +199,7 @@ export default function Login() {
                             {value1 && isValidPhoneNumber(value1) ? "Your phone number is valid" : ""}
                         </pre> */}
 
-                        <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='member' />
+                        <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='memberId' />
                         <label className='text-[#009FE3]'>OR</label>
                         {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
 

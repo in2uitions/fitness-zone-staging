@@ -273,8 +273,8 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                         <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
                             <img src='/gold-member.png' />
                             <p className="futura-bold">Gold Membership</p>
-                            <p className='rounded-md flex space-x-2 text-white p-3 active-button'><span>Active till:</span><span className='text-white futura-bold'>25/10/2023</span></p>
-                            <p className='futura-bold'>VIEW MEMBERSHIP DETAILS<ChevronRightIcon className='arrow-membership' /></p>
+                            <p className='rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button'><span>Active till:</span><span className='text-white futura-bold'>25/10/2023</span></p>
+                            <p className='futura-bold cursor-pointer'>VIEW MEMBERSHIP DETAILS<ChevronRightIcon className='arrow-membership' /></p>
                         </div>
                     </div>
                     <div className='col-span-3'>
@@ -298,7 +298,7 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                             </>
                         ))}
 
-                        <div className='flex justify-center items-center futura-bold' onClick={() => { toggle(!state); loadMoreLess() }}>
+                        <div className='flex justify-center items-center cursor-pointer futura-bold' onClick={() => { toggle(!state); loadMoreLess() }}>
                             {state ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
                         </div>
 
@@ -316,7 +316,7 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                                 </div>
                             </>
                         ))}
-                        <div className='flex justify-center items-center futura-bold' onClick={() => { toggleCheckIn(!stateCheckIn); loadMoreLessCheckIn() }}>
+                        <div className='flex justify-center items-center cursor-pointer futura-bold' onClick={() => { toggleCheckIn(!stateCheckIn); loadMoreLessCheckIn() }}>
                             {stateCheckIn ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
                         </div>
                     </div>
@@ -325,8 +325,8 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                         <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
                             <img src='/trainer-package.png' />
                             <p className="futura-bold">KAMEL RAAD</p>
-                            <p className='rounded-md flex space-x-2 text-white p-3 active-button'><span>Sessions:</span><span className='text-white futura-bold'>09/15</span></p>
-                            <p className='futura-bold'>VIEW PACKAGE DETAILS<ChevronRightIcon className='arrow-membership' /></p>
+                            <p className='rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button'><span>Sessions:</span><span className='text-white futura-bold'>09/15</span></p>
+                            <p className='futura-bold cursor-pointer'>VIEW PACKAGE DETAILS<ChevronRightIcon className='arrow-membership' /></p>
                         </div>
                     </div>
                 </div>

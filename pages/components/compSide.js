@@ -12,10 +12,10 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
 
             <div className={`my-10 md:my-44 pt-10 ${style == 'grey' ? 'bg-grey' : ''} relative `}>
                 <div className={`lg:flex mx-auto items-center ${isFlipped ? 'flex-row-reverse' : ''}`}>
-                    <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-5 lg:pl-20 md:pl-0 md:px-16 lg:px-16 ">
+                    <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-5 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
                         <div className='flex items-center space-x-2'>
                             {data.icon?.id ? <img src={`${image_url}${data.icon?.id}`} alt={`${data.icon?.title}`} /> : null}
-                            <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold  careers text-white">{data.title}</h2>
+                            <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold careers text-white">{data.title}</h2>
                         </div>
                         {data.subtitle ?<h3 className="py-7 subTitle"> {data.subtitle} </h3>:null}
                         {data.headline ? <p className='text-[#009FE3] font-bold futura-bold citywalk-title'>{data.headline}</p> : null}

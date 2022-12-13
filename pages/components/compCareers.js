@@ -27,7 +27,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                 transform: "translateX(0px) translateZ(0px) rotateY(0deg)",
                 zIndex: 22,
                 width: 500,
-                height: 200
+                height: 230
             };
         else if (activeSlide - 1 === index)
             return {
@@ -42,7 +42,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                 transform: "translateX(520px) translateZ(-400px) rotateY(0deg)",
                 zIndex: 9,
                 width: 400,
-                height: 200
+                height: 230
             };
         else if (activeSlide - 2 === index)
             return {
@@ -56,7 +56,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                 transform: "translateX(940px) translateZ(-500px) rotateY(0deg)",
                 zIndex: 8,
                 width: 345,
-                height: 200
+                height: 230
             };
         else if (index < activeSlide - 2)
             return {

@@ -90,11 +90,11 @@ export default function Membership({ data = {}, style = 'white' }) {
                         </div>
                         </div>
                     </div>
-                    <div className='flex flex-col mx-auto justify-center items-start mt-10 mb-20 '>
+                    <div className='flex flex-col mx-auto justify-start items-start mt-10 mb-20 '>
                         <p className='text-[#009FE3] futura-bold mb-3'>Payment History</p>
                         {membership.map((item) => (
                     <>
-                    <div className='flex justify-center w-full items-center classes-box mb-3 p-3'>
+                    <div className='flex justify-start w-full items-center classes-box mb-3 p-3'>
                     <div className='space-x-2 flex'>
                         <p className='border-r pr-1 border-[#009FE3]'>{item.date}</p>
                         <p>{item.text}</p>

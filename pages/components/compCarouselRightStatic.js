@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Popup from "reactjs-popup";
 
 export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -184,6 +185,41 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                         </div>
                                             {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data.description}`)} </p> : null}
                                             {data.button_title ? <a href={data.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
+                                            {data.popup_button?<Popup
+                                                trigger={
+                                                    <button>
+                                                        <button className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.popup_button}<ChevronRightIcon /></button>
+                                                    </button>
+                                                } modal
+                                                position="center"
+                                                closeOnDocumentClick={false}
+                                            >
+                                                {close => (
+                                                    <div className="container w-screen h-screen flex flex-col justify-center items-center">
+                                                        <button className="flex w-full justify-end mb-3" onClick={close}>
+                                                            &times;
+                                                        </button>
+
+                                                        <div className="flex w-full justify-between space-x-5">
+                                                            <input placeholder="Name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            <input placeholder="Phone Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            <input placeholder="Email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        </div>
+                                                        <div className="flex w-full justify-between space-x-5 mt-10">
+                                                        <select name="branches" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="dbayeh">Dbayeh</option>
+                                                            <option value="manara">Manara</option>
+                                                            <option value="abc">ABC Achrafieh</option>
+                                                            <option value="baabda">Baabda</option>
+                                                            <option value="hamra">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
+                                                        </div>
+                                                        <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md">Send</button>
+                                                        {/* <FooterPopup /> */}
+                                                    </div>
+                                                )}
+                                            </Popup>:null}
                                         </div>
                                     </div>
                                 </div>

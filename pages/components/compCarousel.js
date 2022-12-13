@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -8,7 +8,19 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
 
+    const [count, setCount] = useState(0);
+    const [scrollOver, setScroll] = useState(false);
 
+    useEffect(() => {
+        if (scrollOver) {
+            const timer = setInterval(() => {
+                setactiveSlide((prevCount) => (prevCount + 1) % data.carousel.length);
+            }, 2000);
+            return () => clearInterval(timer);
+        } else {
+            setCount(0);
+        }
+    }, [scrollOver]);
 
     let timeout = setTimeout(() => {
         if (nextSlide == true && clickTiggered == true) {
@@ -170,9 +182,12 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                             ...getStyles(i),
                                         }}
                                     >
-                                        <div className="sliderContentImage">
+                                        {data.with_timer == true ?<div className="sliderContentImage" onLoad={() => setScroll(true)}>
                                             {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
-                                        </div>
+                                        </div>:null}
+                                        {data.with_timer == false ?<div className="sliderContentImage" onLoad={() => setScroll(false)}>
+                                            {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
+                                        </div>:null}
                                     </div>
                                 </div>
                                 <div
@@ -201,7 +216,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                 // className="btn arrow"
                                 className={
                                     "btn arrow " +
-                                    (activeSlide < data.carousel.length - 1  ? " btn arrow" : "btn-disabled")
+                                    (activeSlide < data.carousel.length - 1 ? " btn arrow" : "btn-disabled")
                                 }
                                 onClick={next}
                                 color="#fff"
