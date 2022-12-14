@@ -75,7 +75,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
     return (
         <>
 
-            <div className={`lg:flex relative px-14 container pb-48`}>
+            <div className={`lg:flex relative px-14 container pb-16`}>
 
                 <div className="lg:w-1/2">
                     <div className="slideCC">
@@ -84,7 +84,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                 <div
                                     className=""
                                 >
-                                    <div className="sliderContent">
+                                    <div className="sliderContent mt-12">
                                         <div className="flex items-baseline space-x-5">
                                             <p className="font-bold futura-bold text-4xl">{data.title}</p>
                                             {/* {data.icon ? <img src={`${image_url}${data?.icon?.id}`} className="w-16 h-8" altv={data?.title} /> : null} */}
@@ -123,7 +123,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                             >
                                                 {close => (
                                                     <div className="container w-screen h-screen flex flex-col justify-center items-center">
-                                                        <button className="flex w-full justify-end mb-3" onClick={close}>
+                                                        <button className="flex w-full justify-end mb-3 text-white" onClick={close}>
                                                             &times;
                                                         </button>
 
@@ -161,11 +161,11 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                         ))}
 
 
-                        <div className="btns" >
+                        <div className="btns-vacancies" >
                             <img src="/ArrowLeft.png"
                                 className={
                                     "btn arrow " +
-                                    (activeSlide > 0 ? " btn arrow" : "btn-disabled")
+                                    (activeSlide > 0 ? " btn-vacancies arrow" : "btn-disabled")
                                 }
                                 onClick={prev}
                                 color="#fff"
@@ -173,8 +173,8 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                             />
                             <img src="/ArrowRight.png"
                                 className={
-                                    "btn arrow " +
-                                    (activeSlide < data.careers.length - 1 ? " btn arrow" : "btn-disabled")
+                                    "btn-vacancies arrow " +
+                                    (activeSlide < data.careers.length - 1 ? " btn-vacancies arrow" : "btn-disabled")
                                 }
                                 onClick={next}
                                 color="#fff"

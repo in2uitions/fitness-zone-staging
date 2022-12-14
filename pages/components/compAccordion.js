@@ -42,7 +42,7 @@ if (ListofClasses.length == 0){
     return (
         <>
 
-            <div className="container-imgs lg:py-12 md:py-12 py-12" >
+            <div className="container-imgs lg:my-10 md:py-10 py-12" >
 
                 <div className={`gallery-wrap`}>
                     {data.accordion_items?.map((item, i) => (
@@ -80,10 +80,10 @@ if (ListofClasses.length == 0){
                 </div>
             </div>
             {data.show_classes ?<div className=''>
-                <div className={`my-20 container  mx-auto pt-10 relative `}>
+                <div className={` container  mx-auto pt-10 relative `}>
                     {ListofClasses.filter((item) => item.value === selectedCategory).map((element, index) => (
                         <div className="" id="classes">
-                        {element.image_position == "left" ?<div className='lg:flex my-20 mx-auto items-center'>
+                        {element.image_position == "left" ?<div className='lg:flex my-10 mx-auto items-center'>
                             <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-5 lg:pl-20 md:pl-0 md:px-16 lg:px-16 ">
                                 <div className='flex items-center space-x-2'>
                                     {element.icon?.id ? <img src={`${image_url}${element.icon?.id}`} alt={`${element.icon?.title}`} /> : null}

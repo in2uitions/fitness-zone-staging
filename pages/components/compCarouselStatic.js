@@ -86,15 +86,11 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
     return (
         <>
 
-            <div className={`lg:flex relative items-center px-14 pt-24 mb-44 pb-24 container ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex relative items-center px-14 pt-32 mb-10 pb-16 container`}>
 
                 <div className="lg:w-1/2">
                     <div className="slideCC">
                         <>
-                            <div className="">
-                                <div
-                                    className=""
-                                >
                                     <div className="sliderContent">
                                         <div className="flex items-baseline space-x-5">
                                             <p className="font-bold futura-bold text-4xl">{data?.title}</p>
@@ -123,8 +119,6 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                         </Popup> : null}
                                         {data.button_title ? <a href={data.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
                                     </div>
-                                </div>
-                            </div>
                         </>
                     </div>
                 </div>
@@ -135,7 +129,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                 <div className="">
 
                                     <div key={item.id}
-                                        className="slide"
+                                        className="slide-static"
                                         style={{
                                             ...getStyles(i),
                                         }}

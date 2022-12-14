@@ -116,7 +116,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
 
     return (
         <>
-            <div className={`lg:flex relative items-center px-14 pt-24 mb-44 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className={`lg:flex relative items-center px-14 pt-28 mb-44 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
                 <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block md:block ">
                     <div className="slideC">
                         {data.static_items.map((item, i) => (
@@ -183,7 +183,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             <p className="font-bold futura-bold text-4xl">{data.title}</p>
                                             {data.icon?<img src={`${image_url}${data.icon?.id}`} className="w-16 h-8" altv={data.title} /> : null}
                                         </div>
-                                            {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data.description}`)} </p> : null}
+                                            {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 md:pr-10">{parse(`${data.description}`)} </p> : null}
                                             {data.button_title ? <a href={data.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
                                             {data.popup_button?<Popup
                                                 trigger={

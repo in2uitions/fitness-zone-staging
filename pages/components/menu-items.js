@@ -61,6 +61,11 @@ export default function Menu(data = {}) {
             "id":8,
             "label":"",
             "to":"/about/career"
+        },
+        {
+            "id":9,
+            "label":"",
+            "to":"/about/offer"
         }
     ];
 

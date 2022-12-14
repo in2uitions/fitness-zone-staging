@@ -10,7 +10,8 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
     return (
         <section id={`${data.title}`}>
 
-            <div className={`my-10 md:my-44 pt-10 ${style == 'grey' ? 'bg-grey' : ''} relative `}>
+            <div className={`md:my-20 pt-10 ${style == 'grey' ? 'bg-grey' : ''} relative `}>
+            {data.global_title?<p className='flex justify-center items-center futura-bold text-4xl mb-20'>{data.global_title}</p>:null}
                 <div className={`lg:flex mx-auto items-center ${isFlipped ? 'flex-row-reverse' : ''}`}>
                     <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-5 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
                         <div className='flex items-center space-x-2'>

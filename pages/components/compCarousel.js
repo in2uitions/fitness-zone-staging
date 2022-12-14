@@ -121,91 +121,93 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                         {parse(`${data.subtitle}`)} </p> : null}
                 </div>
             </div>
-            <div className={`lg:flex md:flex relative items-center px-14 container mt-60 mb-96 pb-24 ${isFlipped ? 'flex-row-reverse' : ''}`}>
+            <div className="container relative">
+                <div className={`lg:flex md:flex relative items-center px-14 container mt-60 mb-96 pb-24 ${isFlipped ? 'flex-row-reverse' : ''}`}>
 
-                <div className="lg:w-1/2 md:w-1/2">
-                    <div className="slideCC">
-                        {data.carousel.map((item, i) => (
-                            <>
-                                <div className="">
-                                    <div key={item.id}
-                                        className="slide"
+                    <div className="lg:w-1/2 md:w-1/2">
+                        <div className="slideCC">
+                            {data.carousel.map((item, i) => (
+                                <>
+                                    <div className="">
+                                        <div key={item.id}
+                                            className="slide"
+                                            style={{
+                                                background: item.bgColor,
+                                                boxShadow: `0 5px 20px ${item.bgColor}30`,
+                                                ...getTextStyles(i),
+                                            }}
+                                        >
+                                            <div className="sliderContent px-20">
+                                                <div className="flex items-baseline space-x-5">
+                                                    <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                                    {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                                </div>
+                                                {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
+                                                {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="reflection"
                                         style={{
-                                            background: item.bgColor,
-                                            boxShadow: `0 5px 20px ${item.bgColor}30`,
+                                            background: `linear-gradient(to bottom, ${item.bgColor}40, transparent)`,
                                             ...getTextStyles(i),
                                         }}
-                                    >
-                                        <div className="sliderContent px-20">
-                                            <div className="flex items-baseline space-x-5">
-                                                <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
-                                                {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                    />
+                                </>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0  md:pt-0 md:block lg:block sm:px-2 ">
+                        <div className="slideC">
+                            {data.carousel.map((item, i) => (
+                                <>
+                                    <div className="">
+
+                                        <div key={item.id}
+                                            className="slide"
+                                            style={{
+                                                ...getStyles(i),
+                                            }}
+                                        >
+                                            <div className="sliderContentImage">
+                                                {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} style={{width:500}} /> : null}
                                             </div>
-                                            {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
-                                            {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
                                         </div>
                                     </div>
-                                </div>
-                                <div
-                                    className="reflection"
-                                    style={{
-                                        background: `linear-gradient(to bottom, ${item.bgColor}40, transparent)`,
-                                        ...getTextStyles(i),
-                                    }}
-                                />
-                            </>
-                        ))}
-                    </div>
-                </div>
-                <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0  md:pt-0 md:block lg:block sm:px-2 ">
-                    <div className="slideC">
-                        {data.carousel.map((item, i) => (
-                            <>
-                                <div className="">
-
-                                    <div key={item.id}
-                                        className="slide"
+                                    <div
+                                        className="reflection"
                                         style={{
+                                            background: `linear-gradient(to bottom, ${item.bgColor}40, transparent)`,
                                             ...getStyles(i),
                                         }}
-                                    >
-                                       <div className="sliderContentImage">
-                                            {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="reflection"
-                                    style={{
-                                        background: `linear-gradient(to bottom, ${item.bgColor}40, transparent)`,
-                                        ...getStyles(i),
-                                    }}
+                                    />
+                                </>
+                            ))}
+
+
+                            <div className="btns" >
+                                <img src="/ArrowLeft.png"
+                                    // className="btn arrow"
+                                    className={
+                                        "btn arrow " +
+                                        (activeSlide > 0 ? " btn arrow" : "btn-disabled")
+                                    }
+                                    onClick={prev}
+                                    color="#fff"
+                                    size="2x"
                                 />
-                            </>
-                        ))}
-
-
-                        <div className="btns" >
-                            <img src="/ArrowLeft.png"
-                                // className="btn arrow"
-                                className={
-                                    "btn arrow " +
-                                    (activeSlide > 0 ? " btn arrow" : "btn-disabled")
-                                }
-                                onClick={prev}
-                                color="#fff"
-                                size="2x"
-                            />
-                            <img src="/ArrowRight.png"
-                                // className="btn arrow"
-                                className={
-                                    "btn arrow " +
-                                    (activeSlide < data.carousel.length - 1 ? " btn arrow" : "btn-disabled")
-                                }
-                                onClick={next}
-                                color="#fff"
-                                size="2x"
-                            />
+                                <img src="/ArrowRight.png"
+                                    // className="btn arrow"
+                                    className={
+                                        "btn arrow " +
+                                        (activeSlide < data.carousel.length - 1 ? " btn arrow" : "btn-disabled")
+                                    }
+                                    onClick={next}
+                                    color="#fff"
+                                    size="2x"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,4 +215,3 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
         </>
     );
 };
-

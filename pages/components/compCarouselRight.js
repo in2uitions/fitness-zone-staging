@@ -116,7 +116,8 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
     return (
         <>
             <div className="">
-                <div className=" flex flex-col justify-center items-center pb-28 relative trainers-mobile">
+                <div className=" flex flex-col justify-center items-center pb-28 mt-20 relative trainers-mobile">
+                {data.title? <p className="lg:text-5xl md:text-4xl text-3xl font-bold futura-bold mb-5 text-white">{data.title}</p>:null}
                     {data.image_title ? <img src={`${image_url}${data.image_title?.id}`} altv={data.image_title?.title} /> : null}
                 </div>
             </div>
@@ -128,7 +129,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                 <div className="">
 
                                     <div key={item.id}
-                                        className="slide"
+                                        className="slide absolute"
                                         style={{
                                             ...getStyles(i),
                                         }}
@@ -182,7 +183,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                             <>
                                 <div className="">
                                     <div key={item.id}
-                                        className="slide content-responsive"
+                                        className="slide absolute content-responsive"
                                         style={{
                                             background: item.bgColor,
                                             boxShadow: `0 5px 20px ${item.bgColor}30`,

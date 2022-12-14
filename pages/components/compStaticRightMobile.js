@@ -73,7 +73,7 @@ export default function CompCarouselStaticRightMobile({ data = {}, style = 'whit
                 <div className="embla " ref={emblaRef}>
                     <div className="embla__container w-screen">
                         {data.static_items?.map((item, i) => (
-                            <div className={`embla__slide  lg:flex  items-center`}>
+                            <div className={`embla__slide  lg:flex items-center`}>
 
                                 <div className="lg:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 ">
                                     <div className="">
