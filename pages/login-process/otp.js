@@ -22,21 +22,21 @@ export default function Otp() {
                     method: 'GET',
                     headers: registrationHeaders
                 };
-                const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/SMS/ValidateOTP?mobileNumber=${query.phoneNumber}&otpNumber=${event.target.otp.value}`,
-                    registrationRequestOptions
-                );
-                const data = await res.json();
-                if (data.isValid == true) {
-                    localStorage.setItem("OTP", JSON.stringify(event.target.otp.value));
-                    localStorage.setItem("Country", JSON.stringify(event.target.country.value));
-                    localStorage.setItem("Phone", phoneNumber);
-                    localStorage.setItem("Member", JSON.stringify(event.target.member.value));
+                // const res = await fetch(
+                //     `https://api.fitnessclubapp.com/api/SMS/ValidateOTP?mobileNumber=${query.phoneNumber}&otpNumber=${event.target.otp.value}`,
+                //     registrationRequestOptions
+                // );
+                // const data = await res.json();
+                // if (data.isValid == true) {
+                    // localStorage.setItem("OTP", JSON.stringify(event.target.otp.value));
+                    // localStorage.setItem("Country", JSON.stringify(event.target.country.value));
+                    // localStorage.setItem("Phone", phoneNumber);
+                    // localStorage.setItem("Member", JSON.stringify(event.target.member.value));
                     router.push({ pathname: "/login-process/dashboard" })
-                }
-                else {
-                    alert("Wrong OTP");
-                }
+                // }
+                // else {
+                //     alert("Wrong OTP");
+                // }
 
             } catch (err) {
                 console.log(err);
@@ -55,11 +55,11 @@ export default function Otp() {
                     method: 'GET',
                     headers: registrationHeaders
                 };
-                const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${query.phoneNumber}`,
-                    registrationRequestOptions
-                );
-                const data = await res.json();
+                // const res = await fetch(
+                //     `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${query.phoneNumber}`,
+                //     registrationRequestOptions
+                // );
+                // const data = await res.json();
                 // if (data.isValid == true) {
                 //     router.push({ pathname: "/login-process/dashboard" })
                 // }
@@ -77,9 +77,10 @@ export default function Otp() {
     return (
         <div>
 
-            <div className="w-screen h-screen container mx-auto flex flex-col items-center justify-center">
-                <div className='flex flex-col justify-center '>
-                    <img src="/logo.png" className='w-full h-auto' />
+            <div className="w-screen h-screen container mx-auto flex items-center justify-center">
+            <div className="w-1/2"></div>
+                <div className='flex flex-col justify-center'>
+                    <img src="/fitnessZoneLogo.png" className='w-full h-auto' />
 
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
@@ -101,6 +102,7 @@ export default function Otp() {
                     </form>
                     <a href="/login-process/login" className='text-[#009FE3] futura-book mt-4 text-center'>Back to login</a>
                 </div>
+                <div className="w-1/2"></div>
             </div>
         </div>
     );

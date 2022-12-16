@@ -1,5 +1,5 @@
 import { Router } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PhoneInput, {
@@ -11,10 +11,6 @@ import PhoneInput, {
 import dynamic from 'next/dynamic';
 import Input from "react-phone-number-input/input-mobile";
 import "react-phone-number-input/style.css";
-// const AdmissionForm = dynamic(
-//     () => import('./AdmissionForm'),
-//     { ssr: false }
-// );
 
 export default function Login() {
 
@@ -90,7 +86,7 @@ export default function Login() {
                         const data = await memberValidation.json();
                         const phoneNumber = '';
                         if (data.isValid == false) {
-                            alert("The member does not exist in our database")
+                            alert("Wrong Phone Number")
                         }
                         if (endPoints == MEMBER) {
                             const getMobile = await fetch(
@@ -101,13 +97,13 @@ export default function Login() {
                         } else if (endPoints == MOBILE) {
                             phoneNumber = selectedTab[endPoints]
                         }
-                        if (data.isValid == true && phoneNumber) {
-                            const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
-                            const data = await SendOTPMessage.json();
-                            setIsSent(true)
+                        if (data.isValid == true && phoneNumber ) {
+                            // const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
+                            // const data = await SendOTPMessage.json();
+                            // setIsSent(true)
                             localStorage.setItem("Country", JSON.stringify(event.target.country.value));
                             localStorage.setItem("Phone", phoneNumber);
-                            localStorage.setItem("Member", JSON.stringify(event.target.memberId.value));
+                            localStorage.setItem("Member", event.target.memberId.value);
                             event.target.country.value = '';
                             event.target.phone.value = '';
                             event.target.memberId.value = '';
@@ -133,7 +129,7 @@ export default function Login() {
         if (handleFormValidation()) {
             alert("You have been successfully registered.");
             setState(initialState);
-            event.target.value='';
+            event.target.value = '';
         }
     };
     const [state, setState] = useState({
@@ -199,7 +195,7 @@ export default function Login() {
                             {value1 && isValidPhoneNumber(value1) ? "Your phone number is valid" : ""}
                         </pre> */}
 
-                        <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='memberId' />
+                        <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} required className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='memberId' />
                         <label className='text-[#009FE3]'>OR</label>
                         {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
 
@@ -218,6 +214,7 @@ export default function Login() {
                         )}
                         <button type='submit' className='bg-[#009FE3] rounded-md p-3 futura-bold text-white'>LOGIN</button>
                         {isSent ? thankYouMessage : submitmsg}
+
                     </form>
                     <a href="/" className='text-[#009FE3] futura-book mt-4 text-center'>Back to website</a>
                 </div>
@@ -225,6 +222,3 @@ export default function Login() {
         </div>
     );
 }
-
-
-

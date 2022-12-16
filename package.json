@@ -47,6 +47,7 @@
     "react-phone-number-input": "^3.2.13",
     "react-responsive": "^9.0.0",
     "react-responsive-carousel": "^3.2.23",
+    "react-select": "^5.7.0",
     "react-show-more": "^2.0.0",
     "react-slick": "^0.29.0",
     "react-slider": "^2.0.4",

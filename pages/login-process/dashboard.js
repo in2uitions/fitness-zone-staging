@@ -10,8 +10,53 @@ import Popup from "reactjs-popup";
 import { useState, useEffect } from 'react';
 import ToggleText from '../login-process/test'
 
-export default function Dashboard({ data = {}, style = 'white' }) {
-    
+export default function Dashboard({ style = 'white' }) {
+    const [books, setBooks] = useState([]);
+    const [data, setData] = useState([]);
+    const memberId = localStorage.getItem('Member');
+        var registrationHeaders = new Headers();
+        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        registrationHeaders.append("Content-Type", "application/json");
+        var registrationRequestOptions = {
+            method: 'GET',
+            headers: registrationHeaders
+        };
+    try {
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+                    registrationRequestOptions
+
+                );
+                const fetchedData = await response.json()
+                setBooks(fetchedData)
+            }
+            getData()
+        }, [])
+    } catch (err) {
+        console.log(err);
+    }
+    try {
+        
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
+                    registrationRequestOptions
+
+                );
+                const checkInList = await response.json()
+                setData(checkInList)
+            }
+            // getData()
+        }, [])
+    } catch (err) {
+        console.log(err);
+    }
+
     var settings = {
         dots: true,
         infinite: false,
@@ -151,43 +196,43 @@ export default function Dashboard({ data = {}, style = 'white' }) {
 
     console.log(classesList)
 
-    const [checkInList, setCheckInList] = useState([
-        {
-            date: '18/10/2022',
-            time: '14:23:04',
-            city: 'Dbayeh'
-        },
-        {
-            date: '18/10/2022',
-            time: '14:23:04',
-            city: 'Dbayeh'
-        },
-        {
-            date: '18/10/2022',
-            time: '14:23:04',
-            city: 'Dbayeh'
-        },
-        {
-            date: '18/10/2022',
-            time: '14:23:04',
-            city: 'Dbayeh'
-        },
-        {
-            date: '18/10/2022',
-            time: '14:23:04',
-            city: 'Dbayeh'
-        },
-        {
-            date: '18/10/2022',
-            time: '14:23:04',
-            city: 'Dbayeh'
-        }
-    ])
+    // const [checkInList, setCheckInList] = useState([
+    //     {
+    //         date: '18/10/2022',
+    //         time: '14:23:04',
+    //         city: 'Dbayeh'
+    //     },
+    //     {
+    //         date: '18/10/2022',
+    //         time: '14:23:04',
+    //         city: 'Dbayeh'
+    //     },
+    //     {
+    //         date: '18/10/2022',
+    //         time: '14:23:04',
+    //         city: 'Dbayeh'
+    //     },
+    //     {
+    //         date: '18/10/2022',
+    //         time: '14:23:04',
+    //         city: 'Dbayeh'
+    //     },
+    //     {
+    //         date: '18/10/2022',
+    //         time: '14:23:04',
+    //         city: 'Dbayeh'
+    //     },
+    //     {
+    //         date: '18/10/2022',
+    //         time: '14:23:04',
+    //         city: 'Dbayeh'
+    //     }
+    // ])
     const [noOfCheckInElements, setnoOfCheckInElements] = useState(3);
-    const sliceCheckIn = checkInList.slice(0, noOfCheckInElements);
+    const sliceCheckIn = data.slice(0, noOfCheckInElements);
     const loadMoreLessCheckIn = () => {
         if (noOfCheckInElements == 3) {
-            setnoOfCheckInElements(checkInList.length)
+            setnoOfCheckInElements(data.length)
         }
         else {
             setnoOfCheckInElements(3)
@@ -227,11 +272,11 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                             <p className='futura-bold text-[#009FE3] mt-5'>CHARLES KHOURY</p>
                             <div className='flex flex-col   mt-10'>
                                 <div className='flex space-x-3'>
-                                    <a href='#' className='futura-book menu-member flex items-center justify-between'> My Profile<ChevronRightIcon className='arrow-membership' /></a>
+                                    <a href='/login-process/myProfile' className='futura-book menu-member flex items-center justify-between'> My Profile<ChevronRightIcon className='arrow-membership' /></a>
                                     <a href='/login-process/membership' className='futura-book menu-member flex items-center justify-between'>Membership Settings<ChevronRightIcon className='arrow-membership' /></a>
                                 </div>
                                 <div className='flex space-x-3 mt-10'>
-                                    <a href='#' className='futura-book menu-member flex items-center justify-between'>Classes / Book a class<ChevronRightIcon className='arrow-membership'/></a>
+                                    <a href='#' className='futura-book menu-member flex items-center justify-between'>Classes / Book a class<ChevronRightIcon className='arrow-membership' /></a>
                                     <a href='#' className='futura-book menu-member flex items-center justify-between'>Trainers / Book a package<ChevronRightIcon className='arrow-membership' /></a>
                                 </div>
                             </div>
@@ -245,7 +290,8 @@ export default function Dashboard({ data = {}, style = 'white' }) {
             </div>
             <section>
                 <div className='container mx-auto flex flex-col justify-center mt-40'>
-                    <p className='text-[#009FE3] futura-bold'>HELLO</p>
+                    <p className='text-[#009FE3] futura-bold flex space-x-2'><span>HELLO</span><span>{books.fullName}</span></p>
+                    
                     <p className='futura-book text-white'>Let’s burn some calories</p>
                     <Slider className='mt-10' {...settings}>
                         {carousel_components.map((item) => (
@@ -305,20 +351,20 @@ export default function Dashboard({ data = {}, style = 'white' }) {
                     </div>
                     <div className='col-span-3'>
                         <p className='text-[#009FE3] mb-10 futura-bold'>My Recent Checkins</p>
-                        {sliceCheckIn.map((item) => (
+                        {data.slice(0,4).map((item) => (
                             <>
                                 <div className='flex justify-start items-start classes-box mb-3 p-3' >
                                     <div className='space-x-2 flex'>
-                                        <p className='text-white'>{item.date}</p>
-                                        <p className='border-r border-[#009FE3] text-white'>{item.time}</p>
-                                        <p className='text-white'>{item.city}</p>
+                                        <p className='text-white text-md'>{item.value}</p>
+                                        {/* <p className='border-r border-[#009FE3] text-white'>{item.time}</p> */}
+                                        <p className='text-white text-sm'>{item.text}</p>
                                     </div>
                                 </div>
                             </>
                         ))}
-                        <div className='flex justify-center items-center cursor-pointer futura-bold text-white' onClick={() => { toggleCheckIn(!stateCheckIn); loadMoreLessCheckIn() }}>
-                            {stateCheckIn ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
-                        </div>
+                        <a href='/login-process/myCheckIns' className='flex justify-center items-center cursor-pointer futura-bold text-white'>
+                            VIEW ALL<ChevronRightIcon className='arrow-membership' />
+                        </a>
                     </div>
                     <div className='col-span-3'>
                         <p className='text-[#009FE3] futura-bold'>Training Packages</p>

@@ -6,22 +6,49 @@ import 'react-magic-slider-dots/dist/magic-dots.css';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
+import { useState, useEffect } from 'react';
 
-export default function Membership({ data = {}, style = 'white' }) {
-    const membership =[
-        {
-            date:'18/10/2022',
-            text:'Membership Renewal (1 Year)'
-        },
-        {
-            date:'18/10/2022',
-            text:'Personal Training Package'
-        },
-        {
-            date:'18/10/2022',
-            text:'Personal Training Package'
-        }
-    ]
+export default function Membership({style = 'white' }) {
+    // const membership =[
+    //     {
+    //         date:'18/10/2022',
+    //         text:'Membership Renewal (1 Year)'
+    //     },
+    //     {
+    //         date:'18/10/2022',
+    //         text:'Personal Training Package'
+    //     },
+    //     {
+    //         date:'18/10/2022',
+    //         text:'Personal Training Package'
+    //     }
+    // ]
+    const[test, setTest] = useState([])
+    try {
+        const memberId = localStorage.getItem('Member');
+        var registrationHeaders = new Headers();
+        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        registrationHeaders.append("Content-Type", "application/json");
+        var registrationRequestOptions = {
+            method: 'GET',
+            headers: registrationHeaders
+        };
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/membership/member/PaymentListItem/${memberId}`,
+                    registrationRequestOptions
+
+                );
+                const membership = await response.json()
+                setTest(membership)
+            }
+            // getData()
+        }, [])
+    } catch (err) {
+        console.log(err);
+    }
     return (
         <>
             <div className={styles.container}>
@@ -44,7 +71,7 @@ export default function Membership({ data = {}, style = 'white' }) {
                             <p className='futura-bold text-[#009FE3] mt-5'>CHARLES KHOURY</p>
                             <div className='flex flex-col   mt-10'>
                                 <div className='flex space-x-3'>
-                                    <p className='futura-book menu-member flex items-center justify-between'> My Profile<ChevronRightIcon className='fill-[#009FE3]' /></p>
+                                    <a href='/login-process/myProfile' className='futura-book menu-member flex items-center justify-between'> My Profile<ChevronRightIcon className='fill-[#009FE3]' /></a>
                                     <p className='futura-book menu-member flex items-center justify-between'>Membership Settings<ChevronRightIcon className='fill-[#009FE3]' /></p>
                                 </div>
                                 <div className='flex space-x-3 mt-10'>
@@ -90,13 +117,13 @@ export default function Membership({ data = {}, style = 'white' }) {
                         </div>
                         </div>
                     </div>
-                    <div className='flex flex-col mx-auto justify-start items-start mt-10 mb-20 '>
+                    <div className='flex flex-col mx-auto justify-start items-start mt-10'>
                         <p className='text-[#009FE3] futura-bold mb-3'>Payment History</p>
-                        {membership.map((item) => (
+                        {test.map((item) => (
                     <>
                     <div className='flex justify-start w-full items-center classes-box mb-3 p-3'>
                     <div className='space-x-2 flex'>
-                        <p className='border-r pr-1 border-[#009FE3] text-white'>{item.date}</p>
+                        <p className='border-r pr-1 border-[#009FE3] text-white'>{item.value}</p>
                         <p className='text-white'>{item.text}</p>
                         </div>
                     </div>
@@ -105,6 +132,7 @@ export default function Membership({ data = {}, style = 'white' }) {
                     </div>
                 </div>
             </section>
+            
         </>
     );
 }
