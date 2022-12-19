@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps, data = {}, about=[] }) {
             `https://ipapi.co/json/`
         );
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
   if(data.country_code == 'AE'){
     // console.log('User is coming from UAE');
     //show UAE Social Media Accounts
@@ -47,7 +47,7 @@ getVisitorLocationAPI();
 return <>
 
     <Head>
-    <link rel="icon" href="/favicon.png"/>
+    {/* <link rel="icon" href="/favicon.png"/>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWF5H6GTPM" />
       <script
         dangerouslySetInnerHTML={{
@@ -70,13 +70,13 @@ return <>
 `,
         }}
       />
-      
+       */}
     </Head>
-    <noscript  dangerouslySetInnerHTML={{
+    {/* <noscript  dangerouslySetInnerHTML={{
           __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX2V36F"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>   `,
         }}
-      />
+      /> */}
     <HeaderContent />
     <Component {...pageProps} />
     <Footer />

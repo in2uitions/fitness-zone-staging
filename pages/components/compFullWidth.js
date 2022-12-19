@@ -22,7 +22,7 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                     {data.button_title ? <Popup
                         trigger={
                             <button>
-                                <button className="bg-[#009FE3] p-2 rounded-md mt-5 futura-bold">{data.button_title}<ChevronRightIcon/></button>
+                                <button className="bg-[#009FE3] p-2 rounded-md mt-5 futura-bold text-white">{data.button_title}<ChevronRightIcon/></button>
                             </button>
                         } modal
                         position="center"

@@ -1,17 +1,31 @@
-import { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import MagicSliderDots from "react-magic-slider-dots";
+import "react-magic-slider-dots/dist/magic-dots.css";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import Close from "@material-ui/icons/Close";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
+import { getTrainers } from "../../api/server";
+import { image_url } from "../../global_vars";
+import parse from "html-react-parser";
 
-export default function CheckIns() {
+export default function Trainers({ style = "white" }) {
     const [data, setData] = useState([]);
-    const memberId = localStorage.getItem('Member');
+    const router = useRouter();
+    const memberId = localStorage.getItem("Member");
     var registrationHeaders = new Headers();
-    registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+    registrationHeaders.append(
+        "Authorization",
+        "Bearer " + localStorage.getItem("token")
+    );
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
-        method: 'GET',
-        headers: registrationHeaders
+        method: "GET",
+        headers: registrationHeaders,
     };
     try {
 
@@ -19,29 +33,36 @@ export default function CheckIns() {
             getData();
             async function getData() {
                 const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
+                    `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/List?isTrainer=true&isActive=True`,
                     registrationRequestOptions
 
                 );
-                const checkInList = await response.json()
-                setData(checkInList)
+                const trainersList = await response.json()
+                setData(trainersList)
             }
-            // getData()
+
         }, [])
+
     } catch (err) {
         console.log(err);
     }
-    function dateButif(d) {
-        const newd = new Date(d).toLocaleDateString('en-EN', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric',
-        });
-        return newd;
+    const userId = data.map(el => el.userId)
+    const route = (id) => router.push({ pathname: "/login-process/trainers-profile", query: { id } });
+
+    useEffect(() => {
+        getdata();
+    }, []);
+    const [trainers, setTrainers] = useState([]);
+    const [trainersloaded, setTrainersLoaded] = useState(false);
+    const getdata = async () => {
+        const trainer = await getTrainers();
+        setTrainers(trainer);
+        setTrainersLoaded(true)
     }
+
     return (
         <>
-            <div className={styles.container}>
+             <div className={styles.container}>
                     <nav className={styles.nav}>
                         <a href="/">
                             <img src="/logo.png" className="logo" />
@@ -95,23 +116,37 @@ export default function CheckIns() {
                     </nav>
                 </div>
             <section>
-                <div className='container mx-auto flex flex-col justify-center mt-40'>
-                    <div className='flex flex-col mx-auto justify-start items-start'>
-                        <p className='text-[#009FE3] futura-bold mb-3'>My Recent Check-ins</p>
-                        {data.map((item) => (
+                <div className="container mx-auto flex flex-col justify-start mt-40">
+                    <p className="text-[#009FE3] futura-bold">Trainers List</p>
+                    <div className="grid lg:grid-cols-12 gap-x-3 gap-y-3 items-start mt-10">
+                        {data.map((itemAPI) => (
                             <>
-                                <div className='flex justify-start items-start classes-box mb-3 p-3 w-full' >
-                                    <div className='space-x-2 flex'>
-                                        <p className='text-white text-md pr-2 border-r border-[#009FE3] futura-book'>{dateButif(item.value)}</p>
-                                        {/* <p className='border-r border-[#009FE3] text-white'>{item.time}</p> */}
-                                        <p className='text-white text-md futura-book'>{item.text}</p>
-                                    </div>
+                            {trainers.map((item, i) => (
+                            <div className="lg:col-span-3 h-full">
+                                <div className='flex flex-col space-y-3 membership-box p-10 items-center'>
+
+                                        <>
+
+                                            <div className="flex flex-col justify-center items-center space-y-3">
+                                                {item.image ? <img src={`${image_url}${item.image}`} className="rounded-full w-20 h-20" altv={item.title} /> : null}
+                                                <p className='futura-bold flex space-x-2 cursor-pointer text-white'>{itemAPI.fullName}</p>
+                                                <p className='futura-book cursor-pointer text-white' onClick={() => route(itemAPI.userId)}>{itemAPI.securityGroupName}</p>
+                                                {item.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.description}`)} </p> : null}
+                                            </div>
+
+                                        </>
+                                    
                                 </div>
+
+                            </div>
+                            
+                            ))}
                             </>
                         ))}
+
                     </div>
                 </div>
             </section>
         </>
-    )
+    );
 }

@@ -14,13 +14,13 @@ export default function Dashboard({ style = 'white' }) {
     const [books, setBooks] = useState([]);
     const [data, setData] = useState([]);
     const memberId = localStorage.getItem('Member');
-        var registrationHeaders = new Headers();
-        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
-        registrationHeaders.append("Content-Type", "application/json");
-        var registrationRequestOptions = {
-            method: 'GET',
-            headers: registrationHeaders
-        };
+    var registrationHeaders = new Headers();
+    registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: 'GET',
+        headers: registrationHeaders
+    };
     try {
         useEffect(() => {
             getData();
@@ -39,7 +39,7 @@ export default function Dashboard({ style = 'white' }) {
         console.log(err);
     }
     try {
-        
+
         useEffect(() => {
             getData();
             async function getData() {
@@ -51,13 +51,20 @@ export default function Dashboard({ style = 'white' }) {
                 const checkInList = await response.json()
                 setData(checkInList)
             }
-            // getData()
         }, [])
     } catch (err) {
         console.log(err);
     }
 
     var settings = {
+        // responsive: [{
+        //     breakpoint: 600,
+        //     settings: {
+        //         slidesToShow: 2,
+        //         slidesToScroll: 1,
+        //         initialSlide: 1
+        //     }
+        // }],
         dots: true,
         infinite: false,
         speed: 500,
@@ -253,45 +260,62 @@ export default function Dashboard({ style = 'white' }) {
     return (
         <>
             <div className={styles.container}>
-                <nav className={styles.nav}>
-                    <a href="/"><img src="/logo.png" className="logo" /></a>
-                    <Popup
-                        trigger={
-                            <div className="flex items-center space-x-2">
-                                <button className="img-btn">
-                                    <img src="/blue-rectangle.png" className="menu-icon" />
-                                </button>
-                                <p className="font-bold text-white futura-book cursor-pointer">Menu</p>
-                            </div>
-                        } modal
-                        closeOnDocumentClick
-                        position=""
-                    >
-                        <div className='w-screen h-screen container mx-auto flex flex-col justify-center items-center'>
-                            <img src='/icons-person.png' />
-                            <p className='futura-bold text-[#009FE3] mt-5'>CHARLES KHOURY</p>
-                            <div className='flex flex-col   mt-10'>
-                                <div className='flex space-x-3'>
-                                    <a href='/login-process/myProfile' className='futura-book menu-member flex items-center justify-between'> My Profile<ChevronRightIcon className='arrow-membership' /></a>
-                                    <a href='/login-process/membership' className='futura-book menu-member flex items-center justify-between'>Membership Settings<ChevronRightIcon className='arrow-membership' /></a>
+                    <nav className={styles.nav}>
+                        <a href="/">
+                            <img src="/logo.png" className="logo" />
+                        </a>
+                        <Popup
+                            trigger={
+                                <div className="flex items-center space-x-2">
+                                    <button className="img-btn">
+                                        <img src="/blue-rectangle.png" className="menu-icon" />
+                                    </button>
+                                    <p className="font-bold text-white futura-book cursor-pointer">
+                                        Menu
+                                    </p>
                                 </div>
-                                <div className='flex space-x-3 mt-10'>
-                                    <a href='#' className='futura-book menu-member flex items-center justify-between'>Classes / Book a class<ChevronRightIcon className='arrow-membership' /></a>
-                                    <a href='#' className='futura-book menu-member flex items-center justify-between'>Trainers / Book a package<ChevronRightIcon className='arrow-membership' /></a>
+                            }
+                            modal
+                            closeOnDocumentClick
+                            position=""
+                        >
+                            <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
+                                <img src="/icons-person.png" />
+                                <p className="futura-bold text-[#009FE3] mt-5">CHARLES KHOURY</p>
+                                <div className="flex flex-col mt-10">
+                                    <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
+                                        <a
+                                            href="/login-process/myProfile"
+                                            className="futura-book menu-member flex items-center justify-between"
+                                        >
+                                            {" "}
+                                            My Profile
+                                            <ChevronRightIcon className="fill-[#009FE3]" />
+                                        </a>
+                                        <p className="futura-book menu-member flex items-center justify-between">
+                                            Membership Settings
+                                            <ChevronRightIcon className="fill-[#009FE3]" />
+                                        </p>
+                                    </div>
+                                    <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
+                                        <p className="futura-book menu-member flex items-center justify-between">
+                                            Classes / Book a class
+                                            <ChevronRightIcon className="fill-[#009FE3]" />
+                                        </p>
+                                        <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
+                                            Trainers / Book a package
+                                            <ChevronRightIcon className="fill-[#009FE3]" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </Popup>
-
-
-
-
-                </nav>
-            </div>
+                        </Popup>
+                    </nav>
+                </div>
             <section>
                 <div className='container mx-auto flex flex-col justify-center mt-40'>
                     <p className='text-[#009FE3] futura-bold flex space-x-2'><span>HELLO</span><span>{books.fullName}</span></p>
-                    
+
                     <p className='futura-book text-white'>Let’s burn some calories</p>
                     <Slider className='mt-10' {...settings}>
                         {carousel_components.map((item) => (
@@ -313,7 +337,7 @@ export default function Dashboard({ style = 'white' }) {
                 </div>
             </section>
             <section>
-                <div className='container mx-auto mt-10 mb-20 grid grid-cols-12 gap-x-10'>
+                <div className='container mx-auto mt-10 mb-20 lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10'>
                     <div className='col-span-3'>
                         <p className='text-[#009FE3] futura-bold'>Membership Details</p>
                         <div className='flex flex-col space-y-3 mt-10 membership-box p-2 items-center'>
@@ -344,14 +368,14 @@ export default function Dashboard({ style = 'white' }) {
                             </>
                         ))}
 
-                        <div className='flex justify-center text-white items-center cursor-pointer futura-bold' onClick={() => { toggle(!state); loadMoreLess() }}>
+                        <div className='flex lg:justify-center text-white items-center cursor-pointer futura-bold' onClick={() => { toggle(!state); loadMoreLess() }}>
                             {state ? "VIEW ALL" : "VIEW LESS"}<ChevronRightIcon className='arrow-membership' />
                         </div>
 
                     </div>
                     <div className='col-span-3'>
                         <p className='text-[#009FE3] mb-10 futura-bold'>My Recent Checkins</p>
-                        {data.slice(0,4).map((item) => (
+                        {data.slice(0, 4).map((item) => (
                             <>
                                 <div className='flex justify-start items-start classes-box mb-3 p-3' >
                                     <div className='space-x-2 flex'>
@@ -362,7 +386,7 @@ export default function Dashboard({ style = 'white' }) {
                                 </div>
                             </>
                         ))}
-                        <a href='/login-process/myCheckIns' className='flex justify-center items-center cursor-pointer futura-bold text-white'>
+                        <a href='/login-process/myCheckIns' className='flex lg:justify-center items-center cursor-pointer futura-bold text-white'>
                             VIEW ALL<ChevronRightIcon className='arrow-membership' />
                         </a>
                     </div>

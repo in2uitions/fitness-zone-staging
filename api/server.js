@@ -50,6 +50,38 @@ export const getClasses = async (value) => {
 
     var myfields = ['*']
     const classesPublished = await classes.readByQuery({ filter: myfilter, fields: myfields })
-console.log(classesPublished.data)
+    // console.log(classesPublished.data + "test")
     return classesPublished.data;
+}
+
+
+
+export const getTrainers = async (value) => {
+    const trainers = directus.items('trainers');
+
+    var myfilter = '';
+    if (value) {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            }
+        }
+    }
+    else {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            },
+
+
+        }
+
+    }
+
+
+    // var myfields = ['*,carousel.comp_carousel_items_id.*']
+    var myfields = ['*']
+    const trainersPublished = await trainers.readByQuery({ filter: myfilter, fields: myfields })
+    console.log(JSON.stringify(trainersPublished.data) + "Trainers")
+    return trainersPublished.data;
 }

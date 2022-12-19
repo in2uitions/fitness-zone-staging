@@ -2316,7 +2316,21 @@ li {
   .forwardback {
     left: 12rem;
   }
-
+  .membership-box{
+    width: 100vw;
+  }
+  .slick-dots{
+    width: 100% !important;
+  }
+  .slick-slide{
+    width: 100vw !important;
+  }
+  .slick-track{
+    display: flex !important;
+  }
+  .classes-box{
+    width: 100vw;
+  }
   /* .h-mobile{
     height: 85vh;
   } */
@@ -2516,7 +2530,7 @@ li {
   }
 
   .text-homePage {
-    top: 14rem;
+    top: 17rem;
   }
 
   .sound {

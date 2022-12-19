@@ -157,7 +157,7 @@ export default function Footer(data = {}) {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
 
-        console.log(ct);
+        // console.log(ct);
         updateContent(ct);
 
         return () => {
@@ -353,7 +353,7 @@ export default function Footer(data = {}) {
                 </div>
                 <div className="border-b-2 border-[#009FE3] w-full my-14" />
 
-                <div className="lg:grid lg:grid-cols-4 px-10 lg:ml-28">
+                <div className="lg:grid lg:grid-cols-4 lg:px-10 md:px-10 px-4 lg:ml-28 lg:py-0 md:py-0 py-5">
                     <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">M</p>
                         <p className="futura-book text-white">+961 3 505 250</p>

@@ -40,6 +40,19 @@ export default function Dashboard({ style = "white" }) {
         console.log(err);
     }
 
+
+
+
+
+    
+
+
+
+
+
+
+
+
     const handleChange = (e, prevState, index) => {
         const object = {
             ...prevState,
@@ -82,8 +95,8 @@ export default function Dashboard({ style = "white" }) {
                             <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                                 <img src="/icons-person.png" />
                                 <p className="futura-bold text-[#009FE3] mt-5">CHARLES KHOURY</p>
-                                <div className="flex flex-col   mt-10">
-                                    <div className="flex space-x-3">
+                                <div className="flex flex-col mt-10">
+                                    <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                         <a
                                             href="/login-process/myProfile"
                                             className="futura-book menu-member flex items-center justify-between"
@@ -97,15 +110,15 @@ export default function Dashboard({ style = "white" }) {
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </p>
                                     </div>
-                                    <div className="flex space-x-3 mt-10">
+                                    <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
                                         <p className="futura-book menu-member flex items-center justify-between">
                                             Classes / Book a class
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </p>
-                                        <p className="futura-book menu-member flex items-center justify-between">
+                                        <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
                                             Trainers / Book a package
                                             <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </p>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +127,7 @@ export default function Dashboard({ style = "white" }) {
                 </div>
                 <section>
                     <div className="w-3/4 mx-auto flex flex-col justify-center mt-40">
-                        <div className="grid grid-cols-12 gap-x-3 items-start mt-10">
+                        <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0">
                             <div className="col-span-6">
                                 <div className="flex flex-col space-y-2">
                                     <p className="text-[#009FE3]">General Info</p>
@@ -134,7 +147,7 @@ export default function Dashboard({ style = "white" }) {
                                             onChange={handleChange}
                                         />
                                         <div
-                                            className="bg-[#009FE3] p-1 rounded-md futura-bold "
+                                            className="bg-[#009FE3] lg:p-1 rounded-md futura-bold "
                                             onClick={() => {
                                                 toggle(!state);
                                                 handleChange;

@@ -1,42 +1,59 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 
 export default function App() {
-    const [state, setState] = useState({
-        name: "John Doe",
-        email: "john.doe@test.com"
-    });
+    const btn = document.getElementById("btn");
+    // console.log(input)
+    const testFunc = function (event) {
+        var input = JSON.stringify({
+            "Input": event.target.myInput?.value
+        });
+        // let inputValue = input.value;
+        const apiData = {
+            url: "https://pokeapi.co/api/v2/",
+            type: "pokemon",
+            id: input,
+        };
 
-    // We need to spread the previous state and change the one we're targeting, so other data cannot be lost.
-    const handleChange = (e , prevState , index) => {
-        const object = {
-            ...prevState,
-            [index]: e.target?.value
-        }
-        setState(object)
+        const { url, type, id } = apiData;
+        const apiUrl = `${url}${type}/${id}`;
+
+        fetch(apiUrl)
+            .then((data) => {
+                if (data.ok) {
+                    return data.json();
+                }
+                throw new Error("Response not ok.");
+            })
+            .then((pokemon) => generateHtml(pokemon))
+            .catch((error) => console.error("Error:", error));
+
+        const generateHtml = (data) => {
+            //console.log(data) <-- Slows down the result
+            const html = `
+            <div class="name">${data.name}</div>
+            <img src=${data.sprites.front_default}>
+            <div class="details">
+                <span>Height: ${data.height}</span>
+                <span>Weight: ${data.weight}</span>
+            </div>
+        `;
+            const pokemonDiv = document.querySelector(".pokemon");
+            pokemonDiv.innerHTML = html;
+        };
     };
-//     const handleaChange = e => {
-//         setState(prevState => {
-//       ...prevState,
-//             [e.target.name]: e.target.value,
-//     });
-// };
-return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center">
-        <input
-            type="text"
-            className="name"
-            name="name"
-            value={state.name}
-            onChange={handleChange}
-        />
-
-        <input
-            type="text"
-            className="email"
-            name="email"
-            value={state.email}
-            onChange={handleChange}
-        />
-    </div>
-);
+    return (
+        <>
+            <div className="pokemon"></div>
+            <button id="btn" onClick={testFunc()}>
+                SUBMIT
+            </button>
+            <input type="text" value="25" id="myInput" />
+        </>
+    );
 }
+
+
+
+
+
