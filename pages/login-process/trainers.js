@@ -95,13 +95,13 @@ export default function Trainers({ style = "white" }) {
                                             My Profile
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </a>
-                                        <p className="futura-book menu-member flex items-center justify-between">
+                                        <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
                                             Membership Settings
                                             <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </p>
+                                        </a>
                                     </div>
                                     <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                        <p className="futura-book menu-member flex items-center justify-between">
+                                        <p className="futura-book menu-member flex items-center justify-between text-white">
                                             Classes / Book a class
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </p>
@@ -116,14 +116,14 @@ export default function Trainers({ style = "white" }) {
                     </nav>
                 </div>
             <section>
-                <div className="container mx-auto flex flex-col justify-start mt-40">
+                <div className="container mx-auto flex flex-col justify-start mt-40 w-screen px-3 lg:px-0 md:px-0">
                     <p className="text-[#009FE3] futura-bold">Trainers List</p>
                     <div className="grid lg:grid-cols-12 gap-x-3 gap-y-3 items-start mt-10">
                         {data.map((itemAPI) => (
                             <>
                             {trainers.map((item, i) => (
                             <div className="lg:col-span-3 h-full">
-                                <div className='flex flex-col space-y-3 membership-box p-10 items-center'>
+                                <div className='flex flex-col space-y-3 membership-box p-10 items-center h-full'>
 
                                         <>
 

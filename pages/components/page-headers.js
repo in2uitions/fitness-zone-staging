@@ -46,7 +46,7 @@ export default function Header({ color = "orange", data = {} }) {
                         {data.image_title ? <h1 className="text-[#009FE3] font-bold futura-bold lg:text-5xl md:text-4xl text-3xl">{data.image_title}</h1> : null}
                         <div className='flex lg:space-x-6 md:space-x-6 space-x-2 items-baseline'>
                         {data.image_description ? <h1 className="font-bold lg:text-7xl md:text-6xl text-white text-2xl futura-bold">{data.image_description}</h1> : null}
-                        <div className=''>{data.icon_on ?<img src={`${image_url}${data.icon_on?.id}`} className="lg:h-16 md:h-16 h-10"/> :null}</div>
+                        <div className=''>{data.icon_on ?<img src={`${image_url}${data.icon_on?.id}`} className="lg:h-16 md:h-16 h-5"/> :null}</div>
                         </div>
                         {data.button_url ? <a href={data.button_url} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 text-center rounded-md futura-bold">{data.button_title}
                             <ChevronRightIcon className="ml-1" /></a> : null}

@@ -32,7 +32,7 @@ export default function CheckIns() {
         console.log(err);
     }
     function dateButif(d) {
-        const newd = new Date(d).toLocaleDateString('en-EN', {
+        const newd = new Date(d).toLocaleDateString("en-UG", {
             day: 'numeric',
             month: 'short',
             year: 'numeric',
@@ -74,13 +74,13 @@ export default function CheckIns() {
                                             My Profile
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </a>
-                                        <p className="futura-book menu-member flex items-center justify-between">
+                                        <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
                                             Membership Settings
                                             <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </p>
+                                        </a>
                                     </div>
                                     <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                        <p className="futura-book menu-member flex items-center justify-between">
+                                        <p className="futura-book menu-member flex items-center justify-between text-white">
                                             Classes / Book a class
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </p>
@@ -95,12 +95,12 @@ export default function CheckIns() {
                     </nav>
                 </div>
             <section>
-                <div className='container mx-auto flex flex-col justify-center mt-40'>
-                    <div className='flex flex-col mx-auto justify-start items-start'>
+                <div className='flex flex-col justify-center mt-40'>
+                    <div className='flex flex-col mx-auto justify-start items-start lg:w-1/4 md:w-1/4'>
                         <p className='text-[#009FE3] futura-bold mb-3'>My Recent Check-ins</p>
                         {data.map((item) => (
                             <>
-                                <div className='flex justify-start items-start classes-box mb-3 p-3 w-full' >
+                                <div className='flex justify-start items-start classes-box mb-3 p-3' >
                                     <div className='space-x-2 flex'>
                                         <p className='text-white text-md pr-2 border-r border-[#009FE3] futura-book'>{dateButif(item.value)}</p>
                                         {/* <p className='border-r border-[#009FE3] text-white'>{item.time}</p> */}

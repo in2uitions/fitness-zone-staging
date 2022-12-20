@@ -78,8 +78,8 @@ export default function Otp() {
         <div>
 
             <div className="w-screen h-screen container mx-auto flex items-center justify-center">
-            <div className="w-1/2"></div>
-                <div className='flex flex-col justify-center'>
+            <div className="lg:w-1/2"></div>
+                <div className='flex flex-col justify-center px-5 lg:px-0 md:px-0'>
                     <img src="/fitnessZoneLogo.png" className='w-full h-auto' />
 
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
@@ -102,7 +102,7 @@ export default function Otp() {
                     </form>
                     <a href="/login-process/login" className='text-[#009FE3] futura-book mt-4 text-center'>Back to login</a>
                 </div>
-                <div className="w-1/2"></div>
+                <div className="lg:w-1/2"></div>
             </div>
         </div>
     );

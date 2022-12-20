@@ -51,106 +51,127 @@ export default function TrainersProfile({ style = "white" }) {
     }
     return (
         <>
-           <div className={styles.container}>
-                    <nav className={styles.nav}>
-                        <a href="/">
-                            <img src="/logo.png" className="logo" />
-                        </a>
-                        <Popup
-                            trigger={
-                                <div className="flex items-center space-x-2">
-                                    <button className="img-btn">
-                                        <img src="/blue-rectangle.png" className="menu-icon" />
-                                    </button>
-                                    <p className="font-bold text-white futura-book cursor-pointer">
-                                        Menu
-                                    </p>
+            <div className={styles.container}>
+                <nav className={styles.nav}>
+                    <a href="/">
+                        <img src="/logo.png" className="logo" />
+                    </a>
+                    <Popup
+                        trigger={
+                            <div className="flex items-center space-x-2">
+                                <button className="img-btn">
+                                    <img src="/blue-rectangle.png" className="menu-icon" />
+                                </button>
+                                <p className="font-bold text-white futura-book cursor-pointer">
+                                    Menu
+                                </p>
+                            </div>
+                        }
+                        modal
+                        closeOnDocumentClick
+                        position=""
+                    >
+                        <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
+                            <img src="/icons-person.png" />
+                            <p className="futura-bold text-[#009FE3] mt-5">CHARLES KHOURY</p>
+                            <div className="flex flex-col mt-10">
+                                <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
+                                    <a
+                                        href="/login-process/myProfile"
+                                        className="futura-book menu-member flex items-center justify-between"
+                                    >
+                                        {" "}
+                                        My Profile
+                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                    </a>
+                                    <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
+                                        Membership Settings
+                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                    </a>
                                 </div>
-                            }
-                            modal
-                            closeOnDocumentClick
-                            position=""
-                        >
-                            <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                                <img src="/icons-person.png" />
-                                <p className="futura-bold text-[#009FE3] mt-5">CHARLES KHOURY</p>
-                                <div className="flex flex-col mt-10">
-                                    <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                        <a
-                                            href="/login-process/myProfile"
-                                            className="futura-book menu-member flex items-center justify-between"
-                                        >
-                                            {" "}
-                                            My Profile
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </a>
-                                        <p className="futura-book menu-member flex items-center justify-between">
-                                            Membership Settings
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </p>
-                                    </div>
-                                    <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                        <p className="futura-book menu-member flex items-center justify-between">
-                                            Classes / Book a class
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </p>
-                                        <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
-                                            Trainers / Book a package
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </a>
-                                    </div>
+                                <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
+                                    <p className="futura-book menu-member flex items-center justify-between text-white">
+                                        Classes / Book a class
+                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                    </p>
+                                    <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
+                                        Trainers / Book a package
+                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                    </a>
                                 </div>
                             </div>
-                        </Popup>
-                    </nav>
-                </div>
+                        </div>
+                    </Popup>
+                </nav>
+            </div>
             <section>
-                <div className="container mx-auto flex flex-col justify-start mt-40">
+                <div className="container mx-auto flex flex-col justify-start mt-40 px-3 lg:px-0 md:px-0">
                     <p className="text-[#009FE3] futura-bold">Trainers List</p>
-                    <div className="grid grid-cols-12 gap-x-3 gap-y-3 items-start mt-10">
+                    <div className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-3 items-start mt-10 space-y-10 lg:space-y-0 md:space-y-0">
                         {/* {data.map((item) => ( */}
-                            <div className="col-span-3">
-                                <div className='flex flex-col space-y-3 membership-box p-10 items-center'>
-                                    <>
-                                        <img className="w-20 h-20 rounded-full" src='/noImg.webp' />
-                                        <p className='futura-bold flex space-x-2 cursor-pointer text-white'>{data.fullName}</p>
-                                        <p className='futura-book cursor-pointer text-white'>{data.securityGroupName}</p>
-                                        {/* {data.packageList?.map((item, id) =>(
+                        <div className="col-span-4">
+                            <div className='flex flex-col space-y-3 membership-box p-10 items-center'>
+                                <>
+                                    <img className="w-20 h-20 rounded-full" src='/noImg.webp' />
+                                    <p className='futura-bold flex space-x-2 cursor-pointer text-white'>{data.fullName}</p>
+                                    <p className='futura-book cursor-pointer text-white'>{data.securityGroupName}</p>
+                                    {/* {data.packageList?.map((item, id) =>(
                                         <p key={id}>{item.category?.categoryName}</p>
                                         ))} */}
-                                        <div className="flex space-x-3 items-center rounded-md p-2 active-button">
-                                        <img className="" src="/location-marker.png"/>
-                                        <p>{data.locationName}</p>
-                                        </div>
-                                    </>
-                                </div>
+                                    <div className="flex space-x-3 items-center rounded-md p-2 active-button">
+                                        <img className="" src="/location-marker.png" />
+                                        <p className="text-white">{data.locationName}</p>
+                                    </div>
+                                </>
                             </div>
-                            <div className="col-span-3">
-                                <p></p>
-                            </div>
-                            <div className="col-span-3">
+                        </div>
+                        <div className="col-span-4">
+                            <p className="text-[#009FE3]">Qualifications:</p>
+                            <p className="text-white">- Bachelors Degree in Nutrition & Dietetics - NDU<br></br>
+                                - Masters Degree in Human Nutrition - NDU<br></br>
+                                - Sports Injuries & Post Rehabilitation Certificate - ACE<br></br>
+                                - Pre and Post Natal Fitness Certificate - ACE<br></br>
+                                - Training for Health and Fitness certificate - ACSM<br></br>
+                                - Advanced Weight Training Technique Certificate - ACSM<br></br>
+                                - Personal Trainer Certificate - ACSM<br></br>
+                                - Sports Nutrition Certificate - ACE<br></br>
+                                - Insulin Resistance Training Program Certificate</p>
+                        </div>
+                        <div className="col-span-4">
                             <div className="membership-box p-3 rounded-md">
-                            <div className="flex items-center">
-                                <div className="flex flex-col">
-                                    <p className="futura-bold">SINGLE SESSION</p>
-                                    <p>The classes are in 3 speciality Studios, Energy Studio,</p>
-                                </div>
-                                <p>$60</p>
+                                <div className="flex items-center w-full">
+                                    <div className="flex flex-col w-3/4">
+                                        <p className="futura-bold text-white">SINGLE SESSION</p>
+                                        <p className="text-white">The classes are in 3 speciality Studios, Energy Studio,</p>
+                                    </div>
+                                    <div className="flex items-center w-1/4">
+                                    <div className="flex flex-col">
+                                    <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>60</span></p>
+                                    <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                    </div>
+                                    <ChevronRightIcon className="chevron-session"/>
+                                    </div>
                                 </div>
                             </div>
                             <div className="membership-box mt-10 p-3 rounded-md">
-                            <div className="flex items-center">
-                                <div className="flex flex-col">
-                                    <p className="futura-bold">BASIC PACKAGE</p>
-                                    <p>The classes are in 3 speciality Studios, Energy Studio,</p>
-                                </div>
-                                <p>$1200</p>
+                                <div className="flex justify-center items-center w-full">
+                                    <div className="flex flex-col w-3/4">
+                                        <p className="futura-bold text-white">BASIC PACKAGE</p>
+                                        <p className="text-white">The classes are in 3 speciality Studios, Energy Studio,</p>
+                                    </div>
+                                    <div className="flex items-center w-1/4">
+                                    <div className="flex flex-col">
+                                    <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>1,200</span></p>
+                                    <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                    </div>
+                                    <ChevronRightIcon className="chevron-session"/>
+                                    </div>
                                 </div>
                             </div>
-                                {/* {data.packageList?.map((item)=>(
+                            {/* {data.packageList?.map((item)=>(
                                 <p>{item.packageName}</p>
                                 ))} */}
-                            </div>
+                        </div>
                         {/* ))} */}
                     </div>
                 </div>

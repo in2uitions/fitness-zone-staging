@@ -105,13 +105,13 @@ export default function Dashboard({ style = "white" }) {
                                             My Profile
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </a>
-                                        <p className="futura-book menu-member flex items-center justify-between">
+                                        <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
                                             Membership Settings
                                             <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </p>
+                                        </a>
                                     </div>
                                     <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                        <p className="futura-book menu-member flex items-center justify-between">
+                                        <p className="futura-book menu-member flex items-center justify-between text-white">
                                             Classes / Book a class
                                             <ChevronRightIcon className="fill-[#009FE3]" />
                                         </p>
@@ -126,98 +126,99 @@ export default function Dashboard({ style = "white" }) {
                     </nav>
                 </div>
                 <section>
-                    <div className="w-3/4 mx-auto flex flex-col justify-center mt-40">
-                        <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0">
-                            <div className="col-span-6">
+                    <div className=" mx-auto flex flex-col justify-center items-center mt-40">
+                        {/* <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0"> */}
+                        <div className="w-full container mx-auto lg:flex lg:flex-row md:flex lg:space-x-3 md:space-x-3 justify-center items-start space-y-5 lg:space-y-0 md:space-y-0 px-4 lg:px-4 md:px-4">
+                            <div className="flex flex-col lg:w-1/3 md:w-1/3">
                                 <div className="flex flex-col space-y-2">
                                     <p className="text-[#009FE3]">General Info</p>
                                     <input
-                                        className="border border-[#009FE3] bg-black pl-2 h-10 rounded-md"
+                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md text-white"
                                         value={data.firstName}
                                     />
                                     <input
-                                        className="border border-[#009FE3] bg-black pl-2 h-10 rounded-md"
+                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md text-white"
                                         value={data.lastName}
                                     />
-                                    <div className="border border-[#009FE3] flex justify-between items-center bg-black h-10 rounded-md">
+                                    <div className="border border-[#009FE3] flex justify-between items-center bg-black lg:h-10 md:h-10 h-16 rounded-md p-1">
                                         <input
                                             type="text"
-                                            className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3]"
+                                            className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] text-white"
                                             value={data.birthdate}
                                             onChange={handleChange}
                                         />
-                                        <div
-                                            className="bg-[#009FE3] lg:p-1 rounded-md futura-bold "
+                                        <button
+                                            className="bg-[#009FE3] p-1 rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2 text-white"
                                             onClick={() => {
                                                 toggle(!state);
                                                 handleChange;
                                             }}
                                         >
                                             {state ? "CHANGE DATE OF BIRTH" : "SAVE"}
-                                            <ChevronRightIcon className="arrow-membership" />
-                                        </div>
+                                        </button>
                                     </div>
-                                    <div className="border border-[#009FE3] flex justify-between items-center bg-black h-10 rounded-md">
+                                    <div className="border border-[#009FE3] flex justify-between items-center bg-black rounded-md lg:h-10 md:h-10 h-16 p-1 text-white">
                                         <input
                                             type="text"
                                             className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3]"
                                             value={data.mobile}
                                             onChange={handleChange}
                                         />
-                                        <div
-                                            className="bg-[#009FE3] p-1 rounded-md futura-bold "
+                                        <button
+                                            className="bg-[#009FE3] p-1 rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2"
                                             onClick={() => {
                                                 scdtoggle(!scdstate);
                                                 handleChange;
                                             }}
                                         >
                                             {scdstate ? "CHANGE PHONE" : "SAVE"}
-                                            <ChevronRightIcon className="arrow-membership" />
-                                        </div>
+                                        </button>
                                     </div>
-                                    <div className="border border-[#009FE3] flex justify-between items-center bg-black h-10 rounded-md">
+                                    <div className="border border-[#009FE3] flex justify-between items-center bg-black lg:h-10 md:h-10 h-16 p-1 rounded-md text-white">
                                         <input
                                             type="text"
                                             className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3]"
                                             value={data.email}
                                             onChange={handleChange}
                                         />
-                                        <div
-                                            className="bg-[#009FE3] p-1 rounded-md futura-bold "
+                                        <button
+                                            className="bg-[#009FE3] p-1 rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2"
                                             onClick={() => {
                                                 thirdtoggle(!thirdstate);
                                                 handleSave;
                                             }}
                                         >
                                             {thirdstate ? "CHANGE EMAIL" : "SAVE"}
-                                            <ChevronRightIcon className="arrow-membership" />
-                                        </div>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-span-6">
-                                <div className="flex flex-col space-y-2">
+                            <div className="flex flex-col lg:w-1/3 md:w-1/3">
+                                <div className="flex flex-col space-y-2 text-white">
                                     <p className="text-[#009FE3]">General Info</p>
                                     <input
-                                        className="border border-[#009FE3] bg-black pl-2 h-10 rounded-md"
+                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.country?.countryName}
                                     />
                                     <input
-                                        className="border border-[#009FE3] bg-black pl-2 h-10 rounded-md"
+                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.building}
                                     />
                                     <input
-                                        className="border border-[#009FE3] bg-black pl-2 h-10 rounded-md"
+                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.birthdate}
                                     />
                                     <input
-                                        className="border border-[#009FE3] bg-black pl-2 h-10 rounded-md"
+                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.mobile}
                                     />
                                 </div>
                             </div>
+                            
                         </div>
-                    </div>
+                        <button className="bg-[#009FE3] p-2 lg:w-1/6 rounded-md futura-bold mt-5 text-white">UPDATE PROFILE</button>
+                        </div>
+                    {/* </div> */}
                 </section>
             </>
         );

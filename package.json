@@ -36,6 +36,7 @@
     "react-dom": "18.2.0",
     "react-elastic-carousel": "^0.9.5",
     "react-event-timeline": "^1.6.3",
+    "react-flags-select": "^2.2.3",
     "react-hook-form": "^7.38.0",
     "react-horizontal-timeline": "^1.5.3",
     "react-icons": "^4.6.0",

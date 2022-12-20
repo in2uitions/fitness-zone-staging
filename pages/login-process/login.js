@@ -2,15 +2,11 @@ import { Router } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import PhoneInput, {
-    isPossiblePhoneNumber,
-    isValidPhoneNumber,
-    formatPhoneNumberIntl,
-    parsePhoneNumber
-} from "react-phone-number-input";
+import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber } from 'react-phone-number-input'
 import dynamic from 'next/dynamic';
 import Input from "react-phone-number-input/input-mobile";
 import "react-phone-number-input/style.css";
+import ReactFlagsSelect from "react-flags-select";
 
 export default function Login() {
 
@@ -23,8 +19,8 @@ export default function Login() {
     const [selectedTab, setSelectedTab] = useState({});
     const submitmsg = <h3></h3>;
     const router = useRouter()
-    const LEBANON = 'lebanon';
-    const UAE = "uae";
+    const LEBANON = 'LB';
+    const UAE = "AE";
     const login_credentials = {
         [LEBANON]: 'Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
         [UAE]: 'Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1'
@@ -48,7 +44,7 @@ export default function Login() {
         const getTokenAPI = async () => {
             try {
                 const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/Account/Login?${login_credentials[event.target.country.value]}`,
+                    `https://api.fitnessclubapp.com/api/Account/Login?${login_credentials[select]}`,
                     {
                         method: 'POST'
                     }
@@ -68,7 +64,7 @@ export default function Login() {
                     }
                     try {
                         var registraitonLoginData = JSON.stringify({
-                            "Country": event.target.country?.value,
+                            "Country": select,
                             "Phone_member": event.target.phone_member?.value,
                             "Member": event.target.memberId.value,
                             "Phone": event.target.phone.value,
@@ -97,14 +93,14 @@ export default function Login() {
                         } else if (endPoints == MOBILE) {
                             phoneNumber = selectedTab[endPoints]
                         }
-                        if (data.isValid == true && phoneNumber ) {
+                        if (data.isValid == true && phoneNumber) {
                             // const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
                             // const data = await SendOTPMessage.json();
                             // setIsSent(true)
-                            localStorage.setItem("Country", JSON.stringify(event.target.country.value));
+                            localStorage.setItem("Country", JSON.stringify(select));
                             localStorage.setItem("Phone", phoneNumber);
                             localStorage.setItem("Member", event.target.memberId.value);
-                            event.target.country.value = '';
+                            // event.target.country.value = '';
                             event.target.phone.value = '';
                             event.target.memberId.value = '';
                             router.push({ pathname: "/login-process/otp", query: { phoneNumber } })
@@ -165,6 +161,9 @@ export default function Login() {
         setState({ formErrors: formErrors });
         return formIsValid;
     }
+    const [select, setSelect] = useState(LEBANON);
+    const onSelect = (code) => setSelect(code);
+    console.log("SELECT", select);
     return (
         <div>
 
@@ -174,11 +173,19 @@ export default function Login() {
 
                     <p className="futura-bold text-4xl mt-28 text-[#009FE3]">COUNTRY</p>
                     <form className='w-full flex flex-col' onSubmit={submitLogIn}>
-                        <select name='country' id='country' className='border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder'>
+                        {/* <select name='country' id='country' className='border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder'>
                             <option value={LEBANON}>Lebanon</option>
                             <option value={UAE}>UAE</option>
-                        </select>
-
+                        </select> */}
+                        <ReactFlagsSelect
+                        selected={select}
+                        onSelect={onSelect}
+                        countries={["LB", "AE"]}
+                        className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder "
+                        defaultCountry="LB"
+                        customLabels={{"LB": "LEBANON","AE": "UAE"}}
+                        id="country"
+            />
                         {/* <PhoneInput
                             international={false}
                             countryCallingCodeEditable={true}
@@ -194,7 +201,6 @@ export default function Login() {
                         <pre>
                             {value1 && isValidPhoneNumber(value1) ? "Your phone number is valid" : ""}
                         </pre> */}
-
                         <input onChange={(e) => handleTabsChange({ event: e, index: MEMBER })} required className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Member ID" id='memberId' />
                         <label className='text-[#009FE3]'>OR</label>
                         {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
