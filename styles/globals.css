@@ -362,19 +362,68 @@ p {
 .react-tabs__tab-list {
   display: flex !important;
 }
-
-.react-tabs__tab--selected {
-  background: transparent !important;
-  border-color: transparent !important;
-  color: #009FE3 !important;
-  border-radius: 5px 5px 0 0;
+.notSelected{
+  color:#707070 !important;
+  padding: 10px;
 }
-
-.react-tabs__tab {
+.react-tabs__tab--selected {
+  background: white !important;
+  border:1px solid grey !important;
+  color: black !important;
+  /* width: 45% !important; */
+  padding: 10px !important;
+  border-radius: 5px !important;
+}
+.react-tabs__tab--selected.tabColor{
+  color: #009FE3 !important;
+}
+.tabColor{
+  padding: 10px;
+  font-family: "Futura Bk BT";
+}
+.react-tabs__tab{
+  padding: 10px !important;
+}
+/* .tab:focus{
+  background-color: white;
+}
+.tab:active{
+  background-color: white;
+  width: 20%;
+} */
+/* .tab:active{
+  background: white;
+  color: black;
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.tab:hover{
+  background: white;
+  color: black;
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+} */
+.react-tabs__tab--selected:focus{
+  /* border: 0px solid transparent !important; */
+}
+.react-tabs__tab--selected:active{
+  /* border: 0px solid transparent !important; */
+}
+.tabs-container{
+  background-color: rgba(143, 143, 143, 0.1);
+}
+/* .react-tabs__tab {
+  width: 45% !important;
   border: 0px solid transparent !important;
   bottom: 0px !important;
   position: unset !important;
-}
+} */
 
 .coaching-mobile {
   margin-bottom: 45rem;
@@ -1905,9 +1954,9 @@ li.category.isActive {
   border-width: 0;
 }
 
-li {
+/* li {
   width: 100%;
-}
+} */
 
 .custom-dot--active {
   background: black;
@@ -3778,4 +3827,7 @@ ul li.activate {
   fill: #009FE3 !important;
   width: 1.5em !important;
   height: 1.5em !important;
+}
+.on-tabs{
+  height: 1.5rem;
 }

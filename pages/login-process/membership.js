@@ -98,10 +98,10 @@ export default function Membership({ style = 'white' }) {
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <p className="futura-book menu-member flex items-center justify-between text-white">
+                                    <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
                                         <ChevronRightIcon className="fill-[#009FE3]" />
-                                    </p>
+                                    </a>
                                     <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
                                         Trainers / Book a package
                                         <ChevronRightIcon className="fill-[#009FE3]" />

@@ -1,59 +1,50 @@
+import axios from "axios";
+import { useEffect, useMemo, useState } from "react";
+import { Post } from "./Post";
 
-import React, { useState, useEffect } from "react";
+export default function List() {
+    const [{ posts, users }, setData] = useState({ post: [], user: [] });
+    try {
 
-export default function App() {
-    const btn = document.getElementById("btn");
-    // console.log(input)
-    const testFunc = function (event) {
-        var input = JSON.stringify({
-            "Input": event.target.myInput?.value
-        });
-        // let inputValue = input.value;
-        const apiData = {
-            url: "https://pokeapi.co/api/v2/",
-            type: "pokemon",
-            id: input,
-        };
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://fzcms.diastora.com/items/trainers`
 
-        const { url, type, id } = apiData;
-        const apiUrl = `${url}${type}/${id}`;
-
-        fetch(apiUrl)
-            .then((data) => {
-                if (data.ok) {
-                    return data.json();
-                }
-                throw new Error("Response not ok.");
-            })
-            .then((pokemon) => generateHtml(pokemon))
-            .catch((error) => console.error("Error:", error));
-
-        const generateHtml = (data) => {
-            //console.log(data) <-- Slows down the result
-            const html = `
-            <div class="name">${data.name}</div>
-            <img src=${data.sprites.front_default}>
-            <div class="details">
-                <span>Height: ${data.height}</span>
-                <span>Weight: ${data.weight}</span>
-            </div>
-        `;
-            const pokemonDiv = document.querySelector(".pokemon");
-            pokemonDiv.innerHTML = html;
-        };
-    };
+                );
+                const res = await fetch(
+                    ``
+                )
+                const checkInList = await response.json()
+                // const test = await res.json()
+                setData({ posts: checkInList.data, users: "" });
+                console.log(checkInList.data + "testing")
+                // console.log(test + "test")
+            }
+        }, [])
+    } catch (err) {
+        console.log(err);
+    }
+    
+    const filteredPosts = useMemo(() => {
+        const filteredPosts = [];
+        if (posts)
+            for (let i = 0; i < posts.length && i < 10; i++) {
+                filteredPosts.push(posts[i]);
+            }
+        return filteredPosts;
+    }, [posts]);
     return (
-        <>
-            <div className="pokemon"></div>
-            <button id="btn" onClick={testFunc()}>
-                SUBMIT
-            </button>
-            <input type="text" value="25" id="myInput" />
-        </>
+        <div className="mt-40 container mx-auto">
+            <div id="main-box" className="grid grid-cols-12 gap-x-10 gap-y-10 p-10 items-center">
+                {filteredPosts.map((post, index) => (
+                    <div className="col-span-3 membership-box">
+                        <Post post={post} users={users} key={post.id} />
+                    </div>
+                ))}
+                {/* <button id="load-btn" onClick={handleClick}>Load more</button> */}
+            </div>
+        </div>
     );
 }
-
-
-
-
-
