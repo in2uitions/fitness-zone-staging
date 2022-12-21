@@ -44,7 +44,7 @@ export default function List() {
                     </div>
                 ))} */}
                 {/* <button id="load-btn" onClick={handleClick}>Load more</button> */}
-            </div>
+            </div> 
         </div>
     );
 }
