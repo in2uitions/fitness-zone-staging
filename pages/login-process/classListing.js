@@ -6,6 +6,7 @@ import Popup from 'reactjs-popup';
 
 export default function ClassListing() {
     const [data, setData] = useState([]);
+    const [classdata, setClassData] = useState([]);
     var registrationHeaders = new Headers();
     registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
     registrationHeaders.append("Content-Type", "application/json");
@@ -26,6 +27,41 @@ export default function ClassListing() {
                 const checkInList = await response.json()
                 setData(checkInList)
                 console.log(checkInList)
+            }
+            // getData()
+        }, [])
+    } catch (err) {
+        console.log(err);
+    }
+    var curr = new Date; 
+    var first = curr.getDate() - curr.getDay();
+    var last = first + 6;
+
+    var firstday = new Date(curr.setDate(first)).toUTCString();
+    var lastday = new Date(curr.setDate(last)).toUTCString();
+    // console.log(firstday + "day")
+    // console.log(lastday + "day")
+
+
+    var registrationHeaders = new Headers();
+    registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: 'GET',
+        headers: registrationHeaders
+    };
+    try {
+
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList?dateFrom=${firstday}&dateTo=${lastday}&LocationCode=1`,
+                    registrationRequestOptions
+
+                );
+                const checkInList = await response.json()
+                setClassData(checkInList)
             }
             // getData()
         }, [])
@@ -159,13 +195,13 @@ export default function ClassListing() {
                         <Tab className="tabColor"><div className="flex justify-end tab">S</div></Tab>
                     </TabList>
                 </Tabs>
-                {classList.map((item) => (
+                {classdata.map((item) => (
                     <>
                         <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3">
                             <div className='flex justify-start'>
-                                <p className="text-white text-md border-r border-[#009FE3] pr-3 futura-book">{item.date}</p>
-                                <p className='border-r border-white text-white pl-10 pr-3 futura-book'>{item.time}</p>
-                                <p className="text-white text-lg futura-book pl-5">{item.city}</p>
+                                <p className="text-white text-md border-r border-[#009FE3] pr-3 futura-book">{item.class?.className}</p>
+                                <p className='border-r border-white text-white pl-10 pr-3 futura-book'>{item.studio?.studioName}</p>
+                                <p className="text-white text-lg futura-book pl-5">{item.classTime}</p>
                             </div>
                             <button
                                 className='flex justify-end'
