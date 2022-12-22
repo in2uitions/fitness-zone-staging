@@ -12,7 +12,7 @@ export default function List() {
         registrationHeaders.append("Content-Type", "application/json");
         var registrationRequestOptions = {
             method: 'GET',
-            headers: registrationHeaders
+            headers: registrationHeaders 
         };
         useEffect(() => {
             getData();
