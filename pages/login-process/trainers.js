@@ -1,67 +1,53 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import MagicSliderDots from "react-magic-slider-dots";
-import "react-magic-slider-dots/dist/magic-dots.css";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import Close from "@material-ui/icons/Close";
+import { useEffect, useMemo, useState } from "react";
+import { Post } from "./trainers/post";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
-import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
-import { getTrainers } from "../../api/server";
-import { image_url } from "../../global_vars";
-import parse from "html-react-parser";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
-export default function Trainers({ style = "white" }) {
-    const [data, setData] = useState([]);
-    const router = useRouter();
-    var registrationHeaders = new Headers();
-    registrationHeaders.append(
-        "Authorization",
-        "Bearer " + localStorage.getItem("token")
-    );
-    registrationHeaders.append("Content-Type", "application/json");
-    var registrationRequestOptions = {
-        method: "GET",
-        headers: registrationHeaders,
-    };
+export default function List() {
+    const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
     try {
-
+        var registrationHeaders = new Headers();
+        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        registrationHeaders.append("Content-Type", "application/json");
+        var registrationRequestOptions = {
+            method: 'GET',
+            headers: registrationHeaders
+        };
         useEffect(() => {
             getData();
             async function getData() {
                 const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/List?isTrainer=true&isActive=True`,
-                    registrationRequestOptions
+                    `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/List?isTrainer=true&isActive=True`,registrationRequestOptions
 
                 );
-                const trainersList = await response.json()
-                setData(trainersList)
+                const res = await fetch(
+                    `https://fzcms.diastora.com/items/trainers`
+                )
+                const checkInList = await response.json()
+                const test = await res.json()
+                setData({ posts: checkInList, users: test.data });
+                // console.log(checkInList + "testing")
+                // console.log(test.data + "test")
             }
-
+            getData()
         }, [])
-
     } catch (err) {
         console.log(err);
     }
-    const userId = data.map(el => el.userId)
-    const route = (id) => router.push({ pathname: "/login-process/trainers-profile", query: { id } });
-
-    useEffect(() => {
-        getdata();
-    }, []);
-    const [trainers, setTrainers] = useState([]);
-    const [trainersloaded, setTrainersLoaded] = useState(false);
-    const getdata = async () => {
-        const trainer = await getTrainers();
-        setTrainers(trainer);
-        setTrainersLoaded(true)
-    }
-
+    
+    const filteredPosts = useMemo(() => {
+        const filteredPosts = [];
+        if (posts && users)
+            for (let i = 0; i < posts.length && i < users.length; i++) {
+                filteredPosts.push({post: posts[i], user : users.find(({ userId }) => posts[i].userId === userId)});
+            }
+            // console.log(JSON.stringify(filteredPosts) + "testttttt")
+        return filteredPosts;
+    }, [posts, users]);
     return (
         <>
-            <div className={styles.container}>
+        <div className={styles.container}>
                 <nav className={styles.nav}>
                     <a href="/">
                         <img src="/logo.png" className="logo" />
@@ -114,45 +100,15 @@ export default function Trainers({ style = "white" }) {
                     </Popup>
                 </nav>
             </div>
-            <section>
-                <div className="container mx-auto flex flex-col justify-start mt-40 w-screen px-3 lg:px-0 md:px-0">
-                    <p className="text-[#009FE3] futura-bold">Trainers List</p>
-                    <div className="grid lg:grid-cols-12 gap-x-3 gap-y-3 items-start mt-10">
-                    {data.map((itemAPI)=>(
-                            <>
-                            {/* {trainers.map((item, i) => ( */}
-                                    <div className="lg:col-span-3 h-full">
-                                        <div className='flex flex-col space-y-3 membership-box p-10 items-center h-full'>
-
-                                            <>
-
-                                                <div className="flex flex-col justify-center items-center space-y-3">
-                                            
-                                                    {/* <>
-                                                    {item.image ? <img src={`${image_url}${item.image}`} className="rounded-full w-20 h-20" altv={item.title} /> : null}
-                                                </> */}
-                                                <p>{itemAPI.userId}</p>
-                                                    <p className='futura-bold flex space-x-2 cursor-pointer text-white'>{itemAPI.fullName}</p>
-                                                    <p className='futura-book cursor-pointer text-white' onClick={() => route(itemAPI.userId)}>{itemAPI.securityGroupName}</p>
-                                                    {/* {trainers.map((item, i) => (
-                                                        <>
-                                                    {item.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.description}`)} </p> : null}
-                                                </>
-                                                    ))} */}
-                                                </div>
-
-                                            </>
-
-                                        </div>
-
-                                    </div>
-                            {/* ))} */}
-                            </>
-                        
-                            ))}
+        <div className="mt-40 container mx-auto">
+            <div id="main-box" className="grid grid-cols-12 gap-x-10 gap-y-10 p-10 items-center">
+                {filteredPosts.map((post, index) => (
+                    <div className="col-span-3 membership-box h-full p-5">
+                        <Post post={post?.post} users={post?.user} key={index} />
                     </div>
-                </div>
-            </section>
+                ))}
+            </div> 
+        </div>
         </>
     );
 }

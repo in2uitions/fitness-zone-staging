@@ -106,7 +106,6 @@ export default function TrainersProfile({ style = "white" }) {
             </div>
             <section>
                 <div className="container mx-auto flex flex-col justify-start mt-40 px-3 lg:px-0 md:px-0">
-                    <p className="text-[#009FE3] futura-bold">Trainers List</p>
                     <div className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-3 items-start mt-10 space-y-10 lg:space-y-0 md:space-y-0">
                         {/* {data.map((item) => ( */}
                         <div className="col-span-4">
