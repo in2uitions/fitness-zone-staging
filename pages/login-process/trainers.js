@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Post } from "./trainers/post";
+import  Post  from "./trainers/post";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
