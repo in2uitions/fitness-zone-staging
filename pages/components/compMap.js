@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { FreeMode, Pagination } from "swiper";
 import { image_url } from '../../global_vars';
-import Carousel from "react-elastic-carousel";
 import Slider from "react-slick";
 import { useState } from 'react';
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -63,11 +62,11 @@ const CompMap = ({ center, zoom,  datas, data={} }) => {
                                     </a>
                                     <div className="map-container-images">
                                     
-                                        <Carousel itemsToShow={1} initialActiveIndex={1}>
+                                        {/* <Carousel itemsToShow={1} initialActiveIndex={1}>
                                             <img className='imagesmap w-36' src={`${image_url}${item.map_items_id?.images[0]?.directus_files_id}`} />
                                             <img className='imagesmap w-36' src={`${image_url}${item.map_items_id?.images[1]?.directus_files_id}`}/>
                                             <img className=' imagesmap w-36' src={`${image_url}${item.map_items_id?.images[2]?.directus_files_id}`} />
-                                        </Carousel>
+                                        </Carousel> */}
 
                                     </div>
                                 </div>
