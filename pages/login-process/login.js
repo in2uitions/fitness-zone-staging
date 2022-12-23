@@ -163,7 +163,7 @@ export default function Login() {
     }
     const [select, setSelect] = useState(LEBANON);
     const onSelect = (code) => setSelect(code);
-    console.log("SELECT", select);
+    // console.log("SELECT", select);
     return (
         <div>
 

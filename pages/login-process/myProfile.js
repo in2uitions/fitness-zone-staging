@@ -48,8 +48,6 @@ export default function Dashboard({ style = "white" }) {
             try {
                 var registraitonRawData = JSON.stringify({
                     "Phone": event.target.mobile?.value,
-                    // "Email": event.target.email?.value,
-                    // "Birthdate": event.target.birthdate?.value
                 });
                 console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
@@ -63,22 +61,10 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&mobile=${event.target.mobile.value}`,
                     registrationRequestOptions
                 );
-                // const response = await fetch(
-                //     `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&email=${event.target.email.value}`,
-                //     registrationRequestOptions
-                // );
-                // const changeBirthDate = await fetch(
-                //     `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&birthdate=${event.target.birthdate.value}`,
-                //     registrationRequestOptions
-                // );
                 const data = await res.json();
-                // const emailData = await response.json();
-                // const birthData = await changeBirthDate.json();
                 if (data.isValid == true ) {
                     localStorage.setItem("Phone", event.target.mobile.value);
-                    // localStorage.setItem("Email", event.target.email.value);
-                    // localStorage.setItem("Birthdate", event.target.birthdate.value);
-                    alert("You have changed your data. Congratulations!")
+                    alert("You have changed your Phone Number. Congratulations!")
                 }
                 else {
                     alert("Wrong data");
@@ -87,6 +73,62 @@ export default function Dashboard({ style = "white" }) {
             } catch (err) {
                 console.log(err);
             }
+            // try {
+            //     var registraitonRawData = JSON.stringify({
+            //         "Email": event.target.email?.value,
+            //     });
+            //     console.log(registraitonRawData);
+            //     var registrationHeaders = new Headers();
+            //     registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+            //     registrationHeaders.append("Content-Type", "application/json");
+            //     var registrationRequestOptions = {
+            //         method: 'POST',
+            //         headers: registrationHeaders
+            //     };
+            //     const response = await fetch(
+            //         `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&email=${event.target.email.value}`,
+            //         registrationRequestOptions
+            //     );
+            //     const emailData = await response.json();
+            //     if (emailData.isValid == true ) {
+            //         localStorage.setItem("Email", event.target.email.value);
+            //         alert("You have changed your Email. Congratulations!")
+            //     }
+            //     else {
+            //         alert("Wrong data");
+            //     }
+
+            // } catch (err) {
+            //     console.log(err);
+            // }
+            // try {
+            //     var registraitonRawData = JSON.stringify({
+            //         // "Birthdate": event.target.birthdate?.value
+            //     });
+            //     console.log(registraitonRawData);
+            //     var registrationHeaders = new Headers();
+            //     registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+            //     registrationHeaders.append("Content-Type", "application/json");
+            //     var registrationRequestOptions = {
+            //         method: 'POST',
+            //         headers: registrationHeaders
+            //     };
+            //     const changeBirthDate = await fetch(
+            //         `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&birthdate=${event.target.birthdate.value}`,
+            //         registrationRequestOptions
+            //     );
+            //     const birthData = await changeBirthDate.json();
+            //     if (birthData.isValid == true ) {
+            //         localStorage.setItem("BirthDate", event.target.birthdate.value);
+            //         alert("You have changed your Birth Date. Congratulations!")
+            //     }
+            //     else {
+            //         alert("Wrong data");
+            //     }
+
+            // } catch (err) {
+            //     console.log(err);
+            // }
         };
         getSubmit();
     };
