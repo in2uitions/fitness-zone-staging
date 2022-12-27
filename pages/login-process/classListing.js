@@ -3,17 +3,20 @@ import { useState, useEffect } from "react";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
+import moment from 'moment';
 
 export default function ClassListing() {
+    var curr = new Date;
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
+    const [firstDate, setDate] = useState({
+        "firstday": new Date(curr.setDate(curr.getDate() - curr.getDay())).toUTCString(),
+        "lastday" : new Date(curr.setDate((curr.getDate() - curr.getDay()) + 6)).toUTCString()
+    })
     const [selectedCategory, setSelectedCategory] = useState('0');
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
-        console.log(event.target.value)
         getFilteredList(event.target.value);
-        // console.log(event.target.value)
-        console.log(selectedCategory + "category")
     }
     var registrationHeaders = new Headers();
     registrationHeaders.append(
@@ -27,6 +30,7 @@ export default function ClassListing() {
     };
     try {
         useEffect(() => {
+            
             getData();
             async function getData() {
                 const response = await fetch(
@@ -40,16 +44,12 @@ export default function ClassListing() {
     } catch (err) {
         console.log(err);
     }
-    
-    var curr = new Date;
-    var first = curr.getDate() - curr.getDay();
-    var last = first + 6;
+    useEffect(() =>{
+        getFilteredList();
+    },[firstDate])
+    function getFilteredList(value = null) {
 
-    var firstday = new Date(curr.setDate(first)).toUTCString();
-    var lastday = new Date(curr.setDate(last)).toUTCString();
-    function getFilteredList() {
-
-        const getClassList = async () => {
+        const getClassList = async (val) => {
             var registrationHeaders = new Headers();
             registrationHeaders.append(
                 "Authorization",
@@ -60,9 +60,13 @@ export default function ClassListing() {
                 method: "GET",
                 headers: registrationHeaders,
             };
+            var query = `?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`
+            if(val){
+                query = query + `&LocationCode=${val}`
+            }
             try {
                 const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList?dateFrom=${firstday}&dateTo=${lastday}&LocationCode=${selectedCategory}`,
+                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList${query}`,
                     registrationRequestOptions
                 );
                 const dataClass = await res.json();
@@ -70,25 +74,18 @@ export default function ClassListing() {
             } catch (err) {
                 console.log(err);
             }
+            
         };
-        getClassList();
+        getClassList(value);
     };
-    // try {
-    //     useEffect(() => {
-    //         getData();
-    //         async function getData() {
-    //             const response = await fetch(
-    //                 `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList?dateFrom=18-Dec-2022&dateTo=24-Dec-2022&LocationCode=${selectedCategory}`,
-    //                 registrationRequestOptions
-    //             );
-    //             const fetchedData = await response.json();
-    //             setClasss(fetchedData);
-    //         }
-    //         getData();
-    //     }, []);
-    // } catch (err) {
-    //     console.log(err);
-    // }
+        function getDayByDay({id}) {
+            var date = moment().isoWeekday(id).format("DD-MMM-YYYY")
+            setDate({
+                "firstday": date,
+                "lastday" : date
+            })
+        }
+        
     const [state, toggle] = useState(true);
     return (
         <>
@@ -162,17 +159,12 @@ export default function ClassListing() {
                         <img src="/filterBy.png" />
                         <p className="futura-book">Filter by</p>
                     </div>
-                    <select name="type" className="text-white futura-bold">
-                        <option key="">Type/class</option>
+                    <select name="type" className="text-white">
+                    <option>Type/Class</option>
+                        {/* {classs.map((item, i) => (
+                            <option key={i} value={item.instructor?.type} >{item.instructor?.type}</option>
+                        ))} */}
                     </select>
-                    {/* <select name="location" id='location' onChange={submitOTP}> */}
-                    {/* {data.map((item) => ( */}
-                    {/* <form onSubmit={getClassList}>
-                        <input id='location'  />
-                        <button type='submit'>submit</button>
-                        </form> */}
-                    {/* ))} */}
-                    {/* </select> */}
                     <select name="location" id="location" onChange={handleCategoryChange} >
                         {data.map((item, i) => (
                             <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
@@ -203,25 +195,25 @@ export default function ClassListing() {
                 </Tabs>
                 <Tabs className="mt-3">
                     <TabList className="flex justify-between w-full mx-auto container tabs-container">
-                        <Tab className="tabColor">
+                        <Tab className="tabColor" onClick={()=>getDayByDay({id:1})}>
                             <div className="flex justify-start tab">M</div>
                         </Tab>
-                        <Tab className="tabColor">
+                        <Tab className="tabColor" onClick={()=>getDayByDay({id:2})}>
                             <div className="flex justify-center tab">T</div>
                         </Tab>
-                        <Tab className="tabColor">
+                        <Tab className="tabColor" onClick={()=>getDayByDay({id:3})}>
                             <div className="flex justify-center tab">W</div>
                         </Tab>
-                        <Tab className="tabColor">
+                        <Tab className="tabColor" onClick={()=>getDayByDay({id:4})}>
                             <div className="flex justify-center tab">TH</div>
                         </Tab>
-                        <Tab className="tabColor">
+                        <Tab className="tabColor" onClick={()=>getDayByDay({id:5})}>
                             <div className="flex justify-center tab">F</div>
                         </Tab>
-                        <Tab className="tabColor">
+                        <Tab className="tabColor" onClick={()=>getDayByDay({id:6})}>
                             <div className="flex justify-center tab">S</div>
                         </Tab>
-                        <Tab className="tabColor">
+                        <Tab className="tabColor" onClick={()=>getDayByDay({id:7})}>
                             <div className="flex justify-end tab">S</div>
                         </Tab>
                     </TabList>
@@ -242,6 +234,7 @@ export default function ClassListing() {
                                 <p className="text-white text-lg futura-book pl-5">
                                     {item.location?.locationName}
                                 </p>
+                                <p>{item.timetableId}</p>
                             </div>
                             <button
                                 className="flex justify-end"

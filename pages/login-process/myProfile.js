@@ -9,6 +9,7 @@ import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
 import ToggleText from "../login-process/test";
+import ReactFlagsSelect from "react-flags-select";
 
 export default function Dashboard({ style = "white" }) {
     const [data, setData] = useState([]);
@@ -64,78 +65,185 @@ export default function Dashboard({ style = "white" }) {
                 const data = await res.json();
                 if (data.isValid == true ) {
                     localStorage.setItem("Phone", event.target.mobile.value);
-                    alert("You have changed your Phone Number. Congratulations!")
+                    //alert("You have changed your Phone Number. Congratulations!")
                 }
                 else {
-                    alert("Wrong data");
+                    //alert("Wrong data");
                 }
 
             } catch (err) {
                 console.log(err);
             }
-            // try {
-            //     var registraitonRawData = JSON.stringify({
-            //         "Email": event.target.email?.value,
-            //     });
-            //     console.log(registraitonRawData);
-            //     var registrationHeaders = new Headers();
-            //     registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
-            //     registrationHeaders.append("Content-Type", "application/json");
-            //     var registrationRequestOptions = {
-            //         method: 'POST',
-            //         headers: registrationHeaders
-            //     };
-            //     const response = await fetch(
-            //         `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&email=${event.target.email.value}`,
-            //         registrationRequestOptions
-            //     );
-            //     const emailData = await response.json();
-            //     if (emailData.isValid == true ) {
-            //         localStorage.setItem("Email", event.target.email.value);
-            //         alert("You have changed your Email. Congratulations!")
-            //     }
-            //     else {
-            //         alert("Wrong data");
-            //     }
 
-            // } catch (err) {
-            //     console.log(err);
-            // }
-            // try {
-            //     var registraitonRawData = JSON.stringify({
-            //         // "Birthdate": event.target.birthdate?.value
-            //     });
-            //     console.log(registraitonRawData);
-            //     var registrationHeaders = new Headers();
-            //     registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
-            //     registrationHeaders.append("Content-Type", "application/json");
-            //     var registrationRequestOptions = {
-            //         method: 'POST',
-            //         headers: registrationHeaders
-            //     };
-            //     const changeBirthDate = await fetch(
-            //         `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&birthdate=${event.target.birthdate.value}`,
-            //         registrationRequestOptions
-            //     );
-            //     const birthData = await changeBirthDate.json();
-            //     if (birthData.isValid == true ) {
-            //         localStorage.setItem("BirthDate", event.target.birthdate.value);
-            //         alert("You have changed your Birth Date. Congratulations!")
-            //     }
-            //     else {
-            //         alert("Wrong data");
-            //     }
 
-            // } catch (err) {
-            //     console.log(err);
-            // }
+            try {
+                var registraitonRawData = JSON.stringify({
+                    "Email": event.target.email?.value,
+                });
+                console.log(registraitonRawData);
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'POST',
+                    headers: registrationHeaders
+                };
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveEmail?memberId=${memberId}&email=${event.target.email.value}`,
+                    registrationRequestOptions
+                );
+                const emailData = await response.json();
+                if (emailData.isValid == true ) {
+                    localStorage.setItem("Email", event.target.email.value);
+                    //alert("You have changed your Email. Congratulations!")
+                }
+                else {
+                    //alert("Wrong data");
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+
+
+            try {
+                var registraitonRawData = JSON.stringify({
+                    "Birthdate": event.target.birthdate?.value
+                });
+                console.log(registraitonRawData);
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'POST',
+                    headers: registrationHeaders
+                };
+                const changeBirthDate = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveBirthdate?memberId=${memberId}&birthdate=${event.target.birthdate.value}`,
+                    registrationRequestOptions
+                );
+                const birthData = await changeBirthDate.json();
+                if (birthData.isValid == true ) {
+                    localStorage.setItem("BirthDate", event.target.birthdate.value);
+                    //alert("You have changed your Birth Date. Congratulations!")
+                }
+                else {
+                    //alert("Wrong data");
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
         };
         getSubmit();
     };
+    const handleSubmitPhoneNumer = async event => {
+        event.preventDefault();
 
-    const handleChange = (e, prevState, index) => {
+        const getSubmitNumber = async () => {
+            try {
+                var registraitonRawData = JSON.stringify({
+                    "Phone": event.target.mobile?.value,
+                });
+                console.log(registraitonRawData);
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'POST',
+                    headers: registrationHeaders
+                };
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&mobile=${event.target.mobile.value}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true ) {
+                    localStorage.setItem("Phone", event.target.mobile.value);
+                    //alert("You have changed your Phone Number. Congratulations!")
+                }
+                else {
+                    //alert("Wrong data");
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getSubmitNumber();
+    };
+    const handleSubmitEmail = async event => {
+        event.preventDefault();
+
+        const getSubmitEmail = async () => {
+            try {
+                var registraitonRawData = JSON.stringify({
+                    "Email": event.target.email?.value,
+                });
+                console.log(registraitonRawData);
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'POST',
+                    headers: registrationHeaders
+                };
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveEmail?memberId=${memberId}&mobile=${event.target.mobile.value}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true ) {
+                    localStorage.setItem("Email", event.target.email.value);
+                    //alert("You have changed your Email. Congratulations!")
+                }
+                else {
+                    //alert("Wrong data");
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getSubmitEmail();
+    };
+    const handleSubmitBirthDate = async event => {
+        event.preventDefault();
+
+        const getSubmitBirthDate = async () => {
+            try {
+                var registraitonRawData = JSON.stringify({
+                    "Birthdate": event.target.birthdate?.value
+                });
+                console.log(registraitonRawData);
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'POST',
+                    headers: registrationHeaders
+                };
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveBirthdate?memberId=${memberId}&mobile=${event.target.mobile.value}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true ) {
+                    localStorage.setItem("BirthDate", event.target.birthdate.value);
+                    //alert("You have changed your BirthDate. Congratulations!")
+                }
+                else {
+                    //alert("Wrong data");
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getSubmitBirthDate();
+    };
+    const handleChange = (e, index) => {
         const object = {
-            ...prevState,
             [index]: e.target?.value,
         };
         setData(object);
@@ -143,13 +251,35 @@ export default function Dashboard({ style = "white" }) {
     const [state, toggle] = useState(true);
     const [scdstate, scdtoggle] = useState(true);
     const [thirdstate, thirdtoggle] = useState(true);
-    function handleSave(e) {
-        e.preventDefault();
-        setData(prevState => ({
-            showButton: !prevState.showButton,
-            showButtonName: "SAVING..."
-        }));
+    const [countrydata, setCountryData] = useState([])
+    var registrationHeaders = new Headers();
+    registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: 'GET',
+        headers: registrationHeaders
+    };
+    try {
+
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Administration/Country/List`,
+                    registrationRequestOptions
+
+                );
+                const checkInList = await response.json()
+                setCountryData(checkInList)
+                console.log(checkInList)
+            }
+            // getData()
+        }, [])
+    } catch (err) {
+        console.log(err);
     }
+    const [select, setSelect] = useState("LEBANON");
+    const onSelect = (code) => setSelect(code);
     return (
         <>
             <div className={styles.container}>
@@ -217,16 +347,19 @@ export default function Dashboard({ style = "white" }) {
 
                                     <p className="text-[#009FE3]">General Info</p>
                                     <input
+                                        disabled = {true}
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md text-white"
                                         value={data.firstName}
                                     />
                                     <input
+                                        disabled = {true}
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md text-white"
                                         value={data.lastName}
                                     />
                                     <div className="border border-[#009FE3] flex justify-between items-center bg-black lg:h-10 md:h-10 h-16 rounded-md p-1">
                                         <input
                                             type="text"
+                                            disabled ={state} 
                                             className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] text-white"
                                             value={data.birthdate} id="birthdate"
                                             onChange={handleChange}
@@ -237,6 +370,7 @@ export default function Dashboard({ style = "white" }) {
                                                 toggle(!state);
                                                 handleChange;
                                             }}
+                                            onSubmit={state ? handleSubmitBirthDate : () => {}}
                                         >
                                             {state ? "CHANGE DATE OF BIRTH" : "SAVE"}
                                         </button>
@@ -244,6 +378,7 @@ export default function Dashboard({ style = "white" }) {
                                     <div className="border border-[#009FE3] flex justify-between items-center bg-black rounded-md lg:h-10 md:h-10 h-16 p-1 text-white">
                                         <input
                                             type="text"
+                                            disabled = {scdstate}
                                             className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3]"
                                             value={data.mobile} id="mobile"
                                             onChange={handleChange}
@@ -254,6 +389,7 @@ export default function Dashboard({ style = "white" }) {
                                                 scdtoggle(!scdstate);
                                                 handleChange;
                                             }}
+                                            onSubmit={scdstate ? handleSubmitPhoneNumer : () => {}}
                                         >
                                             {scdstate ? "CHANGE PHONE" : "SAVE"}
                                         </button>
@@ -261,6 +397,7 @@ export default function Dashboard({ style = "white" }) {
                                     <div className="border border-[#009FE3] flex justify-between items-center bg-black lg:h-10 md:h-10 h-16 p-1 rounded-md text-white">
                                         <input
                                             type="text"
+                                            disabled = {thirdstate}
                                             className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3]"
                                             value={data.email} id="email"
                                             onChange={handleChange}
@@ -269,9 +406,9 @@ export default function Dashboard({ style = "white" }) {
                                             className="bg-[#009FE3] p-1 rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2"
                                             onClick={() => {
                                                 thirdtoggle(!thirdstate);
-                                                handleSave;
+                                                handleChange;
                                             }}
-                                            onSubmit={handleSubmit}
+                                            onSubmit={thirdstate ? handleSubmitEmail : () => {}}
                                         >
                                             {thirdstate ? "CHANGE EMAIL" : "SAVE"}
                                         </button>
@@ -282,21 +419,38 @@ export default function Dashboard({ style = "white" }) {
                                 <div className="flex flex-col space-y-2 text-white">
                                     <p className="text-[#009FE3]">General Info</p>
                                     <input
+                                        disabled = {true}
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
-                                        value={data.country?.countryName}
+                                        value={[data.city, data.street]}
                                     />
                                     <input
+                                        disabled = {true}
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.building}
                                     />
                                     <input
+                                        disabled = {true}
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
-                                        value={data.birthdate}
+                                        value={data.country?.countryName}
                                     />
-                                    <input
+                                    {/* <input
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.mobile}
-                                    />
+                                    /> */}
+                                    <ReactFlagsSelect
+                        selected={select}
+                        onSelect={onSelect}
+                        className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder "
+                        id="country"
+                        // value= {countrydata.map((item) => (
+                        //                     <p value={item.countryCode}>{item.countryName}</p>
+                        //                 ))}
+            />
+                                    {/* <select name="country">
+                                    {countrydata.map((item) => (
+                                            <option value={item.countryCode}>{item.countryName}</option>
+                                        ))}
+                                    </select> */}
                                 </div>
                             </div>
 

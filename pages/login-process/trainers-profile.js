@@ -8,12 +8,13 @@ import Close from "@material-ui/icons/Close";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
+import { image_url } from "../../global_vars";
 import Router, { useRouter } from "next/router";
-import { getTrainers } from "../../api/server";
-import Userval from "./trainers/userdesc";
+import parse from "html-react-parser";
 
 export default function TrainersProfile({ style = "white" }) {
     const [data, setData] = useState([]);
+    const [categoryData, setCategoryData]=useState([])
     const { query } = useRouter()
     const router = useRouter()
     const memberId = localStorage.getItem("Member");
@@ -35,21 +36,31 @@ export default function TrainersProfile({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/${query.id}`,
                     registrationRequestOptions
                 );
-                const fetchedData = await response.json();
-                setData(fetchedData);
+                if (response.status == 200) {
+                    const res = await fetch(
+                        `https://fzcms.diastora.com/items/trainers?filter[userId][_eq]=${query.id}`
+                    )
+                    const fetchedData = await response.json();
+                    const trainer = await res.json();
+                    let dataRes = fetchedData;
+                    if (trainer.data.length == 1) {
+                        const image = trainer.data[0].image;
+                        const description = trainer.data[0].description;
+                        dataRes = { ...dataRes, image, description };
+                    }
+                    setData(dataRes);
+                }
             }
             getData();
         }, []);
     } catch (err) {
         console.log(err);
     }
-    const [trainers, setTrainers] = useState([]);
-    const [trainersloaded, setTrainersLoaded] = useState(false);
-    const getdata = async () => {
-        const trainer = await getTrainers();
-        setTrainers(trainer);
-        setTrainersLoaded(true)
-    }
+    const format = (num, decimals) => num.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+
     return (
         <>
             <div className={styles.container}>
@@ -107,18 +118,26 @@ export default function TrainersProfile({ style = "white" }) {
             </div>
             <section>
                 <div className="container mx-auto flex flex-col justify-start mt-40 px-3 lg:px-0 md:px-0">
+                <div className="flex justify-between">
                     <p className="text-[#009FE3] futura-bold">Trainers List</p>
+                    {/* <select name="category">
+                        {categoryData.map((item) =>(
+                            <option value={item.categoryId}>{item.category?.categoryName}</option>
+                        ))}
+                    </select> */}
+                    </div>
                     <div className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-3 items-start mt-10 space-y-10 lg:space-y-0 md:space-y-0">
                         {/* {data.map((item) => ( */}
                         <div className="col-span-4">
                             <div className='flex flex-col space-y-3 membership-box p-10 items-center'>
                                 <>
-                                    <img className="w-20 h-20 rounded-full" src='/noImg.webp' />
+                                    <img className="w-20 h-20 rounded-full" src={`${image_url}${data?.image}`} />
                                     <p className='futura-bold flex space-x-2 cursor-pointer text-white'>{data.fullName}</p>
                                     <p className='futura-book cursor-pointer text-white'>{data.securityGroupName}</p>
                                     {/* {data.packageList?.map((item, id) =>(
-                                        <p key={id}>{item.category?.categoryName}</p>
+                                        <p key={id}>{item.category.categoryName}</p>
                                         ))} */}
+                                    <p>{data.packageList?.slice(0, 1).map(el => el.category?.categoryName)}</p>
                                     <div className="flex space-x-3 items-center rounded-md p-2 active-button">
                                         <img className="" src="/location-marker.png" />
                                         <p className="text-white">{data.locationName}</p>
@@ -127,53 +146,60 @@ export default function TrainersProfile({ style = "white" }) {
                             </div>
                         </div>
                         <div className="col-span-4">
-                            <p className="text-[#009FE3]">Qualifications:</p>
-                            <p className="text-white">- Bachelors Degree in Nutrition & Dietetics - NDU<br></br>
-                                - Masters Degree in Human Nutrition - NDU<br></br>
-                                - Sports Injuries & Post Rehabilitation Certificate - ACE<br></br>
-                                - Pre and Post Natal Fitness Certificate - ACE<br></br>
-                                - Training for Health and Fitness certificate - ACSM<br></br>
-                                - Advanced Weight Training Technique Certificate - ACSM<br></br>
-                                - Personal Trainer Certificate - ACSM<br></br>
-                                - Sports Nutrition Certificate - ACE<br></br>
-                                - Insulin Resistance Training Program Certificate</p>
+                            <p>{parse(`${data?.description}`)}</p>
                         </div>
                         <div className="col-span-4">
-                            <div className="membership-box p-3 rounded-md">
-                                <div className="flex items-center w-full">
-                                    <div className="flex flex-col w-3/4">
-                                        <p className="futura-bold text-white">SINGLE SESSION</p>
-                                        <p className="text-white">The classes are in 3 speciality Studios, Energy Studio,</p>
+                            <div className="space-y-5">
+                                {data.packageList?.slice(0, 3).map((item) => (
+                                    <div className="membership-box p-3 rounded-md">
+                                        <div className="flex items-center w-full">
+                                            <div className="flex flex-col w-3/4">
+                                                <p className="futura-bold text-white">{item.category.categoryName}</p>
+                                                <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
+                                            </div>
+                                            <div className="flex items-center w-1/4">
+                                                <div className="flex flex-col">
+                                                    <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
+                                                        {format(item.sessionPrice)}
+                                                    </span>
+                                                    </p>
+                                                    <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                                </div>
+                                                <ChevronRightIcon className="chevron-session" />
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div className="flex items-center w-1/4">
-                                    <div className="flex flex-col">
-                                    <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>60</span></p>
-                                    <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
-                                    </div>
-                                    <ChevronRightIcon className="chevron-session"/>
-                                    </div>
-                                </div>
+
+                                ))}
                             </div>
-                            <div className="membership-box mt-10 p-3 rounded-md">
-                                <div className="flex justify-center items-center w-full">
-                                    <div className="flex flex-col w-3/4">
-                                        <p className="futura-bold text-white">BASIC PACKAGE</p>
-                                        <p className="text-white">The classes are in 3 speciality Studios, Energy Studio,</p>
-                                    </div>
-                                    <div className="flex items-center w-1/4">
-                                    <div className="flex flex-col">
-                                    <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>1,200</span></p>
-                                    <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
-                                    </div>
-                                    <ChevronRightIcon className="chevron-session"/>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* {data.packageList?.map((item)=>(
-                                <p>{item.packageName}</p>
-                                ))} */}
                         </div>
-                        {/* ))} */}
+                    </div>
+                    <div className="grid grid-cols-12 gap-x-10 gap-y-5 mt-5">
+                        {data.packageList?.slice(3, data.packageList?.length).map((item) => (
+                            <div className="col-span-4">
+                                <div className="membership-box p-3 rounded-md">
+                                    <div className="flex items-center w-full">
+                                        <div className="flex flex-col w-3/4">
+                                            <p className="futura-bold text-white">{item.category.categoryName}</p>
+                                            <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
+                                        </div>
+                                        <div className="flex items-center w-1/4">
+                                            <div className="flex flex-col">
+                                                <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
+                                                    {format(item.sessionPrice)}
+                                                </span>
+                                                </p>
+                                                <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                            </div>
+                                            <ChevronRightIcon className="chevron-session" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        ))}
+
                     </div>
                 </div>
             </section>

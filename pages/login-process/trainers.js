@@ -5,7 +5,12 @@ import Popup from "reactjs-popup";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 export default function List() {
+    const [data, setListData] = useState([]);
     const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
+    const [selectedCategory, setSelectedCategory] = useState('0');
+    function handleCategoryChange(event) {
+        setSelectedCategory(event.target.value);
+    }
     try {
         var registrationHeaders = new Headers();
         registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
@@ -18,20 +23,23 @@ export default function List() {
             getData();
             async function getData() {
                 const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/List?isTrainer=true&isActive=True`,registrationRequestOptions
+                    `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/List?isTrainer=true&isActive=True&LocationCode=${selectedCategory}`,registrationRequestOptions
 
                 );
+                if(response.status == 200){
                 const res = await fetch(
                     `https://fzcms.diastora.com/items/trainers`
                 )
+                
                 const checkInList = await response.json()
                 const test = await res.json()
                 setData({ posts: checkInList, users: test.data });
-                // console.log(checkInList + "testing")
-                // console.log(test.data + "test")
+                }else{
+                    setData({ post: [], user: [{}] })
+                }
             }
             getData()
-        }, [])
+        }, [selectedCategory])
     } catch (err) {
         console.log(err);
     }
@@ -42,9 +50,25 @@ export default function List() {
             for (let i = 0; i < posts.length && i < users.length; i++) {
                 filteredPosts.push({post: posts[i], user : users.find(({ userId }) => posts[i].userId === userId)});
             }
-            // console.log(JSON.stringify(filteredPosts) + "testttttt")
         return filteredPosts;
     }, [posts, users]);
+    
+    try {
+        useEffect(() => {
+            
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Administration/Location/List`,
+                    registrationRequestOptions
+                );
+                const checkInList = await response.json();
+                setListData(checkInList);
+            }
+        }, []);
+    } catch (err) {
+        console.log(err);
+    }
     return (
         <>
         <div className={styles.container}>
@@ -100,7 +124,19 @@ export default function List() {
                     </Popup>
                 </nav>
             </div>
-        <div className="mt-40 container mx-auto">
+            <section className="h-full">
+        <div className="mt-40 container mx-auto w-full h-full">
+        <div className="flex flex-row justify-between">
+        <div className="flex items-center space-x-5">
+                        <img src="/filterBy.png" />
+                        <p className="futura-book">Filter by</p>
+                    </div>
+                <select name="location" id="location" onChange={handleCategoryChange}>
+                        {data.map((item, i) => (
+                            <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                        ))}
+                    </select>
+                    </div>
             <div id="main-box" className="grid grid-cols-12 gap-x-10 gap-y-10 p-10 items-center">
                 {filteredPosts.map((post, index) => (
                     <div className="col-span-3 membership-box h-full p-5">
@@ -109,6 +145,7 @@ export default function List() {
                 ))}
             </div> 
         </div>
+        </section>
         </>
     );
 }
