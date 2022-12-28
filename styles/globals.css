@@ -338,7 +338,9 @@ p {
 .reactTooltip::after {
   background-color: transparent !important;
 }
-
+.btnActive{
+  margin-bottom: 1rem !important;
+}
 /* .__react_component_tooltip {
   position: relative !important;
   opacity: 1 !important;
@@ -3830,4 +3832,62 @@ ul li.activate {
 }
 .on-tabs{
   height: 1.5rem;
+}
+
+
+.dropdown {
+  min-width: 100px;
+}
+.dropdown-btn {
+  font-size: 16px;
+  /* background: white; */
+  border: 1px solid black;
+  background-color: #009FE3;
+  font-family: "Futura";
+  border-radius: 4px;
+  height: 40px;
+  width: 100%;
+  padding: 0 30px;
+  cursor: pointer;
+}
+.dropdown-btn:hover,
+.dropdown-btn:focus {
+  /* background: #f2f2f2; */
+}
+
+.dropdown-items {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  /* width: 200px; */
+  position: absolute;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #009FE3;
+  /* padding: 8px 15px; */
+  border-radius: 4px;
+}
+.dropdown-item {
+  padding-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 0px;
+  cursor: pointer;
+}
+/* .dropdown-item:hover{
+  background-color: rgba(211, 211, 211, 0.66);
+} */
+/* .dropdown-item:not(first-child) {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.dropdown-item:not(last-child) {
+  padding-top: 3px;
+  padding-bottom: 3px;
+} */
+
+.isVisible {
+  visibility: visible;
+}
+.isHidden {
+  visibility: hidden;
 }

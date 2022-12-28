@@ -18,6 +18,7 @@ import CompCarouselStaticRightMobile from '../pages/components/compStaticRightMo
 import CompStaticMobile from '../pages/components/compStaticMobile';
 import CompCareers from '../pages/components/compCareers';
 // import Classes from '../pages/components/classes';
+import CompDropdown from '../pages/components/compDropdown';
 import CompCareersMobile from '../pages/components/compCareersMobile';
 
 export default function Sections({ data = {} }) {
@@ -54,6 +55,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "comp_fullwidthimage") {
                     return <CompFullWidth data={section.item} />;
+                }
+                if (section.collection == "comp_dropdown") {
+                    return <CompDropdown data={section.item} />;
                 }
                 if (section.collection == "comp_contact") {
                     return <CompContact data={section.item} />;

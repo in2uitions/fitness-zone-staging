@@ -23,9 +23,10 @@ export default function Membership({ style = 'white' }) {
     //         text:'Personal Training Package'
     //     }
     // ]
+    const memberId = localStorage.getItem('Member');
     const [test, setTest] = useState([])
     try {
-        const memberId = localStorage.getItem('Member');
+        
         var registrationHeaders = new Headers();
         registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
         registrationHeaders.append("Content-Type", "application/json");
@@ -57,6 +58,31 @@ export default function Membership({ style = 'white' }) {
         });
         return newd;
     }
+    const[data, setData]=useState(true)
+    try {
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+                    registrationRequestOptions
+                );
+                const fetchedData = await response.json();
+                setData(fetchedData);
+            }
+            getData();
+        }, []);
+    } catch (err) {
+        console.log(err);
+    }
+    function dateButif(d) {
+        const newd = new Date(d).toLocaleDateString("en-UG", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+        }).replaceAll('/', '-');
+        return newd;
+    }
     return (
         <>
             <div className={styles.container}>
@@ -81,7 +107,7 @@ export default function Membership({ style = 'white' }) {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             <img src="/icons-person.png" />
-                            <p className="futura-bold text-[#009FE3] mt-5">CHARLES KHOURY</p>
+                            <p className="futura-bold text-[#009FE3] mt-5">{data.fullName}</p>
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
@@ -122,21 +148,21 @@ export default function Membership({ style = 'white' }) {
                         <div className='col-span-4'>
                             <div className='flex flex-col'>
                                 <p className='text-sm text-white'>Status</p>
-                                <p className='futura-bold text-white'>ACTIVE</p>
+                                <p className='futura-bold text-white uppercase'>{data.status?.statusDescription}</p>
                             </div>
                             <div className='flex flex-col  mt-5'>
                                 <p className='text-sm text-white'>Start Date</p>
-                                <p className='futura-bold text-white'>25/10/2022</p>
+                                <p className='futura-bold text-white'>{dateButif(data.startDate)}</p>
                             </div>
                         </div>
                         <div className='col-span-4'>
                             <div className='flex flex-col'>
                                 <p className='text-sm text-white'>Default Club</p>
-                                <p className='futura-bold text-white'>CITY WALK</p>
+                                <p className='futura-bold text-white'>{data.membershipLocation?.locationName}</p>
                             </div>
                             <div className='flex flex-col  mt-5'>
                                 <p className='text-sm text-white'>Expiry Date</p>
-                                <p className='futura-bold text-white'>25/10/2023</p>
+                                <p className='futura-bold text-white'>{dateButif(data.expiryDate)}</p>
                             </div>
                         </div>
                         <div className='col-span-4'>

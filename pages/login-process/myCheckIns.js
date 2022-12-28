@@ -39,6 +39,23 @@ export default function CheckIns() {
         });
         return newd;
     }
+    const[books, setBooks]=useState(true)
+    try {
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+                    registrationRequestOptions
+                );
+                const fetchedData = await response.json();
+                setBooks(fetchedData);
+            }
+            getData();
+        }, []);
+    } catch (err) {
+        console.log(err);
+    }
     return (
         <>
             <div className={styles.container}>
@@ -63,7 +80,7 @@ export default function CheckIns() {
                         >
                             <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                                 <img src="/icons-person.png" />
-                                <p className="futura-bold text-[#009FE3] mt-5">CHARLES KHOURY</p>
+                                <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
                                 <div className="flex flex-col mt-10">
                                     <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                         <a

@@ -2,14 +2,23 @@ import React, { useState } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { useRouter } from "next/router";
 
 export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
-
-
-
+    
+    const itemSet = (localStorage.getItem("token") !== null);
+    const router = useRouter();
+    const route = () => {
+    if (itemSet) {
+        router.push({ pathname: "/login-process/classListing"});
+    }
+    else{
+        router.push({ pathname: "/login-process/login"});
+    }
+}
     let timeout = setTimeout(() => {
         if (nextSlide == true && clickTiggered == true) {
             activeSlide < data.carousel.length - 1 && setactiveSlide(activeSlide + 1);
@@ -56,7 +65,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                 // width:345
             };
         else if (index < activeSlide - 2)
-            return { 
+            return {
                 opacity: 0,
                 transform: "translateX(480px) translateZ(-500px) rotateY(35deg)",
                 zIndex: 7
@@ -117,7 +126,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
         <>
             <div className="">
                 <div className=" flex flex-col justify-center items-center pb-28 mt-20 relative trainers-mobile">
-                {data.title? <p className="lg:text-5xl md:text-4xl text-3xl font-bold futura-bold mb-5 text-white">{data.title}</p>:null}
+                    {data.title ? <p className="lg:text-5xl md:text-4xl text-3xl font-bold futura-bold mb-5 text-white">{data.title}</p> : null}
                     {data.image_title ? <img src={`${image_url}${data.image_title?.id}`} altv={data.image_title?.title} /> : null}
                 </div>
             </div>
@@ -137,9 +146,9 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                         <div className="relative">
                                             {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="tintImg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
                                             <div className="flex space-x-2 absolute items-center left-8 bottom-8">
-                                            {item.comp_carousel_items_id?.image_text ?<p className="text-white font-bold text-4xl">{item.comp_carousel_items_id?.image_text}</p>:null}
-                                            {item.comp_carousel_items_id.image_icon?<img src={`${image_url}${item.comp_carousel_items_id?.image_icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
-                                        </div>
+                                                {item.comp_carousel_items_id?.image_text ? <p className="text-white font-bold text-4xl">{item.comp_carousel_items_id?.image_text}</p> : null}
+                                                {item.comp_carousel_items_id.image_icon ? <img src={`${image_url}${item.comp_carousel_items_id?.image_icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -156,21 +165,17 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
 
                     <div className="newsbtns">
                         <img src="/ArrowLeft.png"
-                            // className="newsbtn prevbtn arrow"
                             onClick={next}
                             className={
-                                    // "newsbtn prevbtn arrow" +
-                                    (activeSlide < data.carousel.length - 1  ? "newsbtn prevbtn arrow" : "btn-disabled")
-                                }
+                                (activeSlide < data.carousel.length - 1 ? "newsbtn prevbtn arrow" : "btn-disabled")
+                            }
                             color="#fff"
                             size="2x"
                         />
                         <img src="/ArrowRight.png"
-                            // className="newsbtn arrow"
                             className={
-                                    // "newsbtn arrow" +
-                                    (activeSlide > 0  ? "newsbtn arrow" : "btn-disabled")
-                                }
+                                (activeSlide > 0 ? "newsbtn arrow" : "btn-disabled")
+                            }
                             onClick={prev}
                             color="#fff"
                             size="2x"
@@ -191,12 +196,13 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                         }}
                                     >
                                         <div className="sliderContent pr-20">
-                                        <div className="flex items-baseline space-x-5">
-                                            <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
-                                            {item.comp_carousel_items_id.icon?<img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
-                                        </div>
+                                            <div className="flex items-baseline space-x-5">
+                                                <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                                {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            </div>
                                             {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
                                             {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
+                                            {item.comp_carousel_items_id?.book_button ? <button  onClick={() => route()} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.book_button}<ChevronRightIcon /></button> : null}
                                         </div>
                                     </div>
                                 </div>

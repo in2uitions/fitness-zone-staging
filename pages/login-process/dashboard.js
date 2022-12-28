@@ -7,12 +7,14 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Close from "@material-ui/icons/Close";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
-import { useState, useEffect } from "react";
-import ToggleText from "../login-process/test";
+import { useState, useEffect , useMemo} from "react";
+import Post from "./trainers/homePageTrainer";
 
 export default function Dashboard({ style = "white" }) {
     const [books, setBooks] = useState([]);
-    const [data, setData] = useState([]);
+    const [data, setcheckInData] = useState([]);
+    const [trainer, setTrainer]=useState([])
+    const[bookedClass, setBookedClass]=useState([])
     const memberId = localStorage.getItem("Member");
     var registrationHeaders = new Headers();
     registrationHeaders.append(
@@ -49,13 +51,70 @@ export default function Dashboard({ style = "white" }) {
                     registrationRequestOptions
                 );
                 const checkInList = await response.json();
-                setData(checkInList);
+                setcheckInData(checkInList);
             }
         }, []);
     } catch (err) {
         console.log(err);
     }
+    var curr = new Date;
+    var first = curr.getDate() - curr.getDay();
+    var last = first + 7;
 
+    var firstday = new Date(curr.setDate(first)).toUTCString();
+    var lastday = new Date(curr.setDate(last)).toUTCString();
+
+    try {
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}?dateFrom=${firstday}&dateTo=${lastday}`,
+                    registrationRequestOptions
+                );
+                const checkInList = await response.json();
+                setBookedClass(checkInList);
+            }
+        }, []);
+    } catch (err) {
+        console.log(err);
+    }
+    const removeClass = async ({timetableId, e}) => {
+        e.preventDefault();
+        console.log(timetableId)
+        try {
+            var registrationHeaders = new Headers();
+            registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+            registrationHeaders.append("Content-Type", "application/json");
+            var registrationRequestOptions = {
+                method: 'GET',
+                headers: registrationHeaders
+            };
+            const res = await fetch(
+                `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Class/Remove?timetableId=${timetableId}&memberId=${memberId}`,
+                registrationRequestOptions
+            );
+            const data = await res.json();
+            if (data.isValid == true) {
+                const handleRemoveItem = (index) => {
+                    const newList = [...bookedClass];
+                    newList.splice(index, 1);
+                    setBookedClass(newList);
+                };
+                // localStorage.setItem("Phone", event.target.mobile.value);
+                //alert("You have changed your Phone Number. Congratulations!")
+                handleRemoveItem();
+            }
+            
+            else {
+                alert("Class is not valid");
+            }
+
+        } catch (err) {
+            console.log(err);
+        }
+       
+    };
     var settings = {
         responsive: [
             {
@@ -75,7 +134,6 @@ export default function Dashboard({ style = "white" }) {
             return <MagicSliderDots dots={dots} numDotsToShow={3} dotWidth={30} />;
         },
     };
-    const [limit, setLimit] = useState(4);
     const carousel_components = [
         {
             image: "/dashboard-pics.png",
@@ -196,46 +254,6 @@ export default function Dashboard({ style = "white" }) {
         setClassesList(newclassesList);
     };
 
-    const handleRemoveItem = (index) => {
-        const newList = [...classesList];
-        newList.splice(index, 1);
-        setClassesList(newList);
-    };
-
-    console.log(classesList);
-
-    // const [checkInList, setCheckInList] = useState([
-    //     {
-    //         date: '18/10/2022',
-    //         time: '14:23:04',
-    //         city: 'Dbayeh'
-    //     },
-    //     {
-    //         date: '18/10/2022',
-    //         time: '14:23:04',
-    //         city: 'Dbayeh'
-    //     },
-    //     {
-    //         date: '18/10/2022',
-    //         time: '14:23:04',
-    //         city: 'Dbayeh'
-    //     },
-    //     {
-    //         date: '18/10/2022',
-    //         time: '14:23:04',
-    //         city: 'Dbayeh'
-    //     },
-    //     {
-    //         date: '18/10/2022',
-    //         time: '14:23:04',
-    //         city: 'Dbayeh'
-    //     },
-    //     {
-    //         date: '18/10/2022',
-    //         time: '14:23:04',
-    //         city: 'Dbayeh'
-    //     }
-    // ])
     const [noOfCheckInElements, setnoOfCheckInElements] = useState(3);
     const sliceCheckIn = data.slice(0, noOfCheckInElements);
     const loadMoreLessCheckIn = () => {
@@ -247,10 +265,10 @@ export default function Dashboard({ style = "white" }) {
     };
     // const [stateCheckIn, toggleCheckIn] = useState(true);
     const [noOfElements, setnoOfElements] = useState(4);
-    const slice = classesList.slice(0, noOfElements);
+    const slice = bookedClass.slice(0, noOfElements);
     const loadMoreLess = () => {
         if (noOfElements == 4) {
-            setnoOfElements(classesList.length);
+            setnoOfElements(bookedClass.length);
         } else {
             setnoOfElements(4);
         }
@@ -264,6 +282,57 @@ export default function Dashboard({ style = "white" }) {
         }).replaceAll('/', '-');
         return newd;
     }
+    function dateOnly(d) {
+        const newd = new Date(d).toLocaleTimeString("en-UG", {
+            hour12: "false",
+            hour: "numeric",
+            minute: "numeric",
+        });
+        return newd;
+    }
+    const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
+    try {
+        var registrationHeaders = new Headers();
+        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        registrationHeaders.append("Content-Type", "application/json");
+        var registrationRequestOptions = {
+            method: 'GET',
+            headers: registrationHeaders 
+        };
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/List?isTrainer=true&isActive=True`,registrationRequestOptions
+
+                );
+                if(response.status == 200){
+                const res = await fetch(
+                    `https://fzcms.diastora.com/items/trainers`
+                )
+                
+                const checkInList = await response.json()
+                const test = await res.json()
+                setData({ posts: checkInList, users: test.data });
+                }else{
+                    setData({ post: [], user: [{}] })
+                }
+            }
+            getData()
+        }, [])
+    } catch (err) {
+        console.log(err);
+    }
+    
+    const filteredPosts = useMemo(() => {
+        const filteredPosts = [];
+        if (posts && users)
+            for (let i = 0; i < posts.length && i < users.length; i++) {
+                filteredPosts.push({post: posts[i], user : users.find(({ userId }) => posts[i].userId === userId)});
+            }
+        return filteredPosts;
+    }, [posts, users]);
+    
     return (
         <>
             <div className={styles.container}>
@@ -288,7 +357,7 @@ export default function Dashboard({ style = "white" }) {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             <img src="/icons-person.png" />
-                            <p className="futura-bold text-[#009FE3] mt-5">CHARLES KHOURY</p>
+                            <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
@@ -357,17 +426,17 @@ export default function Dashboard({ style = "white" }) {
                 <div className="container mx-auto mt-10 mb-20 lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10 px-3 lg:px-0 md:px-0">
                     <div className="col-span-3">
                         <p className="text-[#009FE3] futura-bold">Membership Details</p>
-                        <div className="flex flex-col space-y-3 mt-10 membership-box p-2 items-center">
-                            <img src="/gold-member.png" />
-                            <p className="futura-bold text-white">Gold Membership</p>
-                            <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button">
+                        <div className="flex flex-col space-y-3 mt-10 membership-box p-10 items-center">
+                            <img src="/gold-member.png" className="w-20 h-20"/>
+                            <p className="futura-bold text-white">{books.membershipType?.memberShipTypeName}</p>
+                            <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
                                 <span className="text-white text-base futura-book">Active till:</span>
-                                <span className="text-white futura-bold">25/10/2023</span>
+                                <span className="text-white futura-bold">{dateButif(books.expiryDate)}</span>
                             </p>
-                            <p className="futura-bold cursor-pointer text-white">
+                            <a href="/login-process/membership" className="futura-bold cursor-pointer text-white text-xl">
                                 VIEW MEMBERSHIP DETAILS
                                 <ChevronRightIcon className="arrow-membership" />
-                            </p>
+                            </a>
                         </div>
                     </div>
                     <div className="col-span-3">
@@ -381,22 +450,22 @@ export default function Dashboard({ style = "white" }) {
                                     onChange={(event) => handleInputChange(event, index)}
                                 >
                                     <div className="space-x-2 flex">
-                                        <p className="futura-book pr-1 border-r border-[#009FE3] text-white">
-                                            {item.time}
+                                        <p className="futura-book pr-1 border-r border-[#009FE3] text-white text-lg">
+                                            {dateOnly(item.classTime)}
                                         </p>
-                                        <p className="futura-book pr-2 border-r border-white text-white">
-                                            {item.step}
+                                        <p className="futura-book pr-2 border-r border-white text-white text-lg">
+                                            {item.instructor?.type}
                                         </p>
-                                        <p className="futura-book text-white">{item.name}</p>
+                                        <p className="futura-book text-white text-lg">{item.instructor?.firstName}</p>
                                     </div>
                                     <div className="flex justify-end space-x-2 items-end ml-auto">
                                         <p
                                             className="futura-book text-white"
                                             style={{ fontSize: 14 }}
                                         >
-                                            {item.city}
+                                            {item.location?.locationName}
                                         </p>
-                                        <button onClick={() => handleRemoveItem(index)}>
+                                        <button onClick={(e, index)=>removeClass({timetableId : item.timetableId, e, index})}>
                                             <p className="flex items-center text-[#8F8F8F] futura-bold text-sm">
                                                 Cancel
                                                 <Close className="x-close" />
@@ -442,7 +511,21 @@ export default function Dashboard({ style = "white" }) {
                         </a>
                     </div>
                     <div className="col-span-3">
-                        <p className="text-[#009FE3] futura-bold">Training Packages</p>
+                    <p className="text-[#009FE3] futura-bold">Training Packages</p>
+                    {filteredPosts.slice(0,1).map((post, index) => (
+                    <div className="flex flex-col space-y-3 mt-10 membership-box p-10 items-center">
+                        <Post post={post?.post} users={post?.user} key={index} />
+                        <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
+                                <span className="text-white text-base futura-book">Sessions:</span>
+                                <span className="text-white futura-bold">09/15</span>
+                            </p>
+                        <a href="/login-process/trainers" className="futura-bold cursor-pointer text-white text-xl">
+                                VIEW PACKAGE DETAILS
+                                <ChevronRightIcon className="arrow-membership" />
+                            </a>
+                            </div>
+                ))}
+                        {/* <p className="text-[#009FE3] futura-bold">Training Packages</p>
                         <div className="flex flex-col space-y-3 mt-10 membership-box p-2 items-center">
                             <img src="/trainer-package.png" />
                             <p className="futura-bold text-white">KAMEL RAAD</p>
@@ -454,7 +537,7 @@ export default function Dashboard({ style = "white" }) {
                                 VIEW PACKAGE DETAILS
                                 <ChevronRightIcon className="arrow-membership" />
                             </p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>
