@@ -33,7 +33,7 @@ export default function CompDropdown({ data = {} }) {
                     <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-2 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
                         <div className={`dropdown`}>
                             <button onClick={handleDropdownClick} className="dropdown-btn">
-                                {dropdownValue === "" ? "Dropdown" : dropdownValue}
+                                {dropdownValue === "" ? "Head Office" : dropdownValue}
                             </button>
                             <div 
                                 className={`dropdown-items ${dropdownState ? "isVisible" : "isHidden"}`}

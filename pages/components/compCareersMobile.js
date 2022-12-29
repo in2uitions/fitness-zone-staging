@@ -3,6 +3,7 @@ import { image_url } from "../../global_vars";
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import Popup from "reactjs-popup";
+import { createuser } from "../../api/server";
 
 export default function CompCareersMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -65,7 +66,19 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
         setScrollSnaps(embla.scrollSnapList());
         embla.on("select", onSelect);
     }, [embla, setScrollSnaps, onSelect]);
+    // const onSubmitForm = async (event) => {
+    //     console.log("event.target.firstName.value")
+    //     try {
+    //             localStorage.setItem('FirstName', event.target.firstName.value);
+    //             console.log(event.target.firstName.value)
+    //             createuser();
+    //     } catch (e) {
+    //         // console.log(e)
+    //     }
+    //     // router.push({ pathname: '/chooseOne' }); 
 
+    // }
+ 
     return (
         <section id={`${data.title}`} className="mt-20">
             <div className={`lg:flex relative items-center container`}>
@@ -74,7 +87,7 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
                         {data.careers?.map((item, i) => (
                             <div className={`embla__slide  lg:flex  items-center`}>
 
-                            <div className="lg:w-1/2 mt-10 px-5">
+                                <div className="lg:w-1/2 mt-10 px-5">
                                     <div className="">
                                         <>
                                             <div className="">
@@ -102,52 +115,53 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
                                                     className=""
                                                 >
                                                     <div className="relative">
-                                                    <div className="bg-[#3b3c40] w-full h-full flex flex-col justify-center items-center p-10">
-                                            <p className="futura-bold text-white text-3xl mt-3">{item.careers_items_id?.title}</p>
-                                            <p className="futura-book mt-3 text-white">{item.careers_items_id?.subtitle}</p>
-                                            <Popup
-                                                trigger={
-                                                    <button>
-                                                        <button className="bg-[#009FE3] text-white p-2 rounded-md mt-5">{item.careers_items_id?.button}</button>
-                                                    </button>
-                                                } modal
-                                                position="center"
-                                                closeOnDocumentClick={false}
-                                            >
-                                                {close => (
-                                                    <div className="container w-screen h-screen flex flex-col justify-center items-center">
-                                                        <button className="flex w-full justify-end mb-3 text-white" onClick={close}>
-                                                            &times;
-                                                        </button>
+                                                        <div className="bg-[#3b3c40] w-full h-full flex flex-col justify-center items-center p-10">
+                                                            <p className="futura-bold text-white text-3xl mt-3">{item.careers_items_id?.title}</p>
+                                                            <p className="futura-book mt-3 text-white">{item.careers_items_id?.subtitle}</p>
+                                                            <Popup
+                                                                trigger={
+                                                                    <button>
+                                                                        <button className="bg-[#009FE3] text-white p-2 rounded-md mt-5">{item.careers_items_id?.button}</button>
+                                                                    </button>
+                                                                } modal
+                                                                position="center"
+                                                                closeOnDocumentClick={false}
+                                                            >
+                                                                {close => (
+                                                                    <div className="container w-screen h-screen flex flex-col justify-center items-center">
+                                                                        <button className="flex w-full justify-end mb-3 text-white" onClick={close}>
+                                                                            &times;
+                                                                        </button>
+                                                                        <form onSubmit={onSubmitForm}>
+                                                                            <div className="flex w-full justify-between space-x-5">
+                                                                                <input placeholder="First Name" id="firstName" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                                <input placeholder="Last Name" id="last_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                                <input placeholder="Email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                            </div>
+                                                                            <div className="flex w-full justify-between space-x-5 mt-10">
+                                                                                <input placeholder="Phone Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                                <input placeholder="Mobile Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                                <input placeholder="Education" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                            </div>
+                                                                            <div className="flex w-full justify-between space-x-2 mt-10">
+                                                                                <div>
+                                                                                    <input placeholder="Experience" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                                </div>
+                                                                                <div className="w-3/4">
+                                                                                    <label htmlFor="filePicker" className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                                                        Upload your CV
+                                                                                    </label>
+                                                                                    <input id="filePicker" style={{ visibility: "hidden" }} type={"file"} />
+                                                                                </div>
+                                                                            </div>
+                                                                            <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                                        </form>
+                                                                        {/* <FooterPopup /> */}
+                                                                    </div>
+                                                                )}
+                                                            </Popup>
 
-                                                        <div className="flex w-full justify-between space-x-5">
-                                                            <input placeholder="First Name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Last Name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         </div>
-                                                        <div className="flex w-full justify-between space-x-5 mt-10">
-                                                            <input placeholder="Phone Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Mobile Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Education" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        </div>
-                                                        <div className="flex w-full justify-between space-x-2 mt-10">
-                                                        <div>
-                                                            <input placeholder="Experience" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            </div>
-                                                            <div className="w-3/4">
-                                                            <label htmlFor="filePicker" className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
-                                                                Upload your CV
-                                                            </label>
-                                                            <input id="filePicker" style={{ visibility: "hidden" }} type={"file"} />
-                                                            </div>
-                                                        </div>
-                                                        <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md">Send</button>
-                                                        {/* <FooterPopup /> */}
-                                                    </div>
-                                                )}
-                                            </Popup>
-
-                                        </div>
                                                         <div className="flex justify-between items-center absolute inset-0 w-full h-full ">
                                                             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
                                                             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />

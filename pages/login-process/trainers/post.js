@@ -10,7 +10,6 @@ export default function Post({ post: { firstName, lastName, userId, locationName
 	return (
 		<div className="flex flex-col justify-center items-center">
             <>
-			{/* <p>{userId}<span>Api</span></p> */}
 			{users && <User user={users}/>}
 			<p className="space-x-2 futura-bold mt-2 cursor-pointer" onClick={() => route(userId)}><span>{firstName}</span>
 			<span>{lastName}</span></p>

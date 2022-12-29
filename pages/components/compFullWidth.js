@@ -2,9 +2,21 @@ import parse from "html-react-parser";
 import { image_url } from "../../global_vars";
 import Popup from "reactjs-popup";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-
+import { createOfferUser } from "../../api/server";
 export default function CompFullWidth({ data = {}, style = 'white' }) {
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.setItem('first_name', event.target.first_name.value);
+            localStorage.setItem('last_name', event.target.last_name.value);
+            localStorage.setItem('email', event.target.email.value)
+            localStorage.setItem('phone_number' , event.target.phone_number.value)
+            createOfferUser();
 
+        };
+        getTokenAPI();
+
+    };
     return (
         <div className="mt-10 mb-20">
             {data.title ? <div className="lg:mt-40 md:mt-40 lg:mb-40 md:mb-40 mt-20 mb-20 flex flex-col justify-center items-center text-center">
@@ -43,32 +55,34 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                                                 </div>
                                                 <div className="lg:flex lg:flex-col justify-center lg:w-2/3 px-8 pt-6 lg:pt-0 md:pt-0">
                                                     <p href="/" className="font-bold text-2xl  futura-bold text-[#009FE3] ">SIGN UP FOR OUR PRE-OPENING OFFER IN CITY WALK DUBAI!</p>
+                                                    <form  onSubmit={onSubmitForm}>
                                                     <input placeholder="FIRST NAME"
                                                         className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                                        name="pp_first_name"
-                                                        id="pp_first_name"
+                                                        // name="pp_first_name"
+                                                        id="first_name"
                                                         required
                                                     />
                                                     <input placeholder="LAST NAME"
                                                         className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
                                                         name="pp_last_name"
-                                                        id="pp_last_name"
+                                                        id="last_name"
                                                         required
                                                     />
                                                     {/* <input placeholder="PHONE NUMBER" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-5 h-12" /> */}
                                                     <input placeholder="EMAIL"
                                                         className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
                                                         name="pp_email"
-                                                        id="pp_email"
+                                                        id="email"
                                                     />
                                                     <input placeholder="0501234567"
                                                         className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
                                                         name="pp_phone"
-                                                        id="pp_phone"
+                                                        id="phone_number"
                                                         required
                                                     />
 
                                                     <button type="submit" className="bg-[#009FE3] text-white flex justify-center p-2 items-center w-24 rounded mr-4 futura-bold mb-2">SIGN UP</button>
+                                                </form>
                                                 </div>
 
                                             </div>

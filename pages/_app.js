@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, data = {}, about=[] }) {
         );
         const data = await res.json();
         // console.log(data);
-  if(data.country_code == 'AE'){
+  if(data.country_code == 'LB'){
     // console.log('User is coming from UAE');
     //show UAE Social Media Accounts
     //show Popup after 3 seconds when website loads

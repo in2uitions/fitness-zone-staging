@@ -1,6 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useState, useEffect } from "react";
 import moment from 'moment';
+import nextConfig from "../next.config";
 
 export default function ClassListing() {
     var curr = new Date;
@@ -9,6 +10,13 @@ export default function ClassListing() {
         "firstday": new Date(curr.setDate(curr.getDate() - curr.getDay())).toUTCString(),
         "lastday": new Date(curr.setDate((curr.getDate() - curr.getDay()) + 6)).toUTCString()
     })
+    const LEBANON = 'LB';
+    const UAE = "AE";
+    const login_credentials = {
+        [LEBANON]: 'Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
+        [UAE]: 'Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1'
+    }
+
     const location = localStorage.getItem("Location");
     var registrationHeaders = new Headers();
     registrationHeaders.append(
@@ -26,46 +34,56 @@ export default function ClassListing() {
     function getFilteredList() {
 
         const getClassList = async () => {
-            var registrationHeaders = new Headers();
-            registrationHeaders.append(
-                "Authorization",
-                "Bearer " + localStorage.getItem("token")
-            );
-            registrationHeaders.append("Content-Type", "application/json");
-            var registrationRequestOptions = {
-                method: "GET",
-                headers: registrationHeaders,
-            };
             try {
+
                 const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}&LocationCode=${location}`,
-                    registrationRequestOptions
-                );
-                const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`,
-                    registrationRequestOptions
-                );
-                if(res.status == 200){
-                    const dataClass = await res.json();
-                    let classes = dataClass;
-                    if(response.status == 200){
-                        const fetchedData = await response.json();
-                        classes = dataClass.map((result) =>{
-                            if(fetchedData.filter((res) => res.timetableId == result.timetableId).length == 1){
-                                return {...result, toggle: true}
-                            }
-                            return {...result, toggle: false}
-                        })
+                    `https://api.fitnessclubapp.com/api/Account/Login?${login_credentials[nextConfig.country_code]}`,
+                    {
+                        method: 'POST'
                     }
-                    setClasss(classes);
-                }else{
-                    setClasss([]);
+                );
+                    const token = await res.json();
+
+                try {
+                    var registrationLoginHeaders = new Headers();
+                    registrationLoginHeaders.append("Authorization", "Bearer " + token.token);
+                    registrationLoginHeaders.append("Content-Type", "application/json");
+                    var registrationRequestOptions = {
+                        method: 'GET',
+                        headers: registrationLoginHeaders
+                    };
+                    const res = await fetch(
+                        `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}&LocationCode=${location}`,
+                        registrationRequestOptions
+                    );
+                    const response = await fetch(
+                        `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`,
+                        registrationRequestOptions
+                    );
+                    if (res.status == 200) {
+                        const dataClass = await res.json();
+                        let classes = dataClass;
+                        if (response.status == 200) {
+                            const fetchedData = await response.json();
+                            classes = dataClass.map((result) => {
+                                if (fetchedData.filter((res) => res.timetableId == result.timetableId).length == 1) {
+                                    return { ...result, toggle: true }
+                                }
+                                return { ...result, toggle: false }
+                            })
+                        }
+                        setClasss(classes);
+                    } else {
+                        setClasss([]);
+                    }
+
+                } catch (err) {
+                    console.log(err);
                 }
-                
+
             } catch (err) {
                 console.log(err);
             }
-
         };
         getClassList();
     };
@@ -77,7 +95,7 @@ export default function ClassListing() {
         })
     }
     const memberId = localStorage.getItem("Member");
-    
+
     const reserveClass = async ({ timetableId, e }) => {
         e.preventDefault();
         console.log(timetableId)
@@ -97,7 +115,7 @@ export default function ClassListing() {
             if (data.isValid == true) {
 
                 let newClasssValue = classs.map((res) => {
-                    if(res.timetableId == timetableId){
+                    if (res.timetableId == timetableId) {
                         return {
                             ...res,
                             toggle: true,
@@ -167,10 +185,10 @@ export default function ClassListing() {
                                     {item.location?.locationName}
                                 </p>
                             </div>
-                            <div>
+                            {/* <div>
                                 <button
                                     className="flex justify-end"
-                                    onClick={(e) =>  reserveClass({ timetableId: item.timetableId, e })}
+                                    onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}
                                 >
                                     {!item?.toggle ? (
                                         <div className="flex space-x-2 items-center">
@@ -184,7 +202,7 @@ export default function ClassListing() {
                                         </div>
                                     )}
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </>
                 ))}

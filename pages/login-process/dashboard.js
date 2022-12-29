@@ -72,8 +72,10 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}?dateFrom=${firstday}&dateTo=${lastday}`,
                     registrationRequestOptions
                 );
+                if(response.status == 200){
                 const checkInList = await response.json();
                 setBookedClass(checkInList);
+                }
             }
         }, []);
     } catch (err) {

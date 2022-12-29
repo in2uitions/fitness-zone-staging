@@ -1,23 +1,37 @@
+import { createContactUsUser } from "../../api/server";
 
 export default function CompContact({ data = {}, style = 'white' }) {
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.setItem('full_name', event.target.full_name.value);
+            localStorage.setItem('email', event.target.email.value);
+            localStorage.setItem('message', event.target.message.value)
+            createContactUsUser();
 
+        };
+        getTokenAPI();
+
+    };
     return (
         <div>
             <div className="lg:flex mt-20 mb-20 lg:px-14 md:px-14 px-6">
                 <div className="lg:w-1/2">
                     <p className="text-color text-2xl futura-bold mb-5">{data.title}</p>
+                    <form onSubmit={onSubmitForm}>
                     <div className="pb-5">
-                        <input className="contact-inputs" placeholder="FULL NAME" />
+                        <input className="contact-inputs" id="full_name" placeholder="FULL NAME" />
                     </div>
                     <div className="pb-5">
-                        <input className="contact-inputs" placeholder="EMAIL" />
+                        <input className="contact-inputs" id="email" placeholder="EMAIL" />
                     </div>
-                    <textarea className="textArea mb-5" rows="10" cols="80" maxlength="200" placeholder="MESSAGE" />
+                    <textarea className="textArea mb-5" id="message" rows="10" cols="80" maxlength="200" placeholder="MESSAGE" />
                     <div className="pb-5">
-                        <button className="mt-5 bg-[#009FE3] text-white w-20 h-9 flex items-center flex-row justify-around rounded-md futura">
+                        <button className="mt-5 bg-[#009FE3] text-white w-20 h-9 flex items-center flex-row justify-around rounded-md futura" type="submit">
                             {data.button_title}
                         </button>
                     </div>
+                    </form>
                 </div>
                 <div className="lg:w-1/2">
                     <p className="text-color text-2xl futura-bold mb-5">{data.get_in_touch}</p>

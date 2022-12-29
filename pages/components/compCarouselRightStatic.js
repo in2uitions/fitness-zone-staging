@@ -3,13 +3,12 @@ import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Popup from "reactjs-popup";
+import { createFreeTrialUser } from "../../api/server";
 
 export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
-
-
 
     let timeout = setTimeout(() => {
         if (nextSlide == true && clickTiggered == true) {
@@ -69,51 +68,18 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                 zIndex: 7
             };
     };
-    // const getTextStyles = (index) => {
-    //     if (activeSlide === index)
-    //         return {
-    //             opacity: 1,
-    //             transform: "translateX(250px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 22
-    //         };
-    //     else if (activeSlide - 1 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 9
-    //         };
-    //     else if (activeSlide + 1 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 9
-    //         };
-    //     else if (activeSlide - 2 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 8
-    //         };
-    //     else if (activeSlide + 2 === index)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 8
-    //         };
-    //     else if (index < activeSlide - 2)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 7
-    //         };
-    //     else if (index > activeSlide + 2)
-    //         return {
-    //             opacity: 0,
-    //             transform: "translateX(0px) translateY(0px) rotateY(0deg)",
-    //             zIndex: 7
-    //         };
-    // };
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.setItem('name', event.target.name.value);
+            localStorage.setItem('phone_number', event.target.phone_number.value);
+            localStorage.setItem('location', event.target.location.value)
+            createFreeTrialUser();
 
+        };
+        getTokenAPI();
+
+    };
     return (
         <>
             <div className={`lg:flex relative items-center px-14 pt-28 mb-44 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
@@ -199,14 +165,14 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                         <button className="flex w-full justify-end mb-3" onClick={close}>
                                                             &times;
                                                         </button>
-
+                                                        <form onSubmit={onSubmitForm}>
                                                         <div className="flex w-full justify-between space-x-5">
-                                                            <input placeholder="Name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Phone Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            <input placeholder="Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            <input placeholder="Phone Number" id="phone_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         </div>
                                                         <div className="flex w-full justify-between space-x-5 mt-10">
-                                                        <select name="branches" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                        <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
                                                             <option value="dbayeh">Dbayeh</option>
                                                             <option value="manara">Manara</option>
                                                             <option value="abc">ABC Achrafieh</option>
@@ -215,7 +181,8 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                             <option value="citywalkdubai">City Walk Dubai</option>
                                                         </select>
                                                         </div>
-                                                        <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md">Send</button>
+                                                        <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                        </form>
                                                         {/* <FooterPopup /> */}
                                                     </div>
                                                 )}

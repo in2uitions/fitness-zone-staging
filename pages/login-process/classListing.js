@@ -9,11 +9,12 @@ export default function ClassListing() {
     var curr = new Date;
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
+    const [isDisabled, setIsDisabled] = useState(false);
     const [firstDate, setDate] = useState({
         "firstday": new Date(curr.setDate(curr.getDate() - curr.getDay())).toUTCString(),
         "lastday": new Date(curr.setDate((curr.getDate() - curr.getDay()) + 6)).toUTCString()
     })
-    const [selectedCategory, setSelectedCategory] = useState('0');
+    const [selectedCategory, setSelectedCategory] = useState(0);
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
         getFilteredList(event.target.value);
@@ -28,6 +29,7 @@ export default function ClassListing() {
         method: "GET",
         headers: registrationHeaders,
     };
+    
     try {
         useEffect(() => {
 
@@ -86,6 +88,7 @@ export default function ClassListing() {
                         })
                     }
                     setClasss(classes);
+                    console.log(classes)
                 }else{
                     setClasss([]);
                 }
@@ -153,7 +156,13 @@ export default function ClassListing() {
                     registrationRequestOptions
                 );
                 const fetchedData = await response.json();
-                setBooks(fetchedData);
+                var memberType = fetchedData.membershipType.memberShipTypeName
+                setBooks(memberType);
+                console.log(memberType)
+                if(memberType != "Gold"){
+                    setIsDisabled(true);
+                    handleCategoryChange({target: {value: fetchedData.membershipLocation?.locationCode}})
+                }
             }
             getData();
         }, []);
@@ -225,7 +234,7 @@ export default function ClassListing() {
                 </nav>
             </div>
 
-            <div className="container mx-auto mt-40 px-20">
+            <div className="lg:container mx-auto mt-40 lg:px-20 w-screen">
                 <p className="text-[#009FE3] futura-bold text-4xl">BOOK A CLASS</p>
                 <div className="flex justify-between mt-5">
                     <div className="flex items-center space-x-5">
@@ -233,7 +242,7 @@ export default function ClassListing() {
                         <p className="futura-book">Filter by</p>
                     </div>
                     
-                    <select name="location" id="location" onChange={handleCategoryChange} >
+                    <select disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                         {data.map((item, i) => (
                             <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
                         ))}

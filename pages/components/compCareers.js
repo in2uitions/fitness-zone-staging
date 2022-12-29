@@ -3,6 +3,7 @@ import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Popup from "reactjs-popup";
+import { createuser } from "../../api/server";
 
 export default function CompCareers({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -71,7 +72,31 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                 zIndex: 7
             };
     };
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.setItem('first_name', event.target.first_name.value);
+            localStorage.setItem('last_name', event.target.last_name.value);
+            localStorage.setItem('email', event.target.email.value),
+                localStorage.setItem('phone_number', event.target.email.value),
+                localStorage.setItem('mobile_number', event.target.mobile_number.value);
+            localStorage.setItem('education', event.target.education.value);
+            localStorage.setItem('experience', event.target.experience.value);
+            // localStorage.setItem('cv', event.target.cv.value)
+            createuser();
 
+        };
+        getTokenAPI();
+
+    };
+    const uploadFile = (element) => {
+        var file = element.target.files[0];
+        var reader = new FileReader()
+        reader.onload = function (base64) {
+            localStorage["file"] = base64;
+        }
+        reader.readAsDataURL(file);
+    };
     return (
         <>
 
@@ -88,7 +113,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                         <div className="flex items-baseline space-x-5">
                                             <p className="font-bold futura-bold text-4xl">{data.title}</p>
                                         </div>
-                                        {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)}</p> : null}  
+                                        {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)}</p> : null}
                                     </div>
                                 </div>
                             </div>
@@ -124,29 +149,38 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                                         <button className="flex w-full justify-end mb-3 text-white" onClick={close}>
                                                             &times;
                                                         </button>
-
-                                                        <div className="flex w-full justify-between space-x-5">
-                                                            <input placeholder="First Name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Last Name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        </div>
-                                                        <div className="flex w-full justify-between space-x-5 mt-10">
-                                                            <input placeholder="Phone Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Mobile Number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            <input placeholder="Education" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        </div>
-                                                        <div className="flex w-full justify-between space-x-2 mt-10">
-                                                        <div>
-                                                            <input placeholder="Experience" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <form onSubmit={onSubmitForm}>
+                                                            <div className="flex w-full justify-between space-x-5">
+                                                                <input placeholder="First Name" id="first_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                <input placeholder="Last Name" id="last_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                             </div>
-                                                            <div className="w-3/4">
-                                                            <label htmlFor="filePicker" className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <div className="flex w-full justify-between space-x-5 mt-10">
+                                                                <input placeholder="Phone Number" id="phone_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                <input placeholder="Mobile Number" id="mobile_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                <input placeholder="Education" id="education" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            </div>
+                                                            <div className="flex w-full justify-between space-x-2 mt-10">
+                                                                <div>
+                                                                    <input placeholder="Experience" id="experience" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                </div>
+                                                                <div className="w-3/4">
+                                                                    {/* <label htmlFor="cv" className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
                                                                 Upload your CV
-                                                            </label>
-                                                            <input id="filePicker" style={{ visibility: "hidden" }} type={"file"} />
+                                                            </label> */}
+                                                                    <input
+                                                                        className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-1"
+                                                                        id="file"
+                                                                        multiple={false}
+                                                                        type="file"
+                                                                        onChange={uploadFile}
+                                                                        required
+                                                                    />
+                                                                    {/* <input id="cv" style={{ visibility: "hidden" }} type={"file"} /> */}
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md">Send</button>
+                                                            <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                        </form>
                                                         {/* <FooterPopup /> */}
                                                     </div>
                                                 )}

@@ -18,6 +18,7 @@ export default function TrainersProfile({ style = "white" }) {
     const { query } = useRouter()
     const router = useRouter()
     const memberId = localStorage.getItem("Member");
+    console.log(query)
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
@@ -30,7 +31,7 @@ export default function TrainersProfile({ style = "white" }) {
     };
     try {
         useEffect(() => {
-            getData();
+                getData();
             async function getData() {
                 const response = await fetch(
                     `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/${query.id}`,
@@ -52,7 +53,7 @@ export default function TrainersProfile({ style = "white" }) {
                 }
             }
             getData();
-        }, []);
+        }, [query]);
     } catch (err) {
         console.log(err);
     }

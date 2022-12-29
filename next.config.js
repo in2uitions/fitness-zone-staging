@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
-  country_code: 'AE',
+  country_code: 'LB',
 }
 
 module.exports = nextConfig

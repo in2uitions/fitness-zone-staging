@@ -1678,7 +1678,7 @@ li.category.isActive {
 } */
 
 .popup-measures {
-  width: 55vw;
+  /* width: 55vw; */
   height: 45vh;
 }
 
@@ -1973,7 +1973,7 @@ li.category.isActive {
   border: 1px solid #009FE3;
   border-radius: 5px;
   background: transparent;
-  color: #707070;
+  color: white;
   padding-left: 10px;
   width: 80%;
 }
@@ -1983,7 +1983,7 @@ li.category.isActive {
   border-radius: 5px;
   height: 40px;
   background: transparent;
-  color: #707070;
+  color: white;
   padding-left: 10px;
   width: 80%;
 }
