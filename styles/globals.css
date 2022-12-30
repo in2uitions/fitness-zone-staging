@@ -323,7 +323,55 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+.rbc-header + .rbc-header{
+  border-left: 0px solid transparent !important;
+}
+.rbc-month-view{
+  border: 0px solid !important;
+}
+.rbc-day-bg + .rbc-day-bg{
+  border-left: 0px solid transparent !important;
+}
+.rbc-month-row + .rbc-month-row{
+  border-top: 0px solid transparent !important;
+}
+.rbc-header{
+  border-bottom: 0px solid transparent !important;
+}
+.rbc-toolbar-label{
+  font-family: "Futura" !important;
+}
+.rbc-toolbar button{
+  color: white !important;
+  border: 1px solid #009FE3 !important;
+}
+.rbc-toolbar button:hover{
+  background-color: transparent !important;
+}
+.rbc-toolbar button:focus{
+  background-color: transparent !important;
+}
+.rbc-month-view{
+  background-color: rgba(143, 143, 143, 0.1) !important;
+  border-radius: 5px !important;
+  padding: 10px !important;
+}
+.rbc-month-header{
+  margin-bottom: 2rem;
+}
+.rbc-off-range-bg{
+  background: rgba(0, 159, 227, 0.8) !important;
+}
+.rbc-button-link{
+  color: white !important;
+}
+.rbc-today{
+  background: rgba(0, 159, 227, 0.8) !important;
+  width: 50% !important;
+}
+.rbc-toolbar .rbc-toolbar-label{
+text-align: unset !important;
+}
 p {
   font-size: 18px;
   line-height: 28px;
@@ -2132,7 +2180,11 @@ li.category.isActive {
     visibility: hidden !important;
   }
 }
-
+@media (min-width:320px) and (max-width:480px){
+  .rbc-btn-group{
+    margin-bottom: 10px !important;
+  }
+}
 @media (min-width:320px) and (max-width:375px) {
   .timeline-mobile {
     display: flex;

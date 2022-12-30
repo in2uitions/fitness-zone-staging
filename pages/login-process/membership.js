@@ -168,7 +168,7 @@ export default function Membership({ style = 'white' }) {
                         <div className='col-span-4'>
                             <div className='flex flex-col'>
                                 <button className='bg-[#009FE3] futura-bold p-3 rounded-md text-white'>RENEW MEMBERSHIP</button>
-                                <button className='bg-white text-[#009FE3] p-3 rounded-md  mt-5'>FREEZING REQUEST</button>
+                                <a href='/login-process/freezing' className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5'>FREEZING REQUEST</a>
                             </div>
                         </div>
                     </div>
