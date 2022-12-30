@@ -234,12 +234,12 @@ export default function ClassListing() {
                 </nav>
             </div>
 
-            <div className="lg:container mx-auto mt-40 lg:px-20 w-screen">
+            <div className="lg:container mx-auto mt-40 lg:px-20 md:px-20 px-3 w-screen">
                 <p className="text-[#009FE3] futura-bold text-4xl">BOOK A CLASS</p>
                 <div className="flex justify-between mt-5">
                     <div className="flex items-center space-x-5">
                         <img src="/filterBy.png" />
-                        <p className="futura-book">Filter by</p>
+                        <p className="futura-book text-white">Filter by</p>
                     </div>
                     
                     <select disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
@@ -325,7 +325,7 @@ export default function ClassListing() {
                                     ) : (
                                         <div className="flex space-x-2 items-center">
                                             <img src="/booked.png" />
-                                            <p className="futura-book">Booked</p>
+                                            <p className="futura-book text-white">Booked</p>
                                         </div>
                                     )}
                                 </button>

@@ -142,12 +142,12 @@ export default function List() {
                     </Popup>
                 </nav>
             </div>
-            <section className="h-full">
-        <div className="mt-40 container mx-auto w-full h-full">
+            <section className="lg:h-full">
+        <div className="mt-40 lg:px-20 md:px-20 px-3 container mx-auto w-full h-full">
         <div className="flex flex-row justify-between">
         <div className="flex items-center space-x-5">
                         <img src="/filterBy.png" />
-                        <p className="futura-book">Filter by</p>
+                        <p className="futura-book text-white">Filter by</p>
                     </div>
                 <select name="location" id="location" onChange={handleCategoryChange}>
                         {data.map((item, i) => (
@@ -155,7 +155,7 @@ export default function List() {
                         ))}
                     </select>
                     </div>
-            <div id="main-box" className="grid grid-cols-12 gap-x-10 gap-y-10 p-10 items-center">
+            <div id="main-box" className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-10 p-10 items-center space-y-5 lg:space-y-0 md:space-y-0">
                 {filteredPosts.map((post, index) => (
                     <div className="col-span-3 membership-box h-full p-5">
                         <Post post={post?.post} users={post?.user} key={index} />

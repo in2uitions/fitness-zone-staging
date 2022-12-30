@@ -140,7 +140,7 @@ export default function ClassListing() {
                 <div className="flex justify-between mt-5">
                     <div className="flex items-center space-x-5">
                         <img src="/filterBy.png" />
-                        <p className="futura-book">Filter by</p>
+                        <p className="futura-book text-white">Filter by</p>
                     </div>
                 </div>
                 <Tabs className="mt-10">

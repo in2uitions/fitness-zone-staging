@@ -139,7 +139,7 @@ export default function Membership({ style = 'white' }) {
                 </nav>
             </div>
             <section>
-                <div className='container mx-auto flex flex-col justify-center mt-40'>
+                <div className='container lg:px-20 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40'>
                     <div className='flex flex-col justify-center items-center'>
                         <img src='/gold-member.png' />
                         <p className='futura-bold mt-5 text-white'>GOLD MEMBERSHIP</p>

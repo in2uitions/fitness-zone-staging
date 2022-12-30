@@ -12,8 +12,8 @@ export default function Post({ post: { firstName, lastName, userId, locationName
             <>
 			{/* <p>{userId}<span>Api</span></p> */}
 			{users && <User user={users}/>}
-			<p className="space-x-2 futura-bold mt-2 cursor-pointer" onClick={() => route(userId)}><span>{firstName}</span>
-			<span>{lastName}</span></p>
+			<p className="space-x-2 futura-bold mt-2 cursor-pointer text-white" onClick={() => route(userId)}><span>{firstName}</span>
+			<span className="text-white">{lastName}</span></p>
 			{/* <p>{locationName}</p> */}
 			
             </>

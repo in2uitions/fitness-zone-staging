@@ -78,12 +78,26 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
             localStorage.setItem('first_name', event.target.first_name.value);
             localStorage.setItem('last_name', event.target.last_name.value);
             localStorage.setItem('email', event.target.email.value),
-                localStorage.setItem('phone_number', event.target.email.value),
-                localStorage.setItem('mobile_number', event.target.mobile_number.value);
+            localStorage.setItem('phone_number', event.target.email.value),
+            localStorage.setItem('mobile_number', event.target.mobile_number.value);
             localStorage.setItem('education', event.target.education.value);
             localStorage.setItem('experience', event.target.experience.value);
             // localStorage.setItem('cv', event.target.cv.value)
             createuser();
+            event.target.first_name.value='',
+            event.target.last_name.value='',
+            event.target.email.value= '',
+            event.target.phone_number.value='',
+            event.target.mobile_number.value='',
+            event.target.education.value='',
+            event.target.experience.value='',
+            localStorage.setItem('first_name', event.target.first_name.value = '');
+            localStorage.setItem('last_name', event.target.last_name.value = '');
+            localStorage.setItem('email', event.target.email.value = ''),
+            localStorage.setItem('phone_number', event.target.email.value = ''),
+            localStorage.setItem('mobile_number', event.target.mobile_number.value = '');
+            localStorage.setItem('education', event.target.education.value = '');
+            localStorage.setItem('experience', event.target.experience.value = '');
 
         };
         getTokenAPI();
@@ -179,7 +193,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                                                     {/* <input id="cv" style={{ visibility: "hidden" }} type={"file"} /> */}
                                                                 </div>
                                                             </div>
-                                                            <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                            <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md text-white" type="submit">Send</button>
                                                         </form>
                                                         {/* <FooterPopup /> */}
                                                     </div>

@@ -134,7 +134,7 @@ export default function TrainersProfile({ style = "white" }) {
                 </nav>
             </div>
             <section>
-                <div className="container mx-auto flex flex-col justify-start mt-40 px-3 lg:px-0 md:px-0">
+                <div className="container mx-auto flex flex-col justify-start mt-40 lg:px-20 md:px-20 px-3">
                 <div className="flex justify-between">
                     <p className="text-[#009FE3] futura-bold">Trainers List</p>
                     {/* <select name="category">
@@ -143,7 +143,7 @@ export default function TrainersProfile({ style = "white" }) {
                         ))}
                     </select> */}
                     </div>
-                    <div className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-3 items-start mt-10 space-y-10 lg:space-y-0 md:space-y-0">
+                    <div className="lg:grid lg:grid-cols-12 lg:gap-x-10 lg:gap-y-3 items-start mt-10 space-y-10 lg:space-y-0 md:space-y-0">
                         {/* {data.map((item) => ( */}
                         <div className="col-span-4">
                             <div className='flex flex-col space-y-3 membership-box p-10 items-center'>
@@ -154,7 +154,7 @@ export default function TrainersProfile({ style = "white" }) {
                                     {/* {data.packageList?.map((item, id) =>(
                                         <p key={id}>{item.category.categoryName}</p>
                                         ))} */}
-                                    <p>{data.packageList?.slice(0, 1).map(el => el.category?.categoryName)}</p>
+                                    <p className="text-white">{data.packageList?.slice(0, 1).map(el => el.category?.categoryName)}</p>
                                     <div className="flex space-x-3 items-center rounded-md p-2 active-button">
                                         <img className="" src="/location-marker.png" />
                                         <p className="text-white">{data.locationName}</p>
@@ -163,18 +163,20 @@ export default function TrainersProfile({ style = "white" }) {
                             </div>
                         </div>
                         <div className="col-span-4">
-                            <p>{parse(`${data?.description}`)}</p>
+                            {data.description ?<p className="text-white">{parse(`${data?.description}`)}</p>:null}
                         </div>
                         <div className="col-span-4">
                             <div className="space-y-5">
                                 {data.packageList?.slice(0, 3).map((item) => (
                                     <div className="membership-box p-3 rounded-md">
                                         <div className="flex items-center w-full">
-                                            <div className="flex flex-col w-3/4">
+                                            <div className="flex flex-col w-1/2">
                                                 <p className="futura-bold text-white">{item.category.categoryName}</p>
                                                 <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
                                             </div>
-                                            <div className="flex items-center w-1/4">
+                                            
+                                            <div className="flex items-center w-1/2 justify-end">
+                                            <a href="/login-process/trainer-details">
                                                 <div className="flex flex-col">
                                                     <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                         {format(item.sessionPrice)}
@@ -183,6 +185,7 @@ export default function TrainersProfile({ style = "white" }) {
                                                     <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
                                                 </div>
                                                 <ChevronRightIcon className="chevron-session" />
+                                            </a>
                                             </div>
                                         </div>
 
@@ -192,16 +195,16 @@ export default function TrainersProfile({ style = "white" }) {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-12 gap-x-10 gap-y-5 mt-5">
+                    <div className="lg:grid lg:grid-cols-12 lg:gap-x-10 gap-y-5 mt-5 space-y-5 lg:space-y-0 md:space-y-0">
                         {data.packageList?.slice(3, data.packageList?.length).map((item) => (
                             <div className="col-span-4">
                                 <div className="membership-box p-3 rounded-md">
                                     <div className="flex items-center w-full">
-                                        <div className="flex flex-col w-3/4">
+                                        <div className="flex flex-col w-1/2">
                                             <p className="futura-bold text-white">{item.category.categoryName}</p>
                                             <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
                                         </div>
-                                        <div className="flex items-center w-1/4">
+                                        <div className="flex items-center w-1/2 justify-end">
                                             <div className="flex flex-col">
                                                 <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                     {format(item.sessionPrice)}

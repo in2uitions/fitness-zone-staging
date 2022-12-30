@@ -8,7 +8,12 @@ export default function CompContact({ data = {}, style = 'white' }) {
             localStorage.setItem('email', event.target.email.value);
             localStorage.setItem('message', event.target.message.value)
             createContactUsUser();
-
+            event.target.full_name.value='';
+            event.target.email.value = '';
+            event.target.message.value = '';
+            localStorage.setItem('full_name', event.target.full_name.value = '');
+            localStorage.setItem('email', event.target.email.value = '');
+            localStorage.setItem('message', event.target.message.value = '')
         };
         getTokenAPI();
 

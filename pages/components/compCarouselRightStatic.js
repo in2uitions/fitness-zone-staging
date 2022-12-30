@@ -73,9 +73,17 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
         const getTokenAPI = async () => {
             localStorage.setItem('name', event.target.name.value);
             localStorage.setItem('phone_number', event.target.phone_number.value);
+            localStorage.setItem('email', event.target.email.value);
             localStorage.setItem('location', event.target.location.value)
             createFreeTrialUser();
-
+            event.target.name.value='',
+            event.target.phone_number.value ='',
+            event.target.email.value='',
+            event.target.location.value=''
+            localStorage.setItem('name', event.target.name.value = '');
+            localStorage.setItem('phone_number', event.target.phone_number.value = '');
+            localStorage.setItem('email', event.target.email.value = '');
+            localStorage.setItem('location', event.target.location.value = '')
         };
         getTokenAPI();
 
@@ -162,7 +170,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             >
                                                 {close => (
                                                     <div className="container w-screen h-screen flex flex-col justify-center items-center">
-                                                        <button className="flex w-full justify-end mb-3" onClick={close}>
+                                                        <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
                                                             &times;
                                                         </button>
                                                         <form onSubmit={onSubmitForm}>
@@ -181,7 +189,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                             <option value="citywalkdubai">City Walk Dubai</option>
                                                         </select>
                                                         </div>
-                                                        <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                        <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                         </form>
                                                         {/* <FooterPopup /> */}
                                                     </div>

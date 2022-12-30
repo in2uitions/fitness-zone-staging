@@ -316,7 +316,7 @@ body {
   height: 100vh;
   /* position: absolute; */
   overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   display: flex;
   padding: 0;
   margin: 0;
@@ -379,8 +379,10 @@ p {
 .react-tabs__tab--selected.tabColor{
   color: #009FE3 !important;
 }
+
 .tabColor{
   padding: 10px;
+  color: white;
   font-family: "Futura Bk BT";
 }
 .react-tabs__tab{
@@ -2794,20 +2796,24 @@ li.category.isActive {
 } */
 
 .close {
-  background: #009FE3;
+  color: white;
   outline: none;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-
-  /* font-size: 20px; */
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
   position: absolute;
   z-index: 25;
   right: -0.5rem;
   top: -0.5rem;
+  background: #009Fe3;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.btn-nowrap{
+  white-space: nowrap;
 }
 
 .login-placeholder::placeholder {

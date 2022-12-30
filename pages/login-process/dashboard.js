@@ -397,7 +397,7 @@ export default function Dashboard({ style = "white" }) {
                 </nav>
             </div>
             <section>
-                <div className="container mx-auto flex flex-col justify-center mt-40">
+                <div className="container mx-auto flex flex-col justify-center mt-40 px-20">
                     <p className="text-[#009FE3] futura-bold flex space-x-2">
                         <span>HELLO</span>
                         <span>{books.fullName}</span>
@@ -425,7 +425,7 @@ export default function Dashboard({ style = "white" }) {
                 </div>
             </section>
             <section>
-                <div className="container mx-auto mt-10 mb-20 lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10 px-3 lg:px-0 md:px-0">
+                <div className="container mx-auto px-20 mt-10 mb-20 lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10">
                     <div className="col-span-3">
                         <p className="text-[#009FE3] futura-bold">Membership Details</p>
                         <div className="flex flex-col space-y-3 mt-10 membership-box p-10 items-center">
@@ -435,7 +435,7 @@ export default function Dashboard({ style = "white" }) {
                                 <span className="text-white text-base futura-book">Active till:</span>
                                 <span className="text-white futura-bold">{dateButif(books.expiryDate)}</span>
                             </p>
-                            <a href="/login-process/membership" className="futura-bold cursor-pointer text-white text-xl">
+                            <a href="/login-process/membership" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
                                 VIEW MEMBERSHIP DETAILS
                                 <ChevronRightIcon className="arrow-membership" />
                             </a>
@@ -448,7 +448,7 @@ export default function Dashboard({ style = "white" }) {
                         {slice.map((item, index) => (
                             <>
                                 <div
-                                    className="flex justify-start items-start classes-box mb-3 p-3"
+                                    className="flex justify-start items-start classes-box mb-3 p-3 flex-wrap"
                                     onChange={(event) => handleInputChange(event, index)}
                                 >
                                     <div className="space-x-2 flex">
@@ -521,7 +521,7 @@ export default function Dashboard({ style = "white" }) {
                                 <span className="text-white text-base futura-book">Sessions:</span>
                                 <span className="text-white futura-bold">09/15</span>
                             </p>
-                        <a href="/login-process/trainers" className="futura-bold cursor-pointer text-white text-xl">
+                        <a href="/login-process/trainers" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
                                 VIEW PACKAGE DETAILS
                                 <ChevronRightIcon className="arrow-membership" />
                             </a>
