@@ -2184,6 +2184,9 @@ li.category.isActive {
   .rbc-btn-group{
     margin-bottom: 10px !important;
   }
+  .sizemobile{
+    font-size: .875rem !important;
+  }
 }
 @media (min-width:320px) and (max-width:375px) {
   .timeline-mobile {

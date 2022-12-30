@@ -4,6 +4,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import moment from 'moment';
+import { BrowserView, MobileView } from "react-device-detect";
 
 export default function ClassListing() {
     var curr = new Date;
@@ -270,8 +271,36 @@ export default function ClassListing() {
                         </Tab>
                     </TabList>
                 </Tabs> */}
+                <MobileView>
                 <Tabs className="mt-10">
-                    <TabList className="flex justify-between w-full mx-auto container tabs-container">
+                    <TabList className="flex justify-between w-full lg:mx-auto lg:container tabs-container">
+                        <Tab className="tabColor" onClick={() => getDayByDay({ id: 1 })}>
+                            <div className="flex justify-start tab">M</div>
+                        </Tab>
+                        <Tab className="tabColor" onClick={() => getDayByDay({ id: 2 })}>
+                            <div className="flex justify-center tab">T</div>
+                        </Tab>
+                        <Tab className="tabColor" onClick={() => getDayByDay({ id: 3 })}>
+                            <div className="flex justify-center tab">W</div>
+                        </Tab>
+                        <Tab className="tabColor" onClick={() => getDayByDay({ id: 4 })}>
+                            <div className="flex justify-center tab">TH</div>
+                        </Tab>
+                        <Tab className="tabColor" onClick={() => getDayByDay({ id: 5 })}>
+                            <div className="flex justify-center tab">F</div>
+                        </Tab>
+                        <Tab className="tabColor" onClick={() => getDayByDay({ id: 6 })}>
+                            <div className="flex justify-center tab">S</div>
+                        </Tab>
+                        <Tab className="tabColor" onClick={() => getDayByDay({ id: 7 })}>
+                            <div className="flex justify-end tab">S</div>
+                        </Tab>
+                    </TabList>
+                </Tabs>
+                </MobileView>
+                <BrowserView>
+                <Tabs className="mt-10">
+                    <TabList className="flex justify-between w-full lg:mx-auto lg:container tabs-container">
                         <Tab className="tabColor" onClick={() => getDayByDay({ id: 1 })}>
                             <div className="flex justify-start tab">Monday</div>
                         </Tab>
@@ -295,20 +324,21 @@ export default function ClassListing() {
                         </Tab>
                     </TabList>
                 </Tabs>
+                </BrowserView>
                 {classs.map((item, index) => (
                     <>
-                        <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
+                        <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
                             <div className="flex justify-start">
-                                <p className="text-white text-md border-r border-[#009FE3] pr-3 futura-book">
+                                <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
                                     {item.class?.className}
                                 </p>
-                                <p className="border-r border-white text-white pl-10 pr-3 futura-book">
+                                <p className="lg:border-r md:border-r border-white text-white lg:pl-10 md:pl-10 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile">
                                     {item.studio?.studioName}
                                 </p>
-                                <p className="text-white text-lg futura-book pl-5">
+                                <p className="text-white futura-book lg:pl-5 md:pl-5 pl-5 text-md sizemobile">
                                     {item.classTime}
                                 </p>
-                                <p className="text-white text-lg futura-book pl-5">
+                                <p className="text-white text-md sizemobile futura-book lg:pl-5 md:pl-5 pl-5">
                                     {item.location?.locationName}
                                 </p>
                             </div>
@@ -320,12 +350,12 @@ export default function ClassListing() {
                                     {!item?.toggle ? (
                                         <div className="flex space-x-2 items-center">
                                             <img src="/notBooked.png" />
-                                            <p className="text-[#009FE3] futura-book">Book class</p>
+                                            <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
                                         </div>
                                     ) : (
                                         <div className="flex space-x-2 items-center">
                                             <img src="/booked.png" />
-                                            <p className="futura-book text-white">Booked</p>
+                                            <p className="futura-book text-white text-md sizemobile">Booked</p>
                                         </div>
                                     )}
                                 </button>

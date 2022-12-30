@@ -78,6 +78,8 @@ export default function TrainersProfile({ style = "white" }) {
     } catch (err) {
         console.log(err);
     }
+    const name = data.fullName;
+	const route = (sessionPrice, categoryName) => router.push({ pathname: "/login-process/trainer-details", query: {name, sessionPrice, categoryName}});
     return (
         <>
             <div className={styles.container}>
@@ -176,8 +178,7 @@ export default function TrainersProfile({ style = "white" }) {
                                             </div>
                                             
                                             <div className="flex items-center w-1/2 justify-end">
-                                            <a href="/login-process/trainer-details">
-                                                <div className="flex flex-col">
+                                                <div className="flex flex-col" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
                                                     <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                         {format(item.sessionPrice)}
                                                     </span>
@@ -185,7 +186,6 @@ export default function TrainersProfile({ style = "white" }) {
                                                     <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
                                                 </div>
                                                 <ChevronRightIcon className="chevron-session" />
-                                            </a>
                                             </div>
                                         </div>
 
@@ -205,7 +205,7 @@ export default function TrainersProfile({ style = "white" }) {
                                             <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
                                         </div>
                                         <div className="flex items-center w-1/2 justify-end">
-                                            <div className="flex flex-col">
+                                            <div className="flex flex-col" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
                                                 <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                     {format(item.sessionPrice)}
                                                 </span>
