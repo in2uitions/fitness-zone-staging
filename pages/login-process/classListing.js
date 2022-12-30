@@ -160,10 +160,10 @@ export default function ClassListing() {
                 var memberType = fetchedData.membershipType.memberShipTypeName
                 setBooks(memberType);
                 console.log(memberType)
-                if(memberType != "Gold"){
-                    setIsDisabled(true);
-                    handleCategoryChange({target: {value: fetchedData.membershipLocation?.locationCode}})
-                }
+                // if(memberType != "Gold"){
+                //     setIsDisabled(true);
+                //     handleCategoryChange({target: {value: fetchedData.membershipLocation?.locationCode}})
+                // }
             }
             getData();
         }, []);

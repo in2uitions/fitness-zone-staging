@@ -97,7 +97,6 @@ export default function Dashboard({ style = "white" }) {
                 registrationRequestOptions
             );
             const data = await res.json();
-            if (data.isValid == true) {
                 const handleRemoveItem = (index) => {
                     const newList = [...bookedClass];
                     newList.splice(index, 1);
@@ -106,11 +105,7 @@ export default function Dashboard({ style = "white" }) {
                 // localStorage.setItem("Phone", event.target.mobile.value);
                 //alert("You have changed your Phone Number. Congratulations!")
                 handleRemoveItem();
-            }
-            
-            else {
-                alert("Class is not valid");
-            }
+           
 
         } catch (err) {
             console.log(err);
