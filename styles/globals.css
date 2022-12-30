@@ -372,6 +372,13 @@ body {
 .rbc-toolbar .rbc-toolbar-label{
 text-align: unset !important;
 }
+.rbc-toolbar-label{color: white !important;}
+.rbc-row rbc-month-header{
+  color: white !important;
+}
+.rbc-btn-group{
+  color: white !important;
+}
 p {
   font-size: 18px;
   line-height: 28px;

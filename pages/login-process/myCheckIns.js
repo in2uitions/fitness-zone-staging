@@ -56,6 +56,16 @@ export default function CheckIns() {
     } catch (err) {
         console.log(err);
     }
+    const [state, toggle] = useState(true);
+     const [noOfElements, setnoOfElements] = useState(4);
+    const slice = data.slice(0, noOfElements);
+    const loadMoreLess = () => {
+        if (noOfElements == 4) {
+            setnoOfElements(data.length);
+        } else {
+            setnoOfElements(4);
+        }
+    };
     return (
         <>
             <div className={styles.container}>
@@ -115,7 +125,7 @@ export default function CheckIns() {
                 <div className='flex flex-col justify-center mt-40'>
                     <div className='flex flex-col mx-auto justify-start items-start lg:w-1/4 md:w-1/4'>
                         <p className='text-[#009FE3] futura-bold mb-3'>My Recent Check-ins</p>
-                        {data.map((item) => (
+                        {slice.map((item) => (
                             <>
                                 <div className='flex justify-start items-start classes-box mb-3 p-3' >
                                     <div className='space-x-2 flex'>
@@ -126,6 +136,16 @@ export default function CheckIns() {
                                 </div>
                             </>
                         ))}
+                        <div
+                            className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
+                            onClick={() => {
+                                toggle(!state);
+                                loadMoreLess();
+                            }}
+                        >
+                            {state ? "VIEW ALL" : "VIEW LESS"}
+                            <ChevronRightIcon className="arrow-membership" />
+                        </div>
                     </div>
                 </div>
             </section>

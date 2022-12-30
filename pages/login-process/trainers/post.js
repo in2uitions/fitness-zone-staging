@@ -13,7 +13,7 @@ export default function Post({ post: { firstName, lastName, userId, locationName
 			{users && <User user={users}/>}
 			<p className="space-x-2 futura-bold mt-2 cursor-pointer text-white" onClick={() => route(userId)}><span>{firstName}</span>
 			<span className="text-white">{lastName}</span></p>
-			<p className="text-white">{locationName}</p>
+			<p className="text-white" onClick={() => route(userId)}>{locationName}</p>
 			{users && <Userval user={users}/>}
 			
             </>
