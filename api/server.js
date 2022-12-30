@@ -86,40 +86,40 @@ export const getTrainers = async (value) => {
     return trainersPublished.data;
 }
 
-// export const createuser = async () => {
-//     const users = directus.items("send_cv");
-//     var firstNameToUse = localStorage.getItem('first_name');
-//     var lastNameToUse = localStorage.getItem('last_name');
-//     var emailToUse = localStorage.getItem('email');
-//     var phoneNumberToUse = localStorage.getItem('phone_number');
-//     var mobileNumberToUse = localStorage.getItem('mobile_number');
-//     var educationToUse = localStorage.getItem('education');
-//     var experienceToUse = localStorage.getItem('experience');
-//     var cvToUse = localStorage.getItem('cv')
-//     var base64 = localStorage["file"];
-//     var base64Parts = base64.split(",");
-//     var fileFormat = base64Parts[0].split(";")[1];
-//     var fileContent = base64Parts[1];
-//     var file = new File([fileContent], "file name here", {type: fileFormat});
-//     // return file;
-//     const annoncesPublished = await users.createOne({
-//         first_name: firstNameToUse,
-//         last_name: lastNameToUse,
-//         email: emailToUse,
-//         phone_number: phoneNumberToUse,
-//         mobile_number: mobileNumberToUse,
-//         education: educationToUse,
-//         experience: experienceToUse,
-//         file: file
-//     });
-//     return annoncesPublished;
+export const createuser = async () => {
+    const users = directus.items("send_cv");
+    var firstNameToUse = localStorage.getItem('first_name');
+    var lastNameToUse = localStorage.getItem('last_name');
+    var emailToUse = localStorage.getItem('email');
+    var phoneNumberToUse = localStorage.getItem('phone_number');
+    var mobileNumberToUse = localStorage.getItem('mobile_number');
+    var educationToUse = localStorage.getItem('education');
+    var experienceToUse = localStorage.getItem('experience');
+    var cvToUse = localStorage.getItem('cv')
+    var base64 = localStorage["file"];
+    var base64Parts = base64.split(",");
+    var fileFormat = base64Parts[0].split(";")[1];
+    var fileContent = base64Parts[1];
+    var file = new File([fileContent], "file name here", {type: fileFormat});
+    // return file;
+    const annoncesPublished = await users.createOne({
+        first_name: firstNameToUse,
+        last_name: lastNameToUse,
+        email: emailToUse,
+        phone_number: phoneNumberToUse,
+        mobile_number: mobileNumberToUse,
+        education: educationToUse,
+        experience: experienceToUse,
+        file: file
+    });
+    return annoncesPublished;
     
-// }
-
-export default function handler(req, res) {
-    
-    res.status(200).json({ name: 'John Doe' })
 }
+
+// export default function handler(req, res) {
+    
+//     res.status(200).json({ name: 'John Doe' })
+// }
 
 export const createFreeTrialUser = async () => {
     const users = directus.items("free_trial");
