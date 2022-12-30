@@ -48,7 +48,7 @@ export default function ClassListing() {
         console.log(err);
     }
     useEffect(() => {
-        getFilteredList();
+        getFilteredList(selectedCategory);
     }, [firstDate])
     function getFilteredList(value = null) {
 
@@ -67,6 +67,7 @@ export default function ClassListing() {
             if (val) {
                 query = query + `&LocationCode=${val}`
             }
+            console.log(query)
             try {
                 const res = await fetch(
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList${query}`,
@@ -160,10 +161,10 @@ export default function ClassListing() {
                 var memberType = fetchedData.membershipType.memberShipTypeName
                 setBooks(memberType);
                 console.log(memberType)
-                // if(memberType != "Gold"){
-                //     setIsDisabled(true);
-                //     handleCategoryChange({target: {value: fetchedData.membershipLocation?.locationCode}})
-                // }
+                if(memberType != "Gold"){
+                    setIsDisabled(true);
+                    handleCategoryChange({target: {value: fetchedData.membershipLocation?.locationCode}})
+                }
             }
             getData();
         }, []);
@@ -234,7 +235,7 @@ export default function ClassListing() {
                     </Popup>
                 </nav>
             </div>
-
+<section className="lg:h-full">
             <div className="lg:container mx-auto mt-40 lg:px-20 md:px-20 px-3 w-screen">
                 <p className="text-[#009FE3] futura-bold text-4xl">BOOK A CLASS</p>
                 <div className="flex justify-between mt-5">
@@ -364,6 +365,7 @@ export default function ClassListing() {
                     </>
                 ))}
             </div>
+            </section>
         </>
     );
 }
