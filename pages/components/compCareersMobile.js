@@ -78,7 +78,37 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
     //     // router.push({ pathname: '/chooseOne' }); 
 
     // }
- 
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.setItem('first_name', event.target.first_name.value);
+            localStorage.setItem('last_name', event.target.last_name.value);
+            localStorage.setItem('email', event.target.email.value),
+            localStorage.setItem('phone_number', event.target.email.value),
+            localStorage.setItem('mobile_number', event.target.mobile_number.value);
+            localStorage.setItem('education', event.target.education.value);
+            localStorage.setItem('experience', event.target.experience.value);
+            // localStorage.setItem('cv', event.target.cv.value)
+            createuser();
+            event.target.first_name.value='',
+            event.target.last_name.value='',
+            event.target.email.value= '',
+            event.target.phone_number.value='',
+            event.target.mobile_number.value='',
+            event.target.education.value='',
+            event.target.experience.value='',
+            localStorage.setItem('first_name', event.target.first_name.value = '');
+            localStorage.setItem('last_name', event.target.last_name.value = '');
+            localStorage.setItem('email', event.target.email.value = ''),
+            localStorage.setItem('phone_number', event.target.email.value = ''),
+            localStorage.setItem('mobile_number', event.target.mobile_number.value = '');
+            localStorage.setItem('education', event.target.education.value = '');
+            localStorage.setItem('experience', event.target.experience.value = '');
+
+        };
+        getTokenAPI();
+
+    };
     return (
         <section id={`${data.title}`} className="mt-20">
             <div className={`lg:flex relative items-center container`}>
@@ -125,7 +155,7 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
                                                                     </button>
                                                                 } modal
                                                                 position="center"
-                                                                closeOnDocumentClick={false}
+                                                                closeOnDocumentClick={true}
                                                             >
                                                                 {close => (
                                                                     <div className="container w-screen h-screen flex flex-col justify-center items-center">

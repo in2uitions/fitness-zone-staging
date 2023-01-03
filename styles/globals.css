@@ -379,6 +379,9 @@ text-align: unset !important;
 .rbc-btn-group{
   color: white !important;
 }
+.rbc-header{
+  color: white !important;
+}
 p {
   font-size: 18px;
   line-height: 28px;
@@ -2193,6 +2196,11 @@ li.category.isActive {
   }
   .sizemobile{
     font-size: .875rem !important;
+  }
+  .dropdown-items{
+    z-index: 5645 !important;
+    background-color: white !important;
+    color: black !important;
   }
 }
 @media (min-width:320px) and (max-width:375px) {

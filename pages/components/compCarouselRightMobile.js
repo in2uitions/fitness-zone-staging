@@ -4,6 +4,7 @@ import { image_url } from "../../global_vars";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
+import { useRouter } from "next/router";
 
 export default function CompCarouselRightMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -66,7 +67,16 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
         setScrollSnaps(embla.scrollSnapList());
         embla.on("select", onSelect);
     }, [embla, setScrollSnaps, onSelect]);
-
+    const itemSet = (localStorage.getItem("token") !== null);
+    const router = useRouter();
+    const route = () => {
+    if (itemSet) {
+        router.push({ pathname: "/login-process/classListing"});
+    }
+    else{
+        router.push({ pathname: "/login-process/login"});
+    }
+}
     return (
         <section id={`${data.title}`} className="mt-20">
             <div className="">
@@ -108,8 +118,14 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
                                                 <div key={item.id}
                                                     className=""
                                                 >
-                                                    <div className="sliderContent">
-                                                        {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-10 w-screen">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
+                                                    <div className="sliderContent px-10 w-screen">
+                                                    <div className="flex items-baseline space-x-5">
+                                                <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                                {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
+                                            </div>
+                                                        {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
+                                                        {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
+                                                        {item.comp_carousel_items_id?.book_button ? <button  onClick={() => route()} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.book_button}<ChevronRightIcon /></button> : null}
                                                     </div>
                                                 </div>
                                             </div>

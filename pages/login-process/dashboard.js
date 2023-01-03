@@ -420,7 +420,7 @@ export default function Dashboard({ style = "white" }) {
                 </div>
             </section>
             <section>
-                <div className="lg:container lg:mx-auto lg:px-20 md:px-20 px-3 mt-10 mb-20 lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10">
+                <div className="lg:container lg:mx-auto lg:px-20 md:px-20 px-3 mt-10 mb-20 lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10 w-screen">
                     <div className="col-span-3">
                         <p className="text-[#009FE3] futura-bold">Membership Details</p>
                         <div className="flex flex-col space-y-3 mt-10 membership-box p-10 items-center">
