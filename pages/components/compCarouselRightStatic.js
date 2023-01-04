@@ -104,7 +104,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                         }}
                                     >
                                         <div className="relative">
-                                            {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="tintImg none-event" altv={item.static_items_id?.title} /> : null}
+                                            {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="tintImg none-event object-cover" style={{height:320, width:500}} altv={item.static_items_id?.title} /> : null}
                                             <div className="flex space-x-2 absolute items-center left-8 bottom-8">
                                             {item.static_items_id?.image_text ?<p className="text-white font-bold text-4xl">{item.static_items_id?.image_text}</p>:null}
                                             {item.static_items_id.image_icon?<img src={`${image_url}${item.static_items_id?.image_icon?.id}`} className="w-16 h-8" altv={item.static_items_id?.title} /> : null}
