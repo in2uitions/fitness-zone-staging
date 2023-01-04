@@ -107,7 +107,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                             closeOnDocumentClick={false}
                                         >
                                             {close => (
-                                                <div className="container w-screen h-screen flex flex-col justify-center items-center">
+                                                <div className="container w-screen h-screen flex flex-col justify-center">
                                                     <button className="flex w-full justify-end mb-3" onClick={close}>
                                                         &times;
                                                     </button>
