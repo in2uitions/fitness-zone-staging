@@ -70,7 +70,7 @@ export default function Login() {
                             "Member": event.target.memberId.value,
                             "Phone": event.target.phone.value,
                         });
-                        console.log(registraitonLoginData);
+                        // console.log(registraitonLoginData);
                         var registrationLoginHeaders = new Headers();
                         registrationLoginHeaders.append("Authorization", "Bearer " + tokenData.token);
                         registrationLoginHeaders.append("Content-Type", "application/json");
@@ -81,7 +81,7 @@ export default function Login() {
                         const memberValidation = await fetch(
                             `https://api.fitnessclubapp.com/api/Membership/Member/IsValid?${params}`, registrationRequestOptions);
                         const data = await memberValidation.json();
-                        console.log("testing" , data)
+                        // console.log("testing" , data)
                         const phoneNumber = event.target.phoneNumber.value;
                         const memberId = event.target.memberId.value;
                         // if (data.isValid == false) {
@@ -97,18 +97,18 @@ export default function Login() {
                                 });
                             const data = getMobile.data;
                             phoneNumber = data;
-                            console.log("test" + phoneNumber)
+                            // console.log("test" + phoneNumber)
 
                         } else if (endPoints == MOBILE) {
                             const getMemberId = await fetch(
                                 `https://api.fitnessclubapp.com/api/Membership/Member/IsValid?${params}`, registrationRequestOptions);
                             const data =await getMemberId.json();
                             memberId = data.tranasctionNo
-                            console.log("memberId" + memberId)
+                            // console.log("memberId" + memberId)
                             // phoneNumber = selectedTab[endPoints]
                         }
-                        console.log("phoneeee" , phoneNumber)
-                        console.log("memberrrrr" ,memberId)
+                        // console.log("phoneeee" , phoneNumber)
+                        // console.log("memberrrrr" ,memberId)
                         if (data.isValid == true && phoneNumber && memberId) {
                             // const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
                             // const data = await SendOTPMessage.json();
