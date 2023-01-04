@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import Input from "react-phone-number-input/input-mobile";
 import "react-phone-number-input/style.css";
 import ReactFlagsSelect from "react-flags-select";
+import axios from 'axios';
 
 export default function Login() {
 
@@ -80,30 +81,45 @@ export default function Login() {
                         const memberValidation = await fetch(
                             `https://api.fitnessclubapp.com/api/Membership/Member/IsValid?${params}`, registrationRequestOptions);
                         const data = await memberValidation.json();
-                        const phoneNumber = '';
-                        if (data.isValid == false) {
-                            alert("Wrong Phone Number")
-                        }
+                        console.log("testing" , data)
+                        const phoneNumber = event.target.phoneNumber.value;
+                        const memberId = event.target.memberId.value;
+                        // if (data.isValid == false) {
+                        //     alert("Wrong Phone Number")
+                        // }
                         if (endPoints == MEMBER) {
-                            const getMobile = await fetch(
-                                `https://api.fitnessclubapp.com/api/Membership/Member/GetMobile/${selectedTab[endPoints]}`, registrationRequestOptions);
-                            const data = await getMobile.json();
+                            const getMobile = await axios.get
+                            (
+                                `https://api.fitnessclubapp.com/api/Membership/Member/GetMobile/${selectedTab[endPoints]}`, {
+                                    headers:{
+                                        Authorization: "Bearer " + tokenData.token
+                                    }
+                                });
+                            const data = getMobile.data;
                             phoneNumber = data;
+                            console.log("test" + phoneNumber)
 
                         } else if (endPoints == MOBILE) {
-                            phoneNumber = selectedTab[endPoints]
+                            const getMemberId = await fetch(
+                                `https://api.fitnessclubapp.com/api/Membership/Member/IsValid?${params}`, registrationRequestOptions);
+                            const data =await getMemberId.json();
+                            memberId = data.tranasctionNo
+                            console.log("memberId" + memberId)
+                            // phoneNumber = selectedTab[endPoints]
                         }
-                        if (data.isValid == true && phoneNumber) {
+                        console.log("phoneeee" , phoneNumber)
+                        console.log("memberrrrr" ,memberId)
+                        if (data.isValid == true && phoneNumber && memberId) {
                             // const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
                             // const data = await SendOTPMessage.json();
                             // setIsSent(true)
                             localStorage.setItem("Country", JSON.stringify(select));
                             localStorage.setItem("Phone", phoneNumber);
-                            localStorage.setItem("Member", event.target.memberId.value);
+                            localStorage.setItem("Member", memberId);
                             // event.target.country.value = '';
                             event.target.phone.value = '';
                             event.target.memberId.value = '';
-                            router.push({ pathname: "/login-process/otp", query: { phoneNumber } })
+                            router.push({ pathname: "/login-process/otp", query: { phoneNumber, memberId } })
                         }
                         else {
                             setIsNotSent(true)
@@ -145,8 +161,8 @@ export default function Login() {
 
 
         if (!phoneNumber) {
-            formIsValid = false;
-            setphoneNumberErr("Phone number is required.");
+            // formIsValid = false;
+            // setphoneNumberErr("Phone number is required.");
         } else {
             var mobPattern = /^((\+?971)|0)?5[024568]\d{7}$/;
             let reg = /^(?:\+961|961)?(1|0?3[0-9]?|[4-6]|70|71|76|78|79|7|81?|9)\d{6}$/;
