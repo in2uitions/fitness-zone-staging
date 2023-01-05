@@ -188,10 +188,10 @@ export default function Frezzing() {
                 <Calendar
                     defaultView="month"
                     localizer={localizer}
-                    events={events}
+                    // events={events}
                     views={views}
-                    startAccessor="start"
-                    endAccessor="end"
+                    // startAccessor="start"
+                    // endAccessor="end"
                     style={{ height: 500 }}
                 />
             </div>

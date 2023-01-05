@@ -360,14 +360,22 @@ body {
   margin-bottom: 2rem;
 }
 .rbc-off-range-bg{
-  background: rgba(0, 159, 227, 0.8) !important;
+  background: transparent !important;
 }
 .rbc-button-link{
   color: white !important;
 }
 .rbc-today{
+  background: transparent !important;
+  width: 50% !important;
+  border-radius: 50px;
+  height: 40% !important;
+}
+.rbc-date-cell.rbc-now{
   background: rgba(0, 159, 227, 0.8) !important;
   width: 50% !important;
+  border-radius: 50px;
+  height: 50% !important;
 }
 .rbc-toolbar .rbc-toolbar-label{
 text-align: unset !important;
@@ -381,6 +389,16 @@ text-align: unset !important;
 }
 .rbc-header{
   color: white !important;
+  margin-bottom: 1rem;
+}
+.rbc-date-cell{
+  text-align: center !important;
+}
+.rbc-toolbar{
+  margin-bottom: 30px !important;
+}
+.rbc-month-header{
+  border-bottom: 0.25px solid grey;
 }
 p {
   font-size: 18px;
