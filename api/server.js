@@ -96,12 +96,21 @@ export const createuser = async () => {
     var educationToUse = localStorage.getItem('education');
     var experienceToUse = localStorage.getItem('experience');
     var cvToUse = localStorage.getItem('cv')
-    var base64 = localStorage["file"];
-    var base64Parts = base64.split(",");
-    var fileFormat = base64Parts[0].split(";")[1];
-    var fileContent = base64Parts[1];
-    var file = new File([fileContent], "file name here", {type: fileFormat});
-    // return file;
+    async function readFile() {
+    var base64 = localStorage.getItem("file");
+    // console.log("base64", JSON.parse(base64))
+    // const form = new FormData();
+    // form.append("file", base64);
+    // const response = await axios.post(`https://fzcms.diastora.com/files`, form);
+    // console.log(response)
+    // var base64Parts = base64.split(",");
+    // var fileFormat = base64Parts[0].split(";")[1];
+    // var fileContent = base64Parts[1];
+    // var file = new File([fileContent], "file name here", {type: fileFormat});
+    // console.log(file)
+    return file;
+    }
+    readFile();
     const annoncesPublished = await users.createOne({
         first_name: firstNameToUse,
         last_name: lastNameToUse,
@@ -110,7 +119,7 @@ export const createuser = async () => {
         mobile_number: mobileNumberToUse,
         education: educationToUse,
         experience: experienceToUse,
-        file: file
+        cv: localStorage.getItem('file_id')
     });
     return annoncesPublished;
     

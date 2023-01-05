@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Popup from "reactjs-popup";
 import { createuser } from "../../api/server";
+import axios from "axios";
 
 export default function CompCareers({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -75,6 +76,18 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
+            var file = event.target.file.files[0];
+            try{
+                const form = new FormData();
+                // form.append("filename", file.file_name);
+                form.append("file", file);
+                const response = await axios.post(`https://fzcms.diastora.com/files`, form);
+                if(response.status == 200){
+                    localStorage.setItem("file_id", response.data.data.id);
+                }
+            } catch(err){
+                console.log(err)
+            }
             localStorage.setItem('first_name', event.target.first_name.value);
             localStorage.setItem('last_name', event.target.last_name.value);
             localStorage.setItem('email', event.target.email.value),
@@ -103,13 +116,26 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
         getTokenAPI();
 
     };
-    const uploadFile = (element) => {
+    const uploadFile = async (element) => {
+        element.preventDefault();
         var file = element.target.files[0];
-        var reader = new FileReader()
-        reader.onload = function (base64) {
-            localStorage["file"] = base64;
+        try{
+            const form = new FormData();
+            // form.append("filename", file.file_name);
+            form.append("file", file);
+            const response = await axios.post(`https://fzcms.diastora.com/files`, form);
+            if(response.status == 200){
+                localStorage.setItem("file_id", response.data.data.id);
+            }
+        } catch(err){
+            console.log(err)
         }
-        reader.readAsDataURL(file);
+        console.log(response.data.data.filename_disk)
+        // var reader = new FileReader()
+        // reader.onload = function () {
+        //     localStorage.setItem("file", JSON.stringify(file));
+        // }
+        // reader.readAsDataURL(file);
     };
     return (
         <>
@@ -187,7 +213,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                                                         id="file"
                                                                         multiple={false}
                                                                         type="file"
-                                                                        onChange={uploadFile}
+                                                                        // onChange={uploadFile}
                                                                         required
                                                                     />
                                                                     {/* <input id="cv" style={{ visibility: "hidden" }} type={"file"} /> */}
