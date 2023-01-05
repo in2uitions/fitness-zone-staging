@@ -235,7 +235,7 @@ export default function ClassListing() {
                     </Popup>
                 </nav>
             </div>
-<section className="lg:h-full">
+<section className="">
             <div className="lg:container mx-auto mt-40 lg:px-20 md:px-20 px-3 w-screen">
                 <p className="text-[#009FE3] futura-bold text-4xl">BOOK A CLASS</p>
                 <div className="flex justify-between mt-5">
