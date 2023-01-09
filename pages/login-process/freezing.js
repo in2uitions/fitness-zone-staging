@@ -1,7 +1,7 @@
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { useState, useMemo } from 'react';
+import { useState,useEffect, useMemo } from 'react';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styles from "../../styles/Header.module.css";
 import Popup from 'reactjs-popup';
@@ -105,6 +105,16 @@ export default function Frezzing() {
             month: true
         }
     }), [])
+    var registrationHeaders = new Headers();
+    registrationHeaders.append(
+        "Authorization",
+        "Bearer " + localStorage.getItem("token")
+    );
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: "GET",
+        headers: registrationHeaders,
+    };
     const memberId = localStorage.getItem('Member');
     const [books, setBooks] = useState(true)
     try {
@@ -117,6 +127,7 @@ export default function Frezzing() {
                 );
                 const fetchedData = await response.json();
                 setBooks(fetchedData);
+                console.log(fetchedData)
             }
             getData();
         }, []);
@@ -146,7 +157,11 @@ export default function Frezzing() {
                         position=""
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            <img src="/icons-person.png" />
+                            {/* <img src="/icons-person.png" /> */}
+                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <p className="futura-bold text-6xl text-[#009FE3]">{books.firstName?.charAt(0)}</p>
+                            <p className="futura-bold text-6xl text-[#009FE3]">{books.lastName?.charAt(0)}</p>
+                            </a>
                             <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">

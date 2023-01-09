@@ -169,8 +169,8 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                 closeOnDocumentClick={false}
                                             >
                                                 {close => (
-                                                    <div className="container w-screen h-screen flex flex-col justify-center items-center">
-                                                        <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <div className="container w-screen flex flex-col justify-center py-12">
+                                                        <button className="flex w-full justify-end mb-3 text-white outline-none close-button" onClick={close}>
                                                             &times;
                                                         </button>
                                                         <form onSubmit={onSubmitForm}>

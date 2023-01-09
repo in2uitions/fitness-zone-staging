@@ -329,7 +329,43 @@ export default function Dashboard({ style = "white" }) {
             }
         return filteredPosts;
     }, [posts, users]);
-    
+//     const clearLocalStorage = (event) => {
+//    localStorage.setItem("token", event.target.tokenData.value = '');
+//    localStorage.setItem("Member", event.target.memberId.value = '');
+//    localStorage.setItem("Phone", localStorage.target.phoneNumber.value='');
+//    localStorage.setItem("Country", event.target.country.value = '')
+//     }
+
+    // const clearLocalStorage = async event => {
+    //     event.preventDefault();
+    //     const getTokenAPI = async () => {
+            
+            
+    //         localStorage.setItem("token", event.target.tokenData.value = '');
+    //         localStorage.setItem("Member", event.target.memberId.value = '');
+    //         localStorage.setItem("Phone", localStorage.target.phoneNumber.value='');
+    //         localStorage.setItem("Country", event.target.country.value = '')
+            
+
+    //         // event.target.first_name.value='',
+    //         // event.target.last_name.value='',
+    //         // event.target.email.value= '',
+    //         // event.target.phone_number.value='',
+    //         // event.target.mobile_number.value='',
+    //         // event.target.education.value='',
+    //         // event.target.experience.value='',
+    //         // localStorage.setItem('first_name', event.target.first_name.value = '');
+    //         // localStorage.setItem('last_name', event.target.last_name.value = '');
+    //         // localStorage.setItem('email', event.target.email.value = ''),
+    //         // localStorage.setItem('phone_number', event.target.email.value = ''),
+    //         // localStorage.setItem('mobile_number', event.target.mobile_number.value = '');
+    //         // localStorage.setItem('education', event.target.education.value = '');
+    //         // localStorage.setItem('experience', event.target.experience.value = '');
+
+    //     };
+    //     getTokenAPI();
+
+    // };
     return (
         <>
             <div className={styles.container}>
@@ -353,7 +389,11 @@ export default function Dashboard({ style = "white" }) {
                         position=""
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            <img src="/icons-person.png" />
+                            {/* <img src="/icons-person.png" /> */}
+                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <p className="futura-bold text-6xl text-[#009FE3]">{books.firstName?.charAt(0)}</p>
+                            <p className="futura-bold text-6xl text-[#009FE3]">{books.lastName?.charAt(0)}</p>
+                            </a>
                             <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
@@ -386,6 +426,9 @@ export default function Dashboard({ style = "white" }) {
                                         <ChevronRightIcon className="fill-[#009FE3]" />
                                     </a>
                                 </div>
+                                {/* <div className="flex justify-center items-center">
+                                <button onClick={() => clearLocalStorage()} className="border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                </div> */}
                             </div>
                         </div>
                     </Popup>

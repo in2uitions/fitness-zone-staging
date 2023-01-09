@@ -71,6 +71,9 @@ return <>
         }}
       />
        */}
+        <title className="futura-bold">FITNESS ZONE</title>
+        <link rel="icon" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     {/* <noscript  dangerouslySetInnerHTML={{
           __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX2V36F"

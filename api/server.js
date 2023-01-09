@@ -82,7 +82,7 @@ export const getTrainers = async (value) => {
     // var myfields = ['*,carousel.comp_carousel_items_id.*']
     var myfields = ['*']
     const trainersPublished = await trainers.readByQuery({ filter: myfilter, fields: myfields })
-    console.log(JSON.stringify(trainersPublished.data) + "Trainers")
+    // console.log(JSON.stringify(trainersPublished.data) + "Trainers")
     return trainersPublished.data;
 }
 

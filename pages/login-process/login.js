@@ -139,7 +139,7 @@ export default function Login() {
 
 
         if (handleFormValidation()) {
-            alert("You have been successfully registered.");
+            alert("You have been successfully logged in.");
             setState(initialState);
             event.target.value = '';
         }

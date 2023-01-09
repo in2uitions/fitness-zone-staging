@@ -100,15 +100,15 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                         {data.show_more_description ? <Popup
                                             trigger={
                                                 <button>
-                                                    <p className="bg-transparent text-md text-[#D8D8D8] futura-book mt-2">Read more ...</p>
+                                                    <p className="bg-transparent text-md text-[#009FE3] futura-book mt-2">Read more ...</p>
                                                 </button>
                                             } modal
                                             position="center"
                                             closeOnDocumentClick={false}
                                         >
                                             {close => (
-                                                <div className="container w-screen h-screen flex flex-col justify-center">
-                                                    <button className="flex w-full justify-end mb-3" onClick={close}>
+                                                <div className="container w-screen flex flex-col justify-center relative py-12">
+                                                    <button className="flex w-full justify-end close-button " onClick={close}>
                                                         &times;
                                                     </button>
                                                     {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}
@@ -117,7 +117,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                                 </div>
                                             )}
                                         </Popup> : null}
-                                        {data.button_title ? <a href={data.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
+                                        {data.button_title ? <a href={data.button_url} target="_blank" className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
                                     </div>
                         </>
                     </div>

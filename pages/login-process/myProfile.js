@@ -303,7 +303,11 @@ export default function Dashboard({ style = "white" }) {
                         position=""
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            <img src="/icons-person.png" />
+                            {/* <img src="/icons-person.png" /> */}
+                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
+                            <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
+                            </a>
                             <p className="futura-bold text-[#009FE3] mt-5">{data.fullName}</p>
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
@@ -372,7 +376,7 @@ export default function Dashboard({ style = "white" }) {
                                             }}
                                             onSubmit={state ? handleSubmitBirthDate : () => {}}
                                         >
-                                            {state ? "CHANGE DATE OF BIRTH" : "SAVE"}
+                                            {state ? "CHANGE DOB" : "SAVE"}
                                         </button>
                                     </div>
                                     <div className="border border-[#009FE3] flex justify-between items-center bg-black rounded-md lg:h-10 md:h-10 h-16 p-1 text-white">
@@ -417,7 +421,7 @@ export default function Dashboard({ style = "white" }) {
                             </div>
                             <div className="flex flex-col lg:w-1/3 md:w-1/3">
                                 <div className="flex flex-col space-y-2 text-white">
-                                    <p className="text-[#009FE3]">General Info</p>
+                                    <p className="text-[#009FE3]">Address</p>
                                     <input
                                         disabled = {true}
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"

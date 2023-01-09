@@ -185,8 +185,8 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                                 closeOnDocumentClick={false}
                                             >
                                                 {close => (
-                                                    <div className="container w-screen h-screen flex flex-col justify-center items-center">
-                                                        <button className="flex w-full justify-end mb-3 text-white" onClick={close}>
+                                                    <div className="container w-screen flex flex-col justify-center relative py-12">
+                                                        <button className="flex w-full justify-end text-white close-button" onClick={close}>
                                                             &times;
                                                         </button>
                                                         <form onSubmit={onSubmitForm}>
@@ -219,7 +219,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                                                     {/* <input id="cv" style={{ visibility: "hidden" }} type={"file"} /> */}
                                                                 </div>
                                                             </div>
-                                                            <button className="bg-[#009FE3] w-full p-2 mt-5 futura-bold rounded-md text-white" type="submit">Send</button>
+                                                            <button className="bg-[#009FE3] w-full p-2 mt-5 futura-book rounded-md text-white" type="submit">Send</button>
                                                         </form>
                                                         {/* <FooterPopup /> */}
                                                     </div>

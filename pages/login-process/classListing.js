@@ -171,6 +171,23 @@ export default function ClassListing() {
     } catch (err) {
         console.log(err);
     }
+    const [info, setInfo] = useState(true)
+    try {
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+                    registrationRequestOptions
+                );
+                const fetchedData = await response.json();
+                setInfo(fetchedData);
+            }
+            getData();
+        }, []);
+    } catch (err) {
+        console.log(err);
+    }
     return (
         <>
             <div className={styles.container}>
@@ -194,8 +211,12 @@ export default function ClassListing() {
                         position=""
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            <img src="/icons-person.png" />
-                            <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
+                            {/* <img src="/icons-person.png" /> */}
+                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <p className="futura-bold text-6xl text-[#009FE3]">{info.firstName?.charAt(0)}</p>
+                            <p className="futura-bold text-6xl text-[#009FE3]">{info.lastName?.charAt(0)}</p>
+                            </a>
+                            <p className="futura-bold text-[#009FE3] mt-5">{info.fullName}</p>
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a

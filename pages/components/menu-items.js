@@ -164,7 +164,7 @@ export default function Menu(data = {}) {
                             BECOME A MEMBER
                         </a>
                         <a
-                            href="#"
+                            href="/about/career"
                             className="border-[#009FE3] border-2 w-36 h-9 rounded flex justify-center items-center"
                         >
                             WORK WITH US
