@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { ArrowDropUpOutlined } from "@material-ui/icons";
 import $ from "jquery";
+import { useRouter } from "next/router";
 
 export default function CheckIns() {
     const [data, setData] = useState([]);
@@ -82,7 +83,16 @@ export default function CheckIns() {
         e.preventDefault();
         $('html, body').animate({ scrollTop: 0 }, '300');
     });
+    const router = useRouter();
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.clear();
+            router.push({ pathname: "/login-process/login"});
+        };
+        getTokenAPI();
 
+    };
     return (
         <>
             <div className={styles.container}>
@@ -133,6 +143,11 @@ export default function CheckIns() {
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
+                                <form onSubmit={onSubmitForm}>
+                                    <div className="flex justify-center items-center">
+                                        <button type="submit" className="text-white border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </Popup>
