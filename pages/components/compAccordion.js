@@ -83,7 +83,7 @@ if (ListofClasses.length == 0){
                 <div className={` container  mx-auto pt-10 relative `}>
                     {ListofClasses.filter((item) => item.value === selectedCategory).map((element, index) => (
                         <div className="" id="classes">
-                        {element.image_position == "left" ?<div className='lg:flex my-10 mx-auto items-center'>
+                        {element.image_position == "left" ?<div className='lg:flex my-10 mx-auto items-center px-12'>
                             <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-5 lg:pl-20 md:pl-0 md:px-16 lg:px-16 ">
                                 <div className='flex items-center space-x-2'>
                                     {element.icon?.id ? <img src={`${image_url}${element.icon?.id}`} alt={`${element.icon?.title}`} /> : null}
@@ -102,7 +102,7 @@ if (ListofClasses.length == 0){
                                 </div>
                             </div>
                             </div>:null}
-                            {element.image_position == "right" ?<div className='lg:flex my-20 mx-auto items-center'>
+                            {element.image_position == "right" ?<div className='lg:flex my-20 mx-auto items-center px-12'>
                             <div className=" lg:w-1/2 pt-6 lg:pt-0  lg:block">
                                 <div id="wrapper" className={`main-image-center`} >
                                     <img src={`${image_url}${element.image}`} alt={`${element.image?.title}`} />
