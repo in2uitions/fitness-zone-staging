@@ -2952,7 +2952,7 @@ li.category.isActive {
     border-radius: 50%;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 2rem;
 }
 .close {
   color: white;
