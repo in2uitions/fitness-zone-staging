@@ -418,7 +418,7 @@ export default function ClassListing() {
                         </>
                     ))}
                 </div>
-                <a id="buttonss"><ArrowDropUpOutlined className="arrow-backtop" /></a>
+                <a id="buttonss" className="wtsp-widget m-10"><ArrowDropUpOutlined className="arrow-backtop" /></a>
             </section>
         </>
     );
