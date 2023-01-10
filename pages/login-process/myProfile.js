@@ -350,7 +350,7 @@ export default function Dashboard({ style = "white" }) {
                                 </div>
                                 <form onSubmit={onSubmitForm}>
                                     <div className="flex justify-center items-center">
-                                        <button type="submit" className="border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                        <button type="submit" className="text-white border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
                                     </div>
                                 </form>
                             </div>
