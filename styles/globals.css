@@ -2952,6 +2952,20 @@ li.category.isActive {
     border-radius: 50%;
     position: absolute;
     top: 0;
+    right: 0rem;
+}
+.closing{
+  background: #009fe3;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
     right: 2rem;
 }
 .close {
