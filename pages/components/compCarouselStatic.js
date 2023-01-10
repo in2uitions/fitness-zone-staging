@@ -100,7 +100,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                         {data.show_more_description ? <Popup
                                             trigger={
                                                 <button>
-                                                    <p className="bg-transparent text-md text-[#009FE3] futura-book mt-2">Read more ...</p>
+                                                    <p className="bg-transparent text-md text-[#009FE3] futura-book mt-2 outline-none">Read more ...</p>
                                                 </button>
                                             } modal
                                             position="center"
@@ -111,8 +111,8 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                                     <button className="flex w-full justify-end close-button " onClick={close}>
                                                         &times;
                                                     </button>
-                                                    {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}
-                                                    {data.show_more_description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.show_more_description}`)} </p> : null}
+                                                    {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.description}`)} </p> : null}
+                                                    {data.show_more_description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.show_more_description}`)} </p> : null}
                                                     {/* <FooterPopup /> */}
                                                 </div>
                                             )}
