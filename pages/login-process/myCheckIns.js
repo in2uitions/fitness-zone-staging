@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { ArrowDropUpOutlined } from "@material-ui/icons";
+import $ from "jquery";
 
 export default function CheckIns() {
     const [data, setData] = useState([]);
@@ -39,7 +41,7 @@ export default function CheckIns() {
         });
         return newd;
     }
-    const[books, setBooks]=useState(true)
+    const [books, setBooks] = useState(true)
     try {
         useEffect(() => {
             getData();
@@ -57,7 +59,7 @@ export default function CheckIns() {
         console.log(err);
     }
     const [state, toggle] = useState(true);
-     const [noOfElements, setnoOfElements] = useState(4);
+    const [noOfElements, setnoOfElements] = useState(4);
     const slice = data.slice(0, noOfElements);
     const loadMoreLess = () => {
         if (noOfElements == 4) {
@@ -66,63 +68,78 @@ export default function CheckIns() {
             setnoOfElements(4);
         }
     };
+    var btn = $('#buttonss');
+
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, '300');
+    });
+
     return (
         <>
             <div className={styles.container}>
-                    <nav className={styles.nav}>
-                        <a href="/">
-                            <img src="/logo.png" className="logo" />
-                        </a>
-                        <Popup
-                            trigger={
-                                <div className="flex items-center space-x-2">
-                                    <button className="img-btn">
-                                        <img src="/blue-rectangle.png" className="menu-icon" />
-                                    </button>
-                                    <p className="font-bold text-white futura-book cursor-pointer">
-                                        Menu
-                                    </p>
+                <nav className={styles.nav}>
+                    <a href="/">
+                        <img src="/logo.png" className="logo" />
+                    </a>
+                    <Popup
+                        trigger={
+                            <div className="flex items-center space-x-2">
+                                <button className="img-btn">
+                                    <img src="/blue-rectangle.png" className="menu-icon" />
+                                </button>
+                                <p className="font-bold text-white futura-book cursor-pointer">
+                                    Menu
+                                </p>
+                            </div>
+                        }
+                        modal
+                        closeOnDocumentClick
+                        position=""
+                    >
+                        <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
+                            <img src="/icons-person.png" />
+                            <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
+                            <div className="flex flex-col mt-10">
+                                <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
+                                    <a
+                                        href="/login-process/myProfile"
+                                        className="futura-book menu-member flex items-center justify-between"
+                                    >
+                                        {" "}
+                                        My Profile
+                                        <ChevronRightIcon className="forward-blue" />
+                                    </a>
+                                    <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
+                                        Membership Settings
+                                        <ChevronRightIcon className="forward-blue" />
+                                    </a>
                                 </div>
-                            }
-                            modal
-                            closeOnDocumentClick
-                            position=""
-                        >
-                            <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                                <img src="/icons-person.png" />
-                                <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
-                                <div className="flex flex-col mt-10">
-                                    <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                        <a
-                                            href="/login-process/myProfile"
-                                            className="futura-book menu-member flex items-center justify-between"
-                                        >
-                                            {" "}
-                                            My Profile
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </a>
-                                        <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
-                                            Membership Settings
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </a>
-                                    </div>
-                                    <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                        <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
-                                            Classes / Book a class
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </a>
-                                        <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
-                                            Trainers / Book a package
-                                            <ChevronRightIcon className="fill-[#009FE3]" />
-                                        </a>
-                                    </div>
+                                <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
+                                    <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
+                                        Classes / Book a class
+                                        <ChevronRightIcon className="forward-blue" />
+                                    </a>
+                                    <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
+                                        Trainers / Book a package
+                                        <ChevronRightIcon className="forward-blue" />
+                                    </a>
                                 </div>
                             </div>
-                        </Popup>
-                    </nav>
-                </div>
+                        </div>
+                    </Popup>
+                </nav>
+            </div>
             <section>
-                <div className='flex flex-col justify-center mt-40'>
+                <div className='flex flex-col justify-center mt-40' id="btnScrollToTop">
                     <div className='flex flex-col mx-auto justify-start items-start lg:w-1/4 md:w-1/4'>
                         <p className='text-[#009FE3] futura-bold mb-3'>My Recent Check-ins</p>
                         {slice.map((item) => (
@@ -147,6 +164,7 @@ export default function CheckIns() {
                             <ChevronRightIcon className="arrow-membership" />
                         </div>
                     </div>
+                    <a id="buttonss"><ArrowDropUpOutlined className="arrow-backtop" /></a>
                 </div>
             </section>
         </>

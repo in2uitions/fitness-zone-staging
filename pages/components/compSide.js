@@ -58,7 +58,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
 
                         </div>
                     </div>
-                    <div className="  lg:w-1/2 pt-6 lg:pt-0 pr-40">
+                    <div className="  lg:w-1/2 pt-6 lg:pt-0 pr-44">
                         <div className='flex items-center space-x-2'>
                             {data.icon?.id ? <img src={`${image_url}${data.icon?.id}`} alt={`${data.icon?.title}`} /> : null}
                             <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold careers text-white">{data.title}</h2>

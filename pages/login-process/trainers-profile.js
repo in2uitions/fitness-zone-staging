@@ -18,7 +18,7 @@ export default function TrainersProfile({ style = "white" }) {
     const { query } = useRouter()
     const router = useRouter()
     const memberId = localStorage.getItem("Member");
-    console.log(query)
+    // console.log(query)
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
@@ -80,6 +80,15 @@ export default function TrainersProfile({ style = "white" }) {
     }
     const name = data.fullName;
 	const route = (sessionPrice, categoryName) => router.push({ pathname: "/login-process/trainer-details", query: {name, sessionPrice, categoryName}});
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.clear();
+            router.push({ pathname: "/login-process/login"});
+        };
+        getTokenAPI();
+
+    };
     return (
         <>
             <div className={styles.container}>
@@ -104,7 +113,7 @@ export default function TrainersProfile({ style = "white" }) {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             {/* <img src="/icons-person.png" /> */}
-                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <a href="/login-process/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{books.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{books.lastName?.charAt(0)}</p>
                             </a>
@@ -117,30 +126,35 @@ export default function TrainersProfile({ style = "white" }) {
                                     >
                                         {" "}
                                         My Profile
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
                                         Membership Settings
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
                                         Trainers / Book a package
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
+                                <form onSubmit={onSubmitForm}>
+                                    <div className="flex justify-center items-center">
+                                        <button type="submit" className="border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </Popup>
                 </nav>
             </div>
             <section>
-                <div className="container mx-auto flex flex-col justify-start mt-40 lg:px-20 md:px-20 px-3">
+                <div className="container mx-auto flex flex-col justify-start mt-40 lg:px-28 md:px-20 px-3">
                 <div className="flex justify-between">
                     <p className="text-[#009FE3] futura-bold">Trainers List</p>
                     {/* <select name="category">

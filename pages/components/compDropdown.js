@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { image_url } from "../../global_vars";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import parse from "html-react-parser";
 
 export default function CompDropdown({ data = {} }) {
     const [dropdownState, setDropdownState] = useState(false);
@@ -31,6 +32,7 @@ export default function CompDropdown({ data = {} }) {
                         </div>
                     </div>
                     <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-2 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
+                        {data.description ?<p className="mb-5">{parse(`${data.description}`)}</p>:null}
                         <div className={`dropdown`}>
                             <button onClick={handleDropdownClick} className="dropdown-btn text-white">
                                 {dropdownValue === "" ? "Head Office" : dropdownValue}

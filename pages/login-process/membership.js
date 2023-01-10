@@ -7,6 +7,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import { useState, useEffect } from 'react';
+import { ArrowDropUpOutlined } from "@material-ui/icons";
+import $ from "jquery";
+import { useRouter } from "next/router";
 
 export default function Membership({ style = 'white' }) {
     // const membership =[
@@ -83,6 +86,30 @@ export default function Membership({ style = 'white' }) {
         }).replaceAll('/', '-');
         return newd;
     }
+    var btn = $('#buttonss');
+
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, '300');
+    });
+    const router = useRouter();
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.clear();
+            router.push({ pathname: "/login-process/login"});
+        };
+        getTokenAPI();
+
+    };
     return (
         <>
             <div className={styles.container}>
@@ -107,7 +134,7 @@ export default function Membership({ style = 'white' }) {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             {/* <img src="/icons-person.png" /> */}
-                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <a href="/login-process/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
                             </a>
@@ -120,33 +147,38 @@ export default function Membership({ style = 'white' }) {
                                     >
                                         {" "}
                                         My Profile
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
                                         Membership Settings
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
                                         Trainers / Book a package
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
+                                <form onSubmit={onSubmitForm}>
+                                    <div className="flex justify-center items-center">
+                                        <button type="submit" className="border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </Popup>
                 </nav>
             </div>
             <section>
-                <div className='container lg:px-20 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40'>
+                <div className='container lg:px-28 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40'>
                     <div className='flex flex-col justify-center items-center'>
                         <img src='/gold-member.png' />
-                        <p className='futura-bold mt-5 text-white'>GOLD MEMBERSHIP</p>
+                        <p className='futura-bold mt-5 text-white'>{data.membershipType?.memberShipTypeName}</p>
                     </div>
                     <div className='lg:grid lg:grid-cols-12 gap-x-1 items-center mt-10 px-3 lg:px-0 md:px-0'>
                         <div className='col-span-4'>
@@ -172,7 +204,7 @@ export default function Membership({ style = 'white' }) {
                         <div className='col-span-4'>
                             <div className='flex flex-col'>
                                 <button className='bg-[#009FE3] futura-bold p-3 rounded-md text-white'>RENEW MEMBERSHIP</button>
-                                <a href='/login-process/freezing' className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5'>FREEZING REQUEST</a>
+                                <a href='/login-process/freezing' target="_blank" className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5 futura-bold'>FREEZING REQUEST</a>
                             </div>
                         </div>
                     </div>
@@ -190,6 +222,7 @@ export default function Membership({ style = 'white' }) {
                         ))}
                     </div>
                 </div>
+                <a id="buttonss"><ArrowDropUpOutlined className="arrow-backtop" /></a>
             </section>
 
         </>

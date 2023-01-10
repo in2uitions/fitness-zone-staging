@@ -455,7 +455,64 @@ p {
 .react-tabs__tab--selected.tabColor{
   color: #009FE3 !important;
 }
+.forward-blue{
+  fill: #009FE3 !important;
+}
+#buttonss {
+  display: inline-block;
+  background-color: #009FE3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  /* opacity: 0;
+  visibility: hidden; */
+}
+.go-top {
+  right:1em;
+  bottom:2em;
+  color:#FAFAFA;
+  text-decoration:none;
+  background:#F44336;
+  padding:5px;
+  border-radius:5px;
+  border:1px solid #e0e0e0;
+  position:fixed;
 
+}
+.arrow-backtop{
+  width: 2em !important;
+  height: 2em !important;
+}
+/* #buttonss::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+} */
+#buttonss:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#buttonss:active {
+  background-color: #555;
+}
+#buttonss.show {
+  opacity: 1;
+  visibility: visible;
+}
 .tabColor{
   padding: 10px;
   color: white;

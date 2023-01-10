@@ -5,6 +5,7 @@ import { useState,useEffect, useMemo } from 'react';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styles from "../../styles/Header.module.css";
 import Popup from 'reactjs-popup';
+import { useRouter } from "next/router";
 
 const localizer = momentLocalizer(moment)
 
@@ -134,6 +135,16 @@ export default function Frezzing() {
     } catch (err) {
         console.log(err);
     }
+    const router = useRouter();
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.clear();
+            router.push({ pathname: "/login-process/login"});
+        };
+        getTokenAPI();
+
+    };
     return (
         <>
             <div className={styles.container}>
@@ -158,7 +169,7 @@ export default function Frezzing() {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             {/* <img src="/icons-person.png" /> */}
-                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <a href="/login-process/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{books.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{books.lastName?.charAt(0)}</p>
                             </a>
@@ -171,29 +182,34 @@ export default function Frezzing() {
                                     >
                                         {" "}
                                         My Profile
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
                                         href="/login-process/membership"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Membership Settings
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
                                         href="/login-process/trainers"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Trainers / Book a package
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
+                                <form onSubmit={onSubmitForm}>
+                                    <div className="flex justify-center items-center">
+                                        <button type="submit" className="border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </Popup>

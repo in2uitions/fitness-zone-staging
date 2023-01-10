@@ -121,14 +121,14 @@ export default function ClassListing() {
                                     >
                                         {" "}
                                         My Profile
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
                                         href="/login-process/membership"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Membership Settings
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
@@ -137,14 +137,14 @@ export default function ClassListing() {
                                         className="futura-book menu-member flex items-center justify-between text-white"
                                     >
                                         Classes / Book a class
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
                                         href="/login-process/trainers"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Trainers / Book a package
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                             </div>

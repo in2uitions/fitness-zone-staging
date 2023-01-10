@@ -13,10 +13,12 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
     const router = useRouter();
     const route = () => {
     if (itemSet) {
-        router.push({ pathname: "/login-process/classListing"});
+        // router.push({ pathname: "/login-process/classListing"});
+    window.open("/login-process/classListing", "_blank");
     }
     else{
-        router.push({ pathname: "/login-process/login"});
+        // router.push({ pathname: "/login-process/login"});
+        window.open("/login-process/login", "_blank");
     }
 }
     let timeout = setTimeout(() => {

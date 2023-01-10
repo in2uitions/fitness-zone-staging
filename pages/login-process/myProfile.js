@@ -10,6 +10,7 @@ import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
 import ToggleText from "../login-process/test";
 import ReactFlagsSelect from "react-flags-select";
+import { useRouter } from "next/router";
 
 export default function Dashboard({ style = "white" }) {
     const [data, setData] = useState([]);
@@ -65,7 +66,7 @@ export default function Dashboard({ style = "white" }) {
                 const data = await res.json();
                 if (data.isValid == true ) {
                     localStorage.setItem("Phone", event.target.mobile.value);
-                    //alert("You have changed your Phone Number. Congratulations!")
+                    // alert("You have changed your Phone Number. Congratulations!")
                 }
                 else {
                     //alert("Wrong data");
@@ -95,7 +96,7 @@ export default function Dashboard({ style = "white" }) {
                 const emailData = await response.json();
                 if (emailData.isValid == true ) {
                     localStorage.setItem("Email", event.target.email.value);
-                    //alert("You have changed your Email. Congratulations!")
+                    // alert("You have changed your Email. Congratulations!")
                 }
                 else {
                     //alert("Wrong data");
@@ -125,7 +126,7 @@ export default function Dashboard({ style = "white" }) {
                 const birthData = await changeBirthDate.json();
                 if (birthData.isValid == true ) {
                     localStorage.setItem("BirthDate", event.target.birthdate.value);
-                    //alert("You have changed your Birth Date. Congratulations!")
+                    // alert("You have changed your Data. Congratulations!")
                 }
                 else {
                     //alert("Wrong data");
@@ -133,6 +134,9 @@ export default function Dashboard({ style = "white" }) {
 
             } catch (err) {
                 console.log(err);
+            }
+            if (data.isValid == true ){
+                alert("You have changed your data successfully!")
             }
         };
         getSubmit();
@@ -160,7 +164,7 @@ export default function Dashboard({ style = "white" }) {
                 const data = await res.json();
                 if (data.isValid == true ) {
                     localStorage.setItem("Phone", event.target.mobile.value);
-                    //alert("You have changed your Phone Number. Congratulations!")
+                    // alert("You have changed your Info. Congratulations!")
                 }
                 else {
                     //alert("Wrong data");
@@ -280,6 +284,16 @@ export default function Dashboard({ style = "white" }) {
     }
     const [select, setSelect] = useState("LEBANON");
     const onSelect = (code) => setSelect(code);
+    const router = useRouter();
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.clear();
+            router.push({ pathname: "/login-process/login"});
+        };
+        getTokenAPI();
+
+    };
     return (
         <>
             <div className={styles.container}>
@@ -304,7 +318,7 @@ export default function Dashboard({ style = "white" }) {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             {/* <img src="/icons-person.png" /> */}
-                            <a href="/login-process/login" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <a href="/login-process/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
                             </a>
@@ -317,23 +331,28 @@ export default function Dashboard({ style = "white" }) {
                                     >
                                         {" "}
                                         My Profile
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
                                         Membership Settings
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
                                         Trainers / Book a package
-                                        <ChevronRightIcon className="fill-[#009FE3]" />
+                                        <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
+                                <form onSubmit={onSubmitForm}>
+                                    <div className="flex justify-center items-center">
+                                        <button type="submit" className="border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </Popup>
