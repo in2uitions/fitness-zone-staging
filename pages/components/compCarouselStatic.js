@@ -107,8 +107,8 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                             closeOnDocumentClick={false}
                                         >
                                             {close => (
-                                                <div className="container w-screen flex flex-col justify-center relative py-12">
-                                                    <button className="flex w-full justify-end close-button " onClick={close}>
+                                                <div className="container w-screen flex flex-col justify-center relative py-12 px-20">
+                                                    <button className="flex w-full justify-end close-button right-8 text-white" onClick={close}>
                                                         &times;
                                                     </button>
                                                     {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.description}`)} </p> : null}
