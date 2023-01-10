@@ -88,7 +88,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
 
             <div className={`lg:flex relative items-center px-14 pt-32 mb-10 pb-16 container`}>
 
-                <div className="lg:w-1/2 px-40">
+                <div className="lg:w-1/2 pl-40">
                     <div className="slideCC">
                         <>
                                     <div className="sliderContent">
