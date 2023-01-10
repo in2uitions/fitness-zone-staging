@@ -21,7 +21,7 @@ export default function CompDropdown({ data = {} }) {
     };
     return (
         <section id={`${data.title}`}>
-            <div className={`md:my-24 pt-10 relative container mx-auto`}>
+            <div className={`md:my-24 pt-10 relative container mx-auto px-8`}>
                 <div className={`lg:flex mx-auto items-center `}>
                     <div className=" lg:w-1/2 pt-6 lg:pt-0 lg:block">
                         <div id="wrapper" className={`main-image-center`}>
