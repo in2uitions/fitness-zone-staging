@@ -150,13 +150,13 @@ export default function Frezzing() {
             <div className={styles.container}>
                 <nav className={styles.nav}>
                     <a href="/">
-                        <img src="/logo.png" className="logo" />
+                        <img src="/logo.svg" className="logo" />
                     </a>
                     <Popup
                         trigger={
                             <div className="flex items-center space-x-2">
                                 <button className="img-btn">
-                                    <img src="/blue-rectangle.png" className="menu-icon" />
+                                    <img src="/blue-rectangle.svg" className="menu-icon" />
                                 </button>
                                 <p className="font-bold text-white futura-book cursor-pointer">
                                     Menu

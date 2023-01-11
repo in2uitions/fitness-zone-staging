@@ -185,7 +185,7 @@ export default function Login() {
 
             <div className="w-screen h-screen container mx-auto flex flex-col items-center justify-center">
                 <div className='flex flex-col justify-center'>
-                    <img src="/logo.png" className='w-full h-auto' />
+                    <img src="/logo.svg" className='w-full h-auto' />
 
                     <p className="futura-bold text-4xl mt-28 text-[#009FE3]">COUNTRY</p>
                     <form className='w-full flex flex-col' onSubmit={submitLogIn}>

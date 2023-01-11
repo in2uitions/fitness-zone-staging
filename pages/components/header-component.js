@@ -11,12 +11,12 @@ export default function HeaderContent(data = {}, about = []) {
         <>
             <div className={styles.container}>
                 <nav className={styles.nav}>
-                    <a href="/"><img src="/logo.png" className="logo object-cover" /></a>
+                    <a href="/"><img src="/logo.svg" className="logo object-cover" /></a>
                     <Popup ref={ref}
                         trigger={
                             <div className="flex items-center space-x-2">
                             <button className="img-btn">
-                                <img src="/blue-rectangle.png" className="menu-icon object-cover" />
+                                <img src="/blue-rectangle.svg" className="menu-icon object-cover" />
                             </button>
                             <p className="font-bold text-white futura-book cursor-pointer">Menu</p>
                             </div>

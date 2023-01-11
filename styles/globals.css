@@ -4070,3 +4070,13 @@ ul li.activate {
 .isHidden {
   visibility: hidden;
 }
+.top-btn {
+  all: unset; 
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  transform:scale(1.8);
+  /* opacity: 0; */
+  transition: .3s;
+}
