@@ -168,7 +168,7 @@ export default function TrainersProfile({ style = "white" }) {
                         <div className="col-span-4">
                             <div className='flex flex-col space-y-3 membership-box p-10 items-center'>
                                 <>
-                                    <img className="w-20 h-20 rounded-full" src={`${image_url}${data?.image}`} />
+                                    <img className="w-20 h-20 rounded-full object-cover" src={`${image_url}${data?.image}`} />
                                     <p className='futura-bold flex space-x-2 cursor-pointer text-white'>{data.fullName}</p>
                                     <p className='futura-book cursor-pointer text-white'>{data.securityGroupName}</p>
                                     {/* {data.packageList?.map((item, id) =>(
