@@ -2832,6 +2832,9 @@ li.category.isActive {
   .sizing{
     margin-left: unset;
   }
+  .exipryDate{
+    font-size: 14px;
+  }
 }
 @media screen and (max-width: 1440px) {
   /* .popup-input{

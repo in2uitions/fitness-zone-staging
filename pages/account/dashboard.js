@@ -447,7 +447,7 @@ export default function Dashboard({ style = "white" }) {
                             <p className="futura-bold text-white">{books.membershipType?.memberShipTypeName}</p>
                             <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
                                 <span className="text-white text-base futura-book">Active till:</span>
-                                <span className="text-white futura-bold">{dateButif(books.expiryDate)}</span>
+                                <span className="text-white futura-bold exipryDate">{dateButif(books.expiryDate)}</span>
                             </p>
                             <a href="/account/membership" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
                                 VIEW MEMBERSHIP DETAILS
@@ -533,9 +533,9 @@ export default function Dashboard({ style = "white" }) {
                                 <Post post={post?.post} users={post?.user} key={index} />
                                 <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
                                     <span className="text-white text-base futura-book">Sessions:</span>
-                                    <span className="text-white futura-bold">09/15</span>
+                                    <span className="text-white futura-bold exipryDate">09/15</span>
                                 </p>
-                                <a href="/account/trainers" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
+                                <a href="/account/trainers" className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
                                     VIEW PACKAGE DETAILS
                                     <ChevronRightIcon className="arrow-membership" />
                                 </a>
