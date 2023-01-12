@@ -137,7 +137,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                                 ...getTextStyles(i),
                                             }}
                                         >
-                                            <div className="sliderContent px-20">
+                                            <div className="sliderContent w-full px-20">
                                                 <div className="flex items-baseline space-x-5">
                                                     <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
                                                     {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
