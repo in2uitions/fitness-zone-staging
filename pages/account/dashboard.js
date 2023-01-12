@@ -364,7 +364,7 @@ export default function Dashboard({ style = "white" }) {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             {/* <img src="/icons-person.png" /> */}
-                            <a href="/login-process/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                                 <p className="futura-bold text-6xl text-[#009FE3]">{books.firstName?.charAt(0)}</p>
                                 <p className="futura-bold text-6xl text-[#009FE3]">{books.lastName?.charAt(0)}</p>
                             </a>
@@ -372,7 +372,7 @@ export default function Dashboard({ style = "white" }) {
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
-                                        href="/login-process/myProfile"
+                                        href="/account/myProfile"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         {" "}
@@ -380,7 +380,7 @@ export default function Dashboard({ style = "white" }) {
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
-                                        href="/login-process/membership"
+                                        href="/account/membership"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Membership Settings
@@ -388,12 +388,12 @@ export default function Dashboard({ style = "white" }) {
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
+                                    <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
-                                        href="/login-process/trainers"
+                                        href="/account/trainers"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Trainers / Book a package
@@ -449,7 +449,7 @@ export default function Dashboard({ style = "white" }) {
                                 <span className="text-white text-base futura-book">Active till:</span>
                                 <span className="text-white futura-bold">{dateButif(books.expiryDate)}</span>
                             </p>
-                            <a href="/login-process/membership" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
+                            <a href="/account/membership" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
                                 VIEW MEMBERSHIP DETAILS
                                 <ChevronRightIcon className="arrow-membership" />
                             </a>
@@ -519,7 +519,7 @@ export default function Dashboard({ style = "white" }) {
                             </>
                         ))}
                         <a
-                            href="/login-process/myCheckIns"
+                            href="/account/myCheckIns"
                             className="flex lg:justify-center items-center cursor-pointer futura-bold text-white"
                         >
                             VIEW ALL
@@ -535,7 +535,7 @@ export default function Dashboard({ style = "white" }) {
                                     <span className="text-white text-base futura-book">Sessions:</span>
                                     <span className="text-white futura-bold">09/15</span>
                                 </p>
-                                <a href="/login-process/trainers" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
+                                <a href="/account/trainers" className="futura-bold cursor-pointer text-white text-lg btn-nowrap">
                                     VIEW PACKAGE DETAILS
                                     <ChevronRightIcon className="arrow-membership" />
                                 </a>
