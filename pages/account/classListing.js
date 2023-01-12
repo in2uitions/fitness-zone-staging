@@ -386,7 +386,7 @@ export default function ClassListing() {
                                     <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
                                         {item.class?.className}
                                     </p>
-                                    <p className="lg:border-r md:border-r border-white text-white lg:pl-10 md:pl-10 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile">
+                                    <p className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile">
                                         {item.studio?.studioName}
                                     </p>
                                     <p className="text-white futura-book lg:pl-5 md:pl-5 pl-5 text-md sizemobile">
