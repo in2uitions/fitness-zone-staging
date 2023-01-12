@@ -71,10 +71,10 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
     const router = useRouter();
     const route = () => {
     if (itemSet) {
-        router.push({ pathname: "/login-process/classListing"});
+        router.push({ pathname: "/account/classListing"});
     }
     else{
-        router.push({ pathname: "/login-process/login"});
+        router.push({ pathname: "/account/login"});
     }
 }
     return (

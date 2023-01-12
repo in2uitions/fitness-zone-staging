@@ -32,7 +32,7 @@ export default function Otp() {
                     // localStorage.setItem("Country", JSON.stringify(event.target.country.value));
                     // localStorage.setItem("Phone", phoneNumber);
                     // localStorage.setItem("Member", JSON.stringify(event.target.member.value));
-                    router.push({ pathname: "/login-process/dashboard" })
+                    router.push({ pathname: "/account/dashboard" })
                 // }
                 // else {
                 //     alert("Wrong OTP");
@@ -61,7 +61,7 @@ export default function Otp() {
                 // );
                 // const data = await res.json();
                 // if (data.isValid == true) {
-                //     router.push({ pathname: "/login-process/dashboard" })
+                //     router.push({ pathname: "/account/dashboard" })
                 // }
                 // else {
                 //     alert("Wrong OTP");
@@ -100,7 +100,7 @@ export default function Otp() {
                         <input className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" id="otp" placeholder="OTP" />
                         <button type="submit" className="bg-[#009FE3] w-full p-3 rounded-md futura-bold text-center items-center text-white">SUBMIT OTP</button>
                     </form>
-                    <a href="/login-process/login" className='text-[#009FE3] futura-book mt-4 text-center'>Back to login</a>
+                    <a href="/account/login" className='text-[#009FE3] futura-book mt-4 text-center'>Back to login</a>
                 </div>
                 <div className="lg:w-1/2"></div>
             </div>

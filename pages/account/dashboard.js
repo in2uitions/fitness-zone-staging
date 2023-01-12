@@ -462,19 +462,19 @@ export default function Dashboard({ style = "white" }) {
                         {slice.map((item, index) => (
                             <>
                                 <div
-                                    className="flex justify-start items-start classes-box mb-3 p-3 flex-wrap"
+                                    className="flex classes-box mb-3 p-2 flex-wrap"
                                     onChange={(event) => handleInputChange(event, index)}
                                 >
                                     <div className="space-x-2 flex">
                                         <p className="futura-book pr-1 border-r border-[#009FE3] text-white text-lg">
                                             {dateOnly(item.classTime)}
                                         </p>
-                                        <p className="futura-book pr-2 border-r border-white text-white text-lg">
+                                        <p className="futura-book pr-1 border-r border-white text-white text-lg">
                                             {item.instructor?.type}
                                         </p>
                                         <p className="futura-book text-white text-lg">{item.instructor?.firstName}</p>
                                     </div>
-                                    <div className="flex justify-end space-x-2 items-end ml-auto">
+                                    <div className="flex justify-end space-x-2 items-end ml-auto sizing">
                                         <p
                                             className="futura-book text-white"
                                             style={{ fontSize: 14 }}

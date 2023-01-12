@@ -186,8 +186,10 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                             >
                                                 {close => (
                                                     <div className="container w-screen flex flex-col justify-center relative py-12">
-                                                        <button className="flex w-full justify-end text-white close-button" onClick={close}>
-                                                            &times;
+                                                        <button className="flex w-full justify-end text-white mb-4 outline-none" onClick={close}>
+                                                        
+                                                        <img src="/close-X.svg"/>
+                                                            {/* &times; */}
                                                         </button>
                                                         <form onSubmit={onSubmitForm}>
                                                             <div className="flex w-full justify-between space-x-5">

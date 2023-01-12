@@ -119,7 +119,7 @@ export default function Login() {
                             // event.target.country.value = '';
                             event.target.phone.value = '';
                             event.target.memberId.value = '';
-                            router.push({ pathname: "/login-process/otp", query: { phoneNumber, memberId } })
+                            router.push({ pathname: "/account/otp", query: { phoneNumber, memberId } })
                         }
                         else {
                             setIsNotSent(true)

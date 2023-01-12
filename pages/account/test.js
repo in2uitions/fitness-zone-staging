@@ -116,7 +116,7 @@ export default function ClassListing() {
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
-                                        href="/login-process/myProfile"
+                                        href="/account/myProfile"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         {" "}
@@ -124,7 +124,7 @@ export default function ClassListing() {
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
-                                        href="/login-process/membership"
+                                        href="/account/membership"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Membership Settings
@@ -133,14 +133,14 @@ export default function ClassListing() {
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
-                                        href="/login-process/classListing"
+                                        href="/account/classListing"
                                         className="futura-book menu-member flex items-center justify-between text-white"
                                     >
                                         Classes / Book a class
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
-                                        href="/login-process/trainers"
+                                        href="/account/trainers"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Trainers / Book a package

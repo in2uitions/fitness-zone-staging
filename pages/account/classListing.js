@@ -1,5 +1,5 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
@@ -33,10 +33,9 @@ export default function ClassListing() {
         method: "GET",
         headers: registrationHeaders,
     };
-
+ 
     try {
         useEffect(() => {
-
             getData();
             async function getData() {
                 const response = await fetch(
@@ -46,6 +45,7 @@ export default function ClassListing() {
                 const checkInList = await response.json();
                 setData(checkInList);
             }
+
         }, []);
     } catch (err) {
         console.log(err);
@@ -70,7 +70,7 @@ export default function ClassListing() {
             if (val) {
                 query = query + `&LocationCode=${val}`
             }
-            console.log(query)
+            // console.log(query)
             try {
                 const res = await fetch(
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList${query}`,
@@ -93,7 +93,7 @@ export default function ClassListing() {
                         })
                     }
                     setClasss(classes);
-                    console.log(classes)
+                    // console.log(classes)
                 } else {
                     setClasss([]);
                 }
@@ -116,7 +116,7 @@ export default function ClassListing() {
 
     const reserveClass = async ({ timetableId, e }) => {
         e.preventDefault();
-        console.log(timetableId)
+        // console.log(timetableId)
         try {
             var registrationHeaders = new Headers();
             registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
@@ -163,7 +163,7 @@ export default function ClassListing() {
                 const fetchedData = await response.json();
                 var memberType = fetchedData.membershipType.memberShipTypeName
                 setBooks(memberType);
-                console.log(memberType)
+                // console.log(memberType)
                 if (memberType != "Gold") {
                     setIsDisabled(true);
                     handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
@@ -191,26 +191,26 @@ export default function ClassListing() {
     } catch (err) {
         console.log(err);
     }
+    const buttonRef = useRef(null);
+
     var btn = $('#buttonss');
 
     $(window).on("scroll", function () {
         if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-        } else {
-            btn.removeClass('show');
+            // btn.addClass('show');
+            buttonRef.current.style.display = "block"
+
+        } else if(($(window).scrollTop() == 0)){
+            buttonRef.current.style.display = "none"
         }
     });
 
-    btn.on('click', function (e) {
-        e.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, '300');
-    });
     const router = useRouter();
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
             localStorage.clear();
-            router.push({ pathname: "/login-process/login" });
+            router.push({ pathname: "/account/login" });
         };
         getTokenAPI();
 
@@ -239,7 +239,7 @@ export default function ClassListing() {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             {/* <img src="/icons-person.png" /> */}
-                            <a href="/login-process/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                                 <p className="futura-bold text-6xl text-[#009FE3]">{info.firstName?.charAt(0)}</p>
                                 <p className="futura-bold text-6xl text-[#009FE3]">{info.lastName?.charAt(0)}</p>
                             </a>
@@ -247,7 +247,7 @@ export default function ClassListing() {
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
-                                        href="/login-process/myProfile"
+                                        href="/account/myProfile"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         {" "}
@@ -255,7 +255,7 @@ export default function ClassListing() {
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
-                                        href="/login-process/membership"
+                                        href="/account/membership"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Membership Settings
@@ -264,14 +264,14 @@ export default function ClassListing() {
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
-                                        href="/login-process/classListing"
+                                        href="/account/classListing"
                                         className="futura-book menu-member flex items-center justify-between text-white"
                                     >
                                         Classes / Book a class
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                     <a
-                                        href="/login-process/trainers"
+                                        href="/account/trainers"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         Trainers / Book a package
@@ -418,7 +418,9 @@ export default function ClassListing() {
                         </>
                     ))}
                 </div>
-                <a id="buttonss" className="wtsp-widget m-10"><ArrowDropUpOutlined className="arrow-backtop" /></a>
+                <div ref={buttonRef} style={{ display: "none" }}>
+                    <a id="buttonss" onClick={()=>{  $('html, body').animate({ scrollTop: 0 }, '300')}} className="wtsp-widget m-10"><ArrowDropUpOutlined className="arrow-backtop" /></a>
+                </div>
             </section>
         </>
     );

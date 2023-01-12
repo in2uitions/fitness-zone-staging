@@ -6,7 +6,7 @@ import 'react-magic-slider-dots/dist/magic-dots.css';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useRef} from 'react';
 import { ArrowDropUpOutlined } from "@material-ui/icons";
 import $ from "jquery";
 import { useRouter } from "next/router";
@@ -86,26 +86,25 @@ export default function Membership({ style = 'white' }) {
         }).replaceAll('/', '-');
         return newd;
     }
+    const buttonRef = useRef(null);
+
     var btn = $('#buttonss');
 
     $(window).on("scroll", function () {
         if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-        } else {
-            btn.removeClass('show');
-        }
-    });
+            // btn.addClass('show');
+            buttonRef.current.style.display = "block"
 
-    btn.on('click', function (e) {
-        e.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, '300');
+        } else if(($(window).scrollTop() == 0)){
+            buttonRef.current.style.display = "none"
+        }
     });
     const router = useRouter();
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
             localStorage.clear();
-            router.push({ pathname: "/login-process/login"});
+            router.push({ pathname: "/account/login"});
         };
         getTokenAPI();
 
@@ -134,7 +133,7 @@ export default function Membership({ style = 'white' }) {
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
                             {/* <img src="/icons-person.png" /> */}
-                            <a href="/login-process/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
                             </a>
@@ -142,24 +141,24 @@ export default function Membership({ style = 'white' }) {
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
-                                        href="/login-process/myProfile"
+                                        href="/account/myProfile"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         {" "}
                                         My Profile
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
-                                    <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
+                                    <a href='/account/membership' className="futura-book menu-member flex items-center justify-between">
                                         Membership Settings
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
+                                    <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
-                                    <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
+                                    <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between">
                                         Trainers / Book a package
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
@@ -204,7 +203,7 @@ export default function Membership({ style = 'white' }) {
                         <div className='col-span-4'>
                             <div className='flex flex-col'>
                                 <button className='bg-[#009FE3] futura-bold p-3 rounded-md text-white'>RENEW MEMBERSHIP</button>
-                                <a href='/login-process/freezing' target="_blank" className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5 futura-bold'>FREEZING REQUEST</a>
+                                <a href='/account/freezing' target="_blank" className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5 futura-bold'>FREEZING REQUEST</a>
                             </div>
                         </div>
                     </div>
@@ -222,7 +221,9 @@ export default function Membership({ style = 'white' }) {
                         ))}
                     </div>
                 </div>
-                <a id="buttonss" className='wtsp-widget m-10'><ArrowDropUpOutlined className="arrow-backtop" /></a>
+                <div ref={buttonRef} style={{ display: "none" }}>
+                <a id="buttonss" onClick={()=>{  $('html, body').animate({ scrollTop: 0 }, '300')}} className='wtsp-widget m-10'><ArrowDropUpOutlined className="arrow-backtop" /></a>
+            </div>
             </section>
 
         </>

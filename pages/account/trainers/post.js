@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 export default function Post({ post: { firstName, lastName, userId, locationName }, users }) {
 	const router = useRouter();
-	const route = (id) => router.push({ pathname: "/login-process/trainers-profile", query: { id } });
+	const route = (id) => router.push({ pathname: "/account/trainers-profile", query: { id } });
 	
 	return (
 		<div className="flex flex-col justify-center items-center">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -69,26 +69,25 @@ export default function CheckIns() {
             setnoOfElements(4);
         }
     };
+    const buttonRef = useRef(null);
     var btn = $('#buttonss');
 
     $(window).on("scroll", function () {
         if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
+            buttonRef.current.style.display = "block"
+
         } else {
-            btn.removeClass('show');
+            buttonRef.current.style.display = "none"
         }
     });
 
-    btn.on('click', function (e) {
-        e.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, '300');
-    });
+
     const router = useRouter();
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
             localStorage.clear();
-            router.push({ pathname: "/login-process/login"});
+            router.push({ pathname: "/account/login"});
         };
         getTokenAPI();
 
@@ -121,24 +120,24 @@ export default function CheckIns() {
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                     <a
-                                        href="/login-process/myProfile"
+                                        href="/account/myProfile"
                                         className="futura-book menu-member flex items-center justify-between"
                                     >
                                         {" "}
                                         My Profile
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
-                                    <a href='/login-process/membership' className="futura-book menu-member flex items-center justify-between">
+                                    <a href='/account/membership' className="futura-book menu-member flex items-center justify-between">
                                         Membership Settings
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
                                 </div>
                                 <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a href="/login-process/classListing" className="futura-book menu-member flex items-center justify-between text-white">
+                                    <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white">
                                         Classes / Book a class
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
-                                    <a href='/login-process/trainers' className="futura-book menu-member flex items-center justify-between">
+                                    <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between">
                                         Trainers / Book a package
                                         <ChevronRightIcon className="forward-blue" />
                                     </a>
@@ -154,7 +153,7 @@ export default function CheckIns() {
                 </nav>
             </div>
             <section>
-                <div className='flex flex-col justify-center mt-40' id="btnScrollToTop">
+                <div className='flex flex-col justify-center mt-40 ' id="btnScrollToTop">
                     <div className='flex flex-col mx-auto justify-start items-start lg:w-1/4 md:w-1/4'>
                         <p className='text-[#009FE3] futura-bold mb-3'>My Recent Check-ins</p>
                         {slice.map((item) => (
@@ -179,7 +178,9 @@ export default function CheckIns() {
                             <ChevronRightIcon className="arrow-membership" />
                         </div>
                     </div>
-                    <a id="buttonss" className="wtsp-widget m-10"><ArrowDropUpOutlined className="arrow-backtop" /></a>
+                    <div ref={buttonRef} style={{ display: "none" }}>
+                    <a id="buttonss" onClick={()=>{  $('html, body').animate({ scrollTop: 0 }, '300')}} className="wtsp-widget m-10"><ArrowDropUpOutlined className="arrow-backtop" /></a>
+                </div>
                 </div>
             </section>
         </>

@@ -47,7 +47,8 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                         {close => (
                             <>
                                 <button className="close text-white" onClick={close}>
-                                    &times;
+                                    {/* &times; */}
+                                    <img src="/close-X.svg"/>
                                 </button>
                                 <form onSubmit={onSubmitForm} className="flex">
                                 <div className="popup-overlay">

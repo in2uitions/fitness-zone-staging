@@ -56,7 +56,7 @@ export default function CompContact({ data = {}, style = 'white' }) {
                             </button>
                         </div>
                         <div className="">
-                            <a href="/about/career" className="border-[#009FE3] text-white border-2 lg:p-2 md:p-2 p-7 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">WORK WITH US</a>
+                            <a href="/about/career" target="_blank" className="border-[#009FE3] text-white border-2 lg:p-2 md:p-2 p-7 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">WORK WITH US</a>
                         </div>
                         <div className="">
                             <a href="/about/franchise" target="_blank" className="border-[#009FE3] text-white border-2 lg:p-2 md:p-2 p-7 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">GROW WITH US</a>

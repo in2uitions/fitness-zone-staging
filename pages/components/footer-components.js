@@ -209,7 +209,7 @@ export default function Footer(data = {}) {
                     </MobileView>
                 </div>
             </section>
-            <div className=" bg-black w-screen mt-40">
+            <div className=" bg-black w-screen mt-40 ">
                 <div className="lg:grid lg:grid-cols-12 space-x-4">
                     <div className="lg:col-span-2 sm:col-span-12">
                         <div className="lg:ml-28">
