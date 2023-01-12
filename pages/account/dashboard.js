@@ -335,7 +335,7 @@ export default function Dashboard({ style = "white" }) {
         event.preventDefault();
         const getTokenAPI = async () => {
             localStorage.clear();
-            router.push({ pathname: "/login-process/login"});
+            router.push({ pathname: "/account/login"});
         };
         getTokenAPI();
 
