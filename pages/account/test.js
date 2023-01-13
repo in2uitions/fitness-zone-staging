@@ -10,10 +10,10 @@ export default function ClassListing() {
     const [selectedCategory, setSelectedCategory] = useState('0');
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
-        console.log(event.target.value)
+        // console.log(event.target.value)
         getFilteredList(event.target.value);
-        console.log(event.target.value)
-        console.log(selectedCategory + "categoryy")
+        // console.log(event.target.value)
+        // console.log(selectedCategory + "categoryy")
     }
     var registrationHeaders = new Headers();
     registrationHeaders.append(
@@ -35,7 +35,7 @@ export default function ClassListing() {
                 );
                 const checkInList = await response.json();
                 setData(checkInList);
-                console.log(checkInList + "wyy");
+                // console.log(checkInList + "wyy");
             }
         }, []);
     } catch (err) {

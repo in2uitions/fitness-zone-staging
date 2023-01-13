@@ -158,7 +158,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                             ))}
                         </div>
                     </div>
-                    <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0  md:pt-0 md:block lg:block sm:px-2 ">
+                    <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0  md:pt-0 md:block lg:block pr-6 ">
                         <div className="slideC">
                             {data.carousel.map((item, i) => (
                                 <>

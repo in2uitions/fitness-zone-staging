@@ -128,7 +128,7 @@ export default function Frezzing() {
                 );
                 const fetchedData = await response.json();
                 setBooks(fetchedData);
-                console.log(fetchedData)
+                // console.log(fetchedData)
             }
             getData();
         }, []);

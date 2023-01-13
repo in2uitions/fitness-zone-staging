@@ -123,7 +123,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                         </>
                     </div>
                 </div>
-                <div className="lg:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 ">
+                <div className="lg:w-1/2 pt-6 lg:pt-0 lg:block pr-6">
                     <div className="slideC">
                         {data.static_items.map((item, i) => (
                             <>

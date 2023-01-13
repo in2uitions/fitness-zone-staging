@@ -294,7 +294,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                             {data.timeline.map((step, index) => {
                                 let opacity = currentIndex === index ? "1" : "0";
                                 {
-                                    console.log("color", opacity);
+                                    {/* console.log("color", opacity); */}
                                 }
                                 return (
                                     <ul className="timeline-section-tl nav">
@@ -311,7 +311,7 @@ export default function CompTimeline({ data = {}, style = 'white', isFlipped = f
                             {data.timeline.map((step, index) => {
                                 let opacity = currentIndex === index ? "1" : "0";
                                 {
-                                    console.log("color", opacity);
+                                    {/* console.log("color", opacity); */}
                                 }
                                 return (
                                     <div className="timeline-section-tl">

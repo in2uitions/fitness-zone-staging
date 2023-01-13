@@ -14,7 +14,7 @@ export default function Otp() {
                 var registraitonRawData = JSON.stringify({
                     "OTP": event.target.otp?.value
                 });
-                console.log(registraitonRawData);
+                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");

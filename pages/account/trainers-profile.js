@@ -197,14 +197,14 @@ export default function TrainersProfile({ style = "white" }) {
                                             </div>
                                             
                                             <div className="flex items-center w-1/2 justify-end">
-                                                <div className="flex flex-col" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
+                                                <div className="flex flex-col cursor-pointer" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
                                                     <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                         {format(item.sessionPrice)}
                                                     </span>
                                                     </p>
                                                     <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
                                                 </div>
-                                                <ChevronRightIcon className="chevron-session" />
+                                                <ChevronRightIcon onClick={() => route(format(item.sessionPrice) , item.category.categoryName)} className="chevron-session cursor-pointer" />
                                             </div>
                                         </div>
 
@@ -224,14 +224,14 @@ export default function TrainersProfile({ style = "white" }) {
                                             <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
                                         </div>
                                         <div className="flex items-center w-1/2 justify-end">
-                                            <div className="flex flex-col" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
+                                            <div className="flex flex-col cursor-pointer" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
                                                 <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                     {format(item.sessionPrice)}
                                                 </span>
                                                 </p>
                                                 <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
                                             </div>
-                                            <ChevronRightIcon className="chevron-session" />
+                                            <ChevronRightIcon onClick={() => route(format(item.sessionPrice) , item.category.categoryName)} className="chevron-session cursor-pointer" />
                                         </div>
                                     </div>
 

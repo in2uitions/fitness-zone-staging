@@ -51,7 +51,7 @@ export default function Dashboard({ style = "white" }) {
                 var registraitonRawData = JSON.stringify({
                     "Phone": event.target.mobile?.value,
                 });
-                console.log(registraitonRawData);
+                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -81,7 +81,7 @@ export default function Dashboard({ style = "white" }) {
                 var registraitonRawData = JSON.stringify({
                     "Email": event.target.email?.value,
                 });
-                console.log(registraitonRawData);
+                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -111,7 +111,7 @@ export default function Dashboard({ style = "white" }) {
                 var registraitonRawData = JSON.stringify({
                     "Birthdate": event.target.birthdate?.value
                 });
-                console.log(registraitonRawData);
+                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -149,7 +149,7 @@ export default function Dashboard({ style = "white" }) {
                 var registraitonRawData = JSON.stringify({
                     "Phone": event.target.mobile?.value,
                 });
-                console.log(registraitonRawData);
+                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -184,7 +184,7 @@ export default function Dashboard({ style = "white" }) {
                 var registraitonRawData = JSON.stringify({
                     "Email": event.target.email?.value,
                 });
-                console.log(registraitonRawData);
+                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -219,7 +219,7 @@ export default function Dashboard({ style = "white" }) {
                 var registraitonRawData = JSON.stringify({
                     "Birthdate": event.target.birthdate?.value
                 });
-                console.log(registraitonRawData);
+                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -275,7 +275,7 @@ export default function Dashboard({ style = "white" }) {
                 );
                 const checkInList = await response.json()
                 setCountryData(checkInList)
-                console.log(checkInList)
+                // console.log(checkInList)
             }
             // getData()
         }, [])

@@ -130,7 +130,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
         } catch(err){
             console.log(err)
         }
-        console.log(response.data.data.filename_disk)
+        // console.log(response.data.data.filename_disk)
         // var reader = new FileReader()
         // reader.onload = function () {
         //     localStorage.setItem("file", JSON.stringify(file));

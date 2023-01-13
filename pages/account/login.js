@@ -113,6 +113,7 @@ export default function Login() {
                             // const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
                             // const data = await SendOTPMessage.json();
                             // setIsSent(true)
+                            alert("You have been successfully logged in.");
                             localStorage.setItem("Country", JSON.stringify(select));
                             localStorage.setItem("Phone", phoneNumber);
                             localStorage.setItem("Member", memberId);
@@ -123,6 +124,7 @@ export default function Login() {
                         }
                         else {
                             setIsNotSent(true)
+                            alert("You must enter your valid info.");
                         }
                     } catch (err) {
                         console.log(err);
@@ -139,7 +141,7 @@ export default function Login() {
 
 
         if (handleFormValidation()) {
-            alert("You have been successfully logged in.");
+            // alert("You have been successfully logged in.");
             setState(initialState);
             event.target.value = '';
         }
@@ -171,7 +173,7 @@ export default function Login() {
                 setphoneNumberErr("Invalid phone number.");
             }
             else {
-                console.log("isValid")
+                // console.log("isValid")
             }
         }
         setState({ formErrors: formErrors });

@@ -82,7 +82,7 @@ export default function Menu(data = {}) {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
 
-        console.log(ct);
+        // console.log(ct);
         updateContent(ct);
 
         return () => {

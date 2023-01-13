@@ -6,7 +6,7 @@
 
 .nav {
   width: 100vw;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   padding: 20px 8%;
   display: flex;

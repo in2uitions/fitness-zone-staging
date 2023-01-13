@@ -84,7 +84,7 @@ export default function Dashboard({ style = "white" }) {
     }
     const removeClass = async ({ timetableId, e }) => {
         e.preventDefault();
-        console.log(timetableId)
+        // console.log(timetableId)
         try {
             var registrationHeaders = new Headers();
             registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
