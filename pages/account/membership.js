@@ -7,7 +7,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import { useState, useEffect , useRef} from 'react';
-import { ArrowDropUpOutlined } from "@material-ui/icons";
+import { ArrowUpward } from '@material-ui/icons';
 import $ from "jquery";
 import { useRouter } from "next/router";
 
@@ -222,7 +222,7 @@ export default function Membership({ style = 'white' }) {
                     </div>
                 </div>
                 <div ref={buttonRef} style={{ display: "none" }}>
-                <a id="buttonss" onClick={()=>{  $('html, body').animate({ scrollTop: 0 }, '300')}} className='wtsp-widget m-10'><ArrowDropUpOutlined className="arrow-backtop" /></a>
+                <a id="buttonss" onClick={()=>{  $('html, body').animate({ scrollTop: 0 }, '300')}} className='m-10'><ArrowUpward/></a>
             </div>
             </section>
 
