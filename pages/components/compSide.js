@@ -72,7 +72,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                                 {data.on_img ? <img src={`${image_url}${data.on_img?.id}`} className="h-8" /> : null}
                             </div>
                         </div> : null}
-                        <p className="brief wysiwyg mb-4 leading-9 ">{parse(`${data.brief}`)}</p>
+                        <p className="brief wysiwyg mb-4 leading-9 text-white">{parse(`${data.brief}`)}</p>
                         <div className='flex space-x-2'>
                         {data.button_url ? <a href={`${data.button_url}`} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button_title}
                             <ChevronRightIcon className="lg:ml-2 md:ml-2  ml-0" /></a> : null}

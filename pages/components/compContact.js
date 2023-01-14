@@ -51,15 +51,15 @@ export default function CompContact({ data = {}, style = 'white' }) {
                     </div>
                     <div className="flex space-x-3 mt-20">
                         <div className="">
-                            <button className="p-2 bg-[#009FE3] text-white flex items-center flex-row justify-around rounded-md futura">
+                            <button className="p-2 bg-[#009FE3] text-white flex items-center flex-row justify-around rounded-md futura lg:h-10">
                                 BECOME A MEMBER
                             </button>
                         </div>
                         <div className="">
-                            <a href="/about/career" target="_blank" className="border-[#009FE3] text-white border-2 lg:p-2 md:p-2 p-7 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">WORK WITH US</a>
+                            <a href="/about/career" target="_blank" className="border-[#009FE3] border-2 p-2 lg:h-10 text-white flex items-center flex-row justify-around rounded-md futura ">WORK WITH US</a>
                         </div>
                         <div className="">
-                            <a href="/about/franchise" target="_blank" className="border-[#009FE3] text-white border-2 lg:p-2 md:p-2 p-7 h-10 rounded flex futura-bold justify-center items-center lg:mt-0 md:mt-0 ">GROW WITH US</a>
+                            <a href="/about/franchise" target="_blank" className="border-[#009FE3] border-2 p-2 lg:h-10 text-white flex items-center flex-row justify-around rounded-md futura ">GROW WITH US</a>
                         </div>
                     </div>
                     <div className="mt-10">
