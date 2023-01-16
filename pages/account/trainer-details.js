@@ -120,10 +120,10 @@ export default function TrainerDetails() {
                         <p className="rounded-md flex space-x-2 mt-2 cursor-pointer text-white p-3 active-button futura-book">{query.name}</p>
                         <div className="flex flex-col mt-4">
                             <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
-                                {format(query.sessionPrice)}
+                                {format(query.totalValue)}
                             </span>
                             </p>
-                            <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                            <p className='text-[#009FE3] -mt-4 tracking text-xs '>{query.numberOfSessions} session</p>
                         </div>
                     </div>
                 </div>

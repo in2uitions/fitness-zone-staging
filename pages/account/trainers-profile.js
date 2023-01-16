@@ -79,7 +79,7 @@ export default function TrainersProfile({ style = "white" }) {
         console.log(err);
     }
     const name = data.fullName;
-	const route = (sessionPrice, categoryName) => router.push({ pathname: "/account/trainer-details", query: {name, sessionPrice, categoryName}});
+	const route = (categoryName, numberOfSessions, totalValue) => router.push({ pathname: "/account/trainer-details", query: {name, categoryName, numberOfSessions, totalValue}});
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
@@ -197,14 +197,16 @@ export default function TrainersProfile({ style = "white" }) {
                                             </div>
                                             
                                             <div className="flex w-1/2 justify-end">
-                                                <div className="flex flex-col cursor-pointer" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
+                                                <div className="flex flex-col cursor-pointer" onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)}>
                                                     <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                         {format(item.sessionPrice)}
                                                     </span>
                                                     </p>
                                                     <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                                    <p style={{display:"none"}}>{item.numberOfSessions}</p>
+                                                    <p style={{display:"none"}}>{item.totalValue}</p>
                                                 </div>
-                                                <ChevronRightIcon onClick={() => route(format(item.sessionPrice) , item.category.categoryName)} className="chevron-session cursor-pointer" />
+                                                <ChevronRightIcon onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)} className="chevron-session cursor-pointer" />
                                             </div>
                                         </div>
 
@@ -224,18 +226,21 @@ export default function TrainersProfile({ style = "white" }) {
                                             <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
                                         </div>
                                         <div className="flex w-1/2 justify-end">
-                                            <div className="flex flex-col cursor-pointer" onClick={() => route(format(item.sessionPrice) , item.category.categoryName)}>
+                                            <div className="flex flex-col cursor-pointer" onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)}>
                                                 <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
                                                     {format(item.sessionPrice)}
                                                 </span>
                                                 </p>
                                                 <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                                <p style={{display:"none"}}>{item.numberOfSessions}</p>
+                                                <p style={{display:"none"}}>{item.totalValue}</p>
                                             </div>
-                                            <ChevronRightIcon onClick={() => route(format(item.sessionPrice) , item.category.categoryName)} className="chevron-session cursor-pointer" />
+                                            <ChevronRightIcon onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)} className="chevron-session cursor-pointer" />
                                         </div>
                                     </div>
 
                                 </div>
+                                
                             </div>
                         ))}
 
