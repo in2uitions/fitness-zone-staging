@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { BrowserView, MobileView } from 'react-device-detect';
 const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })
 
 export default function Menu(data = {}) {
@@ -51,21 +53,21 @@ export default function Menu(data = {}) {
             "id": 6,
             "label": "CONTACT US",
             "to": '/about/contact-us'
-        }, 
+        },
         {
-            "id":7,
+            "id": 7,
             "label": "",
-            "to":'/about/franchise'
+            "to": '/about/franchise'
         },
         {
-            "id":8,
-            "label":"",
-            "to":"/about/career"
+            "id": 8,
+            "label": "",
+            "to": "/about/career"
         },
         {
-            "id":9,
-            "label":"",
-            "to":"/about/offer"
+            "id": 9,
+            "label": "",
+            "to": "/about/offer"
         }
     ];
 
@@ -133,60 +135,158 @@ export default function Menu(data = {}) {
 
     return (
         <>
-       <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade">
-            <div className="lg:grid lg:grid-cols-2">
-                <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-5">
-                    <MetisMenu
-                        className="font-bold futura-book text-4xl menu-items "
-                        content={content} activeLinkFromLocation 
-                    />
-                    <div className="flex flex-row mt-14">
-                        <a
-                            href="/account/login"
-                            className="border-[#009FE3] border-2 w-36 p-2 rounded flex justify-center items-center mr-5 futura-bold"
-                        >
-                            LOG IN
-                        </a>
-                        <a
+            <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade">
+                <div className="lg:grid lg:grid-cols-2">
+                    <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-5">
+                        <MetisMenu
+                            className="font-bold futura-book text-4xl menu-items "
+                            content={content} activeLinkFromLocation
+                        />
+                        <div className="flex flex-row mt-14">
+                            <a
+                                href="/account/login"
+                                className="border-[#009FE3] border-2 w-36 p-2 rounded flex justify-center items-center mr-5 futura-bold"
+                            >
+                                LOG IN
+                            </a>
+                            {/* <a
                             href="#"
                             className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold"
                         >
                             SIGN UP
-                        </a>
-                    </div>
-                </div>
-                <div className="lg:mt-52 md:mt-52 mt-5 flex flex-col justify-center">
-                    <div className="flex flex-row lg:ml-14 md:ml-14 ml-5">
-                        <a
-                            href="#"
-                            className="bg-[#009FE3] h-9 flex justify-center text-sm items-center p-2 rounded mr-4"
-                        >
-                            BECOME A MEMBER
-                        </a>
-                        <a
-                            href="/about/career"
-                            className="border-[#009FE3] border-2 w-36 h-9 rounded flex justify-center items-center"
-                        >
-                            WORK WITH US
-                        </a>
-                    </div>
+                        </a> */}
+                            <Popup
+                                trigger={
 
-                    <p className="pt-7 futura-bold lg:ml-14 md:ml-14 ml-5 text-white">ENQUIRE NOW</p>
-                    <input
-                        className="lg:ml-14 md:ml-14 ml-5 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
-                        placeholder="FULL NAME"
-                    />
-                    <input
-                        className="lg:ml-14 md:ml-14 ml-5 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
-                        placeholder="PHONE NUMBER"
-                    />
+                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold">SIGN UP</button>
 
-                    <div className="lg:ml-14 md:ml-14 ml-5 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 md:w-40 w-40 mb-20 flex justify-center items-center rounded-md futura-bold">
-                        <a href="#">REQUEST A CALL</a>
+                                } modal
+                                position="center"
+                                closeOnDocumentClick={false}
+                            >
+                                {close => (
+                                    <>
+                                        <BrowserView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form className='flex flex-col space-y-5'>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                </form>
+                                            </div>
+                                        </BrowserView>
+                                        <MobileView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form>
+                                                    <div className="flex flex-col w-full justify-between space-y-5">
+                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+
+                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                </form>
+                                            </div>
+                                        </MobileView>
+                                    </>
+                                )}
+                            </Popup>
+                        </div>
+                    </div>
+                    <div className="lg:mt-52 md:mt-52 mt-5 flex flex-col justify-center">
+                        <div className="flex flex-row lg:ml-14 md:ml-14 ml-5">
+                            {/* <a
+                                href="#"
+                                className="bg-[#009FE3] h-9 flex justify-center text-sm items-center p-2 rounded mr-4 futura-bold"
+                            >
+                                BECOME A MEMBER
+                            </a> */}
+                            <Popup
+                                trigger={
+
+                                    <button className="bg-[#009FE3] h-9 flex justify-center text-sm items-center p-2 rounded mr-4 futura-bold">BECOME A MEMBER</button>
+
+                                } modal
+                                position="center"
+                                closeOnDocumentClick={false}
+                            >
+                                {close => (
+                                    <>
+                                        <BrowserView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form className='flex flex-col space-y-5'>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                </form>
+                                            </div>
+                                        </BrowserView>
+                                        <MobileView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form>
+                                                    <div className="flex flex-col w-full justify-between space-y-5">
+                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+
+                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                </form>
+                                            </div>
+                                        </MobileView>
+                                    </>
+                                )}
+                            </Popup>
+                            <a
+                                href="/about/career"
+                                className="border-[#009FE3] border-2 w-36 h-9 rounded flex justify-center items-center futura-bold"
+                            >
+                                WORK WITH US
+                            </a>
+                        </div>
+
+                        <p className="pt-7 futura-bold lg:ml-14 md:ml-14 ml-5 text-white">ENQUIRE NOW</p>
+                        <input
+                            className="lg:ml-14 md:ml-14 ml-5 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
+                            placeholder="FULL NAME"
+                        />
+                        <input
+                            className="lg:ml-14 md:ml-14 ml-5 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
+                            placeholder="PHONE NUMBER"
+                        />
+
+                        <div className="lg:ml-14 md:ml-14 ml-5 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 md:w-40 w-40 mb-20 flex justify-center items-center rounded-md futura-bold">
+                            <a href="#">REQUEST A CALL</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>   
         </>
     );
 }

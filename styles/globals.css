@@ -2956,6 +2956,7 @@ li.category.isActive {
   backdrop-filter: blur(3px) !important;
   animation-name: modalFade;
   animation-duration: .3s;
+  overflow-y: scroll;
 }
 
 .menu-overlay {

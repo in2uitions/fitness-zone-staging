@@ -109,12 +109,11 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                             {close => (
                                                 <div className="container w-screen flex flex-col justify-center relative py-12 px-20">
                                                     <button className="flex w-full justify-end right-12 text-white" onClick={close}>
-                                                        {/* &times; */}
                                                         <img src="/close-X.svg"/>
                                                     </button>
                                                     {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.description}`)} </p> : null}
                                                     {data.show_more_description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.show_more_description}`)} </p> : null}
-                                                    {/* <FooterPopup /> */}
+                                                
                                                 </div>
                                             )}
                                         </Popup> : null}

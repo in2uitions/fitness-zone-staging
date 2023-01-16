@@ -51,7 +51,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
 
                 </div>:null}
                 {data.image_position == "left" ?<div className={`lg:flex mx-auto items-center `}>
-                <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-2 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
+                <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 px-2 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
                         <div id="wrapper" className={`main-image-center`} >
 
                             <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />

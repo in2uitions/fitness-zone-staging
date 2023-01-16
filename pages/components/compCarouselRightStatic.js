@@ -171,7 +171,6 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                 {close => (
                                                     <div className="container w-screen flex flex-col justify-center py-12">
                                                         <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
-                                                            {/* &times; */}
                                                             <img src="/close-X.svg"/>
                                                         </button>
                                                         <form onSubmit={onSubmitForm}>
@@ -192,7 +191,6 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                         </div>
                                                         <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                         </form>
-                                                        {/* <FooterPopup /> */}
                                                     </div>
                                                 )}
                                             </Popup>:null}

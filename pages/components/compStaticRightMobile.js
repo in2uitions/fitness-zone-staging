@@ -4,6 +4,7 @@ import { image_url } from "../../global_vars";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
+import Popup from "reactjs-popup";
 
 export default function CompCarouselStaticRightMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -66,7 +67,26 @@ export default function CompCarouselStaticRightMobile({ data = {}, style = 'whit
         setScrollSnaps(embla.scrollSnapList());
         embla.on("select", onSelect);
     }, [embla, setScrollSnaps, onSelect]);
+ const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.setItem('name', event.target.name.value);
+            localStorage.setItem('phone_number', event.target.phone_number.value);
+            localStorage.setItem('email', event.target.email.value);
+            localStorage.setItem('location', event.target.location.value)
+            createFreeTrialUser();
+            event.target.name.value='',
+            event.target.phone_number.value ='',
+            event.target.email.value='',
+            event.target.location.value=''
+            localStorage.setItem('name', event.target.name.value = '');
+            localStorage.setItem('phone_number', event.target.phone_number.value = '');
+            localStorage.setItem('email', event.target.email.value = '');
+            localStorage.setItem('location', event.target.location.value = '')
+        };
+        getTokenAPI();
 
+    };
     return (
         <section id={`${data.title}`} className="mt-20">
             <div className={`lg:flex relative items-center container`}>
@@ -103,8 +123,47 @@ export default function CompCarouselStaticRightMobile({ data = {}, style = 'whit
                                                 <div
                                                     className=""
                                                 >
-                                                    <div className="sliderContent">
-                                                        {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-10 w-screen">{parse(`${data.description}`)} </p> : null}
+                                                    <div className="sliderContent px-10">
+                                                    <div className="flex items-baseline space-x-5">
+                                            <p className="font-bold futura-bold text-4xl">{data.title}</p>
+                                            {data.icon?<img src={`${image_url}${data.icon?.id}`} className="w-16 h-8" altv={data.title} /> : null}
+                                        </div>
+                                            {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 md:pr-10">{parse(`${data.description}`)} </p> : null}
+                                            {data.button_title ? <a href={data.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
+                                            {data.popup_button?<Popup
+                                                trigger={
+                                                    <button>
+                                                        <button className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.popup_button}<ChevronRightIcon /></button>
+                                                    </button>
+                                                } modal
+                                                position="center"
+                                                closeOnDocumentClick={false}
+                                            >
+                                                {close => (
+                                                    <div className="container w-screen flex flex-col justify-center py-12">
+                                                        <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                            <img src="/close-X.svg"/>
+                                                        </button>
+                                                        <form onSubmit={onSubmitForm}>
+                                                        <div className="lg:flex w-full justify-between lg:space-x-5 space-y-5">
+                                                            <input placeholder="Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            <input placeholder="Phone Number" id="phone_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                            <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        
+                                                        <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="dbayeh">Dbayeh</option>
+                                                            <option value="manara">Manara</option>
+                                                            <option value="abc">ABC Achrafieh</option>
+                                                            <option value="baabda">Baabda</option>
+                                                            <option value="hamra">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
+                                                        </div>
+                                                        <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                        </form>
+                                                    </div>
+                                                )}
+                                            </Popup>:null}
                                                     </div>
                                                 </div>
                                             </div>

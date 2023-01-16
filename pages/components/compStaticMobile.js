@@ -2,6 +2,8 @@ import parse from "html-react-parser";
 import { image_url } from "../../global_vars";
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Popup from "reactjs-popup";
 
 export default function CompStaticMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -84,12 +86,12 @@ export default function CompStaticMobile({ data = {}, style = 'white', isFlipped
                                                     <div className="relative">
                                                         {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="w-screen px-6" altv={item.static_items_id?.title} /> : null}
                                                         <div className="flex justify-between items-center absolute inset-0 w-full h-full ">
-                                                    <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-                                                    <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-                                                </div>
+                                                            <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+                                                            <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </>
 
@@ -103,8 +105,33 @@ export default function CompStaticMobile({ data = {}, style = 'white', isFlipped
                                                 <div
                                                     className=""
                                                 >
-                                                    <div className="sliderContent">
-                                                        {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-10 w-screen">{parse(`${data.description}`)} </p> : null}
+                                                    <div className="sliderContent px-10">
+                                                        <div className="flex items-baseline space-x-5">
+                                                            <p className="font-bold futura-bold text-4xl">{data?.title}</p>
+                                                            {data.icon ? <img src={`${image_url}${data?.icon?.id}`} className="w-16 h-8" altv={data?.title} /> : null}
+                                                        </div>
+                                                        {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}
+                                                        {data.show_more_description ? <Popup
+                                                            trigger={
+                                                                <button>
+                                                                    <p className="bg-transparent text-md text-[#009FE3] futura-book mt-2 outline-none">Read more ...</p>
+                                                                </button>
+                                                            } modal
+                                                            position="center"
+                                                            closeOnDocumentClick={false}
+                                                        >
+                                                            {close => (
+                                                                <div className="container w-screen flex flex-col justify-center relative py-12 lg:px-20">
+                                                                    <button className="flex w-full justify-end lg:right-12 right-16 text-white outline-none" onClick={close}>
+                                                                        <img src="/close-X.svg" />
+                                                                    </button>
+                                                                    {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.description}`)} </p> : null}
+                                                                    {data.show_more_description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.show_more_description}`)} </p> : null}
+
+                                                                </div>
+                                                            )}
+                                                        </Popup> : null}
+                                                        {data.button_title ? <a href={data.button_url} target="_blank" className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
                                                     </div>
                                                 </div>
                                             </div>
