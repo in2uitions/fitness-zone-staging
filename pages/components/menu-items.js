@@ -135,7 +135,7 @@ export default function Menu(data = {}) {
 
     return (
         <>
-            <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade">
+            <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade overflow-x-hidden">
                 <div className="lg:grid lg:grid-cols-2">
                     <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-5">
                         <MetisMenu
@@ -158,7 +158,7 @@ export default function Menu(data = {}) {
                             <Popup
                                 trigger={
 
-                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold">SIGN UP</button>
+                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white">SIGN UP</button>
 
                                 } modal
                                 position="center"
@@ -217,7 +217,7 @@ export default function Menu(data = {}) {
                             <Popup
                                 trigger={
 
-                                    <button className="bg-[#009FE3] h-9 flex justify-center text-sm items-center p-2 rounded mr-4 futura-bold">BECOME A MEMBER</button>
+                                    <button className="bg-[#009FE3] h-9 flex justify-center text-sm items-center p-2 rounded mr-4 futura-bold text-white">BECOME A MEMBER</button>
 
                                 } modal
                                 position="center"

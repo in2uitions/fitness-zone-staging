@@ -20,7 +20,7 @@ export default function HeaderContent(data = {}, about = []) {
                             </button>
                             <p className="font-bold text-white futura-book cursor-pointer">Menu</p>
                             </div>
-                        } modal
+                        } modal nested
                         closeOnDocumentClick
                         position=""
                     >

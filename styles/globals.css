@@ -2957,6 +2957,7 @@ li.category.isActive {
   animation-name: modalFade;
   animation-duration: .3s;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .menu-overlay {
