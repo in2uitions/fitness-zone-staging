@@ -191,19 +191,19 @@ export default function ClassListing() {
     } catch (err) {
         console.log(err);
     }
-    const buttonRef = useRef(null);
+    // const buttonRef = useRef(null);
 
-    var btn = $('#buttonss');
+    // var btn = $('#buttonss');
 
-    $(window).on("scroll", function () {
-        if ($(window).scrollTop() > 300) {
-            // btn.addClass('show');
-            buttonRef.current.style.display = "block"
+    // $(window).on("scroll", function () {
+    //     if ($(window).scrollTop() > 300) {
+    //         // btn.addClass('show');
+    //         buttonRef.current.style.display = "block"
 
-        } else if(($(window).scrollTop() == 0)){
-            buttonRef.current.style.display = "none"
-        }
-    });
+    //     } else if(($(window).scrollTop() == 0)){
+    //         buttonRef.current.style.display = "none"
+    //     }
+    // });
 
     const router = useRouter();
     const onSubmitForm = async event => {
@@ -418,9 +418,9 @@ export default function ClassListing() {
                         </>
                     ))}
                 </div>
-                <div ref={buttonRef} style={{ display: "none" }}>
+                {/* <div ref={buttonRef} style={{ display: "none" }}>
                     <a id="buttonss" onClick={()=>{  $('html, body').animate({ scrollTop: 0 }, '300')}} className="m-10"><ArrowUpward/></a>
-                </div>
+                </div> */}
             </section>
         </>
     );
