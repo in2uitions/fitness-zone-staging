@@ -93,7 +93,7 @@ export default function List() {
                 var memberType = fetchedData.membershipType.memberShipTypeName
                 setBooks(memberType);
                 // console.log(memberType)
-                if (memberType != "Gold") {
+                if (memberType != "PLATINUM LS CORPORATE.") {
                     setIsDisabled(true);
                     handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
                 }

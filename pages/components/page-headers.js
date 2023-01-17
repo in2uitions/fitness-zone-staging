@@ -4,10 +4,11 @@ import React, { Component } from 'react';
 import { useState } from 'react';
 import $ from 'jquery';
 import { image_url } from '../../global_vars';
+import Popup from 'reactjs-popup';
+import { BrowserView, MobileView } from 'react-device-detect';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 export default function Header({ color = "orange", data = {} }) {
-
 
     const [alternateImage, setAlternateImage] = useState(true);
 
@@ -20,6 +21,23 @@ export default function Header({ color = "orange", data = {} }) {
 
         video.muted = !video.muted;
     }
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.setItem('first_name', event.target.first_name.value);
+            localStorage.setItem('last_name', event.target.last_name.value);
+            localStorage.setItem('email', event.target.email.value)
+            localStorage.setItem('phone_number', event.target.phone_number.value)
+            createOfferUser();
+            localStorage.setItem('first_name', event.target.first_name.value = ''),
+                localStorage.setItem('last_name', event.target.last_name.value = ''),
+                localStorage.setItem('email', event.target.email.value = ''),
+                localStorage.setItem('phone_number', event.target.phone_number.value = '')
+
+        };
+        getTokenAPI();
+
+    };
     return (
         <div className="relative" id="">
             <div className="overflow-hidden">
@@ -50,6 +68,115 @@ export default function Header({ color = "orange", data = {} }) {
                         </div>
                         {data.button_url ? <a href={data.button_url} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 text-center rounded-md futura-bold">{data.button_title}
                             <ChevronRightIcon className="ml-1" /></a> : null}
+                            {data.signup_button ? <Popup
+                        trigger={
+                            <button>
+                                <button className="bg-[#009FE3] p-2 rounded-md mt-5 futura-bold text-white outline-none">{data.signup_button}<ChevronRightIcon /></button>
+                            </button>
+                        } modal
+                        position="center"
+                        closeOnDocumentClick={true}
+                    >
+                        {close => (
+                            <>
+                                <button className="close text-white" onClick={close}>
+                                    {/* &times; */}
+                                    <img src="/close-X.svg" />
+                                </button>
+                                <form onSubmit={onSubmitForm} className="flex">
+                                    <BrowserView>
+                                        <div className="popup-overlay">
+                                            <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg popup-measures">
+
+                                                <input type="hidden" name="enquire_request" value="popup-request" />
+                                                <div className="lg:flex lg:w-full">
+                                                    <div className="w-1/3">
+                                                        <img src="/popup-image.png" className="image-popup none-event object-cover" />
+                                                    </div>
+                                                    <div className="lg:flex lg:flex-col justify-center lg:w-2/3 px-8 pt-6 lg:pt-0 md:pt-0">
+                                                        <p href="/" className="font-bold text-2xl  futura-bold text-[#009FE3] ">SIGN UP FOR OUR PRE-OPENING OFFER IN CITY WALK DUBAI!</p>
+
+                                                        <input placeholder="FIRST NAME"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_first_name"
+                                                            id="first_name"
+                                                            required
+                                                        />
+                                                        <input placeholder="LAST NAME"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_last_name"
+                                                            id="last_name"
+                                                            required
+                                                        />
+                                                        {/* <input placeholder="PHONE NUMBER" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-5 h-12" /> */}
+                                                        <input placeholder="EMAIL"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_email"
+                                                            id="email"
+                                                        />
+                                                        <input placeholder="0501234567"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_phone"
+                                                            id="phone_number"
+                                                            required
+                                                        />
+
+                                                        <button type="submit" className="bg-[#009FE3] text-white flex justify-center p-2 items-center w-24 rounded mr-4 futura-bold mb-2">SIGN UP</button>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </BrowserView>
+                                    <MobileView>
+                                        <div className="popup-overlay">
+                                            <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg popup-measures">
+
+                                                <input type="hidden" name="enquire_request" value="popup-request" />
+                                                <div className="lg:flex lg:w-full">
+                                                    <div className="lg:flex lg:flex-col justify-center lg:w-2/3 px-8 pt-6 lg:pt-0 md:pt-0">
+                                                        <p href="/" className="font-bold text-2xl  futura-bold text-[#009FE3] ">SIGN UP FOR OUR PRE-OPENING OFFER IN CITY WALK DUBAI!</p>
+
+                                                        <input placeholder="FIRST NAME"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_first_name"
+                                                            id="first_name"
+                                                            required
+                                                        />
+                                                        <input placeholder="LAST NAME"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_last_name"
+                                                            id="last_name"
+                                                            required
+                                                        />
+                                                        {/* <input placeholder="PHONE NUMBER" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-5 h-12" /> */}
+                                                        <input placeholder="EMAIL"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_email"
+                                                            id="email"
+                                                        />
+                                                        <input placeholder="0501234567"
+                                                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                                                            // name="pp_phone"
+                                                            id="phone_number"
+                                                            required
+                                                        />
+
+                                                        <button type="submit" className="bg-[#009FE3] text-white flex justify-center p-2 items-center w-24 rounded mr-4 futura-bold mb-2">SIGN UP</button>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </MobileView>
+                                </form>
+                            </>
+                        )}
+                    </Popup> : null}
                     </div>
 
                     {data.icon_sound_off?<div className="absolute lg:right-44 lg:bottom-14 md:right-44  right-0 flex flex-row items-center sound">

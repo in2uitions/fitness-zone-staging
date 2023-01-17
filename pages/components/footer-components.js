@@ -12,6 +12,9 @@ const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })
 export default function Footer(data = {}) {
     const [showPopup, setShowPopup] = useState(false)
     const [showForm, setShowForm] = useState(false)
+    const [phoneNumber, setPhoneNumber]= useState()
+    const [fax, setFax]= useState()
+    const [email, setEmail]=useState()
     const [phoneValue, setPhoneValue] = useState()
     const [phone, setPhone] = useState()
     const [whatsappNumber, setWhatsappNumber] = useState();
@@ -33,6 +36,9 @@ export default function Footer(data = {}) {
             setWhatsappNumber('//api.whatsapp.com/send?phone=971547274777')
             setFaceBookLink('https://www.facebook.com/FitnessZoneUAE')
             setInstaLink('https://www.instagram.com/fitnesszoneuae/')
+            setEmail('info@fitnesszone.me')
+            setFax('+971 54 727 4777')
+            setPhoneNumber('+971 54 727 4777')
         }
         else {
             setShowPopup(false)
@@ -40,6 +46,9 @@ export default function Footer(data = {}) {
             setWhatsappNumber('//api.whatsapp.com/send?phone=9613505250')
             setFaceBookLink('https://www.facebook.com/fitnesszonelb/')
             setInstaLink('https://www.instagram.com/fitnesszonelb/')
+            setEmail('info@fitnesszone.com.lb')
+            setFax('+961 5 958 058')
+            setPhoneNumber('+961 3 505 250')
         }
     }, 1000);
     const submitSignUp = async event => {
@@ -151,13 +160,31 @@ export default function Footer(data = {}) {
             "id": 6,
             "label": "CONTACT US",
             "to": '/about/contact-us'
+        },
+        {
+            "id": 7,
+            "label": "",
+            "to": '/about/franchise'
+        },
+        {
+            "id": 8,
+            "label": "",
+            "to": "/about/career"
+        },
+        {
+            "id": 9,
+            "label": "",
+            "to": "/about/offer"
         }
     ];
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
-
-        // console.log(ct);
+        // const idj= ct.map(el => el.id)
+        // if (idj == 1){
+        //     console.log("hii")
+        // }
+        // console.log(ct.slice(0,1).map(el => el.id))
         updateContent(ct);
 
         return () => {
@@ -356,17 +383,17 @@ export default function Footer(data = {}) {
                 <div className="lg:grid lg:grid-cols-4 lg:px-10 md:px-10 px-4 lg:ml-28 lg:py-0 md:py-0 py-5">
                     <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">M</p>
-                        <p className="futura-book text-white">+961 3 505 250</p>
+                        <p className="futura-book text-white">{phoneNumber}</p>
                     </div>
 
                     <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">FAX</p>
-                        <p className="futura-book text-white">+961 5 958 058</p>
+                        <p className="futura-book text-white">{fax}</p>
                     </div>
 
                     <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">E</p>
-                        <p><a href="mailto:" className="futura-book text-white">info@fitnesszone.me</a></p>
+                        <p><a href="mailto:" className="futura-book text-white">{email}</a></p>
                     </div>
 
                     {/* <div className="lg:ml-24">

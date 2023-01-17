@@ -203,10 +203,11 @@ export default function TrainersProfile({ style = "white" }) {
                                                     </span>
                                                     </p>
                                                     <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                                    <button className="flex justify-end items-center text-[#009fe3] futura-book">Book<ChevronRightIcon onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)} className="cursor-pointer" /></button>
                                                     <p style={{display:"none"}}>{item.numberOfSessions}</p>
                                                     <p style={{display:"none"}}>{item.totalValue}</p>
                                                 </div>
-                                                <ChevronRightIcon onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)} className="chevron-session cursor-pointer" />
+                                                
                                             </div>
                                         </div>
 
@@ -232,10 +233,10 @@ export default function TrainersProfile({ style = "white" }) {
                                                 </span>
                                                 </p>
                                                 <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>
+                                                <button className="flex justify-end items-center text-[#009fe3] futura-book">Book<ChevronRightIcon onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)} className="cursor-pointer" /></button>
                                                 <p style={{display:"none"}}>{item.numberOfSessions}</p>
                                                 <p style={{display:"none"}}>{item.totalValue}</p>
                                             </div>
-                                            <ChevronRightIcon onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)} className="chevron-session cursor-pointer" />
                                         </div>
                                     </div>
 

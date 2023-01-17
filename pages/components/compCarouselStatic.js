@@ -12,16 +12,16 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
     const [count, setCount] = useState(0);
     const [scrollOver, setScroll] = useState(false);
 
-    useEffect(() => {
-        if (scrollOver) {
-            const timer = setInterval(() => {
-                setactiveSlide((prevCount) => (prevCount + 1) % data.static_items.length);
-            }, 3000);
-            return () => clearInterval(timer);
-        } else {
-            setCount(0);
-        }
-    }, [scrollOver]);
+    // useEffect(() => {
+    //     if (scrollOver) {
+    //         const timer = setInterval(() => {
+    //             setactiveSlide((prevCount) => (prevCount + 1) % data.static_items.length);
+    //         }, 3000);
+    //         return () => clearInterval(timer);
+    //     } else {
+    //         setCount(0);
+    //     }
+    // }, [scrollOver]);
 
     let timeout = setTimeout(() => {
         if (nextSlide == true && clickTiggered == true) {
@@ -134,13 +134,11 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                             ...getStyles(i),
                                         }}
                                     >
-                                        {data.with_timer ?<div className="sliderContentImage" onLoad={() => setScroll(true)}>
+                                        <div className="sliderContentImage" onLoad={() => setScroll(true)}>
                                             {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="trainerimg none-event" altv={item.static_items_id?.title} /> : null}
 
-                                        </div> : null}
-                                        {data.without_timer ?<div className="sliderContentImage">
-                                            {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="trainerimg none-event" altv={item.static_items_id?.title} /> : null}
-                                        </div>:null}
+                                        </div> 
+                                    
                                     </div>
                                 </div>
                                 <div

@@ -121,7 +121,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                         {parse(`${data.subtitle}`)} </p> : null}
                 </div>
             </div>
-            <div className="container relative">
+            <div className="container relative mx-auto">
                 <div className={`lg:flex md:flex relative items-center px-14 container mt-60 mb-96 pb-24 ${isFlipped ? 'flex-row-reverse' : ''}`}>
 
                     <div className="lg:w-1/2 md:w-1/2">
@@ -137,7 +137,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                                 ...getTextStyles(i),
                                             }}
                                         >
-                                            <div className="sliderContent w-full px-20">
+                                            <div className="sliderContent w-full px-6">
                                                 <div className="flex items-baseline space-x-5">
                                                     <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
                                                     {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}

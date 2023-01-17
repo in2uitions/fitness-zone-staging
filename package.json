@@ -32,6 +32,7 @@
     "react-big-calendar": "^1.5.2",
     "react-bootstrap": "^2.7.0",
     "react-carousel-responsive": "0.0.31",
+    "react-click-away-listener": "^2.2.2",
     "react-device-detect": "^2.2.2",
     "react-dom": "18.2.0",
     "react-flags-select": "^2.2.3",

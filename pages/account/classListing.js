@@ -134,6 +134,7 @@ export default function ClassListing() {
 
                 let newClasssValue = classs.map((res) => {
                     if (res.timetableId == timetableId) {
+                        console.log(timetableId)
                         return {
                             ...res,
                             toggle: true,
@@ -151,6 +152,44 @@ export default function ClassListing() {
             console.log(err);
         }
     };
+    const removeClass = async ({ timetableId, e }) => {
+        e.preventDefault();
+        try {
+            var registrationHeaders = new Headers();
+            registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+            registrationHeaders.append("Content-Type", "application/json");
+            var registrationRequestOptions = {
+                method: 'GET',
+                headers: registrationHeaders
+            };
+            const res = await fetch(
+                `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Class/Remove?timetableId=${timetableId}&memberId=${memberId}`,
+                registrationRequestOptions
+            );
+            const data = await res.json();
+            if (data.isValid == true) {
+
+                let newClasssValue = classs.map((res) => {
+                    if (res.timetableId == timetableId) {
+                        console.log(timetableId)
+                        return {
+                            ...res,
+                            toggle: false,
+                        }
+                    }
+                    return res;
+                })
+                setClasss(newClasssValue);
+            }
+            else {
+                alert("Class is not valid");
+            }
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    };
     const [books, setBooks] = useState(true)
     try {
         useEffect(() => {
@@ -164,7 +203,7 @@ export default function ClassListing() {
                 var memberType = fetchedData.membershipType.memberShipTypeName
                 setBooks(memberType);
                 // console.log(memberType)
-                if (memberType != "Gold") {
+                if (memberType != "PLATINUM LS CORPORATE.") {
                     setIsDisabled(true);
                     handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
                 }
@@ -215,6 +254,7 @@ export default function ClassListing() {
         getTokenAPI();
 
     };
+ 
     return (
         <>
             <div className={styles.container}>
@@ -399,15 +439,14 @@ export default function ClassListing() {
                                 <div>
                                     <button
                                         className="flex justify-end"
-                                        onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}
                                     >
                                         {!item?.toggle ? (
-                                            <div className="flex space-x-2 items-center">
+                                            <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
                                                 <img src="/notBooked.png" />
                                                 <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
                                             </div>
                                         ) : (
-                                            <div className="flex space-x-2 items-center">
+                                            <div className="flex space-x-2 items-center" onClick={(e) => removeClass({ timetableId: item.timetableId, e, toggle:false })}>
                                                 <img src="/booked.png" />
                                                 <p className="futura-book text-white text-md sizemobile">Booked</p>
                                             </div>
