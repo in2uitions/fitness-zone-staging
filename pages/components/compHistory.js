@@ -4,7 +4,7 @@ import Popup from "reactjs-popup"
 export default function CompHistory({data = {}}) {
     return (
         <>
-            <div className="container mx-auto my-20 flex flex-col px-24">
+            <div className="container mx-auto my-20 flex flex-col lg:px-24 md:px-24 px-10">
                 <div className="flex flex-col justify-center items-center text-center mb-10 mt-20">
                     <p className="font-bold futura-bold text-4xl">{data?.title}</p>
 
@@ -20,8 +20,8 @@ export default function CompHistory({data = {}}) {
                     closeOnDocumentClick={false}
                 >
                     {close => (
-                        <div className="container w-screen flex flex-col justify-center relative py-12 px-20">
-                            <button className="flex w-full justify-end right-12 text-white" onClick={close}>
+                        <div className="container w-screen flex flex-col justify-center relative py-12 lg:px-20 md:px-20 px-0">
+                            <button className="flex w-full justify-end right-12 text-white lg:pr-0 md:pr-0 pr-3" onClick={close}>
                                 <img src="/close-X.svg" />
                             </button>
                             {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2 px-14">{parse(`${data?.description}`)} </p> : null}
