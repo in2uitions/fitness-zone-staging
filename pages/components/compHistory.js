@@ -4,7 +4,7 @@ import Popup from "reactjs-popup"
 export default function CompHistory({data = {}}) {
     return (
         <>
-            <div className="container mx-auto my-20 flex flex-col justify-center items-center">
+            <div className="container mx-auto my-20 flex flex-col px-24">
                 <div className="flex flex-col justify-center items-center text-center mb-10 mt-20">
                     <p className="font-bold futura-bold text-4xl">{data?.title}</p>
 
@@ -13,7 +13,7 @@ export default function CompHistory({data = {}}) {
                 {data.show_moredescription ? <Popup
                     trigger={
                         <button>
-                            <p className="bg-transparent text-md text-[#009FE3] futura-book mt-2 outline-none">Read more ...</p>
+                            <p className="bg-transparent text-md text-[#009FE3] futura-book mt-2 outline-none flex justify-start items-start">Read more ...</p>
                         </button>
                     } modal
                     position="center"

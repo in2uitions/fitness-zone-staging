@@ -2291,6 +2291,9 @@ li.category.isActive {
   .rbc-btn-group{
     margin-bottom: 10px !important;
   }
+  .popup-overlay{
+    overflow-y: scroll;
+  }
   .sizemobile{
     font-size: .875rem !important;
   }
