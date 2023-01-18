@@ -6,7 +6,7 @@ export default function CompHistory({data = {}}) {
         <>
             <div className="container mx-auto my-20 flex flex-col lg:px-24 md:px-24 px-10">
                 <div className="flex flex-col justify-center items-center text-center mb-10 mt-20">
-                    <p className="font-bold futura-bold text-4xl">{data?.title}</p>
+                    <p className="font-bold futura-bold text-4xl text-white">{data?.title}</p>
 
                 </div>
                 {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}
