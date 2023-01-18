@@ -11,13 +11,16 @@ import { useRouter } from "next/router";
 
 export default function ClassListing() {
     var curr = new Date;
+    const [books, setBooks] = useState(true)
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
-    const [firstDate, setDate] = useState({
-        "firstday": new Date(curr.setDate(curr.getDate() - curr.getDay())).toUTCString(),
-        "lastday": new Date(curr.setDate((curr.getDate() - curr.getDay()) + 6)).toUTCString()
-    })
+    const [dateNb, setDateNb]= useState(0)
+    // const [firstDate, setDate] = useState({
+    //     "firstday": new Date(curr.setDate(curr.getDate() - curr.getDay())).toUTCString(),
+    //     "lastday": new Date(curr.setDate((curr.getDate() - curr.getDay()) + 6)).toUTCString()
+    // })
+    const [firstDate, setDate] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState(0);
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
@@ -36,6 +39,7 @@ export default function ClassListing() {
  
     try {
         useEffect(() => {
+
             getData();
             async function getData() {
                 const response = await fetch(
@@ -44,14 +48,41 @@ export default function ClassListing() {
                 );
                 const checkInList = await response.json();
                 setData(checkInList);
+                
+
             }
 
         }, []);
     } catch (err) {
         console.log(err);
     }
+    try {
+        useEffect(() => {
+            getData();
+            async function getData() {
+                const response = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+                    registrationRequestOptions
+                );
+                const fetchedData = await response.json();
+                var memberType = fetchedData.membershipType.memberShipTypeName
+                setBooks(memberType);
+                // console.log(memberType)
+                if (memberType != "PLATINUM LS CORPORATE.") {
+                    setIsDisabled(true);
+                    handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
+                }
+                getDayByDay({id : moment().toDate().getDay()})
+            }
+            getData();
+        }, []);
+    } catch (err) {
+        console.log(err);
+    }
     useEffect(() => {
-        getFilteredList(selectedCategory);
+        if(firstDate != null){
+            getFilteredList(selectedCategory);
+        }
     }, [firstDate])
     function getFilteredList(value = null) {
 
@@ -66,9 +97,11 @@ export default function ClassListing() {
                 method: "GET",
                 headers: registrationHeaders,
             };
-            var query = `?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`
+            var query = '';
+            if(firstDate != null)
+                var query = `?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`
             if (val) {
-                query = query + `&LocationCode=${val}`
+                query = query + `${query != '' ? '&' : '?'}LocationCode=${val}`
             }
             // console.log(query)
             try {
@@ -76,8 +109,10 @@ export default function ClassListing() {
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList${query}`,
                     registrationRequestOptions
                 );
+                // console.log({firstDate})
+        
                 const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`,
+                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}${query}`,
                     registrationRequestOptions
                 );
                 if (res.status == 200) {
@@ -105,13 +140,18 @@ export default function ClassListing() {
         };
         getClassList(value);
     };
+
     function getDayByDay({ id }) {
         var date = moment().isoWeekday(id).format("DD-MMM-YYYY")
         setDate({
             "firstday": date,
             "lastday": date
         })
+        setDateNb(id - 1);
+        // console.log(moment().toDate().getDay() - 1 );
+        // console.log(date)
     }
+   
     const memberId = localStorage.getItem("Member");
 
     const reserveClass = async ({ timetableId, e }) => {
@@ -134,7 +174,7 @@ export default function ClassListing() {
 
                 let newClasssValue = classs.map((res) => {
                     if (res.timetableId == timetableId) {
-                        console.log(timetableId)
+                        // console.log(timetableId)
                         return {
                             ...res,
                             toggle: true,
@@ -171,7 +211,7 @@ export default function ClassListing() {
 
                 let newClasssValue = classs.map((res) => {
                     if (res.timetableId == timetableId) {
-                        console.log(timetableId)
+                        // console.log(timetableId)
                         return {
                             ...res,
                             toggle: false,
@@ -190,29 +230,8 @@ export default function ClassListing() {
         }
 
     };
-    const [books, setBooks] = useState(true)
-    try {
-        useEffect(() => {
-            getData();
-            async function getData() {
-                const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
-                    registrationRequestOptions
-                );
-                const fetchedData = await response.json();
-                var memberType = fetchedData.membershipType.memberShipTypeName
-                setBooks(memberType);
-                // console.log(memberType)
-                if (memberType != "PLATINUM LS CORPORATE.") {
-                    setIsDisabled(true);
-                    handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
-                }
-            }
-            getData();
-        }, []);
-    } catch (err) {
-        console.log(err);
-    }
+   
+  
     const [info, setInfo] = useState(true)
     try {
         useEffect(() => {
@@ -393,7 +412,7 @@ export default function ClassListing() {
                         </Tabs>
                     </MobileView>
                     <BrowserView>
-                        <Tabs className="mt-10">
+                        <Tabs selectedIndex={dateNb} className="mt-10">
                             <TabList className="flex justify-between w-full lg:mx-auto lg:container tabs-container">
                                 <Tab className="tabColor" onClick={() => getDayByDay({ id: 1 })}>
                                     <div className="flex justify-start tab">Monday</div>
@@ -464,3 +483,4 @@ export default function ClassListing() {
         </>
     );
 }
+
