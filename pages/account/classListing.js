@@ -384,6 +384,7 @@ export default function ClassListing() {
                         </Tab>
                     </TabList>
                 </Tabs> */}
+
                     <MobileView>
                         <Tabs selectedIndex={dateNb} className="mt-10">
                             <TabList className="flex justify-between w-full lg:mx-auto lg:container tabs-container">
@@ -465,7 +466,7 @@ export default function ClassListing() {
                                                 <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
                                             </div>
                                         ) : (
-                                            <div className="flex space-x-2 items-center" onClick={(e) => removeClass({ timetableId: item.timetableId, e, toggle: false })}>
+                                            <div className="flex space-x-2 items-center" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                 <img src="/booked.png" />
                                                 <p className="futura-book text-white text-md sizemobile">Booked</p>
                                             </div>
