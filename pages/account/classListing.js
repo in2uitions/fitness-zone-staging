@@ -15,7 +15,7 @@ export default function ClassListing() {
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
-    const [dateNb, setDateNb]= useState(0)
+    const [dateNb, setDateNb] = useState(0)
     // const [firstDate, setDate] = useState({
     //     "firstday": new Date(curr.setDate(curr.getDate() - curr.getDay())).toUTCString(),
     //     "lastday": new Date(curr.setDate((curr.getDate() - curr.getDay()) + 6)).toUTCString()
@@ -36,7 +36,7 @@ export default function ClassListing() {
         method: "GET",
         headers: registrationHeaders,
     };
- 
+
     try {
         useEffect(() => {
 
@@ -48,7 +48,7 @@ export default function ClassListing() {
                 );
                 const checkInList = await response.json();
                 setData(checkInList);
-                
+
 
             }
 
@@ -72,7 +72,7 @@ export default function ClassListing() {
                     setIsDisabled(true);
                     handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
                 }
-                getDayByDay({id : moment().toDate().getDay()})
+                getDayByDay({ id: moment().toDate().getDay() })
             }
             getData();
         }, []);
@@ -80,7 +80,7 @@ export default function ClassListing() {
         console.log(err);
     }
     useEffect(() => {
-        if(firstDate != null){
+        if (firstDate != null) {
             getFilteredList(selectedCategory);
         }
     }, [firstDate])
@@ -98,7 +98,7 @@ export default function ClassListing() {
                 headers: registrationHeaders,
             };
             var query = '';
-            if(firstDate != null)
+            if (firstDate != null)
                 var query = `?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`
             if (val) {
                 query = query + `${query != '' ? '&' : '?'}LocationCode=${val}`
@@ -110,7 +110,7 @@ export default function ClassListing() {
                     registrationRequestOptions
                 );
                 // console.log({firstDate})
-        
+
                 const response = await fetch(
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}${query}`,
                     registrationRequestOptions
@@ -151,7 +151,7 @@ export default function ClassListing() {
         // console.log(moment().toDate().getDay() - 1 );
         // console.log(date)
     }
-   
+
     const memberId = localStorage.getItem("Member");
 
     const reserveClass = async ({ timetableId, e }) => {
@@ -230,8 +230,8 @@ export default function ClassListing() {
         }
 
     };
-   
-  
+
+
     const [info, setInfo] = useState(true)
     try {
         useEffect(() => {
@@ -273,7 +273,7 @@ export default function ClassListing() {
         getTokenAPI();
 
     };
- 
+
     return (
         <>
             <div className={styles.container}>
@@ -385,7 +385,7 @@ export default function ClassListing() {
                     </TabList>
                 </Tabs> */}
                     <MobileView>
-                        <Tabs className="mt-10">
+                        <Tabs selectedIndex={dateNb} className="mt-10">
                             <TabList className="flex justify-between w-full lg:mx-auto lg:container tabs-container">
                                 <Tab className="tabColor" onClick={() => getDayByDay({ id: 1 })}>
                                     <div className="flex justify-start tab">M</div>
@@ -465,7 +465,7 @@ export default function ClassListing() {
                                                 <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
                                             </div>
                                         ) : (
-                                            <div className="flex space-x-2 items-center" onClick={(e) => removeClass({ timetableId: item.timetableId, e, toggle:false })}>
+                                            <div className="flex space-x-2 items-center" onClick={(e) => removeClass({ timetableId: item.timetableId, e, toggle: false })}>
                                                 <img src="/booked.png" />
                                                 <p className="futura-book text-white text-md sizemobile">Booked</p>
                                             </div>
