@@ -198,31 +198,31 @@ export default function Footer(data = {}) {
         <>
             <section>
                 <div className="flex flex-col space-y-10 justify-start items-center fixed right-0 bg-[#009FE3] box">
-                    <a href={facebookLink} target="_blank" rel="noreferrer">
+                    <a href={facebookLink} rel="noreferrer">
                         <img src="/path.png" className="w-4" />
                     </a>
 
-                    <a href={instaLink} target="_blank" rel="noreferrer">
+                    <a href={instaLink} rel="noreferrer">
                         <img src="/fblink.png" className="w-7" />
                     </a>
 
                     <a
                         href="https://www.linkedin.com/company/fitness-zone/"
-                        target="_blank" rel="noreferrer"
+                        rel="noreferrer"
                     >
                         <img src="/linkedinlink.png" className="w-6" />
                     </a>
 
                     <a
                         href="https://www.youtube.com/channel/UCxaK9VYi8cBP_Y1rgRfwumw"
-                        target="_blank" rel="noreferrer"
+                        rel="noreferrer"
                     >
                         <img src="/youtube.png" className="w-8" />
                     </a>
                 </div>
                 <div className="flex justify-end m-10 wtsp-widget">
                     <BrowserView>
-                        <a href={whatsappNumber} target="_blank">
+                        <a href={whatsappNumber}>
                             <img data-tip data-for="try" src="/whatsappIcon.png" className="h-16" />
                         </a>
                         <ReactTooltip id="try" className="reactTooltip" place="left" effect="solid" type="light">
@@ -230,7 +230,7 @@ export default function Footer(data = {}) {
                         </ReactTooltip>
                     </BrowserView>
                     <MobileView>
-                        <a href={whatsappNumber} target="_blank">
+                        <a href={whatsappNumber}>
                             <img src="/wtspWidgetMobile.png" className="h-16" />
                         </a>
                     </MobileView>

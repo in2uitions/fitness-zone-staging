@@ -12,22 +12,9 @@ import $ from "jquery";
 import { useRouter } from "next/router";
 
 export default function Membership({ style = 'white' }) {
-    // const membership =[
-    //     {
-    //         date:'18/10/2022',
-    //         text:'Membership Renewal (1 Year)'
-    //     },
-    //     {
-    //         date:'18/10/2022',
-    //         text:'Personal Training Package'
-    //     },
-    //     {
-    //         date:'18/10/2022',
-    //         text:'Personal Training Package'
-    //     }
-    // ]
     const memberId = localStorage.getItem('Member');
     const [test, setTest] = useState([])
+    const [state, toggle] = useState(true);
     try {
         
         var registrationHeaders = new Headers();
@@ -48,11 +35,19 @@ export default function Membership({ style = 'white' }) {
                 const membership = await response.json()
                 setTest(membership)
             }
-            // getData()
         }, [])
     } catch (err) {
         console.log(err);
     }
+    const [noOfElements, setnoOfElements] = useState(4);
+    const slice = test.slice(0, noOfElements);
+    const loadMoreLess = () => {
+        if (noOfElements == 4) {
+            setnoOfElements(test.length);
+        } else {
+            setnoOfElements(4);
+        }
+    };
     function dateButif(d) {
         const newd = new Date(d).toLocaleDateString("en-UG", {
             day: 'numeric',
@@ -109,6 +104,7 @@ export default function Membership({ style = 'white' }) {
         getTokenAPI();
 
     };
+  
     return (
         <>
             <div className={styles.container}>
@@ -203,22 +199,36 @@ export default function Membership({ style = 'white' }) {
                         <div className='col-span-4'>
                             <div className='flex flex-col'>
                                 <button className='bg-[#009FE3] futura-bold p-3 rounded-md text-white'>RENEW MEMBERSHIP</button>
-                                <a href='/account/freezing' target="_blank" className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5 futura-bold'>FREEZING REQUEST</a>
+                                <a href='/account/freezing' className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5 futura-bold'>FREEZING REQUEST</a>
                             </div>
                         </div>
                     </div>
-                    <div className='flex flex-col mx-auto justify-start items-start mt-10 px-2 lg:px-0 md:px-0'>
+                    <div className='flex flex-col mx-auto justify-start w-2/5 items-start mt-10 px-2 lg:px-0 md:px-0'>
                         <p className='text-[#009FE3] futura-bold mb-3'>Payment History</p>
-                        {test.map((item) => (
+                        {slice.map((item) => (
                             <>
-                                <div className='flex justify-start lg:w-full items-center classes-box mb-3 p-3'>
-                                    <div className='space-x-2 flex'>
-                                        <p className='border-r pr-1 border-[#009FE3] text-white'>{dateButif(item.value)}</p>
-                                        <p className='text-white text-base lg:text-xl md:text-xl'>{item.text}</p>
+                                <div className='flex justify-start lg:w-full items-center classes-box mb-3 p-3 mx-auto container'>
+                                    <div className='space-x-2 flex w-full'>
+                                        <p className='border-r pr-1 border-[#009FE3] text-white w-2/5 flex justify-start items-start whitespace-nowrap'>{dateButif(item.value)}</p>
+                                        <p className='text-white text-base lg:text-xl md:text-xl w-3/5 flex justify-center items-center whitespace-nowrap'>{item.text}</p>
                                     </div>
                                 </div>
+                                {/* <div className='flex justify-between  classes-box mb-3 p-3'>
+                                    <p className='w-1/2'>{dateButif(item.value)}</p>
+                                    <p className='w-1/2 whitespace-nowrap'>{item.text}</p>
+                                </div> */}
                             </>
                         ))}
+                        <div
+                            className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
+                            onClick={() => {
+                                toggle(!state);
+                                loadMoreLess();
+                            }}
+                        >
+                            {state ? "VIEW ALL" : "VIEW LESS"}
+                            <ChevronRightIcon className="arrow-membership" />
+                        </div>
                     </div>
                 </div>
                 {/* <div ref={buttonRef} style={{ display: "none" }}>

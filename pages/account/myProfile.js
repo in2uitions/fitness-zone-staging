@@ -387,7 +387,7 @@ export default function Dashboard({ style = "white" }) {
                                             value={data.birthdate} id="birthdate"
                                             onChange={handleChange}
                                         />
-                                        <button
+                                        {/* <button
                                             className="bg-[#009FE3] p-1 rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2 text-white"
                                             onClick={() => {
                                                 toggle(!state);
@@ -396,7 +396,7 @@ export default function Dashboard({ style = "white" }) {
                                             onSubmit={state ? handleSubmitBirthDate : () => {}}
                                         >
                                             {state ? "CHANGE DOB" : "SAVE"}
-                                        </button>
+                                        </button> */}
                                     </div>
                                     <div className="border border-[#009FE3] flex justify-between items-center bg-black rounded-md lg:h-10 md:h-10 h-16 p-1 text-white">
                                         <input
@@ -460,15 +460,6 @@ export default function Dashboard({ style = "white" }) {
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.mobile}
                                     /> */}
-                                    <ReactFlagsSelect
-                        selected={select}
-                        onSelect={onSelect}
-                        className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder "
-                        id="country"
-                        // value= {countrydata.map((item) => (
-                        //                     <p value={item.countryCode}>{item.countryName}</p>
-                        //                 ))}
-            />
                                     {/* <select name="country">
                                     {countrydata.map((item) => (
                                             <option value={item.countryCode}>{item.countryName}</option>

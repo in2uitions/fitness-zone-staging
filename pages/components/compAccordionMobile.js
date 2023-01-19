@@ -96,7 +96,7 @@ if (ListofClasses.length == 0){
                                 <h3 className="py-7 subTitle"> {element.subtitle}  </h3>
                                 <p className='h-0 w-0 hidden'>{element.value}</p>
                                 <h4 className="brief wysiwyg">{parse(`${element.brief}`)}</h4>
-                                {element.button_title ? <a href="/" target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 w-36 flex justify-start items-center rounded-md futura-bold mt-4">{element.button_title}
+                                {element.button_title ? <a href="/" className=" bg-[#009FE3] learnMoreBtns p-2 w-36 flex justify-start items-center rounded-md futura-bold mt-4">{element.button_title}
                                     <ChevronRightIcon className="-ml-2" /></a> : null}
 
                             </div>

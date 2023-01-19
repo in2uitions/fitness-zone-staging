@@ -2291,6 +2291,9 @@ li.category.isActive {
   .rbc-btn-group{
     margin-bottom: 10px !important;
   }
+  .checkins-labels{
+    font-size: .875rem;
+  }
   .popup-overlay{
     overflow-y: scroll;
   }
@@ -4114,3 +4117,4 @@ ul li.activate {
   /* opacity: 0; */
   transition: .3s;
 }
+

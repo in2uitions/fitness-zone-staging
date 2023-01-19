@@ -5,6 +5,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { ArrowUpward } from "@material-ui/icons";
 import $ from "jquery";
 import { useRouter } from "next/router";
+import moment from "moment";
 
 export default function CheckIns() {
     const [data, setData] = useState([]);
@@ -92,6 +93,10 @@ export default function CheckIns() {
         getTokenAPI();
 
     };
+    const format = (num, decimals) => num.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
     return (
         <>
             <div className={styles.container}>
@@ -115,7 +120,11 @@ export default function CheckIns() {
                         position=""
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            <img src="/icons-person.png" />
+                            {/* <img src="/icons-person.png" /> */}
+                            <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <p className="futura-bold text-6xl text-[#009FE3]">{books.firstName?.charAt(0)}</p>
+                            <p className="futura-bold text-6xl text-[#009FE3]">{books.lastName?.charAt(0)}</p>
+                            </a>
                             <p className="futura-bold text-[#009FE3] mt-5">{books.fullName}</p>
                             <div className="flex flex-col mt-10">
                                 <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
@@ -154,15 +163,16 @@ export default function CheckIns() {
             </div>
             <section>
                 <div className='flex flex-col justify-center mt-40 ' id="btnScrollToTop">
-                    <div className='flex flex-col mx-auto justify-start items-start lg:w-1/4 md:w-1/4'>
+                    <div className='flex flex-col mx-auto justify-start items-start lg:w-1/3 md:w-1/3 w-full lg:px-0 md:px-0 px-3'>
                         <p className='text-[#009FE3] futura-bold mb-3'>My Recent Check-ins</p>
                         {slice.map((item) => (
                             <>
                                 <div className='flex justify-start items-start classes-box mb-3 p-3' >
-                                    <div className='space-x-2 flex'>
-                                        <p className='text-white text-md pr-2 border-r border-[#009FE3] futura-book'>{dateButif(item.value)}</p>
+                                    <div className='space-x-2 flex w-full'>
+                                        <p className='text-white lg:text-md md:text-md pr-2 border-r border-[#009FE3] futura-book w-2/5 flex justify-center items-center checkins-labels'>{moment(item.value).format("DD MMM YYYY")}</p>
+                                        <p className='text-white lg:text-md md:text-md pr-2 border-r border-[#009FE3] futura-book w-2/5 flex justify-center items-center checkins-labels'>{moment(item.value).format("HH:mm")}</p>
                                         {/* <p className='border-r border-[#009FE3] text-white'>{item.time}</p> */}
-                                        <p className='text-white text-md futura-book'>{item.text}</p>
+                                        <p className='text-white lg:text-md md:text-md futura-book w-3/5 flex justify-center items-center checkins-labels'>{item.text}</p>
                                     </div>
                                 </div>
                             </>

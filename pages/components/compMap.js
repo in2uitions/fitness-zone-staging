@@ -48,13 +48,13 @@ const CompMap = ({ center, zoom,  datas, data={} }) => {
                         return (
                             <div className='flex flex-col justify-center items-center' lat={item.map_items_id?.longitude} lng={item.map_items_id?.latitude}>
 
-                                <a href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + item.map_items_id?.longitude + "," + item.map_items_id?.latitude } target="_blank">
+                                <a href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + item.map_items_id?.longitude + "," + item.map_items_id?.latitude }>
                                     <img style={markerStyle} className="w-7" src={pin} alt="pin" /></a>
                                 <img src='/slider-button.svg' className='w-7' />
                                 <img src='/triangle.png' className='w-7' />
                                 <div className='w-96 bg-[#009FE3]'>
 
-                                    <a href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + item.map_items_id?.longitude + "," + item.map_items_id?.latitude } target="_blank">
+                                    <a href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + item.map_items_id?.longitude + "," + item.map_items_id?.latitude }>
                                     <div className="flex flex-col items-center">
                                         <p className='text-white'> {item.map_items_id?.name}</p>
                                         <p className='text-white'>{item.map_items_id?.country}</p>

@@ -4,7 +4,9 @@ import { image_url } from "../../global_vars";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
+import ChevronRight from "@material-ui/icons/ChevronRight";
 import ClickAwayListener from 'react-click-away-listener';
+import { ItemsHandler } from "@directus/sdk";
 
 export default function CompDropdown({ data = {} }) {
     const [dropdownState, setDropdownState] = useState(false);
@@ -44,7 +46,7 @@ export default function CompDropdown({ data = {} }) {
                     </div>
                     <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-2 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 lg:-mt-14">
                         {data.description ?<p className="mb-5 text-white">{parse(`${data.description}`)}</p>:null}
-                        <ClickAwayListener onClickAway={handleClickAway}>
+                        {/* <ClickAwayListener onClickAway={handleClickAway}>
                         <div className={`dropdown`}>
                             <button onClick={handleDropdownClick} className="dropdown-btn text-white">
                                 {dropdownValue === "" ? "Hamra" : dropdownValue}
@@ -52,13 +54,13 @@ export default function CompDropdown({ data = {} }) {
                             <div 
                                 className={`dropdown-items text-white ${dropdownState ? "isVisible" : "isHidden"}`}
                             >
-                                {/* <div className="dropdown-item" id="0" onClick={() => handleSetDropdownValue("Head Office" ,0)}>
+                                <div className="dropdown-item" id="0" onClick={() => handleSetDropdownValue("Head Office" ,0)}>
                                     <div  
                                         className="dropdown__link"
                                     >
                                         Head Office
                                     </div>
-                                </div> */}
+                                </div>
                                 <div className="dropdown-item" id="1" onClick={() => handleSetDropdownValue("Hamra" ,1)}>
                                     <div
                                         className="dropdown__link"
@@ -73,27 +75,27 @@ export default function CompDropdown({ data = {} }) {
                                         Baabda
                                     </div>
                                 </div>
-                                {/* <div className="dropdown-item" id="3" onClick={() => handleSetDropdownValue("kaslik" ,3)}>
+                                <div className="dropdown-item" id="3" onClick={() => handleSetDropdownValue("kaslik" ,3)}>
                                     <div
                                         className="dropdown__link"
                                     >
                                         kaslik
                                     </div>
-                                </div> */}
-                                {/* <div className="dropdown-item" id="4" onClick={() => handleSetDropdownValue("Beirut Souks" ,4)}>
+                                </div>
+                                <div className="dropdown-item" id="4" onClick={() => handleSetDropdownValue("Beirut Souks" ,4)}>
                                     <div
                                         className="dropdown__link"
                                     >
                                         Beirut Souks
                                     </div>
-                                </div> */}
-                                {/* <div className="dropdown-item" id="5" onClick={() => handleSetDropdownValue("Verdun" ,5)}>
+                                </div>
+                                <div className="dropdown-item" id="5" onClick={() => handleSetDropdownValue("Verdun" ,5)}>
                                     <div
                                         className="dropdown__link"
                                     >
                                         Verdun
                                     </div>
-                                </div> */}
+                                </div>
                                 <div className="dropdown-item" id="6" onClick={() => handleSetDropdownValue("ABC Achrafieh" ,6)}>
                                     <div
                                         className="dropdown__link"
@@ -108,13 +110,13 @@ export default function CompDropdown({ data = {} }) {
                                         Dbayeh
                                     </div>
                                 </div>
-                                {/* <div className="dropdown-item" id="8" onClick={() => handleSetDropdownValue("Online" ,8)}>
+                                <div className="dropdown-item" id="8" onClick={() => handleSetDropdownValue("Online" ,8)}>
                                     <div
                                         className="dropdown__link"
                                     >
                                         Online
                                     </div>
-                                </div> */}
+                                </div>
                                 <div className="dropdown-item" id="9" onClick={() => handleSetDropdownValue("Dalfa" ,9)}>
                                     <div
                                         className="dropdown__link"
@@ -131,7 +133,9 @@ export default function CompDropdown({ data = {} }) {
                                 </div>
                             </div>
                         </div>
-                        </ClickAwayListener>
+                        </ClickAwayListener> */}
+                        <a href="/bookClass" className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold cursor-pointer w-auto"> {data.button_title}<ChevronRight/>
+                        </a>
                     </div>
                 </div>
             </div>

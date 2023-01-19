@@ -5,8 +5,6 @@ import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import moment from 'moment';
 import { BrowserView, MobileView } from "react-device-detect";
-import { ArrowUpward } from "@material-ui/icons";
-import $ from "jquery";
 import { useRouter } from "next/router";
 
 export default function ClassListing() {
@@ -362,7 +360,7 @@ export default function ClassListing() {
                             ))}
                         </select>
                     </div>
-                    {/* <Tabs className="mt-5">
+                    <Tabs className="mt-5">
                     <TabList className="flex justify-between w-full mx-auto container tabs-container">
                         <Tab className="notSelected">
                             <div className="flex items-start space-x-2">
@@ -383,7 +381,7 @@ export default function ClassListing() {
                             </div>
                         </Tab>
                     </TabList>
-                </Tabs> */}
+                </Tabs>
 
                     <MobileView>
                         <Tabs selectedIndex={dateNb} className="mt-10">
@@ -442,17 +440,16 @@ export default function ClassListing() {
                     {classs.map((item, index) => (
                         <>
                             <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
-                                <div className="flex justify-start">
-                                    <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
+                                <div className="flex justify-start w-3/4">
+                                    <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book w-1/5">
                                         {item.class?.className}
                                     </p>
-                                    <p className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile">
+                                    <p className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile w-1/5">
                                         {item.studio?.studioName}
                                     </p>
-                                    <p className="text-white futura-book lg:pl-5 md:pl-5 pl-5 text-md sizemobile">
-                                        {item.classTime}
-                                    </p>
-                                    <p className="text-white text-md sizemobile futura-book lg:pl-5 md:pl-5 pl-5">
+                                    <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#009FE3] w-1/5'>{moment(item.classTime).format("DD MMM YYYY")}</p>
+                                        <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5'>{moment(item.classTime).format("HH:mm")}</p>
+                                    <p className="text-white text-md sizemobile futura-book lg:pl-5 md:pl-5 pl-5 w-1/5">
                                         {item.location?.locationName}
                                     </p>
                                 </div>

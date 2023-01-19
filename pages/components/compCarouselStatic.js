@@ -117,7 +117,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                                 </div>
                                             )}
                                         </Popup> : null}
-                                        {data.button_title ? <a href={data.button_url} target="_blank" className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
+                                        {data.button_title ? <a href={data.button_url} className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
                                     </div>
                         </>
                     </div>

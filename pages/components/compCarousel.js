@@ -143,7 +143,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                                     {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
                                                 </div>
                                                 {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
-                                                {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} target="_blank" className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
+                                                {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
                                             </div>
                                         </div>
                                     </div>

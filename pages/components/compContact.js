@@ -1,4 +1,6 @@
 import { createContactUsUser } from "../../api/server";
+import Popup from "reactjs-popup";
+import { BrowserView, MobileView } from "react-device-detect";
 
 export default function CompContact({ data = {}, style = 'white' }) {
     const onSubmitForm = async event => {
@@ -51,15 +53,64 @@ export default function CompContact({ data = {}, style = 'white' }) {
                     </div>
                     <div className="flex space-x-3 mt-20">
                         <div className="">
-                            <button className="p-2 bg-[#009FE3] text-white flex items-center flex-row justify-around rounded-md futura lg:h-10">
+                            {/* <button className="p-2 bg-[#009FE3] text-white flex items-center flex-row justify-around rounded-md futura lg:h-10">
                                 BECOME A MEMBER
-                            </button>
+                            </button> */}
+                            <Popup
+                                trigger={
+
+                                    <button className="p-2 bg-[#009FE3] text-white flex items-center flex-row justify-around rounded-md futura lg:h-10">BECOME A MEMBER</button>
+
+                                } modal
+                                position="center"
+                                closeOnDocumentClick={false}
+                            >
+                                {close => (
+                                    <>
+                                        <BrowserView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form className='flex flex-col space-y-5'>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                </form>
+                                            </div>
+                                        </BrowserView>
+                                        <MobileView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form>
+                                                    <div className="flex flex-col w-full justify-between space-y-5">
+                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+
+                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                </form>
+                                            </div>
+                                        </MobileView>
+                                    </>
+                                )}
+                            </Popup>
                         </div>
                         <div className="">
-                            <a href="/about/career" target="_blank" className="border-[#009FE3] border-2 p-2 lg:h-10 text-white flex items-center flex-row justify-around rounded-md futura ">WORK WITH US</a>
+                            <a href="/about/career" className="border-[#009FE3] border-2 p-2 lg:h-10 text-white flex items-center flex-row justify-around rounded-md futura ">WORK WITH US</a>
                         </div>
                         <div className="">
-                            <a href="/about/franchise" target="_blank" className="border-[#009FE3] border-2 p-2 lg:h-10 text-white flex items-center flex-row justify-around rounded-md futura ">GROW WITH US</a>
+                            <a href="/about/franchise" className="border-[#009FE3] border-2 p-2 lg:h-10 text-white flex items-center flex-row justify-around rounded-md futura ">GROW WITH US</a>
                         </div>
                     </div>
                     <div className="mt-10">

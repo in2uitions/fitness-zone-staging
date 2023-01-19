@@ -30,9 +30,9 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                         </div> : null}
                         <h4 className="brief wysiwyg mb-4">{parse(`${data.brief}`)}</h4>
                         <div className='flex space-x-2'>
-                        {data.button_url ? <a href={`${data.button_url}`} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button_title}
+                        {data.button_url ? <a href={`${data.button_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button_title}
                             <ChevronRightIcon className="lg:ml-2 md:ml-2  ml-0" /></a> : null}
-                            {data.button2_url ? <a href={`${data.button2_url}`} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button}
+                            {data.button2_url ? <a href={`${data.button2_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button}
                             <ChevronRightIcon className="lg:ml-2 md:ml-2 ml-0" /></a> : null}
                         </div>
                     </div>
@@ -74,17 +74,12 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                         </div> : null}
                         <p className="brief wysiwyg mb-4 leading-9 text-white">{parse(`${data.brief}`)}</p>
                         <div className='flex space-x-2'>
-                        {data.button_url ? <a href={`${data.button_url}`} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button_title}
+                        {data.button_url ? <a href={`${data.button_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button_title}
                             <ChevronRightIcon className="lg:ml-2 md:ml-2  ml-0" /></a> : null}
-                            {data.button2_url ? <a href={`${data.button2_url}`} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button}
+                            {data.button2_url ? <a href={`${data.button2_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button}
                             <ChevronRightIcon className="lg:ml-2 md:ml-2 ml-0" /></a> : null}
                         </div>
                     </div>
-                    {/* <div className=" lg:w-1/2 pt-6 lg:pt-0 hidden lg:block">
-                        <div id="wrapper" className={`main-image-center`} >
-                            <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
-                        </div>
-                    </div> */}
                     
 
                 </div>:null}

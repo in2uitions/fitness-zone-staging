@@ -125,7 +125,7 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
                                             </div>
                                                         {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
                                                         {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
-                                                        {item.comp_carousel_items_id?.book_button ? <button  onClick={() => route()} target="_blank" className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.book_button}<ChevronRightIcon /></button> : null}
+                                                        {item.comp_carousel_items_id?.book_button ? <button  onClick={() => route()} className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.book_button}<ChevronRightIcon /></button> : null}
                                                     </div>
                                                 </div>
                                             </div>
