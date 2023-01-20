@@ -13,12 +13,12 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
     const router = useRouter();
     const route = () => {
     if (itemSet) {
-        router.push({ pathname: "/account/classListing"});
-    // window.open("/account/classListing", "_blank");
+        // router.push({ pathname: "/account/classListing"});
+    window.open("/account/classListing", "_blank");
     }
     else{
-        router.push({ pathname: "/account/login"});
-        // window.open("/account/login", "_blank");
+        // router.push({ pathname: "/account/login"});
+        window.open("/account/login", "_blank");
     }
 }
     let timeout = setTimeout(() => {
