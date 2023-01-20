@@ -117,21 +117,16 @@ export default function App() {
     }, []);
     return (
         <div className="container mx-auto mt-40 lg:px-28 md:px-20 px-3">
-
-            <div className="flex justify-between mt-5">
-                <div className="flex items-center space-x-5">
+        <div className="flex flex-col justify-center items-center">
+            <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> 
+            </div>
+            <div className="flex w-full space-x-5 mt-5">
+                <div className="flex items-center space-x-5" style={{width: "10%"}}>
                     <img src="/filterBy.png" />
                     <p className="futura-book text-white">Filter by</p>
                 </div>
-                <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p>
-
-                <select name="location" id="location" onChange={handleCategoryChange}>
-                    {location.map((item, i) => (
-                        <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
-                    ))}
-                </select>
-            </div>
-            <div className="relative">
+                {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
+                <div className="relative" style={{width: "80%"}}>
                 <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
                     placeholder="Search" value={name}
                     onChange={(e) => setName(e.target.value)} />
@@ -142,6 +137,15 @@ export default function App() {
                     />
                 </div>
             </div>
+            <div className="flex justify-center items-center" style={{width:"10%"}}>
+                <select style={{height:"2.5rem" , borderRadius:"5px"}} name="location" id="location" onChange={handleCategoryChange}>
+                    {location.map((item, i) => (
+                        <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                    ))}
+                </select>
+                </div>
+            </div>
+            
             <Tabs className="mt-5">
                 <TabList className="flex justify-between w-full mx-auto container tabs-container">
                     <Tab className="notSelected">
