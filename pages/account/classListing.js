@@ -6,19 +6,18 @@ import Popup from "reactjs-popup";
 import moment from 'moment';
 import { BrowserView, MobileView } from "react-device-detect";
 import { useRouter } from "next/router";
+import { SearchOutlined } from "@material-ui/icons";
+import Close from "@material-ui/icons/Close";
 
 export default function ClassListing() {
     var curr = new Date;
+    const router = useRouter();
     const [books, setBooks] = useState(true)
+    const [name, setName] = useState("");
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
+    const [info, setInfo] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false);
-    const [dateNb, setDateNb] = useState(0)
-    // const [firstDate, setDate] = useState({
-    //     "firstday": new Date(curr.setDate(curr.getDate() - curr.getDay())).toUTCString(),
-    //     "lastday": new Date(curr.setDate((curr.getDate() - curr.getDay()) + 6)).toUTCString()
-    // })
-    const [firstDate, setDate] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState(0);
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
@@ -44,10 +43,8 @@ export default function ClassListing() {
                     `https://api.fitnessclubapp.com/api/Administration/Location/List`,
                     registrationRequestOptions
                 );
-                const checkInList = await response.json();
-                setData(checkInList);
-
-
+                const locationList = await response.json();
+                setData(locationList);
             }
 
         }, []);
@@ -70,7 +67,7 @@ export default function ClassListing() {
                     setIsDisabled(true);
                     handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
                 }
-                getDayByDay({ id: moment().toDate().getDay() })
+                // getDayByDay({ id: moment().toDate().getDay() })
             }
             getData();
         }, []);
@@ -78,10 +75,14 @@ export default function ClassListing() {
         console.log(err);
     }
     useEffect(() => {
-        if (firstDate != null) {
-            getFilteredList(selectedCategory);
-        }
-    }, [firstDate])
+        getFilteredList(selectedCategory);
+    }, [])
+    var curr = new Date;
+    var first = curr.getDate() - curr.getDay();
+    var last = first + 6;
+
+    var firstday = new Date(curr.setDate(first)).toUTCString();
+    var lastday = new Date(curr.setDate(last)).toUTCString();
     function getFilteredList(value = null) {
 
         const getClassList = async (val) => {
@@ -96,18 +97,15 @@ export default function ClassListing() {
                 headers: registrationHeaders,
             };
             var query = '';
-            if (firstDate != null)
-                var query = `?dateFrom=${firstDate.firstday}&dateTo=${firstDate.lastday}`
+            var query = `?dateFrom=${firstday}&dateTo=${lastday}`
             if (val) {
                 query = query + `${query != '' ? '&' : '?'}LocationCode=${val}`
             }
-            // console.log(query)
             try {
                 const res = await fetch(
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList${query}`,
                     registrationRequestOptions
                 );
-                // console.log({firstDate})
 
                 const response = await fetch(
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}${query}`,
@@ -139,16 +137,16 @@ export default function ClassListing() {
         getClassList(value);
     };
 
-    function getDayByDay({ id }) {
-        var date = moment().isoWeekday(id).format("DD-MMM-YYYY")
-        setDate({
-            "firstday": date,
-            "lastday": date
-        })
-        setDateNb(id - 1);
-        // console.log(moment().toDate().getDay() - 1 );
-        // console.log(date)
-    }
+    // function getDayByDay({ id }) {
+    //     var date = moment().isoWeekday(id).format("DD-MMM-YYYY")
+    //     setDate({
+    //         "firstday": date,
+    //         "lastday": date
+    //     })
+    //     // setDateNb(id - 1);
+    //     // console.log(moment().toDate().getDay() - 1 );
+    //     // console.log(date)
+    // }
 
     const memberId = localStorage.getItem("Member");
 
@@ -230,7 +228,7 @@ export default function ClassListing() {
     };
 
 
-    const [info, setInfo] = useState(true)
+
     try {
         useEffect(() => {
             getData();
@@ -247,21 +245,8 @@ export default function ClassListing() {
     } catch (err) {
         console.log(err);
     }
-    // const buttonRef = useRef(null);
 
-    // var btn = $('#buttonss');
 
-    // $(window).on("scroll", function () {
-    //     if ($(window).scrollTop() > 300) {
-    //         // btn.addClass('show');
-    //         buttonRef.current.style.display = "block"
-
-    //     } else if(($(window).scrollTop() == 0)){
-    //         buttonRef.current.style.display = "none"
-    //     }
-    // });
-
-    const router = useRouter();
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
@@ -271,7 +256,11 @@ export default function ClassListing() {
         getTokenAPI();
 
     };
-
+    const filtered = classs.filter((dt) =>
+        `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`
+        .toLowerCase()
+        .includes(name.toLowerCase())
+    );
     return (
         <>
             <div className={styles.container}>
@@ -360,84 +349,40 @@ export default function ClassListing() {
                             ))}
                         </select>
                     </div>
+                    <div className="relative">
+                        <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
+                            placeholder="Search" value={name}
+                onChange={(e) => setName(e.target.value)}/>
+                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <SearchOutlined
+                                className="h-4 w-4 text-gray-400"
+                                aria-hidden="true"
+                            />
+                        </div>
+                    </div>
                     <Tabs className="mt-5">
-                    <TabList className="flex justify-between w-full mx-auto container tabs-container">
-                        <Tab className="notSelected">
-                            <div className="flex items-start space-x-2">
-                                <p className="text-2xl futura-bold">ENERGY</p>
-                                <img src="/ONblue.png" className="on-tabs" />{" "}
-                            </div>
-                        </Tab>
-                        <Tab className="notSelected">
-                            <div className="flex items-start space-x-2">
-                                <p className="text-2xl futura-bold">BALANCE</p>
-                                <img src="/ONblue.png" className="on-tabs" />{" "}
-                            </div>
-                        </Tab>
-                        <Tab className="notSelected">
-                            <div className="flex justify-end items-start space-x-2">
-                                <p className="text-2xl futura-bold">POWER</p>
-                                <img src="/ONblue.png" className="on-tabs" />{" "}
-                            </div>
-                        </Tab>
-                    </TabList>
-                </Tabs>
-
-                    <MobileView>
-                        <Tabs selectedIndex={dateNb} className="mt-10">
-                            <TabList className="flex justify-between w-full lg:mx-auto lg:container tabs-container">
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 1 })}>
-                                    <div className="flex justify-start tab">M</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 2 })}>
-                                    <div className="flex justify-center tab">T</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 3 })}>
-                                    <div className="flex justify-center tab">W</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 4 })}>
-                                    <div className="flex justify-center tab">TH</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 5 })}>
-                                    <div className="flex justify-center tab">F</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 6 })}>
-                                    <div className="flex justify-center tab">S</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 7 })}>
-                                    <div className="flex justify-end tab">S</div>
-                                </Tab>
-                            </TabList>
-                        </Tabs>
-                    </MobileView>
-                    <BrowserView>
-                        <Tabs selectedIndex={dateNb} className="mt-10">
-                            <TabList className="flex justify-between w-full lg:mx-auto lg:container tabs-container">
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 1 })}>
-                                    <div className="flex justify-start tab">Monday</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 2 })}>
-                                    <div className="flex justify-center tab">Tuesday</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 3 })}>
-                                    <div className="flex justify-center tab">Wednesday</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 4 })}>
-                                    <div className="flex justify-center tab">Thursday</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 5 })}>
-                                    <div className="flex justify-center tab">Friday</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 6 })}>
-                                    <div className="flex justify-center tab">Saturday</div>
-                                </Tab>
-                                <Tab className="tabColor" onClick={() => getDayByDay({ id: 7 })}>
-                                    <div className="flex justify-end tab">Sunday</div>
-                                </Tab>
-                            </TabList>
-                        </Tabs>
-                    </BrowserView>
-                    {classs.map((item, index) => (
+                        <TabList className="flex justify-between w-full mx-auto container tabs-container">
+                            <Tab className="notSelected">
+                                <div className="flex items-start space-x-2">
+                                    <p className="text-2xl futura-bold">ENERGY</p>
+                                    <img src="/ONblue.png" className="on-tabs" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected">
+                                <div className="flex items-start space-x-2">
+                                    <p className="text-2xl futura-bold">BALANCE</p>
+                                    <img src="/ONblue.png" className="on-tabs" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected">
+                                <div className="flex justify-end items-start space-x-2">
+                                    <p className="text-2xl futura-bold">POWER</p>
+                                    <img src="/ONblue.png" className="on-tabs" />{" "}
+                                </div>
+                            </Tab>
+                        </TabList>
+                    </Tabs>
+                    {filtered.map((item, index) => (
                         <>
                             <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
                                 <div className="flex justify-start w-3/4">
@@ -448,7 +393,7 @@ export default function ClassListing() {
                                         {item.studio?.studioName}
                                     </p>
                                     <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#009FE3] w-1/5'>{moment(item.classTime).format("DD MMM YYYY")}</p>
-                                        <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5'>{moment(item.classTime).format("HH:mm")}</p>
+                                    <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5'>{moment(item.classTime).format("HH:mm")}</p>
                                     <p className="text-white text-md sizemobile futura-book lg:pl-5 md:pl-5 pl-5 w-1/5">
                                         {item.location?.locationName}
                                     </p>
@@ -463,10 +408,15 @@ export default function ClassListing() {
                                                 <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
                                             </div>
                                         ) : (
-                                            <div className="flex space-x-2 items-center" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                            <div className="flex space-x-2 items-center">
                                                 <img src="/booked.png" />
                                                 <p className="futura-book text-white text-md sizemobile">Booked</p>
+                                                <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                Cancel
+                                                <Close className="cancel-close" />
+                                            </p>
                                             </div>
+                                            
                                         )}
                                     </button>
                                 </div>
