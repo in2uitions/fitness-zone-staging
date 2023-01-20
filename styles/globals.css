@@ -308,7 +308,8 @@
   font-family: "Futura Bk BT";
 }
 
-html,body{
+html,
+body {
   width: 100vw;
   min-height: 100vh;
   /* position: absolute; */
@@ -320,6 +321,7 @@ html,body{
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
 html {
   /* background-image: url(/solid-concrete-wall-textured-backdrop.jpg);
   background-size: cover;
@@ -331,96 +333,122 @@ html {
     padding: 0;
     margin: 0;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; */
-    background-image: url(/solid-concrete-wall-textured-backdrop.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    width: 100vw;
-    min-height: 100vh;
-    overflow-x: hidden;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  background-image: url(/solid-concrete-wall-textured-backdrop.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-.rbc-header + .rbc-header{
+
+.rbc-header+.rbc-header {
   border-left: 0px solid transparent !important;
 }
-.rbc-month-view{
+
+.rbc-month-view {
   border: 0px solid !important;
 }
-.rbc-day-bg + .rbc-day-bg{
+
+.rbc-day-bg+.rbc-day-bg {
   border-left: 0px solid transparent !important;
 }
-.rbc-month-row + .rbc-month-row{
+
+.rbc-month-row+.rbc-month-row {
   border-top: 0px solid transparent !important;
 }
-.rbc-header{
+
+.rbc-header {
   border-bottom: 0px solid transparent !important;
 }
-.rbc-toolbar-label{
+
+.rbc-toolbar-label {
   font-family: "Futura" !important;
 }
-.rbc-toolbar button{
+
+.rbc-toolbar button {
   color: white !important;
   border: 1px solid #009FE3 !important;
 }
-.rbc-toolbar button:hover{
+
+.rbc-toolbar button:hover {
   background-color: transparent !important;
 }
-.rbc-toolbar button:focus{
+
+.rbc-toolbar button:focus {
   background-color: transparent !important;
 }
-.rbc-month-view{
+
+.rbc-month-view {
   background-color: rgba(143, 143, 143, 0.1) !important;
   border-radius: 5px !important;
   padding: 10px !important;
 }
-.rbc-month-header{
+
+.rbc-month-header {
   margin-bottom: 2rem;
 }
-.rbc-off-range-bg{
+
+.rbc-off-range-bg {
   background: transparent !important;
 }
-.rbc-button-link{
+
+.rbc-button-link {
   color: white !important;
 }
-.rbc-today{
+
+.rbc-today {
   background: transparent !important;
   width: 50% !important;
   border-radius: 50px;
   height: 40% !important;
 }
-.rbc-date-cell.rbc-now{
+
+.rbc-date-cell.rbc-now {
   background: rgba(0, 159, 227, 0.8) !important;
   width: 50% !important;
   border-radius: 50px;
   height: 50% !important;
 }
-.rbc-toolbar .rbc-toolbar-label{
-text-align: unset !important;
+
+.rbc-toolbar .rbc-toolbar-label {
+  text-align: unset !important;
 }
-.rbc-toolbar-label{color: white !important;}
-.rbc-row rbc-month-header{
+
+.rbc-toolbar-label {
   color: white !important;
 }
-.rbc-btn-group{
+
+.rbc-row rbc-month-header {
   color: white !important;
 }
-.rbc-header{
+
+.rbc-btn-group {
+  color: white !important;
+}
+
+.rbc-header {
   color: white !important;
   margin-bottom: 1rem;
 }
-.rbc-date-cell{
+
+.rbc-date-cell {
   text-align: center !important;
 }
-.rbc-toolbar{
+
+.rbc-toolbar {
   margin-bottom: 30px !important;
 }
-.rbc-month-header{
+
+.rbc-month-header {
   border-bottom: 0.25px solid grey;
 }
+
 p {
   font-size: 18px;
   line-height: 28px;
@@ -435,9 +463,11 @@ p {
 .reactTooltip::after {
   background-color: transparent !important;
 }
-.btnActive{
+
+.btnActive {
   margin-bottom: 1rem !important;
 }
+
 /* .__react_component_tooltip {
   position: relative !important;
   opacity: 1 !important;
@@ -461,24 +491,29 @@ p {
 .react-tabs__tab-list {
   display: flex !important;
 }
-.notSelected{
-  color:#707070 !important;
+
+.notSelected {
+  color: #707070 !important;
   padding: 10px;
 }
+
 .react-tabs__tab--selected {
   background: white !important;
-  border:1px solid grey !important;
-  color: black !important;
+  border: 1px solid grey !important;
+  color: #009FE3 !important;
   /* width: 45% !important; */
   padding: 10px !important;
   border-radius: 5px !important;
 }
-.react-tabs__tab--selected.tabColor{
+
+.react-tabs__tab--selected.tabColor {
   color: #009FE3 !important;
 }
-.forward-blue{
+
+.forward-blue {
   fill: #009FE3 !important;
 }
+
 #buttonss {
   /* display: inline-block; */
   background-color: #009FE3;
@@ -493,27 +528,30 @@ p {
   position: fixed;
   bottom: 8rem;
   right: 1rem;
-  transition: background-color .3s, 
+  transition: background-color .3s,
     opacity .5s, visibility .5s;
   /* opacity: 0;
   visibility: hidden; */
 }
+
 .go-top {
-  right:1em;
-  bottom:2em;
-  color:#FAFAFA;
-  text-decoration:none;
-  background:#F44336;
-  padding:5px;
-  border-radius:5px;
-  border:1px solid #e0e0e0;
-  position:fixed;
+  right: 1em;
+  bottom: 2em;
+  color: #FAFAFA;
+  text-decoration: none;
+  background: #F44336;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  position: fixed;
 
 }
-.arrow-backtop{
+
+.arrow-backtop {
   width: 2em !important;
   height: 2em !important;
 }
+
 /* #buttonss::after {
   content: "\f077";
   font-family: FontAwesome;
@@ -527,22 +565,27 @@ p {
   cursor: pointer;
   background-color: #333;
 }
+
 #buttonss:active {
   background-color: #555;
 }
+
 #buttonss.show {
   opacity: 1;
   visibility: visible;
 }
-.tabColor{
+
+.tabColor {
   padding: 10px;
   color: white;
   font-family: "Futura Bk BT";
   cursor: pointer;
 }
-.react-tabs__tab{
+
+.react-tabs__tab {
   padding: 10px !important;
 }
+
 /* .tab:focus{
   background-color: white;
 }
@@ -568,15 +611,18 @@ p {
   display: flex;
   justify-content: center;
 } */
-.react-tabs__tab--selected:focus{
+.react-tabs__tab--selected:focus {
   /* border: 0px solid transparent !important; */
 }
-.react-tabs__tab--selected:active{
+
+.react-tabs__tab--selected:active {
   /* border: 0px solid transparent !important; */
 }
-.tabs-container{
+
+.tabs-container {
   background-color: rgba(143, 143, 143, 0.1);
 }
+
 /* .react-tabs__tab {
   width: 45% !important;
   border: 0px solid transparent !important;
@@ -626,6 +672,13 @@ p {
   height: 1rem !important;
   font-size: 1rem !important;
   fill: #8F8F8F !important;
+}
+
+.cancel-close {
+  width: 1rem !important;
+  height: 1rem !important;
+  font-size: 1rem !important;
+  fill: #009FE3 !important;
 }
 
 .flag-dropdown {
@@ -1956,14 +2009,17 @@ li.category.isActive {
   width: 500px;
   top: 3.5rem;
 }
-.btns-vacancies{
+
+.btns-vacancies {
   position: relative;
   width: 500px;
   top: 7rem;
 }
-.btns-vacancies .btn-vacancies{
+
+.btns-vacancies .btn-vacancies {
   cursor: pointer;
 }
+
 .btns-vacancies .btn-vacancies:last-child {
   right: 0px;
 }
@@ -2287,25 +2343,31 @@ li.category.isActive {
     visibility: hidden !important;
   }
 }
-@media (min-width:320px) and (max-width:480px){
-  .rbc-btn-group{
+
+@media (min-width:320px) and (max-width:480px) {
+  .rbc-btn-group {
     margin-bottom: 10px !important;
   }
-  .checkins-labels{
+
+  .checkins-labels {
     font-size: .875rem;
   }
-  .popup-overlay{
+
+  .popup-overlay {
     overflow-y: scroll;
   }
-  .sizemobile{
+
+  .sizemobile {
     font-size: .875rem !important;
   }
-  .dropdown-items{
+
+  .dropdown-items {
     z-index: 5645 !important;
     background-color: white !important;
     color: black !important;
   }
 }
+
 @media (min-width:320px) and (max-width:375px) {
   .timeline-mobile {
     display: flex;
@@ -2543,21 +2605,26 @@ li.category.isActive {
   .forwardback {
     left: 12rem;
   }
-  .slick-slider{
+
+  .slick-slider {
     width: 100vw !important;
   }
+
   /* .membership-box{
     width: 100vw;
   } */
-  .slick-dots{
+  .slick-dots {
     width: 100% !important;
   }
-  .slick-slide{
+
+  .slick-slide {
     width: 100vw !important;
   }
-  .slick-track{
+
+  .slick-track {
     display: flex !important;
   }
+
   /* .h-mobile{
     height: 85vh;
   } */
@@ -2568,9 +2635,10 @@ li.category.isActive {
   .timelineForward {
     visibility: hidden;
   } */
-  .classes-box{
+  .classes-box {
     width: 100% !important;
   }
+
   .timeline-mobile {
     display: flex;
     flex-direction: column;
@@ -2832,16 +2900,19 @@ li.category.isActive {
   .wtsp-widget {
     bottom: 25px !important;
   }
-  
+
 }
-@media (min-width:1200px) and (max-width:1535px){
-  .sizing{
+
+@media (min-width:1200px) and (max-width:1535px) {
+  .sizing {
     margin-left: unset;
   }
-  .exipryDate{
+
+  .exipryDate {
     font-size: 14px;
   }
 }
+
 @media screen and (max-width: 1440px) {
   /* .popup-input{
     width: 26rem ;
@@ -2977,34 +3048,36 @@ li.category.isActive {
   padding: 0px !important;
   border: 0px solid #d7d7d7 !important;
 } */
-.close-button{
+.close-button {
   background: #009fe3;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    right: 0rem;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0rem;
 }
-.closing{
+
+.closing {
   background: #009fe3;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    right: 2rem;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 2rem;
 }
+
 .close {
   color: white;
   outline: none;
@@ -3022,7 +3095,7 @@ li.category.isActive {
   justify-content: center;
 }
 
-.btn-nowrap{
+.btn-nowrap {
   white-space: nowrap;
 }
 
@@ -4017,11 +4090,12 @@ ul li.activate {
   position: relative;
   width: 100%;
 }
+
 .react-tel-input :disabled {
   cursor: not-allowed;
 }
 
-.ReactFlagsSelect-module_selectBtn__19wW7{
+.ReactFlagsSelect-module_selectBtn__19wW7 {
   color: white !important;
   padding: 0px !important;
   border: 0px solid transparent !important;
@@ -4029,24 +4103,29 @@ ul li.activate {
   flex-direction: row-reverse !important;
   justify-content: flex-end !important;
 }
- .ReactFlagsSelect-module_secondaryLabel__37t1D{
+
+.ReactFlagsSelect-module_secondaryLabel__37t1D {
   color: white !important;
 }
-.ReactFlagsSelect-module_selectOptions__3LNBJ{
+
+.ReactFlagsSelect-module_selectOptions__3LNBJ {
   background: white !important;
   border: 0px solid transparent !important;
   color: black !important;
 }
-.ReactFlagsSelect-module_label__27pw9{
-  text-transform:capitalize !important;
+
+.ReactFlagsSelect-module_label__27pw9 {
+  text-transform: capitalize !important;
   font-family: "Futura Bk BT" !important;
 }
-.chevron-session{
+
+.chevron-session {
   fill: #009FE3 !important;
   width: 1.5em !important;
   height: 1.5em !important;
 }
-.on-tabs{
+
+.on-tabs {
   height: 1.5rem;
 }
 
@@ -4054,6 +4133,7 @@ ul li.activate {
 .dropdown {
   min-width: 100px;
 }
+
 .dropdown-btn {
   font-size: 16px;
   /* background: white; */
@@ -4066,6 +4146,7 @@ ul li.activate {
   padding: 0 30px;
   cursor: pointer;
 }
+
 .dropdown-btn:hover,
 .dropdown-btn:focus {
   /* background: #f2f2f2; */
@@ -4082,13 +4163,15 @@ ul li.activate {
   /* padding: 8px 15px; */
   border-radius: 4px;
 }
+
 .dropdown-item {
   padding-top: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 0px;
   cursor: pointer;
 }
+
 /* .dropdown-item:hover{
   background-color: rgba(211, 211, 211, 0.66);
 } */
@@ -4104,17 +4187,18 @@ ul li.activate {
 .isVisible {
   visibility: visible;
 }
+
 .isHidden {
   visibility: hidden;
 }
+
 .top-btn {
-  all: unset; 
+  all: unset;
   position: fixed;
   right: 20px;
   bottom: 20px;
   cursor: pointer;
-  transform:scale(1.8);
+  transform: scale(1.8);
   /* opacity: 0; */
   transition: .3s;
 }
-

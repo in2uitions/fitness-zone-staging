@@ -1,15 +1,11 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import MagicSliderDots from "react-magic-slider-dots";
 import "react-magic-slider-dots/dist/magic-dots.css";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import Close from "@material-ui/icons/Close";
 import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
-import ToggleText from "../account/test";
-import ReactFlagsSelect from "react-flags-select";
 import { useRouter } from "next/router";
 
 export default function Dashboard({ style = "white" }) {
@@ -51,7 +47,6 @@ export default function Dashboard({ style = "white" }) {
                 var registraitonRawData = JSON.stringify({
                     "Phone": event.target.mobile?.value,
                 });
-                // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
                 registrationHeaders.append("Content-Type", "application/json");
@@ -119,18 +114,6 @@ export default function Dashboard({ style = "white" }) {
                     method: 'POST',
                     headers: registrationHeaders
                 };
-                const changeBirthDate = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveBirthdate?memberId=${memberId}&birthdate=${event.target.birthdate.value}`,
-                    registrationRequestOptions
-                );
-                const birthData = await changeBirthDate.json();
-                if (birthData.isValid == true ) {
-                    localStorage.setItem("BirthDate", event.target.birthdate.value);
-                    // alert("You have changed your Data. Congratulations!")
-                }
-                else {
-                    //alert("Wrong data");
-                }
 
             } catch (err) {
                 console.log(err);
@@ -211,41 +194,6 @@ export default function Dashboard({ style = "white" }) {
         };
         getSubmitEmail();
     };
-    const handleSubmitBirthDate = async event => {
-        event.preventDefault();
-
-        const getSubmitBirthDate = async () => {
-            try {
-                var registraitonRawData = JSON.stringify({
-                    "Birthdate": event.target.birthdate?.value
-                });
-                // console.log(registraitonRawData);
-                var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
-                registrationHeaders.append("Content-Type", "application/json");
-                var registrationRequestOptions = {
-                    method: 'POST',
-                    headers: registrationHeaders
-                };
-                const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveBirthdate?memberId=${memberId}&mobile=${event.target.mobile.value}`,
-                    registrationRequestOptions
-                );
-                const data = await res.json();
-                if (data.isValid == true ) {
-                    localStorage.setItem("BirthDate", event.target.birthdate.value);
-                    //alert("You have changed your BirthDate. Congratulations!")
-                }
-                else {
-                    //alert("Wrong data");
-                }
-
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        getSubmitBirthDate();
-    };
     const handleChange = (e, index) => {
         const object = {
             [index]: e.target?.value,
@@ -317,7 +265,6 @@ export default function Dashboard({ style = "white" }) {
                         position=""
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            {/* <img src="/icons-person.png" /> */}
                             <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
