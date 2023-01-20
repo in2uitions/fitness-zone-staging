@@ -336,7 +336,9 @@ export default function ClassListing() {
             </div>
             <section className="">
                 <div className="lg:container mx-auto mt-40 lg:px-28 md:px-20 px-3 w-screen">
-                    <p className="text-[#009FE3] futura-bold text-4xl">BOOK A CLASS</p>
+                <div className="flex flex-col justify-center items-center">
+                    <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p>
+                    </div>
                     <div className="flex justify-between mt-5">
                         <div className="flex items-center space-x-5">
                             <img src="/filterBy.png" />
