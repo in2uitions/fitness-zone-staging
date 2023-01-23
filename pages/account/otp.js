@@ -1,11 +1,20 @@
 
 import Router, { useRouter } from "next/router";
 import OtpTimer from "otp-timer";
+import { useEffect } from "react";
 
 export default function Otp() {
     const { query } = useRouter()
     const router = useRouter()
-
+    const itemSet = (localStorage.getItem("token") !== null);
+    useEffect(() => {
+    if (itemSet) {
+        router.push({ pathname: "/account/otp"});
+    }
+    else{
+        router.push({ pathname: "/account/login"});
+    }
+}, [])
     const submitOTP = async event => {
         event.preventDefault();
 

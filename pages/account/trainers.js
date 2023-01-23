@@ -4,12 +4,22 @@ import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { useRouter } from "next/router";
+import PrivateMenu from "./private-menu";
 
 export default function List() {
     const [data, setListData] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
     const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
     const [selectedCategory, setSelectedCategory] = useState();
+    const itemSet = (localStorage.getItem("token") !== null);
+    useEffect(() => {
+    if (itemSet) {
+        router.push({ pathname: "/account/trainers"});
+    }
+    else{
+        router.push({ pathname: "/account/login"});
+    }
+}, [])
     function handleCategoryChange(event) {
         const val = event.target.value
         localStorage.setItem("Category", val);
@@ -72,8 +82,10 @@ export default function List() {
                     `https://api.fitnessclubapp.com/api/Administration/Location/List`,
                     registrationRequestOptions
                 );
+                if(response.status == 200){
                 const checkInList = await response.json();
                 setListData(checkInList);
+                }
             }
         }, []);
     } catch (err) {
@@ -89,6 +101,7 @@ export default function List() {
                     `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                     registrationRequestOptions
                 );
+                if(response.status == 200){
                 const fetchedData = await response.json();
                 var memberType = fetchedData.membershipType.memberShipTypeName
                 setBooks(memberType);
@@ -97,6 +110,7 @@ export default function List() {
                     setIsDisabled(true);
                     handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
                 }
+            }
             }
             getData();
         }, []);
@@ -112,8 +126,10 @@ export default function List() {
                     `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                     registrationRequestOptions
                 );
+                if(response.status == 200){
                 const fetchedData = await response.json();
                 setInfo(fetchedData);
+                }
             }
             getData();
         }, []);
@@ -132,68 +148,7 @@ export default function List() {
     };
     return (
         <>
-            <div className={styles.container}>
-                <nav className={styles.nav}>
-                    <a href="/">
-                        <img src="/logo.svg" className="logo" />
-                    </a>
-                    <Popup
-                        trigger={
-                            <div className="flex items-center space-x-2">
-                                <button className="img-btn">
-                                    <img src="/blue-rectangle.svg" className="menu-icon" />
-                                </button>
-                                <p className="font-bold text-white futura-book cursor-pointer">
-                                    Menu
-                                </p>
-                            </div>
-                        }
-                        modal
-                        closeOnDocumentClick
-                        position=""
-                    >
-                        <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            {/* <img src="/icons-person.png" /> */}
-                            <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
-                                <p className="futura-bold text-6xl text-[#009FE3]">{info.firstName?.charAt(0)}</p>
-                                <p className="futura-bold text-6xl text-[#009FE3]">{info.lastName?.charAt(0)}</p>
-                            </a>
-                            <p className="futura-bold text-[#009FE3] mt-5">{info.fullName}</p>
-                            <div className="flex flex-col mt-10">
-                                <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a
-                                        href="/account/myProfile"
-                                        className="futura-book menu-member flex items-center justify-between"
-                                    >
-                                        {" "}
-                                        My Profile
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                    <a href='/account/membership' className="futura-book menu-member flex items-center justify-between">
-                                        Membership Settings
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                </div>
-                                <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white">
-                                        Classes / Book a class
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                    <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between">
-                                        Trainers / Book a package
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                </div>
-                                <form onSubmit={onSubmitForm}>
-                                    <div className="flex justify-center items-center">
-                                        <button type="submit" className="text-white border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </Popup>
-                </nav>
-            </div>
+           <PrivateMenu/>
             <section className="">
                 <div className="mt-40 lg:px-28 md:px-20 px-3 container mx-auto w-full h-full">
                     <div className="flex flex-row justify-between">

@@ -12,9 +12,9 @@ const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })
 export default function Footer(data = {}) {
     const [showPopup, setShowPopup] = useState(false)
     const [showForm, setShowForm] = useState(false)
-    const [phoneNumber, setPhoneNumber]= useState()
-    const [fax, setFax]= useState()
-    const [email, setEmail]=useState()
+    const [phoneNumber, setPhoneNumber] = useState()
+    const [fax, setFax] = useState()
+    const [email, setEmail] = useState()
     const [phoneValue, setPhoneValue] = useState()
     const [phone, setPhone] = useState()
     const [whatsappNumber, setWhatsappNumber] = useState();
@@ -29,9 +29,9 @@ export default function Footer(data = {}) {
         alert('test');
     }
 
-    setTimeout(() => {
+    useEffect(() => {
         if (nextConfig.country_code == 'AE') {
-            setShowPopup(true)
+            // setShowPopup(true)
             setShowForm(true)
             setWhatsappNumber('//api.whatsapp.com/send?phone=971547274777')
             setFaceBookLink('https://www.facebook.com/FitnessZoneUAE')
@@ -41,7 +41,7 @@ export default function Footer(data = {}) {
             setPhoneNumber('+971 54 727 4777')
         }
         else {
-            setShowPopup(false)
+            // setShowPopup(true)
             setShowForm(false)
             setWhatsappNumber('//api.whatsapp.com/send?phone=9613505250')
             setFaceBookLink('https://www.facebook.com/fitnesszonelb/')
@@ -50,7 +50,8 @@ export default function Footer(data = {}) {
             setFax('+961 5 958 058')
             setPhoneNumber('+961 3 505 250')
         }
-    }, 1000);
+    }, [nextConfig.country_code])
+
     const submitSignUp = async event => {
         event.preventDefault();
 
@@ -180,11 +181,6 @@ export default function Footer(data = {}) {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
-        // const idj= ct.map(el => el.id)
-        // if (idj == 1){
-        //     console.log("hii")
-        // }
-        // console.log(ct.slice(0,1).map(el => el.id))
         updateContent(ct);
 
         return () => {
@@ -194,6 +190,7 @@ export default function Footer(data = {}) {
 
 
     }, [data]);
+   
     return (
         <>
             <section>
@@ -249,7 +246,7 @@ export default function Footer(data = {}) {
                     <div className="lg:col-span-4 sm:col-span-12">
                         <div className="pt-5">
                             <div className="flex flex-row pr-5 lg:pr-0">
-                                <Popup
+                                {showForm ? <Popup
                                     trigger={
                                         <button>
                                             {showForm ? <a
@@ -273,7 +270,7 @@ export default function Footer(data = {}) {
                                             <FooterPopup />
                                         </>
                                     )}
-                                </Popup>
+                                </Popup> : null}
 
                                 {/* <a
                                     href="#"
@@ -320,7 +317,7 @@ export default function Footer(data = {}) {
                                 : null}
                             <div>
 
-                                <Popup
+                                {/* <Popup
                                     trigger={
                                         <button>
                                             <a href="#" style={{ display: "none" }} className="request">REQUEST A CALL</a>
@@ -339,7 +336,7 @@ export default function Footer(data = {}) {
                                             <FooterPopup />
                                         </>
                                     )}
-                                </Popup>
+                                </Popup> */}
                             </div>
                         </div>
                     </div>

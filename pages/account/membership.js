@@ -10,11 +10,21 @@ import { useState, useEffect , useRef} from 'react';
 import { ArrowUpward } from '@material-ui/icons';
 import $ from "jquery";
 import { useRouter } from "next/router";
+import PrivateMenu from './private-menu';
 
 export default function Membership({ style = 'white' }) {
     const memberId = localStorage.getItem('Member');
     const [test, setTest] = useState([])
     const [state, toggle] = useState(true);
+    const itemSet = (localStorage.getItem("token") !== null);
+    useEffect(() => {
+    if (itemSet) {
+        router.push({ pathname: "/account/membership"});
+    }
+    else{
+        router.push({ pathname: "/account/login"});
+    }
+}, [])
     try {
         
         var registrationHeaders = new Headers();
@@ -32,8 +42,10 @@ export default function Membership({ style = 'white' }) {
                     registrationRequestOptions
 
                 );
+                if(response.status == 200){
                 const membership = await response.json()
                 setTest(membership)
+                }
             }
         }, [])
     } catch (err) {
@@ -65,9 +77,11 @@ export default function Membership({ style = 'white' }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                     registrationRequestOptions
                 );
+                if(response.status == 200){
                 const fetchedData = await response.json();
                 setData(fetchedData);
             }
+        }
             getData();
         }, []);
     } catch (err) {
@@ -95,19 +109,19 @@ export default function Membership({ style = 'white' }) {
     //     }
     // });
     const router = useRouter();
-    const onSubmitForm = async event => {
-        event.preventDefault();
-        const getTokenAPI = async () => {
-            localStorage.clear();
-            router.push({ pathname: "/account/login"});
-        };
-        getTokenAPI();
+    // const onSubmitForm = async event => {
+    //     event.preventDefault();
+    //     const getTokenAPI = async () => {
+    //         localStorage.clear();
+    //         router.push({ pathname: "/account/login"});
+    //     };
+    //     getTokenAPI();
 
-    };
+    // };
   
     return (
         <>
-            <div className={styles.container}>
+            {/* <div className={styles.container}>
                 <nav className={styles.nav}>
                     <a href="/">
                         <img src="/logo.svg" className="logo" />
@@ -128,7 +142,6 @@ export default function Membership({ style = 'white' }) {
                         position=""
                     >
                         <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            {/* <img src="/icons-person.png" /> */}
                             <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
@@ -168,7 +181,8 @@ export default function Membership({ style = 'white' }) {
                         </div>
                     </Popup>
                 </nav>
-            </div>
+            </div> */}
+            <PrivateMenu/>
             <section>
                 <div className='container lg:px-28 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40'>
                     <div className='flex flex-col justify-center items-center'>

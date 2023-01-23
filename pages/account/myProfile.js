@@ -2,17 +2,24 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-magic-slider-dots/dist/magic-dots.css";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import styles from "../../styles/Header.module.css";
-import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import PrivateMenu from "./private-menu";
 
 export default function Dashboard({ style = "white" }) {
     const [data, setData] = useState([]);
     const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState("");
     const memberId = localStorage.getItem("Member");
+    const itemSet = (localStorage.getItem("token") !== null);
+    useEffect(() => {
+    if (itemSet) {
+        router.push({ pathname: "/account/myProfile"});
+    }
+    else{
+        router.push({ pathname: "/account/login"});
+    }
+}, [])
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
@@ -31,8 +38,10 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                     registrationRequestOptions
                 );
+                if(response.status == 200){
                 const fetchedData = await response.json();
                 setData(fetchedData);
+                }
             }
             getData();
         }, []);
@@ -58,6 +67,7 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&mobile=${event.target.mobile.value}`,
                     registrationRequestOptions
                 );
+                if(res.status == 200){
                 const data = await res.json();
                 if (data.isValid == true ) {
                     localStorage.setItem("Phone", event.target.mobile.value);
@@ -66,6 +76,7 @@ export default function Dashboard({ style = "white" }) {
                 else {
                     //alert("Wrong data");
                 }
+            }
 
             } catch (err) {
                 console.log(err);
@@ -88,6 +99,7 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/SaveEmail?memberId=${memberId}&email=${event.target.email.value}`,
                     registrationRequestOptions
                 );
+                if(response.status == 200){
                 const emailData = await response.json();
                 if (emailData.isValid == true ) {
                     localStorage.setItem("Email", event.target.email.value);
@@ -96,28 +108,12 @@ export default function Dashboard({ style = "white" }) {
                 else {
                     //alert("Wrong data");
                 }
-
+            }
             } catch (err) {
                 console.log(err);
             }
 
 
-            try {
-                var registraitonRawData = JSON.stringify({
-                    "Birthdate": event.target.birthdate?.value
-                });
-                // console.log(registraitonRawData);
-                var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
-                registrationHeaders.append("Content-Type", "application/json");
-                var registrationRequestOptions = {
-                    method: 'POST',
-                    headers: registrationHeaders
-                };
-
-            } catch (err) {
-                console.log(err);
-            }
             if (data.isValid == true ){
                 alert("You have changed your data successfully!")
             }
@@ -144,6 +140,7 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&mobile=${event.target.mobile.value}`,
                     registrationRequestOptions
                 );
+                if(res.status == 200){
                 const data = await res.json();
                 if (data.isValid == true ) {
                     localStorage.setItem("Phone", event.target.mobile.value);
@@ -152,7 +149,7 @@ export default function Dashboard({ style = "white" }) {
                 else {
                     //alert("Wrong data");
                 }
-
+            }
             } catch (err) {
                 console.log(err);
             }
@@ -179,6 +176,7 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/SaveEmail?memberId=${memberId}&mobile=${event.target.mobile.value}`,
                     registrationRequestOptions
                 );
+                if(res.status == 200){
                 const data = await res.json();
                 if (data.isValid == true ) {
                     localStorage.setItem("Email", event.target.email.value);
@@ -187,7 +185,7 @@ export default function Dashboard({ style = "white" }) {
                 else {
                     //alert("Wrong data");
                 }
-
+            }
             } catch (err) {
                 console.log(err);
             }
@@ -221,10 +219,12 @@ export default function Dashboard({ style = "white" }) {
                     registrationRequestOptions
 
                 );
+                if(response.status == 200){
                 const checkInList = await response.json()
                 setCountryData(checkInList)
                 // console.log(checkInList)
             }
+        }
             // getData()
         }, [])
     } catch (err) {
@@ -233,78 +233,9 @@ export default function Dashboard({ style = "white" }) {
     const [select, setSelect] = useState("LEBANON");
     const onSelect = (code) => setSelect(code);
     const router = useRouter();
-    const onSubmitForm = async event => {
-        event.preventDefault();
-        const getTokenAPI = async () => {
-            localStorage.clear();
-            router.push({ pathname: "/account/login"});
-        };
-        getTokenAPI();
-
-    };
     return (
         <>
-            <div className={styles.container}>
-                <nav className={styles.nav}>
-                    <a href="/">
-                        <img src="/logo.svg" className="logo" />
-                    </a>
-                    <Popup
-                        trigger={
-                            <div className="flex items-center space-x-2">
-                                <button className="img-btn">
-                                    <img src="/blue-rectangle.svg" className="menu-icon" />
-                                </button>
-                                <p className="font-bold text-white futura-book cursor-pointer">
-                                    Menu
-                                </p>
-                            </div>
-                        }
-                        modal
-                        closeOnDocumentClick
-                        position=""
-                    >
-                        <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
-                            <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
-                            <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
-                            </a>
-                            <p className="futura-bold text-[#009FE3] mt-5">{data.fullName}</p>
-                            <div className="flex flex-col mt-10">
-                                <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a
-                                        href="/account/myProfile"
-                                        className="futura-book menu-member flex items-center justify-between"
-                                    >
-                                        {" "}
-                                        My Profile
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                    <a href='/account/membership' className="futura-book menu-member flex items-center justify-between">
-                                        Membership Settings
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                </div>
-                                <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white">
-                                        Classes / Book a class
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                    <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between">
-                                        Trainers / Book a package
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                </div>
-                                <form onSubmit={onSubmitForm}>
-                                    <div className="flex justify-center items-center">
-                                        <button type="submit" className="text-white border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </Popup>
-                </nav>
-            </div>
+           <PrivateMenu/>
             <section>
                 <form className="w-full" onSubmit={handleSubmit}>
                     <div className=" mx-auto flex flex-col justify-center items-center mt-40">

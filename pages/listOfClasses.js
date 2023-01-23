@@ -120,13 +120,13 @@ export default function App() {
         <div className="flex flex-col justify-center items-center">
             <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> 
             </div>
-            <div className="flex w-full space-x-5 mt-5">
-                <div className="flex items-center space-x-5" style={{width: "10%"}}>
-                    <img src="/filterBy.png" />
+            <div className="flex w-full justify-between items-center mt-5">
+                <div className="flex items-center space-x-3">
+                    <img src="/filterBy.png"/>
                     <p className="futura-book text-white">Filter by</p>
                 </div>
                 {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
-                <div className="relative" style={{width: "80%"}}>
+                <div className="relative" style={{width: "73%"}}>
                 <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
                     placeholder="Search" value={name}
                     onChange={(e) => setName(e.target.value)} />
@@ -137,8 +137,8 @@ export default function App() {
                     />
                 </div>
             </div>
-            <div className="flex justify-center items-center" style={{width:"10%"}}>
-                <select style={{height:"2.5rem" , borderRadius:"5px"}} name="location" id="location" onChange={handleCategoryChange}>
+            <div className="flex justify-center items-center">
+                <select style={{height:"2.5rem" , borderRadius:"5px", paddingLeft:"10px"}} name="location" id="location" onChange={handleCategoryChange}>
                     {location.map((item, i) => (
                         <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
                     ))}
@@ -149,20 +149,20 @@ export default function App() {
             <Tabs className="mt-5">
                 <TabList className="flex justify-between w-full mx-auto container tabs-container">
                     <Tab className="notSelected">
-                        <div className="flex items-start space-x-2">
-                            <p className="text-2xl futura-bold">ENERGY</p>
+                        <div className="flex items-center space-x-2">
+                            <p className="text-2xl font-extrabold">ENERGY</p>
                             <img src="/ONblue.png" className="on-tabs" />{" "}
                         </div>
                     </Tab>
                     <Tab className="notSelected">
-                        <div className="flex items-start space-x-2">
-                            <p className="text-2xl futura-bold">BALANCE</p>
+                        <div className="flex items-center space-x-2">
+                            <p className="text-2xl font-extrabold">BALANCE</p>
                             <img src="/ONblue.png" className="on-tabs" />{" "}
                         </div>
                     </Tab>
                     <Tab className="notSelected">
-                        <div className="flex justify-end items-start space-x-2">
-                            <p className="text-2xl futura-bold">POWER</p>
+                        <div className="flex justify-end items-center space-x-2">
+                            <p className="text-2xl font-extrabold">POWER</p>
                             <img src="/ONblue.png" className="on-tabs" />{" "}
                         </div>
                     </Tab>

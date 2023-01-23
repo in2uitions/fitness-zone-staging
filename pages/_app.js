@@ -13,6 +13,7 @@ import { handleApi } from "../api/server";
 
 // const Menu = dynamic(() => import('./components/menu-items'), { ssr: false })
 function MyApp({ Component, pageProps, data = {}, about=[] }) {
+ 
  const getVisitorLocationAPI = async () => {
     try {
         const res = await fetch(
@@ -44,6 +45,7 @@ function MyApp({ Component, pageProps, data = {}, about=[] }) {
 };
 
 getVisitorLocationAPI();
+
 return <>
 
     <Head>

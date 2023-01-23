@@ -30,6 +30,7 @@ export default function CompAccordion({ data = {}, style = 'white' }) {
 
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
+        console.log(event.target.value)
         setRefresh(refresh + 1)
         let timeout = setTimeout(() => {
             document.getElementById('classes').scrollIntoView({ behavior: "smooth", block: 'start' });

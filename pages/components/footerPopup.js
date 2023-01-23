@@ -128,7 +128,7 @@ export default function FooterPopup() {
         <div className="">
 
             <div className="popup-overlay">
-                <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg popup-measures">
+                <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg ">
                     <form onSubmit={submitSignUp} className="flex">
                         <input type="hidden" name="enquire_request" value="popup-request" />
                         <div className="lg:flex lg:w-full">

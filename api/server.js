@@ -85,7 +85,32 @@ export const getTrainers = async (value) => {
     // console.log(JSON.stringify(trainersPublished.data) + "Trainers")
     return trainersPublished.data;
 }
+export const getPopup = async (value) => {
+    const popup = directus.items('popup');
 
+    var myfilter = '';
+    if (value) {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            }
+        }
+    }
+    else {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            },
+
+
+        }
+
+    }
+
+    var myfields = ['*']
+    const popupPublished = await popup.readByQuery({ filter: myfilter, fields: myfields })
+    return popupPublished.data;
+}
 export const createuser = async () => {
     const users = directus.items("send_cv");
     var firstNameToUse = localStorage.getItem('first_name');

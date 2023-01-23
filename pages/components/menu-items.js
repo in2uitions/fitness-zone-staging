@@ -132,7 +132,78 @@ export default function Menu(data = {}) {
             router.events.off('routeChangeStart', handleRouteChange)
         }
     }, []);
+    const onSubmitForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.clear();
+            router.push({ pathname: "/account/login" });
+        };
+        getTokenAPI();
 
+    };
+    const[button, setButton]= useState();
+    const[signbtn, setSignBtn] = useState();
+    const itemSet = (localStorage.getItem("token") !== null);
+    useEffect(() => {
+    if (itemSet) {
+        setButton(<a href='/account/dashboard' className="w-auto p-2 rounded flex justify-center items-center futura-bold">DASHBOARD</a>)
+        // setSignBtn( <form onSubmit={onSubmitForm}>
+        //         <button type="submit" className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white">Log Out</button>
+        // </form>)
+    }
+    else{
+        setButton(<a href='/account/login' className="rounded flex justify-center items-center futura-bold">LOG IN</a>)
+        // setSignBtn(  <Popup
+        //     trigger={
+
+        //         <button className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white">{signbtn}</button>
+
+        //     } modal
+        //     position="center"
+        //     closeOnDocumentClick={false}
+        // >
+        //     {close => (
+        //         <>
+        //             <BrowserView>
+        //                 <div className="container w-screen flex flex-col justify-center py-12">
+        //                     <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+        //                         <img src="/close-X.svg" />
+        //                     </button>
+        //                     <form className='flex flex-col space-y-5'>
+        //                         <div className="flex w-full justify-between space-x-5">
+        //                             <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+        //                             <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+        //                         </div>
+        //                         <div className="flex w-full justify-between space-x-5">
+        //                             <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+        //                             <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+        //                         </div>
+        //                         <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+        //                     </form>
+        //                 </div>
+        //             </BrowserView>
+        //             <MobileView>
+        //                 <div className="container w-screen flex flex-col justify-center py-12">
+        //                     <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+        //                         <img src="/close-X.svg" />
+        //                     </button>
+        //                     <form>
+        //                         <div className="flex flex-col w-full justify-between space-y-5">
+        //                             <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+        //                             <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+
+        //                             <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+        //                             <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+        //                         </div>
+        //                         <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+        //                     </form>
+        //                 </div>
+        //             </MobileView>
+        //         </>
+        //     )}
+        // </Popup>)
+    }
+}, [])
     return (
         <>
             <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade overflow-x-hidden">
@@ -144,10 +215,9 @@ export default function Menu(data = {}) {
                         />
                         <div className="flex flex-row mt-14">
                             <a
-                                href="/account/login"
                                 className="border-[#009FE3] border-2 w-36 p-2 rounded flex justify-center items-center mr-5 futura-bold"
                             >
-                                LOG IN
+                                {button}
                             </a>
                             {/* <a
                             href="#"
@@ -155,7 +225,7 @@ export default function Menu(data = {}) {
                         >
                             SIGN UP
                         </a> */}
-                            <Popup
+                        <Popup
                                 trigger={
 
                                     <button className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white">SIGN UP</button>
