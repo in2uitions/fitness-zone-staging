@@ -143,7 +143,7 @@ export default function TrainersProfile({ style = "white" }) {
                                     <div className="membership-box p-3 rounded-md">
                                         <div className="flex items-center w-full">
                                             <div className="flex flex-col w-1/2">
-                                                <p className="futura-bold text-white">{item.category.categoryName}</p>
+                                                <p className="futura-bold text-white">{item.packageName}</p>
                                                 <p className="text-white">The classes are in 3 speciality Studios, Energy Studio</p>
                                             </div>
                                             
@@ -151,7 +151,7 @@ export default function TrainersProfile({ style = "white" }) {
                                                 {/* <div className="flex flex-col cursor-pointer" onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)}> */}
                                                 <div className="flex flex-col cursor-pointer">
                                                     <p><span className="text-2xl text-[#009FE3] futura-book">$</span><span className='text-4xl futura-book text-[#009FE3]'>
-                                                        {format(item.sessionPrice)}
+                                                        {format(item.totalValue)}
                                                     </span>
                                                     </p>
                                                     <p className='text-[#009FE3] -mt-4 tracking text-xs'>per session</p>

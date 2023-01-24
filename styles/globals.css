@@ -1094,6 +1094,7 @@ p {
 .classes-box {
   background-color: rgba(143, 143, 143, 0.1);
   width: 100%;
+  border-radius: 5px;
 }
 
 .active-button {
@@ -1851,6 +1852,12 @@ li.category.isActive {
 
 .popup-bg {
   background-image: url(/popup-bg.png);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .pt-bg {

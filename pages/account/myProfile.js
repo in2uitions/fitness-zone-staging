@@ -237,8 +237,15 @@ export default function Dashboard({ style = "white" }) {
         <>
            <PrivateMenu/>
             <section>
+            <div className="flex flex-col justify-center items-center mt-40">
+            <div className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                            <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
+                            <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
+                        </div>
+                        <p className="futura-bold text-[#009FE3] mt-5">{data.fullName}</p>
+                        </div>
                 <form className="w-full" onSubmit={handleSubmit}>
-                    <div className=" mx-auto flex flex-col justify-center items-center mt-40">
+                    <div className=" mx-auto flex flex-col justify-center items-center mt-20">
                         {/* <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0"> */}
                         <div className="w-full container mx-auto lg:flex lg:flex-row md:flex lg:space-x-3 md:space-x-3 justify-center items-start space-y-5 lg:space-y-0 md:space-y-0 px-4 lg:px-4 md:px-4">
 

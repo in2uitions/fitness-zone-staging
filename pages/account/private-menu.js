@@ -63,7 +63,7 @@ export default function PrivateMenu() {
                     closeOnDocumentClick
                     position=""
                 >
-                    <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
+                    <div className="w-screen h-screen flex flex-col justify-center items-center popup-overlay">
                         <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
                             <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
@@ -73,30 +73,30 @@ export default function PrivateMenu() {
                             <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
                                 <a
                                     href="/account/myProfile"
-                                    className="futura-book menu-member flex items-center justify-between"
+                                    className="futura-book menu-member flex items-center justify-between rounded-md"
                                 >
                                     {" "}
                                     My Profile
                                     <ChevronRightIcon className="forward-blue" />
                                 </a>
-                                <a href='/account/membership' className="futura-book menu-member flex items-center justify-between">
+                                <a href='/account/membership' className="futura-book menu-member flex items-center justify-between rounded-md">
                                     Membership Settings
                                     <ChevronRightIcon className="forward-blue" />
                                 </a>
                             </div>
                             <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white">
+                                <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white rounded-md">
                                     Classes / Book a class
                                     <ChevronRightIcon className="forward-blue" />
                                 </a>
-                                <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between">
+                                <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between rounded-md">
                                     Trainers / Book a package
                                     <ChevronRightIcon className="forward-blue" />
                                 </a>
                             </div>
                             <form onSubmit={onSubmitForm}>
                                 <div className="flex justify-center items-center">
-                                    <button type="submit" className="text-white border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book">Log Out</button>
+                                    <button type="submit" className="text-white border-2 border-[#009FE3] w-1/2 mt-5 p-2 futura-book rounded-md">Log Out</button>
                                 </div>
                             </form>
                         </div>

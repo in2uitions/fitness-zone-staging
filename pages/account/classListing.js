@@ -15,6 +15,7 @@ export default function ClassListing() {
     const router = useRouter();
     const [books, setBooks] = useState(true)
     const [name, setName] = useState("");
+    const [filtered, setFiltered] = useState([]);
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
     const [info, setInfo] = useState(true)
@@ -22,13 +23,14 @@ export default function ClassListing() {
     const [selectedCategory, setSelectedCategory] = useState(0);
     const itemSet = (localStorage.getItem("token") !== null);
     useEffect(() => {
-    if (itemSet) {
-        router.push({ pathname: "/account/classListing"});
-    }
-    else{
-        router.push({ pathname: "/account/login"});
-    }
-}, [])
+        if (itemSet) {
+            router.push({ pathname: "/account/classListing" });
+        }
+        else {
+            router.push({ pathname: "/account/login" });
+        }
+    }, [])
+
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
         getFilteredList(event.target.value);
@@ -53,9 +55,9 @@ export default function ClassListing() {
                     `https://api.fitnessclubapp.com/api/Administration/Location/List`,
                     registrationRequestOptions
                 );
-                if(response.status == 200){
-                const locationList = await response.json();
-                setData(locationList);
+                if (response.status == 200) {
+                    const locationList = await response.json();
+                    setData(locationList);
                 }
             }
 
@@ -71,17 +73,17 @@ export default function ClassListing() {
                     `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                     registrationRequestOptions
                 );
-                if(response.status == 200){
-                const fetchedData = await response.json();
-                var memberType = fetchedData.membershipType.memberShipTypeName
-                setBooks(memberType);
-                
-                // console.log(memberType)
-                if (memberType != "PLATINUM LS CORPORATE.") {
-                    setIsDisabled(true);
-                    handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
+                if (response.status == 200) {
+                    const fetchedData = await response.json();
+                    var memberType = fetchedData.membershipType.memberShipTypeName
+                    setBooks(memberType);
+
+                    // console.log(memberType)
+                    if (memberType != "PLATINUM LS CORPORATE.") {
+                        setIsDisabled(true);
+                        handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
+                    }
                 }
-            }
                 // getDayByDay({ id: moment().toDate().getDay() })
             }
             getData();
@@ -139,9 +141,12 @@ export default function ClassListing() {
                         })
                     }
                     setClasss(classes);
+                    setFiltered(classes);
                     // console.log(classes)
                 } else {
                     setClasss([]);
+                    //    <div>loading...</div>;
+
                 }
 
             } catch (err) {
@@ -252,9 +257,9 @@ export default function ClassListing() {
                     `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                     registrationRequestOptions
                 );
-                if(response.status == 200){
-                const fetchedData = await response.json();
-                setInfo(fetchedData);
+                if (response.status == 200) {
+                    const fetchedData = await response.json();
+                    setInfo(fetchedData);
                 }
             }
             getData();
@@ -263,62 +268,82 @@ export default function ClassListing() {
         console.log(err);
     }
 
-    const filtered = classs.filter((dt) =>
-        `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`
-        .toLowerCase()
-        .includes(name.toLowerCase())
-    );
+    const handleSearch = (event) => {
+        setName(event.target.value)
+        const filteredValue = classs.filter((dt) =>
+            `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(event.target.value.toLowerCase())
+
+        );
+        setFiltered(filteredValue);
+    }
+    function handleClassChange(event) {
+        if (event.target.id == "All") {
+            setFiltered(classs)
+            console.log(event.target.id)
+            console.log(classs)
+        } else {
+            let newvalue = classs.filter((item) => item.studio?.studioName === event.target.id)
+            setFiltered(newvalue);
+            console.log(event.target.id)
+        }
+    }
     return (
         <>
-            <PrivateMenu/>
+            <PrivateMenu />
             <section className="">
                 <div className="lg:container mx-auto mt-40 lg:px-28 md:px-20 px-3 w-screen">
-                <div className="flex flex-col justify-center items-center">
-                    <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p>
+                    <div className="flex flex-col justify-center items-center">
+                        <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p>
                     </div>
                     <div className="flex w-full justify-between items-center mt-5">
-                <div className="flex items-center space-x-3">
-                    <img src="/filterBy.png"/>
-                    <p className="futura-book text-white">Filter by</p>
-                </div>
-                {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
-                <div className="relative" style={{width: "73%"}}>
-                <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
-                    placeholder="Search" value={name}
-                    onChange={(e) => setName(e.target.value)} />
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <SearchOutlined
-                        className="h-4 w-4 text-gray-400"
-                        aria-hidden="true"
-                    />
-                </div>
-            </div>
-            <div className="flex justify-center items-center">
-            <select style={{height:"2.5rem" , borderRadius:"5px", paddingLeft:"10px"}} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
-                            {data.map((item, i) => (
-                                <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
-                            ))}
-                        </select>
-                </div>
-            </div>
+                        <div className="flex items-center space-x-3">
+                            <img src="/filterBy.png" />
+                            <p className="futura-book text-white">Filter by</p>
+                        </div>
+                        {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
+                        <div className="relative" style={{ width: "73%" }}>
+                            <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
+                                placeholder="Search" value={name}
+                                onChange={handleSearch} />
+                            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <SearchOutlined
+                                    className="h-4 w-4 text-gray-400"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex justify-center items-center">
+                            <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
+                                {data.map((item, i) => (
+                                    <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
                     <Tabs className="mt-5">
                         <TabList className="flex justify-between w-full mx-auto container tabs-container">
-                            <Tab className="notSelected">
-                                <div className="flex items-center space-x-2">
-                                    <p className="text-2xl font-extrabold">ENERGY</p>
-                                    <img src="/ONblue.png" className="on-tabs" />{" "}
+                            <Tab className="notSelected cursor-pointer" id="All">
+                                <div className="flex items-center space-x-2" onClick={handleClassChange} type="button" id="All">
+                                    <p className="text-2xl font-extrabold" id="All">All</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
                                 </div>
                             </Tab>
-                            <Tab className="notSelected">
-                                <div className="flex items-center space-x-2">
-                                    <p className="text-2xl font-extrabold">BALANCE</p>
-                                    <img src="/ONblue.png" className="on-tabs" />{" "}
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center space-x-2" onClick={handleClassChange} type="button">
+                                    <p className="text-2xl font-extrabold" id="NRG">ENERGY</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
                                 </div>
                             </Tab>
-                            <Tab className="notSelected">
-                                <div className="flex justify-end items-center space-x-2">
-                                    <p className="text-2xl font-extrabold">POWER</p>
-                                    <img src="/ONblue.png" className="on-tabs" />{" "}
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center space-x-2" onClick={handleClassChange} type="button">
+                                    <p className="text-2xl font-extrabold" id="BLNC">BALANCE</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex justify-end items-center space-x-2" onClick={handleClassChange} type="button">
+                                    <p className="text-2xl font-extrabold" id="PWR">POWER</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
                                 </div>
                             </Tab>
                         </TabList>
@@ -353,11 +378,11 @@ export default function ClassListing() {
                                                 <img src="/booked.png" />
                                                 <p className="futura-book text-white text-md sizemobile">Booked</p>
                                                 <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
-                                                Cancel
-                                                <Close className="cancel-close" />
-                                            </p>
+                                                    Cancel
+                                                    <Close className="cancel-close" />
+                                                </p>
                                             </div>
-                                            
+
                                         )}
                                     </button>
                                 </div>
