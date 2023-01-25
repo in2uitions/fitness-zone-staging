@@ -5,6 +5,7 @@ import "react-magic-slider-dots/dist/magic-dots.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
+import moment from "moment";
 
 export default function Dashboard({ style = "white" }) {
     const [data, setData] = useState([]);
@@ -266,10 +267,10 @@ export default function Dashboard({ style = "white" }) {
                                     />
                                     <div className="border border-[#009FE3] flex justify-between items-center bg-black lg:h-10 md:h-10 h-16 rounded-md p-1">
                                         <input
-                                            type="text"
-                                            disabled ={state} 
+                                            type="date"
+                                            disabled ={true} 
                                             className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] text-white"
-                                            value={data.birthdate} id="birthdate"
+                                            value={moment(data.birthdate).format("YYYY-MM-DD")} id="birthdate"
                                             onChange={handleChange}
                                         />
                                         {/* <button

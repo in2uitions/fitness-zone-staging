@@ -270,21 +270,21 @@ export default function ClassListing() {
 
     const handleSearch = (event) => {
         setName(event.target.value)
-        const filteredValue = classs.filter((dt) =>
+        const filteredValue = filtered.filter((dt) =>
             `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(event.target.value.toLowerCase())
 
         );
         setFiltered(filteredValue);
+        setClasss(filteredValue)
     }
     function handleClassChange(event) {
         if (event.target.id == "All") {
             setFiltered(classs)
-            console.log(event.target.id)
-            console.log(classs)
+            // console.log(event.target.id)
+            // console.log(classs)
         } else {
             let newvalue = classs.filter((item) => item.studio?.studioName === event.target.id)
             setFiltered(newvalue);
-            console.log(event.target.id)
         }
     }
     return (

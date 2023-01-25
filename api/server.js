@@ -111,6 +111,32 @@ export const getPopup = async (value) => {
     const popupPublished = await popup.readByQuery({ filter: myfilter, fields: myfields })
     return popupPublished.data;
 }
+export const getPrivateCarousel = async (value) => {
+    const carousel = directus.items('private_area_carousel');
+
+    var myfilter = '';
+    if (value) {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            }
+        }
+    }
+    else {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            },
+
+
+        }
+
+    }
+
+    var myfields = ['*,carousel_fields.private_carousel_items_id.*']
+    const carouselPublished = await carousel.readByQuery({ filter: myfilter, fields: myfields })
+    return carouselPublished.data;
+}
 export const createuser = async () => {
     const users = directus.items("send_cv");
     var firstNameToUse = localStorage.getItem('first_name');

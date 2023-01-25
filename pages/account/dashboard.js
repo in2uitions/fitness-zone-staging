@@ -11,6 +11,9 @@ import { useState, useEffect, useMemo } from "react";
 import Post from "./trainers/homePageTrainer";
 import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
+import { getPrivateCarousel } from "../../api/server";
+import { image_url } from "../../global_vars";
+import parse from "html-react-parser";
 
 export default function Dashboard({ style = "white" }) {
     const [books, setBooks] = useState([]);
@@ -20,13 +23,13 @@ export default function Dashboard({ style = "white" }) {
     const memberId = localStorage.getItem("Member");
     const itemSet = (localStorage.getItem("token") !== null);
     useEffect(() => {
-    if (itemSet) {
-        router.push({ pathname: "/account/dashboard"});
-    }
-    else{
-        router.push({ pathname: "/account/login"});
-    }
-}, [])
+        if (itemSet) {
+            router.push({ pathname: "/account/dashboard" });
+        }
+        else {
+            router.push({ pathname: "/account/login" });
+        }
+    }, [])
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
@@ -45,9 +48,9 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                     registrationRequestOptions
                 );
-                if(response.status ==200){
-                const fetchedData = await response.json();
-                setBooks(fetchedData);
+                if (response.status == 200) {
+                    const fetchedData = await response.json();
+                    setBooks(fetchedData);
                 }
             }
             getData();
@@ -63,9 +66,9 @@ export default function Dashboard({ style = "white" }) {
                     `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
                     registrationRequestOptions
                 );
-                if(response.status ==200){
-                const checkInList = await response.json();
-                setcheckInData(checkInList);
+                if (response.status == 200) {
+                    const checkInList = await response.json();
+                    setcheckInData(checkInList);
                 }
             }
         }, []);
@@ -112,19 +115,17 @@ export default function Dashboard({ style = "white" }) {
                 registrationRequestOptions
             );
             const data = await res.json();
-            if(data.isValid == true){
-            const handleRemoveItem = (index) => {
-                const newList = [...bookedClass];
-                newList.splice(index, 1);
-                setBookedClass(newList);
-            };
-            // localStorage.setItem("Phone", event.target.mobile.value);
-            //alert("You have changed your Phone Number. Congratulations!")
-            handleRemoveItem();
-        }
-        else{
-            alert("Class is not valid");
-        }
+            if (data.isValid == true) {
+                const handleRemoveItem = (index) => {
+                    const newList = [...bookedClass];
+                    newList.splice(index, 1);
+                    setBookedClass(newList);
+                };
+                handleRemoveItem();
+            }
+            else {
+                alert("Class is not valid");
+            }
 
 
         } catch (err) {
@@ -151,117 +152,7 @@ export default function Dashboard({ style = "white" }) {
             return <MagicSliderDots dots={dots} numDotsToShow={3} dotWidth={30} />;
         },
     };
-    const carousel_components = [
-        {
-            image: "/dashboard-pics.png",
-            on_icon: "/on-classes.png",
-            text: "STRETCHING",
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard",
-        },
-        {
-            image: "/dashboard-pics.png",
-            on_icon: "/on-classes.png",
-            text: "STRETCHING",
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard",
-        },
-        {
-            image: "/dashboard-pics.png",
-            on_icon: "/on-classes.png",
-            text: "STRETCHING",
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard",
-        },
-        {
-            image: "/dashboard-pics.png",
-            on_icon: "/on-classes.png",
-            text: "STRETCHING",
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard",
-        },
-        {
-            image: "/dashboard-pics.png",
-            on_icon: "/on-classes.png",
-            text: "STRETCHING",
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard",
-        },
-    ];
-    const [classesList, setClassesList] = useState([
-        {
-            time: "08:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "09:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "10:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "11:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "12:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "01:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "02:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "03:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "04:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "05:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "06:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-        {
-            time: "07:00",
-            step: "B.Step",
-            name: "Elie",
-            city: "Dbayeh",
-        },
-    ]);
-    useEffect(() => {
-        if (classesList.length > 0) {
-            classesList[classesList.length - 1].input === "";
-        }
-    });
+
 
     const handleInputChange = (event, index) => {
         const { value } = event.target;
@@ -350,11 +241,20 @@ export default function Dashboard({ style = "white" }) {
         return filteredPosts;
     }, [posts, users]);
     const router = useRouter();
-    
-   
+    const [privateCarousel, setPrivateCarousel] = useState([]);
+    var getdata = async () => {
+        const carousel = await getPrivateCarousel();
+        setPrivateCarousel(carousel);
+
+    }
+
+    useEffect(() => {
+        getdata();
+    }, []);
+
     return (
         <>
-           <PrivateMenu/>
+            <PrivateMenu />
             <section>
                 <div className="lg:container lg:mx-auto flex flex-col justify-center mt-40 lg:px-20 md:px-20 px-0">
                     <p className="text-[#009FE3] futura-bold flex space-x-2">
@@ -363,24 +263,26 @@ export default function Dashboard({ style = "white" }) {
                     </p>
 
                     <p className="futura-book text-white">Let’s burn some calories</p>
-                    <Slider className="mt-10" {...settings}>
-                        {carousel_components.map((item) => (
-                            <>
+
+                    {privateCarousel.map((item) => (
+                        <Slider className="mt-10" {...settings}>
+                            {item.carousel_fields.map((items, i) => (
                                 <div className="relative">
-                                    <img src={item.image} />
+                                {items.private_carousel_items_id?.image ?<img src={`${image_url}${items.private_carousel_items_id?.image}`} />:null}
                                     <div className="absolute flex flex-col bottom-8 px-10">
                                         <div className="flex space-x-2 items-start">
-                                            <img src={item.on_icon} className="h-6" />
-                                            <p className="futura-bold text-3xl text-white">
-                                                {item.text}
-                                            </p>
+                                        {items.private_carousel_items_id?.on_icon ?<img src={`${image_url}${items.private_carousel_items_id?.on_icon}`} className="h-6" />:null}
+                                            {items.private_carousel_items_id?.title ?<p className="futura-bold text-3xl text-white">
+                                                {items.private_carousel_items_id?.title}
+                                            </p>:null}
                                         </div>
-                                        <p className="desc-dashboard text-white">{item.desc}</p>
+                                        {items.private_carousel_items_id?.description ? <p className="desc-dashboard text-white">{parse(`${items.private_carousel_items_id?.description}`)} </p> : null}
                                     </div>
                                 </div>
-                            </>
-                        ))}
-                    </Slider>
+                            ))}
+                        </Slider>
+                    ))}
+
                 </div>
             </section>
             <section>
@@ -438,7 +340,11 @@ export default function Dashboard({ style = "white" }) {
                         ))}
 
                         <div
-                            className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
+                            // className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
+                            className={
+                                        "" +
+                                        (noOfElements < 4 ? "flex lg:justify-center text-white items-center cursor-pointer futura-bold" : "hidden")
+                                    }
                             onClick={() => {
                                 toggle(!state);
                                 loadMoreLess();
@@ -505,3 +411,4 @@ export default function Dashboard({ style = "white" }) {
         </>
     );
 }
+

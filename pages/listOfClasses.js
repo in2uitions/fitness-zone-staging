@@ -107,11 +107,12 @@ export default function App() {
 
     const handleSearch = (event) => {
         setName(event.target.value)
-        const filteredValue = data.filter((dt) =>
+        const filteredValue = filtered.filter((dt) =>
             `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(event.target.value.toLowerCase())
 
         );
         setFiltered(filteredValue);
+        setData(filteredValue)
     }
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);

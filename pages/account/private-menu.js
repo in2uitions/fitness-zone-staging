@@ -90,7 +90,7 @@ export default function PrivateMenu() {
                                     <ChevronRightIcon className="forward-blue" />
                                 </a>
                                 <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between rounded-md">
-                                    Trainers / Book a package
+                                    Trainers / Buy a package
                                     <ChevronRightIcon className="forward-blue" />
                                 </a>
                             </div>

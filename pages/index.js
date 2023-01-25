@@ -26,18 +26,29 @@ function Home({ data = {} }) {
       setShowPopup(false)
       setShowLebPopup(true)
     }
-    // let pop_status = localStorage.getItem('pop_status');
-    // if (!pop_status) {
-    //   setShowPopup(true);
-    //   setShowLebPopup(true)
-    //   localStorage.setItem('pop_status', 1);
-    // }
-    // else {
-    //   setShowPopup(false)
-    //   setShowLebPopup(false)
-    // }
+  //   let pop_status = localStorage.getItem('pop_status');
+  //   let popdbx_status = localStorage.getItem('popdbx_status')
+  //   if (nextConfig.country_code == 'LB') {
+  //   if (!pop_status) {
+  //     setShowLebPopup(true)
+  //     localStorage.setItem('pop_status', 1);
+  //   }
+  //   else {
+  //     setShowLebPopup(false)
+  //   }
+  // }
+  //   if (nextConfig.country_code == 'AE') {
+  //     if (!popdbx_status) {
+  //       setShowPopup(true);
+  //       localStorage.setItem('popdbx_status', 1);
+  //     }
+  //     else {
+  //       setShowPopup(false)
+  //     }
+  //   }
   }, [nextConfig.country_code])
-  // setTimeout(function(){localStorage.removeItem('pop_status');}, 86400000);
+  // setTimeout(function () { localStorage.removeItem('pop_status'); }, 5000);
+  // setTimeout(function () { localStorage.removeItem('popdbx_status'); }, 5000);
   var getdata = async () => {
     const popup = await getPopup();
     setLebPopup(popup);
@@ -163,7 +174,7 @@ function Home({ data = {} }) {
             {item.show_popup ? <Popup
               trigger={
                 <button>
-                  <button style={{display:"none"}} className="request">REQUEST A CALL</button>
+                  <button style={{ display: "none" }} className="request">REQUEST A CALL</button>
                 </button>
               } modal
 
@@ -177,46 +188,46 @@ function Home({ data = {} }) {
                   <button className="close" onClick={close}>
                     &times;
                   </button>
-                      <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg">
-                        <form onSubmit={submitSignUp} className="flex">
-                          <input type="hidden" name="enquire_request" value="popup-request" />
-                          <div className="lg:flex lg:w-full">
-                            <div className="lg:flex lg:flex-col justify-center lg:w-3/4 px-8 pt-6 lg:pt-0 md:pt-0">
-                              <p href="/" className="font-bold text-2xl  futura-bold text-[#009FE3] ">{item.title}</p>
-                              <input placeholder="FIRST NAME"
-                                className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                name="pp_first_name"
-                                id="pp_first_name"
-                                required
-                              />
-                              <input placeholder="LAST NAME"
-                                className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                name="pp_last_name"
-                                id="pp_last_name"
-                                required
-                              />
-                              {/* <input placeholder="PHONE NUMBER" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-5 h-12" /> */}
-                              <input placeholder="PHONE NUMBER"
-                                className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                name="pp_phone"
-                                id="pp_phone"
-                                required
-                              />
-                              <input placeholder="EMAIL"
-                                className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                name="pp_email"
-                                id="pp_email"
-                              />
-                              <button type="submit" className="bg-[#009FE3] text-white flex justify-center p-2 items-center w-24 rounded mr-4 futura-bold mb-2">{item.button_title}</button>
-                              {isSent ? thankYouMessage : submitmsg}
-                              {/* {isNotSent ? notSentMessage : submitmsg } */}
-                            </div>
-                            <div className="width-phone">
-                              <img src="/pop-upImgg.jpeg" className="image-popup none-event" />
-                            </div>
-                          </div>
-                        </form>
+                  <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg">
+                    <form onSubmit={submitSignUp} className="flex">
+                      <input type="hidden" name="enquire_request" value="popup-request" />
+                      <div className="lg:flex lg:w-full">
+                        <div className="lg:flex lg:flex-col justify-center lg:w-3/4 px-8 pt-6 lg:pt-0 md:pt-0">
+                          <p href="/" className="font-bold text-2xl  futura-bold text-[#009FE3] mb-5">{item.title}</p>
+                          <input placeholder="FIRST NAME"
+                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                            name="pp_first_name"
+                            id="pp_first_name"
+                            required
+                          />
+                          <input placeholder="LAST NAME"
+                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                            name="pp_last_name"
+                            id="pp_last_name"
+                            required
+                          />
+                          {/* <input placeholder="PHONE NUMBER" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-5 h-12" /> */}
+                          <input placeholder="PHONE NUMBER"
+                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                            name="pp_phone"
+                            id="pp_phone"
+                            required
+                          />
+                          <input placeholder="EMAIL"
+                            className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
+                            name="pp_email"
+                            id="pp_email"
+                          />
+                          <button type="submit" className="bg-[#009FE3] text-white flex justify-center p-2 items-center w-24 rounded mr-4 futura-bold mb-2 mt-5">{item.button_title}</button>
+                          {isSent ? thankYouMessage : submitmsg}
+                          {/* {isNotSent ? notSentMessage : submitmsg } */}
+                        </div>
+                        <div className="width-phone">
+                          <img src="/pop-upImgg.jpeg" className="image-popup none-event" />
+                        </div>
                       </div>
+                    </form>
+                  </div>
                 </>
               )}
             </Popup> : null}

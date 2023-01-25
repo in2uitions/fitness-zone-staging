@@ -187,7 +187,7 @@ export default function Membership({ style = 'white' }) {
                 <div className='container lg:px-28 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40'>
                     <div className='flex flex-col justify-center items-center'>
                         <img src='/gold-member.png' />
-                        <p className='futura-bold mt-5 text-white'>{data.membershipType?.memberShipTypeName}</p>
+                        <p className='futura-bold mt-5 text-white'>{data.membershipType?.memberShipTypeName.slice(0,data.membershipType?.memberShipTypeName.length - 1)}</p>
                     </div>
                     <div className='lg:grid lg:grid-cols-12 gap-x-1 items-center mt-10 px-3 lg:px-0 md:px-0'>
                         <div className='col-span-4'>
@@ -217,7 +217,7 @@ export default function Membership({ style = 'white' }) {
                             </div>
                         </div>
                     </div>
-                    <div className='flex flex-col mx-auto justify-start w-2/5 items-start mt-10 px-2 lg:px-0 md:px-0'>
+                    <div className='flex flex-col mx-auto justify-start w-3/5 items-start mt-10 px-2 lg:px-0 md:px-0'>
                         <p className='text-[#009FE3] futura-bold mb-3'>Payment History</p>
                         {slice.map((item) => (
                             <>
