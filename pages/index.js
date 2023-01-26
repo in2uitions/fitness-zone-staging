@@ -58,12 +58,12 @@ function Home({ data = {} }) {
   useEffect(() => {
     getdata();
   }, []);
-  const submitSignUp = async event => {
+  const submitLebSignUp = async event => {
     event.preventDefault();
     const getTokenAPI = async () => {
       try {
         const res = await fetch(
-          'https://api.fitnessclubapp.com/api/account/login?Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1',
+          'https://api.fitnessclubapp.com/api/Account/Login?Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
           {
             method: 'POST'
           }
@@ -189,7 +189,7 @@ function Home({ data = {} }) {
                     &times;
                   </button>
                   <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg">
-                    <form onSubmit={submitSignUp} className="flex">
+                    <form onSubmit={submitLebSignUp} className="flex">
                       <input type="hidden" name="enquire_request" value="popup-request" />
                       <div className="lg:flex lg:w-full">
                         <div className="lg:flex lg:flex-col justify-center lg:w-3/4 px-8 pt-6 lg:pt-0 md:pt-0">

@@ -3,8 +3,9 @@ import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Popup from "reactjs-popup";
-import { createuser } from "../../api/server";
+import { createDubaiuser, createuser } from "../../api/server";
 import axios from "axios";
+import nextConfig from "../../next.config";
 
 export default function CompCareers({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -76,6 +77,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
+            if (nextConfig.country_code == 'LB') {
             var file = event.target.file.files[0];
             try{
                 const form = new FormData();
@@ -111,7 +113,46 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
             localStorage.setItem('mobile_number', event.target.mobile_number.value = '');
             localStorage.setItem('education', event.target.education.value = '');
             localStorage.setItem('experience', event.target.experience.value = '');
-
+            console.log('leb user')
+        }
+        else if (nextConfig.country_code == 'AE') {
+            var file = event.target.file.files[0];
+            try{
+                const form = new FormData();
+                // form.append("filename", file.file_name);
+                form.append("file", file);
+                const response = await axios.post(`https://fzcms.diastora.com/files`, form);
+                if(response.status == 200){
+                    localStorage.setItem("file_id", response.data.data.id);
+                }
+            } catch(err){
+                console.log(err)
+            }
+            localStorage.setItem('first_name', event.target.first_name.value);
+            localStorage.setItem('last_name', event.target.last_name.value);
+            localStorage.setItem('email', event.target.email.value),
+            localStorage.setItem('phone_number', event.target.email.value),
+            localStorage.setItem('mobile_number', event.target.mobile_number.value);
+            localStorage.setItem('education', event.target.education.value);
+            localStorage.setItem('experience', event.target.experience.value);
+            // localStorage.setItem('cv', event.target.cv.value)
+            createDubaiuser();
+            event.target.first_name.value='',
+            event.target.last_name.value='',
+            event.target.email.value= '',
+            event.target.phone_number.value='',
+            event.target.mobile_number.value='',
+            event.target.education.value='',
+            event.target.experience.value='',
+            localStorage.setItem('first_name', event.target.first_name.value = '');
+            localStorage.setItem('last_name', event.target.last_name.value = '');
+            localStorage.setItem('email', event.target.email.value = ''),
+            localStorage.setItem('phone_number', event.target.email.value = ''),
+            localStorage.setItem('mobile_number', event.target.mobile_number.value = '');
+            localStorage.setItem('education', event.target.education.value = '');
+            localStorage.setItem('experience', event.target.experience.value = '');
+            console.log('ae user')
+        }
         };
         getTokenAPI();
 

@@ -267,26 +267,26 @@ export default function ClassListing() {
     } catch (err) {
         console.log(err);
     }
-
+    function handleClassChange(event) {
+        if (event.target.id == "All") {
+            setClasss(classs)
+            // console.log(event.target.id)
+        } else {
+            let newvalue = filtered.filter((item) => item.studio?.studioName === event.target.id)
+            setClasss(newvalue);
+        }
+    }
     const handleSearch = (event) => {
-        setName(event.target.value)
+        setName(event.target.value);
+        console.log(event.target.value)
         const filteredValue = filtered.filter((dt) =>
             `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(event.target.value.toLowerCase())
 
         );
-        setFiltered(filteredValue);
-        setClasss(filteredValue)
+        setClasss(filteredValue);
+        // setClasss(filteredValue)
     }
-    function handleClassChange(event) {
-        if (event.target.id == "All") {
-            setFiltered(classs)
-            // console.log(event.target.id)
-            // console.log(classs)
-        } else {
-            let newvalue = classs.filter((item) => item.studio?.studioName === event.target.id)
-            setFiltered(newvalue);
-        }
-    }
+   
     return (
         <>
             <PrivateMenu />
@@ -304,7 +304,7 @@ export default function ClassListing() {
                         <div className="relative" style={{ width: "73%" }}>
                             <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
                                 placeholder="Search" value={name}
-                                onChange={handleSearch} />
+                                onChange={handleSearch}/>
                             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                 <SearchOutlined
                                     className="h-4 w-4 text-gray-400"
@@ -348,7 +348,7 @@ export default function ClassListing() {
                             </Tab>
                         </TabList>
                     </Tabs>
-                    {filtered.map((item, index) => (
+                    {classs.map((item, index) => (
                         <>
                             <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
                                 <div className="flex justify-start w-3/4">

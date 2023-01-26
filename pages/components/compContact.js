@@ -1,11 +1,13 @@
-import { createContactUsUser } from "../../api/server";
+import { createContactUsDubaiUser, createContactUsUser } from "../../api/server";
 import Popup from "reactjs-popup";
 import { BrowserView, MobileView } from "react-device-detect";
+import nextConfig from "../../next.config";
 
 export default function CompContact({ data = {}, style = 'white' }) {
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
+            if (nextConfig.country_code == 'LB') {
             localStorage.setItem('full_name', event.target.full_name.value);
             localStorage.setItem('email', event.target.email.value);
             localStorage.setItem('message', event.target.message.value)
@@ -16,6 +18,20 @@ export default function CompContact({ data = {}, style = 'white' }) {
             localStorage.setItem('full_name', event.target.full_name.value = '');
             localStorage.setItem('email', event.target.email.value = '');
             localStorage.setItem('message', event.target.message.value = '')
+            console.log('LB USER')
+            } else if (nextConfig.country_code == 'AE') {
+                localStorage.setItem('full_name', event.target.full_name.value);
+            localStorage.setItem('email', event.target.email.value);
+            localStorage.setItem('message', event.target.message.value)
+            createContactUsDubaiUser();
+            event.target.full_name.value='';
+            event.target.email.value = '';
+            event.target.message.value = '';
+            localStorage.setItem('full_name', event.target.full_name.value = '');
+            localStorage.setItem('email', event.target.email.value = '');
+            localStorage.setItem('message', event.target.message.value = '')
+            console.log('AE USER')
+            }
         };
         getTokenAPI();
 

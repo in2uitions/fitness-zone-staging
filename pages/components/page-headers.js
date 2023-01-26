@@ -9,7 +9,10 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 export default function Header({ color = "orange", data = {} }) {
-
+    const [isSent, setIsSent] = useState(false);
+    const [isNotSent, setIsNotSent] = useState(false)
+    const thankYouMessage = <h3>Thank you for your submission!</h3>;
+    const submitmsg = <h3></h3>;
     const [alternateImage, setAlternateImage] = useState(true);
 
     const changeImage = () => {
@@ -21,21 +24,88 @@ export default function Header({ color = "orange", data = {} }) {
 
         video.muted = !video.muted;
     }
-    const onSubmitForm = async event => {
+    
+    const submitSignUp = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
-            localStorage.setItem('first_name', event.target.first_name.value);
-            localStorage.setItem('last_name', event.target.last_name.value);
-            localStorage.setItem('email', event.target.email.value)
-            localStorage.setItem('phone_number', event.target.phone_number.value)
-            createOfferUser();
-            localStorage.setItem('first_name', event.target.first_name.value = ''),
-                localStorage.setItem('last_name', event.target.last_name.value = ''),
-                localStorage.setItem('email', event.target.email.value = ''),
-                localStorage.setItem('phone_number', event.target.phone_number.value = '')
+            try {
+                const res = await fetch(
+                    'https://api.fitnessclubapp.com/api/account/login?Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1',
+                    {
+                        method: 'POST'
+                    }
+                );
 
+                const tokenData = await res.json();
+
+                const submitContactForm = async () => {
+                    try {
+                        if (event.target.enquire_request.value == "popup-request") {
+                            var registraitonRawData = JSON.stringify({
+                                "GuestRegisterId": 0,
+                                "FirstName": event.target.pp_first_name.value,
+                                "LastName": event.target.pp_last_name.value,
+                                "Mobile": event.target.pp_phone.value,
+                                "Email": event.target.pp_email.value,
+                                "Source": {
+                                    "VisitSourceId": 9
+                                },
+                                "LocationCode": 1
+                            });
+                        }
+                        else {
+                            var registraitonRawData = JSON.stringify({
+                                "GuestRegisterId": 0,
+                                "FirstName": event.target.firstname.value,
+                                "LastName": event.target.lastname.value,
+                                "Mobile": event.target.pp_phone.value,
+                                "Email": event.target.email.value,
+                                "Source": {
+                                    "VisitSourceId": 9
+                                },
+                                "LocationCode": 1
+                            });
+                        }
+
+                        var registrationHeaders = new Headers();
+                        registrationHeaders.append("Authorization", "Bearer " + tokenData.token);
+                        registrationHeaders.append("Content-Type", "application/json");
+                        var registrationRequestOptions = {
+                            method: 'POST',
+                            headers: registrationHeaders,
+                            body: registraitonRawData
+                        };
+
+
+                        const res = await fetch(
+                            'https://api.fitnessclubapp.com/api/Crm/GuestRegister', registrationRequestOptions);
+                        const data = await res.json();
+                        if (data.isValid == true) {
+                            setIsSent(true)
+                            event.target.pp_first_name.value = '';
+                            event.target.pp_last_name.value = '';
+                            event.target.pp_phone.value = '';
+                            event.target.pp_email.value = '';
+                        }
+                        else {
+                            setIsNotSent(true)
+                        }
+
+
+                    } catch (err) {
+                        console.log(err);
+                    }
+                };
+
+                submitContactForm();
+
+            } catch (err) {
+                console.log(err);
+            }
         };
+
         getTokenAPI();
+
 
     };
     return (
@@ -83,7 +153,7 @@ export default function Header({ color = "orange", data = {} }) {
                                     {/* &times; */}
                                     <img src="/close-X.svg" />
                                 </button>
-                                <form onSubmit={onSubmitForm} className="flex">
+                                <form onSubmit={submitSignUp} className="flex">
                                     <BrowserView>
                                         <div className="popup-overlay">
                                             <div className="lg:flex backdrop-blur-xl rounded-lg shadow-xl justify-center items-center popup-bg popup-measures">
@@ -98,31 +168,31 @@ export default function Header({ color = "orange", data = {} }) {
 
                                                         <input placeholder="FIRST NAME"
                                                             className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                                            // name="pp_first_name"
-                                                            id="first_name"
+                                                            name="pp_first_name"
+                                                            id="pp_first_name"
                                                             required
                                                         />
                                                         <input placeholder="LAST NAME"
                                                             className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                                            // name="pp_last_name"
-                                                            id="last_name"
+                                                            name="pp_last_name"
+                                                            id="pp_last_name"
                                                             required
                                                         />
                                                         {/* <input placeholder="PHONE NUMBER" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-5 h-12" /> */}
                                                         <input placeholder="EMAIL"
                                                             className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                                            // name="pp_email"
-                                                            id="email"
+                                                            name="pp_email"
+                                                            id="pp_email"
                                                         />
                                                         <input placeholder="0501234567"
                                                             className="pl-2 w-full appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] popup-input py-2 mb-3 h-12"
-                                                            // name="pp_phone"
-                                                            id="phone_number"
+                                                            name="pp_phone"
+                                                            id="pp_phone"
                                                             required
                                                         />
 
                                                         <button type="submit" className="bg-[#009FE3] text-white flex justify-center p-2 items-center w-24 rounded mr-4 futura-bold mb-2">SIGN UP</button>
-
+                                                        {isSent ? thankYouMessage : submitmsg}
                                                     </div>
 
                                                 </div>

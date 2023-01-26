@@ -5,6 +5,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import Popup from "reactjs-popup";
+import { createFreeTrialDubaiUser, createFreeTrialUser } from "../../api/server";
+import nextConfig from '../../next.config'
 
 export default function CompCarouselStaticRightMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -70,19 +72,38 @@ export default function CompCarouselStaticRightMobile({ data = {}, style = 'whit
  const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
-            localStorage.setItem('name', event.target.name.value);
-            localStorage.setItem('phone_number', event.target.phone_number.value);
-            localStorage.setItem('email', event.target.email.value);
-            localStorage.setItem('location', event.target.location.value)
-            createFreeTrialUser();
-            event.target.name.value='',
-            event.target.phone_number.value ='',
-            event.target.email.value='',
-            event.target.location.value=''
-            localStorage.setItem('name', event.target.name.value = '');
-            localStorage.setItem('phone_number', event.target.phone_number.value = '');
-            localStorage.setItem('email', event.target.email.value = '');
-            localStorage.setItem('location', event.target.location.value = '')
+            if (nextConfig.country_code == 'LB') {
+                localStorage.setItem('name', event.target.name.value);
+                localStorage.setItem('phone_number', event.target.phone_number.value);
+                localStorage.setItem('email', event.target.email.value);
+                localStorage.setItem('location', event.target.location.value)
+                createFreeTrialUser();
+                event.target.name.value='',
+                event.target.phone_number.value ='',
+                event.target.email.value='',
+                event.target.location.value=''
+                localStorage.setItem('name', event.target.name.value = '');
+                localStorage.setItem('phone_number', event.target.phone_number.value = '');
+                localStorage.setItem('email', event.target.email.value = '');
+                localStorage.setItem('location', event.target.location.value = '')
+                console.log("userCreated LB")
+            }
+            else if(nextConfig.country_code == 'AE'){
+                localStorage.setItem('name', event.target.name.value);
+                localStorage.setItem('phone_number', event.target.phone_number.value);
+                localStorage.setItem('email', event.target.email.value);
+                localStorage.setItem('location', event.target.location.value)
+                createFreeTrialDubaiUser();
+                event.target.name.value='',
+                event.target.phone_number.value ='',
+                event.target.email.value='',
+                event.target.location.value=''
+                localStorage.setItem('name', event.target.name.value = '');
+                localStorage.setItem('phone_number', event.target.phone_number.value = '');
+                localStorage.setItem('email', event.target.email.value = '');
+                localStorage.setItem('location', event.target.location.value = '')
+                console.log("userCreated AE")
+            }
         };
         getTokenAPI();
 
