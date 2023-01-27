@@ -132,45 +132,45 @@ export default function Menu(data = {}) {
             router.events.off('routeChangeStart', handleRouteChange)
         }
     }, []);
-    const[button, setButton]= useState();
-    const[signbtn, setSignBtn] = useState(true);
-    const[logOut, setLogOut] = useState(true);
+    const [button, setButton] = useState();
+    const [signbtn, setSignBtn] = useState(true);
+    const [logOut, setLogOut] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
     const itemSet = (localStorage.getItem("token") !== null);
     useEffect(() => {
-    if (itemSet) {
-        setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)
-        setSignBtn(false)
-        setLogOut(true)
-    }
-    else{
-        setButton(<a href='/account/login' className="">LOG IN</a>)
-        setSignBtn(true)
-        setLogOut(false)
-    }
-}, [])
+        if (itemSet) {
+            setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)
+            setSignBtn(false)
+            setLogOut(true)
+        }
+        else {
+            setButton(<a href='/account/login' className="">LOG IN</a>)
+            setSignBtn(true)
+            setLogOut(false)
+        }
+    }, [])
 
-function loading() {
-    const skeletons = document.querySelectorAll('.popup-overlay');
-    skeletons.forEach(skeleton => {
-      skeleton.classList.remove('popup-overlay');
-    });   
-  }
-const onSubmitLogOutForm = async event => {
-    event.preventDefault();
-    const getTokenAPI = async () => {
-        localStorage.clear();
-        router.push({ pathname: "/" });
-        setIsOpen(false);
-        loading();
+    function loading() {
+        const skeletons = document.querySelectorAll('.popup-overlay');
+        skeletons.forEach(skeleton => {
+            skeleton.classList.remove('popup-overlay');
+        });
+    }
+    const onSubmitLogOutForm = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            localStorage.clear();
+            router.push({ pathname: "/" });
+            setIsOpen(false);
+            loading();
+        };
+        getTokenAPI();
+
     };
-    getTokenAPI();
-
-};
 
     return (
         <>
-            {isOpen ?<div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade overflow-x-hidden" id='MainMenu'>
+            {isOpen ? <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade overflow-x-hidden" id='MainMenu'>
                 <div className="lg:grid lg:grid-cols-2">
                     <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-5">
                         <MetisMenu
@@ -183,7 +183,7 @@ const onSubmitLogOutForm = async event => {
                             >
                                 {button}
                             </a>
-                        {signbtn ?<Popup
+                            {signbtn ? <Popup
                                 trigger={
 
                                     <button className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white">SIGN UP</button>
@@ -231,10 +231,10 @@ const onSubmitLogOutForm = async event => {
                                         </MobileView>
                                     </>
                                 )}
-                            </Popup>:null}
-                            {logOut ?<form onSubmit={onSubmitLogOutForm}>
-                                    <button type="submit" className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white h-11">Log Out</button>
-                            </form>:null}
+                            </Popup> : null}
+                            {logOut ? <form onSubmit={onSubmitLogOutForm}>
+                                <button type="submit" className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white h-11">Log Out</button>
+                            </form> : null}
                         </div>
                     </div>
                     <div className="lg:mt-52 md:mt-52 mt-5 flex flex-col justify-center">
@@ -317,7 +317,7 @@ const onSubmitLogOutForm = async event => {
                         </div>
                     </div>
                 </div>
-            </div>:null}
+            </div> : null}
         </>
     );
 }
