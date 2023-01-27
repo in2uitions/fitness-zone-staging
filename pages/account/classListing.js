@@ -15,6 +15,7 @@ export default function ClassListing() {
     const router = useRouter();
     const [books, setBooks] = useState(true)
     const [name, setName] = useState("");
+    const [save, setSave] = useState('')
     const [filtered, setFiltered] = useState([]);
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
@@ -267,26 +268,54 @@ export default function ClassListing() {
     } catch (err) {
         console.log(err);
     }
+
     function handleClassChange(event) {
         if (event.target.id == "All") {
-            setClasss(classs)
-            // console.log(event.target.id)
+            // setFiltered(data)
+            if(name != ''){
+                const filteredValue = classs.filter((dt) =>
+                `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(name.toLowerCase())
+                );
+                setFiltered(filteredValue)
+            
+            }
+            else{
+                setFiltered(classs)
+            }
         } else {
-            let newvalue = filtered.filter((item) => item.studio?.studioName === event.target.id)
-            setClasss(newvalue);
+            let newvalue = classs.filter((item) => handleClassChangeWithSearch(item,event.target.id, name))
+            setFiltered(newvalue);
+            
+        }
+        setSave(event.target.id)
+    }
+    function handleClassChangeWithSearch (item, valuename, value){
+        if(value != '' && valuename != ''){
+            return item.studio.studioName === valuename &&  `${item.class?.className} ${item.studio?.studioName} ${item.location?.locationName} ${moment(item.classTime).format("DD MMM YYYY")} ${moment(item.classTime).format("HH:mm")}`.toLowerCase().includes(value.toLowerCase())
+        }
+        else if(value == '' && valuename != ''){
+            return item.studio.studioName === valuename
+        }
+        else if(value != '' && valuename == ''){
+            return `${item.class?.className} ${item.studio?.studioName} ${item.location?.locationName} ${moment(item.classTime).format("DD MMM YYYY")} ${moment(item.classTime).format("HH:mm")}`.toLowerCase().includes(value.toLowerCase())
         }
     }
     const handleSearch = (event) => {
-        setName(event.target.value);
-        console.log(event.target.value)
-        const filteredValue = filtered.filter((dt) =>
-            `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(event.target.value.toLowerCase())
-
+        setName(event.target.value)
+        if(event.target.value == ''){
+            setFiltered(classs)
+        }
+        else{
+        // console.log(event.target.value)
+        const filteredValue = classs.filter((dt)=>
+        handleClassChangeWithSearch(dt,save, event.target.value)
         );
-        setClasss(filteredValue);
-        // setClasss(filteredValue)
+        // console.log(handleClassChangeWithSearch(dt,save, event.target.value))
+        setFiltered(filteredValue);
+        // setData(filteredValue)
+        // console.log(classs)
+        }
     }
-   
     return (
         <>
             <PrivateMenu />
@@ -348,7 +377,7 @@ export default function ClassListing() {
                             </Tab>
                         </TabList>
                     </Tabs>
-                    {classs.map((item, index) => (
+                    {filtered.map((item, index) => (
                         <>
                             <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
                                 <div className="flex justify-start w-3/4">

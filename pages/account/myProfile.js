@@ -328,13 +328,9 @@ export default function Dashboard({ style = "white" }) {
         const test = valid.isValid
         console.log(test)
         if(test == true){
-            console.log("hi")
             setIsOpen(false)
         }
         else{
-            console.log("bye")
-            
-            // alert("Wrong OTP")
             setIsOpen(false)
         }
         }
@@ -343,10 +339,10 @@ export default function Dashboard({ style = "white" }) {
             <PrivateMenu />
             <section>
                 <div className="flex flex-col justify-center items-center mt-40">
-                    <div className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
+                    <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#009FE3] rounded-full w-40 h-40 items-center justify-center">
                         <p className="futura-bold text-6xl text-[#009FE3]">{data.firstName?.charAt(0)}</p>
                         <p className="futura-bold text-6xl text-[#009FE3]">{data.lastName?.charAt(0)}</p>
-                    </div>
+                    </a>
                     <p className="futura-bold text-[#009FE3] mt-5">{data.fullName}</p>
                 </div>
                 <div className="w-full" >

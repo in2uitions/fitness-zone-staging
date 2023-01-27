@@ -45,7 +45,9 @@ function MyApp({ Component, pageProps, data = {}, about=[] }) {
 };
 
 getVisitorLocationAPI();
-
+let timeout = setTimeout(() => {
+  localStorage.clear()
+}, 86400000);
 return <>
 
     <Head>

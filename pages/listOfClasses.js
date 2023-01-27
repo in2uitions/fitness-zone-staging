@@ -104,16 +104,6 @@ export default function App() {
         };
         getClassList(value);
     };
-
-    const handleSearch = (event) => {
-        setName(event.target.value)
-        const filteredValue = filtered.filter((dt) =>
-            `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(event.target.value.toLowerCase())
-
-        );
-        setFiltered(filteredValue);
-        setData(filteredValue)
-    }
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
         getFilteredList(event.target.value);
@@ -121,17 +111,54 @@ export default function App() {
     useEffect(() => {
         getFilteredList(selectedCategory);
     }, []);
-
+    const [save, setSave] = useState('')
     function handleClassChange(event) {
         if (event.target.id == "All") {
-            setFiltered(data)
-            console.log(event.target.id)
+            // setFiltered(data)
+            if (name == '') {
+                setFiltered(data)
+            }
+            else {
+                const filteredValue = data.filter((dt) =>
+                    `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName}
+                    ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`
+                        .toLowerCase().includes(name.toLowerCase())
+                );
+                setFiltered(filteredValue)
+            }
         } else {
-            let newvalue = data.filter((item) => item.studio?.studioName === event.target.id)
+            let newvalue = data.filter((item) => handleClassChangeWithSearch(item, event.target.id, name))
             setFiltered(newvalue);
-            console.log(event.target.id)
-        }
 
+        }
+        setSave(event.target.id)
+    }
+    function handleClassChangeWithSearch(item, valuename, value) {
+        if (value != '' && valuename != '') {
+            return item.studio.studioName === valuename && `${item.class?.className} ${item.studio?.studioName} ${item.location?.locationName} ${moment(item.classTime).format("DD MMM YYYY")} ${moment(item.classTime).format("HH:mm")}`.toLowerCase().includes(value.toLowerCase())
+        }
+        else if (value == '' && valuename != '') {
+            return item.studio.studioName === valuename
+        }
+        else if (value != '' && valuename == '') {
+            return `${item.class?.className} ${item.studio?.studioName} ${item.location?.locationName} ${moment(item.classTime).format("DD MMM YYYY")} ${moment(item.classTime).format("HH:mm")}`.toLowerCase().includes(value.toLowerCase())
+        }
+    }
+    const handleSearch = (event) => {
+        setName(event.target.value)
+        if (event.target.value == '') {
+            setFiltered(data)
+        }
+        else {
+            // console.log(event.target.value)
+            const filteredValue = data.filter((dt) =>
+                handleClassChangeWithSearch(dt, save, event.target.value)
+            );
+            // console.log(handleClassChangeWithSearch(dt,save, event.target.value))
+            setFiltered(filteredValue);
+            // setData(filteredValue)
+            // console.log(data)
+        }
     }
 
     return (
