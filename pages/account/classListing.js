@@ -449,8 +449,8 @@ export default function ClassListing() {
                     <MobileView>
                     {filtered.map((item, index) => (
                         <>
-                            <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
-                                <div className="flex justify-start space-x-10">
+                            <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
+                                <div className="flex justify-start space-x-8">
                                 <div className="flex flex-col">
                                     <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
                                     <p className=' text-white text-md sizemobile futura-book'>{moment(item.classTime).format("HH:mm")}</p>
