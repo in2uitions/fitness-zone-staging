@@ -9,7 +9,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
     
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     const router = useRouter();
     const route = () => {
     if (itemSet) {

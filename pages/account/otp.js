@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function Otp() {
     const { query } = useRouter()
     const router = useRouter()
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/otp"});

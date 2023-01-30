@@ -16,7 +16,7 @@ export default function Dashboard({ style = "white" }) {
     const [message, setMessage] = useState("");
     const memberId = localStorage.getItem("Member");
     const [isOpen, setIsOpen] = useState(false);
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/myProfile" });
@@ -334,6 +334,7 @@ export default function Dashboard({ style = "white" }) {
             setIsOpen(false)
         }
         }
+        
     return (
         <>
             <PrivateMenu />
@@ -432,18 +433,18 @@ export default function Dashboard({ style = "white" }) {
                                                             &times;
                                                         </button>
                                                         <div className="popup-bg rounded-md">
-                                                            <div className="container mx-auto flex flex-col space-y-5 py-8 px-20">
+                                                            <div className="container mx-auto flex flex-col space-y-5 py-8 lg:px-40 md:px-20 px-6">
                                                                 <p className="text-[#009FE3] text-lg futura-bold">Change Email Address</p>
                                                                 <form className="flex flex-col space-y-5" onSubmit={sendOTPEmail}>
                                                                     <input onChange={autoComplete} className="bg-transparent p-1 border border-[#009FE3] h-9 rounded-md text-white focus:outline-none  focus:border-[#009FE3]"
                                                                         placeholder="Insert your new Email" id="newemail" />
-                                                                    <button disabled={!text} type="submit" className="bg-[#009fe3] button-disabled h-9 futura-book rounded-md" onClick={onAddBtnClick}>Send OTP</button>
+                                                                    <button disabled={!text} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md" onClick={onAddBtnClick}>Send OTP</button>
                                                                 </form>
                                                                 {showbutton ? <form className="flex flex-col space-y-5" onSubmit={submitOTPEmail}>
                                                                     <input onChange={autoscdComplete} className="border border-[#009fe3] bg-transparent h-9 rounded-md p-1 text-white" id="otpNumber" placeholder="OTP" />
-                                                                    <button onClick={closePopup} disabled={!scdInput} type="submit" className="bg-[#009fe3] button-disabled h-9 futura-book rounded-md">Save</button>
+                                                                    <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md">Save</button>
                                                                 </form> : null}
-                                                                <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
+                                                                {showbutton ?<p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
                                                                     minutes={3}
                                                                     seconds={1}
                                                                     text=""
@@ -453,7 +454,7 @@ export default function Dashboard({ style = "white" }) {
                                                                     textColor="#009FE3"
                                                                     background="#00000000"
                                                                     buttonColor="#009FE3"
-                                                                /></span></p>
+                                                                /></span></p>:null}
                                                             </div>
                                                         </div>
                                                     </>

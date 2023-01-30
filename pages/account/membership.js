@@ -16,7 +16,7 @@ export default function Membership({ style = 'white' }) {
     const memberId = localStorage.getItem('Member');
     const [test, setTest] = useState([])
     const [state, toggle] = useState(true);
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/membership"});
@@ -217,7 +217,7 @@ export default function Membership({ style = 'white' }) {
                             </div>
                         </div>
                     </div>
-                    <div className='flex flex-col mx-auto justify-start w-3/5 items-start mt-10 px-2 lg:px-0 md:px-0'>
+                    <div className='flex flex-col mx-auto justify-start lg:w-3/5 md:w-3/5 items-start mt-10 px-2 lg:px-0 md:px-0'>
                         <p className='text-[#009FE3] futura-bold mb-3'>Payment History</p>
                         {slice.map((item) => (
                             <>

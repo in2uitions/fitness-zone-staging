@@ -67,7 +67,7 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
         setScrollSnaps(embla.scrollSnapList());
         embla.on("select", onSelect);
     }, [embla, setScrollSnaps, onSelect]);
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     const router = useRouter();
     const route = () => {
     if (itemSet) {

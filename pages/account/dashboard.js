@@ -21,7 +21,7 @@ export default function Dashboard({ style = "white" }) {
     const [trainer, setTrainer] = useState([])
     const [bookedClass, setBookedClass] = useState([])
     const memberId = localStorage.getItem("Member");
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/dashboard" });
@@ -257,31 +257,31 @@ export default function Dashboard({ style = "white" }) {
             <PrivateMenu />
             <section>
                 <div className="lg:container lg:mx-auto flex flex-col justify-center mt-40 lg:px-20 md:px-20 px-0">
-                    <p className="text-[#009FE3] futura-bold flex space-x-2">
+                    <p className="text-[#009FE3] futura-bold flex space-x-2 lg:px-0 md:px-0 px-2">
                         <span>HELLO</span>
                         <span>{books.fullName}</span>
                     </p>
 
-                    <p className="futura-book text-white">Let’s burn some calories</p>
+                    <p className="futura-book text-white lg:px-0 md:px-0 px-2">Let’s burn some calories</p>
 
-                    {privateCarousel.map((item) => (
-                        <Slider className="mt-10" {...settings}>
-                            {item.carousel_fields.map((items, i) => (
-                                <div className="relative">
-                                {items.private_carousel_items_id?.image ?<img src={`${image_url}${items.private_carousel_items_id?.image}`} />:null}
-                                    <div className="absolute flex flex-col bottom-8 px-10">
-                                        <div className="flex space-x-2 items-start">
-                                        {items.private_carousel_items_id?.on_icon ?<img src={`${image_url}${items.private_carousel_items_id?.on_icon}`} className="h-6" />:null}
-                                            {items.private_carousel_items_id?.title ?<p className="futura-bold text-3xl text-white">
-                                                {items.private_carousel_items_id?.title}
-                                            </p>:null}
-                                        </div>
-                                        {items.private_carousel_items_id?.description ? <p className="desc-dashboard text-white">{parse(`${items.private_carousel_items_id?.description}`)} </p> : null}
+
+                    <Slider className="mt-10" {...settings}>
+                        {privateCarousel.map((item) => (
+                            <div className="relative">
+                                {item.image ? <img src={`${image_url}${item.image}`} /> : null}
+                                <div className="absolute flex flex-col bottom-8 px-10">
+                                    <div className="flex space-x-2 items-start">
+                                        {item.on_icon ? <img src={`${image_url}${item.on_icon}`} className="h-6" /> : null}
+                                        {item.title ? <p className="futura-bold text-3xl text-white">
+                                            {item.title}
+                                        </p> : null}
                                     </div>
+                                    {item.description ? <p className="desc-dashboard text-white">{parse(`${item.description}`)} </p> : null}
                                 </div>
-                            ))}
-                        </Slider>
-                    ))}
+                            </div>
+                        ))}
+                    </Slider>
+
 
                 </div>
             </section>
@@ -342,9 +342,9 @@ export default function Dashboard({ style = "white" }) {
                         <div
                             // className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
                             className={
-                                        "" +
-                                        (noOfElements < 4 ? "flex lg:justify-center text-white items-center cursor-pointer futura-bold" : "hidden")
-                                    }
+                                "" +
+                                (noOfElements < 4 ? "flex lg:justify-center text-white items-center cursor-pointer futura-bold" : "hidden")
+                            }
                             onClick={() => {
                                 toggle(!state);
                                 loadMoreLess();

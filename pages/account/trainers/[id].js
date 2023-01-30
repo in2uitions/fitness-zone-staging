@@ -13,7 +13,7 @@ export default function TrainersProfile({ style = "white" }) {
     const router = useRouter()
     const { query } = useRouter()
     const memberId = localStorage.getItem("Member");
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
         if (itemSet) {
             // router.push({ pathname: `/account/trainers/${query.id}` });

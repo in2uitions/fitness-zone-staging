@@ -136,7 +136,7 @@ export default function Menu(data = {}) {
     const [signbtn, setSignBtn] = useState(true);
     const [logOut, setLogOut] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
         if (itemSet) {
             setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)

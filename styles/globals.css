@@ -2355,6 +2355,9 @@ li.category.isActive {
 }
 
 @media (min-width:320px) and (max-width:480px) {
+  .on-tabs{
+    height:0.75rem !important;
+  }
   .rbc-btn-group {
     margin-bottom: 10px !important;
   }

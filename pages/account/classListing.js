@@ -22,7 +22,7 @@ export default function ClassListing() {
     const [info, setInfo] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(0);
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/classListing" });
@@ -271,23 +271,24 @@ export default function ClassListing() {
 
     function handleClassChange(event) {
         if (event.target.id == "All") {
-            // setFiltered(data)
-            if(name != ''){
+        setSave("")
+            if (name != '') {
                 const filteredValue = classs.filter((dt) =>
-                `${dt.class?.className} ${dt.studio?.studioName} ${dt.location?.locationName} ${moment(dt.classTime).format("DD MMM YYYY")} ${moment(dt.classTime).format("HH:mm")}`.toLowerCase().includes(name.toLowerCase())
-                );
-                setFiltered(filteredValue)
+                handleClassChangeWithSearch(dt, "", name)
+            );
+            setFiltered(filteredValue)
+            }
+            else {
+                setFiltered(data)
+            }
             
-            }
-            else{
-                setFiltered(classs)
-            }
         } else {
-            let newvalue = classs.filter((item) => handleClassChangeWithSearch(item,event.target.id, name))
-            setFiltered(newvalue);
-            
-        }
         setSave(event.target.id)
+
+            let newvalue = classs.filter((item) => handleClassChangeWithSearch(item, event.target.id, name))
+            setFiltered(newvalue);
+
+        }
     }
     function handleClassChangeWithSearch (item, valuename, value){
         if(value != '' && valuename != ''){
@@ -306,28 +307,25 @@ export default function ClassListing() {
             setFiltered(classs)
         }
         else{
-        // console.log(event.target.value)
         const filteredValue = classs.filter((dt)=>
         handleClassChangeWithSearch(dt,save, event.target.value)
         );
-        // console.log(handleClassChangeWithSearch(dt,save, event.target.value))
         setFiltered(filteredValue);
-        // setData(filteredValue)
-        // console.log(classs)
         }
     }
     return (
         <>
             <PrivateMenu />
             <section className="">
-                <div className="lg:container mx-auto mt-40 lg:px-28 md:px-20 px-3 w-screen">
+                <div className="lg:container mx-auto mt-40 lg:px-28 md:px-20  w-screen px-2">
                     <div className="flex flex-col justify-center items-center">
-                        <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p>
+                        <p className="text-[#009FE3] futura-bold lg:text-4xl md:text-4xl text-3xl">LIST OF CLASSES</p>
                     </div>
+                    <BrowserView>
                     <div className="flex w-full justify-between items-center mt-5">
                         <div className="flex items-center space-x-3">
                             <img src="/filterBy.png" />
-                            <p className="futura-book text-white">Filter by</p>
+                            <p className="futura-book text-white lg:text-xl md:text-xl text-sm">Filter by</p>
                         </div>
                         {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
                         <div className="relative" style={{ width: "73%" }}>
@@ -349,34 +347,63 @@ export default function ClassListing() {
                             </select>
                         </div>
                     </div>
+                    </BrowserView>
+                    <MobileView>
+                    <div className="flex w-full justify-between items-center mt-5">
+                        <div className="flex items-center space-x-3">
+                            <img src="/filterBy.png" className="w-3 h-3"/>
+                            <p className="futura-book text-white text-sm">Filter by</p>
+                        </div>
+                        {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
+                        <div className="relative" style={{ width: "35%" }}>
+                            <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-8 mt-5 mb-5 bg-transparent pl-4"
+                                placeholder="Search" value={name}
+                                onChange={handleSearch}/>
+                            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <SearchOutlined
+                                    className="h-4 w-4 text-gray-400"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex justify-center items-center">
+                            <select style={{ height: "2rem", borderRadius: "5px"}} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
+                                {data.map((item, i) => (
+                                    <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    </MobileView>
                     <Tabs className="mt-5">
-                        <TabList className="flex justify-between w-full mx-auto container tabs-container">
+                        <TabList className="flex justify-between w-full mx-auto container tabs-container" >
                             <Tab className="notSelected cursor-pointer" id="All">
-                                <div className="flex items-center space-x-2" onClick={handleClassChange} type="button" id="All">
-                                    <p className="text-2xl font-extrabold" id="All">All</p>
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="All">All</p>
                                     <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
                                 </div>
                             </Tab>
                             <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center space-x-2" onClick={handleClassChange} type="button">
-                                    <p className="text-2xl font-extrabold" id="NRG">ENERGY</p>
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="NRG">ENERGY</p>
                                     <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
                                 </div>
                             </Tab>
                             <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center space-x-2" onClick={handleClassChange} type="button">
-                                    <p className="text-2xl font-extrabold" id="BLNC">BALANCE</p>
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="BLNC">BALANCE</p>
                                     <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
                                 </div>
                             </Tab>
                             <Tab className="notSelected cursor-pointer">
-                                <div className="flex justify-end items-center space-x-2" onClick={handleClassChange} type="button">
-                                    <p className="text-2xl font-extrabold" id="PWR">POWER</p>
+                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="PWR">POWER</p>
                                     <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
                                 </div>
                             </Tab>
                         </TabList>
                     </Tabs>
+                    <BrowserView>
                     {filtered.map((item, index) => (
                         <>
                             <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
@@ -418,6 +445,53 @@ export default function ClassListing() {
                             </div>
                         </>
                     ))}
+                    </BrowserView>
+                    <MobileView>
+                    {filtered.map((item, index) => (
+                        <>
+                            <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
+                                <div className="flex justify-start space-x-10">
+                                <div className="flex flex-col">
+                                    <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
+                                    <p className=' text-white text-md sizemobile futura-book'>{moment(item.classTime).format("HH:mm")}</p>
+                                    </div>
+                                    <div className="border border-l border-[#009FE3]"></div>
+                                    <div className="flex flex-col">
+                                    <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
+                                        {item.class?.className}
+                                    </p>
+                                    
+                                    <p className="text-white futura-book text-md sizemobile lg:border-r md:border-r border-white">
+                                        {item.location?.locationName}
+                                    </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button
+                                        className="flex justify-end"
+                                    >
+                                        {!item?.toggle ? (
+                                            <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
+                                                <img src="/notBooked.png" />
+                                                <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
+                                            </div>
+                                        ) : (
+                                            <div className="flex space-x-2 items-center">
+                                                <img src="/booked.png" />
+                                                <p className="futura-book text-white text-md sizemobile">Booked</p>
+                                                <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                    Cancel
+                                                    <Close className="cancel-close" />
+                                                </p>
+                                            </div>
+
+                                        )}
+                                    </button>
+                                </div>
+                            </div>
+                        </>
+                    ))}
+                    </MobileView>
                 </div>
                 {/* <div ref={buttonRef} style={{ display: "none" }}>
                     <a id="buttonss" onClick={()=>{  $('html, body').animate({ scrollTop: 0 }, '300')}} className="m-10"><ArrowUpward/></a>

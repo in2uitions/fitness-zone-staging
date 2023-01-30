@@ -107,7 +107,7 @@ export default function Frezzing() {
             month: true
         }
     }), [])
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/freezing" });

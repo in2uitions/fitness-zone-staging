@@ -1,36 +1,56 @@
 import React from "react";
+
+const STATUS = {
+    start: 1
+}
 export default function App() {
-    const [data, setData] = React.useState([]);
-    const [name, setName] = React.useState("");
-    const getData = async () => {
-        try {
-            const res = await fetch("https://jsonplaceholder.typicode.com/users");
-            const data = await res.json();
-            setData(data);
-        } catch (error) {
-            console.log(error);
+    const [minutes, setMinutes] = React.useState(3);
+    const [seconds, setSeconds] = React.useState(0);
+    const [displayMessage, setDisplayMessage] = React.useState(false);
+    const [status, setStatus] = React.useState(STATUS.default);
+    const intervalRef = React.useRef();
+
+    function countDown() {
+        if (seconds === 0) {
+            if (minutes !== 0) {
+                setSeconds(59);
+                setMinutes(min => min - 1); 
+            } else {
+                let mins = displayMessage ? 3 : 0;
+                let sec = 59;
+                setSeconds(sec);
+                setMinutes(mins);
+                setDisplayMessage(value => !value);
+            }
+        } else {
+            setSeconds(sec => sec - 1);// try using callback form to prevent stale data
         }
-    };
-    // const filtered = data.filter((dt) =>
-    //     dt.name.toLowerCase().includes(name.toLowerCase())
-    // );
+    }
+
     React.useEffect(() => {
-        getData();
-    }, []);
+        if (status === STATUS.start) {
+            intervalRef.current = setInterval(() => {
+                countDown()
+            }, 1000);
+        } else if (status === STATUS.pause && intervalRef.current) {
+            clearInterval(intervalRef.current)
+        }
+        return () => {
+            clearInterval(intervalRef.current)
+        };
+    }, [minutes, seconds, status]);
+
+    const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+    const start = () => setStatus(STATUS.start);
+
     return (
-        <div className="container mx-auto flex flex-col justify-center items-center w-screen h-screen">
-            <input
-                type="text"
-                placeholder="Search..."
-                className="w-full h-10 bg-transparent border border-gray-500 rounded-lg"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <ul>
-                {data.filter((dt) => dt.name.toLowerCase().includes(name.toLowerCase())).map((dt) => {
-                    return <li key={dt.id}>{dt.name}</li>;
-                })}
-            </ul>
+        <div className="timer flex flex-col justify-center items-center mt-40">
+            <h2>
+                {timerMinutes}:{timerSeconds}
+            </h2>
+            <button className="buttons_new" onClick={start}>Start</button>
         </div>
     );
 }

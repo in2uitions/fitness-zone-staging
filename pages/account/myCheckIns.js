@@ -11,7 +11,7 @@ import PrivateMenu from "./private-menu";
 export default function CheckIns() {
     const [data, setData] = useState([]);
     const memberId = localStorage.getItem('Member');
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/myCheckIns"});

@@ -11,7 +11,7 @@ export default function List() {
     const [isDisabled, setIsDisabled] = useState(false);
     const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
     const [selectedCategory, setSelectedCategory] = useState();
-    const itemSet = (localStorage.getItem("token") !== null);
+    const itemSet = (localStorage.length !== 0);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/trainers"});
