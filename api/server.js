@@ -133,7 +133,7 @@ export const getPrivateCarousel = async (value) => {
 
     }
 
-    var myfields = ['*,carousel_fields.private_carousel_items_id.*']
+    var myfields = ['*']
     const carouselPublished = await carousel.readByQuery({ filter: myfilter, fields: myfields })
     return carouselPublished.data;
 }
