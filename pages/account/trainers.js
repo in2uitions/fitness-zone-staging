@@ -85,7 +85,7 @@ export default function List() {
                 if(response.status == 200){
                 const checkInList = await response.json();
                 setListData(checkInList);
-                }
+            }
             }
         }, []);
     } catch (err) {
@@ -158,7 +158,9 @@ export default function List() {
                         </div>
                         <select disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange}>
                             {data.map((item, i) => (
-                                <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                <>
+                                {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option> :null}
+                                </>
                             ))}
                         </select>
                     </div>
