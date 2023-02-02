@@ -12,14 +12,15 @@ import { image_url } from "../../global_vars";
 import Router, { useRouter } from "next/router";
 import parse from "html-react-parser";
 import PrivateMenu from "./private-menu";
+import Cookies from 'js-cookie'
 
 export default function TrainersProfile({ style = "white" }) {
     const [data, setData] = useState([]);
     const [categoryData, setCategoryData]=useState([])
     const router = useRouter()
     const { query } = useRouter()
-    const memberId = localStorage.getItem("Member");
-    const itemSet = (localStorage.length !== 0);
+    const memberId = Cookies.get("Member");
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/trainers-profile"});
@@ -32,7 +33,7 @@ export default function TrainersProfile({ style = "white" }) {
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
-        "Bearer " + localStorage.getItem("token")
+        "Bearer " + Cookies.get("token")
     );
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {

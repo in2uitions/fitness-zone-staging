@@ -3,13 +3,14 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styles from "../../styles/Header.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Cookies from 'js-cookie'
 
 export default function PrivateMenu() {
-    const memberId = localStorage.getItem('Member');
+    const memberId = Cookies.get('Member');
     const [data, setData] = useState(true)
     const router = useRouter();
     var registrationHeaders = new Headers();
-    registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+    registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
         method: 'GET',
@@ -36,7 +37,10 @@ export default function PrivateMenu() {
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
-            localStorage.clear();
+            Cookies.remove('token');
+            Cookies.remove('Member');
+            Cookies.remove('Phone');
+            Cookies.remove('Country')
             router.push({ pathname: "/account/login" });
         };
         getTokenAPI();

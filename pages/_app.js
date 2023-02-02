@@ -45,9 +45,13 @@ function MyApp({ Component, pageProps, data = {}, about=[] }) {
 };
 
 getVisitorLocationAPI();
-let timeout = setTimeout(() => {
-  localStorage.clear()
-}, 86400000);
+// let timeout = setTimeout(() => {
+//   localStorage.removeItem("token")
+// }, 86400000);
+// const JWT = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJkNWY4NTJkMC0wNjg5LTQwZGYtYjdmMy1mMTBhMWY1ZmZkMWMiLCJTdWJzY3JpYmVySWQiOiIwMjdiMmYwYi0xMTFmLTQwMzEtYTBjMy03YWZlZDg0NDAyZGMiLCJuYW1laWQiOiJkNWY4NTJkMC0wNjg5LTQwZGYtYjdmMy1mMTBhMWY1ZmZkMWMiLCJyb2xlIjoiQWR2YW5jZWQiLCJuYmYiOjE2NzUzMjQ4OTksImV4cCI6MTY3NTQxMTI5OSwiaWF0IjoxNjc1MzI0ODk5fQ.909J-M2rOlbCHrzOdIEw9tHuVXTKUyU0yxDuFN7aETk`;
+
+// const jwtPayload = JSON.parse(window.atob(JWT.split('.')[1]))
+// console.log(jwtPayload.exp);
 return <>
 
     <Head>

@@ -7,6 +7,7 @@ import styles from "../../styles/Header.module.css";
 import Popup from 'reactjs-popup';
 import { useRouter } from "next/router";
 import PrivateMenu from './private-menu';
+import Cookies from 'js-cookie'
 
 const localizer = momentLocalizer(moment)
 
@@ -107,7 +108,7 @@ export default function Frezzing() {
             month: true
         }
     }), [])
-    const itemSet = (localStorage.length !== 0);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/freezing" });
@@ -119,14 +120,14 @@ export default function Frezzing() {
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
-        "Bearer " + localStorage.getItem("token")
+        "Bearer " + Cookies.get("token")
     );
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
         method: "GET",
         headers: registrationHeaders,
     };
-    const memberId = localStorage.getItem('Member');
+    const memberId = Cookies.get('Member');
     const [books, setBooks] = useState(true)
     try {
         useEffect(() => {
@@ -148,15 +149,6 @@ export default function Frezzing() {
         console.log(err);
     }
     const router = useRouter();
-    const onSubmitForm = async event => {
-        event.preventDefault();
-        const getTokenAPI = async () => {
-            localStorage.clear();
-            router.push({ pathname: "/account/login" });
-        };
-        getTokenAPI();
-
-    };
     return (
         <>
             <PrivateMenu />

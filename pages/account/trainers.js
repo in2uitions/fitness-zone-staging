@@ -5,31 +5,38 @@ import Popup from "reactjs-popup";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
+import Cookies from 'js-cookie'
 
 export default function List() {
     const [data, setListData] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
     const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
-    const [selectedCategory, setSelectedCategory] = useState();
-    const itemSet = (localStorage.length !== 0);
+    const [selectedCategory, setSelectedCategory] = useState('1');
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/trainers"});
+        if(Cookies.get("Category") != undefined){
+            const category = Cookies.get("Category");
+            setSelectedCategory(category)
+        }
     }
     else{
         router.push({ pathname: "/account/login"});
     }
+
 }, [])
     function handleCategoryChange(event) {
         const val = event.target.value
-        localStorage.setItem("Category", val);
+        Cookies.set("Category", val);
         setSelectedCategory(val);
+        
         // console.log(val)
     }
-
+    // Cookies.get("Category")
     try {
         var registrationHeaders = new Headers();
-        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
         registrationHeaders.append("Content-Type", "application/json");
         var registrationRequestOptions = {
             method: 'GET',
@@ -91,7 +98,7 @@ export default function List() {
     } catch (err) {
         console.log(err);
     }
-    const memberId = localStorage.getItem("Member");
+    const memberId = Cookies.get("Member");
     const [books, setBooks] = useState(true)
     try {
         useEffect(() => {
@@ -137,15 +144,6 @@ export default function List() {
         console.log(err);
     }
     const router = useRouter();
-    const onSubmitForm = async event => {
-        event.preventDefault();
-        const getTokenAPI = async () => {
-            localStorage.clear();
-            router.push({ pathname: "/account/login" });
-        };
-        getTokenAPI();
-
-    };
     return (
         <>
            <PrivateMenu/>

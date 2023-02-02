@@ -11,12 +11,13 @@ import { ArrowUpward } from '@material-ui/icons';
 import $ from "jquery";
 import { useRouter } from "next/router";
 import PrivateMenu from './private-menu';
+import Cookies from 'js-cookie'
 
 export default function Membership({ style = 'white' }) {
-    const memberId = localStorage.getItem('Member');
+    const memberId = Cookies.get('Member');
     const [test, setTest] = useState([])
     const [state, toggle] = useState(true);
-    const itemSet = (localStorage.length !== 0);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/membership"});
@@ -28,7 +29,7 @@ export default function Membership({ style = 'white' }) {
     try {
         
         var registrationHeaders = new Headers();
-        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
         registrationHeaders.append("Content-Type", "application/json");
         var registrationRequestOptions = {
             method: 'GET',

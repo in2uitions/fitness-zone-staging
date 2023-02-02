@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Directus } from '@directus/sdk';
 import { URL } from '../global_vars';
+import Cookies from 'js-cookie'
 
 const directus = new Directus(URL);
 
@@ -139,16 +140,16 @@ export const getPrivateCarousel = async (value) => {
 }
 export const createuser = async () => {
     const users = directus.items("send_cv");
-    var firstNameToUse = localStorage.getItem('first_name');
-    var lastNameToUse = localStorage.getItem('last_name');
-    var emailToUse = localStorage.getItem('email');
-    var phoneNumberToUse = localStorage.getItem('phone_number');
-    var mobileNumberToUse = localStorage.getItem('mobile_number');
-    var educationToUse = localStorage.getItem('education');
-    var experienceToUse = localStorage.getItem('experience');
-    var cvToUse = localStorage.getItem('cv')
+    var firstNameToUse = Cookies.get('first_name');
+    var lastNameToUse = Cookies.get('last_name');
+    var emailToUse = Cookies.get('email');
+    var phoneNumberToUse = Cookies.get('phone_number');
+    var mobileNumberToUse = Cookies.get('mobile_number');
+    var educationToUse = Cookies.get('education');
+    var experienceToUse = Cookies.get('experience');
+    var cvToUse = Cookies.get('cv')
     async function readFile() {
-    var base64 = localStorage.getItem("file");
+    var base64 = Cookies.get("file");
     // console.log("base64", JSON.parse(base64))
     // const form = new FormData();
     // form.append("file", base64);
@@ -170,23 +171,23 @@ export const createuser = async () => {
         mobile_number: mobileNumberToUse,
         education: educationToUse,
         experience: experienceToUse,
-        cv: localStorage.getItem('file_id')
+        cv: Cookies.get('file_id')
     });
     return annoncesPublished;
     
 }
 export const createDubaiuser = async () => {
     const users = directus.items("send_cv_dubai");
-    var firstNameToUse = localStorage.getItem('first_name');
-    var lastNameToUse = localStorage.getItem('last_name');
-    var emailToUse = localStorage.getItem('email');
-    var phoneNumberToUse = localStorage.getItem('phone_number');
-    var mobileNumberToUse = localStorage.getItem('mobile_number');
-    var educationToUse = localStorage.getItem('education');
-    var experienceToUse = localStorage.getItem('experience');
-    var cvToUse = localStorage.getItem('cv')
+    var firstNameToUse = Cookies.get('first_name');
+    var lastNameToUse = Cookies.get('last_name');
+    var emailToUse = Cookies.get('email');
+    var phoneNumberToUse = Cookies.get('phone_number');
+    var mobileNumberToUse = Cookies.get('mobile_number');
+    var educationToUse = Cookies.get('education');
+    var experienceToUse = Cookies.get('experience');
+    var cvToUse = Cookies.get('cv')
     async function readFile() {
-    var base64 = localStorage.getItem("file");
+    var base64 = Cookies.get("file");
     // console.log("base64", JSON.parse(base64))
     // const form = new FormData();
     // form.append("file", base64);
@@ -208,7 +209,7 @@ export const createDubaiuser = async () => {
         mobile_number: mobileNumberToUse,
         education: educationToUse,
         experience: experienceToUse,
-        cv: localStorage.getItem('file_id')
+        cv: Cookies.get('file_id')
     });
     return annoncesPublished;
     
@@ -220,11 +221,11 @@ export const createDubaiuser = async () => {
 
 export const createFreeTrialUser = async () => {
     const users = directus.items("free_trial");
-    var nameToUse = localStorage.getItem('name');
-    var phoneNumberToUse = localStorage.getItem('phone_number');
-    var emailToUse = localStorage.getItem('email');
-    var mobileNumberToUse = localStorage.getItem('mobile_number');
-    var locationToUse = localStorage.getItem('location') 
+    var nameToUse = Cookies.get('name');
+    var phoneNumberToUse = Cookies.get('phone_number');
+    var emailToUse = Cookies.get('email');
+    var mobileNumberToUse = Cookies.get('mobile_number');
+    var locationToUse = Cookies.get('location') 
     const annoncesPublished = await users.createOne({
         name: nameToUse,
         phone_number: phoneNumberToUse,
@@ -237,11 +238,11 @@ export const createFreeTrialUser = async () => {
 }
 export const createFreeTrialDubaiUser = async () => {
     const users = directus.items("free_trialDubai");
-    var nameToUse = localStorage.getItem('name');
-    var phoneNumberToUse = localStorage.getItem('phone_number');
-    var emailToUse = localStorage.getItem('email');
-    var mobileNumberToUse = localStorage.getItem('mobile_number');
-    var locationToUse = localStorage.getItem('location') 
+    var nameToUse = Cookies.get('name');
+    var phoneNumberToUse = Cookies.get('phone_number');
+    var emailToUse = Cookies.get('email');
+    var mobileNumberToUse = Cookies.get('mobile_number');
+    var locationToUse = Cookies.get('location') 
     const annoncesPublished = await users.createOne({
         name: nameToUse,
         phone_number: phoneNumberToUse,
@@ -254,9 +255,9 @@ export const createFreeTrialDubaiUser = async () => {
 }
 export const createContactUsUser = async () => {
     const users = directus.items("contact_us");
-    var nameToUse = localStorage.getItem('full_name');
-    var emailToUse = localStorage.getItem('email');
-    var messageToUse = localStorage.getItem('message');
+    var nameToUse = Cookies.get('full_name');
+    var emailToUse = Cookies.get('email');
+    var messageToUse = Cookies.get('message');
     const annoncesPublished = await users.createOne({
         full_name: nameToUse,
         email: emailToUse,
@@ -267,9 +268,9 @@ export const createContactUsUser = async () => {
 }
 export const createContactUsDubaiUser = async () => {
     const users = directus.items("contact_us_dubai");
-    var nameToUse = localStorage.getItem('full_name');
-    var emailToUse = localStorage.getItem('email');
-    var messageToUse = localStorage.getItem('message');
+    var nameToUse = Cookies.get('full_name');
+    var emailToUse = Cookies.get('email');
+    var messageToUse = Cookies.get('message');
     const annoncesPublished = await users.createOne({
         full_name: nameToUse,
         email: emailToUse,
@@ -280,10 +281,10 @@ export const createContactUsDubaiUser = async () => {
 }
 // export const createOfferUser = async () => {
 //     const users = directus.items("offer");
-//     var nameToUse = localStorage.getItem('first_name');
-//     var lastNameToUse = localStorage.getItem('last_name');
-//     var emailToUse = localStorage.getItem('email');
-//     var phoneToUse = localStorage.getItem('phone_number');
+//     var nameToUse = Cookies.get('first_name');
+//     var lastNameToUse = Cookies.get('last_name');
+//     var emailToUse = Cookies.get('email');
+//     var phoneToUse = Cookies.get('phone_number');
 //     const annoncesPublished = await users.createOne({
 //         first_name: nameToUse,
 //         last_name: lastNameToUse,

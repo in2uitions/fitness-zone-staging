@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { SearchOutlined } from "@material-ui/icons";
 import Close from "@material-ui/icons/Close";
 import PrivateMenu from "./private-menu";
+import Cookies from 'js-cookie'
 
 export default function ClassListing() {
     var curr = new Date;
@@ -21,8 +22,8 @@ export default function ClassListing() {
     const [classs, setClasss] = useState([]);
     const [info, setInfo] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState(0);
-    const itemSet = (localStorage.length !== 0);
+    const [selectedCategory, setSelectedCategory] = useState(1);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/classListing" });
@@ -39,7 +40,7 @@ export default function ClassListing() {
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
-        "Bearer " + localStorage.getItem("token")
+        "Bearer " + Cookies.get("token")
     );
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
@@ -59,6 +60,7 @@ export default function ClassListing() {
                 if (response.status == 200) {
                     const locationList = await response.json();
                     setData(locationList);
+                    // console.log(locationList)
                 }
             }
 
@@ -95,19 +97,21 @@ export default function ClassListing() {
     useEffect(() => {
         getFilteredList(selectedCategory);
     }, [])
-    var curr = new Date;
-    var first = curr.getDate() - curr.getDay();
-    var last = first + 6;
+    // var curr = new Date;
+    // var first = curr.getDate() - curr.getDay();
+    // var last = first + 6;
 
-    var firstday = new Date(curr.setDate(first)).toUTCString();
-    var lastday = new Date(curr.setDate(last)).toUTCString();
+    // var firstday = new Date(curr.setDate(first)).toUTCString();
+    // var lastday = new Date(curr.setDate(last)).toUTCString();
+    var begin = moment().startOf('week').format("YYYY MM DD");
+    var end = moment().endOf('week').format("YYYY MM DD");
     function getFilteredList(value = null) {
 
         const getClassList = async (val) => {
             var registrationHeaders = new Headers();
             registrationHeaders.append(
                 "Authorization",
-                "Bearer " + localStorage.getItem("token")
+                "Bearer " + Cookies.get("token")
             );
             registrationHeaders.append("Content-Type", "application/json");
             var registrationRequestOptions = {
@@ -115,7 +119,7 @@ export default function ClassListing() {
                 headers: registrationHeaders,
             };
             var query = '';
-            var query = `?dateFrom=${firstday}&dateTo=${lastday}`
+            var query = `?dateFrom=${begin}&dateTo=${end}`
             if (val) {
                 query = query + `${query != '' ? '&' : '?'}LocationCode=${val}`
             }
@@ -169,14 +173,14 @@ export default function ClassListing() {
     //     // console.log(date)
     // }
 
-    const memberId = localStorage.getItem("Member");
+    const memberId = Cookies.get("Member");
 
     const reserveClass = async ({ timetableId, e }) => {
         e.preventDefault();
         // console.log(timetableId)
         try {
             var registrationHeaders = new Headers();
-            registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+            registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
             registrationHeaders.append("Content-Type", "application/json");
             var registrationRequestOptions = {
                 method: 'GET',
@@ -200,6 +204,7 @@ export default function ClassListing() {
                     return res;
                 })
                 setClasss(newClasssValue);
+                setFiltered(newClasssValue)
             }
             else {
                 alert("Class is not valid");
@@ -213,7 +218,7 @@ export default function ClassListing() {
         e.preventDefault();
         try {
             var registrationHeaders = new Headers();
-            registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+            registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
             registrationHeaders.append("Content-Type", "application/json");
             var registrationRequestOptions = {
                 method: 'GET',
@@ -237,6 +242,7 @@ export default function ClassListing() {
                     return res;
                 })
                 setClasss(newClasssValue);
+                setFiltered(newClasssValue)
             }
             else {
                 alert("Class is not valid");
@@ -247,8 +253,6 @@ export default function ClassListing() {
         }
 
     };
-
-
 
     try {
         useEffect(() => {
@@ -272,16 +276,19 @@ export default function ClassListing() {
     function handleClassChange(event) {
         if (event.target.id == "All") {
         setSave("")
-            if (name != '') {
-                const filteredValue = classs.filter((dt) =>
-                handleClassChangeWithSearch(dt, "", name)
-            );
-            setFiltered(filteredValue)
+            
+            if (name == '') {
+                setFiltered(classs)
             }
             else {
-                setFiltered(data)
+
+                const filteredValue = classs.filter((dt) =>
+                    handleClassChangeWithSearch(dt, "", name)
+                );
+                setFiltered(filteredValue)
+                // console.log(name)
+                // console.log(event.target.id)
             }
-            
         } else {
         setSave(event.target.id)
 
@@ -342,7 +349,9 @@ export default function ClassListing() {
                         <div className="flex justify-center items-center">
                             <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                                 {data.map((item, i) => (
-                                    <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                    <>
+                                    {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
+                                    </>
                                 ))}
                             </select>
                         </div>
@@ -369,7 +378,9 @@ export default function ClassListing() {
                         <div className="flex justify-center items-center">
                             <select style={{ height: "2rem", borderRadius: "5px"}} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                                 {data.map((item, i) => (
-                                    <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                    <>
+                                    {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
+                                    </>
                                 ))}
                             </select>
                         </div>

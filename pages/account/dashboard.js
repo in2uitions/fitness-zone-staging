@@ -14,14 +14,16 @@ import PrivateMenu from "./private-menu";
 import { getPrivateCarousel } from "../../api/server";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
+import Cookies from 'js-cookie'
+import moment from "moment";
 
 export default function Dashboard({ style = "white" }) {
     const [books, setBooks] = useState([]);
     const [data, setcheckInData] = useState([]);
     const [trainer, setTrainer] = useState([])
     const [bookedClass, setBookedClass] = useState([])
-    const memberId = localStorage.getItem("Member");
-    const itemSet = (localStorage.length !== 0);
+    const memberId = Cookies.get("Member");
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/dashboard" });
@@ -33,7 +35,7 @@ export default function Dashboard({ style = "white" }) {
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
-        "Bearer " + localStorage.getItem("token")
+        "Bearer " + Cookies.get("token")
     );
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
@@ -79,15 +81,16 @@ export default function Dashboard({ style = "white" }) {
     var first = curr.getDate() - curr.getDay();
     var last = first + 7;
 
-    var firstday = new Date(curr.setDate(first)).toUTCString();
-    var lastday = new Date(curr.setDate(last)).toUTCString();
-
+    // var firstday = new Date(curr.setDate(first)).toUTCString();
+    // var lastday = new Date(curr.setDate(last)).toUTCString();
+    var begin = moment().startOf('week').format("YYYY MM DD");
+    var end = moment().endOf('week').format("YYYY MM DD");
     try {
         useEffect(() => {
             getData();
             async function getData() {
                 const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}?dateFrom=${firstday}&dateTo=${lastday}`,
+                    `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}?dateFrom=${begin}&dateTo=${end}`,
                     registrationRequestOptions
                 );
                 if (response.status == 200) {
@@ -104,7 +107,7 @@ export default function Dashboard({ style = "white" }) {
         // console.log(timetableId)
         try {
             var registrationHeaders = new Headers();
-            registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+            registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
             registrationHeaders.append("Content-Type", "application/json");
             var registrationRequestOptions = {
                 method: 'GET',
@@ -201,7 +204,7 @@ export default function Dashboard({ style = "white" }) {
     const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
     try {
         var registrationHeaders = new Headers();
-        registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
         registrationHeaders.append("Content-Type", "application/json");
         var registrationRequestOptions = {
             method: 'GET',
@@ -340,11 +343,11 @@ export default function Dashboard({ style = "white" }) {
                         ))}
 
                         <div
-                            // className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
-                            className={
-                                "" +
-                                (noOfElements < 4 ? "flex lg:justify-center text-white items-center cursor-pointer futura-bold" : "hidden")
-                            }
+                            className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
+                            // className={
+                            //     "" +
+                            //     (noOfElements < 4 ? "flex lg:justify-center text-white items-center cursor-pointer futura-bold" : "hidden")
+                            // }
                             onClick={() => {
                                 toggle(!state);
                                 loadMoreLess();

@@ -7,6 +7,7 @@ import parse from "html-react-parser";
 import ChevronRight from "@material-ui/icons/ChevronRight";
 import ClickAwayListener from 'react-click-away-listener';
 import { ItemsHandler } from "@directus/sdk";
+import Cookies from 'js-cookie'
 
 export default function CompDropdown({ data = {} }) {
     const [dropdownState, setDropdownState] = useState(false);
@@ -21,7 +22,7 @@ export default function CompDropdown({ data = {} }) {
         setDropdownState(false);
     };
     function handleSetDropdownValue (value, localValue){
-        localStorage.setItem("Location", localValue);
+        Cookies.set("Location", localValue);
         // console.log(localValue)
         setDropdownValue(value);
         setDropdownState(!dropdownState);

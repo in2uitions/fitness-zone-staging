@@ -6,6 +6,8 @@ import styles from "../../styles/Header.module.css";
 import Popup from "reactjs-popup";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { BrowserView, MobileView } from 'react-device-detect';
+import Cookies from 'js-cookie';
+
 const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })
 
 export default function Menu(data = {}) {
@@ -136,7 +138,7 @@ export default function Menu(data = {}) {
     const [signbtn, setSignBtn] = useState(true);
     const [logOut, setLogOut] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
-    const itemSet = (localStorage.length !== 0);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
         if (itemSet) {
             setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)
@@ -159,7 +161,10 @@ export default function Menu(data = {}) {
     const onSubmitLogOutForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
-            localStorage.clear();
+            Cookies.remove('token');
+            Cookies.remove('Member');
+            Cookies.remove('Phone');
+            Cookies.remove('Country')
             router.push({ pathname: "/" });
             setIsOpen(false);
             loading();

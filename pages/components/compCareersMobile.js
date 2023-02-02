@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Popup from "reactjs-popup";
 import { createuser,createDubaiuser } from "../../api/server";
 import nextConfig from "../../next.config";
+import Cookies from 'js-cookie'
 
 export default function CompCareersMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -70,7 +71,7 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
     // const onSubmitForm = async (event) => {
     //     console.log("event.target.firstName.value")
     //     try {
-    //             localStorage.setItem('FirstName', event.target.firstName.value);
+    //             Cookies.set('FirstName', event.target.firstName.value);
     //             console.log(event.target.firstName.value)
     //             createuser();
     //     } catch (e) {
@@ -90,19 +91,19 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
                 form.append("file", file);
                 const response = await axios.post(`https://fzcms.diastora.com/files`, form);
                 if(response.status == 200){
-                    localStorage.setItem("file_id", response.data.data.id);
+                    Cookies.set("file_id", response.data.data.id);
                 }
             } catch(err){
                 console.log(err)
             }
-            localStorage.setItem('first_name', event.target.first_name.value);
-            localStorage.setItem('last_name', event.target.last_name.value);
-            localStorage.setItem('email', event.target.email.value),
-            localStorage.setItem('phone_number', event.target.email.value),
-            localStorage.setItem('mobile_number', event.target.mobile_number.value);
-            localStorage.setItem('education', event.target.education.value);
-            localStorage.setItem('experience', event.target.experience.value);
-            // localStorage.setItem('cv', event.target.cv.value)
+            Cookies.set('first_name', event.target.first_name.value);
+            Cookies.set('last_name', event.target.last_name.value);
+            Cookies.set('email', event.target.email.value),
+            Cookies.set('phone_number', event.target.email.value),
+            Cookies.set('mobile_number', event.target.mobile_number.value);
+            Cookies.set('education', event.target.education.value);
+            Cookies.set('experience', event.target.experience.value);
+            // Cookies.set('cv', event.target.cv.value)
             createuser();
             event.target.first_name.value='',
             event.target.last_name.value='',
@@ -111,13 +112,13 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
             event.target.mobile_number.value='',
             event.target.education.value='',
             event.target.experience.value='',
-            localStorage.setItem('first_name', event.target.first_name.value = '');
-            localStorage.setItem('last_name', event.target.last_name.value = '');
-            localStorage.setItem('email', event.target.email.value = ''),
-            localStorage.setItem('phone_number', event.target.email.value = ''),
-            localStorage.setItem('mobile_number', event.target.mobile_number.value = '');
-            localStorage.setItem('education', event.target.education.value = '');
-            localStorage.setItem('experience', event.target.experience.value = '');
+            Cookies.set('first_name', event.target.first_name.value = '');
+            Cookies.set('last_name', event.target.last_name.value = '');
+            Cookies.set('email', event.target.email.value = ''),
+            Cookies.set('phone_number', event.target.email.value = ''),
+            Cookies.set('mobile_number', event.target.mobile_number.value = '');
+            Cookies.set('education', event.target.education.value = '');
+            Cookies.set('experience', event.target.experience.value = '');
             console.log('leb user')
         }
         else if (nextConfig.country_code == 'AE') {
@@ -128,19 +129,19 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
                 form.append("file", file);
                 const response = await axios.post(`https://fzcms.diastora.com/files`, form);
                 if(response.status == 200){
-                    localStorage.setItem("file_id", response.data.data.id);
+                    Cookies.set("file_id", response.data.data.id);
                 }
             } catch(err){
                 console.log(err)
             }
-            localStorage.setItem('first_name', event.target.first_name.value);
-            localStorage.setItem('last_name', event.target.last_name.value);
-            localStorage.setItem('email', event.target.email.value),
-            localStorage.setItem('phone_number', event.target.email.value),
-            localStorage.setItem('mobile_number', event.target.mobile_number.value);
-            localStorage.setItem('education', event.target.education.value);
-            localStorage.setItem('experience', event.target.experience.value);
-            // localStorage.setItem('cv', event.target.cv.value)
+            Cookies.set('first_name', event.target.first_name.value);
+            Cookies.set('last_name', event.target.last_name.value);
+            Cookies.set('email', event.target.email.value),
+            Cookies.set('phone_number', event.target.email.value),
+            Cookies.set('mobile_number', event.target.mobile_number.value);
+            Cookies.set('education', event.target.education.value);
+            Cookies.set('experience', event.target.experience.value);
+            // Cookies.set('cv', event.target.cv.value)
             createDubaiuser();
             event.target.first_name.value='',
             event.target.last_name.value='',
@@ -149,13 +150,13 @@ export default function CompCareersMobile({ data = {}, style = 'white', isFlippe
             event.target.mobile_number.value='',
             event.target.education.value='',
             event.target.experience.value='',
-            localStorage.setItem('first_name', event.target.first_name.value = '');
-            localStorage.setItem('last_name', event.target.last_name.value = '');
-            localStorage.setItem('email', event.target.email.value = ''),
-            localStorage.setItem('phone_number', event.target.email.value = ''),
-            localStorage.setItem('mobile_number', event.target.mobile_number.value = '');
-            localStorage.setItem('education', event.target.education.value = '');
-            localStorage.setItem('experience', event.target.experience.value = '');
+            Cookies.set('first_name', event.target.first_name.value = '');
+            Cookies.set('last_name', event.target.last_name.value = '');
+            Cookies.set('email', event.target.email.value = ''),
+            Cookies.set('phone_number', event.target.email.value = ''),
+            Cookies.set('mobile_number', event.target.mobile_number.value = '');
+            Cookies.set('education', event.target.education.value = '');
+            Cookies.set('experience', event.target.experience.value = '');
             console.log('ae user')
         }
         };

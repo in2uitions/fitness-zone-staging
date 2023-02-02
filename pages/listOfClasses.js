@@ -17,14 +17,17 @@ export default function App() {
         [LEBANON]: 'Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
         [UAE]: 'Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1'
     }
-    const [selectedCategory, setSelectedCategory] = useState(0);
-    var curr = new Date;
-    var first = curr.getDate() - curr.getDay();
-    var last = first + 6;
+    const [selectedCategory, setSelectedCategory] = useState(1);
+    // var curr = new Date;
+    // var first = curr.getDate() - curr.getDay();
+    // var last = first + 6;
 
-    var firstday = new Date(curr.setDate(first)).toUTCString();
-    var lastday = new Date(curr.setDate(last)).toUTCString();
-
+    // var firstday = new Date(curr.setDate(first)).toUTCString();
+    // var lastday = new Date(curr.setDate(last)).toUTCString();
+    
+    var now = moment();
+    var begin = moment().startOf('week').format("YYYY MM DD");
+    var end = moment().endOf('week').format("YYYY MM DD");
     try {
         useEffect(() => {
 
@@ -75,7 +78,7 @@ export default function App() {
                 );
                 const token = await res.json();
                 var query = '';
-                var query = `?dateFrom=${firstday}&dateTo=${lastday}`
+                var query = `?dateFrom=${begin}&dateTo=${end}`
                 if (val) {
                     query = query + `${query != '' ? '&' : '?'}LocationCode=${val}`
                 }
@@ -127,8 +130,8 @@ export default function App() {
                     handleClassChangeWithSearch(dt, "", name)
                 );
                 setFiltered(filteredValue)
-                console.log(name)
-                console.log(event.target.id)
+                // console.log(name)
+                // console.log(event.target.id)
             }
             
         } else {
@@ -190,7 +193,9 @@ export default function App() {
                 <div className="flex justify-center items-center">
                     <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} name="location" id="location" onChange={handleCategoryChange}>
                         {location.map((item, i) => (
-                            <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                            <>
+                            {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
+                            </>
                         ))}
                     </select>
                 </div>
@@ -217,7 +222,9 @@ export default function App() {
                 <div className="flex justify-center items-center">
                     <select style={{ height: "2.5rem", borderRadius: "5px"}} name="location" id="location" onChange={handleCategoryChange}>
                         {location.map((item, i) => (
-                            <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                            <>
+                            {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
+                            </>
                         ))}
                     </select>
                 </div>

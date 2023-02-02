@@ -5,6 +5,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 export default function CompCarouselRightMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -67,7 +68,7 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
         setScrollSnaps(embla.scrollSnapList());
         embla.on("select", onSelect);
     }, [embla, setScrollSnaps, onSelect]);
-    const itemSet = (localStorage.length !== 0);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const router = useRouter();
     const route = () => {
     if (itemSet) {

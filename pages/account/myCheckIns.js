@@ -7,11 +7,12 @@ import $ from "jquery";
 import { useRouter } from "next/router";
 import moment from "moment";
 import PrivateMenu from "./private-menu";
+import Cookies from 'js-cookie'
 
 export default function CheckIns() {
     const [data, setData] = useState([]);
-    const memberId = localStorage.getItem('Member');
-    const itemSet = (localStorage.length !== 0);
+    const memberId = Cookies.get('Member');
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/myCheckIns"});
@@ -21,7 +22,7 @@ export default function CheckIns() {
     }
 }, [])
     var registrationHeaders = new Headers();
-    registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+    registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
         method: 'GET',

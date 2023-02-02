@@ -7,7 +7,7 @@ export default function User({ user: {image, userId} }) {
 	const route = (id) => router.push({ pathname: `/account/trainers/${id}` });
 	return (
 		<div>
-		<img className="rounded-full h-20 w-20 border-2 border-[#009FE3] object-cover cursor-pointer" onClick={() => route(userId)} src={`${image_url}${image}`}/>	
+		{image?<img className="rounded-full h-20 w-20 border-2 border-[#009FE3] object-cover cursor-pointer" onClick={() => route(userId)} src={`${image_url}${image}`}/>:null}	
 		</div>
 	);
 }

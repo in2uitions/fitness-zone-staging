@@ -7,6 +7,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Popup from "reactjs-popup";
 import { createFreeTrialDubaiUser, createFreeTrialUser } from "../../api/server";
 import nextConfig from '../../next.config'
+import Cookies from 'js-cookie'
 
 export default function CompCarouselStaticRightMobile({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -73,35 +74,35 @@ export default function CompCarouselStaticRightMobile({ data = {}, style = 'whit
         event.preventDefault();
         const getTokenAPI = async () => {
             if (nextConfig.country_code == 'LB') {
-                localStorage.setItem('name', event.target.name.value);
-                localStorage.setItem('phone_number', event.target.phone_number.value);
-                localStorage.setItem('email', event.target.email.value);
-                localStorage.setItem('location', event.target.location.value)
+                Cookies.set('name', event.target.name.value);
+                Cookies.set('phone_number', event.target.phone_number.value);
+                Cookies.set('email', event.target.email.value);
+                Cookies.set('location', event.target.location.value)
                 createFreeTrialUser();
                 event.target.name.value='',
                 event.target.phone_number.value ='',
                 event.target.email.value='',
                 event.target.location.value=''
-                localStorage.setItem('name', event.target.name.value = '');
-                localStorage.setItem('phone_number', event.target.phone_number.value = '');
-                localStorage.setItem('email', event.target.email.value = '');
-                localStorage.setItem('location', event.target.location.value = '')
+                Cookies.set('name', event.target.name.value = '');
+                Cookies.set('phone_number', event.target.phone_number.value = '');
+                Cookies.set('email', event.target.email.value = '');
+                Cookies.set('location', event.target.location.value = '')
                 console.log("userCreated LB")
             }
             else if(nextConfig.country_code == 'AE'){
-                localStorage.setItem('name', event.target.name.value);
-                localStorage.setItem('phone_number', event.target.phone_number.value);
-                localStorage.setItem('email', event.target.email.value);
-                localStorage.setItem('location', event.target.location.value)
+                Cookies.set('name', event.target.name.value);
+                Cookies.set('phone_number', event.target.phone_number.value);
+                Cookies.set('email', event.target.email.value);
+                Cookies.set('location', event.target.location.value)
                 createFreeTrialDubaiUser();
                 event.target.name.value='',
                 event.target.phone_number.value ='',
                 event.target.email.value='',
                 event.target.location.value=''
-                localStorage.setItem('name', event.target.name.value = '');
-                localStorage.setItem('phone_number', event.target.phone_number.value = '');
-                localStorage.setItem('email', event.target.email.value = '');
-                localStorage.setItem('location', event.target.location.value = '')
+                Cookies.set('name', event.target.name.value = '');
+                Cookies.set('phone_number', event.target.phone_number.value = '');
+                Cookies.set('email', event.target.email.value = '');
+                Cookies.set('location', event.target.location.value = '')
                 console.log("userCreated AE")
             }
         };

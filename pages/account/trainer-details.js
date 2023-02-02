@@ -4,12 +4,13 @@ import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PrivateMenu from "./private-menu";
+import Cookies from 'js-cookie'
 
 export default function TrainerDetails() {
     const { query } = useRouter()
     const router = useRouter()
     // console.log(query.name)
-    const memberId = localStorage.getItem("Member");
+    const memberId = Cookies.get("Member");
     const format = (num, decimals) => num.toLocaleString('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
@@ -17,7 +18,7 @@ export default function TrainerDetails() {
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
-        "Bearer " + localStorage.getItem("token")
+        "Bearer " + Cookies.get("token")
     );
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
@@ -41,15 +42,7 @@ export default function TrainerDetails() {
     } catch (err) {
         console.log(err);
     }
-    const onSubmitForm = async event => {
-        event.preventDefault();
-        const getTokenAPI = async () => {
-            localStorage.clear();
-            router.push({ pathname: "/account/login"});
-        };
-        getTokenAPI();
 
-    };
     return (
         <>
              <PrivateMenu/>

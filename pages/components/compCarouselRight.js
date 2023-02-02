@@ -3,13 +3,14 @@ import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
     
-    const itemSet = (localStorage.length !== 0);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const router = useRouter();
     const route = () => {
     if (itemSet) {

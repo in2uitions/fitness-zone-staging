@@ -8,6 +8,7 @@ import Input from "react-phone-number-input/input-mobile";
 import "react-phone-number-input/style.css";
 import ReactFlagsSelect from "react-flags-select";
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
 export default function Login() {
 
@@ -51,7 +52,7 @@ export default function Login() {
                     }
                 );
                 const tokenData = await res.json();
-                localStorage.setItem('token', tokenData.token);
+                Cookies.set('token', tokenData.token, { expires: 0.5 });
                 const submitLoginForm = async () => {
                     const params = '';
                     const endPoints = '';
@@ -114,9 +115,9 @@ export default function Login() {
                             // const data = await SendOTPMessage.json();
                             // setIsSent(true)
                             alert("You have been successfully logged in.");
-                            localStorage.setItem("Country", JSON.stringify(select));
-                            localStorage.setItem("Phone", phoneNumber);
-                            localStorage.setItem("Member", memberId);
+                            Cookies.set("Country", JSON.stringify(select));
+                            Cookies.set("Phone", phoneNumber);
+                            Cookies.set("Member", memberId);
                             // event.target.country.value = '';
                             event.target.phone.value = '';
                             event.target.memberId.value = '';

@@ -2,11 +2,12 @@
 import Router, { useRouter } from "next/router";
 import OtpTimer from "otp-timer";
 import { useEffect } from "react";
+import Cookies from 'js-cookie'
 
 export default function Otp() {
     const { query } = useRouter()
     const router = useRouter()
-    const itemSet = (localStorage.length !== 0);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/otp"});
@@ -25,7 +26,7 @@ export default function Otp() {
                 });
                 // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'GET',
@@ -37,10 +38,10 @@ export default function Otp() {
                 // );
                 // const data = await res.json();
                 // if (data.isValid == true) {
-                    // localStorage.setItem("OTP", JSON.stringify(event.target.otp.value));
-                    // localStorage.setItem("Country", JSON.stringify(event.target.country.value));
-                    // localStorage.setItem("Phone", phoneNumber);
-                    // localStorage.setItem("Member", JSON.stringify(event.target.member.value));
+                    // Cookies.set("OTP", JSON.stringify(event.target.otp.value));
+                    // Cookies.set("Country", JSON.stringify(event.target.country.value));
+                    // Cookies.set("Phone", phoneNumber);
+                    // Cookies.set("Member", JSON.stringify(event.target.member.value));
                     router.push({ pathname: "/account/dashboard" })
                 // }
                 // else {
@@ -58,7 +59,7 @@ export default function Otp() {
         const getOTP = async () => {
             try {
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'GET',

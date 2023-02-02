@@ -8,15 +8,17 @@ import PrivateMenu from "./private-menu";
 import moment from "moment";
 import Popup from "reactjs-popup";
 import OtpTimer from "otp-timer";
+import Cookies from 'js-cookie'
 
 export default function Dashboard({ style = "white" }) {
     const [data, setData] = useState([]);
     const [valid , setIsValid] = useState([])
     const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState("");
-    const memberId = localStorage.getItem("Member");
+    const memberId = Cookies.get("Member");
     const [isOpen, setIsOpen] = useState(false);
-    const itemSet = (localStorage.length !== 0);
+  
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
         if (itemSet) {
             router.push({ pathname: "/account/myProfile" });
@@ -28,7 +30,7 @@ export default function Dashboard({ style = "white" }) {
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
-        "Bearer " + localStorage.getItem("token")
+        "Bearer " + Cookies.get("token")
     );
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
@@ -62,7 +64,7 @@ export default function Dashboard({ style = "white" }) {
                     "Phone": event.target.mobile?.value,
                 });
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'POST',
@@ -75,7 +77,7 @@ export default function Dashboard({ style = "white" }) {
                 if (res.status == 200) {
                     const data = await res.json();
                     if (data.isValid == true) {
-                        localStorage.setItem("Phone", event.target.mobile.value);
+                        Cookies.get("Phone", event.target.mobile.value);
                         // alert("You have changed your Phone Number. Congratulations!")
                     }
                     else {
@@ -104,7 +106,7 @@ export default function Dashboard({ style = "white" }) {
                 });
                 // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'POST',
@@ -117,7 +119,7 @@ export default function Dashboard({ style = "white" }) {
                 if (res.status == 200) {
                     const data = await res.json();
                     if (data.isValid == true) {
-                        localStorage.setItem("Phone", event.target.mobile.value);
+                        Cookies.get("Phone", event.target.mobile.value);
                         // alert("You have changed your Info. Congratulations!")
                     }
                     else {
@@ -140,7 +142,7 @@ export default function Dashboard({ style = "white" }) {
                 });
                 // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'POST',
@@ -153,7 +155,7 @@ export default function Dashboard({ style = "white" }) {
                 if (res.status == 200) {
                     const data = await res.json();
                     if (data.isValid == true) {
-                        localStorage.setItem("Email", event.target.email.value);
+                        Cookies.get("Email", event.target.email.value);
                         //alert("You have changed your Email. Congratulations!")
                     }
                     else {
@@ -177,7 +179,7 @@ export default function Dashboard({ style = "white" }) {
     const [thirdstate, thirdtoggle] = useState(true);
     const [countrydata, setCountryData] = useState([])
     var registrationHeaders = new Headers();
-    registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+    registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
     registrationHeaders.append("Content-Type", "application/json");
     var registrationRequestOptions = {
         method: 'GET',
@@ -219,7 +221,7 @@ export default function Dashboard({ style = "white" }) {
         const getValidOtp = async () => {
             try {
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'GET',
@@ -231,7 +233,7 @@ export default function Dashboard({ style = "white" }) {
                 );
                 const data = await res.json();
                 if (data.isValid == true) {
-                    localStorage.setItem('EmailUpdated', event.target.newemail.value);
+                    Cookies.get('EmailUpdated', event.target.newemail.value);
                 }
                 else {
                     alert("Wrong Email");
@@ -243,13 +245,13 @@ export default function Dashboard({ style = "white" }) {
         };
         getValidOtp();
     };
-    const useEmail = localStorage.getItem('EmailUpdated')
+    const useEmail = Cookies.get('EmailUpdated')
     const resendOTP = () => {
 
         const getOTP = async () => {
             try {
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'GET',
@@ -283,7 +285,7 @@ export default function Dashboard({ style = "white" }) {
                 // });
                 // console.log(registraitonRawData);
                 var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
                 registrationHeaders.append("Content-Type", "application/json");
                 var registrationRequestOptions = {
                     method: 'POST',

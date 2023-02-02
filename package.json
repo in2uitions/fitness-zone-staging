@@ -24,6 +24,7 @@
     "google-map-react": "^2.2.0",
     "html-react-parser": "^3.0.6",
     "jquery": "^3.6.3",
+    "js-cookie": "^3.0.1",
     "moment": "^2.29.4",
     "next": "12.2.5",
     "otp-timer": "^1.1.5",
