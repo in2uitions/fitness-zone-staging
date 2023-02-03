@@ -52,7 +52,7 @@ export default function Login() {
                     }
                 );
                 const tokenData = await res.json();
-                Cookies.set('token', tokenData.token, { expires: 0.5 });
+                Cookies.set('token', tokenData.token, { expires: 1 });
                 const submitLoginForm = async () => {
                     const params = '';
                     const endPoints = '';
