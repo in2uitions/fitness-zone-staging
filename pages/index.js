@@ -88,15 +88,10 @@ function Home({ data = {} }) {
             }
             else {
               var registraitonRawData = JSON.stringify({
-                "GuestRegisterId": 0,
                 "FirstName": event.target.firstname.value,
                 "LastName": event.target.lastname.value,
                 "Mobile": event.target.pp_phone.value,
                 "Email": event.target.email.value,
-                "Source": {
-                  "VisitSourceId": 9
-                },
-                "LocationCode": 1
               });
             }
 

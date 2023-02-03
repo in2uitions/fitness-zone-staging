@@ -104,6 +104,7 @@ export default function CheckIns() {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     });
+    
     return (
         <>
            <PrivateMenu/>

@@ -9,15 +9,17 @@ import moment from "moment";
 import Popup from "reactjs-popup";
 import OtpTimer from "otp-timer";
 import Cookies from 'js-cookie'
+import axios from "axios";
 
 export default function Dashboard({ style = "white" }) {
     const [data, setData] = useState([]);
-    const [valid , setIsValid] = useState([])
+    const [valid, setIsValid] = useState([])
     const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState("");
     const memberId = Cookies.get("Member");
     const [isOpen, setIsOpen] = useState(false);
-  
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     useEffect(() => {
         if (itemSet) {
@@ -55,47 +57,6 @@ export default function Dashboard({ style = "white" }) {
     } catch (err) {
         console.log(err);
     }
-    const handleSubmit = async event => {
-        event.preventDefault();
-
-        const getSubmit = async () => {
-            try {
-                var registraitonRawData = JSON.stringify({
-                    "Phone": event.target.mobile?.value,
-                });
-                var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
-                registrationHeaders.append("Content-Type", "application/json");
-                var registrationRequestOptions = {
-                    method: 'POST',
-                    headers: registrationHeaders
-                };
-                const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobile?memberId=${memberId}&mobile=${event.target.mobile.value}`,
-                    registrationRequestOptions
-                );
-                if (res.status == 200) {
-                    const data = await res.json();
-                    if (data.isValid == true) {
-                        Cookies.get("Phone", event.target.mobile.value);
-                        // alert("You have changed your Phone Number. Congratulations!")
-                    }
-                    else {
-                        //alert("Wrong data");
-                    }
-                }
-
-            } catch (err) {
-                console.log(err);
-            }
-
-
-            if (data.isValid == true) {
-                // alert("You have changed your data successfully!")
-            }
-        };
-        getSubmit();
-    };
     const handleSubmitPhoneNumer = async event => {
         event.preventDefault();
 
@@ -131,42 +92,6 @@ export default function Dashboard({ style = "white" }) {
             }
         };
         getSubmitNumber();
-    };
-    const handleSubmitEmail = async event => {
-        event.preventDefault();
-
-        const getSubmitEmail = async () => {
-            try {
-                var registraitonRawData = JSON.stringify({
-                    "Email": event.target.email?.value,
-                });
-                // console.log(registraitonRawData);
-                var registrationHeaders = new Headers();
-                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
-                registrationHeaders.append("Content-Type", "application/json");
-                var registrationRequestOptions = {
-                    method: 'POST',
-                    headers: registrationHeaders
-                };
-                const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveEmail?memberId=${memberId}&mobile=${event.target.mobile.value}`,
-                    registrationRequestOptions
-                );
-                if (res.status == 200) {
-                    const data = await res.json();
-                    if (data.isValid == true) {
-                        Cookies.get("Email", event.target.email.value);
-                        //alert("You have changed your Email. Congratulations!")
-                    }
-                    else {
-                        //alert("Wrong data");
-                    }
-                }
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        getSubmitEmail();
     };
     const handleChange = (e, index) => {
         const object = {
@@ -210,11 +135,13 @@ export default function Dashboard({ style = "white" }) {
     const onSelect = (code) => setSelect(code);
     const router = useRouter();
     const [showbutton, setShowButton] = useState(false);
-
+    const [showpopupbutton, setShowpopupButton] = useState(false);
     function onAddBtnClick() {
         setShowButton(true);
     };
-
+    function onpopupBtnClick() {
+        setShowpopupButton(true);
+    };
     const sendOTPEmail = async event => {
         event.preventDefault();
 
@@ -233,7 +160,7 @@ export default function Dashboard({ style = "white" }) {
                 );
                 const data = await res.json();
                 if (data.isValid == true) {
-                    Cookies.get('EmailUpdated', event.target.newemail.value);
+                    Cookies.set('EmailUpdated', event.target.newemail.value);
                 }
                 else {
                     alert("Wrong Email");
@@ -245,7 +172,39 @@ export default function Dashboard({ style = "white" }) {
         };
         getValidOtp();
     };
+    const sendOTPPhone = async event => {
+        event.preventDefault();
+
+        const getValidOtp = async () => {
+            try {
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'GET',
+                    headers: registrationHeaders
+                };
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${event.target.newphone.value}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true) {
+                    Cookies.set('PhoneUpdated', event.target.newphone.value);
+                }
+                else {
+                    // alert("Wrong Phone number");
+                    Cookies.set('PhoneUpdated', event.target.newphone.value);
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getValidOtp();
+    };
     const useEmail = Cookies.get('EmailUpdated')
+    const usePhone = Cookies.get('PhoneUpdated')
     const resendOTP = () => {
 
         const getOTP = async () => {
@@ -298,12 +257,80 @@ export default function Dashboard({ style = "white" }) {
                 const data = await res.json();
                 if (data.isValid == true) {
                     console.log("testing....")
-                  
+
                     setIsOpen(false);
                 }
                 else {
                     // alert("Wrong OTP");
                     setIsOpen(false);
+                    setIsValid(data)
+                    // console.log(data)
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getValidOtp();
+    };
+    const resendPhoneOTP = () => {
+
+        const getOTP = async () => {
+            try {
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'GET',
+                    headers: registrationHeaders
+                };
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/Email/SendOTPMessage/${usePhone}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true) {
+                }
+                else {
+                    // alert("Wrong OTP");
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getOTP();
+        console.log("button clicked");
+    };
+    const submitOTPPhone = async event => {
+        event.preventDefault();
+
+        const getValidOtp = async () => {
+            try {
+                // var registraitonRawData = JSON.stringify({
+                //     "OTP": event.target.otp?.value
+                // });
+                // console.log(registraitonRawData);
+                var registrationHeaders = new Headers();
+                registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
+                registrationHeaders.append("Content-Type", "application/json");
+                var registrationRequestOptions = {
+                    method: 'POST',
+                    headers: registrationHeaders
+                };
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/Membership/Member/SaveMobileWithOTPValidation?MemberId=${memberId}&Mobile=${usePhone}&OtpNumber=${event.target.otpPhoneNumber.value}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true) {
+                    console.log("testing....")
+
+                    setIsPopupOpen(false);
+                }
+                else {
+                    // alert("Wrong OTP");
+                    setIsPopupOpen(false);
                     setIsValid(data)
                     // console.log(data)
                 }
@@ -322,21 +349,45 @@ export default function Dashboard({ style = "white" }) {
     const autoscdComplete = (e) => {
         setScdInput({ value: e.target.value });
     };
-    const openPopup = () =>{
-    setIsOpen(true);
+    const openPopup = () => {
+        setIsOpen(true);
     }
-    const closePopup = () =>{
+    const closePopup = () => {
         setIsValid(valid)
         const test = valid.isValid
         console.log(test)
-        if(test == true){
+        if (test == true) {
             setIsOpen(false)
         }
-        else{
+        else {
             setIsOpen(false)
         }
+    }
+
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            var bodyFormData = new FormData();
+            bodyFormData.append('MemberId', memberId);
+            bodyFormData.append('street', e.target.street.value);
+            bodyFormData.append('city', e.target.city.value);
+            bodyFormData.append('building', e.target.building.value);
+            bodyFormData.append('floor', e.target.floor.value);
+            const res = await axios.post(
+                `https://api.fitnessclubapp.com/api/Membership/Member/SaveAddress`, bodyFormData, {
+                headers: {
+                    Authorization: "Bearer " + Cookies.get("token")
+                }
+            });
+            if (res.status === 200) {
+                setMessage("User created successfully");
+            } else {
+                setMessage("Some error occured");
+            }
+        } catch (err) {
+            console.log(err);
         }
-        
+    };
     return (
         <>
             <PrivateMenu />
@@ -349,7 +400,7 @@ export default function Dashboard({ style = "white" }) {
                     <p className="futura-bold text-[#009FE3] mt-5">{data.fullName}</p>
                 </div>
                 <div className="w-full" >
-                    <div className=" mx-auto flex flex-col justify-center items-center mt-20">
+                    <form onSubmit={handleSubmit} className=" mx-auto flex flex-col justify-center items-center mt-20">
                         {/* <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0"> */}
                         <div className="w-full container mx-auto lg:flex lg:flex-row md:flex lg:space-x-3 md:space-x-3 justify-center items-start space-y-5 lg:space-y-0 md:space-y-0 px-4 lg:px-4 md:px-4">
 
@@ -385,7 +436,7 @@ export default function Dashboard({ style = "white" }) {
                                             value={data.mobile} id="mobile"
                                             onChange={handleChange}
                                         />
-                                        <button
+                                        {/* <button
                                             className="bg-[#009FE3] p-1 rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2"
                                             onClick={() => {
                                                 scdtoggle(!scdstate);
@@ -394,7 +445,54 @@ export default function Dashboard({ style = "white" }) {
                                             onSubmit={scdstate ? handleSubmitPhoneNumer : () => { }}
                                         >
                                             {scdstate ? "CHANGE PHONE" : "SAVE"}
-                                        </button>
+                                        </button> */}
+                                        <div className="bg-[#009FE3] p-1 flex items-center justify-center rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2">
+                                            <Popup
+                                                trigger={
+                                                    <button>
+                                                        <button onClick={() => setIsPopupOpen(!isPopupOpen)}> CHANGE PHONE</button>
+                                                    </button>
+                                                } modal nested
+                                                position="center"
+                                                open={isPopupOpen}
+                                                onOpen={() => setIsPopupOpen(!isPopupOpen)}
+                                                closeOnDocumentClick={false}
+                                            // onClose={() => setVisible(false)}
+                                            >
+                                                {close => (
+                                                    <>
+                                                        <button className="close" onClick={close}>
+                                                            &times;
+                                                        </button>
+                                                        <div className="popup-bg rounded-md">
+                                                            <div className="container mx-auto flex flex-col space-y-5 py-8 lg:px-40 md:px-20 px-6">
+                                                                <p className="text-[#009FE3] text-lg futura-bold">Change Phone Number</p>
+                                                                <form className="flex flex-col space-y-5" onSubmit={sendOTPPhone}>
+                                                                    <input onChange={autoComplete} className="bg-transparent p-1 border border-[#009FE3] h-9 rounded-md text-white focus:outline-none  focus:border-[#009FE3]"
+                                                                        placeholder="Insert your new Phone Number" id="newphone" />
+                                                                    <button disabled={!text} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md" onClick={onpopupBtnClick}>Send OTP</button>
+                                                                </form>
+                                                                {showpopupbutton ? <form className="flex flex-col space-y-5" onSubmit={submitOTPPhone}>
+                                                                    <input onChange={autoscdComplete} className="border border-[#009fe3] bg-transparent h-9 rounded-md p-1 text-white" id="otpPhoneNumber" placeholder="OTP" />
+                                                                    <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md">Save</button>
+                                                                </form> : null}
+                                                                {showpopupbutton ? <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
+                                                                    minutes={3}
+                                                                    seconds={1}
+                                                                    text=""
+                                                                    ButtonText="Resend Now"
+                                                                    resend={resendPhoneOTP}
+                                                                    onClick={resendPhoneOTP}
+                                                                    textColor="#009FE3"
+                                                                    background="#00000000"
+                                                                    buttonColor="#009FE3"
+                                                                /></span></p> : null}
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </Popup>
+                                        </div>
                                     </div>
                                     <div className="border border-[#009FE3] flex items-center bg-black lg:h-10 md:h-10 h-16 p-1 rounded-md text-white">
                                         <input
@@ -402,7 +500,7 @@ export default function Dashboard({ style = "white" }) {
                                             disabled={thirdstate}
                                             className="bg-transparent pl-2 w-3/5 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3]"
                                             value={data.email} id="email"
-                                            onChange={handleChange} 
+                                            onChange={handleChange}
                                         />
                                         {/* <button type="submit"
                                             className="bg-[#009FE3] p-1 rounded-md futura-bold lg:text-sm md:text-sm text-xs lg:h-9 md:h-9 h-14 w-1/2"
@@ -446,7 +544,7 @@ export default function Dashboard({ style = "white" }) {
                                                                     <input onChange={autoscdComplete} className="border border-[#009fe3] bg-transparent h-9 rounded-md p-1 text-white" id="otpNumber" placeholder="OTP" />
                                                                     <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md">Save</button>
                                                                 </form> : null}
-                                                                {showbutton ?<p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
+                                                                {showbutton ? <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
                                                                     minutes={3}
                                                                     seconds={1}
                                                                     text=""
@@ -456,7 +554,7 @@ export default function Dashboard({ style = "white" }) {
                                                                     textColor="#009FE3"
                                                                     background="#00000000"
                                                                     buttonColor="#009FE3"
-                                                                /></span></p>:null}
+                                                                /></span></p> : null}
                                                             </div>
                                                         </div>
                                                     </>
@@ -468,22 +566,36 @@ export default function Dashboard({ style = "white" }) {
                             </div>
                             <div className="flex flex-col lg:w-1/3 md:w-1/3">
                                 <div className="flex flex-col space-y-2 text-white">
-                                    <p className="text-[#009FE3]">Address</p>
-                                    <input
-                                        disabled={true}
-                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
-                                        value={[data.city, data.street]}
-                                    />
-                                    <input
-                                        disabled={true}
-                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
-                                        value={data.building}
-                                    />
-                                    <input
-                                        disabled={true}
-                                        className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
-                                        value={data.country?.countryName}
-                                    />
+                                        <p className="text-[#009FE3]">Address</p>
+
+                                        <input
+                                            className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
+                                            name="city"
+                                            id="city"
+                                            value={data.city}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
+                                            name="street"
+                                            id="street"
+                                            value={data.street}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
+                                            name="building"
+                                            id="building"
+                                            value={data.building}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
+                                            name="floor"
+                                            id="floor"
+                                            value={data.floor}
+                                            onChange={handleChange}
+                                        />
                                     {/* <input
                                         className="border border-[#009FE3] bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md"
                                         value={data.mobile}
@@ -498,8 +610,7 @@ export default function Dashboard({ style = "white" }) {
 
                         </div>
                         <button type="submit" className="bg-[#009FE3] p-2 lg:w-1/6 rounded-md futura-bold mt-5 text-white">UPDATE PROFILE</button>
-                        <div className="message">{message ? <p>{message}</p> : null}</div>
-                    </div>
+                    </form>
                 </div>
                 {/* </div> */}
             </section>
