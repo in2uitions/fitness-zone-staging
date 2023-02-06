@@ -230,6 +230,7 @@ export default function App() {
                 </div>
             </div>
             </MobileView>
+            <BrowserView>
             <Tabs className="mt-5">
                         <TabList className="flex justify-between w-full mx-auto container tabs-container" >
                             <Tab className="notSelected cursor-pointer" id="All">
@@ -256,8 +257,64 @@ export default function App() {
                                     <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
                                 </div>
                             </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="POOL">POOL</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="Tennis">Tennis</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
+                                </div>
+                            </Tab>
                         </TabList>
                     </Tabs>
+                    </BrowserView>
+                    <MobileView>
+                    <Tabs className="mt-5">
+                        <TabList className="grid grid-cols-3 w-full mx-auto container tabs-container" >
+                            <Tab title="nested" className="notSelected cursor-pointer" id="All">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
+                                    <p className="text-base font-extrabold" id="All">All</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="NRG">ENERGY</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="BLNC">BALANCE</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="PWR">POWER</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="POOL">POOL</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="Tennis">Tennis</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
+                                </div>
+                            </Tab>
+                           
+                        </TabList>
+                    </Tabs>
+                    </MobileView>
                     <BrowserView>
             {filtered.map((item, index) => (
                 <>

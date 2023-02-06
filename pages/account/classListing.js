@@ -174,7 +174,86 @@ export default function ClassListing() {
     // }
 
     const memberId = Cookies.get("Member");
+    const reserveTennisClass = async ({ timetableId, e }) => {
+        e.preventDefault();
+        // console.log(timetableId)
+        try {
+            var registrationHeaders = new Headers();
+            registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
+            registrationHeaders.append("Content-Type", "application/json");
+            var registrationRequestOptions = {
+                method: 'GET',
+                headers: registrationHeaders
+            };
+            const res = await fetch(
+                `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Class/Reserve?timetableId=${timetableId}&memberId=${memberId}&memberId2=${e.target.memberId2.value}`,
+                registrationRequestOptions
+            );
+            const data = await res.json();
+            if (data.isValid == true) {
 
+                let newClasssValue = classs.map((res) => {
+                    if (res.timetableId == timetableId) {
+                        // console.log(timetableId)
+                        return {
+                            ...res,
+                            toggle: true,
+                        }
+                    }
+                    return res;
+                })
+                setClasss(newClasssValue);
+                setFiltered(newClasssValue)
+                Cookies.set('MemberId2', e.target.memberId2.value);
+            }
+            else {
+                alert("Wrong Member Id. Try again!");
+            }
+
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const useMemberId2 = Cookies.get('MemberId2')
+    const removeTennisClass = async ({ timetableId, e }) => {
+        e.preventDefault();
+        try {
+            var registrationHeaders = new Headers();
+            registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
+            registrationHeaders.append("Content-Type", "application/json");
+            var registrationRequestOptions = {
+                method: 'GET',
+                headers: registrationHeaders
+            };
+            const res = await fetch(
+                `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Class/Remove?timetableId=${timetableId}&memberId=${memberId}&memberId2=${useMemberId2}`,
+                registrationRequestOptions
+            );
+            const data = await res.json();
+            if (data.isValid == true) {
+
+                let newClasssValue = classs.map((res) => {
+                    if (res.timetableId == timetableId) {
+                        // console.log(timetableId)
+                        return {
+                            ...res,
+                            toggle: false,
+                        }
+                    }
+                    return res;
+                })
+                setClasss(newClasssValue);
+                setFiltered(newClasssValue)
+            }
+            else {
+                alert("Class is not valid");
+            }
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    };
     const reserveClass = async ({ timetableId, e }) => {
         e.preventDefault();
         // console.log(timetableId)
@@ -275,8 +354,8 @@ export default function ClassListing() {
 
     function handleClassChange(event) {
         if (event.target.id == "All") {
-        setSave("")
-            
+            setSave("")
+
             if (name == '') {
                 setFiltered(classs)
             }
@@ -290,36 +369,56 @@ export default function ClassListing() {
                 // console.log(event.target.id)
             }
         } else {
-        setSave(event.target.id)
+            setSave(event.target.id)
 
             let newvalue = classs.filter((item) => handleClassChangeWithSearch(item, event.target.id, name))
             setFiltered(newvalue);
 
         }
     }
-    function handleClassChangeWithSearch (item, valuename, value){
-        if(value != '' && valuename != ''){
-            return item.studio.studioName === valuename &&  `${item.class?.className} ${item.studio?.studioName} ${item.location?.locationName} ${moment(item.classTime).format("DD MMM YYYY")} ${moment(item.classTime).format("HH:mm")}`.toLowerCase().includes(value.toLowerCase())
+    function handleClassChangeWithSearch(item, valuename, value) {
+        if (value != '' && valuename != '') {
+            return item.studio.studioName === valuename && `${item.class?.className} ${item.studio?.studioName} ${item.location?.locationName} ${moment(item.classTime).format("DD MMM YYYY")} ${moment(item.classTime).format("HH:mm")}`.toLowerCase().includes(value.toLowerCase())
         }
-        else if(value == '' && valuename != ''){
+        else if (value == '' && valuename != '') {
             return item.studio.studioName === valuename
         }
-        else if(value != '' && valuename == ''){
+        else if (value != '' && valuename == '') {
             return `${item.class?.className} ${item.studio?.studioName} ${item.location?.locationName} ${moment(item.classTime).format("DD MMM YYYY")} ${moment(item.classTime).format("HH:mm")}`.toLowerCase().includes(value.toLowerCase())
         }
     }
     const handleSearch = (event) => {
         setName(event.target.value)
-        if(event.target.value == ''){
+        if (event.target.value == '') {
             setFiltered(classs)
         }
-        else{
-        const filteredValue = classs.filter((dt)=>
-        handleClassChangeWithSearch(dt,save, event.target.value)
-        );
-        setFiltered(filteredValue);
+        else {
+            const filteredValue = classs.filter((dt) =>
+                handleClassChangeWithSearch(dt, save, event.target.value)
+            );
+            setFiltered(filteredValue);
         }
     }
+    const [dropdownState, setDropdownState] = useState(false);
+    const[open, setOpen] = useState(false)
+    const [dropdownValue, setDropdownValue] = useState("");
+    const handleDropdownClick = () => {
+        setDropdownState(!dropdownState);
+    };
+   
+    const handleClose = () => {
+        setDropdownState(false);
+    };
+    function handleSetDropdownValue (value, localValue,event){
+        Cookies.set("Location", localValue);
+        // console.log(localValue)
+        setDropdownValue(value);
+        console.log(value)
+        setDropdownState(!dropdownState);
+    };
+    const handleClickAway = () => {
+        setDropdownState(false);
+	};
     return (
         <>
             <PrivateMenu />
@@ -329,63 +428,64 @@ export default function ClassListing() {
                         <p className="text-[#009FE3] futura-bold lg:text-4xl md:text-4xl text-3xl">LIST OF CLASSES</p>
                     </div>
                     <BrowserView>
-                    <div className="flex w-full justify-between items-center mt-5">
-                        <div className="flex items-center space-x-3">
-                            <img src="/filterBy.png" />
-                            <p className="futura-book text-white lg:text-xl md:text-xl text-sm">Filter by</p>
-                        </div>
-                        {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
-                        <div className="relative" style={{ width: "73%" }}>
-                            <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
-                                placeholder="Search" value={name}
-                                onChange={handleSearch}/>
-                            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <SearchOutlined
-                                    className="h-4 w-4 text-gray-400"
-                                    aria-hidden="true"
-                                />
+                        <div className="flex w-full justify-between items-center mt-5">
+                            <div className="flex items-center space-x-3">
+                                <img src="/filterBy.png" />
+                                <p className="futura-book text-white lg:text-xl md:text-xl text-sm">Filter by</p>
+                            </div>
+                            {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
+                            <div className="relative" style={{ width: "73%" }}>
+                                <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
+                                    placeholder="Search" value={name}
+                                    onChange={handleSearch} />
+                                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <SearchOutlined
+                                        className="h-4 w-4 text-gray-400"
+                                        aria-hidden="true"
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex justify-center items-center">
+                                <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
+                                    {data.map((item, i) => (
+                                        <>
+                                {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
+                                    </>
+                                    ))}
+                                </select>
                             </div>
                         </div>
-                        <div className="flex justify-center items-center">
-                            <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
-                                {data.map((item, i) => (
-                                    <>
-                                    {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
-                                    </>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
                     </BrowserView>
                     <MobileView>
-                    <div className="flex w-full justify-between items-center mt-5">
-                        <div className="flex items-center space-x-3">
-                            <img src="/filterBy.png" className="w-3 h-3"/>
-                            <p className="futura-book text-white text-sm">Filter by</p>
-                        </div>
-                        {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
-                        <div className="relative" style={{ width: "35%" }}>
-                            <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-8 mt-5 mb-5 bg-transparent pl-4"
-                                placeholder="Search" value={name}
-                                onChange={handleSearch}/>
-                            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <SearchOutlined
-                                    className="h-4 w-4 text-gray-400"
-                                    aria-hidden="true"
-                                />
+                        <div className="flex w-full justify-between items-center mt-5">
+                            <div className="flex items-center space-x-3">
+                                <img src="/filterBy.png" className="w-3 h-3" />
+                                <p className="futura-book text-white text-sm">Filter by</p>
+                            </div>
+                            {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
+                            <div className="relative" style={{ width: "35%" }}>
+                                <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-8 mt-5 mb-5 bg-transparent pl-4"
+                                    placeholder="Search" value={name}
+                                    onChange={handleSearch} />
+                                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <SearchOutlined
+                                        className="h-4 w-4 text-gray-400"
+                                        aria-hidden="true"
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex justify-center items-center">
+                                <select style={{ height: "2rem", borderRadius: "5px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
+                                    {data.map((item, i) => (
+                                        <>
+                                            {item.isActive ? <option key={i} value={item.locationCode} id="location" >{item.locationName}</option> : null}
+                                        </>
+                                    ))}
+                                </select>
                             </div>
                         </div>
-                        <div className="flex justify-center items-center">
-                            <select style={{ height: "2rem", borderRadius: "5px"}} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
-                                {data.map((item, i) => (
-                                    <>
-                                    {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
-                                    </>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
                     </MobileView>
+                    <BrowserView>
                     <Tabs className="mt-5">
                         <TabList className="flex justify-between w-full mx-auto container tabs-container" >
                             <Tab className="notSelected cursor-pointer" id="All">
@@ -412,96 +512,200 @@ export default function ClassListing() {
                                     <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
                                 </div>
                             </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="POOL">POOL</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="Tennis">Tennis</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
+                                </div>
+                            </Tab>
                         </TabList>
                     </Tabs>
-                    <BrowserView>
-                    {filtered.map((item, index) => (
-                        <>
-                            <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
-                                <div className="flex justify-start w-3/4">
-                                    <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book w-1/5">
-                                        {item.class?.className}
-                                    </p>
-                                    <p className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile w-1/5">
-                                        {item.studio?.studioName}
-                                    </p>
-                                    <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#009FE3] w-1/5'>{moment(item.classTime).format("DD MMM YYYY")}</p>
-                                    <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5'>{moment(item.classTime).format("HH:mm")}</p>
-                                    <p className="text-white text-md sizemobile futura-book lg:pl-5 md:pl-5 pl-5 w-1/5">
-                                        {item.location?.locationName}
-                                    </p>
-                                </div>
-                                <div>
-                                    <button
-                                        className="flex justify-end"
-                                    >
-                                        {!item?.toggle ? (
-                                            <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
-                                                <img src="/notBooked.png" />
-                                                <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
-                                            </div>
-                                        ) : (
-                                            <div className="flex space-x-2 items-center">
-                                                <img src="/booked.png" />
-                                                <p className="futura-book text-white text-md sizemobile">Booked</p>
-                                                <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
-                                                    Cancel
-                                                    <Close className="cancel-close" />
-                                                </p>
-                                            </div>
-
-                                        )}
-                                    </button>
-                                </div>
-                            </div>
-                        </>
-                    ))}
                     </BrowserView>
                     <MobileView>
-                    {filtered.map((item, index) => (
-                        <>
-                            <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
-                                <div className="flex justify-start space-x-8">
-                                <div className="flex flex-col">
-                                    <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
-                                    <p className=' text-white text-md sizemobile futura-book'>{moment(item.classTime).format("HH:mm")}</p>
-                                    </div>
-                                    <div className="border border-l border-[#009FE3]"></div>
-                                    <div className="flex flex-col">
-                                    <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
-                                        {item.class?.className}
-                                    </p>
-                                    
-                                    <p className="text-white futura-book text-md sizemobile lg:border-r md:border-r border-white">
-                                        {item.location?.locationName}
-                                    </p>
-                                    </div>
+                    <Tabs className="mt-5">
+                        <TabList className="grid grid-cols-3 w-full mx-auto container tabs-container" >
+                            <Tab title="nested" className="notSelected cursor-pointer" id="All">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
+                                    <p className="text-base font-extrabold" id="All">All</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
                                 </div>
-                                <div>
-                                    <button
-                                        className="flex justify-end"
-                                    >
-                                        {!item?.toggle ? (
-                                            <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
-                                                <img src="/notBooked.png" />
-                                                <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
-                                            </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="NRG">ENERGY</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="BLNC">BALANCE</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="PWR">POWER</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="POOL">POOL</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                </div>
+                            </Tab>
+                            <Tab className="notSelected cursor-pointer">
+                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                    <p className="text-base font-extrabold" id="Tennis">Tennis</p>
+                                    <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
+                                </div>
+                            </Tab>
+                           
+                        </TabList>
+                    </Tabs>
+                    </MobileView>
+                    <BrowserView>
+                        {filtered.map((item, index) => (
+                            <>
+                                <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
+                                    <div className="flex justify-start w-3/4">
+                                        <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book w-1/5">
+                                            {item.class?.className}
+                                        </p>
+                                        <p className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile w-1/5">
+                                            {item.studio?.studioName}
+                                        </p>
+                                        <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#009FE3] w-1/5'>{moment(item.classTime).format("DD MMM YYYY")}</p>
+                                        <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5'>{moment(item.classTime).format("HH:mm")}</p>
+                                        <p className="text-white text-md sizemobile futura-book lg:pl-5 md:pl-5 pl-5 w-1/5">
+                                            {item.location?.locationName}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        {item.class?.isSecondPlayerRequired === true ? (
+                                            <>
+                                            {!item?.toggle ? (
+                                            <Popup
+                                                trigger={
+
+                                                    <button>
+                                                        <div className="flex space-x-2 items-center">
+                                                            <img src="/notBooked.png" />
+                                                            <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
+                                                        </div>
+                                                    </button>
+
+                                                } modal
+                                                position="center"
+                                                closeOnDocumentClick={false}
+                                            >
+                                                {close => (
+                                                    <>
+                                                        <button className="close" onClick={close}>
+                                                            &times;
+                                                        </button>
+                                                        <div className="popup-bg rounded-md">
+                                                            <form onSubmit={(e) => reserveTennisClass({ timetableId: item.timetableId, e })} className="container mx-auto px-10 py-10 w-full flex flex-col justify-center items-center space-y-5">
+                                                                <p className="text-[#009FE3] text-2xl futura-book">Enter your second player MemberId:</p>
+                                                                <input id="memberId2" className="border border-[#009fe3] pl-2 w-full h-9 bg-transparent rounded" placeholder="MemberId" />
+                                                                <button type="submit" className="bg-[#009fe3] futura-book text-white  rounded p-2"> Book </button>
+                                                            </form>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </Popup>
+                                            ) : (
+                                                    <div className="flex space-x-2 items-center">
+                                                        <img src="/booked.png" />
+                                                        <p className="futura-book text-white text-md sizemobile">Booked</p>
+                                                        <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
+                                                            Cancel
+                                                            <Close className="cancel-close" />
+                                                        </p>
+                                                    </div>
+
+                                                )}
+                                                </>
                                         ) : (
-                                            <div className="flex space-x-2 items-center">
-                                                <img src="/booked.png" />
-                                                <p className="futura-book text-white text-md sizemobile">Booked</p>
-                                                <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
-                                                    Cancel
-                                                    <Close className="cancel-close" />
-                                                </p>
-                                            </div>
+                                            <button
+                                                className="flex justify-end"
+                                            >
+                                                {!item?.toggle ? (
+                                                    <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
+                                                        <img src="/notBooked.png" />
+                                                        <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
+                                                    </div>
+                                                ) : (
+                                                    <div className="flex space-x-2 items-center">
+                                                        <img src="/booked.png" />
+                                                        <p className="futura-book text-white text-md sizemobile">Booked</p>
+                                                        <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                            Cancel
+                                                            <Close className="cancel-close" />
+                                                        </p>
+                                                    </div>
+
+                                                )}
+                                            </button>
+
 
                                         )}
-                                    </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </>
-                    ))}
+                            </>
+                        ))}
+                    </BrowserView>
+                    <MobileView>
+                        {filtered.map((item, index) => (
+                            <>
+                                <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
+                                    <div className="flex justify-start space-x-8">
+                                        <div className="flex flex-col">
+                                            <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
+                                            <p className=' text-white text-md sizemobile futura-book'>{moment(item.classTime).format("HH:mm")}</p>
+                                        </div>
+                                        <div className="border border-l border-[#009FE3]"></div>
+                                        <div className="flex flex-col">
+                                            <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
+                                                {item.class?.className}
+                                            </p>
+
+                                            <p className="text-white futura-book text-md sizemobile lg:border-r md:border-r border-white">
+                                                {item.location?.locationName}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button
+                                            className="flex justify-end"
+                                        >
+                                            {!item?.toggle ? (
+                                                <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
+                                                    <img src="/notBooked.png" />
+                                                    <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
+                                                </div>
+                                            ) : (
+                                                <div className="flex space-x-2 items-center">
+                                                    <img src="/booked.png" />
+                                                    <p className="futura-book text-white text-md sizemobile">Booked</p>
+                                                    <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                        Cancel
+                                                        <Close className="cancel-close" />
+                                                    </p>
+                                                </div>
+
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
+                            </>
+                        ))}
                     </MobileView>
                 </div>
                 {/* <div ref={buttonRef} style={{ display: "none" }}>
