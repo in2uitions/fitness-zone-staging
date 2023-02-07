@@ -111,10 +111,9 @@ export default function Login() {
                         // console.log("phoneeee" , phoneNumber)
                         // console.log("memberrrrr" ,memberId)
                         if (data.isValid == true && phoneNumber && memberId) {
-                            // const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
-                            // const data = await SendOTPMessage.json();
-                            // setIsSent(true)
-                            alert("You have been successfully logged in.");
+                            const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
+                            const data = await SendOTPMessage.json();
+                            setIsSent(true)
                             Cookies.set("Country", JSON.stringify(select));
                             Cookies.set("Phone", phoneNumber);
                             Cookies.set("Member", memberId);
@@ -125,7 +124,7 @@ export default function Login() {
                         }
                         else {
                             setIsNotSent(true)
-                            alert("You must enter your valid info.");
+                            // alert("You must enter your valid info.");
                         }
                     } catch (err) {
                         console.log(err);

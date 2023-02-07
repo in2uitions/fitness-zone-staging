@@ -16,6 +16,7 @@ export default function Otp() {
         router.push({ pathname: "/account/login"});
     }
 }, [])
+const phone = Cookies.get("Phone")
     const submitOTP = async event => {
         event.preventDefault();
 
@@ -32,21 +33,21 @@ export default function Otp() {
                     method: 'GET',
                     headers: registrationHeaders
                 };
-                // const res = await fetch(
-                //     `https://api.fitnessclubapp.com/api/SMS/ValidateOTP?mobileNumber=${query.phoneNumber}&otpNumber=${event.target.otp.value}`,
-                //     registrationRequestOptions
-                // );
-                // const data = await res.json();
-                // if (data.isValid == true) {
-                    // Cookies.set("OTP", JSON.stringify(event.target.otp.value));
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/SMS/ValidateOTP?mobileNumber=${phone}&otpNumber=${event.target.otp.value}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true) {
+                    Cookies.set("OTP", JSON.stringify(event.target.otp.value));
                     // Cookies.set("Country", JSON.stringify(event.target.country.value));
                     // Cookies.set("Phone", phoneNumber);
                     // Cookies.set("Member", JSON.stringify(event.target.member.value));
                     router.push({ pathname: "/account/dashboard" })
-                // }
-                // else {
-                //     alert("Wrong OTP");
-                // }
+                }
+                else {
+                    alert("Wrong OTP");
+                }
 
             } catch (err) {
                 console.log(err);
@@ -65,17 +66,17 @@ export default function Otp() {
                     method: 'GET',
                     headers: registrationHeaders
                 };
-                // const res = await fetch(
-                //     `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${query.phoneNumber}`,
-                //     registrationRequestOptions
-                // );
-                // const data = await res.json();
-                // if (data.isValid == true) {
-                //     router.push({ pathname: "/account/dashboard" })
-                // }
-                // else {
-                //     alert("Wrong OTP");
-                // }
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phone}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true) {
+                    router.push({ pathname: "/account/dashboard" })
+                }
+                else {
+                    alert("Wrong OTP");
+                }
 
             } catch (err) {
                 console.log(err);
