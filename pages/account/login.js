@@ -117,6 +117,9 @@ export default function Login() {
                             const SendOTPMessage = await fetch(`https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`, registrationRequestOptions);
                             const data = await SendOTPMessage.json();
                             setIsSent(true)
+                            Cookies.remove("Country")
+                            Cookies.remove("Phone")
+                            Cookies.remove("Member")
                             Cookies.set("Country", JSON.stringify(select));
                             Cookies.set("Phone", phoneNumber);
                             Cookies.set("Member", memberId);
