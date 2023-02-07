@@ -138,9 +138,10 @@ export default function Menu(data = {}) {
     const [signbtn, setSignBtn] = useState(true);
     const [logOut, setLogOut] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
-    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined );
+    const tokenSet =(Cookies.get("OTP") != null)
     useEffect(() => {
-        if (itemSet) {
+        if (itemSet && tokenSet) {
             setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)
             setSignBtn(false)
             setLogOut(true)

@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
 export default function Otp() {
     const { query } = useRouter()
     const router = useRouter()
-    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined)
     useEffect(() => {
     if (itemSet) {
         router.push({ pathname: "/account/otp"});
@@ -55,9 +55,10 @@ const phone = Cookies.get("Phone")
         };
         getValidOtp();
     };
+    
     const resendOTP = () => {
 
-        const getOTP = async () => {
+        const getOTP = async (event) => {
             try {
                 var registrationHeaders = new Headers();
                 registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
@@ -72,7 +73,22 @@ const phone = Cookies.get("Phone")
                 );
                 const data = await res.json();
                 if (data.isValid == true) {
+                    // router.push({ pathname: "/account/dashboard" })
+                    const res = await fetch(
+                        `https://api.fitnessclubapp.com/api/SMS/ValidateOTP?mobileNumber=${phone}&otpNumber=${event.target.otp.value}`,
+                        registrationRequestOptions
+                    );
+                    const data = await res.json();
+                if (data.isValid == true) {
+                    Cookies.set("OTP", JSON.stringify(event.target.otp.value));
+                    // Cookies.set("Country", JSON.stringify(event.target.country.value));
+                    // Cookies.set("Phone", phoneNumber);
+                    // Cookies.set("Member", JSON.stringify(event.target.member.value));
                     router.push({ pathname: "/account/dashboard" })
+                }
+                else {
+                    alert("Wrong OTP");
+                }
                 }
                 else {
                     alert("Wrong OTP");
@@ -95,8 +111,8 @@ const phone = Cookies.get("Phone")
 
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
-                        minutes={2}
-                        seconds={1}
+                        // minutes={2}
+                        seconds={2}
                         text=""
                         ButtonText="Resend Now"
                         resend={resendOTP}

@@ -18,8 +18,9 @@ export default function Membership({ style = 'white' }) {
     const [test, setTest] = useState([])
     const [state, toggle] = useState(true);
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet =(Cookies.get("OTP") != null)
     useEffect(() => {
-    if (itemSet) {
+    if (itemSet && tokenSet) {
         router.push({ pathname: "/account/membership"});
     }
     else{

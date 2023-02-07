@@ -13,8 +13,9 @@ export default function CheckIns() {
     const [data, setData] = useState([]);
     const memberId = Cookies.get('Member');
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet =(Cookies.get("OTP") != null)
     useEffect(() => {
-    if (itemSet) {
+    if (itemSet && tokenSet) {
         router.push({ pathname: "/account/myCheckIns"});
     }
     else{

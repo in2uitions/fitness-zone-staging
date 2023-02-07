@@ -13,8 +13,9 @@ export default function List() {
     const [{ posts, users }, setData] = useState({ post: [], user: [{}] });
     const [selectedCategory, setSelectedCategory] = useState('1');
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet =(Cookies.get("OTP") != null)
     useEffect(() => {
-    if (itemSet) {
+    if (itemSet && tokenSet) {
         router.push({ pathname: "/account/trainers"});
         if(Cookies.get("Category") != undefined){
             const category = Cookies.get("Category");

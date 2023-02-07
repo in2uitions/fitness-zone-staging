@@ -21,8 +21,9 @@ export default function Dashboard({ style = "white" }) {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet =(Cookies.get("OTP") != null)
     useEffect(() => {
-        if (itemSet) {
+        if (itemSet && tokenSet) {
             router.push({ pathname: "/account/myProfile" });
         }
         else {

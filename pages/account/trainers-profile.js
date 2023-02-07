@@ -21,8 +21,9 @@ export default function TrainersProfile({ style = "white" }) {
     const { query } = useRouter()
     const memberId = Cookies.get("Member");
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet =(Cookies.get("OTP") != null)
     useEffect(() => {
-    if (itemSet) {
+    if (itemSet && tokenSet) {
         router.push({ pathname: "/account/trainers-profile"});
     }
     else{

@@ -69,9 +69,10 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
         embla.on("select", onSelect);
     }, [embla, setScrollSnaps, onSelect]);
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet =(Cookies.get("OTP") != null)
     const router = useRouter();
     const route = () => {
-    if (itemSet) {
+    if (itemSet && tokenSet) {
         router.push({ pathname: "/account/classListing"});
     }
     else{

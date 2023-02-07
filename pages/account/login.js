@@ -101,7 +101,7 @@ export default function Login() {
                             
                             phoneNumber = phoneNumber.replace('-', '');
                             phoneNumber = phoneNumber.replace(' ', '');
-                            console.log("test" + phoneNumber)
+                            // console.log("test" + phoneNumber)
 
                         } else if (endPoints == MOBILE) {
                             const getMemberId = await fetch(
