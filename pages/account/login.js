@@ -97,7 +97,7 @@ export default function Login() {
                                     }
                                 });
                             const data = getMobile.data;
-                            phoneNumber = data.replace(/-/g, "");
+                            phoneNumber = data.toString();
                             
                             phoneNumber.replaceAll('-', '');
                             phoneNumber.replaceAll(' ', '');
