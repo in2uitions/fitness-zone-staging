@@ -97,7 +97,10 @@ export default function Login() {
                                     }
                                 });
                             const data = getMobile.data;
-                            phoneNumber = data;
+                            phoneNumber = data.replace(/-/g, "");
+                            
+                            phoneNumber.replaceAll('-', '');
+                            phoneNumber.replaceAll(' ', '');
                             // console.log("test" + phoneNumber)
 
                         } else if (endPoints == MOBILE) {
