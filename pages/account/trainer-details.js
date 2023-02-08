@@ -6,7 +6,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PrivateMenu from "./private-menu";
 import Cookies from 'js-cookie'
 
-export default function TrainerDetails() {
+export default function TrainerDetails(info) {
     const { query } = useRouter()
     const router = useRouter()
     // console.log(query.name)
@@ -25,23 +25,6 @@ export default function TrainerDetails() {
         method: "GET",
         headers: registrationHeaders,
     };
-    const [info, setInfo] = useState(true)
-    try {
-        useEffect(() => {
-            getData();
-            async function getData() {
-                const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
-                    registrationRequestOptions
-                );
-                const fetchedData = await response.json();
-                setInfo(fetchedData);
-            }
-            getData();
-        }, []);
-    } catch (err) {
-        console.log(err);
-    }
 
     return (
         <>
@@ -76,4 +59,36 @@ export default function TrainerDetails() {
             </div>
         </>
     )
+}
+export async function getServerSideProps({ params }) {
+    const memberId = context.req.cookies["Member"];
+    const token = context.req.cookies["token"];
+    var registrationHeaders = new Headers();
+    registrationHeaders.append(
+        "Authorization",
+        "Bearer " + token
+    );
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: "GET",
+        headers: registrationHeaders,
+    };
+    const response = await fetch(
+        `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+        registrationRequestOptions
+    );
+    // const data = await response.json()
+    if(response.status == 401){
+        return {
+            redirect: {
+                destination: "/account/login",
+                permanent: false,
+            },
+        };
+        }else{
+            const info = await response.json()
+            return {
+                props:{info}
+            }
+};
 }

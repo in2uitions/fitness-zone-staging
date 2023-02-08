@@ -11,7 +11,7 @@ import Close from "@material-ui/icons/Close";
 import PrivateMenu from "./private-menu";
 import Cookies from 'js-cookie'
 
-export default function ClassListing() {
+export default function ClassListing(Info) {
     var curr = new Date;
     const router = useRouter();
     const [books, setBooks] = useState(true)
@@ -20,7 +20,7 @@ export default function ClassListing() {
     const [filtered, setFiltered] = useState([]);
     const [data, setData] = useState([]);
     const [classs, setClasss] = useState([]);
-    const [info, setInfo] = useState(true)
+    // const [info, setInfo] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(1);
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
@@ -335,24 +335,6 @@ export default function ClassListing() {
 
     };
 
-    try {
-        useEffect(() => {
-            getData();
-            async function getData() {
-                const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
-                    registrationRequestOptions
-                );
-                if (response.status == 200) {
-                    const fetchedData = await response.json();
-                    setInfo(fetchedData);
-                }
-            }
-            getData();
-        }, []);
-    } catch (err) {
-        console.log(err);
-    }
 
     function handleClassChange(event) {
         if (event.target.id == "All") {
@@ -720,3 +702,35 @@ export default function ClassListing() {
     );
 }
 
+export async function getServerSideProps(context) {
+    const memberId = context.req.cookies["Member"];
+    const token = context.req.cookies["token"];
+    var registrationHeaders = new Headers();
+    registrationHeaders.append(
+        "Authorization",
+        "Bearer " + token
+    );
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: "GET",
+        headers: registrationHeaders,
+    };
+    const response = await fetch(
+        `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+        registrationRequestOptions
+    );
+    // const data = await response.json()
+    if(response.status == 401){
+        return {
+            redirect: {
+                destination: "/account/login",
+                permanent: false,
+            },
+        };
+        }else{
+            const info = await response.json()
+            return {
+                props:{info}
+            }
+        }
+}

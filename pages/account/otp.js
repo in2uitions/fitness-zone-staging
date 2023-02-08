@@ -39,7 +39,7 @@ const phone = Cookies.get("Phone")
                 );
                 const data = await res.json();
                 if (data.isValid == true) {
-                    Cookies.set("OTP", JSON.stringify(event.target.otp.value));
+                    Cookies.set("OTP", event.target.otp.value);
                     // Cookies.set("Country", JSON.stringify(event.target.country.value));
                     // Cookies.set("Phone", phoneNumber);
                     // Cookies.set("Member", JSON.stringify(event.target.member.value));

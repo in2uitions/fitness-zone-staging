@@ -11,8 +11,7 @@ import OtpTimer from "otp-timer";
 import Cookies from 'js-cookie'
 import axios from "axios";
 
-export default function Dashboard({ style = "white" }) {
-    const [data, setData] = useState([]);
+export default function Dashboard({ style = "white" ,data}) {
     const [valid, setIsValid] = useState([])
     const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState("");
@@ -40,24 +39,7 @@ export default function Dashboard({ style = "white" }) {
         method: "GET",
         headers: registrationHeaders,
     };
-    try {
-        useEffect(() => {
-            getData();
-            async function getData() {
-                const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
-                    registrationRequestOptions
-                );
-                if (response.status == 200) {
-                    const fetchedData = await response.json();
-                    setData(fetchedData);
-                }
-            }
-            getData();
-        }, []);
-    } catch (err) {
-        console.log(err);
-    }
+   
     const handleSubmitPhoneNumer = async event => {
         event.preventDefault();
 
@@ -617,4 +599,36 @@ export default function Dashboard({ style = "white" }) {
             </section>
         </>
     );
+}
+export async function getServerSideProps(context) {
+    const memberId = context.req.cookies["Member"];
+    const token = context.req.cookies["token"];
+    var registrationHeaders = new Headers();
+    registrationHeaders.append(
+        "Authorization",
+        "Bearer " + token
+    );
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: "GET",
+        headers: registrationHeaders,
+    };
+    const response = await fetch(
+        `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+        registrationRequestOptions
+    );
+    // const data = await response.json()
+    if(response.status == 401){
+        return {
+            redirect: {
+                destination: "/account/login",
+                permanent: false,
+            },
+        };
+        }else{
+            const data = await response.json()
+            return {
+                props:{data}
+            }
+        }
 }

@@ -165,7 +165,8 @@ export default function Menu(data = {}) {
             Cookies.remove('token');
             Cookies.remove('Member');
             Cookies.remove('Phone');
-            Cookies.remove('Country')
+            Cookies.remove('Country');
+            Cookies.remove('OTP');
             router.push({ pathname: "/" });
             setIsOpen(false);
             loading();

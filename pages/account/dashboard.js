@@ -17,22 +17,24 @@ import parse from "html-react-parser";
 import Cookies from 'js-cookie'
 import moment from "moment";
 
-export default function Dashboard({ style = "white" }) {
+export default function Dashboard({ style = "white", data }) {
     const [books, setBooks] = useState([]);
-    const [data, setcheckInData] = useState([]);
+    // const [data, setcheckInData] = useState([]);
     const [trainer, setTrainer] = useState([])
     const [bookedClass, setBookedClass] = useState([])
     const memberId = Cookies.get("Member");
-    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
-    const tokenSet =(Cookies.get("OTP") != null)
-    useEffect(() => {
-        if (itemSet && tokenSet) {
-            router.push({ pathname: "/account/dashboard" });
-        }
-        else {
-            router.push({ pathname: "/account/login" });
-        }
-    }, [])
+    // const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    // const tokenSet = (Cookies.get("OTP") != null)
+    
+    // useEffect(() => {
+    //     if (!itemSet && !tokenSet) {
+    //         router.push({ pathname: "/account/login" });
+    //     }
+    //     else {
+    //         router.push({ pathname: "/account/dashboard" });
+    //     }
+    // }, [])
+
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
@@ -61,23 +63,23 @@ export default function Dashboard({ style = "white" }) {
     } catch (err) {
         console.log(err);
     }
-    try {
-        useEffect(() => {
-            getData();
-            async function getData() {
-                const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
-                    registrationRequestOptions
-                );
-                if (response.status == 200) {
-                    const checkInList = await response.json();
-                    setcheckInData(checkInList);
-                }
-            }
-        }, []);
-    } catch (err) {
-        console.log(err);
-    }
+    // try {
+    //     useEffect(() => {
+    //         getData();
+    //         async function getData() {
+    //             const response = await fetch(
+    //                 `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
+    //                 registrationRequestOptions
+    //             );
+    //             if (response.status == 200) {
+    //                 const checkInList = await response.json();
+    //                 setcheckInData(checkInList);
+    //             }
+    //         }
+    //     }, []);
+    // } catch (err) {
+    //     console.log(err);
+    // }
     var curr = new Date;
     var first = curr.getDate() - curr.getDay();
     var last = first + 7;
@@ -416,3 +418,36 @@ export default function Dashboard({ style = "white" }) {
     );
 }
 
+export async function getServerSideProps( context ) {
+    const memberId = context.req.cookies["Member"];
+    const token = context.req.cookies["token"];
+    var registrationHeaders = new Headers();
+    registrationHeaders.append(
+        "Authorization",
+        "Bearer " + token
+    );
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: "GET",
+        headers: registrationHeaders,
+    };
+    
+    const response = await fetch(
+        `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
+        registrationRequestOptions
+    );
+   
+if(response.status == 401){
+return {
+    redirect: {
+        destination: "/account/login",
+        permanent: false,
+    },
+};
+}else{
+    const data = await response.json()
+    return {
+        props:{data}
+    }
+}
+}

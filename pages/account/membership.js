@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import PrivateMenu from './private-menu';
 import Cookies from 'js-cookie'
 
-export default function Membership({ style = 'white' }) {
+export default function Membership({ style = 'white' ,data}) {
     const memberId = Cookies.get('Member');
     const [test, setTest] = useState([])
     const [state, toggle] = useState(true);
@@ -70,25 +70,7 @@ export default function Membership({ style = 'white' }) {
         });
         return newd;
     }
-    const[data, setData]=useState(true)
-    try {
-        useEffect(() => {
-            getData();
-            async function getData() {
-                const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
-                    registrationRequestOptions
-                );
-                if(response.status == 200){
-                const fetchedData = await response.json();
-                setData(fetchedData);
-            }
-        }
-            getData();
-        }, []);
-    } catch (err) {
-        console.log(err);
-    }
+   
     function dateButif(d) {
         const newd = new Date(d).toLocaleDateString("en-UG", {
             day: "numeric",
@@ -256,4 +238,36 @@ export default function Membership({ style = 'white' }) {
     );
 }
 
+export async function getServerSideProps(context) {
+    const memberId = context.req.cookies["Member"];
+    const token = context.req.cookies["token"];
+    var registrationHeaders = new Headers();
+    registrationHeaders.append(
+        "Authorization",
+        "Bearer " + token
+    );
+    registrationHeaders.append("Content-Type", "application/json");
+    var registrationRequestOptions = {
+        method: "GET",
+        headers: registrationHeaders,
+    };
+    const response = await fetch(
+        `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+        registrationRequestOptions
+    );
+    // const data = await response.json()
+    if(response.status == 401){
+        return {
+            redirect: {
+                destination: "/account/login",
+                permanent: false,
+            },
+        };
+        }else{
+            const data = await response.json()
+            return {
+                props:{data}
+            }
+        }
 
+}

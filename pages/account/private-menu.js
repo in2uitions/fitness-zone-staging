@@ -40,7 +40,8 @@ export default function PrivateMenu() {
             Cookies.remove('token');
             Cookies.remove('Member');
             Cookies.remove('Phone');
-            Cookies.remove('Country')
+            Cookies.remove('Country');
+            Cookies.remove('OTP');
             router.push({ pathname: "/account/login" });
         };
         getTokenAPI();
