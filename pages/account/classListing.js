@@ -151,6 +151,7 @@ export default function ClassListing() {
                     // console.log(classes)
                 } else {
                     setClasss([]);
+                    setFiltered([]);
                     //    <div>loading...</div>;
 
                 }
@@ -450,7 +451,8 @@ export default function ClassListing() {
                                 <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                                     {data.map((item, i) => (
                                         <>
-                                {item.isActive ?<option key={i} value={item.locationCode} id="location" >{item.locationName}</option>:null}
+                                {/* {item.isActive ? */}
+                                <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
                                     </>
                                     ))}
                                 </select>
@@ -479,7 +481,8 @@ export default function ClassListing() {
                                 <select style={{ height: "2rem", borderRadius: "5px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                                     {data.map((item, i) => (
                                         <>
-                                            {item.isActive ? <option key={i} value={item.locationCode} id="location" >{item.locationName}</option> : null}
+                                            {/* {item.isActive ?  */}
+                                            <option key={i} value={item.locationCode} id="location" >{item.locationName}</option> 
                                         </>
                                     ))}
                                 </select>

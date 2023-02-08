@@ -125,6 +125,7 @@ export default function CheckIns() {
                                 </div>
                             </>
                         ))}
+                        <div className="flex justify-between w-full">
                         <div
                             className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
                             onClick={() => {
@@ -134,6 +135,8 @@ export default function CheckIns() {
                         >
                             {state ? "VIEW ALL" : "VIEW LESS"}
                             <ChevronRightIcon className="arrow-membership" />
+                        </div>
+                        <a href="/account/dashboard" className="flex lg:justify-center text-[#009fe3] items-center cursor-pointer futura-bold">Back</a>
                         </div>
                     </div>
                     {/* <div ref={buttonRef} style={{ display: "none" }}>

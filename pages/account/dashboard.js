@@ -344,11 +344,11 @@ export default function Dashboard({ style = "white" }) {
                         ))}
 
                         <div
-                            className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
-                            // className={
-                            //     "" +
-                            //     (noOfElements < 4 ? "flex lg:justify-center text-white items-center cursor-pointer futura-bold" : "hidden")
-                            // }
+                            // className="flex lg:justify-center text-white items-center cursor-pointer futura-bold"
+                            className={
+                                "" +
+                                (bookedClass.length > 4 ? "flex lg:justify-center text-white items-center cursor-pointer futura-bold" : "hidden")
+                            }
                             onClick={() => {
                                 toggle(!state);
                                 loadMoreLess();
@@ -365,10 +365,10 @@ export default function Dashboard({ style = "white" }) {
                         {data.slice(0, 4).map((item) => (
                             <>
                                 <div className="flex justify-start items-start classes-box mb-3 p-3">
-                                    <div className="space-x-2 flex">
-                                        <p className="text-white text-md border-r border-[#009FE3] pr-3 futura-book">{dateButif(item.value)}</p>
+                                    <div className="space-x-2 flex w-full">
+                                        <p className="text-white text-md border-r border-[#009FE3] futura-book w-3/5">{dateButif(item.value)}</p>
                                         {/* <p className='border-r border-[#009FE3] text-white'>{item.time}</p> */}
-                                        <p className="text-white text-lg futura-book">{item.text}</p>
+                                        <p className="text-white text-lg futura-book w-2/5 flex justify-end pr-3">{item.text}</p>
                                     </div>
                                 </div>
                             </>
@@ -390,7 +390,7 @@ export default function Dashboard({ style = "white" }) {
                                     <span className="text-white text-base futura-book">Sessions:</span>
                                     <span className="text-white futura-bold exipryDate">09/15</span>
                                 </p>
-                                <a href="/account/trainers" className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
+                                <a href="/account/trainers/015443cb-6a34-410e-951a-57d9545f612b" className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
                                     VIEW PACKAGE DETAILS
                                     <ChevronRightIcon className="arrow-membership" />
                                 </a>

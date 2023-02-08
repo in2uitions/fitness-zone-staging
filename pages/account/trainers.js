@@ -150,6 +150,9 @@ export default function List() {
            <PrivateMenu/>
             <section className="">
                 <div className="mt-40 lg:px-28 md:px-20 px-3 container mx-auto w-full h-full">
+                <div className="flex flex-col justify-center items-center">
+                        <p className="text-[#009FE3] futura-bold lg:text-4xl md:text-4xl text-3xl mb-10">Trainers List</p>
+                    </div>
                     <div className="flex flex-row justify-between">
                         <div className="flex items-center space-x-5">
                             <img src="/filterBy.png" />
@@ -163,6 +166,7 @@ export default function List() {
                             ))}
                         </select>
                     </div>
+                    
                     <div id="main-box" className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-10 p-10 items-center space-y-5 lg:space-y-0 md:space-y-0">
                         {filteredPosts.map((post, index) => (
                             <div className="col-span-3 membership-box h-full p-5">

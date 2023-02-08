@@ -2463,7 +2463,11 @@ li.category.isActive {
     top: -10.8rem !important;
   }
 }
-
+@media(min-width:1020px) and (max-width:1280px){
+  .btn-nowrap{
+    font-size: 0.85rem !important;
+  }
+}
 @media (min-width:1095px) and (max-width:1500px) {
   .timeline-mobile {
     margin-top: -0.75rem !important;

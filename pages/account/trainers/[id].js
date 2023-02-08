@@ -100,7 +100,6 @@ export default function TrainersProfile({ style = "white" }) {
             <section>
                 <div className="container mx-auto flex flex-col justify-start mt-40 lg:px-28 md:px-20 px-3">
                     <div className="flex justify-between">
-                        <p className="text-[#009FE3] futura-bold">Trainers List</p>
                         {/* <select name="category">
                         {categoryData.map((item) =>(
                             <option value={item.categoryId}>{item.category?.categoryName}</option>
