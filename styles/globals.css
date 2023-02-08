@@ -346,6 +346,9 @@ html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+.input-search{
+  color: white !important;
+}
 
 .rbc-header+.rbc-header {
   border-left: 0px solid transparent !important;

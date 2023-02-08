@@ -419,7 +419,7 @@ export default function ClassListing(Info) {
                             </div>
                             {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
                             <div className="relative" style={{ width: "73%" }}>
-                                <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4"
+                                <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-10 mt-5 mb-5 bg-transparent pl-4 input-search"
                                     placeholder="Search" value={name}
                                     onChange={handleSearch} />
                                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
