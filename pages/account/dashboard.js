@@ -274,7 +274,7 @@ export default function Dashboard({ style = "white", data }) {
                     <Slider className="mt-10" {...settings}>
                         {privateCarousel.map((item) => (
                             <div className="relative">
-                                {item.image ? <img src={`${image_url}${item.image}`} /> : null}
+                                {item.image ? <img src={`${image_url}${item.image}`} className="tintImg" /> : null}
                                 <div className="absolute flex flex-col bottom-8 px-10">
                                     <div className="flex space-x-2 items-start">
                                         {item.on_icon ? <img src={`${image_url}${item.on_icon}`} className="h-6" /> : null}
