@@ -329,17 +329,16 @@ export default function Dashboard({ style = "white", data }) {
                                     </div>
                                     <div className="flex justify-end space-x-2 items-end ml-auto sizing">
                                         <p
-                                            className="futura-book text-white"
-                                            style={{ fontSize: 14 }}
+                                            className="futura-book text-white text-lg"
                                         >
                                             {item.location?.locationName}
                                         </p>
-                                        <button onClick={(e, index) => removeClass({ timetableId: item.timetableId, e, index })}>
+                                        {/* <button onClick={(e, index) => removeClass({ timetableId: item.timetableId, e, index })}>
                                             <p className="flex items-center text-[#8F8F8F] futura-bold text-sm">
                                                 Cancel
                                                 <Close className="x-close" />
                                             </p>
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             </>
