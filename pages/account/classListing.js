@@ -557,7 +557,7 @@ export default function ClassListing(Info) {
                     </Tabs>
                     </MobileView>
                     <BrowserView>
-                        {filtered.map((item, index) => (
+                        {filtered.slice(0).sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                             <>
                                 <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
                                     <div className="flex justify-start w-3/4">

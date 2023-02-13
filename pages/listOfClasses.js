@@ -316,7 +316,7 @@ export default function App() {
                     </Tabs>
                     </MobileView>
                     <BrowserView>
-            {filtered.map((item, index) => (
+            {filtered.sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                 <>
                     <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index} id={item.studio?.studioName}>
                         <div className="flex justify-start w-full">
