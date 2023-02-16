@@ -82,7 +82,7 @@ export default function ClassListing(Info) {
                     var memberType = fetchedData.membershipType.memberShipTypeName
                     setBooks(memberType);
 
-                    // console.log(memberType)
+                    console.log(memberType)
                     if (memberType != "PLATINUM LS CORPORATE.") {
                         setIsDisabled(true);
                         handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
@@ -403,6 +403,9 @@ export default function ClassListing(Info) {
     const handleClickAway = () => {
         setDropdownState(false);
 	};
+    const today = moment().format("DD MMM YYYY")
+    const todayTime = moment().format("DD MMM YYYY HH:mm")
+    console.log(todayTime)
     return (
         <>
             <PrivateMenu />
@@ -623,18 +626,18 @@ export default function ClassListing(Info) {
                                                 className="flex justify-end"
                                             >
                                                 {!item?.toggle ? (
-                                                    <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
+                                                    <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
                                                         <img src="/notBooked.png" />
-                                                        <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
-                                                    </div>
+                                                        <p className="futura-book text-md sizemobile">Book class</p>
+                                                    </button>
                                                 ) : (
-                                                    <div className="flex space-x-2 items-center">
+                                                    <div className="flex space-x-2 items-baseline">
                                                         <img src="/booked.png" />
                                                         <p className="futura-book text-white text-md sizemobile">Booked</p>
-                                                        <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} className=" text-[#009FE3] futura-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             <Close className="cancel-close" />
-                                                        </p>
+                                                        </button>
                                                     </div>
 
                                                 )}

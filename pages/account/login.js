@@ -130,7 +130,7 @@ export default function Login() {
                         }
                         else {
                             setIsNotSent(true)
-                            // alert("You must enter your valid info.");
+                            alert("You should contact the admin in order to register ur phone number.");
                         }
                     } catch (err) {
                         console.log(err);

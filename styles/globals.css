@@ -346,6 +346,15 @@ html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+.book-button:disabled{
+  color: rgb(0 ,159, 227, 0.5);
+}
+.cancel-button:disabled{
+  color: rgb(0 ,159, 227, 0.5);
+}
+.book-button{
+  color: #009Fe3;
+}
 .input-search{
   color: white !important;
 }

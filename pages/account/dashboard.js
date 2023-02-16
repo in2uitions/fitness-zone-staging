@@ -17,23 +17,22 @@ import parse from "html-react-parser";
 import Cookies from 'js-cookie'
 import moment from "moment";
 
-export default function Dashboard({ style = "white", data }) {
-    const [books, setBooks] = useState([]);
-    // const [data, setcheckInData] = useState([]);
+export default function Dashboard({ style = "white",books }) {
+    // const [books, setBooks] = useState([]);
+    const [data, setcheckInData] = useState([]);
     const [trainer, setTrainer] = useState([])
     const [bookedClass, setBookedClass] = useState([])
     const memberId = Cookies.get("Member");
-    // const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
-    // const tokenSet = (Cookies.get("OTP") != null)
-    
-    // useEffect(() => {
-    //     if (!itemSet && !tokenSet) {
-    //         router.push({ pathname: "/account/login" });
-    //     }
-    //     else {
-    //         router.push({ pathname: "/account/dashboard" });
-    //     }
-    // }, [])
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet =(Cookies.get("OTP") != null)
+    useEffect(() => {
+        if (itemSet && tokenSet) {
+            router.push({ pathname: "/account/dashboard" });
+        }
+        else {
+            router.push({ pathname: "/account/login" });
+        }
+    }, [])
 
     var registrationHeaders = new Headers();
     registrationHeaders.append(
@@ -45,41 +44,24 @@ export default function Dashboard({ style = "white", data }) {
         method: "GET",
         headers: registrationHeaders,
     };
+    
     try {
         useEffect(() => {
             getData();
             async function getData() {
                 const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
+                    `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
                     registrationRequestOptions
                 );
                 if (response.status == 200) {
-                    const fetchedData = await response.json();
-                    setBooks(fetchedData);
+                    const checkInList = await response.json();
+                    setcheckInData(checkInList);
                 }
             }
-            getData();
         }, []);
     } catch (err) {
         console.log(err);
     }
-    // try {
-    //     useEffect(() => {
-    //         getData();
-    //         async function getData() {
-    //             const response = await fetch(
-    //                 `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
-    //                 registrationRequestOptions
-    //             );
-    //             if (response.status == 200) {
-    //                 const checkInList = await response.json();
-    //                 setcheckInData(checkInList);
-    //             }
-    //         }
-    //     }, []);
-    // } catch (err) {
-    //     console.log(err);
-    // }
     var curr = new Date;
     var first = curr.getDate() - curr.getDay();
     var last = first + 7;
@@ -315,19 +297,21 @@ export default function Dashboard({ style = "white", data }) {
                         {slice.map((item, index) => (
                             <>
                                 <div
-                                    className="flex classes-box mb-3 p-2 flex-wrap"
+                                    className="flex classes-box mb-3 items-center p-2 w-full flex-wrap"
                                     onChange={(event) => handleInputChange(event, index)}
                                 >
-                                    <div className="space-x-2 flex">
-                                        <p className="futura-book pr-1 border-r border-[#009FE3] text-white text-lg">
+                                    <div className="space-x-2 flex items-center w-3/4">
+
+                                        <p className="w-full futura-book border-r pr-3 border-[#009FE3] text-white text-lg">
                                             {dateOnly(item.classTime)}
                                         </p>
-                                        <p className="futura-book pr-1 border-r border-white text-white text-lg">
+
+                                        <p className="w-full futura-book border-r pr-3 border-white text-white text-lg">
                                             {item.instructor?.type}
                                         </p>
-                                        <p className="futura-book text-white text-lg">{item.instructor?.firstName}</p>
+                                        <p className="w-full futura-book border-r pr-3 border-[#009FE3] text-white text-lg">{item.instructor?.firstName}</p>
                                     </div>
-                                    <div className="flex justify-end space-x-2 items-end ml-auto sizing">
+                                    <div className="flex space-x-2 sizing pl-3">
                                         <p
                                             className="futura-book text-white text-lg"
                                         >
@@ -366,10 +350,10 @@ export default function Dashboard({ style = "white", data }) {
                         {data.slice(0, 4).map((item) => (
                             <>
                                 <div className="flex justify-start items-start classes-box mb-3 p-3">
-                                    <div className="space-x-2 flex w-full">
-                                        <p className="text-white text-md border-r border-[#009FE3] futura-book w-3/5">{dateButif(item.value)}</p>
+                                    <div className="space-x-2 flex items-center w-full">
+                                        <p className="text-white text-lg border-r border-[#009FE3] futura-book w-3/5">{dateButif(item.value)}</p>
                                         {/* <p className='border-r border-[#009FE3] text-white'>{item.time}</p> */}
-                                        <p className="text-white text-lg futura-book w-2/5 flex justify-end pr-3">{item.text}</p>
+                                        <p className="text-white text-lg futura-book w-2/5 text-right flex justify-end pr-3">{item.text}</p>
                                     </div>
                                 </div>
                             </>
@@ -383,7 +367,7 @@ export default function Dashboard({ style = "white", data }) {
                         </a>
                     </div>
                     <div className="col-span-3">
-                        <p className="text-[#009FE3] futura-bold">Training Packages</p>
+                        <p className="text-[#009FE3] futura-bold">My Training Packages</p>
                         {filteredPosts.slice(0, 1).map((post, index) => (
                             <div className="flex flex-col space-y-3 mt-10 membership-box p-10 items-center">
                                 <Post post={post?.post} users={post?.user} key={index} />
@@ -417,7 +401,7 @@ export default function Dashboard({ style = "white", data }) {
     );
 }
 
-export async function getServerSideProps( context ) {
+export async function getServerSideProps(context) {
     const memberId = context.req.cookies["Member"];
     const token = context.req.cookies["token"];
     var registrationHeaders = new Headers();
@@ -430,23 +414,23 @@ export async function getServerSideProps( context ) {
         method: "GET",
         headers: registrationHeaders,
     };
-    
+
     const response = await fetch(
-        `https://api.fitnessclubapp.com/api/membership/member/CheckinListItem/${memberId}`,
+        `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
         registrationRequestOptions
     );
-   
-if(response.status == 401){
-return {
-    redirect: {
-        destination: "/account/login",
-        permanent: false,
-    },
-};
-}else{
-    const data = await response.json()
-    return {
-        props:{data}
+
+    if (response.status == 401) {
+        return {
+            redirect: {
+                destination: "/account/login",
+                permanent: false,
+            },
+        };
+    } else {
+        const books = await response.json()
+        return {
+            props: { books }
+        }
     }
-}
 }
