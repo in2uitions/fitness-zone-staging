@@ -125,7 +125,38 @@ export default function Dashboard({ style = "white" ,data}) {
     function onpopupBtnClick() {
         setShowpopupButton(true);
     };
-    const sendOTPEmail = async event => {
+    // const sendOTPEmail = async event => {
+    //     event.preventDefault();
+
+    //     const getValidOtp = async () => {
+    //         try {
+    //             var registrationHeaders = new Headers();
+    //             registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
+    //             registrationHeaders.append("Content-Type", "application/json");
+    //             var registrationRequestOptions = {
+    //                 method: 'GET',
+    //                 headers: registrationHeaders
+    //             };
+    //             const response = await fetch(
+    //                 `https://api.fitnessclubapp.com/api/Email/SendOTPMessage/${event.target.newEmailAddress.value}`,
+    //                 registrationRequestOptions
+    //             );
+    //             const data = await response.json();
+    //             if (data.isValid == true) {
+    //                 Cookies.set('newEmail', event.target.newEmailAddress.value);
+    //             }
+    //             else {
+    //                 alert("Wrong Email");
+    //             }
+
+    //         } catch (err) {
+    //             console.log(err);
+    //         }
+    //     };
+    //     getValidOtp();
+    // };
+
+    const OTPEmail = async event => {
         event.preventDefault();
 
         const getValidOtp = async () => {
@@ -138,15 +169,16 @@ export default function Dashboard({ style = "white" ,data}) {
                     headers: registrationHeaders
                 };
                 const res = await fetch(
-                    `https://api.fitnessclubapp.com/api/Email/SendOTPMessage/${event.target.newemail.value}`,
+                    `https://api.fitnessclubapp.com/api/Email/SendOTPMessage/${event.target.newEmailAddress.value}`,
                     registrationRequestOptions
                 );
                 const data = await res.json();
                 if (data.isValid == true) {
-                    Cookies.set('EmailUpdated', event.target.newemail.value);
+                    Cookies.set('newEmail', event.target.newEmailAddress.value);
                 }
                 else {
-                    alert("Wrong Email");
+                    // alert("Wrong Phone number");
+                    Cookies.set('newEmail', event.target.newEmailAddress.value);
                 }
 
             } catch (err) {
@@ -154,7 +186,13 @@ export default function Dashboard({ style = "white" ,data}) {
             }
         };
         getValidOtp();
+        if (handleFormValidation()) {
+            // alert("You have been successfully logged in.");
+            setState(initialState);
+            event.target.value = '';
+        }
     };
+
     const sendOTPPhone = async event => {
         event.preventDefault();
 
@@ -185,8 +223,13 @@ export default function Dashboard({ style = "white" ,data}) {
             }
         };
         getValidOtp();
+        if (handleFormValidation()) {
+            // alert("You have been successfully logged in.");
+            setState(initialState);
+            event.target.value = '';
+        }
     };
-    const useEmail = Cookies.get('EmailUpdated')
+    const useEmail = Cookies.get('newEmail')
     const usePhone = Cookies.get('PhoneUpdated')
     const resendOTP = () => {
 
@@ -371,6 +414,45 @@ export default function Dashboard({ style = "white" ,data}) {
             console.log(err);
         }
     };
+    const MOBILE = 'mobileNumber';
+    const [statee, setState] = useState({
+        mobileNumber: '',
+        formErrors: {}
+    })
+    const [
+        phoneNumberErr, setphoneNumberErr
+    ] = useState(formErrors);
+    const initialState = statee;
+
+    const formErrors = '';
+    function handleFormValidation() {
+        const { mobileNumber } = statee;
+        let formErrors = {};
+        let formIsValid = true;
+
+
+        if (!mobileNumber) {
+            // formIsValid = false;
+            // setphoneNumberErr("Phone number is required.");
+        } else {
+            var mobPattern = /^((\+?971)|0)5[024568]\d{7}$/;
+            let reg = /^(?:\+961|961)(1|0?3[0-9]?|[4-6]|70|71|76|78|79|7|81?|9)\d{6}$/;
+            if (!mobPattern.test(mobileNumber) && !reg.test(mobileNumber)) {
+                formIsValid = false;
+                setphoneNumberErr("Invalid phone number. You must enter your country code!");
+            }
+            else {
+                // console.log("isValid")
+            }
+        }
+        setState({ formErrors: formErrors });
+        return formIsValid;
+    }
+    function handleTabsChange({ event, index }) {
+        const { name, value } = event.target;
+        setState({ [name]: value });
+        setText({ value: event.target.value });
+    }
     return (
         <>
             <PrivateMenu />
@@ -451,8 +533,21 @@ export default function Dashboard({ style = "white" ,data}) {
                                                             <div className="container mx-auto flex flex-col space-y-5 py-8 lg:px-40 md:px-20 px-6">
                                                                 <p className="text-[#009FE3] text-lg futura-bold">Change Phone Number</p>
                                                                 <form className="flex flex-col space-y-5" onSubmit={sendOTPPhone}>
-                                                                    <input onChange={autoComplete} className="bg-transparent p-1 border border-[#009FE3] h-9 rounded-md text-white focus:outline-none  focus:border-[#009FE3]"
-                                                                        placeholder="Insert your new Phone Number" id="newphone" />
+                                                                    {/* <input onChange={autoComplete} className="bg-transparent p-1 border border-[#009FE3] h-9 rounded-md text-white focus:outline-none  focus:border-[#009FE3]"
+                                                                        placeholder="Insert your new Phone Number" id="newphone" /> */}
+                                                                        <input
+                                                                            type="input"
+                                                                            name="mobileNumber"
+                                                                            onChange={(e) => handleTabsChange({ event: e, index: MOBILE })}
+                                                                            value={state.mobileNumber}
+                                                                            placeholder="Insert your new Phone Number" id='newphone'
+                                                                            className={phoneNumberErr ? " bg-transparent p-1 border border-[#009FE3] h-9 rounded-md text-white focus:outline-none  focus:border-[#009FE3]" : "bg-transparent p-1 border border-[#009FE3] h-9 rounded-md text-white focus:outline-none  focus:border-[#009FE3]"}
+                                                                        />
+                                                                        {phoneNumberErr && (
+                                                                            <div style={{ color: "red", paddingBottom: 10 }}>
+                                                                                {phoneNumberErr}
+                                                                            </div>
+                                                                        )}
                                                                     <button disabled={!text} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md" onClick={onpopupBtnClick}>Send OTP</button>
                                                                 </form>
                                                                 {showpopupbutton ? <form className="flex flex-col space-y-5" onSubmit={submitOTPPhone}>
@@ -518,9 +613,9 @@ export default function Dashboard({ style = "white" ,data}) {
                                                         <div className="popup-bg rounded-md">
                                                             <div className="container mx-auto flex flex-col space-y-5 py-8 lg:px-40 md:px-20 px-6">
                                                                 <p className="text-[#009FE3] text-lg futura-bold">Change Email Address</p>
-                                                                <form className="flex flex-col space-y-5" onSubmit={sendOTPEmail}>
+                                                                <form className="flex flex-col space-y-5" onSubmit={OTPEmail}>
                                                                     <input onChange={autoComplete} className="bg-transparent p-1 border border-[#009FE3] h-9 rounded-md text-white focus:outline-none  focus:border-[#009FE3]"
-                                                                        placeholder="Insert your new Email" id="newemail" />
+                                                                        placeholder="Insert your new Email" id="newEmailAddress" />
                                                                     <button disabled={!text} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md" onClick={onAddBtnClick}>Send OTP</button>
                                                                 </form>
                                                                 {showbutton ? <form className="flex flex-col space-y-5" onSubmit={submitOTPEmail}>
@@ -528,8 +623,8 @@ export default function Dashboard({ style = "white" ,data}) {
                                                                     <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-[#009fe3] button-disabled h-9 futura-book rounded-md">Save</button>
                                                                 </form> : null}
                                                                 {showbutton ? <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer
-                                                                    minutes={3}
-                                                                    seconds={1}
+                                                                    // minutes={3}
+                                                                    seconds={10}
                                                                     text=""
                                                                     ButtonText="Resend Now"
                                                                     resend={resendOTP}
