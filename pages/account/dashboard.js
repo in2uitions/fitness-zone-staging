@@ -371,10 +371,10 @@ export default function Dashboard({ style = "white",books }) {
                         {filteredPosts.slice(0, 1).map((post, index) => (
                             <div className="flex flex-col space-y-3 mt-10 membership-box p-10 items-center">
                                 <Post post={post?.post} users={post?.user} key={index} />
-                                <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
+                                {/* <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
                                     <span className="text-white text-base futura-book">Sessions:</span>
                                     <span className="text-white futura-bold exipryDate">09/15</span>
-                                </p>
+                                </p> */}
                                 <a href="/account/trainers/015443cb-6a34-410e-951a-57d9545f612b" className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
                                     VIEW PACKAGE DETAILS
                                     <ChevronRightIcon className="arrow-membership" />
