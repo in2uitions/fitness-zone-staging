@@ -609,8 +609,8 @@ export default function ClassListing(Info) {
                                                                 <div className="popup-bg rounded-md px-20 py-20 flex flex-col">
                                                                 <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
                                                                     <div className=" flex flex-col items-start space-y-2">
-                                                                        <p className="futura-book text-base">Booking any class should be during the 48 hours prior to the class</p>
-                                                                        <p className="futura-book text-base">Canceling any class should be minimum before 3 hours of the class</p>
+                                                                        <p className="futura-book text-base text-white">Booking any class should be during the 48 hours prior to the class</p>
+                                                                        <p className="futura-book text-base text-white">Canceling any class should be minimum before 3 hours of the class</p>
                                                                         <input type="checkbox" className="" onChange={onCheck} />
                                                                     </div>
                                                                     <form onSubmit={(e) => reserveTennisClass({ timetableId: item.timetableId, e })} className="container mx-auto px-10 py-10 w-full flex flex-col justify-center items-center space-y-5">
@@ -664,8 +664,8 @@ export default function ClassListing(Info) {
                                                                         <div className="flex flex-col items-center space-y-2">
                                                                             <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
                                                                             <div className=" flex flex-col items-start space-y-2">
-                                                                                <p className="futura-book text-base">Booking any class should be during the 48 hours prior to the class</p>
-                                                                                <p className="futura-book text-base">Canceling any class should be minimum before 3 hours of the class</p>
+                                                                                <p className="futura-book text-base text-white">Booking any class should be during the 48 hours prior to the class</p>
+                                                                                <p className="futura-book text-base text-white">Canceling any class should be minimum before 3 hours of the class</p>
                                                                                 <input type="checkbox" className="" onChange={onCheck} />
                                                                             </div>
                                                                             <div>
