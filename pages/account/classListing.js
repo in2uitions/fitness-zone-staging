@@ -24,7 +24,7 @@ export default function ClassListing(Info) {
     const [isDisabled, setIsDisabled] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(1);
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
-    const tokenSet =(Cookies.get("OTP") != null)
+    const tokenSet = (Cookies.get("OTP") != null)
     useEffect(() => {
         if (itemSet && tokenSet) {
             router.push({ pathname: "/account/classListing" });
@@ -384,16 +384,16 @@ export default function ClassListing(Info) {
         }
     }
     const [dropdownState, setDropdownState] = useState(false);
-    const[open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false)
     const [dropdownValue, setDropdownValue] = useState("");
     const handleDropdownClick = () => {
         setDropdownState(!dropdownState);
     };
-   
+
     const handleClose = () => {
         setDropdownState(false);
     };
-    function handleSetDropdownValue (value, localValue,event){
+    function handleSetDropdownValue(value, localValue, event) {
         Cookies.set("Location", localValue);
         // console.log(localValue)
         setDropdownValue(value);
@@ -402,10 +402,20 @@ export default function ClassListing(Info) {
     };
     const handleClickAway = () => {
         setDropdownState(false);
-	};
-    const today = moment().format("DD MMM YYYY")
+    };
     const todayTime = moment().format("DD MMM YYYY HH:mm")
-    console.log(todayTime)
+    const [isDisabledbutton, setDisabled] =useState(true);
+
+    function onCheck(e) {
+        const checked = e.target.checked;
+        if (checked) {
+            setDisabled(false)
+        }
+        if (!checked) {
+            setDisabled(true)
+        }
+    }
+
     return (
         <>
             <PrivateMenu />
@@ -436,9 +446,9 @@ export default function ClassListing(Info) {
                                 <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                                     {data.map((item, i) => (
                                         <>
-                                {/* {item.isActive ? */}
-                                <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
-                                    </>
+                                            {/* {item.isActive ? */}
+                                            <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                        </>
                                     ))}
                                 </select>
                             </div>
@@ -467,7 +477,7 @@ export default function ClassListing(Info) {
                                     {data.map((item, i) => (
                                         <>
                                             {/* {item.isActive ?  */}
-                                            <option key={i} value={item.locationCode} id="location" >{item.locationName}</option> 
+                                            <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
                                         </>
                                     ))}
                                 </select>
@@ -475,89 +485,89 @@ export default function ClassListing(Info) {
                         </div>
                     </MobileView>
                     <BrowserView>
-                    <Tabs className="mt-5">
-                        <TabList className="flex justify-between w-full mx-auto container tabs-container" >
-                            <Tab className="notSelected cursor-pointer" id="All">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
-                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="All">All</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="NRG">ENERGY</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="BLNC">BALANCE</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="PWR">POWER</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="POOL">POOL</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="Tennis">Tennis</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
-                                </div>
-                            </Tab>
-                        </TabList>
-                    </Tabs>
+                        <Tabs className="mt-5">
+                            <TabList className="flex justify-between w-full mx-auto container tabs-container" >
+                                <Tab className="notSelected cursor-pointer" id="All">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="All">All</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="NRG">ENERGY</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="BLNC">BALANCE</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="PWR">POWER</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="POOL">POOL</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="Tennis">Tennis</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
+                                    </div>
+                                </Tab>
+                            </TabList>
+                        </Tabs>
                     </BrowserView>
                     <MobileView>
-                    <Tabs className="mt-5">
-                        <TabList className="grid grid-cols-3 w-full mx-auto container tabs-container" >
-                            <Tab title="nested" className="notSelected cursor-pointer" id="All">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
-                                    <p className="text-base font-extrabold" id="All">All</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="text-base font-extrabold" id="NRG">ENERGY</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="text-base font-extrabold" id="BLNC">BALANCE</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="text-base font-extrabold" id="PWR">POWER</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="text-base font-extrabold" id="POOL">POOL</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
-                                </div>
-                            </Tab>
-                            <Tab className="notSelected cursor-pointer">
-                                <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="text-base font-extrabold" id="Tennis">Tennis</p>
-                                    <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
-                                </div>
-                            </Tab>
-                           
-                        </TabList>
-                    </Tabs>
+                        <Tabs className="mt-5">
+                            <TabList className="grid grid-cols-3 w-full mx-auto container tabs-container" >
+                                <Tab title="nested" className="notSelected cursor-pointer" id="All">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
+                                        <p className="text-base font-extrabold" id="All">All</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="text-base font-extrabold" id="NRG">ENERGY</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="text-base font-extrabold" id="BLNC">BALANCE</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="text-base font-extrabold" id="PWR">POWER</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="text-base font-extrabold" id="POOL">POOL</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                    </div>
+                                </Tab>
+                                <Tab className="notSelected cursor-pointer">
+                                    <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
+                                        <p className="text-base font-extrabold" id="Tennis">Tennis</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
+                                    </div>
+                                </Tab>
+
+                            </TabList>
+                        </Tabs>
                     </MobileView>
                     <BrowserView>
                         {filtered.slice(0).sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
@@ -579,37 +589,40 @@ export default function ClassListing(Info) {
                                     <div>
                                         {item.class?.isSecondPlayerRequired === true ? (
                                             <>
-                                            {!item?.toggle ? (
-                                            <Popup
-                                                trigger={
+                                                {!item?.toggle ? (
+                                                    <Popup
+                                                        trigger={
+                                                            <button className="flex space-x-2 items-center" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false}>
+                                                                <img src="/notBooked.png" />
+                                                                <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
+                                                            </button>
 
-                                                    <button>
-                                                        <div className="flex space-x-2 items-center">
-                                                            <img src="/notBooked.png" />
-                                                            <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
-                                                        </div>
-                                                    </button>
-
-                                                } modal
-                                                position="center"
-                                                closeOnDocumentClick={false}
-                                            >
-                                                {close => (
-                                                    <>
-                                                        <button className="close" onClick={close}>
-                                                            &times;
-                                                        </button>
-                                                        <div className="popup-bg rounded-md">
-                                                            <form onSubmit={(e) => reserveTennisClass({ timetableId: item.timetableId, e })} className="container mx-auto px-10 py-10 w-full flex flex-col justify-center items-center space-y-5">
-                                                                <p className="text-[#009FE3] text-2xl futura-book">Enter your second player MemberId:</p>
-                                                                <input id="memberId2" className="border border-[#009fe3] pl-2 w-full h-9 bg-transparent rounded" placeholder="MemberId" />
-                                                                <button type="submit" className="bg-[#009fe3] futura-book text-white  rounded p-2"> Book </button>
-                                                            </form>
-                                                        </div>
-                                                    </>
-                                                )}
-                                            </Popup>
-                                            ) : (
+                                                        } modal
+                                                        position="center"
+                                                        closeOnDocumentClick={false}
+                                                    >
+                                                        {close => (
+                                                            <>
+                                                                <button className="close" onClick={close}>
+                                                                    &times;
+                                                                </button>
+                                                                <div className="popup-bg rounded-md px-20 py-20 flex flex-col">
+                                                                <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
+                                                                    <div className=" flex flex-col items-start space-y-2">
+                                                                        <p className="futura-book text-base">Booking any class should be during the 48 hours prior to the class</p>
+                                                                        <p className="futura-book text-base">Canceling any class should be minimum before 3 hours of the class</p>
+                                                                        <input type="checkbox" className="" onChange={onCheck} />
+                                                                    </div>
+                                                                    <form onSubmit={(e) => reserveTennisClass({ timetableId: item.timetableId, e })} className="container mx-auto px-10 py-10 w-full flex flex-col justify-center items-center space-y-5">
+                                                                        <p className="text-[#009FE3] text-2xl futura-book">Enter your second player MemberId:</p>
+                                                                        <input id="memberId2" className="border border-[#009fe3] pl-2 w-full h-9 bg-transparent rounded" placeholder="MemberId" />
+                                                                        <button type="submit" disabled={isDisabledbutton} className="bg-[#009fe3] futura-book text-white btn-bookClass rounded p-2"> Book </button>
+                                                                    </form>
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                    </Popup>
+                                                ) : (
                                                     <div className="flex space-x-2 items-center">
                                                         <img src="/booked.png" />
                                                         <p className="futura-book text-white text-md sizemobile">Booked</p>
@@ -620,21 +633,57 @@ export default function ClassListing(Info) {
                                                     </div>
 
                                                 )}
-                                                </>
+                                            </>
                                         ) : (
                                             <button
                                                 className="flex justify-end"
                                             >
                                                 {!item?.toggle ? (
-                                                    <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
+                                                    <>
+                                                        {/* <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
                                                         <img src="/notBooked.png" />
                                                         <p className="futura-book text-md sizemobile">Book class</p>
-                                                    </button>
+                                                    </button> */}
+                                                        <Popup
+                                                            trigger={
+                                                                <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false}>
+                                                                    <img src="/notBooked.png" />
+                                                                    <p className="futura-book text-md sizemobile">Book class</p>
+                                                                </button>
+
+                                                            } modal
+                                                            position="center"
+                                                            closeOnDocumentClick={false}
+                                                        >
+                                                            {close => (
+                                                                <>
+                                                                    <button className="close" onClick={close}>
+                                                                        &times;
+                                                                    </button>
+                                                                    <div className="popup-bg rounded-md px-20 py-20">
+                                                                        <div className="flex flex-col items-center space-y-2">
+                                                                            <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
+                                                                            <div className=" flex flex-col items-start space-y-2">
+                                                                                <p className="futura-book text-base">Booking any class should be during the 48 hours prior to the class</p>
+                                                                                <p className="futura-book text-base">Canceling any class should be minimum before 3 hours of the class</p>
+                                                                                <input type="checkbox" className="" onChange={onCheck} />
+                                                                            </div>
+                                                                            <div>
+                                                                                <button type="submit" disabled={isDisabledbutton}
+                                                                                    onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}
+                                                                                    className="bg-[#009fe3] mt-10 w-20 futura-book text-white rounded p-2 btn-bookClass"> Book </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            )}
+                                                        </Popup>
+                                                    </>
                                                 ) : (
                                                     <div className="flex space-x-2 items-baseline">
                                                         <img src="/booked.png" />
                                                         <p className="futura-book text-white text-md sizemobile">Booked</p>
-                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} className=" text-[#009FE3] futura-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-[#009FE3] futura-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             <Close className="cancel-close" />
                                                         </button>
@@ -723,17 +772,17 @@ export async function getServerSideProps(context) {
         registrationRequestOptions
     );
     // const data = await response.json()
-    if(response.status == 401){
+    if (response.status == 401) {
         return {
             redirect: {
                 destination: "/account/login",
                 permanent: false,
             },
         };
-        }else{
-            const info = await response.json()
-            return {
-                props:{info}
-            }
+    } else {
+        const info = await response.json()
+        return {
+            props: { info }
         }
+    }
 }
