@@ -17,14 +17,14 @@ import parse from "html-react-parser";
 import Cookies from 'js-cookie'
 import moment from "moment";
 
-export default function Dashboard({ style = "white",books }) {
+export default function Dashboard({ style = "white", books }) {
     // const [books, setBooks] = useState([]);
     const [data, setcheckInData] = useState([]);
     const [trainer, setTrainer] = useState([])
     const [bookedClass, setBookedClass] = useState([])
     const memberId = Cookies.get("Member");
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
-    const tokenSet =(Cookies.get("OTP") != null)
+    const tokenSet = (Cookies.get("OTP") != null)
     useEffect(() => {
         if (itemSet && tokenSet) {
             router.push({ pathname: "/account/dashboard" });
@@ -44,7 +44,7 @@ export default function Dashboard({ style = "white",books }) {
         method: "GET",
         headers: registrationHeaders,
     };
-    
+
     try {
         useEffect(() => {
             getData();
@@ -87,40 +87,6 @@ export default function Dashboard({ style = "white",books }) {
     } catch (err) {
         console.log(err);
     }
-    const removeClass = async ({ timetableId, e }) => {
-        e.preventDefault();
-        // console.log(timetableId)
-        try {
-            var registrationHeaders = new Headers();
-            registrationHeaders.append("Authorization", "Bearer " + Cookies.get("token"));
-            registrationHeaders.append("Content-Type", "application/json");
-            var registrationRequestOptions = {
-                method: 'GET',
-                headers: registrationHeaders
-            };
-            const res = await fetch(
-                `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Class/Remove?timetableId=${timetableId}&memberId=${memberId}`,
-                registrationRequestOptions
-            );
-            const data = await res.json();
-            if (data.isValid == true) {
-                const handleRemoveItem = (index) => {
-                    const newList = [...bookedClass];
-                    newList.splice(index, 1);
-                    setBookedClass(newList);
-                };
-                handleRemoveItem();
-            }
-            else {
-                alert("Class is not valid");
-            }
-
-
-        } catch (err) {
-            console.log(err);
-        }
-
-    };
     var settings = {
         responsive: [
             {
@@ -199,7 +165,7 @@ export default function Dashboard({ style = "white",books }) {
             getData();
             async function getData() {
                 const response = await fetch(
-                    `https://api.fitnessclubapp.com/api/Billing/SubscriberUser/List?isTrainer=true&isActive=True`, registrationRequestOptions
+                    `https://api.fitnessclubapp.com/api/Training/Contract/List/${memberId}`, registrationRequestOptions
 
                 );
                 if (response.status == 200) {
@@ -224,9 +190,14 @@ export default function Dashboard({ style = "white",books }) {
         const filteredPosts = [];
         if (posts && users)
             for (let i = 0; i < posts.length && i < users.length; i++) {
-                filteredPosts.push({ post: posts[i], user: users.find(({ userId }) => posts[i].userId === userId) });
+                filteredPosts.push({ post: posts[i], user: users.find(({ trainerUser, userId }) => posts[i].trainerUser.userId === userId) });
+
+                const userId = posts[i].trainerUser.userId;
+                console.log(userId)
+                Cookies.set("UserId", userId);
             }
         return filteredPosts;
+
     }, [posts, users]);
     const router = useRouter();
     const [privateCarousel, setPrivateCarousel] = useState([]);
@@ -239,7 +210,8 @@ export default function Dashboard({ style = "white",books }) {
     useEffect(() => {
         getdata();
     }, []);
-
+    var userValue =  Cookies.get("UserId");
+	const route = (id) => router.push({ pathname: "/account/trainers-profile", query: { id } });
     return (
         <>
             <PrivateMenu />
@@ -375,10 +347,10 @@ export default function Dashboard({ style = "white",books }) {
                                     <span className="text-white text-base futura-book">Sessions:</span>
                                     <span className="text-white futura-bold exipryDate">09/15</span>
                                 </p> */}
-                                <a href="/account/trainers/015443cb-6a34-410e-951a-57d9545f612b" className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
+                                <button onClick={() => route(userValue)} className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
                                     VIEW PACKAGE DETAILS
                                     <ChevronRightIcon className="arrow-membership" />
-                                </a>
+                                </button>
                             </div>
                         ))}
                         {/* <p className="text-[#009FE3] futura-bold">Training Packages</p>

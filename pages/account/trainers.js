@@ -114,7 +114,7 @@ export default function List(info) {
                 var memberType = fetchedData.membershipType.memberShipTypeName
                 setBooks(memberType);
                 // console.log(memberType)
-                if (memberType != "PLATINUM LS CORPORATE.") {
+                if (memberType != "PLATINUM LS CORPORATE." && memberType != "FITNESS ZONE EMPLOYEE" && memberType != "VIP" && memberType != "STAFF.") {
                     setIsDisabled(true);
                     handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
                 }

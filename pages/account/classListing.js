@@ -82,8 +82,8 @@ export default function ClassListing(Info) {
                     var memberType = fetchedData.membershipType.memberShipTypeName
                     setBooks(memberType);
 
-                    console.log(memberType)
-                    if (memberType != "PLATINUM LS CORPORATE.") {
+                    // console.log(memberType)
+                    if (memberType != "PLATINUM LS CORPORATE." && memberType != "FITNESS ZONE EMPLOYEE" && memberType != "VIP" && memberType != "STAFF.") {
                         setIsDisabled(true);
                         handleCategoryChange({ target: { value: fetchedData.membershipLocation?.locationCode } })
                     }
@@ -129,30 +129,33 @@ export default function ClassListing(Info) {
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList${query}`,
                     registrationRequestOptions
                 );
-
                 const response = await fetch(
                     `https://api.fitnessclubapp.com/api/GroupExercise/TimetableList/Member/${memberId}${query}`,
                     registrationRequestOptions
                 );
                 if (res.status == 200) {
                     const dataClass = await res.json();
-                    let classes = dataClass;
+                    let classes = dataClass.map((result) => {
+                        return { ...result, toggle: "Book class", disabled :  result.bookings >= (result.capacity + result.waitingListCapacity) }
+                        
+                    });
                     if (response.status == 200) {
                         const fetchedData = await response.json();
                         classes = dataClass.map((result) => {
                             if (fetchedData.filter((res) => res.timetableId == result.timetableId).length == 1) {
-                                return { ...result, toggle: true }
+                                return { ...result, toggle: "Booked", disabled :  true }
                             }
-                            return { ...result, toggle: false }
+                            return { ...result, toggle: "Book class", disabled :  result.bookings >= (result.capacity + result.waitingListCapacity)}
+                            
                         })
+                        
                     }
                     setClasss(classes);
                     setFiltered(classes);
-                    // console.log(classes)
                 } else {
                     setClasss([]);
                     setFiltered([]);
-                    //    <div>loading...</div>;
+                    //<div>loading...</div>;
 
                 }
 
@@ -192,14 +195,19 @@ export default function ClassListing(Info) {
                 registrationRequestOptions
             );
             const data = await res.json();
-            if (data.isValid == true) {
+            if (data.isValid == false) {
 
                 let newClasssValue = classs.map((res) => {
                     if (res.timetableId == timetableId) {
-                        // console.log(timetableId)
+                        console.log(timetableId)
+                        // console.log(res.capacity)
+                        let bookingStatus = "Booked";
+                        if(res.bookings <= (res.capacity + res.waitingListCapacity) && res.bookings > res.capacity){
+                            bookingStatus= "Waiting";
+                        }
                         return {
                             ...res,
-                            toggle: true,
+                            toggle: bookingStatus,
                         }
                     }
                     return res;
@@ -239,7 +247,7 @@ export default function ClassListing(Info) {
                         // console.log(timetableId)
                         return {
                             ...res,
-                            toggle: false,
+                            toggle: "Book class",
                         }
                     }
                     return res;
@@ -276,16 +284,23 @@ export default function ClassListing(Info) {
 
                 let newClasssValue = classs.map((res) => {
                     if (res.timetableId == timetableId) {
-                        // console.log(timetableId)
+                        console.log(timetableId)
+                        // console.log(res.capacity)
+                        let bookingStatus = "Booked";
+                        if(res.bookings <= (res.capacity + res.waitingListCapacity) && res.bookings > res.capacity){
+                            bookingStatus= "Waiting";
+                        }
                         return {
                             ...res,
-                            toggle: true,
+                            toggle: bookingStatus,
                         }
                     }
                     return res;
+                    
                 })
                 setClasss(newClasssValue);
                 setFiltered(newClasssValue)
+                console.log(newClasssValue.map(el => el.capacity?.length))
             }
             else {
                 alert("Class is not valid");
@@ -317,7 +332,7 @@ export default function ClassListing(Info) {
                         // console.log(timetableId)
                         return {
                             ...res,
-                            toggle: false,
+                            toggle: "Book class",
                         }
                     }
                     return res;
@@ -397,14 +412,14 @@ export default function ClassListing(Info) {
         Cookies.set("Location", localValue);
         // console.log(localValue)
         setDropdownValue(value);
-        console.log(value)
+        // console.log(value)
         setDropdownState(!dropdownState);
     };
     const handleClickAway = () => {
         setDropdownState(false);
     };
     const todayTime = moment().format("DD MMM YYYY HH:mm")
-    const [isDisabledbutton, setDisabled] =useState(true);
+    const [isDisabledbutton, setDisabled] = useState(true);
 
     function onCheck(e) {
         const checked = e.target.checked;
@@ -589,14 +604,13 @@ export default function ClassListing(Info) {
                                     <div>
                                         {item.class?.isSecondPlayerRequired === true ? (
                                             <>
-                                                {!item?.toggle ? (
+                                                {item?.toggle  == "Book class" ? (
                                                     <Popup
                                                         trigger={
-                                                            <button className="flex space-x-2 items-center" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false}>
+                                                            <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false || item?.disabled}>
                                                                 <img src="/notBooked.png" />
-                                                                <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
+                                                                <p className="futura-book text-md sizemobile">Book class</p>
                                                             </button>
-
                                                         } modal
                                                         position="center"
                                                         closeOnDocumentClick={false}
@@ -607,7 +621,7 @@ export default function ClassListing(Info) {
                                                                     &times;
                                                                 </button>
                                                                 <div className="popup-bg rounded-md px-20 py-20 flex flex-col">
-                                                                <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
+                                                                    <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
                                                                     <div className=" flex flex-col items-start space-y-2">
                                                                         <p className="futura-book text-base text-white">Booking any class should be during the 48 hours prior to the class</p>
                                                                         <p className="futura-book text-base text-white">Canceling any class should be minimum before 3 hours of the class</p>
@@ -625,7 +639,7 @@ export default function ClassListing(Info) {
                                                 ) : (
                                                     <div className="flex space-x-2 items-center">
                                                         <img src="/booked.png" />
-                                                        <p className="futura-book text-white text-md sizemobile">Booked</p>
+                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
                                                         <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             <Close className="cancel-close" />
@@ -638,7 +652,7 @@ export default function ClassListing(Info) {
                                             <button
                                                 className="flex justify-end"
                                             >
-                                                {!item?.toggle ? (
+                                                {item?.toggle == "Book class" ? (
                                                     <>
                                                         {/* <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
                                                         <img src="/notBooked.png" />
@@ -646,7 +660,7 @@ export default function ClassListing(Info) {
                                                     </button> */}
                                                         <Popup
                                                             trigger={
-                                                                <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false}>
+                                                                <button className="flex space-x-2 items-center book-button" disabled={(moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false) || item?.disabled}>
                                                                     <img src="/notBooked.png" />
                                                                     <p className="futura-book text-md sizemobile">Book class</p>
                                                                 </button>
@@ -682,7 +696,7 @@ export default function ClassListing(Info) {
                                                 ) : (
                                                     <div className="flex space-x-2 items-baseline">
                                                         <img src="/booked.png" />
-                                                        <p className="futura-book text-white text-md sizemobile">Booked</p>
+                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
                                                         <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-[#009FE3] futura-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             <Close className="cancel-close" />
@@ -700,7 +714,7 @@ export default function ClassListing(Info) {
                         ))}
                     </BrowserView>
                     <MobileView>
-                        {filtered.map((item, index) => (
+                        {filtered.slice(0).sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                             <>
                                 <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
                                     <div className="flex justify-start space-x-8">
@@ -720,26 +734,112 @@ export default function ClassListing(Info) {
                                         </div>
                                     </div>
                                     <div>
-                                        <button
-                                            className="flex justify-end"
-                                        >
-                                            {!item?.toggle ? (
-                                                <div className="flex space-x-2 items-center" onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
-                                                    <img src="/notBooked.png" />
-                                                    <p className="text-[#009FE3] futura-book text-md sizemobile">Book class</p>
-                                                </div>
-                                            ) : (
-                                                <div className="flex space-x-2 items-center">
-                                                    <img src="/booked.png" />
-                                                    <p className="futura-book text-white text-md sizemobile">Booked</p>
-                                                    <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
-                                                        Cancel
-                                                        <Close className="cancel-close" />
-                                                    </p>
-                                                </div>
+                                        {item.class?.isSecondPlayerRequired === true ? (
+                                            <>
+                                                {item?.toggle  == "Book class" ? (
+                                                    <Popup
+                                                        trigger={
+                                                            <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false || item?.disabled}>
+                                                                <img src="/notBooked.png" />
+                                                                <p className="futura-book text-md sizemobile">Book class</p>
+                                                            </button>
+                                                        } modal
+                                                        position="center"
+                                                        closeOnDocumentClick={false}
+                                                    >
+                                                        {close => (
+                                                            <>
+                                                                <button className="close" onClick={close}>
+                                                                    &times;
+                                                                </button>
+                                                                <div className="popup-bg rounded-md px-20 py-20 flex flex-col">
+                                                                    <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
+                                                                    <div className=" flex flex-col items-start space-y-2">
+                                                                        <p className="futura-book text-base text-white">Booking any class should be during the 48 hours prior to the class</p>
+                                                                        <p className="futura-book text-base text-white">Canceling any class should be minimum before 3 hours of the class</p>
+                                                                        <input type="checkbox" className="" onChange={onCheck} />
+                                                                    </div>
+                                                                    <form onSubmit={(e) => reserveTennisClass({ timetableId: item.timetableId, e })} className="container mx-auto px-10 py-10 w-full flex flex-col justify-center items-center space-y-5">
+                                                                        <p className="text-[#009FE3] text-2xl futura-book">Enter your second player MemberId:</p>
+                                                                        <input id="memberId2" className="border border-[#009fe3] pl-2 w-full h-9 bg-transparent rounded" placeholder="MemberId" />
+                                                                        <button type="submit" disabled={isDisabledbutton} className="bg-[#009fe3] futura-book text-white btn-bookClass rounded p-2"> Book </button>
+                                                                    </form>
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                    </Popup>
+                                                ) : (
+                                                    <div className="flex space-x-2 items-center">
+                                                        <img src="/booked.png" />
+                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
+                                                        <p className=" text-[#009FE3] futura-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
+                                                            Cancel
+                                                            <Close className="cancel-close" />
+                                                        </p>
+                                                    </div>
 
-                                            )}
-                                        </button>
+                                                )}
+                                            </>
+                                        ) : (
+                                            <button
+                                                className="flex justify-end"
+                                            >
+                                                {item?.toggle == "Book class" ? (
+                                                    <>
+                                                        {/* <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
+                                                        <img src="/notBooked.png" />
+                                                        <p className="futura-book text-md sizemobile">Book class</p>
+                                                    </button> */}
+                                                        <Popup
+                                                            trigger={
+                                                                <button className="flex space-x-2 items-center book-button" disabled={(moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false) || item?.disabled}>
+                                                                    <img src="/notBooked.png" />
+                                                                    <p className="futura-book text-md sizemobile">Book class</p>
+                                                                </button>
+
+                                                            } modal
+                                                            position="center"
+                                                            closeOnDocumentClick={false}
+                                                        >
+                                                            {close => (
+                                                                <>
+                                                                    <button className="close" onClick={close}>
+                                                                        &times;
+                                                                    </button>
+                                                                    <div className="popup-bg rounded-md px-20 py-20">
+                                                                        <div className="flex flex-col items-center space-y-2">
+                                                                            <p className="text-[#009fe3] text-2xl mb-5"> Terms & Conditions</p>
+                                                                            <div className=" flex flex-col items-start space-y-2">
+                                                                                <p className="futura-book text-base text-white">Booking any class should be during the 48 hours prior to the class</p>
+                                                                                <p className="futura-book text-base text-white">Canceling any class should be minimum before 3 hours of the class</p>
+                                                                                <input type="checkbox" className="" onChange={onCheck} />
+                                                                            </div>
+                                                                            <div>
+                                                                                <button type="submit" disabled={isDisabledbutton}
+                                                                                    onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}
+                                                                                    className="bg-[#009fe3] mt-10 w-20 futura-book text-white rounded p-2 btn-bookClass"> Book </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            )}
+                                                        </Popup>
+                                                    </>
+                                                ) : (
+                                                    <div className="flex space-x-2 items-baseline">
+                                                        <img src="/booked.png" />
+                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
+                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-[#009FE3] futura-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                            Cancel
+                                                            <Close className="cancel-close" />
+                                                        </button>
+                                                    </div>
+
+                                                )}
+                                            </button>
+
+
+                                        )}
                                     </div>
                                 </div>
                             </>
