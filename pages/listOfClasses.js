@@ -265,7 +265,7 @@ export default function App() {
                             </Tab>
                             <Tab className="notSelected cursor-pointer">
                                 <div className="flex justify-end items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="Tennis">Tennis</p>
+                                    <p className="lg:text-2xl md:text-2xl text-xs font-extrabold" id="Tennis">TENNIS</p>
                                     <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
                                 </div>
                             </Tab>
@@ -307,7 +307,7 @@ export default function App() {
                             </Tab>
                             <Tab className="notSelected cursor-pointer">
                                 <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
-                                    <p className="text-base font-extrabold" id="Tennis">Tennis</p>
+                                    <p className="text-base font-extrabold" id="Tennis">TENNIS</p>
                                     <img src="/ONblue.png" className="on-tabs" id="Tennis" />{" "}
                                 </div>
                             </Tab>
