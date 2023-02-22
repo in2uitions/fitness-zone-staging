@@ -138,8 +138,8 @@ export default function Menu(data = {}) {
     const [signbtn, setSignBtn] = useState(true);
     const [logOut, setLogOut] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
-    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined );
-    const tokenSet =(Cookies.get("OTP") != null)
+    const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
+    const tokenSet = (Cookies.get("OTP") != null)
     useEffect(() => {
         if (itemSet && tokenSet) {
             setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)
@@ -174,7 +174,84 @@ export default function Menu(data = {}) {
         getTokenAPI();
 
     };
+    const submitLebSignUp = async event => {
+        event.preventDefault();
+        const getTokenAPI = async () => {
+            try {
+                const res = await fetch(
+                    'https://api.fitnessclubapp.com/api/Account/Login?Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
+                    {
+                        method: 'POST'
+                    }
+                );
 
+                const tokenData = await res.json();
+
+                const submitContactForm = async () => {
+                    try {
+                        if (event.target.enquire_request.value == "popup-request") {
+                            var registraitonRawData = JSON.stringify({
+                                "GuestRegisterId": 0,
+                                "FirstName": event.target.pp_first_name.value,
+                                "LastName": event.target.pp_last_name.value,
+                                "Mobile": event.target.pp_phone.value,
+                                "Email": event.target.pp_email.value,
+                                "Source": {
+                                    "VisitSourceId": 9
+                                },
+                                "LocationCode": 1
+                            });
+                        }
+                        else {
+                            var registraitonRawData = JSON.stringify({
+                                "FirstName": event.target.firstname.value,
+                                "LastName": event.target.lastname.value,
+                                "Mobile": event.target.pp_phone.value,
+                                "Email": event.target.email.value,
+                            });
+                        }
+
+                        var registrationHeaders = new Headers();
+                        registrationHeaders.append("Authorization", "Bearer " + tokenData.token);
+                        registrationHeaders.append("Content-Type", "application/json");
+                        var registrationRequestOptions = {
+                            method: 'POST',
+                            headers: registrationHeaders,
+                            body: registraitonRawData
+                        };
+
+
+                        const res = await fetch(
+                            'https://api.fitnessclubapp.com/api/Crm/GuestRegister', registrationRequestOptions);
+                        const data = await res.json();
+                        if (data.isValid == true) {
+                            setIsSent(true)
+                            event.target.pp_first_name.value = '';
+                            event.target.pp_last_name.value = '';
+                            event.target.pp_phone.value = '';
+                            event.target.pp_email.value = '';
+                        }
+                        else {
+                            setIsNotSent(true)
+                        }
+
+
+                    } catch (err) {
+                        console.log(err);
+                    }
+                };
+
+                submitContactForm();
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        getTokenAPI();
+
+
+    };
     return (
         <>
             {isOpen ? <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade overflow-x-hidden" id='MainMenu'>
@@ -206,16 +283,16 @@ export default function Menu(data = {}) {
                                                 <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
                                                     <img src="/close-X.svg" />
                                                 </button>
-                                                <form className='flex flex-col space-y-5'>
+                                                <form className='flex flex-col space-y-5' onSubmit={submitLebSignUp}>
                                                     <div className="flex w-full justify-between space-x-5">
-                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="First Name" id="pp_first_name" name="pp_first_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="pp_last_name" name="pp_last_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
                                                     <div className="flex w-full justify-between space-x-5">
-                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Email" id="pp_email" name='pp_email' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
-                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                    <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
                                                 </form>
                                             </div>
                                         </BrowserView>
@@ -225,14 +302,14 @@ export default function Menu(data = {}) {
                                                     <img src="/close-X.svg" />
                                                 </button>
                                                 <form>
-                                                    <div className="flex flex-col w-full justify-between space-y-5">
-                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    <div className="flex flex-col w-full justify-between space-y-5" onSubmit={submitLebSignUp}>
+                                                        <input placeholder="First Name" id="pp_first_name" name='pp_first_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="pp_last_name" name='pp_last_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
 
-                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Email" id="pp_email" name='pp_email' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
-                                                    <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                    <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
                                                 </form>
                                             </div>
                                         </MobileView>
@@ -268,14 +345,14 @@ export default function Menu(data = {}) {
                                                 <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
                                                     <img src="/close-X.svg" />
                                                 </button>
-                                                <form className='flex flex-col space-y-5'>
+                                                <form className='flex flex-col space-y-5' onSubmit={submitLebSignUp}>
                                                     <div className="flex w-full justify-between space-x-5">
-                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="First Name" id="pp_first_name" name='pp_first_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="pp_last_name" name='pp_last_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
                                                     <div className="flex w-full justify-between space-x-5">
-                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Email" id="pp_email" name='pp_email' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
                                                     <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                 </form>
@@ -287,12 +364,12 @@ export default function Menu(data = {}) {
                                                     <img src="/close-X.svg" />
                                                 </button>
                                                 <form>
-                                                    <div className="flex flex-col w-full justify-between space-y-5">
-                                                        <input placeholder="First Name" id="name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Family Name" id="f_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    <div className="flex flex-col w-full justify-between space-y-5" onSubmit={submitLebSignUp}>
+                                                        <input placeholder="First Name" id="pp_first_name" name='pp_first_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="pp_last_name" name='pp_last_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
 
-                                                        <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                        <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Email" id="pp_email" name="pp_email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
                                                     <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                 </form>

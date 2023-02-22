@@ -338,8 +338,7 @@ export default function App() {
             </BrowserView>
             <MobileView>
             {filtered.map((item, index) => (
-                <>
-                    
+                <> 
                     <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
                                     <div className="flex justify-between w-full space-x-8">
                                         <div className="flex flex-col w-2/5">
