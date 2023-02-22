@@ -386,7 +386,7 @@ export default function Menu(data = {}) {
                             </a>
                         </div>
 
-                        <p className="pt-7 futura-bold lg:ml-14 md:ml-14 ml-5 text-white">ENQUIRE NOW</p>
+                        {/* <p className="pt-7 futura-bold lg:ml-14 md:ml-14 ml-5 text-white">ENQUIRE NOW</p>
                         <input
                             className="lg:ml-14 md:ml-14 ml-5 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
                             placeholder="FULL NAME"
@@ -398,7 +398,7 @@ export default function Menu(data = {}) {
 
                         <div className="lg:ml-14 md:ml-14 ml-5 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 md:w-40 w-40 mb-20 flex justify-center items-center rounded-md futura-bold">
                             <a href="#">REQUEST A CALL</a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div> : null}
