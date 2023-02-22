@@ -390,7 +390,7 @@ export default function Footer(data = {}) {
 
                     <div className="flex flex-row mb-10">
                         <p className="text-[#009FE3] font-bold mr-2">E</p>
-                        <p><a href="mailto:" className="futura-book text-white">{email}</a></p>
+                        <p><a href="https://outlook.live.com/owa/" target="_blank" className="futura-book text-white">{email}</a></p>
                     </div>
 
                     {/* <div className="lg:ml-24">

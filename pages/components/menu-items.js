@@ -23,6 +23,9 @@ export default function Menu(data = {}) {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [content, updateContent] = useState([]);
+    const [isSent, setIsSent] = useState(false);
+    const thankYouMessage = <h3>Thank you for your submission!</h3>;
+    const submitmsg = <h3></h3>;
     const router = useRouter()
     const [show, setShow] = useState(false)
     var ct = [
@@ -176,6 +179,8 @@ export default function Menu(data = {}) {
     };
     const submitLebSignUp = async event => {
         event.preventDefault();
+
+
         const getTokenAPI = async () => {
             try {
                 const res = await fetch(
@@ -183,33 +188,28 @@ export default function Menu(data = {}) {
                     {
                         method: 'POST'
                     }
+                    //.then(() => setIsSent(true))
                 );
 
                 const tokenData = await res.json();
+                // console.log(tokenData);
 
                 const submitContactForm = async () => {
                     try {
-                        if (event.target.enquire_request.value == "popup-request") {
-                            var registraitonRawData = JSON.stringify({
-                                "GuestRegisterId": 0,
-                                "FirstName": event.target.pp_first_name.value,
-                                "LastName": event.target.pp_last_name.value,
-                                "Mobile": event.target.pp_phone.value,
-                                "Email": event.target.pp_email.value,
-                                "Source": {
-                                    "VisitSourceId": 9
-                                },
-                                "LocationCode": 1
-                            });
-                        }
-                        else {
-                            var registraitonRawData = JSON.stringify({
-                                "FirstName": event.target.firstname.value,
-                                "LastName": event.target.lastname.value,
-                                "Mobile": event.target.pp_phone.value,
-                                "Email": event.target.email.value,
-                            });
-                        }
+                        var registraitonRawData = JSON.stringify({
+                            "GuestRegisterId": 0,
+                            "FirstName": event.target.pp_first_name.value,
+                            "LastName": event.target.pp_last_name.value,
+                            "Mobile": event.target.pp_phone.value,
+                            "Email": event.target.pp_email.value,
+                            "Source": {
+                                "VisitSourceId": 9
+                            },
+                            "LocationCode": 1
+                        });
+
+                        //   // console.log(registraitonRawData);
+                        // }
 
                         var registrationHeaders = new Headers();
                         registrationHeaders.append("Authorization", "Bearer " + tokenData.token);
@@ -224,15 +224,15 @@ export default function Menu(data = {}) {
                         const res = await fetch(
                             'https://api.fitnessclubapp.com/api/Crm/GuestRegister', registrationRequestOptions);
                         const data = await res.json();
+                        // console.log(data);
+
                         if (data.isValid == true) {
                             setIsSent(true)
                             event.target.pp_first_name.value = '';
                             event.target.pp_last_name.value = '';
                             event.target.pp_phone.value = '';
                             event.target.pp_email.value = '';
-                        }
-                        else {
-                            setIsNotSent(true)
+                            // setPhoneValue();
                         }
 
 
@@ -261,16 +261,17 @@ export default function Menu(data = {}) {
                             className="font-bold futura-book text-4xl menu-items "
                             content={content} activeLinkFromLocation
                         />
+                        <div className=''>
                         <div className="flex flex-row mt-14">
                             <a
-                                className="border-[#009FE3] border-2 w-36 p-2 rounded flex justify-center items-center mr-5 futura-bold"
+                                className="border-[#009FE3] border-2 w-40 p-2 rounded flex justify-center items-center mr-5 futura-bold"
                             >
                                 {button}
                             </a>
                             {signbtn ? <Popup
                                 trigger={
 
-                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white">SIGN UP</button>
+                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-44 rounded mr-4 futura-bold text-white">BECOME A MEMBER</button>
 
                                 } modal
                                 position="center"
@@ -293,6 +294,7 @@ export default function Menu(data = {}) {
                                                         <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
                                                     <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
+                                                    {isSent ? thankYouMessage : submitmsg}
                                                 </form>
                                             </div>
                                         </BrowserView>
@@ -320,15 +322,16 @@ export default function Menu(data = {}) {
                                 <button type="submit" className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white h-11">Log Out</button>
                             </form> : null}
                         </div>
-                    </div>
-                    <div className="lg:mt-52 md:mt-52 mt-5 flex flex-col justify-center">
-                        <div className="flex flex-row lg:ml-14 md:ml-14 ml-5">
-                            {/* <a
-                                href="#"
-                                className="bg-[#009FE3] h-9 flex justify-center text-sm items-center p-2 rounded mr-4 futura-bold"
+                        <a
+                                href="/about/career"
+                                className="border-[#009FE3] border-2 mt-5 p-2 rounded flex justify-center items-center mr-5 futura-bold career-menubtn"
                             >
-                                BECOME A MEMBER
-                            </a> */}
+                                WORK WITH US
+                            </a>
+                            </div>
+                    </div>
+                    {/* <div className="lg:mt-52 md:mt-52 mt-5 flex flex-col justify-center">
+                        <div className="flex flex-row lg:ml-14 md:ml-14 ml-5">
                             <Popup
                                 trigger={
 
@@ -385,21 +388,7 @@ export default function Menu(data = {}) {
                                 WORK WITH US
                             </a>
                         </div>
-
-                        {/* <p className="pt-7 futura-bold lg:ml-14 md:ml-14 ml-5 text-white">ENQUIRE NOW</p>
-                        <input
-                            className="lg:ml-14 md:ml-14 ml-5 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
-                            placeholder="FULL NAME"
-                        />
-                        <input
-                            className="lg:ml-14 md:ml-14 ml-5 pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] lg:w-80 md:w-80 w-72 py-2 mb-3"
-                            placeholder="PHONE NUMBER"
-                        />
-
-                        <div className="lg:ml-14 md:ml-14 ml-5 mt-5 bg-[#009FE3] learnMoreBtns p-2 lg:w-40 md:w-40 w-40 mb-20 flex justify-center items-center rounded-md futura-bold">
-                            <a href="#">REQUEST A CALL</a>
-                        </div> */}
-                    </div>
+                    </div> */}
                 </div>
             </div> : null}
         </>

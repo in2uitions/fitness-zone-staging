@@ -136,7 +136,7 @@ export default function Header({ color = "orange", data = {} }) {
                         {data.image_description ? <h1 className="font-bold lg:text-7xl md:text-6xl text-white text-2xl futura-bold">{data.image_description}</h1> : null}
                         <div className=''>{data.icon_on ?<img src={`${image_url}${data.icon_on?.id}`} className="lg:h-16 md:h-16 h-5"/> :null}</div>
                         </div>
-                        {data.button_url ? <a href={data.button_url} className=" bg-[#009FE3] learnMoreBtns p-2 text-center rounded-md futura-bold">{data.button_title}
+                        {data.button_url ? <a href={data.button_url} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 text-center rounded-md futura-bold">{data.button_title}
                             <ChevronRightIcon className="ml-1" /></a> : null}
                             {data.signup_button ? <Popup
                         trigger={

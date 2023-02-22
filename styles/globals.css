@@ -349,6 +349,9 @@ html {
 .book-button:disabled{
   color: darkgrey;
 }
+.career-menubtn{
+  width: 22.25rem;
+}
 .cancel-button:disabled{
   /* color: rgb(0 ,159, 227, 0.5); */
   color: darkgrey;
