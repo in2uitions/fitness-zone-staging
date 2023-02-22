@@ -173,8 +173,8 @@ export default function Membership({ style = 'white' ,data}) {
                         <img src='/gold-member.png' />
                         <p className='futura-bold mt-5 text-white'>{data.membershipType?.memberShipTypeName.slice(0,data.membershipType?.memberShipTypeName.length - 1)}</p>
                     </div>
-                    <div className='lg:grid lg:grid-cols-12 gap-x-1 items-center mt-10 px-3 lg:px-0 md:px-0'>
-                        <div className='col-span-4'>
+                    <div className=' lg:flex gap-x-1 justify-evenly place-content-center items-center mt-10 px-3 lg:px-0 md:px-0'>
+                        <div className='col-span-6'>
                             <div className='flex flex-col'>
                                 <p className='text-sm text-white'>Status</p>
                                 <p className='futura-bold text-white uppercase'>{data.status?.statusDescription}</p>
@@ -184,7 +184,7 @@ export default function Membership({ style = 'white' ,data}) {
                                 <p className='futura-bold text-white'>{dateButif(data.startDate)}</p>
                             </div>
                         </div>
-                        <div className='col-span-4'>
+                        <div className='col-span-6'>
                             <div className='flex flex-col'>
                                 <p className='text-sm text-white'>Default Club</p>
                                 <p className='futura-bold text-white'>{data.membershipLocation?.locationName}</p>
@@ -194,14 +194,14 @@ export default function Membership({ style = 'white' ,data}) {
                                 <p className='futura-bold text-white'>{dateButif(data.expiryDate)}</p>
                             </div>
                         </div>
-                        <div className='col-span-4'>
+                        {/* <div className='col-span-4'>
                             <div className='flex flex-col'>
                                 <button className='bg-[#009FE3] futura-bold p-3 rounded-md text-white'>RENEW MEMBERSHIP</button>
                                 <a href='/account/freezing' className='bg-white text-[#009FE3] p-3 rounded-md text-center mt-5 futura-bold'>FREEZING REQUEST</a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className='flex flex-col mx-auto justify-start lg:w-3/5 md:w-3/5 items-start mt-10 px-2 lg:px-0 md:px-0'>
+                    <div className='flex flex-col lg:mx-auto md:max-auto justify-start lg:w-3/5 md:w-3/5 items-start mt-10 px-2 lg:px-0 md:px-0'>
                         <p className='text-[#009FE3] futura-bold mb-3'>Payment History</p>
                         {slice.map((item) => (
                             <>

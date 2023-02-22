@@ -339,21 +339,25 @@ export default function App() {
             <MobileView>
             {filtered.map((item, index) => (
                 <>
-                    <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index} id={item.studio?.studioName}>
-                        <div className="flex justify-between w-full">
-                            <p className="text-white text-md border-r border-[#009FE3] futura-book sizemobile pr-3">
-                                {item.class?.className}
-                            </p>
-                            <p className="border-r border-white text-white futura-book text-md sizemobile pr-3">
-                                {item.studio?.studioName}
-                            </p>
-                            <p className='text-white futura-book text-md sizemobile border-r border-[#009FE3] pr-3'>{moment(item.classTime).format("DD MMM YYYY")}</p>
-                            <p className='text-white futura-book text-md sizemobile border-r border-white pr-3'>{moment(item.classTime).format("HH:mm")}</p>
-                            <p className="text-white text-md futura-book sizemobile">
-                                {item.location?.locationName}
-                            </p>
-                        </div>
-                    </div>
+                    
+                    <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
+                                    <div className="flex justify-between w-full space-x-8">
+                                        <div className="flex flex-col w-2/5">
+                                            <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
+                                            <p className=' text-white text-md sizemobile futura-book'>{moment(item.classTime).format("HH:mm")}</p>
+                                        </div>
+                                        <div className="border border-l border-[#009FE3]"></div>
+                                        <div className="flex flex-col w-2/5">
+                                            <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
+                                                {item.class?.className}
+                                            </p>
+
+                                            <p className="text-white futura-book text-md sizemobile lg:border-r md:border-r border-white">
+                                                {item.location?.locationName}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                 </>
             ))}
             </MobileView>
