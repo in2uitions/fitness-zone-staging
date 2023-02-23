@@ -241,6 +241,7 @@ export default function Footer(data = {}) {
                                 className="mt-3 ml-4 lg:ml-0 md:ml-0 futura-book footer-link lg:pt-0 md:pt-0 pt-5 "
                                 content={content} activeLinkFromLocation
                             />
+                            <a href="/about/career" className="border-[#009FE3] w-28 border-2 mt-5 p-2 rounded flex justify-center items-center mr-5 futura-bold ">Career</a>
                         </div>
                     </div>
                     <div className="lg:col-span-4 sm:col-span-12">
