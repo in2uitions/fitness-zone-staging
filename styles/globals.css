@@ -1179,7 +1179,7 @@ p {
 }
 
 .active {
-  font-family: "Futura BdCn BT";
+  /* font-family: "Futura BdCn BT"; */
   height: 24px;
   left: 0;
   top: 0;

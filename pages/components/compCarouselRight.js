@@ -201,7 +201,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                     >
                                         <div className="sliderContent pr-20">
                                             <div className="flex items-baseline space-x-5">
-                                                <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                                <p className="font-bold futura-bold text-4xl" style={{lineHeight:"40px"}}>{item.comp_carousel_items_id?.title}</p>
                                                 {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.icon?.title} /> : null}
                                             </div>
                                             {item.comp_carousel_items_id.quotations_img ? <img src={`${image_url}${item.comp_carousel_items_id?.quotations_img?.id}`} altv={item.comp_carousel_items_id?.quotations_img?.title} /> : null}

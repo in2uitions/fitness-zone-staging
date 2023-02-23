@@ -93,7 +93,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                         <>
                                     <div className="sliderContent">
                                         <div className="flex items-baseline space-x-5">
-                                            <p className="font-bold futura-bold text-4xl">{data?.title}</p>
+                                            <p className="font-bold futura-bold text-4xl" style={{lineHeight:"40px"}}>{data?.title}</p>
                                             {data.icon ? <img src={`${image_url}${data?.icon?.id}`} className="w-16 h-8" altv={data?.title} /> : null}
                                         </div>
                                         {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}

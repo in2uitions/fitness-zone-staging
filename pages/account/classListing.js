@@ -419,6 +419,8 @@ export default function ClassListing(Info) {
         setDropdownState(false);
     };
     const todayTime = moment().format("DD MMM YYYY HH:mm")
+    console.log(todayTime)
+
     const [isDisabledbutton, setDisabled] = useState(true);
 
     function onCheck(e) {
@@ -589,7 +591,7 @@ export default function ClassListing(Info) {
                     <BrowserView>
                         {filtered.slice(0).sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                             <>
-                                <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
+                                {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ?<div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index}>
                                     <div className="flex justify-start w-3/4">
                                         <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book w-1/5">
                                             {item.class?.className}
@@ -711,14 +713,14 @@ export default function ClassListing(Info) {
 
                                         )}
                                     </div>
-                                </div>
+                                </div>:null}
                             </>
                         ))}
                     </BrowserView>
                     <MobileView>
                         {filtered.slice(0).sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                             <>
-                                <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
+                            {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ?<div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
                                     <div className="flex justify-start space-x-8">
                                         <div className="flex flex-col">
                                             <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
@@ -843,7 +845,7 @@ export default function ClassListing(Info) {
 
                                         )}
                                     </div>
-                                </div>
+                                </div>:null}
                             </>
                         ))}
                     </MobileView>
