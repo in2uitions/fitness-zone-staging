@@ -354,7 +354,7 @@ export default function Menu(data = {}) {
                         <div className='career-menubtn'>
                         <div className="flex flex-row mt-14">
                             <a
-                                className="border-[#009FE3] border-2 w-40 p-2 rounded flex justify-center items-center mr-5 futura-bold"
+                                className="border-[#009FE3] border-2 w-44 p-2 rounded flex justify-center items-center mr-5 futura-bold"
                             >
                                 {button}
                             </a>
@@ -475,7 +475,7 @@ export default function Menu(data = {}) {
                                 )}
                             </Popup> : null}
                             {logOut ? <form onSubmit={onSubmitLogOutForm}>
-                                <button type="submit" className="bg-[#009FE3] flex justify-center p-2 items-center w-40 rounded mr-4 futura-bold text-white h-11">Log Out</button>
+                                <button type="submit" className="bg-[#009FE3] flex justify-center p-2 items-center w-44 rounded mr-4 futura-bold text-white h-11">Log Out</button>
                             </form> : null}
                         </div>
                         <a
