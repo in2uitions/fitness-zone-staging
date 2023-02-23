@@ -107,7 +107,7 @@ const phone = Cookies.get("Phone")
             <div className="w-screen h-screen container mx-auto flex items-center justify-center">
             <div className="lg:w-1/2"></div>
                 <div className='flex flex-col justify-center px-5 lg:px-0 md:px-0'>
-                    <img src="/fitnessZoneLogo.png" className='w-full h-auto' />
+                    {/* <img src="/fitnessZoneLogo.png" className='w-full h-auto' /> */}
 
                     <p className="futura-book text-xl mt-28 mb-5 text-white">We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#009FE3]"><OtpTimer

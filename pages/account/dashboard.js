@@ -190,12 +190,14 @@ export default function Dashboard({ style = "white", books }) {
         const filteredPosts = [];
         if (posts && users)
             for (let i = 0; i < posts.length && i < users.length; i++) {
-                filteredPosts.push({ post: posts[i], user: users.find(({ trainerUser, userId }) => posts[i].trainerUser.userId === userId) });
+                filteredPosts.push({ post: posts[i], user: users.find(({ userId }) => posts[i]?.trainerUser?.userId === userId) });
 
-                const userId = posts[i].trainerUser.userId;
+                const userId = posts[i]?.trainerUser?.userId;
                 console.log(userId)
-                Cookies.set("UserId", userId);
-            }
+                if(userId){
+                    Cookies.set("UserId", userId);
+                }
+        }
         return filteredPosts;
 
     }, [posts, users]);
@@ -340,7 +342,7 @@ export default function Dashboard({ style = "white", books }) {
                     </div>
                     <div className="col-span-3">
                         <p className="text-[#009FE3] futura-bold">My Training Packages</p>
-                        {filteredPosts.slice(0, 1).map((post, index) => (
+                        {userValue != "undefined" && filteredPosts.slice(0, 1).map((post, index) => (
                             <div className="flex flex-col space-y-3 mt-10 membership-box p-10 items-center">
                                 <Post post={post?.post} users={post?.user} key={index} />
                                 {/* <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">

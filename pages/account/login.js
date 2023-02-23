@@ -193,7 +193,7 @@ export default function Login() {
 
             <div className="w-screen h-screen container mx-auto flex flex-col items-center justify-center">
                 <div className='flex flex-col justify-center'>
-                    <img src="/logo.svg" className='w-full h-auto' />
+                    {/* <img src="/logo.svg" className='w-full h-auto' /> */}
 
                     <p className="futura-bold text-4xl mt-28 text-[#009FE3]">COUNTRY</p>
                     <form className='w-full flex flex-col' onSubmit={submitLogIn}>
@@ -205,7 +205,7 @@ export default function Login() {
                         selected={select}
                         onSelect={onSelect}
                         countries={["LB", "AE"]}
-                        className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder "
+                        className="border-[#009FE3] h-12 border-2 p-2 my-4 rounded flex justify-center items-center futura-book bg-black text-white login-placeholder w-80"
                         defaultCountry="LB"
                         customLabels={{"LB": "LEBANON","AE": "UAE"}}
                         id="country"

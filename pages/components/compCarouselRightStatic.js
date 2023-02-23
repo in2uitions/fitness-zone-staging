@@ -70,6 +70,8 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                 zIndex: 7
             };
     };
+    const [isOpen, setIsOpen] = useState(false);
+
     const onSubmitForm = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
@@ -83,6 +85,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
             event.target.phone_number.value ='',
             event.target.email.value='',
             event.target.location.value=''
+            setIsOpen(false);
             Cookies.set('name', event.target.name.value = '');
             Cookies.set('phone_number', event.target.phone_number.value = '');
             Cookies.set('email', event.target.email.value = '');
@@ -99,6 +102,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
             event.target.phone_number.value ='',
             event.target.email.value='',
             event.target.location.value=''
+            setIsOpen(false);
             Cookies.set('name', event.target.name.value = '');
             Cookies.set('phone_number', event.target.phone_number.value = '');
             Cookies.set('email', event.target.email.value = '');
@@ -186,8 +190,9 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                         <button className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.popup_button}<ChevronRightIcon /></button>
                                                     </button>
                                                 } modal
+                                                open={isOpen}
                                                 position="center"
-                                                closeOnDocumentClick={false}
+                                                closeOnDocumentClick={true}
                                             >
                                                 {close => (
                                                     <div className="container w-screen flex flex-col justify-center py-12">
