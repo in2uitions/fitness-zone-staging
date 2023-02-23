@@ -166,7 +166,7 @@ export default function App() {
         }
         console.log(data)
     }
-
+    const todayTime = moment().format("DD MMM YYYY HH:mm")
     return (
         <div className="container mx-auto mt-40 lg:px-28 md:px-20 px-3">
             <div className="flex flex-col justify-center items-center">
@@ -318,7 +318,7 @@ export default function App() {
                     <BrowserView>
             {filtered.sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                 <>
-                    <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index} id={item.studio?.studioName}>
+                {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ?<div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" key={index} id={item.studio?.studioName}>
                         <div className="flex justify-start w-full">
                             <p className="text-white text-md lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book sizemobile w-1/5">
                                 {item.class?.className}
@@ -332,14 +332,14 @@ export default function App() {
                                 {item.location?.locationName}
                             </p>
                         </div>
-                    </div>
+                    </div>:null}
                 </>
             ))}
             </BrowserView>
             <MobileView>
             {filtered.map((item, index) => (
                 <> 
-                    <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
+                {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ?<div className="flex justify-between w-full classes-box mb-3 mt-10 p-3" key={index}>
                                     <div className="flex justify-between w-full space-x-8">
                                         <div className="flex flex-col w-2/5">
                                             <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
@@ -356,7 +356,7 @@ export default function App() {
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </div>:null}
                 </>
             ))}
             </MobileView>

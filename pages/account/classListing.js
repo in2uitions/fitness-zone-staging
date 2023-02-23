@@ -419,7 +419,6 @@ export default function ClassListing(Info) {
         setDropdownState(false);
     };
     const todayTime = moment().format("DD MMM YYYY HH:mm")
-    console.log(todayTime)
 
     const [isDisabledbutton, setDisabled] = useState(true);
 
