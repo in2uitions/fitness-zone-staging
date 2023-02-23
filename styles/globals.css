@@ -2399,6 +2399,9 @@ li.category.isActive {
     background-color: white !important;
     color: black !important;
   }
+  .career-menubtn{
+    width: 20rem;
+  }
 }
 
 @media (min-width:320px) and (max-width:375px) {

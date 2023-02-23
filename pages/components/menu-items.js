@@ -7,6 +7,7 @@ import Popup from "reactjs-popup";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { BrowserView, MobileView } from 'react-device-detect';
 import Cookies from 'js-cookie';
+import nextConfig from '../../next.config';
 
 const MetisMenu = dynamic(() => import('react-metismenu'), { ssr: false })
 
@@ -15,9 +16,6 @@ export default function Menu(data = {}) {
         const position = window.pageYOffset;
         setScrollPosition(position);
     };
-
-
-
     const [search, updateSearch] = useState('');
     const [index, updateIndex] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -139,6 +137,7 @@ export default function Menu(data = {}) {
     }, []);
     const [button, setButton] = useState();
     const [signbtn, setSignBtn] = useState(true);
+    const [showPopup, setShowPopup] = useState(false)
     const [logOut, setLogOut] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
@@ -252,6 +251,91 @@ export default function Menu(data = {}) {
 
 
     };
+    const submitSignUp = async event => {
+        event.preventDefault();
+
+
+        const getTokenAPI = async () => {
+            try {
+                const res = await fetch(
+                    'https://api.fitnessclubapp.com/api/account/login?Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1',
+                    {
+                        method: 'POST'
+                    }
+                    //.then(() => setIsSent(true))
+                );
+
+                const tokenData = await res.json();
+                // console.log(tokenData);
+
+                const submitContactForm = async () => {
+                    try {
+                        var registraitonRawData = JSON.stringify({
+                            "GuestRegisterId": 0,
+                            "FirstName": event.target.pp_first_name.value,
+                            "LastName": event.target.pp_last_name.value,
+                            "Mobile": event.target.pp_phone.value,
+                            "Email": event.target.pp_email.value,
+                            "Source": {
+                                "VisitSourceId": 9
+                            },
+                            "LocationCode": 1
+                        });
+
+                        //   // console.log(registraitonRawData);
+                        // }
+
+                        var registrationHeaders = new Headers();
+                        registrationHeaders.append("Authorization", "Bearer " + tokenData.token);
+                        registrationHeaders.append("Content-Type", "application/json");
+                        var registrationRequestOptions = {
+                            method: 'POST',
+                            headers: registrationHeaders,
+                            body: registraitonRawData
+                        };
+
+
+                        const res = await fetch(
+                            'https://api.fitnessclubapp.com/api/Crm/GuestRegister', registrationRequestOptions);
+                        const data = await res.json();
+                        // console.log(data);
+
+                        if (data.isValid == true) {
+                            setIsSent(true)
+                            event.target.pp_first_name.value = '';
+                            event.target.pp_last_name.value = '';
+                            event.target.pp_phone.value = '';
+                            event.target.pp_email.value = '';
+                            // setPhoneValue();
+                        }
+
+
+                    } catch (err) {
+                        console.log(err);
+                    }
+                };
+
+                submitContactForm();
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        getTokenAPI();
+
+
+    };
+    useEffect(() => {
+        if (nextConfig.country_code == 'AE') {
+            setShowPopup(true)
+            setSignBtn(false)
+        }
+        else {
+            setShowPopup(false)
+            setSignBtn(true)
+        }
+    }, [nextConfig.country_code])
     return (
         <>
             {isOpen ? <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade overflow-x-hidden" id='MainMenu'>
@@ -305,6 +389,56 @@ export default function Menu(data = {}) {
                                                 </button>
                                                 <form>
                                                     <div className="flex flex-col w-full justify-between space-y-5" onSubmit={submitLebSignUp}>
+                                                        <input placeholder="First Name" id="pp_first_name" name='pp_first_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="pp_last_name" name='pp_last_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+
+                                                        <input placeholder="Email" id="pp_email" name='pp_email' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
+                                                </form>
+                                            </div>
+                                        </MobileView>
+                                    </>
+                                )}
+                            </Popup> : null}
+                            {showPopup ? <Popup
+                                trigger={
+
+                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-44 rounded mr-4 futura-bold text-white">BECOME A MEMBER</button>
+
+                                } modal
+                                position="center"
+                                closeOnDocumentClick={false}
+                            >
+                                {close => (
+                                    <>
+                                        <BrowserView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form className='flex flex-col space-y-5' onSubmit={submitSignUp}>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="First Name" id="pp_first_name" name="pp_first_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Family Name" id="pp_last_name" name="pp_last_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <div className="flex w-full justify-between space-x-5">
+                                                        <input placeholder="Email" id="pp_email" name='pp_email' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                        <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    </div>
+                                                    <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
+                                                    {isSent ? thankYouMessage : submitmsg}
+                                                </form>
+                                            </div>
+                                        </BrowserView>
+                                        <MobileView>
+                                            <div className="container w-screen flex flex-col justify-center py-12">
+                                                <button className="flex w-full justify-end mb-3 text-white outline-none" onClick={close}>
+                                                    <img src="/close-X.svg" />
+                                                </button>
+                                                <form>
+                                                    <div className="flex flex-col w-full justify-between space-y-5" onSubmit={submitSignUp}>
                                                         <input placeholder="First Name" id="pp_first_name" name='pp_first_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         <input placeholder="Family Name" id="pp_last_name" name='pp_last_name' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
 

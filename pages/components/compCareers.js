@@ -94,7 +94,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
             Cookies.set('first_name', event.target.first_name.value);
             Cookies.set('last_name', event.target.last_name.value);
             Cookies.set('email', event.target.email.value),
-            Cookies.set('phone_number', event.target.email.value),
+            Cookies.set('phone_number', event.target.phone_number.value),
             Cookies.set('mobile_number', event.target.mobile_number.value);
             Cookies.set('education', event.target.education.value);
             Cookies.set('experience', event.target.experience.value);
@@ -110,7 +110,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
             Cookies.set('first_name', event.target.first_name.value = '');
             Cookies.set('last_name', event.target.last_name.value = '');
             Cookies.set('email', event.target.email.value = ''),
-            Cookies.set('phone_number', event.target.email.value = ''),
+            Cookies.set('phone_number', event.target.phone_number.value = ''),
             Cookies.set('mobile_number', event.target.mobile_number.value = '');
             Cookies.set('education', event.target.education.value = '');
             Cookies.set('experience', event.target.experience.value = '');

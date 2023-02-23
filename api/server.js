@@ -256,11 +256,13 @@ export const createFreeTrialDubaiUser = async () => {
 export const createContactUsUser = async () => {
     const users = directus.items("contact_us");
     var nameToUse = Cookies.get('full_name');
+    var phoneToUse = Cookies.get('mobile_number')
     var emailToUse = Cookies.get('email');
     var messageToUse = Cookies.get('message');
     const annoncesPublished = await users.createOne({
         full_name: nameToUse,
         email: emailToUse,
+        phone_number: phoneToUse,
         message: messageToUse
     });
     return annoncesPublished;
@@ -269,11 +271,13 @@ export const createContactUsUser = async () => {
 export const createContactUsDubaiUser = async () => {
     const users = directus.items("contact_us_dubai");
     var nameToUse = Cookies.get('full_name');
+    var phoneToUse = Cookies.get('mobile_number')
     var emailToUse = Cookies.get('email');
     var messageToUse = Cookies.get('message');
     const annoncesPublished = await users.createOne({
         full_name: nameToUse,
         email: emailToUse,
+        phone_number: phoneToUse,
         message: messageToUse
     });
     return annoncesPublished;
