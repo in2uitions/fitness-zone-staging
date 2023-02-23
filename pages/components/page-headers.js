@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, { Component } from 'react';
 // import { gsap } from "gsap";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import $ from 'jquery';
 import { image_url } from '../../global_vars';
 import Popup from 'reactjs-popup';
@@ -24,7 +24,7 @@ export default function Header({ color = "orange", data = {} }) {
 
         video.muted = !video.muted;
     }
-    
+    const ref = useRef();
     const submitSignUp = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
@@ -86,9 +86,11 @@ export default function Header({ color = "orange", data = {} }) {
                             event.target.pp_last_name.value = '';
                             event.target.pp_phone.value = '';
                             event.target.pp_email.value = '';
+                            ref.current.close();
                         }
                         else {
                             setIsNotSent(true)
+                            ref.current.close();
                         }
 
 
@@ -145,6 +147,7 @@ export default function Header({ color = "orange", data = {} }) {
                             </button>
                         } modal
                         position="center"
+                        ref={ref}
                         closeOnDocumentClick={true}
                     >
                         {close => (

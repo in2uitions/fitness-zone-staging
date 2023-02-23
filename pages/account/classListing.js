@@ -461,8 +461,9 @@ export default function ClassListing(Info) {
                                 <select style={{ height: "2.5rem", borderRadius: "5px", paddingLeft: "10px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                                     {data.map((item, i) => (
                                         <>
-                                            {/* {item.isActive ? */}
+                                            {item.isActive ?
                                             <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                            :null}
                                         </>
                                     ))}
                                 </select>
@@ -491,8 +492,9 @@ export default function ClassListing(Info) {
                                 <select style={{ height: "2rem", borderRadius: "5px" }} disabled={isDisabled} name="location" id="location" value={selectedCategory} onChange={handleCategoryChange} >
                                     {data.map((item, i) => (
                                         <>
-                                            {/* {item.isActive ?  */}
+                                            {item.isActive ? 
                                             <option key={i} value={item.locationCode} id="location" >{item.locationName}</option>
+                                            :null}
                                         </>
                                     ))}
                                 </select>

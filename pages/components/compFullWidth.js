@@ -3,13 +3,14 @@ import { image_url } from "../../global_vars";
 import Popup from "reactjs-popup";
 import { BrowserView, MobileView } from "react-device-detect";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { useState } from "react";
+import { useState,useRef } from "react";
 
 export default function CompFullWidth({ data = {}, style = 'white' }) {
     const [isSent, setIsSent] = useState(false);
     const [isNotSent, setIsNotSent] = useState(false)
     const thankYouMessage = <h3>Thank you for your submission!</h3>;
     const submitmsg = <h3></h3>;
+    const ref = useRef();
     const submitSignUp = async event => {
         event.preventDefault();
         const getTokenAPI = async () => {
@@ -71,9 +72,11 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                             event.target.pp_last_name.value = '';
                             event.target.pp_phone.value = '';
                             event.target.pp_email.value = '';
+                            ref.current.close();
                         }
                         else {
                             setIsNotSent(true)
+                            ref.current.close();
                         }
 
 
@@ -114,6 +117,7 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                             </button>
                         } modal
                         position="center"
+                        ref={ref}
                         closeOnDocumentClick={true}
                     >
                         {close => (

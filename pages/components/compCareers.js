@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -12,7 +12,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
     const [activeSlide, setactiveSlide] = useState(0);
     const [nextSlide, setNextSlide] = useState(false)
     const [clickTiggered, setClickTriggered] = useState(false)
-
+    const ref = useRef();
     let timeout = setTimeout(() => {
         if (nextSlide == true && clickTiggered == true) {
             activeSlide < data.careers.length - 1 && setactiveSlide(activeSlide + 1);
@@ -114,6 +114,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
             Cookies.set('mobile_number', event.target.mobile_number.value = '');
             Cookies.set('education', event.target.education.value = '');
             Cookies.set('experience', event.target.experience.value = '');
+            ref.current.close();
             console.log('leb user')
         }
         else if (nextConfig.country_code == 'AE') {
@@ -152,6 +153,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
             Cookies.set('mobile_number', event.target.mobile_number.value = '');
             Cookies.set('education', event.target.education.value = '');
             Cookies.set('experience', event.target.experience.value = '');
+            ref.current.close();
             console.log('ae user')
         }
         };
@@ -224,6 +226,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                                     </button>
                                                 } modal
                                                 position="center"
+                                                ref={ref}
                                                 closeOnDocumentClick={false}
                                             >
                                                 {close => (

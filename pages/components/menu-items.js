@@ -137,6 +137,7 @@ export default function Menu(data = {}) {
     }, []);
     const [button, setButton] = useState();
     const [signbtn, setSignBtn] = useState(true);
+    const [memberBtn , setMemberBtn] = useState(false)
     const [showPopup, setShowPopup] = useState(false)
     const [logOut, setLogOut] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
@@ -145,12 +146,12 @@ export default function Menu(data = {}) {
     useEffect(() => {
         if (itemSet && tokenSet) {
             setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)
-            setSignBtn(false)
+            setMemberBtn(false)
             setLogOut(true)
         }
         else {
             setButton(<a href='/account/login' className="">LOG IN</a>)
-            setSignBtn(true)
+            setMemberBtn(true)
             setLogOut(false)
         }
     }, [])
@@ -202,6 +203,7 @@ export default function Menu(data = {}) {
                             "LastName": event.target.pp_last_name.value,
                             "Mobile": event.target.pp_phone.value,
                             "Email": event.target.pp_email.value,
+                            "Location": event.target.location.value,
                             "Source": {
                                 "VisitSourceId": 9
                             },
@@ -232,6 +234,7 @@ export default function Menu(data = {}) {
                             event.target.pp_last_name.value = '';
                             event.target.pp_phone.value = '';
                             event.target.pp_email.value = '';
+                            event.target.location.value = '';
                             // setPhoneValue();
                         }
 
@@ -277,6 +280,7 @@ export default function Menu(data = {}) {
                             "LastName": event.target.pp_last_name.value,
                             "Mobile": event.target.pp_phone.value,
                             "Email": event.target.pp_email.value,
+                            "Location": event.target.location.value,
                             "Source": {
                                 "VisitSourceId": 9
                             },
@@ -307,6 +311,7 @@ export default function Menu(data = {}) {
                             event.target.pp_last_name.value = '';
                             event.target.pp_phone.value = '';
                             event.target.pp_email.value = '';
+                            event.target.location.value = '';
                             // setPhoneValue();
                         }
 
@@ -346,14 +351,14 @@ export default function Menu(data = {}) {
                             className="font-bold futura-book text-4xl menu-items "
                             content={content} activeLinkFromLocation
                         />
-                        <div className=''>
+                        <div className='career-menubtn'>
                         <div className="flex flex-row mt-14">
                             <a
                                 className="border-[#009FE3] border-2 w-40 p-2 rounded flex justify-center items-center mr-5 futura-bold"
                             >
                                 {button}
                             </a>
-                            {signbtn ? <Popup
+                            {signbtn && memberBtn ? <Popup
                                 trigger={
 
                                     <button className="bg-[#009FE3] flex justify-center p-2 items-center w-44 rounded mr-4 futura-bold text-white">BECOME A MEMBER</button>
@@ -378,6 +383,14 @@ export default function Menu(data = {}) {
                                                         <input placeholder="Email" id="pp_email" name='pp_email' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
+                                                    <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="dbayeh">Dbayeh</option>
+                                                            <option value="manara">Manara</option>
+                                                            <option value="abc">ABC Achrafieh</option>
+                                                            <option value="baabda">Baabda</option>
+                                                            <option value="hamra">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
                                                     <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
                                                     {isSent ? thankYouMessage : submitmsg}
                                                 </form>
@@ -428,6 +441,14 @@ export default function Menu(data = {}) {
                                                         <input placeholder="Email" id="pp_email" name='pp_email' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
+                                                    <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="dbayeh">Dbayeh</option>
+                                                            <option value="manara">Manara</option>
+                                                            <option value="abc">ABC Achrafieh</option>
+                                                            <option value="baabda">Baabda</option>
+                                                            <option value="hamra">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
                                                     <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
                                                     {isSent ? thankYouMessage : submitmsg}
                                                 </form>
@@ -459,7 +480,7 @@ export default function Menu(data = {}) {
                         </div>
                         <a
                                 href="/about/career"
-                                className="border-[#009FE3] border-2 mt-5 p-2 rounded flex justify-center items-center mr-5 futura-bold career-menubtn"
+                                className="border-[#009FE3] border-2 mt-5 p-2 rounded flex justify-center items-center mr-5 futura-bold "
                             >
                                 WORK WITH US
                             </a>

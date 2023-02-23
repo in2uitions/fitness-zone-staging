@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -70,7 +70,6 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                 zIndex: 7
             };
     };
-    const [isOpen, setIsOpen] = useState(false);
 
     const onSubmitForm = async event => {
         event.preventDefault();
@@ -85,11 +84,11 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
             event.target.phone_number.value ='',
             event.target.email.value='',
             event.target.location.value=''
-            setIsOpen(false);
             Cookies.set('name', event.target.name.value = '');
             Cookies.set('phone_number', event.target.phone_number.value = '');
             Cookies.set('email', event.target.email.value = '');
             Cookies.set('location', event.target.location.value = '')
+            ref.current.close();
             console.log("userCreated LB")
         }
         else if(nextConfig.country_code == 'AE'){
@@ -102,17 +101,19 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
             event.target.phone_number.value ='',
             event.target.email.value='',
             event.target.location.value=''
-            setIsOpen(false);
             Cookies.set('name', event.target.name.value = '');
             Cookies.set('phone_number', event.target.phone_number.value = '');
             Cookies.set('email', event.target.email.value = '');
             Cookies.set('location', event.target.location.value = '')
+            ref.current.close();
             console.log("userCreated AE")
         }
         };
         getTokenAPI();
 
     };
+    const ref = useRef();
+    
     return (
         <>
             <div className={`lg:flex relative items-center px-14 pt-28 mb-44 pb-20 container  ${isFlipped ? 'flex-row-reverse' : ''}`}>
@@ -190,7 +191,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                         <button className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.popup_button}<ChevronRightIcon /></button>
                                                     </button>
                                                 } modal
-                                                open={isOpen}
+                                                ref={ref}
                                                 position="center"
                                                 closeOnDocumentClick={true}
                                             >
@@ -215,7 +216,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                             <option value="citywalkdubai">City Walk Dubai</option>
                                                         </select>
                                                         </div>
-                                                        <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
+                                                        <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit" >Send</button>
                                                         </form>
                                                     </div>
                                                 )}
