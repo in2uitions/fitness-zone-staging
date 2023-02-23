@@ -340,7 +340,7 @@ export default function Menu(data = {}) {
         <>
             {isOpen ? <div className="rounded-lg shadow-xl w-screen h-screen overflow-y-auto menu-fade overflow-x-hidden" id='MainMenu'>
                 <div className="lg:grid lg:grid-cols-2">
-                    <div className="lg:mt-52 md:mt-52 mt-28 lg:ml-40 md:ml-40 ml-5">
+                    <div className="lg:mt-36 md:mt-36 mt-28 lg:ml-40 md:ml-40 ml-5">
                         <MetisMenu
                             className="font-bold futura-book text-4xl menu-items "
                             content={content} activeLinkFromLocation
