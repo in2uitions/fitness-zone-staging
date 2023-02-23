@@ -349,10 +349,10 @@ export default function Dashboard({ style = "white", books }) {
                                     <span className="text-white text-base futura-book">Sessions:</span>
                                     <span className="text-white futura-bold exipryDate">09/15</span>
                                 </p> */}
-                                <button onClick={() => route(userValue)} className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
+                                {userValue ?<button onClick={() => route(userValue)} className="futura-bold cursor-pointer text-white text-lg btn-nowrap ">
                                     VIEW PACKAGE DETAILS
                                     <ChevronRightIcon className="arrow-membership" />
-                                </button>
+                                </button>:null}
                             </div>
                         ))}
                         {/* <p className="text-[#009FE3] futura-bold">Training Packages</p>
