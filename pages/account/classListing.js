@@ -105,7 +105,7 @@ export default function ClassListing(Info) {
     // var firstday = new Date(curr.setDate(first)).toUTCString();
     // var lastday = new Date(curr.setDate(last)).toUTCString();
     var begin = moment().startOf('week').format("YYYY MM DD");
-    var end = moment().endOf('week').format("YYYY MM DD");
+    var end = moment(todayTime).add(7, 'days').format("YYYY MM DD");
     function getFilteredList(value = null) {
 
         const getClassList = async (val) => {

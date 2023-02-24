@@ -27,7 +27,7 @@ export default function App() {
     
     var now = moment();
     var begin = moment().startOf('week').format("YYYY MM DD");
-    var end = moment().endOf('week').format("YYYY MM DD");
+    var end = moment(todayTime).add(7, 'days').format("YYYY MM DD");
     try {
         useEffect(() => {
 
