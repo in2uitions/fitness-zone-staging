@@ -71,7 +71,7 @@ export default function Login() {
                             Member: event.target.memberId.value,
                             Phone: event.target.phone.value.replace(/-| /g, ''),
                         });
-                        console.log(registraitonLoginData);
+                        // console.log(registraitonLoginData);
                         var registrationLoginHeaders = new Headers();
                         registrationLoginHeaders.append(
                             "Authorization",
@@ -87,10 +87,10 @@ export default function Login() {
                             registrationRequestOptions
                         );
                         const data = await memberValidation.json();
-                        console.log("testing", data)
+                        // console.log("testing", data)
                         const phoneNumber = event.target.phoneNumber.value.replace(/-| /g, '');
                         const memberId = event.target.memberId.value;
-                        console.log('tt', phoneNumber)
+                        // console.log('tt', phoneNumber)
                         // if (data.isValid == false) {
                         //     alert("Wrong Phone Number")
                         // }
@@ -217,10 +217,10 @@ export default function Login() {
     const onSelect = (code) => {
         setSelect(code);
         setInput("")
-        console.log(code)
+        // console.log(code)
 
     }
-    console.log('', select)
+    // console.log('', select)
     useEffect(() => {
         if (nextConfig.country_code == "AE") {
             setSelect(UAE);
