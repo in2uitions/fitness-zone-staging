@@ -274,9 +274,8 @@ export default function Login() {
                             className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder"
                             placeholder="Member ID"
                             id="memberId"
-                            onInput={(e) => { e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 11); }}
                             maxlength="11"
-                            type="number"
+                            type="input"
                         />
                         <label className="text-[#009FE3]">OR</label>
                         {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#009FE3] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
