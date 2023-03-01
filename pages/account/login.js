@@ -10,6 +10,7 @@ import nextConfig from "../../next.config";
 export default function Login() {
     const [isSent, setIsSent] = useState(false);
     const [isNotSent, setIsNotSent] = useState(false);
+    const [old, setOld] = useState(0)
     const [value1, setValue1] = useState();
     const thankYouMessage = <h3>Thank you for your submission!</h3>;
     const MEMBER = "memberId";
@@ -230,6 +231,8 @@ export default function Login() {
         }
 
     }, []);
+    const limit = 11;
+    const limitnb= 9;
     return (
         <div>
             <div className="w-screen h-screen container mx-auto flex flex-col items-center justify-center">
@@ -289,6 +292,7 @@ export default function Login() {
                                 event.preventDefault();
                                 setInput(event.target.value);
                                 if (select == LEBANON) {
+                                    setInput(event.target.value.slice(0, limitnb));
                                     // event.preventDefault();
                                     if (event.target.value.length === 3 && event.target.value.includes("-")) {
                                         setInput(event.target.value.replace("-", ""));
@@ -296,35 +300,38 @@ export default function Login() {
                                     if (event.target.value.length === 2) {
                                         setInput(event.target.value + "-");
                                     }
-                                    else if (event.target.value.length >= 10) {
-                                        setphoneNumberErr("Invalid phone number.");
-                                    }
+                                    // else if (event.target.value.length >= 10) {
+                                    //     setphoneNumberErr("Invalid phone number.");
+                                    // }
                                 }
                                 else if (select == UAE) {
-                                    if (event.target.value.length === 6) {
+                                    setInput(event.target.value.slice(0, limit));
+                                    if(old < event.target.value.length){
+                                        if (event.target.value.length === 6) {
                                         setInput(event.target.value + " ");
+                                        }
+                                        if (event.target.value.length === 7 &&
+                                            event.target.value.includes(" ")
+                                        ) {
+                                            setInput(event.target.value.replaceAll(" ", ""));
+                                        }
+                                        if (event.target.value.length === 3 &&
+                                            event.target.value.includes(" ")
+                                        ) {
+                                            setInput(event.target.value.replaceAll(" ", ""));
+                                        }
+                                        if (event.target.value.length === 2) {
+                                            setInput(event.target.value + " ");
+                                        }
+                                        
+                                        // if (event.target.value.length >= 12) {
+                                        //     setphoneNumberErr("Invalid phone number.");
+                                        // }
+                                    }else{
+                                        setInput(event.target.value)
                                     }
-                                    if (event.target.value.length === 7 &&
-                                        event.target.value.includes(" ")
-                                    ) {
-                                        setInput(event.target.value.replaceAll(" ", ""));
-                                    }
-                                    if (event.target.value.length === 3 &&
-                                        event.target.value.includes(" ")
-                                    ) {
-                                        setInput(event.target.value.replaceAll(" ", ""));
-                                    }
-                                    if (event.target.value.length === 2) {
-                                        setInput(event.target.value + " ");
-                                    }
-                                    // if (event.target.value.length === 6 &&
-                                    //     event.target.value.includes(" ")
-                                    // ) {
-                                    //     setInput(event.target.value.replaceAll(" ", ""));
-                                    // }
-                                    if (event.target.value.length >= 11) {
-                                        setphoneNumberErr("Invalid phone number.");
-                                    }
+                                    
+                                    setOld(event.target.value.length)
                                 }
 
                             }
