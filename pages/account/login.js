@@ -251,7 +251,7 @@ export default function Login() {
                             countries={["LB", "AE"]}
                             className="border-[#009FE3] h-12 border-2 p-2 my-4 rounded flex justify-center items-center futura-book bg-black text-white login-placeholder w-80"
                             defaultCountry="LB"
-                            customLabels={{ LB: "LEBANON", AE: "UAE" }}
+                            customLabels={{ LB: "LEBANON", AE: "UNITED ARAB EMIRATES" }}
                             id="country"
                         />
                         {/* <PhoneInput
