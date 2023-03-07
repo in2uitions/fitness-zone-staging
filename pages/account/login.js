@@ -6,6 +6,7 @@ import ReactFlagsSelect from "react-flags-select";
 import axios from "axios";
 import Cookies from "js-cookie";
 import nextConfig from "../../next.config";
+import HeaderContent from "../components/header-component";
 
 export default function Login() {
     const [isSent, setIsSent] = useState(false);
@@ -235,6 +236,7 @@ export default function Login() {
     const limitnb= 9;
     return (
         <div>
+        <HeaderContent/>
             <div className="w-screen h-screen container mx-auto flex flex-col items-center justify-center">
                 <div className="flex flex-col justify-center">
                     {/* <img src="/logo.svg" className='w-full h-auto' /> */}

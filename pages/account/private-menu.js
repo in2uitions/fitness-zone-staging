@@ -48,9 +48,19 @@ export default function PrivateMenu() {
         getTokenAPI();
 
     };
+    const [colorChange, setColorchange] = useState(false);
+    const changeNavbarColor = () => {
+        if (window.scrollY >= 80) {
+            setColorchange(true);
+        }
+        else {
+            setColorchange(false);
+        }
+    };
+    window.addEventListener('scroll', changeNavbarColor);
     return (
         <div className={styles.container}>
-            <nav className={styles.nav}>
+            <nav className={colorChange ? styles.navWithBg : styles.nav}>
                 <a href="/">
                     <img src="/logo.svg" className="logo" />
                 </a>
@@ -58,11 +68,11 @@ export default function PrivateMenu() {
                     trigger={
                         <div className="flex items-center space-x-2">
                             <button className="img-btn">
-                                <img src="/blue-rectangle.svg" className="menu-icon" />
+                                <img src="/blue-rectangle.svg" className="menu-icon" style={{width:"60px"}}/>
                             </button>
-                            <p className="font-bold text-white futura-book cursor-pointer">
+                            {/* <p className="font-bold text-white futura-book cursor-pointer">
                                 Menu
-                            </p>
+                            </p> */}
                         </div>
                     }
                     modal

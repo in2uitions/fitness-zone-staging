@@ -3,6 +3,7 @@ import Router, { useRouter } from "next/router";
 import OtpTimer from "otp-timer";
 import { useEffect } from "react";
 import Cookies from 'js-cookie'
+import HeaderContent from "../components/header-component";
 
 export default function Otp() {
     const { query } = useRouter()
@@ -103,7 +104,7 @@ const phone = Cookies.get("Phone")
     };
     return (
         <div>
-
+        <HeaderContent/>
             <div className="w-screen h-screen container mx-auto flex items-center justify-center">
             <div className="lg:w-1/2"></div>
                 <div className='flex flex-col justify-center px-5 lg:px-0 md:px-0'>

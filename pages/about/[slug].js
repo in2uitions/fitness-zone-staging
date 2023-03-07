@@ -5,6 +5,7 @@ import Sections from '../../assets/section'
 import HeadTag from "../../assets/headTag"
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import HeaderContent from '../components/header-component'
 
 function Slug({ data = {} }) {
 
@@ -14,6 +15,7 @@ function Slug({ data = {} }) {
         <div>
 
             <HeadTag data={data} />
+            <HeaderContent />
             <main className="">
 
                 {data.header ? <Header data={data.header} /> : null}

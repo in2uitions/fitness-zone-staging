@@ -194,7 +194,7 @@ export default function Footer(data = {}) {
     return (
         <>
             <section>
-                <div className="flex flex-col space-y-10 justify-start items-center fixed right-0 bg-[#009FE3] box">
+                {/* <div className="flex flex-col space-y-10 justify-start items-center fixed right-0 bg-[#009FE3] box">
                     <a href={facebookLink} rel="noreferrer">
                         <img src="/path.png" className="w-4" />
                     </a>
@@ -216,7 +216,7 @@ export default function Footer(data = {}) {
                     >
                         <img src="/youtube.png" className="w-8" />
                     </a>
-                </div>
+                </div> */}
                 <div className="flex justify-end m-10 wtsp-widget">
                     <BrowserView>
                         <a href={whatsappNumber}>
@@ -393,7 +393,7 @@ export default function Footer(data = {}) {
                         <p><a href="https://outlook.live.com/owa/" target="_blank" className="futura-book text-white">{email}</a></p>
                     </div>
 
-                    {/* <div className="lg:ml-24">
+                    <div className="lg:ml-24">
                         <p className="text-[#009FE3] mb-3 font-bold futura-bold">FOLLOW OUR SOCIALS</p>
                         <div className="flex flex-row mb-5">
                             <a
@@ -428,7 +428,7 @@ export default function Footer(data = {}) {
                                 <img src="/youtubechannel.png" className="w-8" />
                             </a>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </>

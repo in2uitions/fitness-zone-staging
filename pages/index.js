@@ -7,6 +7,7 @@ import Popup from 'reactjs-popup'
 import FooterPopup from './components/footerPopup'
 import { useState, useEffect } from 'react'
 import nextConfig from '../next.config'
+import HeaderContent from './components/header-component'
 
 function Home({ data = {} }) {
   const [showPopup, setShowPopup] = useState(false)
@@ -26,6 +27,7 @@ function Home({ data = {} }) {
       setShowPopup(false)
       setShowLebPopup(true)
     }
+    
   //   let pop_status = localStorage.getItem('pop_status');
   //   let popdbx_status = localStorage.getItem('popdbx_status')
   //   if (nextConfig.country_code == 'LB') {
@@ -139,7 +141,7 @@ function Home({ data = {} }) {
   return (
     <>
       <HeadTag data={data} />
-
+      <HeaderContent />
       <main >
         {data.header ? <Header data={data.header} /> : null}
         <Sections data={data} />

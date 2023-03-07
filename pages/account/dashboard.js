@@ -11,6 +11,7 @@ import { useState, useEffect, useMemo } from "react";
 import Post from "./trainers/homePageTrainer";
 import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
+import HeaderContent from "../components/header-component";
 import { getPrivateCarousel } from "../../api/server";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
@@ -216,7 +217,7 @@ export default function Dashboard({ style = "white", books }) {
 	const route = (id) => router.push({ pathname: "/account/trainers-profile", query: { id } });
     return (
         <>
-            <PrivateMenu />
+            <PrivateMenu/>
             <section>
                 <div className="lg:container lg:mx-auto flex flex-col justify-center mt-40 lg:px-20 md:px-20 px-0">
                     <p className="text-[#009FE3] futura-bold flex space-x-2 lg:px-0 md:px-0 px-2">
