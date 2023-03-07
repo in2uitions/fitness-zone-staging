@@ -11,7 +11,7 @@ export default function App() {
         const ssn = value.replace(/[^\d]/g, '');
         const ssnLength = ssn.length;
 
-        if (ssnLength < 4) return ssn;
+        if (ssnLength < 4)  return ssn;
 
         if (ssnLength < 6) {
             return `${ssn.slice(0, 3)}-${ssn.slice(3)}`;
