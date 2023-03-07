@@ -16,10 +16,10 @@ export default function HeaderContent(data = {}, about = []) {
     const tokenSet = (Cookies.get("OTP") != null)
     useEffect(() => {
         if (itemSet && tokenSet) {
-            setButton(<a href='/account/dashboard' className="h-6">DASHBOARD</a>)
+            setButton(<a href='/account/dashboard' className="border-[#009FE3] w-28 border-2 p-2 rounded flex justify-center items-center mr-5 futura-bold">DASHBOARD</a>)
         }
         else {
-            setButton(<a href='/account/login' className="">LOG IN</a>)
+            setButton(<a href='/account/login' className="border-[#009FE3] w-20 border-2 p-2 rounded flex justify-center items-center mr-5 futura-bold loginBtn">LOG IN</a>)
         }
     }, [])
     const [colorChange, setColorchange] = useState(false);
@@ -44,7 +44,7 @@ export default function HeaderContent(data = {}, about = []) {
                                     <p></p>
                                 )}
                                 {!open && (
-                                    <a href="/account/login" className="border-[#009FE3] border-2 w-36 p-2 rounded flex justify-center items-center mr-5 futura-bold"> {button}</a>
+                                    <a href="/account/login" className="" style={{fontSize:"13px"}}> {button}</a>
                                 )}
                             </>
                             : null}

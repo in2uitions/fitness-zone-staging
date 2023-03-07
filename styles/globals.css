@@ -301,7 +301,7 @@
 }
 
 .futura-bold {
-  font-family: "Futura";
+  font-family: 'Futura';
 }
 
 .futura-book {
@@ -376,7 +376,99 @@ input[type=number] {
 .input-search{
   color: white !important;
 }
+.img__wrap {
+  position: relative;
+  /* height: 200px;
+  width: 257px; */
+}
+.loginBtn:hover{
+  background-color: #009fe3;
+  color: white;
+}
+.contact_block {
+  display: block;
+  -webkit-box-shadow: 0px 0px 0px 10px transparent;
+  box-shadow: 0px 0px 0px 10px transparent;
+  position: relative;
+  max-height: 288px;
+  margin: 20px 0;
+  border-radius: 20px;
+  /* display: table; */
+  overflow: hidden;
+  width: 100%;
+}
+/* .contact_block .g_details {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  padding: 10px;
+} */
+/* .contact_block:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 20px;
+  left: 0;
+  top: 0;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+} */
+.contact_block .img__description p {
+  /* display: none; */
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin: 0 0 3px;
+  text-align: left;
+}
+.contact_block .img__description h1 {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin: 0 0 3px;
+  text-align: left;
+}
+.contact_block .img__description a {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin: 0 0 3px;
+  text-align: left;
+}
+.img__description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  flex-direction: column;
+  background: rgba(56, 57, 58, 0.5);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .4s, visibility .4s;
+}
 
+.contact_block:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+.contact_block:hover .img_start {
+  visibility: visible;
+  z-index: 50;
+  color: white;
+  opacity: 1;
+}
 .rbc-header+.rbc-header {
   border-left: 0px solid transparent !important;
 }

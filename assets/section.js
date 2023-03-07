@@ -16,6 +16,7 @@ import CompCarouselStaticRightMobile from '../pages/components/compStaticRightMo
 import CompStaticMobile from '../pages/components/compStaticMobile';
 import CompCareers from '../pages/components/compCareers';
 import CompCareersMobile from '../pages/components/compCareersMobile';
+import CompBranches from '../pages/components/compBranches';
 
 export default function Sections({ data = {} }) {
     return (
@@ -57,6 +58,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "comp_history") {
                     return <CompHistory data={section.item} />;
+                }
+                if (section.collection == "comp_branches") {
+                    return <CompBranches data={section.item} />;
                 }
                 if (section.collection == "comp_careers"){
                     return <>
