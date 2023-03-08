@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompCarousel({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -115,11 +117,13 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
     return (
         <>
             <div className="">
+            <AnimationOnScroll animateIn="animate__fadeInDown" duration={1}>
                 <div className=" flex flex-col justify-center items-center  md:mt-32 relative trainers-mobile">
                     {data.title ? <p className="lg:text-5xl md:text-4xl text-3xl font-bold futura-bold mb-5 text-white">{data.title}</p> : null}
                     {data.subtitle ? <p className="futura-book text-center w-3/4 text-[#D8D8D8] mb-5">
                         {parse(`${data.subtitle}`)} </p> : null}
                 </div>
+                </AnimationOnScroll>
             </div>
             <div className="container relative mx-auto">
                 <div className={`lg:flex md:flex relative items-center px-14 container mt-60 mb-96 pb-24 ${isFlipped ? 'flex-row-reverse' : ''}`}>
@@ -137,6 +141,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                                 ...getTextStyles(i),
                                             }}
                                         >
+                                        <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                                             <div className="sliderContent w-full px-6">
                                                 <div className="flex items-baseline space-x-5">
                                                     <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
@@ -145,6 +150,7 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                                 {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}
                                                 {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
                                             </div>
+                                            </AnimationOnScroll>
                                         </div>
                                     </div>
                                     <div
@@ -170,9 +176,11 @@ export default function CompCarousel({ data = {}, style = 'white', isFlipped = f
                                                 ...getStyles(i),
                                             }}
                                         >
+                                        <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                                             <div className="sliderContentImage">
                                                 {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="trainerimg none-event" altv={item.comp_carousel_items_id?.title} style={{width:500}} /> : null}
                                             </div>
+                                            </AnimationOnScroll>
                                         </div>
                                     </div>
                                     <div

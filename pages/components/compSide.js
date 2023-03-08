@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { image_url } from '../../global_vars';
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompSide({ data = {}, isFlipped = false, style = 'white' }) {
 
@@ -15,6 +17,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                 {data.image_position == "right" ?<div className={`lg:flex mx-auto items-center container`}>
                
                     <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-2 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
+                     <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                         <div className='flex items-center space-x-2'>
                             {data.icon?.id ? <img src={`${image_url}${data.icon?.id}`} alt={`${data.icon?.title}`} /> : null}
                             <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold careers text-white">{data.title}</h2>
@@ -35,6 +38,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                             {data.button2_url ? <a href={`${data.button2_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button}
                             <ChevronRightIcon className="lg:ml-2 md:ml-2 ml-0" /></a> : null}
                         </div>
+                        </AnimationOnScroll>
                     </div>
                     {/* <div className=" lg:w-1/2 pt-6 lg:pt-0 hidden lg:block">
                         <div id="wrapper" className={`main-image-center`} >
@@ -43,9 +47,9 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                     </div> */}
                     <div className=" lg:w-1/2 pt-6 lg:pt-0 ">
                         <div id="wrapper" className={`main-image-center`} >
-
+                        <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                             <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
-
+</AnimationOnScroll>
                         </div>
                     </div>
 
@@ -53,12 +57,13 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                 {data.image_position == "left" ?<div className={`lg:flex mx-auto items-center container`}>
                 <div className="lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 px-2 lg:pl-20 lg:pr-36 md:pl-0 md:px-16 lg:px-16 ">
                         <div id="wrapper" className={`main-image-center`} >
-
+                        <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                             <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
-
+                            </AnimationOnScroll>
                         </div>
                     </div>
                     <div className="  lg:w-1/2 pt-6 lg:pt-0 lg:pr-44 md:pr-44 pl-2 lg:pl-0 md:pl-0">
+                    <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                         <div className='flex items-center space-x-2'>
                             {data.icon?.id ? <img src={`${image_url}${data.icon?.id}`} alt={`${data.icon?.title}`} /> : null}
                             <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold careers text-white">{data.title}</h2>
@@ -79,6 +84,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                             {data.button2_url ? <a href={`${data.button2_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button}
                             <ChevronRightIcon className="lg:ml-2 md:ml-2 ml-0" /></a> : null}
                         </div>
+                        </AnimationOnScroll>
                     </div>
                     
 

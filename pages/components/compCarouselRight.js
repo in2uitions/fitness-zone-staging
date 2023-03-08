@@ -4,6 +4,8 @@ import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -147,6 +149,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             ...getStyles(i),
                                         }}
                                     >
+                                    <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                                         <div className="relative">
                                             {item.comp_carousel_items_id?.image ? <img src={`${image_url}${item.comp_carousel_items_id?.image?.id}`} className="tintImg none-event" altv={item.comp_carousel_items_id?.title} /> : null}
                                             <div className="flex space-x-2 absolute items-center left-8 bottom-8">
@@ -154,6 +157,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                 {item.comp_carousel_items_id.image_icon ? <img src={`${image_url}${item.comp_carousel_items_id?.image_icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
                                             </div>
                                         </div>
+                                        </AnimationOnScroll>
                                     </div>
                                 </div>
                                 <div
@@ -199,6 +203,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             ...getTextStyles(i),
                                         }}
                                     >
+                                    <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                                         <div className="sliderContent pr-20">
                                             <div className="flex items-baseline space-x-5">
                                                 <p className="font-bold futura-bold text-4xl" style={{lineHeight:"40px"}}>{item.comp_carousel_items_id?.title}</p>
@@ -209,6 +214,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             {item.comp_carousel_items_id?.button_title ? <a href={item.comp_carousel_items_id?.button_url} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold cursor-pointer">{item.comp_carousel_items_id?.button_title}<ChevronRightIcon /></a> : null}
                                             {item.comp_carousel_items_id?.book_button ? <button  onClick={() => route()} className="mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold cursor-pointer">{item.comp_carousel_items_id?.book_button}<ChevronRightIcon /></button> : null}
                                         </div>
+                                        </AnimationOnScroll>
                                     </div>
                                 </div>
                                 <div

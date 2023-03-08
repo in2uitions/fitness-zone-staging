@@ -4,6 +4,8 @@ import Popup from "reactjs-popup";
 import { BrowserView, MobileView } from "react-device-detect";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useState,useRef } from "react";
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompFullWidth({ data = {}, style = 'white' }) {
     const [isSent, setIsSent] = useState(false);
@@ -106,10 +108,11 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                     {/* <img src={`${image_url}${data.image?.id}`} className="relative w-screen about-image" alt={`${data.image?.title}`} /> */}
                 </div>
                 {data.image_description ? <div className="absolute bottom-16 left-20 text-left manifesto">
+                <AnimationOnScroll animateIn="animate__fadeInDown" duration={1}>
                     <p className="text-[#fff5ee] futura-book">
                         {parse(`${data.image_description}`)}
                     </p>
-
+</AnimationOnScroll>
                     {data.button_title ? <Popup
                         trigger={
                             <button>
@@ -223,10 +226,11 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                 </div> : null}
 
                 {data.brief ? <div className="absolute bottom-16 right-28 text-left manifesto-txt">
+                <AnimationOnScroll animateIn="animate__fadeInDown" duration={1.5}>
                     <p className="text-[#fff5ee] futura-book">
                         {parse(`${data.brief}`)}
                     </p>
-
+</AnimationOnScroll>
                 </div> : null}
             </div>
 

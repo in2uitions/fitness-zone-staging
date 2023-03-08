@@ -3,6 +3,8 @@ import { image_url } from "../../global_vars";
 import parse from "html-react-parser";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Popup from "reactjs-popup";
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompCarouselStatic({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -91,6 +93,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                 <div className="lg:w-1/2 pl-40">
                     <div className="slideCC flex justify-end">
                         <>
+                        <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                                     <div className="sliderContent">
                                         <div className="flex items-baseline space-x-5">
                                             <p className="font-bold futura-bold text-4xl" style={{lineHeight:"40px"}}>{data?.title}</p>
@@ -119,6 +122,7 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                         </Popup> : null}
                                         {data.button_title ? <a href={data.button_url} className="cursor-pointer mt-5 bg-[#009FE3] learnMoreBtns p-2 flex justify-center items-center rounded-md futura-bold">{data.button_title}<ChevronRightIcon /></a> : null}
                                     </div>
+                                    </AnimationOnScroll>
                         </>
                     </div>
                 </div>
@@ -134,11 +138,12 @@ export default function CompCarouselStatic({ data = {}, style = 'white', isFlipp
                                             ...getStyles(i),
                                         }}
                                     >
+                                    <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                                         <div className="sliderContentImage" onLoad={() => setScroll(true)}>
                                             {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="trainerimg none-event" altv={item.static_items_id?.title} /> : null}
 
                                         </div> 
-                                    
+                                    </AnimationOnScroll>
                                     </div>
                                 </div>
                                 <div

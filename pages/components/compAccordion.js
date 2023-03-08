@@ -5,6 +5,8 @@ import parse from "html-react-parser";
 import { useEffect, useState, useMemo } from 'react';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { getClasses } from '../../api/server';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompAccordion({ data = {}, style = 'white' }) {
     const [selected, setSelected] = useState(null);
@@ -86,6 +88,7 @@ if (ListofClasses.length == 0){
                         <div className="" id="classes">
                         {element.image_position == "left" ?<div className='lg:flex my-10 mx-auto items-center px-12'>
                             <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-5 lg:pl-20 md:pl-0 md:px-16 lg:px-16 ">
+                            <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                                 <div className='flex items-center space-x-2'>
                                     {element.icon?.id ? <img src={`${image_url}${element.icon?.id}`} alt={`${element.icon?.title}`} /> : null}
                                     <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold  careers text-white">{element.title}</h2>
@@ -95,21 +98,26 @@ if (ListofClasses.length == 0){
                                 <h4 className="brief wysiwyg">{parse(`${element.brief}`)}</h4>
                                 {element.button_title ? <a href="/" className=" bg-[#009FE3] learnMoreBtns p-2 w-36 flex justify-start items-center rounded-md futura-bold mt-4">{element.button_title}
                                     <ChevronRightIcon className="-ml-2" /></a> : null}
-
+</AnimationOnScroll>
                             </div>
                             <div className=" lg:w-1/2 pt-6 lg:pt-0  lg:block">
                                 <div id="wrapper" className={`main-image-center`} >
+                                <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                                     <img src={`${image_url}${element.image}`} alt={`${element.image?.title}`} />
+                                    </AnimationOnScroll>
                                 </div>
                             </div>
                             </div>:null}
                             {element.image_position == "right" ?<div className='lg:flex my-20 mx-auto items-center px-12'>
                             <div className=" lg:w-1/2 pt-6 lg:pt-0  lg:block">
                                 <div id="wrapper" className={`main-image-center`} >
+                                <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                                     <img src={`${image_url}${element.image}`} alt={`${element.image?.title}`} />
+                                    </AnimationOnScroll>
                                 </div>
                             </div>
                             <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 pl-5 lg:pl-20 md:pl-0 md:px-16 lg:px-16 ">
+                            <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                                 <div className='flex items-center space-x-2'>
                                     {element.icon?.id ? <img src={`${image_url}${element.icon?.id}`} alt={`${element.icon?.title}`} /> : null}
                                     <h2 className="lg:text-5xl md:text-4xl text-3xl futura-bold font-bold  careers text-white">{element.title}</h2>
@@ -119,7 +127,7 @@ if (ListofClasses.length == 0){
                                 <h4 className="brief wysiwyg">{parse(`${element.brief}`)}</h4>
                                 {element.button_title ? <a href="/" className=" bg-[#009FE3] learnMoreBtns p-2 w-36 flex justify-start items-center rounded-md futura-bold mt-4">{element.button_title}
                                     <ChevronRightIcon className="-ml-2" /></a> : null}
-
+</AnimationOnScroll>
                             </div>
                             
                             </div>:null}

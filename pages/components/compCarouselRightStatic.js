@@ -6,6 +6,8 @@ import Popup from "reactjs-popup";
 import { createFreeTrialDubaiUser, createFreeTrialUser } from "../../api/server";
 import nextConfig from '../../next.config'
 import Cookies from 'js-cookie'
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompCarouselRight({ data = {}, style = 'white', isFlipped = false }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -129,6 +131,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             ...getStyles(i),
                                         }}
                                     >
+                                    <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
                                         <div className="relative">
                                             {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="tintImg none-event object-cover" style={{height:320, width:500}} altv={item.static_items_id?.title} /> : null}
                                             <div className="flex space-x-2 absolute items-center left-8 bottom-8">
@@ -136,6 +139,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                             {item.static_items_id.image_icon?<img src={`${image_url}${item.static_items_id?.image_icon?.id}`} className="w-16 h-8" altv={item.static_items_id?.title} /> : null}
                                         </div>
                                         </div>
+                                        </AnimationOnScroll>
                                     </div>
                                 </div>
                                 <div
@@ -178,6 +182,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                     <div
                                         className="slide"
                                     >
+                                    <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
                                         <div className="sliderContent staticSlide">
                                         <div className="flex items-baseline space-x-5">
                                             <p className="font-bold futura-bold text-4xl">{data.title}</p>
@@ -222,6 +227,7 @@ export default function CompCarouselRight({ data = {}, style = 'white', isFlippe
                                                 )}
                                             </Popup>:null}
                                         </div>
+                                        </AnimationOnScroll>
                                     </div>
                                 </div>
                                 

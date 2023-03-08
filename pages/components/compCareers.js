@@ -7,6 +7,8 @@ import { createDubaiuser, createuser } from "../../api/server";
 import axios from "axios";
 import nextConfig from "../../next.config";
 import Cookies from 'js-cookie'
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css';
 
 export default function CompCareers({ data = {}, style = 'white', isFlipped = false, }) {
     const [activeSlide, setactiveSlide] = useState(0);
@@ -79,83 +81,83 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
         event.preventDefault();
         const getTokenAPI = async () => {
             if (nextConfig.country_code == 'LB') {
-            var file = event.target.file.files[0];
-            try{
-                const form = new FormData();
-                // form.append("filename", file.file_name);
-                form.append("file", file);
-                const response = await axios.post(`https://fzcms.diastora.com/files`, form);
-                if(response.status == 200){
-                    Cookies.set("file_id", response.data.data.id);
+                var file = event.target.file.files[0];
+                try {
+                    const form = new FormData();
+                    // form.append("filename", file.file_name);
+                    form.append("file", file);
+                    const response = await axios.post(`https://fzcms.diastora.com/files`, form);
+                    if (response.status == 200) {
+                        Cookies.set("file_id", response.data.data.id);
+                    }
+                } catch (err) {
+                    console.log(err)
                 }
-            } catch(err){
-                console.log(err)
+                Cookies.set('first_name', event.target.first_name.value);
+                Cookies.set('last_name', event.target.last_name.value);
+                Cookies.set('email', event.target.email.value),
+                    Cookies.set('phone_number', event.target.phone_number.value),
+                    Cookies.set('mobile_number', event.target.mobile_number.value);
+                Cookies.set('education', event.target.education.value);
+                Cookies.set('experience', event.target.experience.value);
+                // Cookies.set('cv', event.target.cv.value)
+                createuser();
+                event.target.first_name.value = '',
+                    event.target.last_name.value = '',
+                    event.target.email.value = '',
+                    event.target.phone_number.value = '',
+                    event.target.mobile_number.value = '',
+                    event.target.education.value = '',
+                    event.target.experience.value = '',
+                    Cookies.set('first_name', event.target.first_name.value = '');
+                Cookies.set('last_name', event.target.last_name.value = '');
+                Cookies.set('email', event.target.email.value = ''),
+                    Cookies.set('phone_number', event.target.phone_number.value = ''),
+                    Cookies.set('mobile_number', event.target.mobile_number.value = '');
+                Cookies.set('education', event.target.education.value = '');
+                Cookies.set('experience', event.target.experience.value = '');
+                ref.current.close();
+                console.log('leb user')
             }
-            Cookies.set('first_name', event.target.first_name.value);
-            Cookies.set('last_name', event.target.last_name.value);
-            Cookies.set('email', event.target.email.value),
-            Cookies.set('phone_number', event.target.phone_number.value),
-            Cookies.set('mobile_number', event.target.mobile_number.value);
-            Cookies.set('education', event.target.education.value);
-            Cookies.set('experience', event.target.experience.value);
-            // Cookies.set('cv', event.target.cv.value)
-            createuser();
-            event.target.first_name.value='',
-            event.target.last_name.value='',
-            event.target.email.value= '',
-            event.target.phone_number.value='',
-            event.target.mobile_number.value='',
-            event.target.education.value='',
-            event.target.experience.value='',
-            Cookies.set('first_name', event.target.first_name.value = '');
-            Cookies.set('last_name', event.target.last_name.value = '');
-            Cookies.set('email', event.target.email.value = ''),
-            Cookies.set('phone_number', event.target.phone_number.value = ''),
-            Cookies.set('mobile_number', event.target.mobile_number.value = '');
-            Cookies.set('education', event.target.education.value = '');
-            Cookies.set('experience', event.target.experience.value = '');
-            ref.current.close();
-            console.log('leb user')
-        }
-        else if (nextConfig.country_code == 'AE') {
-            var file = event.target.file.files[0];
-            try{
-                const form = new FormData();
-                // form.append("filename", file.file_name);
-                form.append("file", file);
-                const response = await axios.post(`https://fzcms.diastora.com/files`, form);
-                if(response.status == 200){
-                    Cookies.set("file_id", response.data.data.id);
+            else if (nextConfig.country_code == 'AE') {
+                var file = event.target.file.files[0];
+                try {
+                    const form = new FormData();
+                    // form.append("filename", file.file_name);
+                    form.append("file", file);
+                    const response = await axios.post(`https://fzcms.diastora.com/files`, form);
+                    if (response.status == 200) {
+                        Cookies.set("file_id", response.data.data.id);
+                    }
+                } catch (err) {
+                    console.log(err)
                 }
-            } catch(err){
-                console.log(err)
+                Cookies.set('first_name', event.target.first_name.value);
+                Cookies.set('last_name', event.target.last_name.value);
+                Cookies.set('email', event.target.email.value),
+                    Cookies.set('phone_number', event.target.email.value),
+                    Cookies.set('mobile_number', event.target.mobile_number.value);
+                Cookies.set('education', event.target.education.value);
+                Cookies.set('experience', event.target.experience.value);
+                // Cookies.set('cv', event.target.cv.value)
+                createDubaiuser();
+                event.target.first_name.value = '',
+                    event.target.last_name.value = '',
+                    event.target.email.value = '',
+                    event.target.phone_number.value = '',
+                    event.target.mobile_number.value = '',
+                    event.target.education.value = '',
+                    event.target.experience.value = '',
+                    Cookies.set('first_name', event.target.first_name.value = '');
+                Cookies.set('last_name', event.target.last_name.value = '');
+                Cookies.set('email', event.target.email.value = ''),
+                    Cookies.set('phone_number', event.target.email.value = ''),
+                    Cookies.set('mobile_number', event.target.mobile_number.value = '');
+                Cookies.set('education', event.target.education.value = '');
+                Cookies.set('experience', event.target.experience.value = '');
+                ref.current.close();
+                console.log('ae user')
             }
-            Cookies.set('first_name', event.target.first_name.value);
-            Cookies.set('last_name', event.target.last_name.value);
-            Cookies.set('email', event.target.email.value),
-            Cookies.set('phone_number', event.target.email.value),
-            Cookies.set('mobile_number', event.target.mobile_number.value);
-            Cookies.set('education', event.target.education.value);
-            Cookies.set('experience', event.target.experience.value);
-            // Cookies.set('cv', event.target.cv.value)
-            createDubaiuser();
-            event.target.first_name.value='',
-            event.target.last_name.value='',
-            event.target.email.value= '',
-            event.target.phone_number.value='',
-            event.target.mobile_number.value='',
-            event.target.education.value='',
-            event.target.experience.value='',
-            Cookies.set('first_name', event.target.first_name.value = '');
-            Cookies.set('last_name', event.target.last_name.value = '');
-            Cookies.set('email', event.target.email.value = ''),
-            Cookies.set('phone_number', event.target.email.value = ''),
-            Cookies.set('mobile_number', event.target.mobile_number.value = '');
-            Cookies.set('education', event.target.education.value = '');
-            Cookies.set('experience', event.target.experience.value = '');
-            ref.current.close();
-            console.log('ae user')
-        }
         };
         getTokenAPI();
 
@@ -163,15 +165,15 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
     const uploadFile = async (element) => {
         element.preventDefault();
         var file = element.target.files[0];
-        try{
+        try {
             const form = new FormData();
             // form.append("filename", file.file_name);
             form.append("file", file);
             const response = await axios.post(`https://fzcms.diastora.com/files`, form);
-            if(response.status == 200){
+            if (response.status == 200) {
                 Cookies.set("file_id", response.data.data.id);
             }
-        } catch(err){
+        } catch (err) {
             console.log(err)
         }
         // console.log(response.data.data.filename_disk)
@@ -184,7 +186,7 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
     return (
         <>
 
-            <div className={`lg:flex relative px-14 container pb-16`}>
+            <div className={`lg:flex relative px-14 container mx-auto pb-16`}>
 
                 <div className="lg:w-1/2">
                     <div className="slideCC">
@@ -193,12 +195,14 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                 <div
                                     className=""
                                 >
-                                    <div className="sliderContent mt-12">
-                                        <div className="flex items-baseline space-x-5">
-                                            <p className="font-bold futura-bold text-4xl">{data.title}</p>
+                                    <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1}>
+                                        <div className="sliderContent mt-12">
+                                            <div className="flex items-baseline space-x-5">
+                                                <p className="font-bold futura-bold text-4xl">{data.title}</p>
+                                            </div>
+                                            {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)}</p> : null}
                                         </div>
-                                        {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)}</p> : null}
-                                    </div>
+                                    </AnimationOnScroll>
                                 </div>
                             </div>
                         </>
@@ -216,64 +220,67 @@ export default function CompCareers({ data = {}, style = 'white', isFlipped = fa
                                             ...getStyles(i),
                                         }}
                                     >
-                                        <div className="bg-[#3b3c40] w-full h-full flex flex-col justify-center items-center">
-                                            <p className="futura-bold text-3xl mt-3 text-white">{item.careers_items_id?.title}</p>
-                                            <p className="futura-book mt-3 text-white">{item.careers_items_id?.subtitle}</p>
-                                            <Popup
-                                                trigger={
-                                                    <button>
-                                                        <button className="bg-[#009FE3] p-2 rounded-md mt-5 text-white">{item.careers_items_id?.button}</button>
-                                                    </button>
-                                                } modal
-                                                position="center"
-                                                ref={ref}
-                                                closeOnDocumentClick={false}
-                                            >
-                                                {close => (
-                                                    <div className="container w-screen flex flex-col justify-center relative py-12">
-                                                        <button className="flex w-full justify-end text-white mb-4 outline-none" onClick={close}>
-                                                        
-                                                        <img src="/close-X.svg"/>
-                                                            {/* &times; */}
+                                        <AnimationOnScroll animateIn="animate__fadeInRight" duration={1}>
+                                            <div className="bg-[#3b3c40] w-full h-full flex flex-col justify-center items-center p-12">
+
+                                                <p className="futura-bold text-3xl mt-3 text-white">{item.careers_items_id?.title}</p>
+                                                <p className="futura-book mt-3 text-white">{item.careers_items_id?.subtitle}</p>
+                                                <Popup
+                                                    trigger={
+                                                        <button>
+                                                            <button className="bg-[#009FE3] p-2 rounded-md mt-5 text-white">{item.careers_items_id?.button}</button>
                                                         </button>
-                                                        <form onSubmit={onSubmitForm}>
-                                                            <div className="flex w-full justify-between space-x-5">
-                                                                <input placeholder="First Name" id="first_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                                <input placeholder="Last Name" id="last_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                                <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            </div>
-                                                            <div className="flex w-full justify-between space-x-5 mt-10">
-                                                                <input placeholder="Phone Number" id="phone_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                                <input placeholder="Mobile Number" id="mobile_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                                <input placeholder="Education" id="education" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
-                                                            </div>
-                                                            <div className="flex w-full justify-between space-x-2 mt-10">
-                                                                <div>
-                                                                    <input placeholder="Experience" id="experience" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                    } modal
+                                                    position="center"
+                                                    ref={ref}
+                                                    closeOnDocumentClick={false}
+                                                >
+                                                    {close => (
+                                                        <div className="container w-screen flex flex-col justify-center relative py-12">
+                                                            <button className="flex w-full justify-end text-white mb-4 outline-none" onClick={close}>
+
+                                                                <img src="/close-X.svg" />
+                                                                {/* &times; */}
+                                                            </button>
+                                                            <form onSubmit={onSubmitForm}>
+                                                                <div className="flex w-full justify-between space-x-5">
+                                                                    <input placeholder="First Name" id="first_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                    <input placeholder="Last Name" id="last_name" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                    <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                                 </div>
-                                                                <div className="w-3/4">
-                                                                    {/* <label htmlFor="cv" className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                                <div className="flex w-full justify-between space-x-5 mt-10">
+                                                                    <input placeholder="Phone Number" id="phone_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                    <input placeholder="Mobile Number" id="mobile_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                    <input placeholder="Education" id="education" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                </div>
+                                                                <div className="flex w-full justify-between space-x-2 mt-10">
+                                                                    <div>
+                                                                        <input placeholder="Experience" id="experience" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
+                                                                    </div>
+                                                                    <div className="w-3/4">
+                                                                        {/* <label htmlFor="cv" className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
                                                                 Upload your CV
                                                             </label> */}
-                                                                    <input
-                                                                        className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-1"
-                                                                        id="file"
-                                                                        multiple={false}
-                                                                        type="file"
-                                                                        // onChange={uploadFile}
-                                                                        required
-                                                                    />
-                                                                    {/* <input id="cv" style={{ visibility: "hidden" }} type={"file"} /> */}
+                                                                        <input
+                                                                            className="w-full border-[#009FE3] pl-2 appearance-none block bg-transparent text-[#aeaeae] border rounded-md leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-1"
+                                                                            id="file"
+                                                                            multiple={false}
+                                                                            type="file"
+                                                                            // onChange={uploadFile}
+                                                                            required
+                                                                        />
+                                                                        {/* <input id="cv" style={{ visibility: "hidden" }} type={"file"} /> */}
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <button className="bg-[#009FE3] w-full p-2 mt-5 futura-book rounded-md text-white" type="submit">Send</button>
-                                                        </form>
-                                                        {/* <FooterPopup /> */}
-                                                    </div>
-                                                )}
-                                            </Popup>
+                                                                <button className="bg-[#009FE3] w-full p-2 mt-5 futura-book rounded-md text-white" type="submit">Send</button>
+                                                            </form>
+                                                            {/* <FooterPopup /> */}
+                                                        </div>
+                                                    )}
+                                                </Popup>
 
-                                        </div>
+                                            </div>
+                                        </AnimationOnScroll>
                                     </div>
                                 </div>
                             </>
