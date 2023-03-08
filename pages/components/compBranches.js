@@ -10,7 +10,7 @@ export default function CompBranches({ data = {}, style = 'white' }) {
     return (
         <>
 
-            <div className=" lg:my-10 md:pb-10 py-12 container mx-auto px-10 pt-20" >
+            <div className=" lg:mt-10 lg:mb-5 md:pb-10 pt-12 container mx-auto px-10 pt-20" >
                 {data.title ?<p className='text-white futura-bold lg:text-5xl'>{data.title}</p>:null}
                 <div className={`table-img lg:grid lg:grid-cols-12 gap-10 pt-10`}>
 
