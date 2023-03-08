@@ -394,7 +394,7 @@ export default function Footer(data = {}) {
                     </div>
 
                     <div className="lg:ml-24">
-                        <p className="text-[#009FE3] mb-3 font-bold futura-bold">FOLLOW OUR SOCIALS</p>
+                        {/* <p className="text-[#009FE3] mb-3 font-bold futura-bold">FOLLOW OUR SOCIALS</p> */}
                         <div className="flex flex-row mb-5">
                             <a
                                 href={facebookLink}
