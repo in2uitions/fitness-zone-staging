@@ -19,7 +19,7 @@ export default function HeaderContent(data = {}, about = []) {
             setButton(<a href='/account/dashboard' className="border-[#009FE3] w-28 border-2 p-2 rounded flex justify-center items-center mr-5 futura-bold">DASHBOARD</a>)
         }
         else {
-            setButton(<a href='/account/login' className="border-[#009FE3] w-20 border-2 p-2 rounded flex justify-center items-center mr-5 futura-bold loginBtn">LOG IN</a>)
+            setButton(<a href='/account/login' className="border-[#009FE3] lg:w-20 md:w-20 border-2 p-2 rounded flex justify-center items-center lg:mr-5 md:mr-5 mr-2 futura-bold loginBtn">LOG IN</a>)
         }
     }, [])
     const [colorChange, setColorchange] = useState(false);
