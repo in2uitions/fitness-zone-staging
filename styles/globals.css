@@ -2520,6 +2520,8 @@ li.category.isActive {
   }
   .branch-img{
     height: 250px !important;
+    width: 100% !important;
+    object-fit: cover;
   }
   .rbc-btn-group {
     margin-bottom: 10px !important;
