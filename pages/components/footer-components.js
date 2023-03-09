@@ -311,6 +311,7 @@ export default function Footer(data = {}) {
                                                 name="email" id="email"
                                             />
                                         </div>
+                                        
                                     </div>
                                     <button type="submit" className="mt-5 bg-[#009FE3] learnMoreBtns p-2 w-40 flex justify-start items-center rounded-md futura-bold">REQUEST A CALL</button>
                                 </form>

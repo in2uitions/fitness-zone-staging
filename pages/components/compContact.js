@@ -71,10 +71,11 @@ export default function CompContact({ data = {}, style = 'white' }) {
                             "LastName": event.target.pp_last_name.value,
                             "Mobile": event.target.pp_phone.value,
                             "Email": event.target.pp_email.value,
+                            "Location": event.target.location.value,
                             "Source": {
                                 "VisitSourceId": 9
                             },
-                            "LocationCode": 1
+                            // "LocationCode": 1
                         });
 
                         //   // console.log(registraitonRawData);
@@ -146,10 +147,11 @@ export default function CompContact({ data = {}, style = 'white' }) {
                             "LastName": event.target.pp_last_name.value,
                             "Mobile": event.target.pp_phone.value,
                             "Email": event.target.pp_email.value,
+                            "Location": event.target.location.value,
                             "Source": {
                                 "VisitSourceId": 9
                             },
-                            "LocationCode": 1
+                            // "LocationCode": 1
                         });
 
                         //   // console.log(registraitonRawData);
@@ -270,6 +272,14 @@ export default function CompContact({ data = {}, style = 'white' }) {
                                                         <input placeholder="Email" id="pp_email" name="pp_email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         <input placeholder="Phone Number" id="pp_phone" name="pp_phone" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
+                                                    <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="7">Dbayeh</option>
+                                                            <option value="9">Manara</option>
+                                                            <option value="6">ABC Achrafieh</option>
+                                                            <option value="2">Baabda</option>
+                                                            <option value="1">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
                                                     <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                 </form>
                                             </div>
@@ -287,6 +297,14 @@ export default function CompContact({ data = {}, style = 'white' }) {
                                                         <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
+                                                    <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="7">Dbayeh</option>
+                                                            <option value="9">Manara</option>
+                                                            <option value="6">ABC Achrafieh</option>
+                                                            <option value="2">Baabda</option>
+                                                            <option value="1">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
                                                     <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                 </form>
                                             </div>
@@ -319,6 +337,14 @@ export default function CompContact({ data = {}, style = 'white' }) {
                                                         <input placeholder="Email" id="pp_email" name="pp_email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         <input placeholder="Phone Number" id="pp_phone" name="pp_phone" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
+                                                    <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="7">Dbayeh</option>
+                                                            <option value="9">Manara</option>
+                                                            <option value="6">ABC Achrafieh</option>
+                                                            <option value="2">Baabda</option>
+                                                            <option value="1">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
                                                     <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                 </form>
                                             </div>
@@ -336,6 +362,14 @@ export default function CompContact({ data = {}, style = 'white' }) {
                                                         <input placeholder="Email" id="email" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                         <input placeholder="Phone Number" id="ph_number" className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
+                                                    <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
+                                                            <option value="7">Dbayeh</option>
+                                                            <option value="9">Manara</option>
+                                                            <option value="6">ABC Achrafieh</option>
+                                                            <option value="2">Baabda</option>
+                                                            <option value="1">Hamra</option>
+                                                            <option value="citywalkdubai">City Walk Dubai</option>
+                                                        </select>
                                                     <button className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md" type="submit">Send</button>
                                                 </form>
                                             </div>

@@ -207,7 +207,7 @@ export default function Menu(data = {}) {
                             "Source": {
                                 "VisitSourceId": 9
                             },
-                            "LocationCode": 1
+                            // "LocationCode": 1
                         });
 
                         //   // console.log(registraitonRawData);
@@ -354,14 +354,14 @@ export default function Menu(data = {}) {
                         <div className='career-menubtn'>
                         <div className="flex flex-row mt-14">
                             <a
-                                className="border-[#009FE3] border-2 w-44 p-2 rounded flex justify-center items-center mr-5 futura-bold"
+                                className="border-[#009FE3] border-2 w-48 p-2 rounded flex justify-center items-center mr-5 futura-bold"
                             >
                                 {button}
                             </a>
                             {signbtn && memberBtn ? <Popup
                                 trigger={
 
-                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-44 rounded mr-4 futura-bold text-white">BECOME A MEMBER</button>
+                                    <button className="bg-[#009FE3] flex justify-center p-2 items-center w-48 rounded mr-4 futura-bold text-white">BECOME A MEMBER</button>
 
                                 } modal
                                 position="center"
@@ -442,11 +442,11 @@ export default function Menu(data = {}) {
                                                         <input placeholder="Phone Number" id="pp_phone" name='pp_phone' className="pl-2 appearance-none block bg-transparent text-white border border-[#009FE3] rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2 " />
                                                     </div>
                                                     <select name="branches" id="location" className="w-full border border-[#009FE3] bg-transparent text-white pl-2 appearance-none rounded leading-tight focus:outline-none focus:bg-[#0e0e0e] focus:border-[#009FE3] py-2">
-                                                            <option value="dbayeh">Dbayeh</option>
-                                                            <option value="manara">Manara</option>
-                                                            <option value="abc">ABC Achrafieh</option>
-                                                            <option value="baabda">Baabda</option>
-                                                            <option value="hamra">Hamra</option>
+                                                            <option value="7">Dbayeh</option>
+                                                            <option value="9">Manara</option>
+                                                            <option value="6">ABC Achrafieh</option>
+                                                            <option value="2">Baabda</option>
+                                                            <option value="1">Hamra</option>
                                                             <option value="citywalkdubai">City Walk Dubai</option>
                                                         </select>
                                                     <button type="submit" className="bg-[#009FE3] text-white w-full p-2 mt-5 futura-bold rounded-md">Send</button>
