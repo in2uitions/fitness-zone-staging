@@ -19,8 +19,8 @@ export default function CompBranches({ data = {}, style = 'white' }) {
                         <>
                         
                             <div className="contact_block col-span-4">
-                                <AnimationOnScroll animateIn="animate__zoomIn" duration={1} style={{height:"300px"}}>
-                                    {item.branches_details_id?.image ?<img src={`${image_url}${item.branches_details_id?.image?.id}`} altv={item.branches_details_id?.title} /> : null}
+                                <AnimationOnScroll animateIn="animate__zoomIn" duration={1} style={{height:"300px"}} className="animationSize">
+                                    {item.branches_details_id?.image ?<img src={`${image_url}${item.branches_details_id?.image?.id}`} className="branch-img" altv={item.branches_details_id?.title} /> : null}
                                     <div className='flex flex-col branch-desc'>
                                         <h1 className="img_start absolute bottom-12">{item.branches_details_id?.location}</h1>
                                         <div className='img__description'>

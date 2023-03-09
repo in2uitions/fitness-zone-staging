@@ -2515,7 +2515,12 @@ li.category.isActive {
   .on-tabs {
     height: 0.85rem !important;
   }
-
+  .animationSize{
+    height: 250px !important;
+  }
+  .branch-img{
+    height: 250px !important;
+  }
   .rbc-btn-group {
     margin-bottom: 10px !important;
   }
