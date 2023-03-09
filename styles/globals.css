@@ -1919,7 +1919,11 @@ li.category.isActive {
 .example-thumb.active {
   background-color: grey;
 }
-
+.branch-img{
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
 .wtspImg {
   background-image: url(../public/wtspwidget.png);
 }
@@ -3025,9 +3029,11 @@ li.category.isActive {
 
 @media (min-width:1024px) and (max-width: 1299px) {
   .content-responsive {
-    transform: translateX(310px) translateY(0px) rotateY(0deg) !important;
+    transform: translateX(265px) translateY(0px) rotateY(0deg) !important;
   }
-
+.titleSection{
+  line-height: 55px;
+}
   .prevbtn {
     left: -4.5rem;
   }
