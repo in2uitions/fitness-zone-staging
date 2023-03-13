@@ -126,7 +126,7 @@ export default function CompCarouselStaticRightMobile({ data = {}, style = 'whit
                                                     className=""
                                                 >
                                                     <div className="relative">
-                                                        {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} className="w-screen px-6" altv={item.static_items_id?.title} /> : null}
+                                                        {item.static_items_id?.image ? <img src={`${image_url}${item.static_items_id?.image?.id}`} style={{width:"500px", height:"250px"}} className="w-screen px-6" altv={item.static_items_id?.title} /> : null}
                                                         <div className="flex justify-between items-center absolute top-0 left-0 w-full h-full ">
                                                             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
                                                             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
