@@ -2793,7 +2793,7 @@ li.category.isActive {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 540px) {
   .forwardback {
     left: 12rem;
   }
@@ -2863,7 +2863,7 @@ li.category.isActive {
   }
 
   .classes {
-    top: 1rem;
+    top: 0.5rem;
   }
 
   .manifesto {
@@ -2872,7 +2872,8 @@ li.category.isActive {
   }
 
   .manifesto-txt {
-    right: 1rem !important;
+    left: 1rem !important;
+    bottom: 0px;
   }
 
   .contact-inputs {
@@ -2884,7 +2885,7 @@ li.category.isActive {
   }
 
   .about-image {
-    height: 45vh;
+    height: 50vh;
   }
 
   .textArea {
@@ -3027,7 +3028,7 @@ li.category.isActive {
   }
 }
 
-@media (min-width:1024px) and (max-width: 1299px) {
+@media (min-width:877px) and (max-width: 1299px) {
   .content-responsive {
     transform: translateX(265px) translateY(0px) rotateY(0deg) !important;
   }
@@ -4130,6 +4131,12 @@ div.step:first-child {
 
   .fleche-bloc {
     visibility: hidden;
+  }
+  .text-sizeFull{
+    font-size: 10px !important;
+  }
+  .about-image{
+    height: 62vh !important;
   }
 }
 

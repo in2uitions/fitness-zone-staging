@@ -107,7 +107,7 @@ export default function CompStaticMobile({ data = {}, style = 'white', isFlipped
                                                 >
                                                     <div className="sliderContent px-10">
                                                         <div className="flex items-baseline space-x-5">
-                                                            <p className="font-bold futura-bold text-4xl">{data?.title}</p>
+                                                            <p className="font-bold futura-bold text-4xl leading-10">{data?.title}</p>
                                                             {data.icon ? <img src={`${image_url}${data?.icon?.id}`} className="w-16 h-8" altv={data?.title} /> : null}
                                                         </div>
                                                         {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}

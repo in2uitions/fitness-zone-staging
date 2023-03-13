@@ -4,9 +4,9 @@ import Popup from "reactjs-popup"
 export default function CompHistory({data = {}}) {
     return (
         <>
-            <div className="container mx-auto my-20 flex flex-col lg:px-24 md:px-24 px-10">
-                <div className="flex flex-col justify-center items-center text-center mb-10 mt-20">
-                    <p className="font-bold futura-bold text-4xl text-white">{data?.title}</p>
+            <div className="container mx-auto lg:my-20 md:my-20 my-10 flex flex-col lg:px-24 md:px-24 px-10">
+                <div className="flex flex-col justify-center items-center text-center mb-10 lg:mt-20">
+                    <p className="font-bold futura-bold text-4xl text-white leading-10">{data?.title}</p>
 
                 </div>
                 {data.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${data?.description}`)} </p> : null}

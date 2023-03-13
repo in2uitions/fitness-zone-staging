@@ -80,9 +80,9 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
     }
 }
     return (
-        <section id={`${data.title}`} className="mt-20">
+        <section id={`${data.title}`} className="mt-10">
             <div className="">
-                {data.image_title ? <div className=" flex flex-col justify-center items-center pt-20 relative trainers-mobile">
+                {data.image_title ? <div className=" flex flex-col justify-center items-center lg:pt-20 relative trainers-mobile">
                     <img src={`${image_url}${data.image_title?.id}`} className="w-56" altv={data.image_title?.title} />
                 </div> : null}
             </div>
@@ -122,7 +122,7 @@ export default function CompCarouselRightMobile({ data = {}, style = 'white', is
                                                 >
                                                     <div className="sliderContent px-10 w-screen">
                                                     <div className="flex items-baseline space-x-5">
-                                                <p className="font-bold futura-bold text-4xl">{item.comp_carousel_items_id?.title}</p>
+                                                <p className="font-bold futura-bold text-4xl leading-10">{item.comp_carousel_items_id?.title}</p>
                                                 {item.comp_carousel_items_id.icon ? <img src={`${image_url}${item.comp_carousel_items_id?.icon?.id}`} className="w-16 h-8" altv={item.comp_carousel_items_id?.title} /> : null}
                                             </div>
                                                         {item.comp_carousel_items_id?.description ? <p className="text-[#D8D8D8] futura-book text-2xl mt-2">{parse(`${item.comp_carousel_items_id?.description}`)} </p> : null}

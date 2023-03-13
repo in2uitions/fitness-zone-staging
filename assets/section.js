@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BrowserView, MobileView } from 'react-device-detect';
+import { BrowserView, MobileView ,TabletView} from 'react-device-detect';
 import CompSide from '../pages/components/compSide'
 import CompAccordion from '../pages/components/compAccordion';
 import CompAccordionMobile from '../pages/components/compAccordionMobile';
@@ -48,6 +48,7 @@ export default function Sections({ data = {} }) {
                 if (section.collection == "comp_carousel_rightside") {
                     return <><BrowserView><CompCarouselRight data={section.item} /></BrowserView>
                         <MobileView><CompCarouselRightMobile data={section.item} /></MobileView>
+                        <TabletView><CompCarouselRightMobile data={section.item} /></TabletView>
                     </>
                 }
                 if (section.collection == "comp_fullwidthimage") {

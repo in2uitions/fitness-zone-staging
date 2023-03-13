@@ -109,7 +109,7 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
                 </div>
                 {data.image_description ? <div className="absolute bottom-16 left-20 text-left manifesto">
                 <AnimationOnScroll animateIn="animate__fadeInDown" duration={1}>
-                    <p className="text-[#fff5ee] futura-book">
+                    <p className="text-[#fff5ee] futura-book text-sizeFull">
                         {parse(`${data.image_description}`)}
                     </p>
 </AnimationOnScroll>
@@ -227,7 +227,7 @@ export default function CompFullWidth({ data = {}, style = 'white' }) {
 
                 {data.brief ? <div className="absolute bottom-16 right-28 text-left manifesto-txt">
                 <AnimationOnScroll animateIn="animate__fadeInDown" duration={1.5}>
-                    <p className="text-[#fff5ee] futura-book">
+                    <p className="text-[#fff5ee] futura-book text-sizeFull">
                         {parse(`${data.brief}`)}
                     </p>
 </AnimationOnScroll>

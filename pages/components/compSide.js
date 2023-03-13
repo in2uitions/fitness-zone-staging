@@ -34,9 +34,9 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                         {data.brief ?<h4 className="brief wysiwyg mb-4">{parse(`${data.brief}`)}</h4>:null}
                         <div className='flex space-x-2'>
                         {data.button_url ? <a href={`${data.button_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button_title}
-                            <ChevronRightIcon className="lg:ml-2 md:ml-2  ml-0" /></a> : null}
+                            <ChevronRightIcon className="lg:ml-2 md:ml-2  -ml-2" /></a> : null}
                             {data.button2_url ? <a href={`${data.button2_url}`} className=" bg-[#009FE3] learnMoreBtns p-3 rounded-md futura-bold">{data.button}
-                            <ChevronRightIcon className="lg:ml-2 md:ml-2 ml-0" /></a> : null}
+                            <ChevronRightIcon className="lg:ml-2 md:ml-2 -ml-2" /></a> : null}
                         </div>
                         </AnimationOnScroll>
                     </div>

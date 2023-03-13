@@ -66,7 +66,7 @@ export default function CompCarouselMobile({ data = {}, style = 'white', isFlipp
     }, [embla, setScrollSnaps, onSelect]);
 
     return (
-        <section id={`${data.title}`} className="mt-20">
+        <section id={`${data.title}`} className="mt-10">
          <div className="">
                 <div className=" flex flex-col justify-center items-center  md:mt-32 relative trainers-mobile">
                     {data.title ? <p className="lg:text-5xl md:text-4xl text-3xl font-bold futura-bold mb-5 text-white">{data.title}</p> : null}
