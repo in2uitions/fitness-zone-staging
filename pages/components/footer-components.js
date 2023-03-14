@@ -176,6 +176,11 @@ export default function Footer(data = {}) {
             "id": 9,
             "label": "",
             "to": "/about/offer"
+        },
+        {
+            "id": 10,
+            "label": "PRIVACY POLICY",
+            "to": "/about/privacy-policy"
         }
     ];
 
@@ -233,7 +238,7 @@ export default function Footer(data = {}) {
                     </MobileView>
                 </div>
             </section>
-            <div className=" bg-black w-screen lg:mt-40 md:mt-40 mt-10">
+            <div className=" bg-black w-screen lg:mt-36 md:mt-36 mt-10">
                 <div className="lg:grid lg:grid-cols-12 space-x-4">
                     <div className="lg:col-span-2 sm:col-span-12">
                         <div className="lg:ml-28">
