@@ -378,7 +378,7 @@ export default function Footer(data = {}) {
                             </div>
                         </div>
                         <div className="lg:flex lg:space-x-2 mt-10 items-center ">
-                        <p className="futura-book  text-white">Copyright © 2022. All Rights Reserved.</p>
+                        <p className="futura-book  text-white">Copyright © 2023. All Rights Reserved.</p>
                         <a href="/about/privacy-policy" className="futura-book text-white" style={{fontSize:"18px"}}>Privacy Policy</a>
                         </div>
                     </div>
