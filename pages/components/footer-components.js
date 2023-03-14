@@ -179,7 +179,7 @@ export default function Footer(data = {}) {
         },
         {
             "id": 10,
-            "label": "PRIVACY POLICY",
+            "label": "",
             "to": "/about/privacy-policy"
         }
     ];
@@ -377,7 +377,10 @@ export default function Footer(data = {}) {
                                 <p className="futura-book">+971 54 727 4777</p>
                             </div>
                         </div>
-                        <p className="futura-book mt-10 text-white">Copyright © 2022. All Rights Reserved.</p>
+                        <div className="lg:flex lg:space-x-2 mt-10 items-center ">
+                        <p className="futura-book  text-white">Copyright © 2022. All Rights Reserved.</p>
+                        <a href="/about/privacy-policy" className="futura-book text-white" style={{fontSize:"18px"}}>Privacy Policy</a>
+                        </div>
                     </div>
 
                 </div>
