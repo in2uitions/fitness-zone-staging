@@ -377,7 +377,7 @@ export default function Footer(data = {}) {
                                 <p className="futura-book">+971 54 727 4777</p>
                             </div>
                         </div>
-                        <div className="lg:flex lg:space-x-2 mt-10 items-center ">
+                        <div className="flex flex-col mt-10 ">
                         <p className="futura-book  text-white">Copyright © 2023. All Rights Reserved.</p>
                         <a href="/about/privacy-policy" className="futura-book text-white" style={{fontSize:"18px"}}>Privacy Policy</a>
                         </div>
