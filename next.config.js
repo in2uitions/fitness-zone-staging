@@ -1,8 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: false,
-  swcMinify: true,
-  country_code: 'LB',
-}
+const path = require("path");
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+  sassOptions: {
+    includePaths: [path.join(__dirname, "css")],
+  },
+  trailingSlash: true,
+  devIndicators: {
+    buildActivity: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
+};

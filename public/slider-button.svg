@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
-  <g id="Play_video" data-name="Play video" transform="translate(180 120) rotate(180)">
-    <circle id="Oval" cx="90" cy="90" r="90" transform="translate(180 120) rotate(180)" fill="#009fe3" opacity="0.4"/>
-    <circle id="Oval-2" data-name="Oval" cx="60" cy="60" r="60" transform="translate(150 90) rotate(180)" fill="#009fe3"/>
-    <circle id="Oval-3" data-name="Oval" cx="22" cy="22" r="22" transform="translate(112 52) rotate(180)" fill="#fff"/>
-  </g>
-</svg>

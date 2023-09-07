@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "art & illustration",
+    "secTex": "Innovation and Crafts",
+    "image": "/dbaye7.jpeg",
+    "slug": "/project-details2/project-details2-dark"
+  },
+  {
+    "id": 2,
+    "title": "art & illustration",
+    "secTex": "Inspiring new space",
+    "image": "/abc6.jpeg",
+    "slug": "/project-details2/project-details2-dark"
+  },
+  {
+    "id": 3,
+    "title": "art & illustration",
+    "secTex": "Natural plus modern",
+    "image": "/manara4.jpeg",
+    "slug": "/project-details2/project-details2-dark"
+  },
+  {
+    "id": 4,
+    "title": "art & illustration",
+    "secTex": "Innovation and Crafts",
+    "image": "/dbaye7.jpeg",
+    "slug": "/project-details2/project-details2-dark"
+  },
+  {
+    "id": 5,
+    "title": "art & illustration",
+    "secTex": "Natural plus modern",
+    "image": "/abc6.jpeg",
+    "slug": "/project-details2/project-details2-dark"
+  }
+]
