@@ -31,7 +31,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 1,
       "label": "ABOUT THE ZONE",
-      "to": '/about/about-us'
+      "to": 'about/about-dark'
     },
     {
       "id": 2,
@@ -72,6 +72,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 8,
       "label": "MEMBERSHIP",
+      "to": "about/about-dark"
     },
     {
       "id": 9,
@@ -135,9 +136,9 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     } else {
       return (
         <li className="nav-item" key={item.id}>
-          {/* <Link href={item.to}> */}
+          <Link href={item.to}>
           <a href="#" className="nav-link">{item.label}</a>
-          {/* </Link> */}
+          </Link>
         </li>
       );
     }
