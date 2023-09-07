@@ -1,12 +1,8 @@
 
 import Header from '../components/page-headers'
 import { handleApi } from '../../api/server'
-import Sections from '../assets/sections'
-import HeadTag from "../assets/headTag"
-import { useEffect, useState } from 'react'
+import Sections from '../../assets/section'
 import { useRouter } from 'next/router'
-// import HeaderContent from '../components/header-component'
-import ALink from '~/components/features/custom-link';
 
 function Slug({ data = {} }) {
 
@@ -18,14 +14,6 @@ function Slug({ data = {} }) {
             {/* <HeadTag data={data} /> */}
             {/* <HeaderContent /> */}
             <main className="">
-            <nav className="breadcrumb-nav">
-                            <div className="container">
-                                <ul className="breadcrumb">
-                                    <li><ALink href="/"><i className="d-icon-home"></i></ALink></li>
-                                    <li>{data.page_title}</li>
-                                </ul>
-                            </div>
-                        </nav>
                 {data.header ? <Header data={data.header} /> : null}
 
                 <Sections data={data} />

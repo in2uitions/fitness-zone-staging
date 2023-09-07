@@ -5,7 +5,6 @@ import Image from 'next/image'
 import React, { Component } from 'react';
 // import { gsap } from "gsap";
 import { useState, useRef } from 'react';
-import $ from 'jquery';
 import { image_url } from '../../global_vars';
 import fadeWhenScroll from '../common/fadeWhenScroll';
 import removeSlashFromPagination from '../common/removeSlashFromPagination';
