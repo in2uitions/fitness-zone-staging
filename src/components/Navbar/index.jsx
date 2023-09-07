@@ -31,7 +31,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 1,
       "label": "ABOUT THE ZONE",
-      "to": '/about/about-dark'
+      "to": '/about/about-us'
     },
     {
       "id": 2,
@@ -101,13 +101,13 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 13,
       "label": "SERVICES",
-      "to": '#'
+      "to": '/service/services'
 
     },
     {
       "id": 14,
       "label": "CONTACT",
-      "to": '/contact/contact-dark/'
+      "to": '#'
 
     }
   ];
@@ -249,8 +249,9 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           <ul className="navbar-nav ml-auto">
             {content.map((item) => renderMenuItem(item))}
           </ul>
-        </div>
+        </div><img src="/barsMenu.svg" style={{width:"40px", height:"40px"}}/>
       </div>
+      
     </nav>
   );
 };

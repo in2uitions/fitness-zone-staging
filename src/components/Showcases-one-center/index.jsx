@@ -23,7 +23,7 @@ const ShowcasesOneCenter = () => {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
   return (
-    <header className="slider showcase-carus">
+    <header className="slider showcase-carus" style={{marginTop:'2rem'}}>
       <div id="content-carousel-container-unq-1" className="swiper-container">
         {!load ? (
           <Swiper
@@ -123,7 +123,7 @@ const ShowcasesOneCenter = () => {
             className="swiper-button-next swiper-nav-ctrl cursor-pointer"
           >
             <div>
-              <span className=" custom-font">Next Slide</span>
+              <span className=" custom-font">Next</span>
             </div>
             <div>
               <i className="fas fa-chevron-right"></i>
@@ -137,7 +137,7 @@ const ShowcasesOneCenter = () => {
               <i className="fas fa-chevron-left"></i>
             </div>
             <div>
-              <span className="custom-font">Prev Slide</span>
+              <span className="custom-font">Prev</span>
             </div>
           </div>
         </div>

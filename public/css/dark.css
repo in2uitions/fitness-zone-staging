@@ -2476,10 +2476,10 @@ header.simpl {
     .showcase-carus .caption h1 .stroke, .showcase-carus .copy-cap h1 .stroke {
       color: transparent;
       -webkit-text-stroke: 1px #fff;
-      -webkit-transform: skewX(25deg) translateX(-100px);
-      -ms-transform: skewX(25deg) translateX(-100px);
-      transform: skewX(25deg) translateX(-100px);
-      opacity: 0;
+      -webkit-transform: skewX(0deg) translateX(0px);
+      -ms-transform: skewX(0deg) translateX(0px);
+      transform: skewX(0deg) translateX(0px);
+      opacity: 0.2;
       -webkit-transition: opacity .3s, -webkit-transform 1.2s;
       transition: opacity .3s, -webkit-transform 1.2s;
       -o-transition: transform 1.2s, opacity .3s;
@@ -2490,10 +2490,10 @@ header.simpl {
       transition-delay: .2s; }
     .showcase-carus .caption h1 span, .showcase-carus .copy-cap h1 span {
       margin-left: 40px;
-      -webkit-transform: skewX(-25deg) translateX(100px);
-      -ms-transform: skewX(-25deg) translateX(100px);
-      transform: skewX(-25deg) translateX(100px);
-      opacity: 0;
+      -webkit-transform: skewX(0deg) translateX(0px);
+      -ms-transform: skewX(0deg) translateX(0px);
+      transform: skewX(0deg) translateX(0px);
+      opacity: 0.2;
       -webkit-transition: opacity .3s, -webkit-transform 1.2s;
       transition: opacity .3s, -webkit-transform 1.2s;
       -o-transition: transform 1.2s, opacity .3s;
