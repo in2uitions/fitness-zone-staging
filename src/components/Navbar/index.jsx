@@ -31,7 +31,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 1,
       "label": "ABOUT THE ZONE",
-      "to": 'about/about-dark'
+      "to": '/about/about-dark'
     },
     {
       "id": 2,
