@@ -58,7 +58,7 @@ const Homepage1 = ({ data = {}}) => {
         {/* <Services1 /> */}
         {/* <Numbers1 /> */}
         <Works1Slider />
-        <ArcContent/>
+        {/* <ArcContent/> */}
         <VideoWithTestimonials />
         {/* <SkillsCircle theme="dark" subBG /> */}
         {/* <Clients1 theme="dark" /> */}

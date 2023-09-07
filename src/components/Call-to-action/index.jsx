@@ -11,7 +11,7 @@ const CallToAction = ({ img, theme, subBG }) => {
     >
       <div className="container">
       <div className="absolute-component">
-  <img src="/bar.png" style={{ position: "relative",    width: "100px",
+  <img src="/bar.svg" style={{ position: "relative",    width: "100px",
     height: "100px"
  }} />
   <p>CONTACT US</p>
@@ -26,7 +26,7 @@ const CallToAction = ({ img, theme, subBG }) => {
 </div>
           </div>
           <div className="">
-          <img src="contactUs.png"/>
+          <img src="contact-yellowLogo.svg" style={{height:"75%"}}/>
           </div>
           <div className="">
             {/* <img src="contactUs.png"/> */}
