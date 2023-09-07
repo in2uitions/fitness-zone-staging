@@ -41,38 +41,38 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           "id": 3,
           "parentId": 2,
           "label": "Hamra",
-          "to": '/about/about-us'
+          "to": '#'
         },
         {
           "id": 4,
           "parentId": 2,
           "label": "Manara",
-          "to": '/about/admission'
+          "to": '#'
         },
         {
           "id": 5,
           "parentId": 2,
           "label": "Dbayeh",
-          "to": '/about/student-life'
+          "to": '#'
         },
         {
           "id": 6,
           "parentId": 2,
           "label": "Baabda",
-          "to": '/about/academics'
+          "to": '#'
         },
         {
           "id": 7,
           "parentId": 2,
           "label": "Achrafieh",
-          "to": '/about/academics'
+          "to": '#'
         },
       ]
     },
     {
       "id": 8,
       "label": "MEMBERSHIP",
-      "to": "about/about-dark"
+      "to": "#"
     },
     {
       "id": 9,
@@ -82,32 +82,32 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           "id": 10,
           "parentId": 8,
           "label": "classes",
-          "to": '/about/admission'
+          "to": '#'
         },
         {
           "id": 11,
           "parentId": 8,
           "label": "classes",
-          "to": '/about/student-life'
+          "to": '#'
         },
         {
           "id": 12,
           "parentId": 8,
           "label": "classes",
-          "to": '/about/academics'
+          "to": '#'
         }
       ]
     },
     {
       "id": 13,
       "label": "SERVICES",
-      "to": '/contact-us'
+      "to": '#'
 
     },
     {
       "id": 14,
-      "label": "Contact",
-      "to": '/contact-us'
+      "label": "CONTACT",
+      "to": '/contact/contact-dark/'
 
     }
   ];
@@ -221,12 +221,12 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
                     <a className="logo">
                         {theme ? (
                             theme === "themeL" ? (
-                                <img ref={lr} src="/img/FZ-logo.svg" alt="logo" />
+                                <img ref={lr} src="/newLogo.svg" alt="logo" />
                             ) : (
-                                <img ref={lr} src="/img/FZ-logo.svg" alt="logo" />
+                                <img ref={lr} src="/newLogo.svg" alt="logo" />
                             )
                         ) : (
-                            <img ref={lr} src="/img/FZ-logo.svg" alt="logo" />
+                            <img ref={lr} src="/newLogo.svg" alt="logo" />
                         )}
                     </a>
                 </Link>
