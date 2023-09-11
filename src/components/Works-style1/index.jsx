@@ -14,136 +14,64 @@ const WorksStyle1 = () => {
         <div className="row lg-space">
           <div className="col-lg-4 col-md-6">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Design"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/1.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 valign">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Branding"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/2.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Photography"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/3.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 valign">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Design"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/6.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Web Design"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/5.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 valign">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Photography"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/4.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Creative"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/7.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 valign">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Branding"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/8.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="item">
-              <Link href="/project-details2/project-details2-dark">
-                <a>
-                  <div
-                    className="img"
-                    data-tooltip-tit="Work image"
-                    data-tooltip-sub="Design"
-                  >
+              <Link href="#">
                     <img src="/img/portfolio/works/9.jpg" alt="" />
-                  </div>
-                </a>
               </Link>
             </div>
           </div>

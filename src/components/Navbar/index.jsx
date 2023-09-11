@@ -72,31 +72,32 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 8,
       "label": "MEMBERSHIP",
-      "to": "#"
+      "to": "/membership/membership"
     },
     {
       "id": 9,
       "label": "CLASSES",
-      "children": [
-        {
-          "id": 10,
-          "parentId": 8,
-          "label": "classes",
-          "to": '#'
-        },
-        {
-          "id": 11,
-          "parentId": 8,
-          "label": "classes",
-          "to": '#'
-        },
-        {
-          "id": 12,
-          "parentId": 8,
-          "label": "classes",
-          "to": '#'
-        }
-      ]
+      "to":"/classes/classes"
+      // "children": [
+      //   {
+      //     "id": 10,
+      //     "parentId": 8,
+      //     "label": "classes",
+      //     "to": '#'
+      //   },
+      //   {
+      //     "id": 11,
+      //     "parentId": 8,
+      //     "label": "classes",
+      //     "to": '#'
+      //   },
+      //   {
+      //     "id": 12,
+      //     "parentId": 8,
+      //     "label": "classes",
+      //     "to": '#'
+      //   }
+      // ]
     },
     {
       "id": 13,
@@ -211,6 +212,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
   }, []);
 
   return (
+    <>
     <nav
       ref={nr}
       className={`navbar navbar-expand-lg change ${theme === "themeL" ? "light" : ""
@@ -253,6 +255,37 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       </div>
       
     </nav>
+      <div style={{
+          position: "fixed",
+          right: "0",
+          top: "10rem",
+          background: "#EDC500",
+          fontWeight: "bold",
+          padding: "70px 8px 70px 8px",
+          color: "black",
+          zIndex: 10,
+          borderTopRightRadius: "50px",
+          borderBottomRightRadius: "50px",
+          display: "flex",
+          alignItems: "center",
+          writingMode: "vertical-rl",
+          textOrientation: "upright",
+          transform: "rotate(180deg)",
+      }}>
+          {'BOOK FREE TRIAL'.split('').map((char, index) => (
+              <span key={index} style={{
+                  writingMode: "vertical-rl",
+                  textOrientation: "upright",
+                  transform: "rotate(90deg)",
+                  display: "inline-block",
+                  padding: char === ' ' ? "5px 0" : "0px",
+                  letterSpacing: "-6px"
+              }}>
+                  {char}
+              </span>
+          ))}
+      </div>
+      </>
   );
 };
 export default Navbar;

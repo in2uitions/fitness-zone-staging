@@ -5,6 +5,7 @@ import Image from 'next/image'
 import React, { Component } from 'react';
 // import { gsap } from "gsap";
 import { useState, useRef } from 'react';
+import parse from "html-react-parser";
 import { image_url } from '../../global_vars';
 import fadeWhenScroll from '../common/fadeWhenScroll';
 import removeSlashFromPagination from '../common/removeSlashFromPagination';
@@ -37,23 +38,65 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
     }, []);
     return (
         <>
-                {data.layout_type == 'regular' || data.layout_type == null ?
-                    <header
-                        ref={sliderRef}
-                        className="slider slider-prlx fixed-slider text-center"
-                    >
-                        <div className="swiper-container parallax-slider">
-                            {!load ? (
-                                <div className="">
-                                    <img src={`${image_url}${data.image?.id}`} />
-                                </div>
-                            ) : null}
+            {data.layout_type == 'regular' || data.layout_type == null ?
+                <header
+                    ref={sliderRef}
+                    className="slider slider-prlx fixed-slider text-center"
+                >
+                    <div className="swiper-container parallax-slider">
+                        {!load ? (
+                            <div className="">
+                                <img src={`${image_url}${data.image?.id}`} />
+                            </div>
+                        ) : null}
 
+                    </div>
+                    <div className="" style={{ position: "absolute", top: "20rem", left: "17rem" }}>
+                        <div style={{ width: "60%" }}>
+                            {data.image_title ? <h1 className="gradient-text">{data.image_title}</h1> : null}
                         </div>
-                    </header>
+                    </div>
+                    <div style={{ position: "absolute", right: "5rem", top: "22rem" }}>
+                        <div className=''>
+                            {data.image_description ? <p style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</p> : null}
+                        </div>
+                    </div>
+                </header>
+                : null}
+                {/* {data.button_title ?
+                <div style={{
+                    position: "fixed",
+                    right: "0",
+                    top: "10rem",
+                    background: "#EDC500",
+                    fontWeight: "bold",
+                    padding: "70px 8px 70px 8px",
+                    color: "black",
+                    zIndex: 10,
+                    borderTopRightRadius: "50px",
+                    borderBottomRightRadius: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    writingMode: "vertical-rl",
+                    textOrientation: "upright",
+                    transform: "rotate(180deg)",
+                }}>
+                    {data.button_title.split('').map((char, index) => (
+                        <span key={index} style={{
+                            writingMode: "vertical-rl",
+                            textOrientation: "upright",
+                            transform: "rotate(90deg)",
+                            display: "inline-block",
+                            padding: char === ' ' ? "5px 0" : "0px",
+                            letterSpacing: "-6px"
+                        }}>
+                            {char}
+                        </span>
+                    ))}
+                </div>
+                : null} */}
 
-                    : null}
-                {/* {data.layout_type == 'video' || data.layout_type == null ?
+            {/* {data.layout_type == 'video' || data.layout_type == null ?
                     <div className="">
                         <div id="" className="" >
                             <video loop autoPlay muted playsInline className="video w-100" id="myVideo">
@@ -92,6 +135,6 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                         </button>
                     </div> : null}
                 </div> */}
-</>
+        </>
     )
 }

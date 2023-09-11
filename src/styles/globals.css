@@ -105,9 +105,17 @@ section.team.section-padding {
   overflow: hidden;
 }
 .swiper-pagination-bullet{
-  background-color: white !important;
-  opacity: 0.7 
+  background: white !important;
+  opacity: 1 
   !important;
+  width: 10px !important;
+height: 10px !important;
+}
+.swiper-pagination-bullet-active{
+border: 1px solid white !important;
+background-color: transparent !important;
+width: 10px !important;
+height: 10px !important;
 }
 .swiper-wrapper{
   padding-bottom: 2rem !important;
@@ -742,4 +750,14 @@ section.team.section-padding {
 
 ul.metismenu-container:first-child {
   display: flex;
+}
+
+.gradient-text {
+  font-size: 72px;
+  font-weight: bold;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  background-clip: text;
+  color: transparent;
+  background-origin: border-box;
+  text-align: left;
 }

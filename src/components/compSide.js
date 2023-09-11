@@ -9,21 +9,22 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
 
     return (
        
-                    <div className="about section-padding" style={{ backgroundImage: 'url("MainSite.png")', backgroundRepeat: "no-repeat" }}>
+                    <div className="about section-padding" style={{ backgroundImage: 'url("MainSiteImg.png")', backgroundRepeat: "no-repeat" }}>
                 {data.image_position == "right" ?<div className="container" >
                     <div className="row">
-                        <div className="col-lg-5">
+                        <div className="col-lg-5" style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                             <div className="content">
                                 <Split>
                                     <h3
                                         className="words chars splitting main-title wow"
+                                        style={{width:"63%", fontSize:"60px"}}
                                         data-splitting
                                     >
                                         {data.title}
                                     </h3>
                                 </Split>
                                 <Split>
-                                    <p className="words chars splitting wow txt" data-splitting>
+                                    <p className="words chars splitting wow txt" data-splitting style={{color:"white"}}>
                                     {parse(`${data.brief}`)}
                                     </p>
                                 </Split>

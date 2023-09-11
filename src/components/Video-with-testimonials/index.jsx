@@ -23,35 +23,33 @@ const VideoWithTestimonials = () => {
   return (
     <div style={{ position: "relative" }}>
       <section className="block-sec">
-        <div>
-          <div
-            style={{
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <img src="/circle.svg" style={{ height: "30%", width: "30%" }} />
-            <p style={{ position: "absolute", fontSize: "36px", top: "4rem" , letterSpacing:"10px", color:"white" }}>
-              WE ARE <bold style={{fontWeight:"bold"}}>OUR PEOPLE</bold>
-            </p>
-          </div>
+        <div
+          style={{
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: -1,
+            marginBottom: "-10rem"
+          }}
+        >
+          <img src="/circle.svg" style={{ height: "20%", width: "20%" }} />
+          <p style={{ position: "absolute", fontSize: "36px", top: "4rem", letterSpacing: "10px", color: "white" }}>
+            WE ARE <bold style={{ fontWeight: "bold" }}>OUR PEOPLE</bold>
+          </p>
         </div>
       </section>
       <section
         className="block-sec"
         style={{
-      backgroundImage: 'url("people.png")',
-      width: "100%",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      marginTop: "-17rem", 
-      zIndex:"10",
-      position:"relative"
-    }}
+          backgroundImage: 'url("people.png")',
+          width: "100%",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          zIndex: "10",
+        }}
       >
         <div
         // className="background bg-img section-padding pb-0"
@@ -67,7 +65,7 @@ const VideoWithTestimonials = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    marginTop:"4rem"
+                    marginTop: "4rem"
                   }}
                 >
                   <div className="vid-icon">

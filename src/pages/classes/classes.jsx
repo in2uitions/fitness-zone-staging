@@ -70,7 +70,7 @@ const WorksDark = () => {
       </header>
       <div ref={MainContent} className="main-content">
         <WorksStyle1 />
-        <SmallFooter />
+        {/* <SmallFooter /> */}
       </div>
     </DarkTheme>
   );
