@@ -891,7 +891,8 @@ a, span {
 /* ====================== [ End Text Animation & Images ] ====================== */
 /* ====================== [ Start Cursor Style ] ====================== */
 body {
-  cursor: none; }
+  cursor: none; 
+}
 
 .mouse-cursor {
   position: fixed;

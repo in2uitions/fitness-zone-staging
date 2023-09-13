@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Cursor />
       <LoadingScreen />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Component {...pageProps} />
 
       <Script

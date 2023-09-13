@@ -761,3 +761,11 @@ ul.metismenu-container:first-child {
   background-origin: border-box;
   text-align: left;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
