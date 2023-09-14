@@ -109,20 +109,10 @@ const Homepage1 = ({ data = {} }) => {
           {data.header ? (
             <Header data={data.header} sliderRef={fixedSlider} />
           ) : null}
-          {/* <IntroWithSlider1 sliderRef={fixedSlider} /> */}
           <div ref={MainContent} className="main-content">
-            {/* <Sections data={data} /> */}
-            {/* <AboutUs1 /> */}
-            {/* <Services1 /> */}
-            {/* <Numbers1 /> */}
             <Works1Slider />
-            {/* <ArcContent/> */}
             <VideoWithTestimonials />
-            {/* <SkillsCircle theme="dark" subBG /> */}
-            {/* <Clients1 theme="dark" /> */}
-            {/* <BlogsTwoColumnSlider /> */}
             <CallToAction subBG />
-            {/* <Footer /> */}
           </div>
         </DarkTheme>
       ) : null}
@@ -132,9 +122,12 @@ const Homepage1 = ({ data = {} }) => {
           {data.header ? (
             <Header data={data.header} sliderRef={fixedSlider} />
           ) : null}
-          {/* <IntroWithSlider1 sliderRef={fixedSlider} /> */}
           <div ref={MainContent} className="main-content">
             <AboutUs1 />
+            <Services1 />
+            <Numbers1 />
+            <VideoWithTestimonials />
+            <CallToAction subBG />
           </div>
         </DarkTheme>
       ) : null}

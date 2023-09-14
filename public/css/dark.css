@@ -4650,7 +4650,7 @@ header.simpl {
     position: absolute;
     bottom: 0;
     left: 0;
-    opacity: .05; }
+    opacity: 1; }
   .number-sec .item.no-bord:after {
     display: none; }
   .number-sec .item .icon {

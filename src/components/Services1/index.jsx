@@ -7,24 +7,20 @@ const Services1 = () => {
     <section className="services">
       <div className="container">
         <div className="sec-head custom-font text-center">
-          {/* <h6 className="wow fadeIn" data-wow-delay=".5s">
-            Best Features
-          </h6> */}
           <Split>
             <h3 className="wow words chars splitting" data-splitting>
-              CLUBS
+            FITNESS MASTERS.
             </h3>
           </Split>
           <h6 className="wow fadeIn" data-wow-delay=".5s">
-            ZONES AROUND THE WORLD
+          TRAIN WITH THE
           </h6>
-          <span className="tbg">Services</span>
         </div>
         <div className="row">
           <div
             className="col-lg-3 col-md-6 item-box bg-img wow fadeInLeft"
             data-wow-delay=".3s"
-            style={{ backgroundImage: "url(/img/1.jpg)" }}
+            style={{ backgroundImage: "url(/GRIT.jpeg)" }}
           >
             <h4 className="custom-font">
               Best Of <br /> Our Features
@@ -38,6 +34,12 @@ const Services1 = () => {
           <div
             className="col-lg-3 col-md-6 item-box wow fadeInLeft"
             data-wow-delay=".5s"
+            style={{
+              backgroundImage: "url(/elderly.jpeg)",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "100%",
+            }}
           >
             <span className="icon pe-7s-paint-bucket"></span>
             <h6>Graphic Design</h6>
@@ -49,6 +51,12 @@ const Services1 = () => {
           <div
             className="col-lg-3 col-md-6 item-box wow fadeInLeft"
             data-wow-delay=".7s"
+            style={{
+              backgroundImage: "url(/Body-comba.jpeg)",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "100%",
+            }}
           >
             <span className="icon pe-7s-phone"></span>
             <h6>
@@ -59,6 +67,12 @@ const Services1 = () => {
           <div
             className="col-lg-3 col-md-6 item-box wow fadeInLeft"
             data-wow-delay=".9s"
+            style={{
+              backgroundImage: "url(/circuit.jpeg)",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "100%",
+            }}
           >
             <span className="icon pe-7s-display1"></span>
             <h6>

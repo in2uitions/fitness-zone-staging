@@ -1,6 +1,6 @@
 import React from "react";
 import Split from "../Split";
-import membership from "../../data/sections/membership.json";
+import membership from "../../data/sections/membershipdata.json";
 
 const MembershipServices = ({ withBG, withPadding, halfBG, withOutTitle }) => {
     return (
