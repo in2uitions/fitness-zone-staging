@@ -38,7 +38,7 @@ const Homepage1 = ({ data = {} }) => {
       try {
         const res = await fetch(`https://ipapi.co/json/`);
         const data = await res.json();
-        if (data.country_code === "LB") {
+        if (data.country_code === "AE") {
           setShowUAE(true);
           setShowPopup(true);
           setShowLeb(false);
