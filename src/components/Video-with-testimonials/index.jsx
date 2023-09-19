@@ -4,10 +4,12 @@ import Split from "../Split";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import parse from "html-react-parser";
+import { image_url } from "../../../global_vars";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
 
-const VideoWithTestimonials = () => {
+const VideoWithTestimonials = ({data={}}) => {
   const [isOpen, setOpen] = React.useState(false);
   React.useEffect(() => {
     console.clear();
@@ -37,14 +39,14 @@ const VideoWithTestimonials = () => {
         >
           <img src="/circle.svg" style={{ height: "20%", width: "20%" }} />
           <p style={{ position: "absolute", fontSize: "36px", top: "4rem", letterSpacing: "10px", color: "white" }}>
-            WE ARE <bold style={{ fontWeight: "bold" }}>OUR PEOPLE</bold>
+            {data?.global_title[0]?.first} <bold style={{ fontWeight: "bold" }}>{data?.global_title[0]?.second}</bold>
           </p>
         </div>
       </section>
       <section
         className="block-sec"
         style={{
-          backgroundImage: 'url("people.png")',
+          backgroundImage: `url(${image_url}${data?.image?.id})`,
           width: "100%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -100,7 +102,7 @@ const VideoWithTestimonials = () => {
                   <div className="cont">
                     <Split>
                       <h3 className="wow" data-splitting>
-                        Change is ON
+                      {data.image_title}
                       </h3>
                     </Split>
                   </div>
@@ -121,31 +123,41 @@ const VideoWithTestimonials = () => {
                     className="slic-item wow fadeInUp"
                     data-wow-delay=".5s"
                   >
+                      {data.sliders.map((item, i) => (
                     <div className="item">
+                
+                    <>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+                      {parse(`${item.sliders_id?.description}`)}
+                        {/* Lorem ipsum dolor sit amet, consectetuer adipiscing
+                        elit, sed diam nonummy nibh euismod tincidunt ut laoreet */}
                       </p>
                       <div className="info">
                         <div className="img">
                           <div className="img-box">
-                            <img src="/img/clients/1.jpg" alt="" />
+                            <img src={`${image_url}${item.sliders_id?.icon?.id}`} alt="" />
                           </div>
                         </div>
                         <div className="cont">
                           <div className="author">
                             <h6 className="author-name custom-font">
-                              Sir William Doe
+                              {/* Sir William Doe */}
+                              {item.sliders_id?.title}
+                              
                             </h6>
                             <span className="author-details">
-                              CEO of The Merch , Founder, <br></br> Researcher,
-                              Leader.
+                              {/* CEO of The Merch , Founder, <br></br> Researcher,
+                              Leader. */}
+                              {parse(`${item.sliders_id?.side_description}`)}
                             </span>
                           </div>
                         </div>
                       </div>
+                      </>
+                  
                     </div>
-                    <div className="item">
+                    ))}
+                    {/* <div className="item">
                       <p>
                         Nulla metus metus ullamcorper vel tincidunt sed euismod
                         nibh volutpat velit class aptent taciti sociosqu ad
@@ -192,7 +204,7 @@ const VideoWithTestimonials = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </Slider>
                 </div>
               </div>

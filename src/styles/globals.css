@@ -1,3 +1,4 @@
+
 .blog-crv .item {
   display: flex;
   align-items: center;
@@ -106,8 +107,7 @@ section.team.section-padding {
 }
 .swiper-pagination-bullet{
   background: white !important;
-  opacity: 1 
-  !important;
+  opacity: 1 !important;
   width: 10px !important;
 height: 10px !important;
 }
@@ -768,4 +768,39 @@ ul.metismenu-container:first-child {
   to {
     opacity: 1;
   }
+}
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 20px; */
+}
+
+.custom-dot {
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  background: white !important;
+width: 10px !important;
+height: 10px !important;
+}
+
+.custom-dot.active {
+  border: 1px solid white !important;
+  background-color: transparent !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+.slick-slide img{
+  width: 70px !important;
+  height: 70px !important;
+}
+.aboutUs-bg{
+width: 100vw;
+height: 86vh;
+background-size: cover;
+background-position: top;
+-o-object-fit: cover;
+object-fit: cover;
+background-repeat: no-repeat;
+position: relative;
 }

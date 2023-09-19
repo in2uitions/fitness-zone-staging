@@ -1120,6 +1120,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 8px;
     margin-bottom: 5px; }
+    .subtitle p {
+      color: #e8dd3d;
+      font-weight: 300;
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      margin-bottom: 5px; }
   .sec-head h3 {
     font-size: 80px;
     font-weight: 700;

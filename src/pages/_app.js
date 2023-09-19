@@ -5,6 +5,8 @@ import Cursor from "../components/Cursor";
 import ScrollToTop from "../components/Scroll-to-top";
 import LoadingScreen from "../components/Loading-Screen";
 import "../styles/globals.css";
+import dynamic from "next/dynamic";
+import { handleApi } from "../../api/server";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,11 +16,11 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Cursor />
-      <LoadingScreen />
+      {/* <LoadingScreen /> */}
       {/* <ScrollToTop /> */}
       <Component {...pageProps} />
 
-      <Script
+      {/* <Script
         strategy="beforeInteractive"
         id="wow"
         src="/js/wow.min.js"
@@ -34,10 +36,22 @@ function MyApp({ Component, pageProps }) {
         id="isotope"
         src="/js/isotope.pkgd.min.js"
       ></Script>
-      <Script strategy="lazyOnload" id="initWow" src="/js/initWow.js"></Script>
+      <Script strategy="lazyOnload" id="initWow" src="/js/initWow.js"></Script> */}
     </>
   );
 }
 
-export default MyApp;
+// export default MyApp;
 
+export default dynamic(() => Promise.resolve(MyApp), {
+  ssr: false,
+});
+
+MyApp.getInitialProps = async (ctx) => {
+  const about = (await handleApi({ url: `pages`, fields: ['*'], load: false }))
+  let res = await handleApi({ url: `homepage`, fields: ['*'], load: false })
+  const data = (res[0])
+
+
+  return { data, about, industries }
+}

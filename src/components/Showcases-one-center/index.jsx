@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ShowcassesFullScreenData from "../../data/showcases-full-screen-slider.json";
 import SwiperCore, { Navigation, Parallax, Mousewheel } from "swiper";
-
+import { image_url } from "../../../global_vars";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/mousewheel";
@@ -11,7 +11,7 @@ import removeSlashFromPagination from "../../common/removeSlashFromPagination";
 
 SwiperCore.use([Navigation, Parallax, Mousewheel]);
 
-const ShowcasesOneCenter = () => {
+const ShowcasesOneCenter = ({ data = {} }) => {
   const [load, setLoad] = React.useState(true);
   React.useEffect(() => {
     setTimeout(() => {
@@ -23,7 +23,7 @@ const ShowcasesOneCenter = () => {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
   return (
-    <header className="slider showcase-carus" style={{marginTop:'2rem'}}>
+    <header className="slider showcase-carus" style={{ marginTop: '2rem' }}>
       <div id="content-carousel-container-unq-1" className="swiper-container">
         {!load ? (
           <Swiper
@@ -79,22 +79,22 @@ const ShowcasesOneCenter = () => {
             className="swiper-wrapper"
             slidesPerView={4}
           >
-            {ShowcassesFullScreenData.map((slide) => (
+            {data.service.map((slide) => (
               <SwiperSlide key={slide.id} className="swiper-slide">
                 <div
                   className="bg-img valign"
                   style={{
-                    backgroundImage: `url(${slide.image})`,
+                    "backgroundImage": `url("${image_url}${slide.services_content_id.image?.id}")`
                   }}
                   data-overlay-dark="1"
                 >
                   <div className="caption ontop">
                     <div className="o-hidden">
                       <h1>
-                        <Link href="/project-details2/project-details2-dark">
+                        <Link href="#">
                           <a>
-                            <div className="stroke">{slide.title.first}</div>
-                            <span>{slide.title.second}</span>
+                            <div className="stroke">{slide.services_content_id.title[0].first}</div>
+                            <span>{slide.services_content_id.title[0].second}</span>
                           </a>
                         </Link>
                       </h1>
@@ -103,10 +103,10 @@ const ShowcasesOneCenter = () => {
                   <div className="copy-cap valign">
                     <div className="cap">
                       <h1>
-                        <Link href="/project-details2/project-details2-dark">
+                        <Link href="#">
                           <a>
-                            <div className="stroke">{slide.title.first}</div>
-                            <span>{slide.title.second}</span>
+                            <div className="stroke">{slide.services_content_id.title[0].first}</div>
+                            <span>{slide.services_content_id.title[0].second}</span>
                           </a>
                         </Link>
                       </h1>

@@ -51,7 +51,7 @@ const WorksDark = () => {
         ref={fixedHeader}
         className="works-header fixed-slider hfixd valign"
       >
-        <div className="container">
+        {/* <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-9 col-md-11 static">
               <div className="capt text-center mt-50">
@@ -66,7 +66,7 @@ const WorksDark = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </header>
       <div ref={MainContent} className="main-content">
         <WorksStyle1 />

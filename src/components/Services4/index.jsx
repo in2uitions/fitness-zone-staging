@@ -1,8 +1,9 @@
 import React from "react";
 import Split from "../Split";
+import parse from "html-react-parser";
 import services4Data from "../../data/sections/services4.json";
 
-const Services4 = ({ withBG, withPadding, halfBG, withOutTitle }) => {
+const Services4 = ({ withBG, withPadding, halfBG, withOutTitle, data={}}) => {
   return (
     <section
       className={`services ${withPadding ? "section-padding" : ""} ${
@@ -24,12 +25,13 @@ const Services4 = ({ withBG, withPadding, halfBG, withOutTitle }) => {
           </div>
         )}
         <div className="row">
-          {services4Data.map((item, index) => (
-            <div className={`col-lg-4`} key={item.id}>
-              <div className={`item wow fadeInUp ${index === 1 ? "bg-blue" : ""}`} data-wow-delay={item.id === 1 ? ".5s" : item.id === 2 ? ".3s" : ".8s"}>
-                <span className={`icon ${item.icon}`}></span>
-                <h6>{item.title}</h6>
-                <p>{item.content}</p>
+        {
+            data.card?.map((service, index) => (
+            <div className={`col-lg-4`} key={service.card_components_id.id}>
+              <div className={`item wow fadeInUp ${index === 1 ? "bg-blue" : ""}`} data-wow-delay={service.card_components_id.id === 1 ? ".5s" : service.card_components_id.id === 2 ? ".3s" : ".8s"}>
+                {/* <span className={`icon ${item.icon}`}></span> */}
+                <h6>{ service.card_components_id.title }</h6>
+                  <p>{parse(`${service.card_components_id.description}`)}</p>
               </div>
             </div>
           ))}

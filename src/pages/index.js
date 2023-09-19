@@ -110,8 +110,9 @@ const Homepage1 = ({ data = {} }) => {
             <Header data={data.header} sliderRef={fixedSlider} />
           ) : null}
           <div ref={MainContent} className="main-content">
-            <Works1Slider />
-            <VideoWithTestimonials />
+          <Sections data={data}/>
+            {/* <Works1Slider /> */}
+            {/* <VideoWithTestimonials /> */}
             <CallToAction subBG />
           </div>
         </DarkTheme>
@@ -233,16 +234,7 @@ const Homepage1 = ({ data = {} }) => {
     </>
   );
 };
-// export async function getStaticProps() {
-//   let res = await handleApi({ url: "homepage" });
-//   const data = res[0];
-//   return {
-//     props: {
-//       data,
-//     },
-//     revalidate: 60,
-//   };
-// }
+
 export async function getStaticProps() {
   const res = await fetch(`https://ipapi.co/json/`);
   const data = await res.json();
@@ -268,33 +260,3 @@ export async function getStaticProps() {
 }
 
 export default Homepage1;
-// import Sections from '@assets/sections'
-// import Header from "../components/page-headers";
-// import { handleApi } from "../../api/server";
-// import Sections from "../../assets/section";
-
-// function HomePage({ data = {} }) {
-
-//     return (
-//         <>
-//             {/* <HeaderContent /> */}
-//             <main>
-//                 {data.header ? <Header data={data.header} /> : null}
-//                 <Sections data={data} />
-//             </main>
-//         </>
-//     );
-// }
-
-// export async function getStaticProps() {
-//     let res = await handleApi({ url: "homepage" });
-//     const data = res[0];
-//     return {
-//         props: {
-//             data,
-//         },
-//         revalidate: 60,
-//     };
-// }
-
-// export default HomePage;

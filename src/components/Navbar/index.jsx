@@ -161,7 +161,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     });
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // console.log(ct);
+    console.log(ct);
     updateContent(ct);
 
     return () => {
@@ -170,7 +170,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
 
 
 
-  }, [data]);
+  }, []);
 
   useEffect(() => {
 

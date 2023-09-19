@@ -3,11 +3,13 @@ import works1SliderData from "../../data/sections/works1Slider.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 import Link from "next/link";
+import parse from "html-react-parser";
+import { image_url } from "../../../global_vars";
 import "swiper/css";
 import "swiper/css/pagination";
 SwiperCore.use([Autoplay, Pagination]);
 
-const Works1Slider = () => {
+const Works1Slider = ({ data = {} }) => {
   return (
     <section
       className="work-carousel section-padding pt-0 metro position-re"
@@ -19,10 +21,10 @@ const Works1Slider = () => {
       <div className="container ontop">
         <div className="sec-head custom-font text-center">
           <h3 className="wow words chars splitting" data-splitting>
-            CLUBS
+            {data.title}
           </h3>
-          <h6 className="wow fadeIn" data-wow-delay=".5s">
-            ZONES AROUND THE WORLD
+          <h6 className="wow fadeIn subtitle" data-wow-delay=".5s">
+            {parse(`${data.subtitle}`)}
           </h6>
           {/* <span className="tbg">Services</span> */}
         </div>
@@ -65,8 +67,8 @@ const Works1Slider = () => {
                   },
                 }}
               >
-                {works1SliderData.map((slide) => (
-                  <SwiperSlide key={slide.id} className="swiper-slide">
+               {data.carousel.map((item, i) => (
+                  <SwiperSlide key={item.id} className="swiper-slide">
                     <div
                       className="content wow noraidus fadeInUp"
                       data-wow-delay=".3s"
@@ -74,7 +76,7 @@ const Works1Slider = () => {
                       <div
                         className="item-img bg-img wow "
                         style={{
-                          backgroundImage: `url(${slide.image})`,
+                          backgroundImage: `url(${image_url}${item.comp_carousel_items_id?.image?.id})`,
                           position: 'relative',
                         }}
                       >
@@ -92,10 +94,10 @@ const Works1Slider = () => {
                       </div>
 
                       <div className="cont" style={{ position: "absolute", top: "0px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100%", width: "100%" }}>
-                          <p style={{ color: "white", fontSize: "21px", fontWeight: "bold" }}>{slide.title}</p>
-                          <p>
+                          <p style={{ color: "white", fontSize: "21px", fontWeight: "bold" }}>{item.comp_carousel_items_id?.title}</p>
+                          {/* <p>
                             {slide.secTex}
-                          </p>
+                          </p> */}
                       </div>
                     </div>
                   </SwiperSlide>

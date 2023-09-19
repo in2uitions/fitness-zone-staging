@@ -147,7 +147,7 @@ const NavbarUAE = ({ lr, nr, theme, data = {} }) => {
 
 
 
-    }, [data]);
+    }, []);
 
     useEffect(() => {
 
