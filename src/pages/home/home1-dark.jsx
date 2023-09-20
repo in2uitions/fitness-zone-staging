@@ -48,7 +48,7 @@ const Homepage1 = () => {
       <Navbar nr={navbarRef} lr={logoRef} />
       <IntroWithSlider1 sliderRef={fixedSlider} />
       <div ref={MainContent} className="main-content">
-        <AboutUs1 />
+        {/* <AboutUs1 />
         <Services1 />
         <Numbers1 />
         <Works1Slider />
@@ -56,7 +56,7 @@ const Homepage1 = () => {
         <SkillsCircle theme="dark" subBG />
         <Clients1 theme="dark" />
         <BlogsTwoColumnSlider />
-        <CallToAction subBG />
+        <CallToAction subBG /> */}
         <Footer />
       </div>
     </DarkTheme>

@@ -37,7 +37,7 @@ const Homepage2 = () => {
 
   return (
     <LightTheme>
-      <Navbar nr={navbarRef} lr={logoRef} />
+      {/* <Navbar nr={navbarRef} lr={logoRef} />
       <IntroWithSlider2 />
       <BlcSec />
       <Services2 />
@@ -45,7 +45,7 @@ const Homepage2 = () => {
       <SkillsCircle theme="light" subBG />
       <PortfolioCustomColumn column={3} filterPosition="center" />
       <Clients1 theme="light" subBG />
-      <CallToAction theme="light" img="/img/pattern-light.png" />
+      <CallToAction theme="light" img="/img/pattern-light.png" /> */}
       <Footer />
     </LightTheme>
   );

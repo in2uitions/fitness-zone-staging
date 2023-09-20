@@ -33,7 +33,7 @@ const Homepage2 = () => {
 
   return (
     <DarkTheme>
-      <Navbar nr={navbarRef} lr={logoRef} />
+      {/* <Navbar nr={navbarRef} lr={logoRef} />
       <IntroWithSlider2 />
       <BlcSec />
       <Services2 />
@@ -41,7 +41,7 @@ const Homepage2 = () => {
       <SkillsCircle theme="dark" subBG />
       <PortfolioCustomColumn column={3} filterPosition="center" />
       <Clients1 theme="dark" subBG />
-      <CallToAction />
+      <CallToAction /> */}
       <Footer />
     </DarkTheme>
   );
