@@ -798,9 +798,49 @@ height: 10px !important;
 width: 100vw;
 height: 86vh;
 background-size: cover;
-background-position: top;
+background-position: center;
 -o-object-fit: cover;
 object-fit: cover;
 background-repeat: no-repeat;
 position: relative;
+}
+.image-text {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.top-left {
+  left: -2rem;
+  text-align: left;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 32px;
+  bottom: -2rem;
+}
+
+.top-center {
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 32px;
+  bottom: -2rem;
+}
+
+.top-right {
+  right: -2rem;
+  text-align: right;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 32px;
+  bottom: -2rem;
 }

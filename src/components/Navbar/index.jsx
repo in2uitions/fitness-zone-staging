@@ -41,31 +41,31 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           "id": 3,
           "parentId": 2,
           "label": "Hamra",
-          "to": '#'
+          "to": '/hamra/hamra-homepage'
         },
         {
           "id": 4,
           "parentId": 2,
           "label": "Manara",
-          "to": '#'
+          "to": '/manara/manara-homepage'
         },
         {
           "id": 5,
           "parentId": 2,
           "label": "Dbayeh",
-          "to": '#'
+          "to": '/dbayeh/dbayeh-homepage'
         },
         {
           "id": 6,
           "parentId": 2,
           "label": "Baabda",
-          "to": '#'
+          "to": '/baabda/baabda-homepage'
         },
         {
           "id": 7,
           "parentId": 2,
           "label": "Achrafieh",
-          "to": '#'
+          "to": '/achrafieh/achrafieh-homepage'
         },
       ]
     },

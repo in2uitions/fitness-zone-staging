@@ -3,6 +3,7 @@ import Works1Slider from '../src/components/Works1-slider';
 import VideoWithTestimonials from '../src/components/Video-with-testimonials';
 import Services4 from '../src/components/Services4';
 import ShowcasesOneCenter from '../src/components/Showcases-one-center';
+import WorksStyle1 from '../src/components/Works-style1';
 
 export default function Sections({ data = {} }) {
     return (
@@ -23,6 +24,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "services") {
                     return<ShowcasesOneCenter withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "classes_section") {
+                    return<WorksStyle1 withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
                 }
             })}
         </div>
