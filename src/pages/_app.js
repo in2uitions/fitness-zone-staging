@@ -43,6 +43,7 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 
+
 export async function getInitialProps(ctx) {
   const about = await handleApi({ url: `pages`, fields: ['*'], load: false });
   const res = await handleApi({ url: `homepage`, fields: ['*'], load: false });
