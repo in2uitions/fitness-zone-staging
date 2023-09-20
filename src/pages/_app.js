@@ -16,11 +16,11 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Cursor />
-      {/* <LoadingScreen /> */}
-      {/* <ScrollToTop /> */}
+      <LoadingScreen />
+      <ScrollToTop />
       <Component {...pageProps} />
 
-      {/* <Script
+      <Script
         strategy="beforeInteractive"
         id="wow"
         src="/js/wow.min.js"
@@ -36,22 +36,17 @@ function MyApp({ Component, pageProps }) {
         id="isotope"
         src="/js/isotope.pkgd.min.js"
       ></Script>
-      <Script strategy="lazyOnload" id="initWow" src="/js/initWow.js"></Script> */}
+      <Script strategy="lazyOnload" id="initWow" src="/js/initWow.js"></Script>
     </>
   );
 }
 
-// export default MyApp;
+export default MyApp;
 
-export default dynamic(() => Promise.resolve(MyApp), {
-  ssr: false,
-});
+export async function getInitialProps(ctx) {
+  const about = await handleApi({ url: `pages`, fields: ['*'], load: false });
+  const res = await handleApi({ url: `homepage`, fields: ['*'], load: false });
+  const data = res[0];
 
-MyApp.getInitialProps = async (ctx) => {
-  const about = (await handleApi({ url: `pages`, fields: ['*'], load: false }))
-  let res = await handleApi({ url: `homepage`, fields: ['*'], load: false })
-  const data = (res[0])
-
-
-  return { data, about, industries }
+  return { data, about };
 }
