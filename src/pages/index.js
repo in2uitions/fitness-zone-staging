@@ -20,6 +20,7 @@ import { handleApi } from "../../api/server";
 import Sections from "../../assets/section";
 import Popup from "reactjs-popup";
 import LoadingScreen from "../components/Loading-Screen";
+import { useRouter } from "next/router";
 
 const Homepage1 = ({ data = {} }) => {
   const fixedSlider = React.useRef(null);
@@ -240,22 +241,27 @@ export async function getStaticProps() {
   const data = await res.json();
   const countryCode = data.country_code;
 
-  let resData;
+  let redirectDestination;
   if (countryCode === "LB") {
-    resData = await handleApi({ url: "homepage" });
+    redirectDestination = 'https://ae.fitnesszone.me/';
   } else if (countryCode === "AE") {
-    resData = await handleApi({ url: "uaehomepage" });
+    const resData = await handleApi({ url: "uaehomepage" });
+    const responseData = resData[0];
+    return {
+      props: {
+        data: responseData,
+      },
+      revalidate: 60,
+    };
   } else {
-    resData = await handleApi({ url: "homepage" });
+    redirectDestination = 'https://ae.fitnesszone.me/';
   }
 
-  const responseData = resData[0];
-
   return {
-    props: {
-      data: responseData,
-    },
-    revalidate: 60,
+    redirect: {
+      destination: redirectDestination,
+      permanent: false,
+    }
   };
 }
 
