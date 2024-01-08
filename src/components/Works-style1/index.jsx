@@ -14,9 +14,13 @@ const WorksStyle1 = ({data={}}) => {
   }, []);
 
   return (
-    <section className="works section-padding pb-70">
+    <section className="works pb-70">
       <h2 style={{ display: 'none' }}> &nbsp; </h2>
       <div className="container">
+      <div style={{display:"flex", justifyContent:"center", alignItems:"center", gap:"5px", marginBottom:"5rem"}}>
+                    {data.branch_name? <h1 style={{fontWeight:"bold"}}>{data.branch_name}</h1>:null}
+                    {data.title? <h1 style={{fontWeight:"200"}}>{data.title}</h1>:null}
+                </div>
         <div className="row lg-space">
           {data.class.map((item, index) => (
             <div key={item.id} className={`col-lg-4 col-md-6 ${index % 2 !== 0 ? 'valign' : ''}`}>
@@ -24,10 +28,10 @@ const WorksStyle1 = ({data={}}) => {
                 <Link href="#">
                   <img src={`${image_url}${item.classes_content_id.image?.id}`} alt="" />
                 </Link>
-                <div className="image-text">
-                  {index % 3 === 0 && <div className="text top-left">{item.classes_content_id.title[0]?.first}<br></br>{item.classes_content_id.title[0]?.second}</div>}
-                  {index % 3 === 1 && <div className="text top-center">{item.classes_content_id.title[0]?.first}<br></br>{item.classes_content_id.title[0]?.second}</div>}
-                  {index % 3 === 2 && <div className="text top-right">{item.classes_content_id.title[0]?.first}<br></br>{item.classes_content_id.title[0]?.second}</div>}
+                <div className="image-text" style={{display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center", marginTop:"1rem"}}>
+                  {index % 3 === 0 && <div style={{fontWeight:"bold"}}>{item.classes_content_id.title[0]?.first}<br></br><span style={{fontWeight:"normal", color:"#1990df"}}>{item.classes_content_id.title[0]?.second}</span></div>}
+                  {index % 3 === 1 && <div style={{fontWeight:"bold"}}>{item.classes_content_id.title[0]?.first}<br></br><span style={{fontWeight:"normal", color:"#1990df"}}>{item.classes_content_id.title[0]?.second}</span></div>}
+                  {index % 3 === 2 && <div style={{fontWeight:"bold"}}>{item.classes_content_id.title[0]?.first}<br></br><span style={{fontWeight:"normal", color:"#1990df"}}>{item.classes_content_id.title[0]?.second}</span></div>}
                 </div>
               </div>
             </div>

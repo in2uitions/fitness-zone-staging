@@ -4,6 +4,9 @@ import VideoWithTestimonials from '../src/components/Video-with-testimonials';
 import Services4 from '../src/components/Services4';
 import ShowcasesOneCenter from '../src/components/Showcases-one-center';
 import WorksStyle1 from '../src/components/Works-style1';
+import BranchClasses from '../src/components/Branch-classes';
+import BranchPersonalTrainers from '../src/components/Personal-trainers';
+import Facilities from '../src/components/Facilities';
 
 export default function Sections({ data = {} }) {
     return (
@@ -27,6 +30,15 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "classes_section") {
                     return<WorksStyle1 withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "branch_classes") {
+                    return<BranchClasses withPadding data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "branch_personal_trainer") {
+                    return<BranchPersonalTrainers withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "training_sessions") {
+                    return<Facilities withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
                 }
             })}
         </div>

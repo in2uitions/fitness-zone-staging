@@ -255,7 +255,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
                 </div>
 
             </nav>
-            <div style={{
+            {/* <div style={{
                 position: "fixed",
                 right: "0",
                 top: "10rem",
@@ -284,7 +284,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
                         {char}
                     </span>
                 ))}
-            </div>
+            </div> */}
         </>
     );
 };

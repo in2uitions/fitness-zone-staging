@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
         <title className="futura-bold">FITNESS ZONE</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Cursor />
+      {/* <Cursor /> */}
       <LoadingScreen />
       <ScrollToTop />
       <Component {...pageProps} />

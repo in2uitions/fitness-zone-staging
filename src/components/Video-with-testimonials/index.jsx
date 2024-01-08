@@ -24,30 +24,13 @@ const VideoWithTestimonials = ({data={}}) => {
   };
   return (
     <div style={{ position: "relative" }}>
-      <section className="block-sec">
-        <div
-          style={{
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            position: "relative",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: -1,
-            marginBottom: "-10rem"
-          }}
-        >
-          <img src="/circle.svg" style={{ height: "20%", width: "20%" }} />
-          <p style={{ position: "absolute", fontSize: "36px", top: "4rem", letterSpacing: "10px", color: "white" }}>
-            {data?.global_title[0]?.first} <bold style={{ fontWeight: "bold" }}>{data?.global_title[0]?.second}</bold>
-          </p>
-        </div>
-      </section>
+  
       <section
         className="block-sec"
         style={{
           backgroundImage: `url(${image_url}${data?.image?.id})`,
           width: "100%",
+          backgroundAttachment:"fixed",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           zIndex: "10",
@@ -60,14 +43,14 @@ const VideoWithTestimonials = ({data={}}) => {
         >
           <div className="container">
             <div className="row">
-              <div className="col-lg-6">
+              <div className="col-lg-8">
                 <div
                   className="vid-area"
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center",
-                    marginTop: "4rem"
+                    // alignItems: "center",
+                    transform:"translate(10px, 50%)"
                   }}
                 >
                   <div className="vid-icon">
@@ -81,7 +64,7 @@ const VideoWithTestimonials = ({data={}}) => {
                       />
                     )}
                     <a
-                      className="vid"
+                      className=""
                       onClick={(e) => {
                         e.preventDefault();
                         setOpen(true);
@@ -90,40 +73,42 @@ const VideoWithTestimonials = ({data={}}) => {
                     >
                       <div className="vid-butn">
                         <span className="icon">
-                          <i
+                          {/* <i
                             className="fas fa-play"
                             style={{ color: "#009FE3" }}
-                          ></i>
+                          ></i> */}
+                          <img style={{width:"80px", height:"80px"}} src="/playButton.svg"/>
                         </span>
                       </div>
                     </a>
                   </div>
 
-                  <div className="cont">
-                    <Split>
-                      <h3 className="wow" data-splitting>
+                  <div className="">
+                      <p style={{fontSize:"28px", color:"white"}}>
                       {data.image_title}
-                      </h3>
-                    </Split>
+                      </p>
+                      <p className="" style={{color:"white", fontWeight:"bold", fontSize:"32px"}} >
+                    {parse(`${data.image_description}`)}
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-5 offset-lg-1">
+              <div className="col-lg-3 offset-lg-1">
                 <div className="testim-box">
                   <div className="head-box">
-                    <h6 className="wow fadeIn" data-wow-delay=".5s">
-                      KNOW US THROUGH
-                    </h6>
-                    <h4 className="wow fadeInLeft" data-wow-delay=".5s">
+                    <p className="" style={{color:"white"}} data-wow-delay=".5s">
+                    {parse(`${data.brief}`)}
+                    </p>
+                    {/* <h4 className="wow fadeInLeft" data-wow-delay=".5s">
                       OUR PEOPLE&apos;S WORDS?
-                    </h4>
+                    </h4> */}
                   </div>
                   <Slider
                     {...settings}
                     className="slic-item wow fadeInUp"
                     data-wow-delay=".5s"
                   >
-                      {data.sliders.map((item, i) => (
+                      {data?.sliders?.map((item, i) => (
                     <div className="item">
                 
                     <>

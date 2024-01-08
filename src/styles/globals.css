@@ -796,7 +796,7 @@ height: 10px !important;
 }
 .aboutUs-bg{
 width: 100vw;
-height: 86vh;
+height: 100vh;
 background-size: cover;
 background-position: center;
 -o-object-fit: cover;
@@ -835,7 +835,13 @@ position: relative;
   line-height: 32px;
   bottom: -2rem;
 }
-
+.text-overImage {
+  left: 1rem;
+  font-size: 32px;
+  font-weight: unset;
+  line-height: 32px;
+  bottom: 1rem;
+}
 .top-right {
   right: -2rem;
   text-align: right;

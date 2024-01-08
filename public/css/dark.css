@@ -114,7 +114,7 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  line-height: 1.4;
+  line-height: 1;
   font-weight: 600; }
 
 p {
@@ -891,7 +891,7 @@ a, span {
 /* ====================== [ End Text Animation & Images ] ====================== */
 /* ====================== [ Start Cursor Style ] ====================== */
 body {
-  cursor: none; 
+  cursor:default; 
 }
 
 .mouse-cursor {
@@ -1322,6 +1322,7 @@ body {
   background: transparent;
   border-bottom: 2px solid transparent;
   z-index: 999;
+  background: black;
   min-height: 80px; }
   .navbar .icon-bar {
     color: #fff; }
@@ -3889,7 +3890,7 @@ header.simpl {
 /* ====================== [ Start Testimonials ] ====================== */
 .testimonials .item {
   text-align: center;
-  margin: 0 15px; }
+  padding: 0 15px 0 0; }
   .testimonials .item p {
     font-size: 22px;
     font-weight: 300; }
@@ -4081,7 +4082,7 @@ header.simpl {
 
 .block-sec .testim-box {
   position: relative;
-  background: #009fe3ab;
+  background: #1990df;
   padding: 60px 20px;
   margin-bottom: 40px; 
   margin-top: 60px;
@@ -5264,3 +5265,22 @@ header.simpl {
 
 /* ====================== [ End Responsive ] ====================== */
 
+.special-label{
+  display: none;
+}
+.form-control{
+  background-color: transparent !important;
+  border: 0px solid transparent !important;
+  height: 3rem !important;
+  padding: 0 0 0 5px !important;
+  transition: none !important;
+}
+.form-control:focus{
+  background-color: transparent !important;
+  border: 0px solid transparent !important;
+}
+.slick-slide .pt-images{
+  width: 100% !important;
+  height: 20rem !important;
+  object-fit: cover;
+}
