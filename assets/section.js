@@ -7,6 +7,7 @@ import WorksStyle1 from '../src/components/Works-style1';
 import BranchClasses from '../src/components/Branch-classes';
 import BranchPersonalTrainers from '../src/components/Personal-trainers';
 import Facilities from '../src/components/Facilities';
+import BranchFacilities from '../src/components/Branch Facilities';
 
 export default function Sections({ data = {} }) {
     return (
@@ -39,6 +40,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "training_sessions") {
                     return<Facilities withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "branch_facilities") {
+                    return<BranchFacilities withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
                 }
             })}
         </div>

@@ -850,3 +850,6 @@ position: relative;
   line-height: 32px;
   bottom: -2rem;
 }
+.z1{
+  z-index: -1;
+}

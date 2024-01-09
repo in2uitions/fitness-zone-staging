@@ -8,8 +8,9 @@ import parse from "html-react-parser";
 import { image_url } from "../../../global_vars";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
+import ReactPlayer from 'react-player'
 
-const VideoWithTestimonials = ({data={}}) => {
+const VideoWithTestimonials = ({ data = {} }) => {
   const [isOpen, setOpen] = React.useState(false);
   React.useEffect(() => {
     console.clear();
@@ -22,15 +23,16 @@ const VideoWithTestimonials = ({data={}}) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  return (
-    <div style={{ position: "relative" }}>
   
+  return (
+    <div style={{ position: "relative" }} className="pb-70">
+
       <section
         className="block-sec"
         style={{
           backgroundImage: `url(${image_url}${data?.image?.id})`,
           width: "100%",
-          backgroundAttachment:"fixed",
+          backgroundAttachment: "fixed",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           zIndex: "10",
@@ -50,54 +52,59 @@ const VideoWithTestimonials = ({data={}}) => {
                     display: "flex",
                     flexDirection: "column",
                     // alignItems: "center",
-                    transform:"translate(10px, 50%)"
+                    transform: "translate(10px, 50%)"
                   }}
                 >
-                  <div className="vid-icon">
-                    {typeof window !== "undefined" && (
-                      <ModalVideo
-                        channel="vimeo"
-                        autoplay
-                        isOpen={isOpen}
-                        videoId="127203262"
-                        onClose={() => setOpen(false)}
-                      />
-                    )}
-                    <a
-                      className=""
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setOpen(true);
-                      }}
-                      href="https://vimeo.com/127203262"
-                    >
-                      <div className="vid-butn">
-                        <span className="icon">
-                          {/* <i
-                            className="fas fa-play"
-                            style={{ color: "#009FE3" }}
-                          ></i> */}
-                          <img style={{width:"80px", height:"80px"}} src="/playButton.svg"/>
-                        </span>
-                      </div>
-                    </a>
-                  </div>
-
                   <div className="">
-                      <p style={{fontSize:"28px", color:"white"}}>
+                    {isOpen && (
+                      <>
+                        <div className="" style={{position:"absolute", top:"-22rem", right:"-30rem", width:"40px", height:"40px"}} onClick={() => setOpen(false)}><img src="/closeButton.svg"/></div>
+                        <ReactPlayer
+                          url={`${image_url}${data?.video?.id}`}
+                          id="thumbnail"
+                          className="video modalvideo"
+                          width="60vw"
+                          height="65vh"
+                          style={{ position: "absolute", inset: "0",top:"3rem", margin: "auto", zIndex: 1 }}
+                          controls
+                          playsinline
+                        />
+                      </>
+                    )}
+                    {!isOpen && (
+                      <>
+                        <a
+                          className=""
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setOpen(true);
+                          }}
+                          href={`${image_url}${data?.video?.id}`}
+                        >
+                          <div className="vid-butn">
+                            <span className="icon">
+                              <img style={{ width: "80px", height: "80px" }} src="/playButton.svg" alt="Play button" />
+                            </span>
+                          </div>
+                        </a>
+                      </>
+                    )}
+                  </div>
+                  <div className="">
+                    <p style={{ fontSize: "28px", color: "white" }}>
                       {data.image_title}
-                      </p>
-                      <p className="" style={{color:"white", fontWeight:"bold", fontSize:"32px"}} >
-                    {parse(`${data.image_description}`)}
+                    </p>
+                    <p className="" style={{ color: "white", fontWeight: "bold", fontSize: "32px" }} >
+                      {parse(`${data.image_description}`)}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 offset-lg-1">
+              <div className={`col-lg-3 offset-lg-1 ${isOpen ? "z1" : ""}`}>
                 <div className="testim-box">
                   <div className="head-box">
-                    <p className="" style={{color:"white"}} data-wow-delay=".5s">
-                    {parse(`${data.brief}`)}
+                    <p className="" style={{ color: "white" }} data-wow-delay=".5s">
+                      {parse(`${data.brief}`)}
                     </p>
                     {/* <h4 className="wow fadeInLeft" data-wow-delay=".5s">
                       OUR PEOPLE&apos;S WORDS?
@@ -108,39 +115,39 @@ const VideoWithTestimonials = ({data={}}) => {
                     className="slic-item wow fadeInUp"
                     data-wow-delay=".5s"
                   >
-                      {data?.sliders?.map((item, i) => (
-                    <div className="item">
-                
-                    <>
-                      <p>
-                      {parse(`${item.sliders_id?.description}`)}
-                        {/* Lorem ipsum dolor sit amet, consectetuer adipiscing
+                    {data?.sliders?.map((item, i) => (
+                      <div className="item">
+
+                        <>
+                          <p>
+                            {parse(`${item.sliders_id?.description}`)}
+                            {/* Lorem ipsum dolor sit amet, consectetuer adipiscing
                         elit, sed diam nonummy nibh euismod tincidunt ut laoreet */}
-                      </p>
-                      <div className="info">
-                        <div className="img">
-                          <div className="img-box">
-                            <img src={`${image_url}${item.sliders_id?.icon?.id}`} alt="" />
-                          </div>
-                        </div>
-                        <div className="cont">
-                          <div className="author">
-                            <h6 className="author-name custom-font">
-                              {/* Sir William Doe */}
-                              {item.sliders_id?.title}
-                              
-                            </h6>
-                            <span className="author-details">
-                              {/* CEO of The Merch , Founder, <br></br> Researcher,
+                          </p>
+                          <div className="info">
+                            <div className="img">
+                              <div className="img-box">
+                                <img src={`${image_url}${item.sliders_id?.icon?.id}`} alt="" />
+                              </div>
+                            </div>
+                            <div className="cont">
+                              <div className="author">
+                                <h6 className="author-name custom-font">
+                                  {/* Sir William Doe */}
+                                  {item.sliders_id?.title}
+
+                                </h6>
+                                <span className="author-details">
+                                  {/* CEO of The Merch , Founder, <br></br> Researcher,
                               Leader. */}
-                              {parse(`${item.sliders_id?.side_description}`)}
-                            </span>
+                                  {parse(`${item.sliders_id?.side_description}`)}
+                                </span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        </>
+
                       </div>
-                      </>
-                  
-                    </div>
                     ))}
                     {/* <div className="item">
                       <p>

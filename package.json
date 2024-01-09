@@ -20,6 +20,7 @@
     "react-dom": "^17.0.2",
     "react-modal-video": "^1.2.8",
     "react-phone-input-2": "^2.15.1",
+    "react-player": "^2.14.1",
     "react-slick": "^0.28.1",
     "react-visibility-sensor": "^5.1.1",
     "reactjs-popup": "^2.0.6",

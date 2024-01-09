@@ -40,16 +40,14 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
         <>
             {data.layout_type == 'regular' || data.layout_type == null ?
                 <div id="" style={{ "backgroundImage": `url("${image_url}${data.image?.id}")` }} className=" aboutUs-bg" >
-                    <div className="" style={{ "backgroundImage": `url("${image_url}${data.bar_image?.id}")`,backgroundRepeat:"no-repeat", width:"50%", height:"211px" , position: "absolute", transform:"translate(0px, 100%)", left: "8rem" }}>
-                        <div style={{ display:"flex",flexDirection:"column", justifyContent:"center", height:"100%" }}>
-                            {data.image_title ? <h1>{data.image_title}</h1> : null}
+                    <div className="" style={{ "backgroundImage": `url("${image_url}${data.bar_image?.id}")`,backgroundRepeat:"no-repeat",height:"211px", position: "absolute", top:"50%", left: "8rem" }}>
+                        <div style={{ display:"flex",flexDirection:"column", justifyContent:"center", height:"100%"}}>
+                            {data.image_title ? <h1 style={{fontSize:"82px"}}>{data.image_title}</h1> : null}
                             {data.image_subtitle ? <h3 className="">{data.image_subtitle}</h3> : null}
                         </div>
                     </div>
-                    <div style={{ position: "absolute", right: "10rem", top: "51%", borderRight:"2px solid #707070", paddingRight:"20px" }}>
-                        <div className=''>
-                            {data.image_description ? <h4 style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</h4> : null}
-                        </div>
+                    <div style={{ position: "absolute", right: "10rem", top: "60%", borderRight:"2px solid #707070", paddingRight:"20px" }}>
+                            {data.image_description ? <h2 style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</h2> : null}
                     </div>
                 </div>
                 : null}
