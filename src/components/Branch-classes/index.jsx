@@ -17,9 +17,9 @@ const BranchClasses = ({ data = {} }) => {
         <section className="works pb-70">
             <h2 style={{ display: 'none' }}> &nbsp; </h2>
             <div className="">
-            <div style={{display:"flex", justifyContent:"center", alignItems:"center", gap:"5px", marginBottom:"3rem"}}>
+            <div style={{display:"flex", justifyContent:"center", alignItems:"center", gap:"20px", marginBottom:"3rem"}}>
                     {data.branch_name? <h1 style={{fontWeight:"bold"}}>{data.branch_name}</h1>:null}
-                    {data.title? <h1 style={{fontWeight:"200"}}>{data.title}</h1>:null}
+                    {data.title? <h1 style={{fontWeight:"200",fontFamily:"Montserrat Regular"}}>{data.title}</h1>:null}
                 </div>
                 <div className="row">
                

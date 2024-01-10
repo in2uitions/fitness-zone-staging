@@ -55,7 +55,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                             </div>
                         </div>
                         <div className="col-lg-6" style={{ display: "flex", flexDirection: "column", justifyContent: "start", paddingTop: "1rem", gap: "10px" }}>
-                            <h6 style={{ fontWeight: "lighter" }}>REQUEST</h6>
+                            <h6 style={{ fontWeight: "lighter", fontFamily:"Montserrat Regular" }}>REQUEST</h6>
                             <h1 style={{ fontWeight: "bold" }}>FREE TRYOUT</h1>
                             <div style={{ display: "flex", gap: "10px", width: "100%" }}>
                                 <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} placeholder='FIRST NAME' />

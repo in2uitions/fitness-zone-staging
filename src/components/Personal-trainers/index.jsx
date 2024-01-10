@@ -61,7 +61,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        gap: "5px",
+                        gap: "20px",
                         marginBottom: "3rem",
                     }}
                 >
@@ -69,7 +69,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                         <h1 style={{ fontWeight: "bold" }}>{data.branch_name}</h1>
                     ) : null}
                     {data.title ? (
-                        <h1 style={{ fontWeight: "200" }}>{data.title}</h1>
+                        <h1 style={{ fontWeight: "200", fontFamily:"Montserrat Regular" }}>{data.title}</h1>
                     ) : null}
                 </div>
                 <div
@@ -104,7 +104,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                         onClick={() => handleImageClick(item)}
                                     />
                                     <div style={{ marginTop: "15px" }}>
-                                        <div className="cont" style={{ fontWeight: "bold" }}>
+                                        <div className="cont" style={{ fontWeight: "bold", fontFamily:'Montserrat ExtraBold' }}>
                                             {item.trainer_id.name}
                                         </div>
                                     </div>

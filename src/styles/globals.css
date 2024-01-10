@@ -808,6 +808,9 @@ position: relative;
   position: relative;
   width: 100%;
   height: 100%;
+  font-family: 'Montserrat Regular';
+  padding: 0rem 1rem 0 1rem;
+  text-align: center;
 }
 
 .text {
@@ -837,7 +840,7 @@ position: relative;
 }
 .text-overImage {
   left: 1rem;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: unset;
   line-height: 32px;
   bottom: 1rem;

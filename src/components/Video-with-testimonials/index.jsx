@@ -82,7 +82,6 @@ const VideoWithTestimonials = ({ data = {} }) => {
                     <>
                       <Popup trigger={<button style={{border:"none", background:"none", outline:"none"}}
                         className=""
-                        // onClick={openPopup}
                         open={isOpen}
                         onOpen={openPopup}
                         modal
