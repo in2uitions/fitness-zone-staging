@@ -137,7 +137,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                             position: "absolute",
                             display: "flex",
                             justifyContent: "center",
-                            margin: "0px 20rem",
+                            margin: "0px 8rem",
                             background: "#151921",
                             inset: "0",
                             padding: "0px 8rem"
@@ -164,7 +164,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                         </div>
 
                     </div>
-                    <span className="close-btn" onClick={closePopup} style={{ position: "absolute", top: "1rem", right: "22rem" }}>
+                    <span className="close-btn" onClick={closePopup} style={{ position: "absolute", top: "1rem", right: "10rem" }}>
                         <img
                             src="/closeButton.svg"
                             style={{ width: "40px", height: "40px" }}

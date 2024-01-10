@@ -8,7 +8,8 @@ import parse from "html-react-parser";
 import { image_url } from "../../../global_vars";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
+import Popup from "reactjs-popup";
 
 const VideoWithTestimonials = ({ data = {} }) => {
   const [isOpen, setOpen] = React.useState(false);
@@ -22,6 +23,12 @@ const VideoWithTestimonials = ({ data = {} }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+  };
+  const openPopup = () => {
+    // Add the 'overflow-hidden' class to both body and html when the popup is opened
+    document.body.classList.add('overflow-hidden');
+    document.documentElement.classList.add('overflow-hidden');
+    setOpen(true);
   };
   
   return (
@@ -56,7 +63,7 @@ const VideoWithTestimonials = ({ data = {} }) => {
                   }}
                 >
                   <div className="">
-                    {isOpen && (
+                    {/* {isOpen && (
                       <>
                         <div className="" style={{position:"absolute", top:"-22rem", right:"-30rem", width:"40px", height:"40px"}} onClick={() => setOpen(false)}><img src="/closeButton.svg"/></div>
                         <ReactPlayer
@@ -70,25 +77,44 @@ const VideoWithTestimonials = ({ data = {} }) => {
                           playsinline
                         />
                       </>
-                    )}
-                    {!isOpen && (
-                      <>
-                        <a
-                          className=""
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setOpen(true);
-                          }}
-                          href={`${image_url}${data?.video?.id}`}
-                        >
-                          <div className="vid-butn">
-                            <span className="icon">
-                              <img style={{ width: "80px", height: "80px" }} src="/playButton.svg" alt="Play button" />
-                            </span>
-                          </div>
-                        </a>
-                      </>
-                    )}
+                    )} */}
+                    {/* {!isOpen && ( */}
+                    <>
+                      <Popup trigger={<button style={{border:"none", background:"none", outline:"none"}}
+                        className=""
+                        // onClick={openPopup}
+                        open={isOpen}
+                        onOpen={openPopup}
+                        modal
+                        position="center"
+                        closeOnDocumentClick={false}
+                      >
+                        <div className="vid-butn">
+                          <span className="icon">
+                            <img style={{ width: "80px", height: "80px" }} src="/playButton.svg" alt="Play button" />
+                          </span>
+                        </div>
+                      </button>} position="right center">
+                      {(close) => (
+                  <>
+                    <div className="" onClick={close}>
+                      <img src="/closeButton.svg" style={{width:"40px", height:"40px", outline:"none", float:"right", position:"absolute", right:"-4rem", top:"-4rem"}}/>
+                    </div>
+                        <ReactPlayer
+                          url={`${image_url}${data?.video?.id}`}
+                          id="thumbnail"
+                          className="video modalvideo"
+                          width="100%"
+                          height="90vh"
+                          // style={{ position: "absolute", inset: "0",top:"3rem", margin: "auto", zIndex: 1 }}
+                          controls
+                          playsinline
+                        />
+                         </>
+                )}
+                      </Popup>
+                    </>
+                    {/* )} */}
                   </div>
                   <div className="">
                     <p style={{ fontSize: "28px", color: "white" }}>

@@ -3948,10 +3948,10 @@ header.simpl {
 
 .testimonials .arrows .next, .testimonials .arrows .prev {
   opacity: 1;
-  right: 28rem; }
+  right: 8rem; }
 
 .testimonials .arrows .prev {
-  left: 28rem; }
+  left: 8rem; }
 
 .testimonials.lftstl .item {
   text-align: left; }
@@ -5284,9 +5284,9 @@ header.simpl {
   height: 20rem !important;
   object-fit: cover;
 }
-.overlay {
+.popup-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value for transparency */
+  background-color: rgba(0, 0, 0, 0.9); /* Adjust the alpha value for transparency */
   z-index: 0;
 }

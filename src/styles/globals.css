@@ -853,3 +853,10 @@ position: relative;
 .z1{
   z-index: -1;
 }
+.popup-arrow {
+  display: none;
+}
+/* Add this to your CSS or SCSS file */
+.overflow-hidden {
+  overflow: hidden;
+}
