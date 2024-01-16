@@ -187,7 +187,23 @@ const NavbarUAE = ({ lr, nr, theme, data = {} }) => {
             router.events.off('routeChangeStart', handleRouteChange)
         }
     }, []);
+    const [scrolling, setScrolling] = React.useState(false);
 
+    React.useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 300) {
+                setScrolling(true);
+            } else {
+                setScrolling(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
     return (
         <>
             <nav
@@ -196,16 +212,12 @@ const NavbarUAE = ({ lr, nr, theme, data = {} }) => {
                     }`}
             >
                 <div className="container">
-                    <Link href="/">
-                        <a className="logo">
-                            {theme ? (
-                                theme === "themeL" ? (
-                                    <img ref={lr} src="/newLogo.svg" alt="logo" />
-                                ) : (
-                                    <img ref={lr} src="/newLogo.svg" alt="logo" />
-                                )
+                <Link href="/">
+                        <a className="">
+                            {scrolling ? (
+                                <img ref={lr} src="/newLogo.svg" alt="logo" style={{ width: "70%" }} />
                             ) : (
-                                <img ref={lr} src="/newLogo.svg" alt="logo" />
+                                <img ref={lr} src="/logo.svg" alt="logo" style={{ width: "70%" }} />
                             )}
                         </a>
                     </Link>
@@ -228,7 +240,14 @@ const NavbarUAE = ({ lr, nr, theme, data = {} }) => {
                         <ul className="navbar-nav ml-auto">
                             {content.map((item) => renderMenuItem(item))}
                         </ul>
-                    </div><img src="/barsMenu.svg" style={{ width: "40px", height: "40px" }} />
+                    </div>
+                    {/* <img src="/barsMenu.svg" style={{ width: "40px", height: "40px" }} /> */}
+                    <button style={{
+    background: "rgb(25, 144, 223)",
+    padding:"5px 15px 5px 15px",
+    color: "white",
+    borderRadius: "5px",
+    border: "0px solid transparent"}}>Login</button>
                 </div>
 
             </nav>

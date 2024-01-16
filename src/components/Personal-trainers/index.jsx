@@ -5,11 +5,12 @@ import { image_url } from "../../../global_vars.js";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import parse from "html-react-parser";
+import Popup from "reactjs-popup";
 
 const BranchPersonalTrainers = ({ data = {} }) => {
     const [trainersData, setTrainersData] = useState([]);
     const [selectedTrainer, setSelectedTrainer] = useState(null);
-
+    const [location, setLocation] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -36,23 +37,101 @@ const BranchPersonalTrainers = ({ data = {} }) => {
         fetchData();
     }, [data.trainer]);
 
-    const handleImageClick = (trainer) => {
-        console.log("Clicked trainer:", trainer);
-        console.log("All trainers data:", trainersData);
+    // const handleImageClick = (trainer) => {
+    //     console.log("Clicked trainer:", trainer);
+    //     console.log("All trainers data:", trainersData);
 
-        const selectedTrainerData = trainersData.find((data) =>
-            data.data.some((innerData) => innerData.name === trainer.trainer_id.name)
-        );
+    //     const selectedTrainerData = trainersData.find((data) =>
+    //         data.data.some((innerData) => innerData.name === trainer.trainer_id.name)
+    //     );
 
-        console.log("Selected trainer data:", selectedTrainerData);
+    //     console.log("Selected trainer data:", selectedTrainerData);
 
-        setSelectedTrainer(selectedTrainerData);
-    };
+    //     setSelectedTrainer(selectedTrainerData);
+    // };
 
     const closePopup = () => {
         setSelectedTrainer(null);
     };
+    const handleImageClick = (trainer) => {
+        try {
+            const selectedTrainerData = trainersData.find((data) =>
+                data.data.some((innerData) => innerData.name === trainer.trainer_id.name)
+            );
+            setSelectedTrainer(selectedTrainerData);
+            if (!selectedTrainerData) {
+                console.error("Trainer data not found for:", trainer);
+                return;
+            }
 
+
+            const userId = selectedTrainerData.data[0].userId;
+            if (!userId) {
+                console.error("User ID not found in trainer data:", selectedTrainerData);
+                return;
+            }
+
+            console.log("Clicked trainer. UserId:", userId);
+
+            // Now you can use the userId to fetch additional data
+            fetchDataForUserId(userId);
+        } catch (error) {
+            console.error("Error handling image click:", error);
+        }
+    };
+
+
+    const fetchDataForUserId = async (userId) => {
+        try {
+            const res = await fetch(`https://api.fitnessclubapp.com/api/Account/Login?Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234`, {
+                method: 'POST'
+            });
+            const token = await res.json();
+            var registrationLoginHeaders = new Headers();
+            registrationLoginHeaders.append(
+                'Authorization',
+                'Bearer ' + token.token
+            );
+            registrationLoginHeaders.append(
+                'Content-Type',
+                'application/json'
+            );
+            var registrationRequestOptions = {
+                method: 'GET',
+                headers: registrationLoginHeaders
+            };
+
+            const response = await fetch(`https://api.fitnessclubapp.com/api/Billing/SubscriberUser/${userId}`, registrationRequestOptions);
+
+            if (response.status === 200) {
+                const res = await fetch(`https://cms.fitnesszone.me/items/trainers?filter[userId][_eq]=${userId}`);
+                const fetchedData = await response.json();
+                const dataress = fetchedData.packageList?.map(item => item.packageName);
+
+                const trainer = await res.json();
+                let dataRes = fetchedData;
+
+                if (trainer.data.length === 1) {
+                    const image = trainer.data[0].image;
+                    const qualifications = trainer.data[0].qualifications;
+                    dataRes = { ...dataRes, image, qualifications };
+                }
+
+                // Use the retrieved data as needed
+                console.log(dataress);
+                setLocation(dataRes);
+            }
+        } catch (error) {
+            console.error("Error fetching additional data:", error);
+        }
+    };
+    // useEffect((userId) => {
+    //     if (userId) {
+    //         fetchDataForUserId(userId);
+    //     }
+    // }, [userId]);
+
+    // console.log(location, "hey I just met u")
     return (
         <section className={`testimonials position-re`}>
             <div className="container">
@@ -69,7 +148,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                         <h1 style={{ fontWeight: "bold" }}>{data.branch_name}</h1>
                     ) : null}
                     {data.title ? (
-                        <h1 style={{ fontWeight: "200", fontFamily:"Montserrat Regular" }}>{data.title}</h1>
+                        <h1 style={{ fontWeight: "200", fontFamily: "Montserrat Regular" }}>{data.title}</h1>
                     ) : null}
                 </div>
                 <div
@@ -96,15 +175,17 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                     style={{ cursor: "pointer" }}
                                     onClick={() => handleImageClick(item)}
                                 >
-                                    <img
-                                        className="pt-images"
-                                        src={`${image_url}${item.trainer_id.image?.id}`}
-                                        alt={`${data.image?.title}`}
-                                        style={{ cursor: "pointer" }}
-                                        onClick={() => handleImageClick(item)}
-                                    />
+                                 
+                                        <img
+                                            className="pt-images"
+                                            src={`${image_url}${item.trainer_id.image?.id}`}
+                                            alt={`${data.image?.title}`}
+                                            style={{ cursor: "pointer" }}
+                                            onClick={() => handleImageClick(item)}
+                                        />
+
                                     <div style={{ marginTop: "15px" }}>
-                                        <div className="cont" style={{ fontWeight: "bold", fontFamily:'Montserrat ExtraBold' }}>
+                                        <div className="cont" style={{ fontWeight: "bold", fontFamily: 'Montserrat ExtraBold' }}>
                                             {item.trainer_id.name}
                                         </div>
                                     </div>
@@ -136,6 +217,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                         style={{
                             position: "absolute",
                             display: "flex",
+                            flexDirection: "column",
                             justifyContent: "center",
                             margin: "0px 8rem",
                             background: "#151921",
@@ -143,33 +225,73 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                             padding: "0px 8rem"
                         }}
                     >
-                        <div
+                        {/* <div
                             className="popup-content"
                             style={{
                                 display: "flex",
+                                flexDirection:"column",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                gap: "25px",
                             }}
-                        >
+                        > */}
+                        <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "25px",
+                        }}>
                             <img
                                 className="pt-images"
                                 src={`${image_url}${selectedTrainer.data[0].image}`}
-                                style={{ width: "20rem", height: "25rem", objectFit: "cover" }}
+                                style={{ width: "20rem", height: "20rem", objectFit: "cover" }}
                             />
                             <div style={{ display: "flex", flexDirection: "column" }}>
-                                <h2 style={{textTransform:"uppercase"}}>{selectedTrainer.data[0].name}</h2>
-                                {selectedTrainer.data[0].qualifications ?<p>{parse(`${selectedTrainer.data[0].qualifications}`)}</p>:null}
+                                <div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
+                                    <h2 style={{ textTransform: "uppercase" }}>{selectedTrainer.data[0].name}</h2>
+                                    {location.packageList?.slice(0, 1).map((el, index) => (
+    <p key={index} style={{ color: "#E3B800", fontFamily: "Montserrat Italic" }}>
+        {el.category?.categoryName && `/ ${el.category.categoryName}`}
+    </p>
+))}
+
+                                </div>
+                                {selectedTrainer.data[0].qualifications ? <p>{parse(`${selectedTrainer.data[0].qualifications}`)}</p> : null}
                             </div>
                         </div>
+                        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem", marginBottom: "2rem", width: "100%" }}>
+                            {location.packageList?.map((item) => (
+                                <>
+                                    {item.isActive && !item.packageName.includes('Staff') ? <div style={{ background: "#000000" }} className="membership-box p-3 rounded-md">
+                                        <div className="flex items-center w-full">
+                                            <div className="flex justify-end items-end ">
+                                                <div className="flex flex-col cursor-pointer">
+                                                    <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] futura-book">
+                                                        ${item.sessionPrice} </p>
+                                                </div>
 
+                                            </div>
+                                            <div className="flex flex-col w-3/4">
+                                                <p style={{ fontFamily: "'Montserrat Regular'" }}>{item.packageName.slice(0, item.packageName.length - 1)}</p>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div> : null}
+                                </>
+                            ))}
+                        </div>
                     </div>
+
+
+                    {/* </div> */}
                     <span className="close-btn" onClick={closePopup} style={{ position: "absolute", top: "1rem", right: "10rem" }}>
                         <img
                             src="/closeButton.svg"
                             style={{ width: "40px", height: "40px" }}
                         />
                     </span>
+
                 </>
             )}
         </section>

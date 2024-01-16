@@ -74,6 +74,15 @@
   url("https://db.onlinewebfonts.com/t/0462590be6674a5827956be5045c54de.svg#Montserrat Regular")format("svg");
 }
 @font-face {
+  font-family: "Montserrat Italic";
+  src: url("https://db.onlinewebfonts.com/t/08b4520f835b582c36eddb20992b05c0.eot");
+  src: url("https://db.onlinewebfonts.com/t/08b4520f835b582c36eddb20992b05c0.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/08b4520f835b582c36eddb20992b05c0.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/08b4520f835b582c36eddb20992b05c0.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/08b4520f835b582c36eddb20992b05c0.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/08b4520f835b582c36eddb20992b05c0.svg#Montserrat Italic")format("svg");
+}
+@font-face {
   font-family: "Montserrat ExtraBold";
   src: url("https://db.onlinewebfonts.com/t/1f275ed58d6a371ccde9215a3963cc41.eot");
   src: url("https://db.onlinewebfonts.com/t/1f275ed58d6a371ccde9215a3963cc41.eot?#iefix")format("embedded-opentype"),
@@ -1740,7 +1749,7 @@ body {
 /* ====================== [ End Button Style ] ====================== */
 /* ====================== [ Start navbar ] ====================== */
 .navbar {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   padding: 0;
@@ -5487,6 +5496,13 @@ header.simpl .caption .btn-curve {
   margin-bottom: 40px;
   margin-top: 60px;
 }
+.testim-box {
+  position: relative;
+  background: #1990df;
+  padding: 60px 60px 60px 20px;
+  margin-bottom: 40px;
+  margin-top: 60px;
+}
 
 .block-sec .testim-box .head-box h6 {
   color: white;
@@ -5497,7 +5513,15 @@ header.simpl .caption .btn-curve {
   font-family: "Montserrat Regular";
   margin-bottom: 10px;
 }
-
+.head-box h6 {
+  color: white;
+  font-size: 26px;
+  font-weight: 300;
+  text-transform: uppercase;
+  /* letter-spacing: 4px; */
+  font-family: "Montserrat Regular";
+  margin-bottom: 10px;
+}
 .block-sec .testim-box .head-box h4 {
   color: #0c0f16;
   margin-bottom: 40px;
@@ -7304,3 +7328,35 @@ header.simpl .caption .btn-curve {
   /* Adjust the alpha value for transparency */
   z-index: 0;
 }
+.image-gallery{
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 1) !important;
+  transform: translate(0px, 18%) !important;
+}
+.image-gallery-index{
+  right: unset !important;
+}
+.image-gallery-slide .image-gallery-image{
+  object-fit: cover !important;
+  width: calc(100% - 180px) !important;
+}
+.image-gallery-content .image-gallery-slide .image-gallery-image{
+  max-height: calc(100vh - 180px) !important;
+}
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+}
+
+/* Add other styles as needed */

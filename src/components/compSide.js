@@ -11,7 +11,9 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
 
     return (
         <>
-            {data.image_position == "right" ? <div className="about section-padding" style={{ backgroundImage: 'url("MainSiteImg.png")', backgroundRepeat: "no-repeat" }}>
+            {data.image_position == "right" ? <div className="about section-padding" 
+            // style={{ backgroundImage: 'url("MainSiteImg.png")', backgroundRepeat: "no-repeat" }}
+            >
                 <div className="container" >
                     <div className="row">
                         <div className="col-lg-5" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
