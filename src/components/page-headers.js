@@ -2,13 +2,19 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-no-target-blank */
 import Image from 'next/image'
-import React, { Component } from 'react';
 // import { gsap } from "gsap";
 import { useState, useRef } from 'react';
 import parse from "html-react-parser";
 import { image_url } from '../../global_vars';
 import fadeWhenScroll from '../common/fadeWhenScroll';
 import removeSlashFromPagination from '../common/removeSlashFromPagination';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
+import SwiperCore, { Navigation, Pagination, Parallax, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 export default function Header({ color = "orange", data = {}, sliderRef }) {
     const [isSent, setIsSent] = useState(false);
@@ -36,18 +42,27 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
             removeSlashFromPagination();
         }, 1000);
     }, []);
+
+    const navigationPrevRef = React.useRef(null);
+    const navigationNextRef = React.useRef(null);
+    const paginationRef = React.useRef(null);
+    const [currentSlide, setCurrentSlide] = React.useState(0);
+
+    const handleSlideChange = (swiper) => {
+        setCurrentSlide(swiper.realIndex);
+    };
     return (
         <>
             {data.layout_type == 'regular' || data.layout_type == null ?
                 <div id="" style={{ "backgroundImage": `url("${image_url}${data.image?.id}")` }} className=" aboutUs-bg" >
-                    <div className="" style={{ "backgroundImage": `url("${image_url}${data.bar_image?.id}")`,backgroundRepeat:"no-repeat",height:"211px", position: "absolute", top:"50%", left: "8rem" }}>
-                        <div style={{ display:"flex",flexDirection:"column", justifyContent:"center", height:"100%"}}>
-                            {data.image_title ? <h1 style={{fontSize:"82px"}}>{data.image_title}</h1> : null}
+                    <div className="" style={{ "backgroundImage": `url("${image_url}${data.bar_image?.id}")`, backgroundRepeat: "no-repeat", height: "211px", position: "absolute", top: "50%", left: "8rem" }}>
+                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
+                            {data.image_title ? <h1 style={{ fontSize: "82px" }}>{data.image_title}</h1> : null}
                             {data.image_subtitle ? <h3 className="">{data.image_subtitle}</h3> : null}
                         </div>
                     </div>
-                    <div style={{ position: "absolute", right: "10rem", top: "60%", borderRight:"2px solid #707070", paddingRight:"20px" }}>
-                            {data.image_description ? <h2 style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</h2> : null}
+                    <div style={{ position: "absolute", right: "10rem", top: "60%", borderRight: "2px solid #707070", paddingRight: "20px" }}>
+                        {data.image_description ? <h2 style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</h2> : null}
                     </div>
                 </div>
                 : null}
@@ -81,29 +96,96 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                 </div> : null} */}
             </div>
             {data.layout_type == 'slider' || data.layout_type == null ?
-                <header
+                <div
                     ref={sliderRef}
-                    className="slider slider-prlx fixed-slider text-center"
+                    className="slider slider-prlx text-center"
                 >
                     <div className="swiper-container parallax-slider">
                         {!load ? (
-                            <div className="">
-                                <img src={`${image_url}${data.image?.id}`} />
-                            </div>
+                            <Swiper
+                                speed={1000}
+                                autoplay={{
+                                    delay: 4000,
+                                    disableOnInteraction: true,
+                                }}
+                                loop={true}
+                                parallax={true}
+                                navigation={{
+                                    prevEl: navigationPrevRef.current,
+                                    nextEl: navigationNextRef.current,
+                                }}
+                                pagination={{
+                                    type: "fraction",
+                                    clickable: true,
+                                    el: paginationRef.current,
+                                }}
+                                onSlideChange={handleSlideChange}
+                                className="swiper-wrapper"
+                                slidesPerView={1}
+                            >
+                                {data.slider_components.map((slide, index) => (
+                                    <SwiperSlide key={slide.id} className="swiper-slide">
+                                        <div className="bg-img valign" style={{ "backgroundImage": `url("${image_url}${slide.slider_images_component_id.image}")`, backgroundRepeat: "no-repeat" }}>
+                                            <div className="tint"></div>
+                                            <div className="container">
+                                                <div className="row container flex-reverse" style={{ marginTop: "2rem" }}>
+                                                    <div className="col-lg-6 col-md-8 width-mobile-unset">
+                                                        <div className="caption" style={{ display: "flex", justifyContent: "flex-start", alignItems: "flex-start" }}>
+                                                            <div style={{ position: "relative" }}>
+                                                                {slide.slider_images_component_id.with_bar_image ? <img src="/barr.svg" style={{ height: "20rem" }} className={`bg-swipe ${index === currentSlide ? 'fade-in' : ''}`} /> : null}
+
+                                                                <div className={`words chars splitting swipe-title ${index === currentSlide ? 'fade-in' : ''}`}
+                                                                    style={{
+                                                                        fontFamily: "'Montserrat', sans-serif",
+                                                                        fontWeight: "900",
+                                                                        textTransform: "uppercase",
+                                                                        fontSize: "72px",
+                                                                        lineHeight: "72px",
+                                                                        position: "absolute",
+                                                                        whiteSpace: "pre",
+                                                                        top: "50%",
+                                                                        transform: "translate(0%, -50%)",
+                                                                        opacity: "1",
+                                                                        textAlign: "left"
+                                                                    }}>
+                                                                    {slide.slider_images_component_id.image_title ? <h1 style={{ fontSize: "82px" }}>{slide.slider_images_component_id.image_title}</h1> : null}
+                                                                    {slide.slider_images_component_id.image_subtitle ? <h3 className="">{slide.slider_images_component_id.image_subtitle}</h3> : null}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-lg-6 col-md-8 text-on-mobile">
+                                                        <div className="caption" style={{ textAlign: "right" }}>
+                                                        {slide.slider_images_component_id.image_description ?<p
+                                                                className={`words chars splitting swipe-scd-title ${index === currentSlide ? 'fade-in' : ''}`}
+                                                                style={{
+                                                                    fontFamily: "'Montserrat', sans-serif",
+                                                                    fontWeight: "bold",
+                                                                    textTransform: "uppercase",
+                                                                    fontSize: "40px",
+                                                                    marginTop: "6rem",
+                                                                    paddingTop: "1rem",
+                                                                    paddingRight: "2rem",
+                                                                    borderRight: "2px solid #707070",
+                                                                    paddingBottom: "1rem",
+                                                                    textAlign: "right", fontWeight: "bold", color: "white"
+                                                                }}
+                                                            >
+                                                                {parse(`${slide.slider_images_component_id.image_description}`)}
+
+                                                            </p>:null}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
                         ) : null}
 
                     </div>
-                    <div className="" style={{ position: "absolute", top: "20rem", left: "17rem" }}>
-                        <div style={{ width: "60%" }}>
-                            {data.image_title ? <h1 className="gradient-text">{data.image_title}</h1> : null}
-                        </div>
-                    </div>
-                    <div style={{ position: "absolute", right: "5rem", top: "22rem" }}>
-                        <div className=''>
-                            {data.image_description ? <p style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</p> : null}
-                        </div>
-                    </div>
-                </header>
+                </div>
                 : null}
             {/* {data.button_title ?
                 <div style={{

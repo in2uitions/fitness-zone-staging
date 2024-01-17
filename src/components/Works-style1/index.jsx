@@ -72,6 +72,7 @@ const WorksStyle1 = ({ data = {} }) => {
                 <img
                   src={`${image_url}${item.classes_content_id.image?.id}`}
                   alt=""
+                  style={{cursor:"pointer"}}
                   onClick={() => handleImageClick(index)}
                 />
               </div>
