@@ -95,6 +95,7 @@ const Works1Slider = ({ data = {} }) => {
 
                       <div className="cont" style={{ position: "absolute", top: "0px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100%", width: "100%" }}>
                           <p style={{ color: "white", fontSize: "21px", fontWeight: "bold" }}>{item.comp_carousel_items_id?.title}</p>
+                          <a style={{marginTop:"1.25rem", background:"#1990DF", borderRadius:'5px', padding:'10px'}} href={item.comp_carousel_items_id.button_url}>{item.comp_carousel_items_id.button_title}</a>
                           {/* <p>
                             {slide.secTex}
                           </p> */}
