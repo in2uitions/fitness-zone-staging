@@ -7360,3 +7360,11 @@ header.simpl .caption .btn-curve {
 }
 
 /* Add other styles as needed */
+.on-tabs {
+  height: 1.25rem;
+}
+.classes-box {
+  background-color: rgba(143, 143, 143, 0.1);
+  width: 100%;
+  border-radius: 5px;
+}
