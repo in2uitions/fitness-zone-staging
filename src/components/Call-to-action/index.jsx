@@ -47,9 +47,9 @@ const CallToAction = ({ img, theme, subBG }) => {
         </div>
       </div>
     </section>
-    <section>
+    {/* <section>
 <img src="/finalImage.png"/>
-    </section>
+    </section> */}
     </>
   );
 };

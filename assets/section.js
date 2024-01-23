@@ -8,6 +8,7 @@ import BranchClasses from '../src/components/Branch-classes';
 import BranchPersonalTrainers from '../src/components/Personal-trainers';
 import Facilities from '../src/components/Facilities';
 import BranchFacilities from '../src/components/Branch Facilities';
+import Testimonials from '../src/components/Testimonials';
 
 export default function Sections({ data = {} }) {
     return (
@@ -22,6 +23,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "comp_fullwidthimage") {
                     return<VideoWithTestimonials data={section.item} index={0} isFlipped={section.item?.image_position == "left"} />
+                }
+                if (section.collection == "testimonials") {
+                    return<Testimonials data={section.item} index={0} isFlipped={section.item?.image_position == "left"} />
                 }
                 if (section.collection == "cards") {
                     return<Services4 withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />

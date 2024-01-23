@@ -7,6 +7,9 @@ import parse from "html-react-parser";
 import { image_url } from "../../../global_vars";
 import "swiper/css";
 import "swiper/css/pagination";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 SwiperCore.use([Autoplay, Pagination]);
 
 const Works1Slider = ({ data = {} }) => {
@@ -18,31 +21,32 @@ const Works1Slider = ({ data = {} }) => {
       }}
     >
 
-      <div className="container ontop">
+      <div className=" ontop">
         <div className="sec-head custom-font text-center">
           <h3 className="wow words chars splitting" data-splitting>
             {data.title}
           </h3>
-          <h6 className="wow fadeIn subtitle" data-wow-delay=".5s">
+          {/* <h6 className="wow fadeIn subtitle" data-wow-delay=".5s">
             {parse(`${data.subtitle}`)}
-          </h6>
+          </h6> */}
           {/* <span className="tbg">Services</span> */}
         </div>
         <div className="row">
           <div className="col-lg-12 no-padding">
             <div className="swiper-container" style={{ display: "flex" }}>
-              <img src="/CarouselSides.svg" style={{
+              {/* <img src="/CarouselSides.svg" style={{
                 width: "130px",
                 position: "absolute",
                 height: "100%",
-                zIndex: 99, left: "-6rem"
-              }} />
+                zIndex: 99, left: "-6rem" 
+              }} /> */}
               <Swiper
                 className="swiper-wrapper"
                 slidesPerView={3}
                 centeredSlides={true}
                 loop={true}
-                pagination={{ clickable: true }} // Enable pagination dots
+                pagination={true}
+                // pagination={{ clickable: true }} // Enable pagination dots
                 autoplay={{
                   delay: 2500,
                   disableOnInteraction: false,
@@ -67,7 +71,7 @@ const Works1Slider = ({ data = {} }) => {
                   },
                 }}
               >
-               {data.carousel.map((item, i) => (
+                {data.carousel.map((item, i) => (
                   <SwiperSlide key={item.id} className="swiper-slide">
                     <div
                       className="content wow noraidus fadeInUp"
@@ -83,7 +87,7 @@ const Works1Slider = ({ data = {} }) => {
                         <div
                           className="overlay"
                           style={{
-                            background: 'rgba(0, 0, 0, 0.5)', 
+                            background: 'rgba(0, 0, 0, 0.5)',
                             position: 'absolute',
                             top: 0,
                             left: 0,
@@ -94,9 +98,9 @@ const Works1Slider = ({ data = {} }) => {
                       </div>
 
                       <div className="cont" style={{ position: "absolute", top: "0px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100%", width: "100%" }}>
-                          <p style={{ color: "white", fontSize: "21px", fontWeight: "bold" }}>{item.comp_carousel_items_id?.title}</p>
-                          <a style={{marginTop:"1.25rem", background:"#1990DF", borderRadius:'5px', padding:'10px'}} href={item.comp_carousel_items_id.button_url}>{item.comp_carousel_items_id.button_title}</a>
-                          {/* <p>
+                        <p style={{ color: "white", fontSize: "21px", fontWeight: "bold" }}>{item.comp_carousel_items_id?.title}</p>
+                        <a style={{ marginTop: "1.25rem", background: "#1990DF", borderRadius: '5px', padding: '10px' }} href={item.comp_carousel_items_id.button_url}>{item.comp_carousel_items_id.button_title}</a>
+                        {/* <p>
                             {slide.secTex}
                           </p> */}
                       </div>
@@ -104,12 +108,12 @@ const Works1Slider = ({ data = {} }) => {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <img src="/CarouselSides.svg" style={{
+              {/* <img src="/CarouselSides.svg" style={{
                 width: "130px",
                 position: "absolute",
                 height: "100%",
                 zIndex: 99, right: "-6rem"
-              }} />
+              }} /> */}
             </div>
           </div>
         </div>

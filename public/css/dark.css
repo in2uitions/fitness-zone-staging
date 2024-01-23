@@ -5488,6 +5488,10 @@ header.simpl .caption .btn-curve {
   font-size: 45px;
   font-weight: 700;
 }
+.testimonials p{
+  font-size: 21px;
+  font-weight: 700;
+}
 
 .block-sec .testim-box {
   position: relative;

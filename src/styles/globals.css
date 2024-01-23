@@ -108,17 +108,14 @@ section.team.section-padding {
   overflow: hidden;
 }
 .swiper-pagination-bullet{
-  background: white !important;
-  opacity: 1 !important;
-  width: 10px !important;
-height: 10px !important;
+  background-color: white !important;
 }
-.swiper-pagination-bullet-active{
+/* .swiper-pagination-bullet-active{
 border: 1px solid white !important;
 background-color: transparent !important;
 width: 10px !important;
 height: 10px !important;
-}
+} */
 .swiper-wrapper{
   padding-bottom: 2rem !important;
 }
