@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 import { BrowserView, MobileView } from "react-device-detect";
 import moment from "moment";
 import DarkTheme from "../../layouts/Dark";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 export default function Membership({ style = "white", data }) {
     const memberId = Cookies.get("Member");
@@ -468,7 +467,7 @@ export default function Membership({ style = "white", data }) {
                             }}
                         >
                             {state ? "VIEW ALL" : "VIEW LESS"}
-                            <ChevronRightIcon className="arrow-membership" />
+                            {/* <ChevronRightIcon className="arrow-membership" /> */}
                         </div>
                     </div>
                 </div>

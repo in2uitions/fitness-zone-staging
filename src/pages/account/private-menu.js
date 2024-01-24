@@ -3,7 +3,6 @@ import styles from "../../styles/Header.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from 'js-cookie'
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 export default function PrivateMenu() {
     const memberId = Cookies.get('Member');
@@ -95,24 +94,24 @@ export default function PrivateMenu() {
                                 >
                                     {" "}
                                     My Profile
-                                    <ChevronRightIcon className="forward-blue" />
+                                    {/* <ChevronRightIcon className="forward-blue" /> */}
                                 </a>
                                 <a href='/account/membership' className="futura-book menu-member flex items-center justify-between rounded-md"
                                 style={{display:"flex"}}>
                                     Membership Settings
-                                    <ChevronRightIcon className="forward-blue" />
+                                    {/* <ChevronRightIcon className="forward-blue" /> */}
                                 </a>
                             </div>
                             <div className="mobile-flex-col margin0" style={{display:"flex", marginTop:"1.25rem"}}>
                                 <a href="/account/classListing" className="futura-book menu-member  items-center justify-between text-white rounded-md"
                                  style={{marginRight:"10px", display:"flex"}}>
                                     Classes / Book a class
-                                    <ChevronRightIcon className="forward-blue" />
+                                    {/* <ChevronRightIcon className="forward-blue" /> */}
                                 </a>
                                 <a href='/account/trainers' className="futura-book menu-member  items-center justify-between rounded-md"
                                 style={{display:"flex"}}>
                                     Trainers / Buy a package
-                                    <ChevronRightIcon className="forward-blue" />
+                                    {/* <ChevronRightIcon className="forward-blue" /> */}
                                 </a>
                             </div>
                             <form onSubmit={onSubmitForm}>

@@ -7,12 +7,10 @@ import { BrowserView, MobileView } from "react-device-detect";
 import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
 import Cookies from 'js-cookie'
-import { getTermsAndConditions } from "../../api/server";
+import { getTermsAndConditions } from "../../../api/server";
 import parse from "html-react-parser";
 import DarkTheme from "../../layouts/Dark";
 import { Tab, TabList, Tabs } from 'react-tabs';
-import { SearchOutlined } from "@material-ui/icons";
-import Close from "@material-ui/icons/Close";
 
 export default function ClassListing(Info) {
     var curr = new Date;
@@ -468,10 +466,10 @@ export default function ClassListing(Info) {
                                     onChange={handleSearch} />
                                 <div className=" items-center pointer-events-none"
                                 style={{position:"absolute", top:"0", bottom:"0" , right:"0", paddingRight:"0.75rem", display:"flex", background:"transparent"}}>
-                                    <SearchOutlined
+                                    {/* <SearchOutlined
                                         className="h-4 w-4 text-gray-400"
                                         aria-hidden="true"
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                             <div className="flex justify-center items-center">
@@ -506,10 +504,10 @@ export default function ClassListing(Info) {
                                     placeholder="Search" value={name}
                                     onChange={handleSearch} />
                                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                    <SearchOutlined
+                                    {/* <SearchOutlined
                                         className="h-4 w-4 text-gray-400"
                                         aria-hidden="true"
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                             <div className="flex justify-center items-center">
@@ -699,7 +697,7 @@ export default function ClassListing(Info) {
                                                         <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
                                                         <p className=" text-[#008DDC] font-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
-                                                            <Close className="cancel-close" />
+                                                            {/* <Close className="cancel-close" /> */}
                                                         </p>
                                                     </div>
 
@@ -773,7 +771,7 @@ export default function ClassListing(Info) {
                                                         <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
                                                         <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-[#008DDC] font-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
-                                                            <Close className="cancel-close" />
+                                                            {/* <Close className="cancel-close" /> */}
                                                         </button>
                                                     </div>
 
@@ -869,7 +867,7 @@ export default function ClassListing(Info) {
                                                         <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
                                                         <p className=" text-[#008DDC] font-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
-                                                            <Close className="cancel-close" />
+                                                            {/* <Close className="cancel-close" /> */}
                                                         </p>
                                                     </div>
 
@@ -944,7 +942,7 @@ export default function ClassListing(Info) {
                                                         <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
                                                         <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-[#008DDC] font-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
-                                                            <Close className="cancel-close" />
+                                                            {/* <Close className="cancel-close" /> */}
                                                         </button>
                                                     </div>
 

@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import PrivateMenu from './private-menu';
 import Cookies from 'js-cookie'
 import dynamic from 'next/dynamic';
-import { getAllRecords } from '../../api/server';
+import { getAllRecords } from '../../../api/server';
 import DarkTheme from '../../layouts/Dark';
 
 const localizer = momentLocalizer(moment)

@@ -13,7 +13,6 @@ import Cookies from "js-cookie";
 import moment from "moment";
 import DarkTheme from "../../layouts/Dark";
 import Post from "../../components/trainers/homePageTrainer";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 export default function Dashboard({ style = "white", books }) {
     // const [books, setBooks] = useState([]);
@@ -331,7 +330,7 @@ export default function Dashboard({ style = "white", books }) {
                                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: "bold", fontSize: "1.125rem", display:"flex" }}
                             >
                                 VIEW MEMBERSHIP DETAILS
-                                <ChevronRightIcon className="arrow-membership" />
+                                {/* <ChevronRightIcon className="arrow-membership" /> */}
                             </a>
                         </div>
                     </div>
@@ -402,7 +401,7 @@ export default function Dashboard({ style = "white", books }) {
                             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: "bold", display:"flex" }}
                         >
                             {state ? "VIEW ALL" : "VIEW LESS"}
-                            <ChevronRightIcon className="arrow-membership" />
+                            {/* <ChevronRightIcon className="arrow-membership" /> */}
                         </div>
                     </div>
                     <div className="col-span-3">
@@ -443,7 +442,7 @@ export default function Dashboard({ style = "white", books }) {
                             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: "bold", fontSize: "1.125rem", display:"flex" }}
                         >
                             VIEW ALL
-                            <ChevronRightIcon className="arrow-membership" />
+                            {/* <ChevronRightIcon className="arrow-membership" /> */}
                         </a>
                     </div>
                     <div className="col-span-3">
@@ -475,7 +474,7 @@ export default function Dashboard({ style = "white", books }) {
                                             style={{fontFamily:"'Montserrat', sans-serif", fontWeight:"bold", display:"flex"}}
                                         >
                                             VIEW PACKAGE DETAILS
-                                            <ChevronRightIcon className="arrow-membership" />
+                                            {/* <ChevronRightIcon className="arrow-membership" /> */}
                                         </button>
                                     ) : null}
                                 </div>

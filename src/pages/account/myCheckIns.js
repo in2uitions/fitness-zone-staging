@@ -6,7 +6,6 @@ import moment from "moment";
 import PrivateMenu from "./private-menu";
 import Cookies from 'js-cookie'
 import DarkTheme from "../../layouts/Dark";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 
 export default function CheckIns(books) {
@@ -121,7 +120,7 @@ export default function CheckIns(books) {
                             }}
                         >
                             {state ? "VIEW ALL" : "VIEW LESS"}
-                            <ChevronRightIcon className="arrow-membership" />
+                            {/* <ChevronRightIcon className="arrow-membership" /> */}
                         </div>
                         <a href="/account/dashboard" className="flex lg:justify-center text-[#008DDC] items-center cursor-pointer font-bold">Back</a>
                         </div>

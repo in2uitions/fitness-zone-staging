@@ -22,7 +22,48 @@ export const handleApi = async ({ url, query = {}, fields, slug, load = true }) 
 
     return res.data;
 }
+export const getTermsAndConditions = async (value) => {
+    const termsandconditions = directus.items('termsandconditions');
 
+    var myfilter = '';
+    if (value) {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            }
+        }
+    }
+    else {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            },
+
+
+        }
+
+    }
+
+    var myfields = ['*']
+    const termsandconditionsPublished = await termsandconditions.readByQuery({ filter: myfilter, fields: myfields })
+    return termsandconditionsPublished.data;
+}
+export const getAllRecords = async (collection) => {
+    const memberId = Cookies.get('Member');
+    const annonces = directus.items(collection);
+    const annoncesPublished = await annonces.readByQuery({
+        filter: {
+            member_id: {
+                _eq: memberId,
+            },
+            status: {
+                _eq:'published',
+            }
+        },
+    });
+
+    return annoncesPublished.data;
+}
 // export const getClasses = async (value) => {
 //     const classes = directus.items('classes');
 
