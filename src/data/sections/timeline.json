@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "date": "2010",
+    "name": "HAMRA",
+    "position": "The launching of our first branch in Hamra"
+  },
+  {
+    "id": 2,
+    "date":"2012",
+    "name": "BAABDA",
+    "position": "The gym inaugurated another branch in Baabda, Mount Lebanon"
+  },
+  {
+    "id": 3,
+    "date":"2016",
+    "name": "DOWNTOWN",
+    "position": "Another branch in 2016 in Beirut souks, downtown Beirut, the capital"
+  },
+  {
+    "id": 4,
+    "date":"2017",
+    "name": "VERDUN & ACHRAFIEH",
+    "position": "In early 2017, Fitness Zone expanded by opening branches in vibrant Verdun and a botique clubin ABC Mall, Achrafieh"
+  },
+  {
+    "id": 5,
+    "date":"2019",
+    "name": "MANARA",
+    "position": "Our precious gem by the sea, the Manara branch was established in 2019"
+  },
+  {
+    "id": 5,
+    "date":"2022",
+    "name": "DUBAI",
+    "position": "Our vision of expansion outside the lebanese borders started with our first Dubai branch"
+  }
+]

@@ -1,0 +1,141 @@
+
+.overlay{
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(3px) !important;
+    animation-name: modalFade;
+    animation-duration: .3s;
+    /* overflow-y: scroll; */
+    overflow-x: hidden;
+  }
+  .container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .navWithBg{
+    width: 100vw;
+    position: fixed;
+  
+    z-index: 1000;
+    padding: 20px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(10, 8, 11, 0.6);
+  }
+  .nav {
+    width: 100vw;
+    position: fixed;
+    z-index: 1000;
+    padding: 20px 8%;
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .media {
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    right: 0;
+    top: 33%;
+    width: 6.55%;
+  }
+  
+  .mediaiconsfb {
+    position: fixed;
+    z-index: 999;
+    align-items: center;
+    right: 3.2%;
+    top: 39%;
+    width: 15px;
+  }
+  
+  .mediaiconsinsta {
+    position: fixed;
+    z-index: 999;
+    align-items: center;
+    right: 2.7%;
+    top: 46%;
+    width: 28px;
+  }
+  
+  .mediaiconslinkedin {
+    position: fixed;
+    z-index: 999;
+    align-items: center;
+    right: 2.7%;
+    top: 53%;
+    width: 25px;
+  }
+  
+  .mediaiconsyt {
+    position: fixed;
+    z-index: 999;
+    align-items: center;
+    right: 2.5%;
+    top: 60%;
+    width: 31px;
+  }
+  @media (min-width:320px) and (max-width:480px) {
+    .nav {
+      padding: 20px 3%;
+    }
+    .navWithBg{
+      padding: 20px 3%;
+    }
+  }
+  @media screen and (max-width:480px){
+    .nav{
+      position: absolute;
+    }
+  }
+  /* Pop up */
+  
+  /* .module {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+    padding: 8px;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+  } */
+  @media (min-width: 1025px) and (max-width: 1279px){
+    .media{
+      top: 36%;
+      width: 9.55%;
+    }
+  }
+  @media (min-width: 1280px) and (max-width: 1380px){
+    .media{
+      top: 33.5%;
+      width: 6%;
+    }
+  }
+  @media (min-width: 1381px) and (max-width: 1440px){
+    .media{
+      top: 35.5%;
+      width: 8%;
+    }
+  }
+  
+  @media (min-width: 1441px) and (max-width:1700px) {
+    .media {
+      width: 7%;
+      top: 36%;
+    }
+  }
+  .w-screen{
+    width: 100vw;
+  }
+  .h-screen{
+    height: 100vh;
+  }

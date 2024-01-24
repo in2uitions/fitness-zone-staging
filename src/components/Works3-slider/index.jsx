@@ -8,7 +8,7 @@ import slides from '../../data/sections/works3Slider.json';
 import "swiper/css";
 import "swiper/css/navigation";
 import Split from "../Split";
-
+  
 SwiperCore.use([Navigation]);
 
 const Works3Slider = () => {

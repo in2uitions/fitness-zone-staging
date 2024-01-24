@@ -25,7 +25,7 @@ const Testimonials = ({ data = {} }) => {
     };
     return (
         <section
-            className="block-sec container section-padding"
+            className="block-sec container"
         // style={{ backgroundImage: 'url("people.png")', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}
         >
             <div
@@ -42,13 +42,14 @@ const Testimonials = ({ data = {} }) => {
                         gap: "20px",
                         position: "absolute",
                         top: "3rem",
-                        fontFamily: 'Montserrat ExtraBold',
+                        fontFamily: 'Montserrat Regular',
                         fontSize: "42px",
-                        color:"white"
+                        color:"white",
+                        letterSpacing:"10px"
                     }}
                 >
                     {data.title[0]?.first}
-                    <span style={{fontFamily:"Montserrat Regular"}}>{data.title[0]?.second}</span>
+                    <span style={{fontFamily:"Montserrat ExtraBold"}}>{data.title[0]?.second}</span>
                 </p>
             </div>
             <div
@@ -90,14 +91,14 @@ const Testimonials = ({ data = {} }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-5 offset-lg-1">
+                        <div className="col-lg-5">
                             <div className="testim-box">
                                 <div className="head-box">
-                                    <h6 className="wow fadeIn" data-wow-delay=".5s">
+                                    <h6 className="wow fadeIn" data-wow-delay=".5s" style={{color:"black"}}>
                                         KNOW US THROUGH
                                     </h6>
                                     <h4 className="wow fadeInLeft" data-wow-delay=".5s">
-                                        OUR PEOPLE&apos;S WORDS?
+                                        OUR PEOPLE&apos;S WORDS
                                     </h4>
                                 </div>
                                 <Slider

@@ -9,6 +9,7 @@ import BranchPersonalTrainers from '../src/components/Personal-trainers';
 import Facilities from '../src/components/Facilities';
 import BranchFacilities from '../src/components/Branch Facilities';
 import Testimonials from '../src/components/Testimonials';
+import ShowcasesFullScreen from '../src/components/Showcases-full-screen';
 
 export default function Sections({ data = {} }) {
     return (
@@ -47,6 +48,9 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "branch_facilities") {
                     return<BranchFacilities withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "gx_classes") {
+                    return<ShowcasesFullScreen withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
                 }
             })}
         </div>
