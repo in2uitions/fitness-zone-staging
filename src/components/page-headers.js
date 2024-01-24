@@ -65,7 +65,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                         {data.image_description ? <h2 style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</h2> : null}
                     </div>
                 </div>
-                : null}
+                : null} 
             <div className="grid grid-cols-2">
                 {/* <div className="absolute lg:left-36 md:left-36 left-2 lg:bottom-14 text-homePage">
                     {data.image_title ? <h1 className="text-[#009FE3] font-bold futura-bold lg:text-5xl md:text-4xl text-3xl">{data.image_title}</h1> : null}
