@@ -73,12 +73,12 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 8,
       "label": "MEMBERSHIP",
-      "to": "/membership/membership"
+      "to": "/about/membership"
     },
     {
       "id": 9,
       "label": "CLASSES",
-      "to":"/classes/classes"
+      "to":"/about/classes"
       // "children": [
       //   {
       //     "id": 10,
@@ -103,7 +103,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 13,
       "label": "SERVICES",
-      "to": '/service/services'
+      "to": '/about/services'
 
     },
     {
@@ -130,7 +130,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
   <div className="dropdown-menu">
     {item.children.map((childItem) => (
       <Link href={childItem.to} key={childItem.id}>
-        <a className="dropdown-item">{childItem.label}</a>
+        <a href={childItem.to} className="dropdown-item">{childItem.label}</a>
       </Link>
     ))}
   </div>
