@@ -52,7 +52,7 @@ export default function List(info) {
                 );
                 if (response.status == 200) {
                     const res = await fetch(
-                        `https://cms.fitnesszone.me/items/trainers`
+                        `https://fzcms.diastora.com/items/trainers`
                     )
 
                     const checkInList = await response.json();

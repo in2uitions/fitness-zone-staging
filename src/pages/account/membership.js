@@ -141,7 +141,7 @@ export default function Membership({ style = "white", data }) {
                 );
                 const code = await res.json();
                 if (code.country_code == 'LB') {
-                    fetch('https://cms.fitnesszone.me/items/lebanon_cancel_requests', {
+                    fetch('https://fzcms.diastora.com/items/lebanon_cancel_requests', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -166,7 +166,7 @@ export default function Membership({ style = "white", data }) {
                             console.error('Request failed', error);
                         });
                 } else if (code.country_code == 'AE') {
-                    fetch('https://cms.fitnesszone.me/items/uae_cancel_requests', {
+                    fetch('https://fzcms.diastora.com/items/uae_cancel_requests', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

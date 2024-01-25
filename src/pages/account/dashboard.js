@@ -166,7 +166,7 @@ export default function Dashboard({ style = "white", books }) {
                     registrationRequestOptions
                 );
                 if (response.status == 200) {
-                    const res = await fetch(`https://cms.fitnesszone.me/items/trainers`);
+                    const res = await fetch(`https://fzcms.diastora.com/items/trainers`);
 
                     const checkInList = await response.json();
                     const test = await res.json();

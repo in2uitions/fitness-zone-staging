@@ -104,7 +104,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
             const response = await fetch(`https://api.fitnessclubapp.com/api/Billing/SubscriberUser/${userId}`, registrationRequestOptions);
 
             if (response.status === 200) {
-                const res = await fetch(`https://cms.fitnesszone.me/items/trainers?filter[userId][_eq]=${userId}`);
+                const res = await fetch(`https://fzcms.diastora.com/items/trainers?filter[userId][_eq]=${userId}`);
                 const fetchedData = await response.json();
                 const dataress = fetchedData.packageList?.map(item => item.packageName);
 

@@ -47,7 +47,7 @@ export default function TrainersProfile({ style = "white" }) {
                 );
                 if (response.status == 200) {
                     const res = await fetch(
-                        `https://cms.fitnesszone.me/items/trainers?filter[userId][_eq]=${query.id}`
+                        `https://fzcms.diastora.com/items/trainers?filter[userId][_eq]=${query.id}`
                     )
                     const fetchedData = await response.json();
                     const data = fetchedData.packageList?.map(item => item.packageName)

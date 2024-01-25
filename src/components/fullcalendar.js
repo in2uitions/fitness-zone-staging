@@ -161,7 +161,7 @@ export default function ReactBigCalendar() {
                         };
 
                         try {
-                            const response = await fetch("https://cms.fitnesszone.me/items/lebanon_freezing_requests", {
+                            const response = await fetch("https://fzcms.diastora.com/items/lebanon_freezing_requests", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
@@ -220,7 +220,7 @@ export default function ReactBigCalendar() {
                         };
 
                         try {
-                            const response = await fetch("https://cms.fitnesszone.me/items/uae_freezing_requests", {
+                            const response = await fetch("https://fzcms.diastora.com/items/uae_freezing_requests", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
