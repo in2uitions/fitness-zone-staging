@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
-import { getPrivateCarousel } from "../../../api/server";
 import { image_url } from "../../../global_vars";
 import parse from "html-react-parser";
 import Cookies from "js-cookie";
@@ -202,15 +201,15 @@ export default function Dashboard({ style = "white", books }) {
         return filteredPosts;
     }, [posts, users]);
     const router = useRouter();
-    const [privateCarousel, setPrivateCarousel] = useState([]);
-    var getdata = async () => {
-        const carousel = await getPrivateCarousel();
-        setPrivateCarousel(carousel);
-    };
+    // const [privateCarousel, setPrivateCarousel] = useState([]);
+    // var getdata = async () => {
+    //     const carousel = await getPrivateCarousel();
+    //     setPrivateCarousel(carousel);
+    // };
 
-    useEffect(() => {
-        getdata();
-    }, []);
+    // useEffect(() => {
+    //     getdata();
+    // }, []);
     var userValue = Cookies.get("UserId");
     const route = (id) =>
         router.push({ pathname: "/account/trainers-profile", query: { id } });
