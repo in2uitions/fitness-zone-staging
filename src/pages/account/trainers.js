@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
 import Cookies from 'js-cookie'
 import DarkTheme from "../../layouts/Dark";
-import Post from "../../components/trainers/post";
+import Post from "./trainers/post";
 
 export default function List(info) {
     const [data, setListData] = useState([]);

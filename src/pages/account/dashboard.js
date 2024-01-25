@@ -12,7 +12,7 @@ import parse from "html-react-parser";
 import Cookies from "js-cookie";
 import moment from "moment";
 import DarkTheme from "../../layouts/Dark";
-import Post from "../../components/trainers/homePageTrainer";
+import Post from "./trainers/homePageTrainer";
 
 export default function Dashboard({ style = "white", books }) {
     // const [books, setBooks] = useState([]);

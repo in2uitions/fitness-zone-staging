@@ -1,5 +1,5 @@
 
-import { image_url } from "../../../global_vars";
+import { image_url } from "../../../../global_vars";
 import { useRouter } from 'next/router';
 
 export default function User({ user: {image, userId,trainerUser} }) {
