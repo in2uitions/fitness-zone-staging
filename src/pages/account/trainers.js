@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
 import Cookies from 'js-cookie'
 import DarkTheme from "../../layouts/Dark";
-import Post from "./trainers/post";
 
 export default function List(info) {
     const [data, setListData] = useState([]);
@@ -153,13 +152,13 @@ export default function List(info) {
                                     ))}
                         </select>
                     </div>
-                    <div id="main-box" className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-10 p-10 items-center lg:space-y-0 md:space-y-0" style={{padding:"2.5rem"}}>
+                    {/* <div id="main-box" className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-10 p-10 items-center lg:space-y-0 md:space-y-0" style={{padding:"2.5rem"}}>
                         {filteredPosts.map((post, index) => (
                             <div className="col-span-3 membership-box h-full p-5" style={{padding:"1.25rem"}}>
                                 <Post post={post?.post} users={post?.user} key={index} />
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </section>
             </DarkTheme>

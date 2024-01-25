@@ -11,7 +11,6 @@ import parse from "html-react-parser";
 import Cookies from "js-cookie";
 import moment from "moment";
 import DarkTheme from "../../layouts/Dark";
-import Post from "./trainers/homePageTrainer";
 
 export default function Dashboard({ style = "white", books }) {
     // const [books, setBooks] = useState([]);
@@ -461,7 +460,7 @@ export default function Dashboard({ style = "white", books }) {
                             filteredPosts.slice(0, 1).map((post, index) => (
                                 <div className="flex flex-col space-y-3 membership-box  items-center"
                                 style={{marginTop:"2.5rem", padding:"2.5rem"}}>
-                                    <Post post={post?.post} users={post?.user} key={index} />
+                                    {/* <Post post={post?.post} users={post?.user} key={index} /> */}
                                     {/* <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
                                     <span className="text-white text-base futura-book">Sessions:</span>
                                     <span className="text-white font-bold exipryDate">09/15</span>
