@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import PrivateMenu from "./private-menu";
-import { getPrivateCarousel } from "../../api/server";
+import { getPrivateCarousel } from "../../../api/server";
 import { image_url } from "../../../global_vars";
 import parse from "html-react-parser";
 import Cookies from "js-cookie";
