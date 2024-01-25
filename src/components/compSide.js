@@ -18,10 +18,10 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                     <div className="row">
                         <div className="col-lg-5" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div className="content">
-                                <Split>
+                            <Split>
                                     <h3
                                         className="words chars splitting main-title wow"
-                                        style={{ width: "63%", fontSize: "60px" }}
+                                        // style={{ fontSize: "60px" }}
                                         data-splitting
                                     >
                                         {data.title}
@@ -87,7 +87,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                                 <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
                             </div>
                         </div>
-                    </div><div className="col-lg-5" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    </div><div className="col-lg-5 offset-lg-1" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div className="content">
                                 <Split>
                                     <h3

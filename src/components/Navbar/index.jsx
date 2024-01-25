@@ -36,6 +36,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 2,
       "label": "CLUBS",
+      "to":'/about/clubs',
       "children": [
         {
           "id": 3,
@@ -116,7 +117,8 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     if (item.children) {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
-  <span
+  <a
+  href={item.to}
     className="nav-link dropdown-toggle"
     data-toggle="dropdown"
     role="button"
@@ -124,7 +126,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     aria-expanded="false"
   >
     {item.label}
-  </span>
+  </a>
   <div className="dropdown-menu">
     {item.children.map((childItem) => (
       <Link href={childItem.to} key={childItem.id}>

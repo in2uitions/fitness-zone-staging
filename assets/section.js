@@ -10,6 +10,9 @@ import Facilities from '../src/components/Facilities';
 import BranchFacilities from '../src/components/Branch Facilities';
 import Testimonials from '../src/components/Testimonials';
 import ShowcasesFullScreen from '../src/components/Showcases-full-screen';
+import Timeline from '../src/components/Showcases-full-screen-circle-slide';
+import Clubs from '../src/components/Clubs';
+import Membership from '../src/components/Membership';
 
 export default function Sections({ data = {} }) {
     return (
@@ -51,6 +54,15 @@ export default function Sections({ data = {} }) {
                 }
                 if (section.collection == "gx_classes") {
                     return<ShowcasesFullScreen withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "timeline") {
+                    return<Timeline withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "clubs_sections") {
+                    return<Clubs withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "membership_sections") {
+                    return<Membership withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
                 }
             })}
         </div>

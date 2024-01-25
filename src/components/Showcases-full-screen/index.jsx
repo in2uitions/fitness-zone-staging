@@ -22,7 +22,7 @@ SwiperCore.use([Navigation, Autoplay, Pagination, Parallax, Mousewheel]);
 const ShowcasesFullScreen = ({data={}}) => {
   return (
     <section className="slider showcase-full block-sec section-padding">
-      <div className="swiper-container parallax-slider">
+      <div className="swiper-container parallax-sliderr">
         <Swiper
           speed={1000}
           className="swiper-wrapper"

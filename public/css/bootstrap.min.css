@@ -9832,7 +9832,7 @@ button.bg-dark:hover {
 }
 
 .text-white {
-  color: #fff !important;
+  color: #fff ;
 }
 
 .text-primary {
