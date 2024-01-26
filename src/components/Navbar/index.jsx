@@ -32,7 +32,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 2,
       "label": "CLUBS",
-      "to":'/about/clubs',
+      "to": '/about/clubs',
       "children": [
         {
           "id": 3,
@@ -74,32 +74,12 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 9,
       "label": "CLASSES",
-      "to":"/about/classes"
-      // "children": [
-      //   {
-      //     "id": 10,
-      //     "parentId": 8,
-      //     "label": "classes",
-      //     "to": '#'
-      //   },
-      //   {
-      //     "id": 11,
-      //     "parentId": 8,
-      //     "label": "classes",
-      //     "to": '#'
-      //   },
-      //   {
-      //     "id": 12,
-      //     "parentId": 8,
-      //     "label": "classes",
-      //     "to": '#'
-      //   }
-      // ]
+      "to": "/about/classes"
     },
     {
       "id": 13,
-      "label": "SERVICES",
-      "to": '/about/services'
+      "label": "PERSONAL TRAINING",
+      "to": '/about/personal-training'
     },
     {
       "id": 14,
@@ -111,30 +91,30 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     if (item.children) {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
-  <a
-  // href={item.to}
-    className="nav-link dropdown-toggle"
-    data-toggle="dropdown"
-    role="button"
-    aria-haspopup="true"
-    aria-expanded="false"
-  >
-    {item.label}
-  </a>
-  <div className="dropdown-menu">
-    {item.children.map((childItem) => (
-      <Link href={childItem.to} key={childItem.id}>
-        <a href={childItem.to} className="dropdown-item">{childItem.label}</a>
-      </Link>
-    ))}
-  </div>
-</li>
+          <a
+            // href={item.to}
+            className="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {item.label}
+          </a>
+          <div className="dropdown-menu">
+            {item.children.map((childItem) => (
+              <Link href={childItem.to} key={childItem.id}>
+                <a href={childItem.to} className="dropdown-item">{childItem.label}</a>
+              </Link>
+            ))}
+          </div>
+        </li>
       );
     } else {
       return (
         <li className="nav-item" key={item.id}>
           <Link href={item.to}>
-          <a href={item.to} className="nav-link">{item.label}</a>
+            <a href={item.to} className="nav-link">{item.label}</a>
           </Link>
         </li>
       );
@@ -184,64 +164,65 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
   }, []);
   const [scrolling, setScrolling] = React.useState(false);
   React.useEffect(() => {
-      const handleScroll = () => {
-          if (window.scrollY > 300) {
-              setScrolling(true);
-          } else {
-              setScrolling(false);
-          }
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-          window.removeEventListener("scroll", handleScroll);
-      };
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
   return (
     <>
-    <nav
-      ref={nr}
-      className={`navbar navbar-expand-lg change ${theme === "themeL" ? "light" : ""
-        }`}
-    >
-      <div className="container">
-      <Link href="/">
-                        <a className="">
-                            {scrolling ? (
-                                <img ref={lr} src="/newLogo.svg" alt="logo" style={{ width: "70%" }} />
-                            ) : (
-                                <img ref={lr} src="/logo.svg" alt="logo" style={{ width: "70%" }} />
-                            )}
-                        </a>
-                    </Link>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    onClick={handleMobileDropdown}
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="icon-bar">
-                        <i className="fas fa-bars"></i>
-                    </span>
-                </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
-            {content.map((item) => renderMenuItem(item))}
-          </ul>
+      <nav
+        ref={nr}
+        className={`navbar navbar-expand-lg change ${theme === "themeL" ? "light" : ""
+          }`}
+      >
+        <div className="container">
+          <Link href="/">
+            <a className="">
+              {scrolling ? (
+                <img ref={lr} src="/newLogo.svg" alt="logo" style={{ width: "70%" }} />
+              ) : (
+                <img ref={lr} src="/logo.svg" alt="logo" style={{ width: "70%" }} />
+              )}
+            </a>
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={handleMobileDropdown}
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="icon-bar">
+              <i className="fas fa-bars"></i>
+            </span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ml-auto">
+              {content.map((item) => renderMenuItem(item))}
+            </ul>
+          </div>
+          {/* <img src="/barsMenu.svg" style={{width:"40px", height:"40px"}}/> */}
+          <button style={{
+            background: "rgb(25, 144, 223)",
+            padding: "5px 15px 5px 15px",
+            color: "white",
+            borderRadius: "5px",
+            border: "0px solid transparent"
+          }}>Login</button>
         </div>
-        {/* <img src="/barsMenu.svg" style={{width:"40px", height:"40px"}}/> */}
-        <button style={{
-    background: "rgb(25, 144, 223)",
-    padding:"5px 15px 5px 15px",
-    color: "white",
-    borderRadius: "5px",
-    border: "0px solid transparent"}}>Login</button>
-      </div>
-      
-    </nav>
+
+      </nav>
       {/* <div style={{
           position: "fixed",
           right: "0",
@@ -272,7 +253,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
               </span>
           ))}
       </div> */}
-      </>
+    </>
   );
 };
 export default Navbar;

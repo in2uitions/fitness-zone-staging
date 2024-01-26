@@ -26,7 +26,7 @@ const Testimonials = ({ data = {} }) => {
     return (
         <section
             className="block-sec container"
-        // style={{ backgroundImage: 'url("people.png")', backgroundRepeat: "no-repeat", backgroundSize: "cover" }}
+        style={{ paddingBottom:"120px" }}
         >
             <div
                 style={{

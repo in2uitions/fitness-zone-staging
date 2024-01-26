@@ -7,6 +7,7 @@ import LoadingScreen from "../components/Loading-Screen";
 import "../styles/globals.css";
 import dynamic from "next/dynamic";
 import { handleApi } from "../../api/server";
+import Footer from "../components/Footer";
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <LoadingScreen />
       {/* <ScrollToTop /> */}
       <Component {...pageProps} />
+      <Footer/>
       <Script
         strategy="beforeInteractive"
         id="wow"

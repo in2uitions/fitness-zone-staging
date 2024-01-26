@@ -6536,7 +6536,7 @@ header.simpl .caption .btn-curve {
 }
 
 .footer-half .cont .logo {
-  width: 55px;
+  /* width: 55px; */
   margin-bottom: 30px;
 }
 
@@ -6565,7 +6565,17 @@ header.simpl .caption .btn-curve {
   font-size: 13px;
   opacity: .6;
 }
-
+.social a {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 50%;
+  margin-right: 5px;
+  font-size: 13px;
+  opacity: .6;
+}
 .footer-half .subscribe p {
   color: #999;
   font-size: 12px;

@@ -14,6 +14,8 @@ import Timeline from '../src/components/Showcases-full-screen-circle-slide';
 import Clubs from '../src/components/Clubs';
 import Membership from '../src/components/Membership';
 import GxClasses from '../src/components/Gx-classes-listing';
+import PersonalTraining from '../src/components/Personal-training';
+import ContactUs from '../src/components/Contact';
 
 export default function Sections({ data = {} }) {
     return (
@@ -65,8 +67,14 @@ export default function Sections({ data = {} }) {
                 if (section.collection == "membership_sections") {
                     return<Membership withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
                 }
+                if (section.collection == "personal_training") {
+                    return<PersonalTraining withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
                 if (section.collection == "classes_listing") {
                     return<GxClasses withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
+                }
+                if (section.collection == "comp_contact") {
+                    return<ContactUs withPadding withOutTitle data={section.item} index={0} isFlipped={section.item?.image_position == "left" } />
                 }
             })}
         </div>
