@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { BrowserView, MobileView } from "react-device-detect";
 import DarkTheme from "../layouts/Dark";
 import { useRouter } from "next/router";
+import { PuffLoader } from "react-spinners";
 
 export default function App() {
     const [data, setData] = useState([]);
@@ -266,6 +267,13 @@ export default function App() {
 
     return (
         <DarkTheme>
+        {loading ? 
+            (
+                <div className="spinner" style={{display:"flex",width:"100vw", height:"100vh", justifyContent:"center", alignItems:"center"}}>
+                <PuffLoader style={{width:"40px"}}/>
+               </div>
+            ) : 
+            (
         <div className="container mx-auto mt-40 lg:px-28 md:px-20 px-3"
             style={{width:"100%", marginLeft:"auto", marginRight:"auto", paddingLeft:"0.75rem", paddingRight:"0.75rem"}}>
             <div className="flex flex-col justify-center items-center"
@@ -445,14 +453,8 @@ export default function App() {
                 </Tabs>
             </MobileView>
             <BrowserView>
-            {loading ? 
-            (
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-               <p>Loading...</p>
-               </div>
-            ) : 
-            (
-                filtered.sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
+            
+                {filtered.sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                     <>
                         {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ? 
                         <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" 
@@ -482,7 +484,7 @@ export default function App() {
                         </div> : null}
                     </>
                 ))
-            )
+            
                 }
             </BrowserView>
             <MobileView>
@@ -510,6 +512,7 @@ export default function App() {
                 ))}
             </MobileView>
         </div>
+            )}
         </DarkTheme>
     );
 }

@@ -1038,7 +1038,7 @@ span:hover {
   right: 100%;
   height: 100%;
   width: 100%;
-  background: #75dab4;
+  background: #0090DF;
 }
 
 .pace.pace-inactive {
@@ -1315,7 +1315,7 @@ body {
   line-height: 44px;
   font-size: 13px;
   font-weight: 900;
-  color: #75dab4;
+  color: #0090DF;
   left: 0;
   top: 0;
   height: 44px;
@@ -1333,7 +1333,7 @@ body {
 }
 
 .progress-wrap svg.progress-circle path {
-  stroke: #75dab4;
+  stroke: #0090DF;
   stroke-width: 4;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -7465,4 +7465,9 @@ header.simpl .caption .btn-curve {
   background-color: rgba(143, 143, 143, 0.1);
   width: 100%;
   border-radius: 5px;
+}
+.spinner span span{
+  border: thick solid #0090DF !important;
+  top: 50% !important;
+  left: 50% !important;
 }
