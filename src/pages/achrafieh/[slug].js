@@ -2,7 +2,7 @@ import Sections from "../../../assets/section";
 import Header from "../../components/page-headers";
 import { handleApi } from "../../../api/server";
 import DarkTheme from "../../layouts/Dark";
-import Navbar from "../../components/NavbarAchrafieh";
+import Navbar from "../../components/Navbar";
 import React, { useEffect } from "react";
 
 function Slug({ data = {} }) {

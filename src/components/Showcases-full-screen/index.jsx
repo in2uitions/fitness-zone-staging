@@ -99,6 +99,7 @@ const ShowcasesFullScreen = ({data={}}) => {
           ))}
         </Swiper>
       </div>
+      <div style={{display:"flex", justifyContent:"center"}}><a href="/about/Gx-classes" style={{background:"#0090df", padding:"10px", borderRadius:"5px", cursor:"pointer"}}>VIEW CLASSES</a></div>
     </section>
   );
 };

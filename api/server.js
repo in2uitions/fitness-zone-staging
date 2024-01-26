@@ -64,6 +64,35 @@ export const getAllRecords = async (collection) => {
 
     return annoncesPublished.data;
 }
+export const getClasses = async (value) => {
+    const classes = directus.items('classes');
+
+    var myfilter = '';
+    var max = '1'
+    if (value) {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            }
+        }
+    }
+    else {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            },
+
+
+        }
+
+    }
+
+
+    var myfields = ['*']
+    const classesPublished = await classes.readByQuery({ filter: myfilter, fields: myfields })
+    // console.log(classesPublished.data + "test")
+    return classesPublished.data;
+}
 // export const getClasses = async (value) => {
 //     const classes = directus.items('classes');
 
