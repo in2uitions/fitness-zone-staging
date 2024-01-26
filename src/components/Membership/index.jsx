@@ -28,13 +28,15 @@ const Membership = ({ withBG, withPadding, halfBG, withOutTitle, data = {} }) =>
                                         </div>
                                     </div>
                                 </div>
-                                <div style={{
+                                <div style={{display:"flex", justifyContent:"center"}}>
+                                <div className="diagonal-button-container" style={{
                                     marginTop: "4rem", display: "flex",
-                                    justifyContent: "center"
+                                    justifyContent: "center", width:"50%"
                                 }} >
                                 <a  style={{ display: "flex",
                                     justifyContent: "center"
                                 }} className="diagonal-button" href={service.membership_components_id.button_link}>{service.membership_components_id.button_title}</a>
+              </div>
               </div>
                             </div>
                         ))}

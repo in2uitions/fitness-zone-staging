@@ -1190,6 +1190,7 @@ ul.metismenu-container:first-child {
   font-family: 'Montserrat Regular';
   font-size: 12px;
   color: white;
+  min-height: 90px;
 }
 
 .timeline .timeline-item .timeline-panel .timeline-body>p+p {
@@ -1272,7 +1273,7 @@ ul.metismenu-container:first-child {
 .timeline-horizontal .timeline-item .timeline-badge {
   top: auto;
   bottom: 0px;
-  left: 43px;
+  left: 24px;
 }
 .text-blue p{
   color: white !important;
@@ -1284,18 +1285,7 @@ ul.metismenu-container:first-child {
   border-top: 1px solid;
 }
 
-.diagonal-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  width: 50%;
-  cursor: pointer;
-  /* transform: skew(20deg); */
-}
+
 .parallelogram-btn {
   position: relative;
   display: inline-block;
@@ -1321,4 +1311,17 @@ ul.metismenu-container:first-child {
   transform: skew(20deg);
   transform-origin: bottom right;
   z-index: -1;
+}
+
+.diagonal-button-container {
+  -ms-transform: skewX(20deg); /* IE 9 */
+  -webkit-transform: skewX(20deg); /* Safari */
+  transform: skewX(20deg);
+  background-color: #3498db;
+}
+.diagonal-button {
+  -ms-transform: skewX(-20deg); /* IE 9 */
+  -webkit-transform: skewX(-20deg); /* Safari */
+  transform: skewX(-20deg);
+  padding: 20px;
 }

@@ -9,7 +9,6 @@ import {
   handleSearch,
 } from "../../common/navbar";
 import { useRouter } from "next/router";
-
 const Navbar = ({ lr, nr, theme, data = {} }) => {
   // React.useEffect(() => {
   //   handleSearch();
@@ -17,8 +16,6 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
   const pathname = useRouter().pathname;
   const router = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
-
-
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
@@ -27,7 +24,6 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
   const [index, updateIndex] = useState(0);
   const [content, updateContent] = useState([]);
   var ct = [
-
     {
       "id": 1,
       "label": "ABOUT THE ZONE",
@@ -104,13 +100,11 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       "id": 13,
       "label": "SERVICES",
       "to": '/about/services'
-
     },
     {
       "id": 14,
       "label": "CONTACT",
-      "to": '#'
-
+      "to": '/about/contact-us'
     }
   ];
   const renderMenuItem = (item) => {
@@ -118,7 +112,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
   <a
-  href={item.to}
+  // href={item.to}
     className="nav-link dropdown-toggle"
     data-toggle="dropdown"
     role="button"
@@ -140,7 +134,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       return (
         <li className="nav-item" key={item.id}>
           <Link href={item.to}>
-          <a href="#" className="nav-link">{item.label}</a>
+          <a href={item.to} className="nav-link">{item.label}</a>
           </Link>
         </li>
       );
@@ -148,72 +142,47 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
   };
   const _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-
       router.push('/results-page?search=' + search)
     }
   }
-
-
-
-
   useEffect(() => {
     const menuItems = document.querySelectorAll('.metismenu-container .metismenu-item');
     menuItems.forEach(item => {
       item.classList.replace('metismenu-item', 'nav-item');
     });
     window.addEventListener('scroll', handleScroll, { passive: true });
-
     console.log(ct);
     updateContent(ct);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-
-
-
   }, []);
-
   useEffect(() => {
-
     const handleRouteChange = (url) => {
-
       // setIsSidebarOpen(false)
-
-
       if (url.includes("software") || url.includes("deployment")) {
         updateIndex(0);
       }
-
       if (url.includes("business") || url.includes("industries") || url.includes("hardware")) {
         updateIndex(1);
       }
       if (url.includes("about")) {
         updateIndex(2);
       }
-
       if (url.includes("about") || url.includes("support")) {
         updateIndex(3);
       }
-
       if (url.includes("resources")) {
         updateIndex(4);
       }
     }
-
-
-
     handleRouteChange(router.pathname)
-
     router.events.on('routeChangeStart', handleRouteChange)
-
-
     return () => {
       router.events.off('routeChangeStart', handleRouteChange)
     }
   }, []);
   const [scrolling, setScrolling] = React.useState(false);
-
   React.useEffect(() => {
       const handleScroll = () => {
           if (window.scrollY > 300) {
@@ -222,9 +191,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
               setScrolling(false);
           }
       };
-
       window.addEventListener("scroll", handleScroll);
-
       return () => {
           window.removeEventListener("scroll", handleScroll);
       };
@@ -246,7 +213,6 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
                             )}
                         </a>
                     </Link>
-
                 <button
                     className="navbar-toggler"
                     type="button"

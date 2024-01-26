@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import { image_url } from "../../../global_vars.js";
@@ -8,9 +8,11 @@ import parse from "html-react-parser";
 import Popup from "reactjs-popup";
 
 const BranchPersonalTrainers = ({ data = {} }) => {
+    const sliderRef = useRef(null);
     const [trainersData, setTrainersData] = useState([]);
     const [selectedTrainer, setSelectedTrainer] = useState(null);
     const [location, setLocation] = useState([])
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -37,18 +39,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
         fetchData();
     }, [data.trainer]);
 
-    // const handleImageClick = (trainer) => {
-    //     console.log("Clicked trainer:", trainer);
-    //     console.log("All trainers data:", trainersData);
 
-    //     const selectedTrainerData = trainersData.find((data) =>
-    //         data.data.some((innerData) => innerData.name === trainer.trainer_id.name)
-    //     );
-
-    //     console.log("Selected trainer data:", selectedTrainerData);
-
-    //     setSelectedTrainer(selectedTrainerData);
-    // };
 
     const closePopup = () => {
         setSelectedTrainer(null);
@@ -120,18 +111,12 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                 // Use the retrieved data as needed
                 console.log(dataress);
                 setLocation(dataRes);
+                setLoading(false)
             }
         } catch (error) {
             console.error("Error fetching additional data:", error);
         }
     };
-    // useEffect((userId) => {
-    //     if (userId) {
-    //         fetchDataForUserId(userId);
-    //     }
-    // }, [userId]);
-
-    // console.log(location, "hey I just met u")
     return (
         <section className={`testimonials position-re`}>
             <div className="container">
@@ -158,11 +143,12 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                     <div className="col-lg-10">
                         <Slider
                             className="slic-item"
+                            ref={sliderRef}
                             {...{
                                 dots: true,
                                 infinite: true,
                                 arrows: true,
-                                autoplay: true,
+                                autoplay: false,
                                 rows: 1,
                                 slidesToScroll: 1,
                                 slidesToShow: 4,
@@ -194,23 +180,24 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                         </Slider>
                     </div>
                 </div>
-                <div className="arrows">
-                    <div
-                        onClick={() => this.slider.slickNext()}
-                        className="next cursor-pointer"
-                    >
-                        <span className="pe-7s-angle-right"></span>
-                    </div>
-                    <div
-                        onClick={() => this.slider.slickPrev()}
-                        className="prev cursor-pointer"
-                    >
-                        <span className="pe-7s-angle-left"></span>
-                    </div>
+                 <div className="arrows">
+                <div style={{cursor:"pointer"}} onClick={() => sliderRef.current.slickNext()} className="next cursor-pointer">
+                    <span className="pe-7s-angle-right"></span>
+                </div>
+                <div style={{cursor:"pointer"}} onClick={() => sliderRef.current.slickPrev()} className="prev cursor-pointer">
+                    <span className="pe-7s-angle-left"></span>
                 </div>
             </div>
+            </div>
+            {loading ? 
+            (
+                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+               <p>Loading...</p>
+               </div>
+            ) : 
+            (
 
-            {selectedTrainer && (
+            selectedTrainer && (
                 <>
                     <div
                         className="popup"
@@ -293,7 +280,9 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                     </span>
 
                 </>
-            )}
+            )
+            )
+                            }
         </section>
     );
 };

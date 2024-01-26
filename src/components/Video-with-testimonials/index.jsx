@@ -89,16 +89,18 @@ const VideoWithTestimonials = ({ data = {} }) => {
                             <div className="" onClick={close}>
                               <img src="/closeButton.svg" style={{ width: "40px", height: "40px", outline: "none", float: "right", position: "absolute", right: "-4rem", top: "-4rem" }} />
                             </div>
+                            <div className="container">
                             <ReactPlayer
                               url={`${image_url}${data?.video?.id}`}
                               id="thumbnail"
                               className="video modalvideo"
                               width="100%"
-                              height="90vh"
+                              height="70vh"
                               controls
                               playsinline
                               onEnded={handleVideoEnded}
                             />
+                            </div>
                           </>
                         )}
                       </Popup>

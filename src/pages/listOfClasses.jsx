@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -11,6 +10,7 @@ export default function App() {
     const [location, setLocation] = useState([])
     const [name, setName] = useState("");
     const [filtered, setFiltered] = useState([]);
+    const [loading, setLoading] = useState(true);
     const LEBANON = 'LB';
     const UAE = "AE";
     const login_credentials = {
@@ -148,8 +148,10 @@ export default function App() {
                     let classes = dataClass;
                     setData(classes);
                     setFiltered(classes);
+                    setLoading(false);
                 } catch (err) {
                     console.log(err);
+                    setLoading(false);
                 }
             } catch (err) {
                 console.log(err);
@@ -187,8 +189,10 @@ export default function App() {
                     let classes = dataClass;
                     setData(classes);
                     setFiltered(classes);
+                    setLoading(false);
                 } catch (err) {
                     console.log(err);
+                    setLoading(false);
                 }
             } catch (err) {
                 console.log(err);
@@ -441,7 +445,14 @@ export default function App() {
                 </Tabs>
             </MobileView>
             <BrowserView>
-                {filtered.sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
+            {loading ? 
+            (
+                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+               <p>Loading...</p>
+               </div>
+            ) : 
+            (
+                filtered.sort((a, b) => new Date(a.classTime) - new Date(b.classTime)).map((item, index) => (
                     <>
                         {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ? 
                         <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 flex-wrap" 
@@ -470,7 +481,9 @@ export default function App() {
                             </div>
                         </div> : null}
                     </>
-                ))}
+                ))
+            )
+                }
             </BrowserView>
             <MobileView>
                 {filtered.map((item, index) => (
@@ -500,5 +513,3 @@ export default function App() {
         </DarkTheme>
     );
 }
-
-

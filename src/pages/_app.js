@@ -7,7 +7,6 @@ import LoadingScreen from "../components/Loading-Screen";
 import "../styles/globals.css";
 import dynamic from "next/dynamic";
 import { handleApi } from "../../api/server";
-
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -17,9 +16,8 @@ function MyApp({ Component, pageProps }) {
       </Head>
       {/* <Cursor /> */}
       <LoadingScreen />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Component {...pageProps} />
-
       <Script
         strategy="beforeInteractive"
         id="wow"
@@ -40,14 +38,10 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
-
 export default MyApp;
-
-
 export async function getInitialProps(ctx) {
   const about = await handleApi({ url: `pages`, fields: ['*'], load: false });
   const res = await handleApi({ url: `homepage`, fields: ['*'], load: false });
   const data = res[0];
-
   return { data, about };
 }
