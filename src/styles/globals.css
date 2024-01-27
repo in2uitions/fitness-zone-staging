@@ -1556,4 +1556,18 @@ ul.metismenu-container:first-child {
   .cont{
     margin-top: 2rem;
   }
+  .class-padding{
+    padding-bottom: 80px;
+  }
+  .img-class{
+    width: 100% !important;
+    object-fit: cover;
+  }
+  .imgFullSize{
+    height: 50vh !important;
+    object-fit: cover;
+  }
+  .textSizeClass{
+    font-size: 36px !important;
+  }
 }

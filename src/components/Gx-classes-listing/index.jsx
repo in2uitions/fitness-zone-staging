@@ -55,7 +55,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                     <div className="col-lg-6" style={{ display: "flex", alignItems: "center" }}>
                                         <div className="content">
                                             <h3
-                                                className="words chars splitting wow"
+                                                className="words chars splitting wow textSizeClass"
                                                 style={{ fontSize: "60px" }}
                                             >
                                                 {item.listing_classes_id.title}
@@ -83,7 +83,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                         >
                             <div className="" >
                                 <div style={{ position: "relative" }}>
-                                    <img src={`${image_url}${item.listing_classes_id.image?.id}`} alt={`${data.image?.title}`} />
+                                    <img className='imgFullSize' src={`${image_url}${item.listing_classes_id.image?.id}`} alt={`${data.image?.title}`} />
                                     <div style={{
                                         display: "flex",
                                         flexDirection: "column",
@@ -98,7 +98,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                     }}>
                                         <div className="content">
                                             <h3
-                                                className="words chars splitting wow"
+                                                className="words chars splitting wow textSizeClass"
                                                 style={{ fontSize: "60px" }}
                                             >
                                                 {item.listing_classes_id.title}
@@ -126,7 +126,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                 </div><div className="col-lg-5 " style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                         <div className="content">
                                             <h3
-                                                className="words chars splitting wow"
+                                                className="words chars splitting wow textSizeClass"
                                                 style={{ fontSize: "60px" }}
                                             >
                                                 {item.listing_classes_id.title}
