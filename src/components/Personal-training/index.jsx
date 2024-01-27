@@ -7,13 +7,13 @@ import { image_url } from "../../../global_vars";
 const PersonalTraining = ({ withBG, withPadding, halfBG, withOutTitle, data = {} }) => {
     return (
         <section
-            className={`services `} style={{paddingTop:"120px"}}
+            className={`services stylepadding`} style={{paddingTop:"120px"}}
         >
             <div className="">
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: "3rem" }}>
+                <div className="membershipTitle" style={{ display: "flex", justifyContent: "center", marginBottom: "3rem" }}>
                     {data.title ? <p style={{ fontSize: "32px", letterSpacing: "15px", color: "white" }}>{data.title}</p> : null}
                 </div>
-                <div className="row">
+                <div className="row mobileRow">
                     {
                         data.personal_training_components?.map((service, index) => (
                             <div className={`contact_block col-lg-4`} key={service.membership_components_id.id}>
@@ -44,7 +44,7 @@ const PersonalTraining = ({ withBG, withPadding, halfBG, withOutTitle, data = {}
                                     </div>
 
                                 </div>
-                                <div style={{width:"70%", paddingLeft:"3rem", marginTop:"1rem"}}>
+                                <div className="textPT" style={{width:"70%", paddingLeft:"3rem", marginTop:"1rem"}}>
                                                 <p>{parse(`${service.membership_components_id.brief}`)}</p>
                                             </div>
                             </div>
@@ -52,7 +52,7 @@ const PersonalTraining = ({ withBG, withPadding, halfBG, withOutTitle, data = {}
                             </div>
                         ))}
             </div>
-            {data.book_session_button ?<div style={{display:"flex", justifyContent:"center", background:"#0090DF", padding:"10px 20px"}}>
+            {data.book_session_button ?<div className="booksession" style={{display:"flex", justifyContent:"center", background:"#0090DF", padding:"10px 20px"}}>
              <p style={{fontSize:"21px"}}>{data.book_session_button}</p>
              </div>:null}
         </div>

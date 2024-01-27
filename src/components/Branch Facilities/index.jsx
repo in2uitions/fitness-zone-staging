@@ -14,14 +14,14 @@ const BranchFacilities = ({ data = {} }) => {
     }, []);
 
     return (
-        <section className="works pb-70">
+        <section className="works pb-70 sectionPadding">
             <h2 style={{ display: 'none' }}> &nbsp; </h2>
             <div className="">
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", marginBottom: "3rem" }}>
-                    {data.branch_name ? <h1 style={{ fontWeight: "bold" }}>{data.branch_name}</h1> : null}
-                    {data.title ? <h1 style={{ fontWeight: "200", fontFamily:'Montserrat Regular' }}>{data.title}</h1> : null}
+                <div className="mobileFlex" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", marginBottom: "3rem" }}>
+                    {data.branch_name ? <h1 className="globalTitle" style={{ fontWeight: "bold" }}>{data.branch_name}</h1> : null}
+                    {data.title ? <h1 className="globalSubtitle" style={{ fontWeight: "200", fontFamily:'Montserrat Regular' }}>{data.title}</h1> : null}
                 </div>
-                <div className=" container" style={{ display: "flex" , justifyContent:"space-between"}}>
+                <div className=" container mobileFlex" style={{ display: "flex" , justifyContent:"space-between"}}>
 
                     {data.facility.map((item, index) => (
                         <div key={item.id} style={{ padding: "2rem", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}} className={``}>

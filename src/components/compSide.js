@@ -72,7 +72,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                             <select style={{ width: "100%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px", color: "white" }}>
                                 <option>Baabda</option>
                             </select>
-                            <button type='submit' style={{ width: "25%", background: "#1990DF", height: "3rem", color: "white", borderRadius: "5px", border: "0px solid transparent" }}>SUBMIT REQUEST</button>
+                            <button className='submitPopup' type='submit' style={{ width: "25%", background: "#1990DF", height: "3rem", color: "white", borderRadius: "5px", border: "0px solid transparent" }}>SUBMIT REQUEST</button>
                         </div>
                     </div> : null}
                 </div>

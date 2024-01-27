@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import parse from "html-react-parser";
 import Popup from "reactjs-popup";
+import { BrowserView, MobileView } from "react-device-detect";
 
 const BranchPersonalTrainers = ({ data = {} }) => {
     const sliderRef = useRef(null);
@@ -121,6 +122,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
         <section className={`testimonials position-re`}>
             <div className="container">
                 <div
+                className="mobileFlex"
                     style={{
                         display: "flex",
                         justifyContent: "center",
@@ -130,10 +132,10 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                     }}
                 >
                     {data.branch_name ? (
-                        <h1 style={{ fontWeight: "bold" }}>{data.branch_name}</h1>
+                        <h1 className="globalTitle" style={{ fontWeight: "bold" }}>{data.branch_name}</h1>
                     ) : null}
                     {data.title ? (
-                        <h1 style={{ fontWeight: "200", fontFamily: "Montserrat Regular" }}>{data.title}</h1>
+                        <h1 className="globalSubtitle" style={{ fontWeight: "200", fontFamily: "Montserrat Regular" }}>{data.title}</h1>
                     ) : null}
                 </div>
                 <div
@@ -141,6 +143,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                     data-wow-delay=".5s"
                 >
                     <div className="col-lg-10">
+                        <BrowserView>
                         <Slider
                             className="slic-item"
                             ref={sliderRef}
@@ -178,6 +181,46 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                 </div>
                             ))}
                         </Slider>
+                        </BrowserView>
+                        <MobileView>
+                        <Slider
+                            className="slic-item"
+                            ref={sliderRef}
+                            {...{
+                                dots: true,
+                                infinite: true,
+                                arrows: true,
+                                autoplay: false,
+                                rows: 1,
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                            }}
+                        >
+                            {data.trainer.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="item"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => handleImageClick(item)}
+                                >
+                                 
+                                        <img
+                                            className="pt-images"
+                                            src={`${image_url}${item.trainer_id.image?.id}`}
+                                            alt={`${data.image?.title}`}
+                                            style={{ cursor: "pointer" }}
+                                            onClick={() => handleImageClick(item)}
+                                        />
+
+                                    <div style={{ marginTop: "15px" }}>
+                                        <div className="cont" style={{ fontWeight: "bold", fontFamily: 'Montserrat ExtraBold' }}>
+                                            {item.trainer_id.name}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
+                        </MobileView>
                     </div>
                 </div>
                  <div className="arrows">

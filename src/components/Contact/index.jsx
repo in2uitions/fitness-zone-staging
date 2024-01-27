@@ -31,7 +31,7 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                     <div className="">
                         <p style={{ fontSize: "42px" }}>{data.title}</p>
                     </div>
-                    <div style={{ display: "flex", marginTop: "2rem" }}>
+                    <div className="mobileFlex" style={{ display: "flex", marginTop: "2rem" }}>
                         <div className="">
                             <div style={{ display: "flex", flexDirection: "column" }}>
 
@@ -41,7 +41,7 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                             </div>
                         </div>
                         <div className="">
-                            <img src="/contact.svg" style={{ height: "60%" }} />
+                            <img className="imgHeight" src="/contact.svg" style={{ height: "60%" }} />
                         </div>
                         <div className="">
                             {/* <img src="contactUs.png"/> */}
@@ -56,9 +56,9 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                         </div>
 
                     </div>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <div className="mobileFlex flexCenter" style={{ display: "flex", justifyContent: "space-between" }}>
                         {data?.contact?.map((item, i) => (
-                            <div style={{ display: "flex", flexDirection: "column" }}>
+                            <div className="spacing" style={{ display: "flex", flexDirection: "column" }}>
                                 <p style={{ fontFamily: "Montserrat Bold" }}>{item.comp_contact_items_id.location}</p>
                                 <p>{item.comp_contact_items_id.number}</p>
                                 <div style={{ display: "flex", gap: "10px", alignItems: "center", marginTop: "0.5rem" }}>

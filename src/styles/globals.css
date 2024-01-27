@@ -1412,6 +1412,7 @@ ul.metismenu-container:first-child {
   .mobileFlex{
     display: flex;
     flex-direction: column;
+    text-align: center;
   }
   .loginMobileHidden{
     display: none;
@@ -1439,9 +1440,9 @@ ul.metismenu-container:first-child {
   .work-carousel .swiper-slide{
     padding: 0px !important;
   }
-  .swiper-wrapper{
+  /* .swiper-wrapper{
     width: 90vw !important;
-  }
+  } */
   .mobileRow{
     margin-left: unset !important;
     margin-right: unset !important;
@@ -1470,6 +1471,7 @@ ul.metismenu-container:first-child {
   }
   .mobileTimeline{
     overflow-y: auto;
+    padding-bottom: 20px;
   }
   .timelineSection{
     padding-left: 15px;
@@ -1477,5 +1479,81 @@ ul.metismenu-container:first-child {
   }
   .serviceBox{
     padding-bottom: 2rem;
+  }
+  .testimonials .item{
+    padding: 0px !important;
+  }
+  .testimonials .arrows .next, .testimonials .arrows .prev{
+    right: 10px !important;
+  }
+  .testimonials .arrows .prev{
+    left: 10px !important;
+  }
+  .slick-slide .pt-images{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .demiCircle{
+    height: unset !important;
+  }
+  .barImage{
+    height: unset !important;
+  }
+  .vid-area{
+    transform: translate(10px, 20%) !important;
+  }
+  .blogTitle{
+    font-size: 26px !important;
+  }
+  .rowGap{
+    gap: 15px;
+  }
+  .sectionPadding{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .submitPopup{
+    width: 50% !important;
+  }
+  .membershipTitle{
+    text-align: center !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .membershipTitle p{
+    letter-spacing: 8px !important;
+  }
+  .diagonal-button-container{
+    margin-top: 1rem !important;
+  }
+  .contact_block{
+    padding-bottom: 1rem;
+  }
+  .booksession{
+    margin-top: 2rem;
+  }
+  .textPT{
+    width: 100% !important;
+    padding-left: 0px !important;
+  }
+  .stylepadding{
+    padding-top: 80px !important;
+  }
+  .imgHeight{
+    height: 80px !important;
+  }
+  .flexCenter{
+    align-items: center;
+    margin-top: 2rem !important;
+  }
+  .spacing{
+    margin-bottom: 1rem;
+  }
+  .map-border {
+    width: 92vw !important;
+    margin-top: 2rem !important;
+  }
+  .cont{
+    margin-top: 2rem;
   }
 }

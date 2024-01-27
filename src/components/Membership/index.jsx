@@ -11,10 +11,10 @@ const Membership = ({ withBG, withPadding, halfBG, withOutTitle, data = {} }) =>
                 }`}
         >
             <div className="">
-            <div style={{display:"flex", justifyContent:"center", marginBottom:"3rem"}}>
+            <div className="membershipTitle" style={{display:"flex", justifyContent:"center", marginBottom:"3rem"}}>
             {data.title ?<p style={{fontSize:"32px", letterSpacing:"15px", color:"white"}}>{data.title}</p>:null}
             </div>
-                <div className="row">
+                <div className="row mobileRow">
                     {
                         data.membership_components?.map((service, index) => (
                             <div className={`contact_block col-lg-4`} key={service.membership_components_id.id}>

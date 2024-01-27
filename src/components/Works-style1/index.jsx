@@ -61,9 +61,9 @@ const WorksStyle1 = ({ data = {} }) => {
       }}>
       <h2 style={{ display: 'none' }}> &nbsp; </h2>
       <div className="container">
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", marginBottom: "5rem" }}>
-          {data.branch_name ? <h1 style={{ fontWeight: "bold", fontFamily: "Montserrat ExtraBold" }}>{data.branch_name}</h1> : null}
-          {data.title ? <h1 style={{ fontWeight: "200", fontFamily: "Montserrat Regular" }}>{data.title}</h1> : null}
+        <div className="mobileFlex" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", marginBottom: "5rem" }}>
+          {data.branch_name ? <h1 className="globalTitle" style={{ fontWeight: "bold", fontFamily: "Montserrat ExtraBold" }}>{data.branch_name}</h1> : null}
+          {data.title ? <h1 className="globalSubtitle" style={{ fontWeight: "200", fontFamily: "Montserrat Regular" }}>{data.title}</h1> : null}
         </div>
         <div className="row lg-space">
           {data.class.map((item, index) => (
