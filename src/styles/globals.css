@@ -1465,4 +1465,7 @@ ul.metismenu-container:first-child {
     font-size: 18px !important;
   }
   .InputWidth{width: 100% !important;}
+  .section-padding{
+    padding: 80px 0px !important;
+  }
 }
