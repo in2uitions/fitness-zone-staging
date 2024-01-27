@@ -21,7 +21,7 @@ const CallToAction = ({ img, theme, subBG }) => {
             <div className="">
               <div style={{ display: "flex", flexDirection: "column" }}>
 
-                <p style={{ letterSpacing: "10px", fontWeight: "bold", fontSize: "36px" }}>BEIRUT</p>
+                <p className="titleBranch" style={{ letterSpacing: "10px", fontWeight: "bold", fontSize: "36px" }}>BEIRUT</p>
                 <p>+961 01 2345 678923</p>
                 <p>Contact@fitnesszone.com.lb</p>
               </div>
@@ -33,7 +33,7 @@ const CallToAction = ({ img, theme, subBG }) => {
               {/* <img src="contactUs.png"/> */}
               <div style={{ display: "flex", flexDirection: "column" }}>
 
-                <p style={{ letterSpacing: "10px", fontWeight: "bold", fontSize: "36px" }}>DUBAI</p>
+                <p className="titleBranch" style={{ letterSpacing: "10px", fontWeight: "bold", fontSize: "36px" }}>DUBAI</p>
                 <p>+961 01 2345 678923</p>
                 <p>Contact@fitnesszone.com.lb</p>
               </div>
@@ -42,8 +42,8 @@ const CallToAction = ({ img, theme, subBG }) => {
 
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <p style={{ color: "white", fontSize: "36px" }}>SUBSCRIBE TO OUR BLOG <span style={{ fontWeight: "bolder" }}>FITNESS SCIENCE</span></p>
-            <input type="text" style={{ background: "#80808073", border: "none", padding: "5px", width: "50%" }} placeholder="EMAIL ADDRESS" />
+            <p className="subscribe" style={{ color: "white", fontSize: "36px" }}>SUBSCRIBE TO OUR BLOG <span style={{ fontWeight: "bolder" }}>FITNESS SCIENCE</span></p>
+            <input className="InputWidth" type="text" style={{ background: "#80808073", border: "none", padding: "5px", width: "50%" }} placeholder="EMAIL ADDRESS" />
 
           </div>
         </div>

@@ -27,10 +27,10 @@ const ShowcasesFullScreen = ({data={}}) => {
           speed={1000}
           className="swiper-wrapper"
           slidesPerView={1}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 2500,
+          //   disableOnInteraction: false,
+          // }}
           loop={true}
         >
           {data.gx_classes_components.map((slide) => (
@@ -56,9 +56,10 @@ const ShowcasesFullScreen = ({data={}}) => {
                         style={{ position: "absolute", zIndex: "22" }}
                       >
                         <h1>
-                          <Link href="/project-details2/project-details2-dark">
-                            <a style={{ display: "flex", gap: "10px" }}>
-                              <div     
+                          <div href="/">
+                            <a className="gxTitle" style={{ display: "flex", gap: "10px" }}>
+                              <div  
+                            
                                 style={{
                                   color: "#0090DF",
                                   fontFamily: "Montserrat Bold",
@@ -72,9 +73,10 @@ const ShowcasesFullScreen = ({data={}}) => {
                                 {slide.gx_classes_components_id.title[0]?.second}
                               </span>
                             </a>
-                          </Link>
+                          </div>
                         </h1>
                         <p
+                           className="gxBrief"  
                           style={{
                             color: "white",
                             fontSize: "21px",
