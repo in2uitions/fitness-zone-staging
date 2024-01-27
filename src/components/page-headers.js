@@ -57,8 +57,8 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                 <div id="" style={{ "backgroundImage": `url("${image_url}${data.image?.id}")` }} className=" aboutUs-bg" >
                     <div className="" style={{ "backgroundImage": `url("${image_url}${data.bar_image?.id}")`, backgroundRepeat: "no-repeat", height: "211px", position: "absolute", top: "50%", left: "8rem" }}>
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
-                            {data.image_title ? <h1 style={{ fontSize: "82px" }}>{data.image_title}</h1> : null}
-                            {data.image_subtitle ? <h3 className="">{data.image_subtitle}</h3> : null}
+                            {data.image_title ? <h1 className='banner-title' style={{ fontSize: "82px" }}>{data.image_title}</h1> : null}
+                            {data.image_subtitle ? <h3 className="banner-subtitle">{data.image_subtitle}</h3> : null}
                         </div>
                     </div>
                     <div style={{ position: "absolute", right: "10rem", top: "60%", borderRight: "2px solid #707070", paddingRight: "20px" }}>

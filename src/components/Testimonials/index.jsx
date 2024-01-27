@@ -35,8 +35,8 @@ const Testimonials = ({ data = {} }) => {
                     position: "relative",
                 }}
             >
-                <img style={{ width: "30%" }} src="/circles.png" />
-                <p
+                <img style={{ width: "30%" }} className="circleShape" src="/circles.png" />
+                <p className="peopleTitle"
                     style={{
                         display: "flex",
                         gap: "20px",

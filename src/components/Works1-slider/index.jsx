@@ -31,7 +31,7 @@ const Works1Slider = ({ data = {} }) => {
           </h6> */}
           {/* <span className="tbg">Services</span> */}
         </div>
-        <div className="row">
+        <div className="row mobileRow">
           <div className="col-lg-12 no-padding">
             <div className="swiper-container" style={{ display: "flex" }}>
               {/* <img src="/CarouselSides.svg" style={{

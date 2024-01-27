@@ -17,7 +17,7 @@ const CallToAction = ({ img, theme, subBG }) => {
             }} />
             <p>CONTACT US</p>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
+          <div className="mobileFlex" style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
             <div className="">
               <div style={{ display: "flex", flexDirection: "column" }}>
 
@@ -27,7 +27,7 @@ const CallToAction = ({ img, theme, subBG }) => {
               </div>
             </div>
             <div className="">
-              <img src="contact-yellowLogo.svg" style={{ height: "75%" }} />
+              <img src="contact-yellowLogo.svg" className="contactYellowImg" style={{ height: "75%" }} />
             </div>
             <div className="">
               {/* <img src="contactUs.png"/> */}

@@ -213,7 +213,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
             </ul>
           </div>
           {/* <img src="/barsMenu.svg" style={{width:"40px", height:"40px"}}/> */}
-          <button style={{
+          <button className="loginMobileHidden" style={{
             background: "rgb(25, 144, 223)",
             padding: "5px 15px 5px 15px",
             color: "white",

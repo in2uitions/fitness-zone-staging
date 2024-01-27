@@ -1396,3 +1396,46 @@ ul.metismenu-container:first-child {
 .txt-class p{
   font-size: 21px;
 }
+
+@media (min-width:320px) and (max-width: 550px) {
+  .banner-title{
+    font-size:21px !important;
+  }
+  .mobileFlex{
+    display: flex;
+    flex-direction: column;
+  }
+  .loginMobileHidden{
+    display: none;
+  }
+  .block-sec .testim-box{
+    margin-right: 0px !important;
+  }
+  .peopleTitle{
+    font-size: 18px !important;
+    top: 0.5rem !important;
+    letter-spacing: 5px !important;
+    gap: 10px !important;
+  }
+  .circleShape{
+    width: 40% !important;
+  }
+  .absolute-component p{
+    font-size: 22px !important;
+    left: 35% !important;
+  }
+  .contactYellowImg{
+    height: 35% !important;
+    width: 40%;
+  }
+  .work-carousel .swiper-slide{
+    padding: 0px !important;
+  }
+  .swiper-wrapper{
+    width: 80vw !important;
+  }
+  .mobileRow{
+    margin-left: unset !important;
+    margin-right: unset !important;
+  }
+}
