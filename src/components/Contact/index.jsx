@@ -118,7 +118,7 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                         <div className="col-lg-5 offset-lg-1">
                                 <div style={{ height: '50vh', width: '47vw', padding: '0,0,0,0' }} className="map-border ">
                                     <GoogleMapReact
-                                        bootstrapURLKeys={{ key: "AIzaSyAl7GsTSNoZ3a-jLWJ41tky7HHTaSojqVI" }}
+                                        bootstrapURLKeys={{ key: "" }}
                                         defaultCenter={defaultProps.center}
                                         defaultZoom={defaultProps.zoom}
                                     >
