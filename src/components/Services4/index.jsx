@@ -39,7 +39,7 @@ const Services4 = ({ withBG, withPadding, halfBG, withOutTitle, data={}}) => {
         <div className="row">
         {
             data.card?.map((service, index) => (
-            <div className={`col-lg-4`} key={service.card_components_id.id}>
+            <div className={`col-lg-4 serviceBox`} key={service.card_components_id.id}>
               <div className={`item wow fadeInUp `} style={getBoxShadow(index)} data-wow-delay={service.card_components_id.id === 1 ? ".5s" : service.card_components_id.id === 2 ? ".3s" : ".8s"}>
                 {/* <span className={`icon ${item.icon}`}></span> */}
                 <h6 className={`text-white ${index === 1 ? "text-black" : ""}`} style={{fontSize:"32px"}}>{ service.card_components_id.title }</h6>

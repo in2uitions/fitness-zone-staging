@@ -1468,4 +1468,14 @@ ul.metismenu-container:first-child {
   .section-padding{
     padding: 80px 0px !important;
   }
+  .mobileTimeline{
+    overflow-y: auto;
+  }
+  .timelineSection{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .serviceBox{
+    padding-bottom: 2rem;
+  }
 }

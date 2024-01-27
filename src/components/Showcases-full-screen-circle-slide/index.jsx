@@ -4,7 +4,8 @@ import slides from "../../data/sections/timeline.json";
 
 const Timeline = ({ data }) => {
   return (
-    <div className="container">
+    <div className="timelineSection">
+    <div className="container mobileTimeline">
       <div className="row">
         <div className="">
           <div
@@ -32,6 +33,7 @@ const Timeline = ({ data }) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
