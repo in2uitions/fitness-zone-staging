@@ -71,11 +71,11 @@ const VideoWithTestimonials = ({ data = {} }) => {
                   <div className="">
                     <>
                       <Popup trigger={<button style={{ border: "none", background: "none", outline: "none" }}
-                        className=""
                         open={isOpen}
                         onOpen={openPopup}
                         modal
-                        position="center"
+                        position="center" 
+                       
                         closeOnDocumentClick={false}
                       >
                         <div className="vid-butn">
@@ -83,11 +83,11 @@ const VideoWithTestimonials = ({ data = {} }) => {
                             <img style={{ width: "80px", height: "80px" }} src="/playButton.svg" alt="Play button" />
                           </span>
                         </div>
-                      </button>} position="right center">
+                      </button>} position="right center"  className="popupMobile">
                         {(close) => (
                           <>
                             <div className="" onClick={close}>
-                              <img src="/closeButton.svg" style={{ width: "40px", height: "40px", outline: "none", float: "right", position: "absolute", right: "-4rem", top: "-4rem" }} />
+                              <img src="/closeButton.svg" className="closeVideo" style={{ width: "40px", height: "40px", outline: "none", float: "right", position: "absolute", right: "-4rem", top: "-4rem" }} />
                             </div>
                             <div className="container">
                             <ReactPlayer

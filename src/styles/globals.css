@@ -1598,4 +1598,15 @@ ul.metismenu-container:first-child {
   .closeGallery{
     right: 0rem !important;
   }
+  .closeVideo{
+    top: -3rem !important;
+    right: 1rem !important;
+  }
+  .popupMobile-content{
+    left: 0px !important;
+    /* margin-top: 11rem !important; */
+  }
+  .modalvideo{
+    height: 100% !important;
+  }
 }
