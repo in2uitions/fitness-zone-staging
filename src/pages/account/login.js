@@ -310,6 +310,7 @@ export default function Login() {
                         <input
                             onChange={(e) => handleTabsChange({ event: e, index: MEMBER })}
                             className="border-input h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder"
+                            style={{borderColor:"#008DDC"}}
                             placeholder="Member ID"
                             id="memberId"
                             maxLength="11"

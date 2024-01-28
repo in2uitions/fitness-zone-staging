@@ -187,7 +187,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           <Link href="/">
             <a className="">
               {scrolling ? (
-                <img ref={lr} src="/newLogo.svg" alt="logo" style={{ width: "70%" }} />
+                <img ref={lr} className="new-logo" src="/newLogo.svg" alt="logo" style={{ width: "70%" }} />
               ) : (
                 <img ref={lr} src="/logo.svg" alt="logo" style={{ width: "70%" }} />
               )}
@@ -213,13 +213,13 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
             </ul>
           </div>
           {/* <img src="/barsMenu.svg" style={{width:"40px", height:"40px"}}/> */}
-          <button className="loginMobileHidden" style={{
+          <a href="/account/login" className="loginMobileHidden" style={{
             background: "rgb(25, 144, 223)",
             padding: "5px 15px 5px 15px",
             color: "white",
             borderRadius: "5px",
             border: "0px solid transparent"
-          }}>Login</button>
+          }}>Login</a>
         </div>
 
       </nav>
