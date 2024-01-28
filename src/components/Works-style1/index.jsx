@@ -87,6 +87,7 @@ const WorksStyle1 = ({ data = {} }) => {
               renderCustomControls={() => (
                 <img
                   src="/closeButton.svg"
+                  className="closeGallery"
                   onClick={closeGallery}
                   style={{
                     width: "30px",

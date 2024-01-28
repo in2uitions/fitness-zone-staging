@@ -1570,4 +1570,32 @@ ul.metismenu-container:first-child {
   .textSizeClass{
     font-size: 36px !important;
   }
+  .popup{
+    margin: 0px !important;
+    padding: 0 15px !important;
+  }
+  .textAlign{
+    text-align: unset !important;
+  }
+  .testimonials p{
+    font-size: 14px !important;
+  }
+  .selectedTrainerName{
+    font-size: 21px !important;
+  }
+  .membership-box {
+    width: 45% !important;
+  }
+  .flexWrap{
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .image-gallery-content .image-gallery-slide .image-gallery-image{
+    height: 70vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  .closeGallery{
+    right: 0rem !important;
+  }
 }
