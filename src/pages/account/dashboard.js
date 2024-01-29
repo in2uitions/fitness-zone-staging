@@ -26,14 +26,14 @@ export default function Dashboard({ style = "white", books }) {
     const memberId = Cookies.get("Member");
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const tokenSet = (Cookies.get("OTP") != null)
-    // useEffect(() => {
-    //     if (itemSet && tokenSet) {
-    //         router.push({ pathname: "/account/dashboard" });
-    //     }
-    //     else {
-    //         router.push({ pathname: "/account/login" });
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (itemSet && tokenSet) {
+            router.push({ pathname: "/account/dashboard" });
+        }
+        else {
+            router.push({ pathname: "/account/login" });
+        }
+    }, [])
 
     var registrationHeaders = new Headers();
     registrationHeaders.append(

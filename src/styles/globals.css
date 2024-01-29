@@ -1591,7 +1591,7 @@ button:focus{
   height: 10rem;
 }
 .menu-member {
-  background-color: #2B2B2B;
+  background-color: #2B2B2B !important;
   font-size: 14px;
   padding: 8px;
   width: 250px;

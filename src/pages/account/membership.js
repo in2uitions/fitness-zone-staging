@@ -17,13 +17,13 @@ export default function Membership({ style = "white", data }) {
     const itemSet =
         Cookies.get("token") != null || Cookies.get("token") != undefined;
     const tokenSet = Cookies.get("OTP") != null;
-    // useEffect(() => {
-    //     if (itemSet && tokenSet) {
-    //         router.push({ pathname: "/account/membership" });
-    //     } else {
-    //         router.push({ pathname: "/account/login" });
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (itemSet && tokenSet) {
+            router.push({ pathname: "/account/membership" });
+        } else {
+            router.push({ pathname: "/account/login" });
+        }
+    }, []);
     try {
         var registrationHeaders = new Headers();
         registrationHeaders.append(

@@ -171,11 +171,11 @@ export default function Login() {
                                 });
                             }
                             else {
-                                // const SendOTPMessage = await fetch(
-                                //     `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`,
-                                //     registrationRequestOptions
-                                // );
-                                // const data = await SendOTPMessage.json();
+                                const SendOTPMessage = await fetch(
+                                    `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`,
+                                    registrationRequestOptions
+                                );
+                                const data = await SendOTPMessage.json();
                                 setIsSent(true);
                                 Cookies.remove("Country");
                                 Cookies.remove("Phone");
@@ -187,7 +187,7 @@ export default function Login() {
                                 // event.target.phone.value = "";
                                 event.target.memberId.value = "";
                                 router.push({
-                                    pathname: "/account/dashboard",
+                                    pathname: "/account/otp",
                                     query: { phoneNumber, memberId },
                                 });
                             }

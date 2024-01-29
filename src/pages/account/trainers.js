@@ -14,19 +14,19 @@ export default function List(info) {
     const [selectedCategory, setSelectedCategory] = useState(1);
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const tokenSet =(Cookies.get("OTP") != null)
-//     useEffect(() => {
-//     if (itemSet && tokenSet) {
-//         router.push({ pathname: "/account/trainers"});
-//         if(Cookies.get("Category") != undefined){
-//             const category = Cookies.get("Category");
-//             setSelectedCategory(category)
-//         }
-//     }
-//     else{
-//         router.push({ pathname: "/account/login"});
-//     }
+    useEffect(() => {
+    if (itemSet && tokenSet) {
+        router.push({ pathname: "/account/trainers"});
+        if(Cookies.get("Category") != undefined){
+            const category = Cookies.get("Category");
+            setSelectedCategory(category)
+        }
+    }
+    else{
+        router.push({ pathname: "/account/login"});
+    }
 
-// }, [])
+}, [])
     function handleCategoryChange(event) {
         const val = event.target.value
         Cookies.set("Category", val);
