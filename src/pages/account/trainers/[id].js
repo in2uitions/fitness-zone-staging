@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { image_url } from "../../../../global_vars";
 import Router, { useRouter } from "next/router";

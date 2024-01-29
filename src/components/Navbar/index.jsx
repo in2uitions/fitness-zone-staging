@@ -74,7 +74,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 9,
       "label": "CLASSES",
-      "to": "/about/classes"
+      "to": "/about/gx-classes"
     },
     {
       "id": 13,
@@ -92,7 +92,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
           <a
-            // href={item.to}
+            href={item.to}
             className="nav-link dropdown-toggle"
             data-toggle="dropdown"
             role="button"
@@ -189,7 +189,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
               {scrolling ? (
                 <img ref={lr} className="new-logo" src="/newLogo.svg" alt="logo" style={{ width: "70%" }} />
               ) : (
-                <img ref={lr} src="/logo.svg" alt="logo" style={{ width: "70%" }} />
+                <img ref={lr} className="new-logo" src="/logo.svg" alt="logo" style={{ width: "70%" }} />
               )}
             </a>
           </Link>

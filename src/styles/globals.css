@@ -1889,6 +1889,24 @@ button:focus{
 }
 
 @media (min-width:320px) and (max-width: 550px) {
+  .clubsTitle{
+    left: 4rem !important;
+    letter-spacing: 5px !important;
+  }
+  .clubssubTitle{
+    top: 9rem !important;
+    left: 4.5rem !important;
+  }
+  .mobileWidthCont{
+    width: unset !important;
+  }
+  .viewClub{
+    font-size: 17px !important;
+  }
+  .mobileImgWidth{
+    width: 100% !important;
+    object-fit: cover !important;
+  }
   .banner-title{
     font-size:36px !important;
   }
