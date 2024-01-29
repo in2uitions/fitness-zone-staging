@@ -1,5 +1,6 @@
 import { Directus } from '@directus/sdk';
 import { URL } from '../global_vars';
+import Cookies from 'js-cookie';
 
 const directus = new Directus(URL);
 
@@ -196,32 +197,32 @@ export const getClasses = async (value) => {
 //     const popupPublished = await popup.readByQuery({ filter: myfilter, fields: myfields })
 //     return popupPublished.data;
 // }
-// export const getPrivateCarousel = async (value) => {
-//     const carousel = directus.items('private_area_carousel');
+export const getPrivateCarousel = async (value) => {
+    const carousel = directus.items('private_area_carousel');
 
-//     var myfilter = '';
-//     if (value) {
-//         myfilter = {
-//             "status": {
-//                 "_eq": 'published',
-//             }
-//         }
-//     }
-//     else {
-//         myfilter = {
-//             "status": {
-//                 "_eq": 'published',
-//             },
+    var myfilter = '';
+    if (value) {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            }
+        }
+    }
+    else {
+        myfilter = {
+            "status": {
+                "_eq": 'published',
+            },
 
 
-//         }
+        }
 
-//     }
+    }
 
-//     var myfields = ['*']
-//     const carouselPublished = await carousel.readByQuery({ filter: myfilter, fields: myfields })
-//     return carouselPublished.data;
-// }
+    var myfields = ['*']
+    const carouselPublished = await carousel.readByQuery({ filter: myfilter, fields: myfields })
+    return carouselPublished.data;
+}
 // export const getTermsAndConditions = async (value) => {
 //     const termsandconditions = directus.items('termsandconditions');
 

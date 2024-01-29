@@ -65,7 +65,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                                     {parse(`${item.listing_classes_id.brief}`)}
                                                 </p>
                                             </Split>
-                                            {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer futura-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
+                                            {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
                                         </div>
 
                                     </div>
@@ -108,7 +108,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                                     {parse(`${item.listing_classes_id.brief}`)}
                                                 </p>
                                             </Split>
-                                            {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer futura-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
+                                            {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                                     {parse(`${item.listing_classes_id.brief}`)}
                                                 </p>
                                             </Split>
-                                            {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer futura-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
+                                            {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
                                         </div>
 
                                     </div>
@@ -206,7 +206,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                         {/* <p className='h-0 w-0 hidden'>{element.value}</p> */}
 
                                         <h4 className="brief wysiwyg" style={{ fontSize: "12px", marginTop: "1.5rem" }}>{parse(`${element.brief}`)}</h4>
-                                        {element.button_title ? <a href="/" className=" bg-[#009FE3] learnMoreBtns p-2 w-36 flex justify-start items-center rounded-md futura-bold mt-4">{element.button_title}
+                                        {element.button_title ? <a href="/" className=" bg-[#009FE3] learnMoreBtns p-2 w-36 flex justify-start items-center rounded-md montserrat-bold mt-4">{element.button_title}
                                         </a> : null}
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title className="futura-bold">FITNESS ZONE</title>
+        <title className="montserrat-bold">FITNESS ZONE</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       {/* <Cursor /> */}

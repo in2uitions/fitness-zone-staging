@@ -98,7 +98,7 @@ export default function TrainersProfile({ style = "white" ,books}) {
                                 <>
                                     <img className="w-20 h-20 rounded-full object-cover" src={`${image_url}${data?.image}`} />
                                     <p className='font-bold flex space-x-2 cursor-pointer text-white'>{data.fullName}</p>
-                                    <p className='futura-book cursor-pointer text-white'>{data.securityGroupName}</p>
+                                    <p className='montserrat-book cursor-pointer text-white'>{data.securityGroupName}</p>
                                     {/* {data.packageList?.map((item, id) =>(
                                         <p key={id}>{item.category.categoryName}</p>
                                         ))} */}
@@ -129,12 +129,12 @@ export default function TrainersProfile({ style = "white" ,books}) {
                                             <div className="flex w-1/2 justify-end">
                                                 {/* <div className="flex flex-col cursor-pointer" onClick={() => route(item.category.categoryName, item.numberOfSessions, item.totalValue)}> */}
                                                 <div className="flex flex-col cursor-pointer">
-                                                    <p><span className="text-2xl text-[#008DDC] futura-book">$</span><span className='text-4xl futura-book text-[#008DDC]'>
+                                                    <p><span className="text-2xl text-[#008DDC] montserrat-book">$</span><span className='text-4xl montserrat-book text-[#008DDC]'>
                                                         {format(item.totalValue)}
                                                     </span>
                                                     </p>
                                                     <p className='text-[#008DDC] -mt-4 tracking text-xs'> session</p>
-                                                    {/* <button className="flex justify-end items-center text-[#008DDC] futura-book">Buy
+                                                    {/* <button className="flex justify-end items-center text-[#008DDC] montserrat-book">Buy
                                                     <ChevronRightIcon className="cursor-pointer" />
                                                     </button> */}
                                                     {/* <p style={{display:"none"}}>{item.numberOfSessions}</p>
@@ -161,12 +161,12 @@ export default function TrainersProfile({ style = "white" ,books}) {
                                         </div>
                                         <div className="flex w-1/2 justify-end">
                                             <div className="flex flex-col cursor-pointer">
-                                                <p><span className="text-2xl text-[#008DDC] futura-book">$</span><span className='text-4xl futura-book text-[#008DDC]'>
+                                                <p><span className="text-2xl text-[#008DDC] montserrat-book">$</span><span className='text-4xl montserrat-book text-[#008DDC]'>
                                                     {format(item.totalValue)}
                                                 </span>
                                                 </p>
                                                 <p className='text-[#008DDC] tracking text-xs'> session</p>
-                                                {/* <button className="flex justify-end items-center text-[#008DDC] futura-book">Buy
+                                                {/* <button className="flex justify-end items-center text-[#008DDC] montserrat-book">Buy
                                                 <ChevronRightIcon className="cursor-pointer" />
                                                 </button> */}
                                                 {/* <p style={{display:"none"}}>{item.numberOfSessions}</p>

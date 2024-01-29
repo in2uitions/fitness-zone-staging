@@ -173,7 +173,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                             style={{ cursor: "pointer" }}
                                             onClick={() => handleImageClick(item)}
                                         /> 
-                                                {/* <p className="font-bold text-white futura-book cursor-pointer">Menu</p> */}
+                                                {/* <p className="font-bold text-white montserrat-book cursor-pointer">Menu</p> */}
                                             </div>
                                         } modal nested
                                         closeOnDocumentClick
@@ -245,7 +245,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                         <div className="flex items-center w-full">
                                             <div className="flex justify-end items-end ">
                                                 <div className="flex flex-col cursor-pointer">
-                                                    <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] futura-book">
+                                                    <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] montserrat-book">
                                                         ${item.sessionPrice} </p>
                                                 </div>
 
@@ -318,7 +318,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                             style={{ cursor: "pointer" }}
                                             onClick={() => handleImageClick(item)}
                                         /> 
-                                                {/* <p className="font-bold text-white futura-book cursor-pointer">Menu</p> */}
+                                                {/* <p className="font-bold text-white montserrat-book cursor-pointer">Menu</p> */}
                                             </div>
                                         } modal nested
                                         closeOnDocumentClick
@@ -390,7 +390,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                         <div className="flex items-center w-full">
                                             <div className="flex justify-end items-end ">
                                                 <div className="flex flex-col cursor-pointer">
-                                                    <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] futura-book">
+                                                    <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] montserrat-book">
                                                         ${item.sessionPrice} </p>
                                                 </div>
 

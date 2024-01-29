@@ -26,14 +26,14 @@ export default function ClassListing(Info) {
     const [selectedCategory, setSelectedCategory] = useState(1);
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const tokenSet = (Cookies.get("OTP") != null)
-    useEffect(() => {
-        if (itemSet && tokenSet) {
-            router.push({ pathname: "/account/classListing" });
-        }
-        else {
-            router.push({ pathname: "/account/login" });
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (itemSet && tokenSet) {
+    //         router.push({ pathname: "/account/classListing" });
+    //     }
+    //     else {
+    //         router.push({ pathname: "/account/login" });
+    //     }
+    // }, [])
 
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
@@ -448,18 +448,18 @@ export default function ClassListing(Info) {
         <>
             <PrivateMenu />
             <DarkTheme>
-            <section className="">
-                <div className="container mx-auto mt-40 lg:px-28 md:px-20  w-screen px-2">
+            <section className="">  
+                <div className="container mx-auto mt-40-top lg:px-28 md:px-20 mb-20-bottom w-screen px-2">
                     <div className="flex flex-col justify-center items-center">
-                        <p className="text-[#008DDC] font-bold lg:text-4xl md:text-4xl text-3xl">LIST OF CLASSES</p>
+                        <p className="text-colorblue font-bold lg:text-4xl md:text-4xl text-3xl montserrat-bold">LIST OF CLASSES</p>
                     </div>
                     <BrowserView>
                         <div className="flex w-full justify-between items-center mt-5 wrapContent">
                             <div className="flex items-center space-x-3">
-                                <img src="/homepage/filterBy.png" style={{width:"10px", height:"12px"}} />
-                                <p className="futura-book text-white lg:text-xl md:text-xl text-sm">Filter by</p>
+                                <img src="/filterBy.png" style={{width:"10px", height:"12px"}} />
+                                <p className="montserrat-book text-white lg:text-xl md:text-xl text-sm">Filter by</p>
                             </div>
-                            {/* <p className="text-[#008DDC] font-bold text-4xl">LIST OF CLASSES</p> */}
+                            {/* <p className="text-colorblue font-bold text-4xl">LIST OF CLASSES</p> */}
                             <div className="relative" style={{ width: "73%", position:"relative" }}>
                                 <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg  bg-transparent pl-4 input-search" style={{height:"2.5rem" , marginTop:"2.5rem", marginBottom:"2.5rem"}}
                                     placeholder="Search" value={name}
@@ -495,10 +495,10 @@ export default function ClassListing(Info) {
                     <MobileView>
                         <div className="flex w-full justify-between items-center mt-5">
                             <div className="flex items-center space-x-3">
-                                <img src="/homepage/filterBy.png" className="w-3 h-3"  style={{width:"0.75rem", height:"0.75rem"}}/>
-                                <p className="futura-book text-white text-sm">Filter by</p>
+                                <img src="/filterBy.png" className="w-3 h-3"  style={{width:"0.75rem", height:"0.75rem"}}/>
+                                <p className="montserrat-book text-white text-sm">Filter by</p>
                             </div>
-                            {/* <p className="text-[#008DDC] font-bold text-4xl">LIST OF CLASSES</p> */}
+                            {/* <p className="text-colorblue font-bold text-4xl">LIST OF CLASSES</p> */}
                             <div className="relative" style={{ width: "35%" }}>
                                 <input type='text' name="search" id="search" className="w-full border border-gray-500 rounded-lg h-8 mt-5 mb-5 bg-transparent pl-4"
                                     placeholder="Search" value={name}
@@ -536,38 +536,38 @@ export default function ClassListing(Info) {
                             <TabList className="showDesktop flex justify-between w-full mx-auto tabs-container" >
                                 <Tab className="notSelected cursor-pointer" id="All">
                                     <div className="flex items-center space-x-2 md:space-x-2 " onClick={handleClassChange} type="button" id="All">
-                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold" id="All">All</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="All" />{" "}
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold montserrat-bold" id="All">All</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex items-center space-x-2 md:space-x-2" onClick={handleClassChange} type="button">
-                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold" id="NRG">ENERGY</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="NRG" />{" "}
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold montserrat-bold" id="NRG">ENERGY</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex items-center space-x-2 md:space-x-2" onClick={handleClassChange} type="button">
-                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold" id="BLNC">BALANCE</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="BLNC" />{" "}
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold montserrat-bold" id="BLNC">BALANCE</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex justify-end items-center space-x-2 md:space-x-2" onClick={handleClassChange} type="button">
-                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold" id="PWR">POWER</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="PWR" />{" "}
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold montserrat-bold" id="PWR">POWER</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex justify-end items-center space-x-2 md:space-x-2" onClick={handleClassChange} type="button">
-                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold" id="POOL">POOL</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold montserrat-bold" id="POOL">POOL</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex justify-end items-center space-x-2 md:space-x-2" onClick={handleClassChange} type="button">
-                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold" id="Tennis Indoor">TENNIS</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="Tennis Indoor" />{" "}
+                                        <p className="lg:text-2xl md:text-2xl text-xs font-bold montserrat-bold" id="Tennis Indoor">TENNIS</p>
+                                        <img src="/ONblue.png" className="on-tabs" id="Tennis Indoor" />{" "}
                                     </div>
                                 </Tab>
                             </TabList>
@@ -579,37 +579,37 @@ export default function ClassListing(Info) {
                                 <Tab title="nested" className="notSelected cursor-pointer" id="All">
                                     <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button" id="All">
                                         <p className="text-base font-extrabold" id="All">All</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="All" />{" "}
+                                        <img src="/ONblue.png" className="on-tabs" id="All" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
                                         <p className="text-base font-extrabold" id="NRG">ENERGY</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="NRG" />{" "}
+                                        <img src="/ONblue.png" className="on-tabs" id="NRG" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
                                         <p className="text-base font-extrabold" id="BLNC">BALANCE</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="BLNC" />{" "}
+                                        <img src="/ONblue.png" className="on-tabs" id="BLNC" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
                                         <p className="text-base font-extrabold" id="PWR">POWER</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="PWR" />{" "}
+                                        <img src="/ONblue.png" className="on-tabs" id="PWR" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
                                         <p className="text-base font-extrabold" id="POOL">POOL</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="POOL" />{" "}
+                                        <img src="/ONblue.png" className="on-tabs" id="POOL" />{" "}
                                     </div>
                                 </Tab>
                                 <Tab className="notSelected cursor-pointer">
                                     <div className="flex items-center lg:space-x-2 md:space-x-2 space-x-1" onClick={handleClassChange} type="button">
                                         <p className="text-base font-extrabold" id="Tennis Indoor">TENNIS</p>
-                                        <img src="/homepage/ONblue.png" className="on-tabs" id="Tennis Indoor" />{" "}
+                                        <img src="/ONblue.png" className="on-tabs" id="Tennis Indoor" />{" "}
                                     </div>
                                 </Tab>
 
@@ -621,18 +621,18 @@ export default function ClassListing(Info) {
                             <>
                                 {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ? <div className="flex justify-between w-full classes-box flex-wrap" style={{marginTop:"2.5rem", marginBottom:"0.75rem", padding:"0.75rem"}} key={index}>
                                     <div className="flex justify-center items-center w-3/4">
-                                        <p className="text-white text-md sizemobile futura-book w-1/5"
+                                        <p className="text-white text-md sizemobile montserrat-book w-1/5"
                                         style={{borderRight:"1px solid #008DDC", paddingRight:"0.75rem"}}>
                                             {item.class?.className}
                                         </p>
-                                        <p className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile w-1/5"
+                                        <p className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 montserrat-book text-md sizemobile w-1/5"
                                         style={{borderRight:"1px solid white", paddingRight:"0.75rem", paddingLeft:"1.25rem"}}>
                                             {item.studio?.studioName}
                                         </p>
-                                        <p className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#008DDC] w-1/5'
+                                        <p className='text-white montserrat-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#008DDC] w-1/5'
                                         style={{borderRight:"1px solid #008DDC", paddingRight:"1.25rem", paddingLeft:"1.25rem"}}>{moment(item.classTime).format("DD MMM YYYY")}</p>
-                                        <p style={{borderRight:"1px solid white", paddingRight:"1.25rem", paddingLeft:"1.25rem"}} className='text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5'>{moment(item.classTime).format("HH:mm")}</p>
-                                        <p className="text-white text-md sizemobile futura-book lg:pl-5 md:pl-5 pl-5 w-1/5">
+                                        <p style={{borderRight:"1px solid white", paddingRight:"1.25rem", paddingLeft:"1.25rem"}} className='text-white montserrat-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5'>{moment(item.classTime).format("HH:mm")}</p>
+                                        <p className="text-white text-md sizemobile montserrat-book lg:pl-5 md:pl-5 pl-5 w-1/5">
                                             {item.location?.locationName}
                                         </p>
                                     </div>
@@ -644,10 +644,11 @@ export default function ClassListing(Info) {
                                                         <Popup
                                                             trigger={
                                                                 <button style={{outline:"none"}} className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).format("DD MMM YYYY HH:mm") < todayTime ? true : false || item?.disabled}>
-                                                                    <img src="/homepage/notBooked.png" style={{width:"14px", height:"16px"}} />
-                                                                    <p className="futura-book text-md sizemobile" style={{outline:"none", color:"#008DDC"}}>Book class</p>
+                                                                    <img src="/notBooked.png" style={{width:"14px", height:"16px"}} />
+                                                                    <p className="montserrat-book text-md sizemobile" style={{outline:"none"}}>Book class</p>
                                                                 </button>
                                                             } modal
+                                                            className="popup-membership"
                                                             position="center"
                                                             closeOnDocumentClick={false}
                                                         >
@@ -657,20 +658,20 @@ export default function ClassListing(Info) {
                                                                         &times;
                                                                     </button>
                                                                     <div className="popups rounded-md px-20 py-20 flex flex-col">
-                                                                        <p className="text-[#008DDC] text-2xl " style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
+                                                                        <p className="text-colorblue text-2xl " style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
                                                                         <div className=" flex flex-col items-start space-y-2">
                                                                             {termsandconditions.map((term) => (
                                                                                 <>
-                                                                                    {term.booking_paragraph ? <p className="futura-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
-                                                                                    {term.canceling_paragraph ? <p className="futura-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
+                                                                                    {term.booking_paragraph ? <p className="montserrat-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
+                                                                                    {term.canceling_paragraph ? <p className="montserrat-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
                                                                                 </>
                                                                             ))}
                                                                             <input type="checkbox" className="" onChange={onCheck} />
                                                                         </div>
                                                                         <form onSubmit={(e) => reserveTennisClass({ timetableId: item.timetableId, e })} className="container mx-auto px-10 py-10 w-full flex flex-col justify-center items-center space-y-5">
-                                                                            <p className="text-[#008DDC] text-2xl futura-book">Enter your second player MemberId:</p>
+                                                                            <p className="text-colorblue text-2xl montserrat-book">Enter your second player MemberId:</p>
                                                                             <input id="memberId2" className="border border-[#008DDC] pl-2 w-full h-9 bg-transparent rounded text-white" placeholder="MemberId" />
-                                                                            <button type="submit" disabled={isDisabledbutton} className="bg-blue futura-book text-white btn-bookClass rounded p-2"> Book </button>
+                                                                            <button type="submit" disabled={isDisabledbutton} className="bg-blue montserrat-book text-white btn-bookClass rounded p-2"> Book </button>
                                                                         </form>
                                                                     </div>
                                                                 </>
@@ -681,21 +682,21 @@ export default function ClassListing(Info) {
                                                             <p></p> :
                                                             <div>
                                                                 {item.capacity - item.bookings >= 1 ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
                                                                 ) : item.capacity - item.bookings >= -item.waitingListCapacity ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{color:"#008DDC"}}>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{color:"#008DDC"}}>
                                                                         Remaining seats: {item.capacity - item.bookings + item.waitingListCapacity}
                                                                     </p>
                                                                 ) : (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{color:"#008DDC"}}>No more booking are allowed</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{color:"#008DDC"}}>No more booking are allowed</p>
                                                                 )}
                                                             </div>}
                                                     </>
                                                 ) : (
                                                     <div className="flex space-x-2 items-center">
-                                                        <img src="/homepage/booked.png" />
-                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
-                                                        <p className=" text-[#008DDC] font-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
+                                                        <img src="/Booked.png" />
+                                                        <p className="montserrat-book text-white text-md sizemobile">{item?.toggle}</p>
+                                                        <p className=" text-colorblue font-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             {/* <Close className="cancel-close" /> */}
                                                         </p>
@@ -711,16 +712,17 @@ export default function ClassListing(Info) {
                                                     <div className="flex flex-col">
                                                         {/* <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
                                                         <img src="/notBooked.png" />
-                                                        <p className="futura-book text-md sizemobile">Book class</p>
+                                                        <p className="montserrat-book text-md sizemobile">Book class</p>
                                                     </button> */}
-                                                        <Popup
+                                                        <Popup 
                                                             trigger={
                                                                 <button style={{outline:"none"}} className="flex space-x-2 items-center book-button" disabled={(moment(item.classTime).format("DD MMM YYYY HH:mm") < todayTime ? true : false) || item?.disabled}>
-                                                                    <img src="/homepage/notBooked.png" style={{width:"14px", height:"16px"}}/>
-                                                                    <p className="futura-book text-md sizemobile" style={{outline:"none" , color:"#008DDC"}}>Book class</p>
+                                                                    <img src="/notBooked.png" style={{width:"14px", height:"16px"}}/>
+                                                                    <p className="montserrat-book text-md sizemobile" style={{outline:"none" }}>Book class</p>
                                                                 </button>
 
                                                             } modal
+                                                            className="popup-membership"
                                                             position="center"
                                                             closeOnDocumentClick={false}
                                                         >
@@ -731,12 +733,12 @@ export default function ClassListing(Info) {
                                                                     </button>
                                                                     <div className="popups rounded-md px-20 py-20">
                                                                         <div className="flex flex-col items-center space-y-2">
-                                                                            <p className="text-[#008DDC] text-2xl " style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
+                                                                            <p className="text-colorblue text-2xl " style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
                                                                             <div className=" flex flex-col items-start space-y-2">
                                                                                 {termsandconditions.map((term) => (
                                                                                     <>
-                                                                                        {term.booking_paragraph ? <p className="futura-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
-                                                                                        {term.canceling_paragraph ? <p className="futura-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
+                                                                                        {term.booking_paragraph ? <p className="montserrat-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
+                                                                                        {term.canceling_paragraph ? <p className="montserrat-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
                                                                                     </>
                                                                                 ))}
                                                                                 <input type="checkbox" className="" onChange={onCheck} />
@@ -744,7 +746,7 @@ export default function ClassListing(Info) {
                                                                             <div>
                                                                                 <button type="submit" disabled={isDisabledbutton}
                                                                                     onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}
-                                                                                    className="bg-blue mt-10 w-20 futura-book text-white rounded p-2 btn-bookClass"> Book </button>
+                                                                                    className="bg-blue mt-10 w-20 montserrat-book text-white rounded p-2 btn-bookClass"> Book </button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -755,21 +757,21 @@ export default function ClassListing(Info) {
                                                             <p></p> :
                                                             <div>
                                                                 {item.capacity - item.bookings >= 1 ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
                                                                 ) : item.capacity - item.bookings >= -item.waitingListCapacity ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>
                                                                         Remaining seats: {item.capacity - item.bookings + item.waitingListCapacity}
                                                                     </p>
                                                                 ) : (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>No more booking are allowed</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>No more booking are allowed</p>
                                                                 )}
                                                             </div>}
                                                     </div>
                                                 ) : (
                                                     <div className="flex space-x-2 items-baseline">
-                                                        <img src="/homepage/booked.png" />
-                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
-                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-[#008DDC] font-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                        <img src="/Booked.png" />
+                                                        <p className="montserrat-book text-white text-md sizemobile">{item?.toggle}</p>
+                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-colorblue font-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             {/* <Close className="cancel-close" /> */}
                                                         </button>
@@ -791,17 +793,17 @@ export default function ClassListing(Info) {
                                 {moment(item.classTime).format("DD MMM YYYY HH:mm") >= todayTime ? <div className="flex justify-between w-full classes-box mb-3 mt-10 p-3 gap-10" key={index}>
                                     <div className="flex justify-start space-x-8">
                                         <div className="flex flex-col" style={{paddingRight:"0.75rem"}}>
-                                            <p className='text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#008DDC]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
-                                            <p className=' text-white text-md sizemobile futura-book'>{moment(item.classTime).format("HH:mm")}</p>
+                                            <p className='text-white montserrat-book text-md sizemobile lg:border-r md:border-r border-[#008DDC]'>{moment(item.classTime).format("DD MMM YYYY")}</p>
+                                            <p className=' text-white text-md sizemobile montserrat-book'>{moment(item.classTime).format("HH:mm")}</p>
                                         </div>
                                         <div className="border border-l border-[#008DDC]"></div>
                                         <div className="flex flex-col" style={{paddingLeft:"0.75rem"}}>
-                                            <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#008DDC] lg:pr-3 md:pr-3 futura-book"
+                                            <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#008DDC] lg:pr-3 md:pr-3 montserrat-book"
                                             >
                                                 {item.class?.className}
                                             </p>
 
-                                            <p className="text-white futura-book text-md sizemobile lg:border-r md:border-r border-white">
+                                            <p className="text-white montserrat-book text-md sizemobile lg:border-r md:border-r border-white">
                                                 {item.location?.locationName}
                                             </p>
                                         </div>
@@ -814,11 +816,11 @@ export default function ClassListing(Info) {
                                                         <Popup
                                                             trigger={
                                                                 <button style={{outline:"none"}} className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).format("DD MMM YYYY HH:mm") < todayTime ? true : false || item?.disabled}>
-                                                                    <img src="/homepage/notBooked.png" style={{width:"14px", height:"16px"}} />
-                                                                    <p className="futura-book text-md sizemobile" style={{outline:"none", color:"#008DDC"}}>Book class</p>
+                                                                    <img src="/notBooked.png" style={{width:"14px", height:"16px"}} />
+                                                                    <p className="montserrat-book text-md sizemobile" style={{outline:"none"}}>Book class</p>
                                                                 </button>
                                                             } modal
-                                                            className="popupTennis"
+                                                            className="popup-membership"
                                                             position="center"
                                                             closeOnDocumentClick={false}
                                                         >
@@ -827,21 +829,21 @@ export default function ClassListing(Info) {
                                                                     <button className="close-popup" onClick={close}>
                                                                         &times;
                                                                     </button>
-                                                                    <div className="popups rounded-md lg:px-20 md:px-20 px-8 py-20 flex flex-col">
-                                                                        <p className="text-[#008DDC] text-2xl" style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
+                                                                    <div className="popups rounded-md px-20 px-20 px-8 py-20 flex flex-col">
+                                                                        <p className="text-colorblue text-2xl" style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
                                                                         <div className=" flex flex-col items-start space-y-2">
                                                                             {termsandconditions.map((term) => (
                                                                                 <>
-                                                                                    {term.booking_paragraph ? <p className="futura-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
-                                                                                    {term.canceling_paragraph ? <p className="futura-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
+                                                                                    {term.booking_paragraph ? <p className="montserrat-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
+                                                                                    {term.canceling_paragraph ? <p className="montserrat-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
                                                                                 </>
                                                                             ))}
                                                                             <input type="checkbox" className="" onChange={onCheck} />
                                                                         </div>
                                                                         <form onSubmit={(e) => reserveTennisClass({ timetableId: item.timetableId, e })} className="container mx-auto lg:px-10 md:px-10 py-10 w-full flex flex-col justify-center items-center space-y-5">
-                                                                            <p className="text-[#008DDC] text-2xl futura-book">Enter your second player MemberId:</p>
+                                                                            <p className="text-colorblue text-2xl montserrat-book">Enter your second player MemberId:</p>
                                                                             <input id="memberId2" className="border border-[#008DDC] pl-2 w-full h-9 bg-transparent rounded text-white" placeholder="MemberId" />
-                                                                            <button type="submit" disabled={isDisabledbutton} className="bg-blue futura-book text-white btn-bookClass rounded p-2"> Book </button>
+                                                                            <button type="submit" disabled={isDisabledbutton} className="bg-blue montserrat-book text-white btn-bookClass rounded p-2"> Book </button>
                                                                         </form>
                                                                     </div>
                                                                 </>
@@ -851,21 +853,21 @@ export default function ClassListing(Info) {
                                                             <p></p> :
                                                             <div>
                                                                 {item.capacity - item.bookings >= 1 ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
                                                                 ) : item.capacity - item.bookings >= -item.waitingListCapacity ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>
                                                                         Remaining seats: {item.capacity - item.bookings + item.waitingListCapacity}
                                                                     </p>
                                                                 ) : (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>No more booking are allowed</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>No more booking are allowed</p>
                                                                 )}
                                                             </div>}
                                                     </>
                                                 ) : (
                                                     <div className="flex space-x-2 items-center">
-                                                        <img src="/homepage/booked.png" />
-                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
-                                                        <p className=" text-[#008DDC] font-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
+                                                        <img src="/Booked.png" />
+                                                        <p className="montserrat-book text-white text-md sizemobile">{item?.toggle}</p>
+                                                        <p className=" text-colorblue font-bold text-sm" onClick={(e) => removeTennisClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             {/* <Close className="cancel-close" /> */}
                                                         </p>
@@ -881,17 +883,17 @@ export default function ClassListing(Info) {
                                                     <div className="flex flex-col">
                                                         {/* <button className="flex space-x-2 items-center book-button" disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime  ? true : false} onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}>
                                                         <img src="/notBooked.png" />
-                                                        <p className="futura-book text-md sizemobile">Book class</p>
+                                                        <p className="montserrat-book text-md sizemobile">Book class</p>
                                                     </button> */}
                                                         <Popup
                                                             trigger={
                                                                 <button style={{outline:"none"}} className="flex space-x-2 items-center book-button" disabled={(moment(item.classTime).format("DD MMM YYYY HH:mm") < todayTime ? true : false) || item?.disabled}>
-                                                                    <img src="/homepage/notBooked.png" style={{width:"14px", height:"16px"}} />
-                                                                    <p className="futura-book text-md sizemobile" style={{outline:"none", color:"#008DDC"}}>Book class</p>
+                                                                    <img src="/notBooked.png" style={{width:"14px", height:"16px"}} />
+                                                                    <p className="montserrat-book text-md sizemobile" style={{outline:"none"}}>Book class</p>
                                                                 </button>
 
                                                             } modal
-                                                            className="popupTennis"
+                                                            className="popup-membership"
                                                             position="center"
                                                             closeOnDocumentClick={false}
                                                         >
@@ -900,14 +902,14 @@ export default function ClassListing(Info) {
                                                                     <button className="close-popup" onClick={close}>
                                                                         &times;
                                                                     </button>
-                                                                    <div className="popups rounded-md lg:px-20 md:px-20 px-8 py-20">
+                                                                    <div className="popups rounded-md px-20 px-20 px-8 py-20">
                                                                         <div className="flex flex-col items-center space-y-2">
-                                                                            <p className="text-[#008DDC] text-2xl" style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
+                                                                            <p className="text-colorblue text-2xl" style={{color:"#008DDC", marginBottom:"1.25rem"}}> Terms & Conditions</p>
                                                                             <div className=" flex flex-col items-start space-y-2">
                                                                                 {termsandconditions.map((term) => (
                                                                                     <>
-                                                                                        {term.booking_paragraph ? <p className="futura-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
-                                                                                        {term.canceling_paragraph ? <p className="futura-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
+                                                                                        {term.booking_paragraph ? <p className="montserrat-book text-base text-white"> {parse(`${term.booking_paragraph}`)}</p> : null}
+                                                                                        {term.canceling_paragraph ? <p className="montserrat-book text-base text-white">{parse(`${term.canceling_paragraph}`)}</p> : null}
                                                                                     </>
                                                                                 ))}
                                                                                 <input type="checkbox" className="" onChange={onCheck} />
@@ -915,7 +917,7 @@ export default function ClassListing(Info) {
                                                                             <div>
                                                                                 <button type="submit" disabled={isDisabledbutton}
                                                                                     onClick={(e) => reserveClass({ timetableId: item.timetableId, e })}
-                                                                                    className="bg-blue mt-10 w-20 futura-book text-white rounded p-2 btn-bookClass"> Book </button>
+                                                                                    className="bg-blue mt-10 w-20 montserrat-book text-white rounded p-2 btn-bookClass"> Book </button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -926,21 +928,21 @@ export default function ClassListing(Info) {
                                                             <p></p> :
                                                             <div>
                                                                 {item.capacity - item.bookings >= 1 ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>Remaining seats: {item.capacity - item.bookings}</p>
                                                                 ) : item.capacity - item.bookings >= -item.waitingListCapacity ? (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>
                                                                         Remaining seats: {item.capacity - item.bookings + item.waitingListCapacity}
                                                                     </p>
                                                                 ) : (
-                                                                    <p className="text-[#008DDC] opacity-70 text-base futura-book sizemobile" style={{ color:"#008DDC"}}>No more booking are allowed</p>
+                                                                    <p className="text-colorblue opacity-70 text-base montserrat-book sizemobile" style={{ color:"#008DDC"}}>No more booking are allowed</p>
                                                                 )}
                                                             </div>}
                                                     </div>
                                                 ) : (
                                                     <div className="flex space-x-2 items-baseline">
-                                                        <img src="/homepage/booked.png" />
-                                                        <p className="futura-book text-white text-md sizemobile">{item?.toggle}</p>
-                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-[#008DDC] font-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
+                                                        <img src="/Booked.png" />
+                                                        <p className="montserrat-book text-white text-md sizemobile">{item?.toggle}</p>
+                                                        <button disabled={moment(item.classTime).subtract(3, "hours").format("DD MMM YYYY HH:mm") < todayTime ? true : false} className=" text-colorblue font-bold text-sm cancel-button" onClick={(e) => removeClass({ timetableId: item.timetableId, e })}>
                                                             Cancel
                                                             {/* <Close className="cancel-close" /> */}
                                                         </button>

@@ -32,9 +32,9 @@ export default function TrainerDetails(info) {
                 <div className="col-span-4">
                     <div className="membership-box p-3 flex flex-col justify-center items-center mt-8">
                         <p className="text-white text-2xl font-bold">{query.categoryName}</p>
-                        <p className="rounded-md flex space-x-2 mt-2 cursor-pointer text-white p-3 active-button futura-book">{query.name}</p>
+                        <p className="rounded-md flex space-x-2 mt-2 cursor-pointer text-white p-3 active-button montserrat-book">{query.name}</p>
                         <div className="flex flex-col mt-4">
-                            <p><span className="text-2xl text-[#008DDC] futura-book">$</span><span className='text-4xl futura-book text-[#008DDC]'>
+                            <p><span className="text-2xl text-[#008DDC] montserrat-book">$</span><span className='text-4xl montserrat-book text-[#008DDC]'>
                                 {format(query.totalValue)}
                             </span>
                             </p>

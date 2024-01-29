@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import { BrowserView, MobileView } from "react-device-detect";
 import moment from "moment";
 import DarkTheme from "../../layouts/Dark";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 export default function Membership({ style = "white", data }) {
     const memberId = Cookies.get("Member");
@@ -16,13 +17,13 @@ export default function Membership({ style = "white", data }) {
     const itemSet =
         Cookies.get("token") != null || Cookies.get("token") != undefined;
     const tokenSet = Cookies.get("OTP") != null;
-    useEffect(() => {
-        if (itemSet && tokenSet) {
-            router.push({ pathname: "/account/membership" });
-        } else {
-            router.push({ pathname: "/account/login" });
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (itemSet && tokenSet) {
+    //         router.push({ pathname: "/account/membership" });
+    //     } else {
+    //         router.push({ pathname: "/account/login" });
+    //     }
+    // }, []);
     try {
         var registrationHeaders = new Headers();
         registrationHeaders.append(
@@ -220,91 +221,30 @@ export default function Membership({ style = "white", data }) {
 
     return (
         <>
-            {/* <div className={styles.container}>
-                <nav className={styles.nav}>
-                    <a href="/">
-                        <img src="/logo.svg" className="logo" />
-                    </a>
-                    <Popup
-                        trigger={
-                            <div className="flex items-center space-x-2">
-                                <button className="img-btn">
-                                    <img src="/blue-rectangle.svg" className="menu-icon" />
-                                </button>
-                                <p className="font-bold text-white futura-book cursor-pointer">
-                                    Menu
-                                </p>
-                            </div>
-                        }
-                        modal
-                        closeOnDocumentClick
-                        position=""
-                    >
-                        <div className="w-screen h-screen container mx-auto flex flex-col justify-center items-center">
-                            <a href="/account/dashboard" className="flex space-x-1 border-4 border-[#008DDC] rounded-full w-40 h-40 items-center justify-center">
-                            <p className="font-bold text-6xl text-[#008DDC]">{data.firstName?.charAt(0)}</p>
-                            <p className="font-bold text-6xl text-[#008DDC]">{data.lastName?.charAt(0)}</p>
-                            </a>
-                            <p className="font-bold text-[#008DDC] mt-5">{data.fullName}</p>
-                            <div className="flex flex-col mt-10">
-                                <div className="lg:flex lg:space-x-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a
-                                        href="/account/myProfile"
-                                        className="futura-book menu-member flex items-center justify-between"
-                                    >
-                                        {" "}
-                                        My Profile
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                    <a href='/account/membership' className="futura-book menu-member flex items-center justify-between">
-                                        Membership Settings
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                </div>
-                                <div className="lg:flex lg:space-x-3 lg:mt-10 md:mt-10 mt-3 space-y-3 lg:space-y-0 md:space-y-0">
-                                    <a href="/account/classListing" className="futura-book menu-member flex items-center justify-between text-white">
-                                        Classes / Book a class
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                    <a href='/account/trainers' className="futura-book menu-member flex items-center justify-between">
-                                        Trainers / Book a package
-                                        <ChevronRightIcon className="forward-blue" />
-                                    </a>
-                                </div>
-                                <form onSubmit={onSubmitForm}>
-                                    <div className="flex justify-center items-center">
-                                        <button type="submit" className="text-white border-2 border-[#008DDC] w-1/2 mt-5 p-2 futura-book">Log Out</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </Popup>
-                </nav>
-            </div> */}
             <PrivateMenu />
             <DarkTheme>
             <section>
-                <div className="container lg:px-28 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40" style={{marginBottom:"2rem"}}>
+                <div className="container lg:px-28 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40-top" style={{marginBottom:"2rem"}}>
                     <div className="flex flex-col justify-center items-center">
-                        <img src="/homepage/gold-member.png" style={{width:"130px"}}/>
-                        <p className="font-bold text-white" style={{marginTop:"1.25rem", fontSize:"18px"}}>
+                        <img src="/gold-member.png" style={{width:"130px"}}/>
+                        <p className="font-bold text-white montserrat-bold" style={{marginTop:"1.25rem", fontSize:"18px"}}>
                             {data.membershipType?.memberShipTypeName.slice(
                                 0,
                                 data.membershipType?.memberShipTypeName.length - 1
                             )}
                         </p>
-                    </div>
+                    </div> 
                     <div className=" flex gap-x-1 justify-evenly items-center px-3 lg:px-0 md:px-0 mobile-flex-col" style={{marginTop:"2.5rem"}}>
                         <div className="col-span-6">
                             <div className="flex flex-col">
                                 <p className="text-sm text-white ">Status</p>
-                                <p className=" text-white uppercase font-bold"  style={{fontSize:"18px", marginTop:"0.5rem"}}>
+                                <p className=" text-white uppercase font-bold montserrat-bold"  style={{fontSize:"18px", marginTop:"0.5rem"}}>
                                     {data.status?.statusDescription}
                                 </p>
                             </div>
                             <div className="flex flex-col" style={{marginTop:"1.25rem"}}>
                                 <p className="text-sm text-white">Start Date</p>
-                                <p className=" text-white font-bold" style={{fontSize:"18px", marginTop:"0.5rem"}}>
+                                <p className=" text-white font-bold montserrat-bold" style={{fontSize:"18px", marginTop:"0.5rem"}}>
                                     {dateButif(data.startDate)}
                                 </p>
                             </div>
@@ -312,13 +252,13 @@ export default function Membership({ style = "white", data }) {
                         <div className="col-span-6">
                             <div className="flex flex-col">
                                 <p className="text-sm text-white">Default Club</p>
-                                <p className="font-bold text-white " style={{fontSize:"18px", marginTop:"0.5rem"}}>
+                                <p className="font-bold text-white montserrat-bold" style={{fontSize:"18px", marginTop:"0.5rem"}}>
                                     {data.membershipLocation?.locationName}
                                 </p>
                             </div>
                             <div className="flex flex-col" style={{marginTop:"1.25rem"}}>
                                 <p className="text-sm text-white">Expiry Date</p>
-                                <p className=" text-white font-bold" style={{fontSize:"18px", marginTop:"0.5rem"}}>
+                                <p className=" text-white font-bold montserrat-bold" style={{fontSize:"18px", marginTop:"0.5rem"}}>
                                     {dateButif(data.expiryDate)}
                                 </p>
                             </div>
@@ -330,15 +270,16 @@ export default function Membership({ style = "white", data }) {
                                     <Popup
                                         trigger={
                                             <button
-                                                className="bg-blue font-bold p-3 rounded-md text-white"
+                                                className="bg-blue montserrat-bold font-bold p-3 rounded-md text-white"
                                                 onClick={() => setIsPopupOpen(!isPopupOpen)}
                                             >
                                                 CANCEL REQUEST
                                             </button>
                                         }
                                         modal
+                                        className="popup-membership"
                                         open={isPopupOpen}
-                                        onOpen={() => setIsPopupOpen(!isPopupOpen)}
+                                         onOpen={() => setIsPopupOpen(!isPopupOpen)}
                                         closeOnDocumentClick={false}
                                         position=""
                                     >
@@ -354,7 +295,7 @@ export default function Membership({ style = "white", data }) {
                                                     }}
                                                 >
                                                     <BrowserView>
-                                                        <p className="text-white futura-book">
+                                                        <p className="text-white montserrat-book">
                                                             We're sorry to hear that you're canceling your subscription.
                                                             <br />
                                                             We value your feedback and would like to understand the reason
@@ -372,7 +313,7 @@ export default function Membership({ style = "white", data }) {
                                                         </p>
                                                     </BrowserView>
                                                     <MobileView>
-                                                        <p className="text-white futura-book">
+                                                        <p className="text-white montserrat-book">
                                                             We're sorry to hear that you're canceling your subscription. We
                                                             value your feedback and would like to understand the reason behind
                                                             your decision. By providing us with your reason for canceling,
@@ -406,7 +347,7 @@ export default function Membership({ style = "white", data }) {
                                                         type="month"
                                                         id="month-year-picker"
                                                         value={selectedDate}
-                                                        className="rounded-md w-1/2 text-[#008DDC] bg-white text-center h-12 month-picker" style={{height:"3rem",marginBottom:"1.25rem", color:"#008DDC"}}
+                                                        className="rounded-md w-1/2 text-colorblue bg-white text-center h-12 month-picker" style={{height:"3rem",marginBottom:"1.25rem", color:"#008DDC"}}
                                                     
                                                         onChange={handleDateChange}
                                                     />
@@ -417,7 +358,7 @@ export default function Membership({ style = "white", data }) {
                                                     >
                                                         Send
                                                     </button>
-                                                    <p className="text-white futura-book mt-5">{requestMessage}</p>
+                                                    <p className="text-white montserrat-book mt-5">{requestMessage}</p>
                                                 </div>
                                             </>
                                         )}
@@ -431,7 +372,7 @@ export default function Membership({ style = "white", data }) {
 
                                 <a
                                     href="/account/freezing"
-                                    className="bg-white text-[#008DDC] p-3 rounded-md text-center mt-5 font-bold freez"
+                                    className="bg-white text-colorblue montserrat-bold p-3 rounded-md text-center mt-5 font-bold freez"
                                 >
                                     FREEZING REQUEST
                                 </a>
@@ -439,9 +380,9 @@ export default function Membership({ style = "white", data }) {
                         </div>
                     </div>
                     <div className="container flex flex-col lg:mx-auto md:max-auto justify-start lg:w-3/5 md:w-3/5 items-start px-2 lg:px-0 md:px-0" style={{marginTop:"2.5rem"}}>
-                        <p className="text-[#008DDC] font-bold mb-3" style={{fontSize:"18px"}}>Payment History</p>
+                        <p className="text-colorblue font-bold mb-3 montserrat-bold" style={{fontSize:"18px"}}>Payment History</p>
                         {slice.map((item) => (
-                            <>
+                            <> 
                                 <div className="flex justify-start lg:w-full items-center classes-box mb-3 p-3 mx-auto container">
                                     <div className="space-x-2 flex w-full">
                                         <p className=" pr-1 text-white w-2/5 flex justify-start items-start whitespace-nowrap"
@@ -467,7 +408,7 @@ export default function Membership({ style = "white", data }) {
                             }}
                         >
                             {state ? "VIEW ALL" : "VIEW LESS"}
-                            {/* <ChevronRightIcon className="arrow-membership" /> */}
+                            <ChevronRightIcon className="arrow-membership" />
                         </div>
                     </div>
                 </div>

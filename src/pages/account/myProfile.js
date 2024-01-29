@@ -21,14 +21,14 @@ export default function Dashboard({ style = "white", data }) {
 
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const tokenSet = (Cookies.get("OTP") != null)
-    useEffect(() => {
-        if (itemSet && tokenSet) {
-            router.push({ pathname: "/account/myProfile" });
-        }
-        else {
-            router.push({ pathname: "/account/login" });
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (itemSet && tokenSet) {
+    //         router.push({ pathname: "/account/myProfile" });
+    //     }
+    //     else {
+    //         router.push({ pathname: "/account/login" });
+    //     }
+    // }, [])
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
@@ -484,22 +484,22 @@ export default function Dashboard({ style = "white", data }) {
             <section style={{marginBottom:"2rem"}}>
                 <div className="flex flex-col justify-center items-center " style={{marginTop:"10rem"}}>
                     <a href="/account/dashboard" className="space-x-1 "
-                    style={{border:"2px solid #008DDC", display:"flex", borderRadius:"100%", width:"10rem", height:"10rem", justifyContent:"center", alignItems:"center"}}>
-                        <p className="font-bold text-6xl text-[#008DDC]">{data.firstName?.charAt(0)}</p>
-                        <p className="font-bold text-6xl text-[#008DDC]">{data.lastName?.charAt(0)}</p>
+                    style={{border:"4px solid #008DDC", display:"flex", borderRadius:"100%", width:"10rem", height:"10rem", justifyContent:"center", alignItems:"center"}}>
+                        <p className="font-bold text-6xl text-colorblue montserrat-bold">{data.firstName?.charAt(0)}</p>
+                        <p className="font-bold text-6xl text-colorblue montserrat-bold">{data.lastName?.charAt(0)}</p>
                     </a>
-                    <p className="font-bold text-[#008DDC]" style={{fontSize:"18px", marginTop:"1.25rem"}}>{data.fullName}</p>
+                    <p className="font-bold text-colorblue montserrat-bold" style={{fontSize:"18px", marginTop:"1.25rem"}}>{data.fullName}</p>
                 </div>
-                <div className="w-full" >
+                <div className="w-full" style={{marginBottom:"5rem"}}>
                     <form onSubmit={handleSubmit} className=" mx-auto flex flex-col justify-center items-center " style={{marginTop:"5rem"}}>
                         {/* <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0"> */}
-                        <div className="w-full mobile-flex-col container mx-auto lg:flex lg:flex-row md:flex space-x-3 md:space-x-3 justify-center items-start lg:space-y-0 md:space-y-0 px-4 lg:px-4 md:px-4">
+                        <div className="w-full flex mobile-flex-col container mx-auto lg:flex lg:flex-row md:flex space-x-3 md:space-x-3 justify-center items-start lg:space-y-0 md:space-y-0 px-4 lg:px-4 md:px-4">
 
                             <div className="flex flex-col lg:w-1/3 md:w-1/3">
 
                                 <div className="flex flex-col space-y-2">
 
-                                    <p className="text-[#008DDC] font-bold">General Info</p>
+                                    <p className="text-colorblue font-bold fontSize montserrat-bold">General Info</p>
                                     <input
                                         disabled={true}
                                         className="border-in bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md text-white"
@@ -514,7 +514,7 @@ export default function Dashboard({ style = "white", data }) {
                                         <input
                                             type="date"
                                             disabled={true}
-                                            className="bg-transparent pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#008DDC] text-white"
+                                            className="bg-transparent dateInput pl-2 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#008DDC] text-white"
                                             value={moment(data.birthdate).format("YYYY-MM-DD")} id="birthdate"
                                             onChange={handleChange}
                                         />
@@ -523,7 +523,7 @@ export default function Dashboard({ style = "white", data }) {
                                         <input
                                             type="text"
                                             disabled={scdstate}
-                                            className="bg-transparent pl-2 w-3/5 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#008DDC] text-white"
+                                            className="bg-transparent inputChange pl-2 w-3/5 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#008DDC] text-white"
                                             value={data.mobile} id="mobile"
                                             onChange={handleChange}
                                         />
@@ -557,7 +557,7 @@ export default function Dashboard({ style = "white", data }) {
                                                         </button>
                                                         <div className="popups rounded-md">
                                                             <div className="container mx-auto flex flex-col space-y-5 py-8 lg:px-40 md:px-20 px-6">
-                                                                <p className="text-[#008DDC] text-lg font-bold">Change Phone Number</p>
+                                                                <p className="text-colorblue text-lg font-bold">Change Phone Number</p>
                                                                 <form className="flex flex-col space-y-5" onSubmit={sendOTPPhone}>
                                                                     {/* <input onChange={autoComplete} className="bg-transparent p-1 border border-[#008DDC] h-9 rounded-md text-white focus:outline-none  focus:border-[#008DDC]"
                                                                         placeholder="Insert your new Phone Number" id="newphone" /> */}
@@ -590,20 +590,20 @@ export default function Dashboard({ style = "white", data }) {
                                                                         // onSelect={(e) => handleTabsChange({ event: e, index: MOBILE })}
                                                                         onChange={setValue1}
                                                                         addInternationalOption={false}
-                                                                        placeholder="Insert your new Phone Number" className="border-in h-9 rounded-md border-2 pt-2 pb-2 my-4 w-full flex justify-center items-center futura-book bg-black text-white login-placeholder" id='phone'
+                                                                        placeholder="Insert your new Phone Number" className="border-in h-9 rounded-md border-2 pt-2 pb-2 my-4 w-full flex justify-center items-center montserrat-book bg-black text-white login-placeholder" id='phone'
                                                                     />
                                                                     {/* {phoneNumberErr && (
                                                                         <div style={{ color: "red", paddingBottom: 10 }}>
                                                                             {phoneNumberErr}
                                                                         </div>
                                                                     )} */}
-                                                                    <button disabled={!value1} type="submit" className="text-white bg-blue button-disabled h-9 futura-book rounded-md" onClick={onpopupBtnClick}>Send OTP</button>
+                                                                    <button disabled={!value1} type="submit" className="text-white bg-blue button-disabled h-9 montserrat-book rounded-md" onClick={onpopupBtnClick}>Send OTP</button>
                                                                 </form>
                                                                 {showpopupbutton ? <form className="flex flex-col space-y-5" onSubmit={submitOTPPhone}>
                                                                     <input onChange={autoscdComplete} className="border border-[#008DDC] bg-transparent h-9 rounded-md p-1 text-white" id="otpPhoneNumber" placeholder="OTP" />
-                                                                    <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-blue button-disabled h-9 futura-book rounded-md">Save</button>
+                                                                    <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-blue button-disabled h-9 montserrat-book rounded-md">Save</button>
                                                                 </form> : null}
-                                                                {showpopupbutton ? <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#008DDC]"><OtpTimer
+                                                                {showpopupbutton ? <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-colorblue"><OtpTimer
                                                                     minutes={3}
                                                                     seconds={1}
                                                                     text=""
@@ -625,7 +625,7 @@ export default function Dashboard({ style = "white", data }) {
                                         <input
                                             type="text"
                                             disabled={thirdstate}
-                                            className="bg-transparent pl-2 w-3/5 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#008DDC] text-white"
+                                            className="bg-transparent inputChange pl-2 w-3/5 border-none focus:outline-none focus:bg-[#0e0e0e] focus:border-[#008DDC] text-white"
                                             value={data.email} id="email"
                                             onChange={handleChange}
                                         />
@@ -661,17 +661,17 @@ export default function Dashboard({ style = "white", data }) {
                                                         </button>
                                                         <div className="popups rounded-md">
                                                             <div className="container mx-auto flex flex-col space-y-5 py-8 lg:px-40 md:px-20 px-6">
-                                                                <p className="text-[#008DDC] text-lg font-bold">Change Email Address</p>
+                                                                <p className="text-colorblue text-lg font-bold">Change Email Address</p>
                                                                 <form className="flex flex-col space-y-5" onSubmit={OTPEmail}>
                                                                     <input onChange={autoComplete} className="bg-transparent p-1 border border-in h-9 rounded-md text-white focus:outline-none  focus:border-[#008DDC]"
                                                                         placeholder="Insert your new Email" id="newEmailAddress" />
-                                                                    <button disabled={!text} type="submit" className="text-white bg-blue button-disabled h-9 futura-book rounded-md" onClick={onAddBtnClick}>Send OTP</button>
+                                                                    <button disabled={!text} type="submit" className="text-white bg-blue button-disabled h-9 montserrat-book rounded-md" onClick={onAddBtnClick}>Send OTP</button>
                                                                 </form>
                                                                 {showbutton ? <form className="flex flex-col space-y-5" onSubmit={submitOTPEmail}>
                                                                     <input onChange={autoscdComplete} className="border border-[#008DDC] bg-transparent h-9 rounded-md p-1 text-white" id="otpNumber" placeholder="OTP" />
-                                                                    <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-blue button-disabled h-9 futura-book rounded-md">Save</button>
+                                                                    <button onClick={closePopup} disabled={!scdInput} type="submit" className="text-white bg-blue button-disabled h-9 montserrat-book rounded-md">Save</button>
                                                                 </form> : null}
-                                                                {showbutton ? <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-[#008DDC]"><OtpTimer
+                                                                {showbutton ? <p className="flex items-center space-x-2 mb-5"><span className="text-white">Did not receive OTP?</span> <span className="text-colorblue"><OtpTimer
                                                                     // minutes={3}
                                                                     seconds={10}
                                                                     text=""
@@ -693,7 +693,7 @@ export default function Dashboard({ style = "white", data }) {
                             </div>
                             <div className="flex flex-col lg:w-1/3 md:w-1/3 mobileTop">
                                 <div className="flex flex-col space-y-2 text-white">
-                                    <p className="text-[#008DDC] font-bold">Address</p>
+                                    <p className="text-colorblue font-bold fontSize montserrat-bold">Address</p>
 
                                     <input
                                         className="border-in  bg-black pl-2 lg:h-10 md:h-10 h-16 rounded-md text-white"

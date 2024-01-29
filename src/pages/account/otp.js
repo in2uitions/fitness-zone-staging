@@ -114,8 +114,8 @@ const phone = Cookies.get("Phone")
                 <div className='flex flex-col justify-center px-5 lg:px-0 md:px-0'>
                     {/* <img src="/fitnessZoneLogo.png" className='w-full h-auto' /> */}
 
-                    <p className="futura-book text-xl mt-28 text-white" style={{marginBottom:"1.25rem"}}>We have sent you an OTP to proceed with your login process.</p>
-                    <p className="flex items-center space-x-2" style={{marginBottom:"1.25rem"}}><span className="text-white">Did not receive OTP?</span> <span className="text-[#008DDC]"><OtpTimer
+                    <p className="montserrat-book text-xl mt-28 text-white" style={{marginBottom:"1.25rem"}}>We have sent you an OTP to proceed with your login process.</p>
+                    <p className="flex items-center space-x-2" style={{marginBottom:"1.25rem"}}><span className="text-white">Did not receive OTP?</span> <span className="text-[#008DDC] otpTimer"><OtpTimer
                         minutes={2}
                         seconds={1}
                         text=""
@@ -130,10 +130,10 @@ const phone = Cookies.get("Phone")
                     <label className="text-[#008DDC] font-bold">ENTER OTP</label>
                     <form onSubmit={submitOTP}>
                         <input
-                            maxlength="6" type="input" className="border-input h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" id="otp" placeholder="OTP" />
+                            maxlength="6" type="input" className="border-input h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder" id="otp" placeholder="OTP" />
                         <button type="submit" className="bg-blue w-full p-3 h-12 rounded-md font-bold text-center items-center text-white flex justify-center">SUBMIT OTP</button>
                     </form>
-                    <a href="/account/login" className='text-[#008DDC] futura-book mt-4 text-center'>Back to login</a>
+                    <a href="/account/login" className='text-[#008DDC] montserrat-book mt-4 text-center'>Back to login</a>
                 </div>
                 <div className="lg:w-1/2"></div>
             </div>

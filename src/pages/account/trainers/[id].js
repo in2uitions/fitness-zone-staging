@@ -17,14 +17,14 @@ export default function TrainersProfile({ style = "white" }) {
     const memberId = Cookies.get("Member");
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const tokenSet = (Cookies.get("OTP") != null)
-    useEffect(() => {
-        if (itemSet && tokenSet) {
-            // router.push({ pathname: `/account/trainers/${query.id}` });
-        }
-        else {
-            router.push({ pathname: "/account/login" });
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (itemSet && tokenSet) {
+    //         // router.push({ pathname: `/account/trainers/${query.id}` });
+    //     }
+    //     else {
+    //         router.push({ pathname: "/account/login" });
+    //     }
+    // }, [])
     // console.log(query)
 
     var registrationHeaders = new Headers();
@@ -88,7 +88,7 @@ export default function TrainersProfile({ style = "white" }) {
             <PrivateMenu />
             <DarkTheme>
             <section style={{marginBottom:"2rem"}}>
-                <div className="container mx-auto flex flex-col justify-start mt-40 lg:px-28 md:px-20 px-3">
+                <div className="container mx-auto flex flex-col justify-start mt-40-top mb-20-bottom lg:px-28 md:px-20 px-3">
                     <div className="flex justify-between">
                         {/* <select name="category">
                         {categoryData.map((item) =>(
@@ -102,21 +102,21 @@ export default function TrainersProfile({ style = "white" }) {
                             <div className='flex flex-col space-y-3 membership-box p-10 items-center' style={{padding:"2.5rem"}}>
                                 <>
                                     <img className="w-20 h-20 rounded-full object-cover" style={{width:"5rem", height:"5rem", objectFit:"cover"}} src={`${image_url}${data?.image}`} />
-                                    <p className='font-bold flex space-x-2 cursor-pointer text-white'>{data.fullName}</p>
+                                    <p className='font-bold flex space-x-2 cursor-pointer text-white montserrat-bold'>{data.fullName}</p>
                                     <p className='font-book cursor-pointer text-white'>{data.securityGroupName}</p>
                                     {/* {data.packageList?.map((item, id) =>(
                                         <p key={id}>{item.category.categoryName}</p>
                                         ))} */}
                                     <p className="text-white">{data.packageList?.slice(0, 1).map(el => el.category?.categoryName)}</p>
                                     <div className="flex space-x-3 items-center rounded-md p-2 active-button">
-                                        <img className="" src="/homepage/location-marker.png" />
+                                        <img className="" src="/location-marker.png" />
                                         <p className="text-white">{data.locationName}</p>
                                     </div>
                                 </>
                             </div>
                         </div>
                         <div className="col-span-4">
-                            <p className="text-[#008DDC] font-bold mb-4 qual" style={{color:"#008DDC", fontSize:"18px"}}>Qualifications</p>
+                            <p className="text-colorblue font-bold mb-4 qual montserrat-bold" style={{color:"#008DDC", fontSize:"18px"}}>Qualifications</p>
                             {data.qualifications ? <p className="text-white">{parse(`${data?.qualifications}`)}</p> : null}
                         </div>
                         <div className="col-span-4 qual">
@@ -135,25 +135,25 @@ export default function TrainersProfile({ style = "white" }) {
                                                 <div className="flex justify-end items-end">
                                                     <div className="flex flex-col justify-center items-center cursor-pointer">
                                                         <p>
-                                                            <span className="text-2xl text-[#008DDC] futura-book">
+                                                            <span className="text-2xl text-colorblue montserrat-book">
                                                                 {currency}</span>
-                                                            <span className='text-4xl futura-book text-[#008DDC]'>
+                                                            <span className='text-4xl montserrat-book text-colorblue'>
                                                                 {item.totalValue.toLocaleString()}
                                                             </span>
                                                         </p>
-                                                        <p className='text-[#008DDC] -mt-4 tracking text-xs'><span>{item.numberOfSessions}</span> {item.numberOfSessions == 1 ? "session" : "sessions"}</p>
+                                                        <p className='text-colorblue -mt-4 tracking text-xs'><span>{item.numberOfSessions}</span> {item.numberOfSessions == 1 ? "session" : "sessions"}</p>
                                                     </div>
 
 
                                                 </div>
                                                 {/* <div className="flex justify-end items-end ">
                                                     <div className="flex flex-col cursor-pointer">
-                                                            <p className="text-base text-[#008DDC] futura-book">
+                                                            <p className="text-base text-colorblue montserrat-book">
                                                                 Contact for </p>
-                                                            <p className='text-base futura-book text-[#008DDC]'>
+                                                            <p className='text-base montserrat-book text-colorblue'>
                                                                 package price
                                                             </p>
-                                                        <p className='text-[#008DDC] -mt-4 tracking text-xs'><span>{item.numberOfSessions}</span> {item.numberOfSessions == 1 ? "session" : "sessions"}</p>
+                                                        <p className='text-colorblue -mt-4 tracking text-xs'><span>{item.numberOfSessions}</span> {item.numberOfSessions == 1 ? "session" : "sessions"}</p>
                                                     </div>
 
                                                 </div> */}
@@ -177,11 +177,11 @@ export default function TrainersProfile({ style = "white" }) {
                                         </div>
                                         <div className="flex w-1/2 justify-end">
                                             <div className="flex flex-col cursor-pointer">
-                                                <p><span className="text-2xl text-[#008DDC] futura-book">$</span><span className='text-4xl futura-book text-[#008DDC]'>
+                                                <p><span className="text-2xl text-colorblue montserrat-book">$</span><span className='text-4xl montserrat-book text-colorblue'>
                                                     {format(item.totalValue)}
                                                 </span>
                                                 </p>
-                                                <p className='text-[#008DDC] -mt-4 tracking text-xs'> session</p>
+                                                <p className='text-colorblue -mt-4 tracking text-xs'> session</p>
                                             </div>
                                         </div>
                                     </div>

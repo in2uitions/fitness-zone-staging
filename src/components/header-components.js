@@ -54,7 +54,7 @@ export default function HeaderContent(data = {}, about = []) {
                                     <button className="img-btn">
                                         <img src="/blue-rectangle.svg" onClick={() => setOpen(o => !o)} className="menu-icon object-cover" style={{ width: "60px" }} />
                                     </button>
-                                    {/* <p className="font-bold text-white futura-book cursor-pointer">Menu</p> */}
+                                    {/* <p className="font-bold text-white montserrat-book cursor-pointer">Menu</p> */}
                                 </div>
                             } modal nested
                             closeOnDocumentClick

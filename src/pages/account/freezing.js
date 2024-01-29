@@ -27,14 +27,14 @@ export default function Frezzing(books) {
     }), [])
     const itemSet = (Cookies.get("token") != null || Cookies.get("token") != undefined);
     const tokenSet = (Cookies.get("OTP") != null)
-    useEffect(() => {
-        if (itemSet && tokenSet) {
-            router.push({ pathname: "/account/freezing" });
-        }
-        else {
-            router.push({ pathname: "/account/login" });
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (itemSet && tokenSet) {
+    //         router.push({ pathname: "/account/freezing" });
+    //     }
+    //     else {
+    //         router.push({ pathname: "/account/login" });
+    //     }
+    // }, [])
     var registrationHeaders = new Headers();
     registrationHeaders.append(
         "Authorization",
@@ -61,7 +61,7 @@ export default function Frezzing(books) {
         <>
             <PrivateMenu />
             <DarkTheme>
-            <div  style={{marginBottom:"2rem"}} className='container mx-auto lg:px-20 md:px-20 px-3 mt-40'>
+            <div  style={{marginBottom:"2rem"}} className='container mx-auto px-20 mt-40-top mb-20-bottom'>
                 <CalendarComponent events={events} />
             </div>
             </DarkTheme>

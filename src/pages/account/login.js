@@ -171,11 +171,11 @@ export default function Login() {
                                 });
                             }
                             else {
-                                const SendOTPMessage = await fetch(
-                                    `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`,
-                                    registrationRequestOptions
-                                );
-                                const data = await SendOTPMessage.json();
+                                // const SendOTPMessage = await fetch(
+                                //     `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`,
+                                //     registrationRequestOptions
+                                // );
+                                // const data = await SendOTPMessage.json();
                                 setIsSent(true);
                                 Cookies.remove("Country");
                                 Cookies.remove("Phone");
@@ -187,7 +187,7 @@ export default function Login() {
                                 // event.target.phone.value = "";
                                 event.target.memberId.value = "";
                                 router.push({
-                                    pathname: "/account/otp",
+                                    pathname: "/account/dashboard",
                                     query: { phoneNumber, memberId },
                                 });
                             }
@@ -290,7 +290,7 @@ export default function Login() {
 
                     <p className="font-bold text-4xl mt-28 text-[#008DDC] hi" style={{fontFamily:"'Montserrat', sans-serif", fontWeight:"900"}}>COUNTRY</p>
                     <form className="w-full flex flex-col" onSubmit={submitLogIn}>
-                        {/* <select name='country' id='country' className='border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder'>
+                        {/* <select name='country' id='country' className='border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder'>
                             <option value={LEBANON}>Lebanon</option>
                             <option value={UAE}>UAE</option>
                         </select> */}
@@ -298,7 +298,7 @@ export default function Login() {
                             selected={select}
                             onSelect={onSelect}
                             countries={["LB", "AE"]}
-                            className="border-[#008DDC] h-12 border-2 p-2 my-4 rounded flex justify-center items-center futura-book bg-black text-white login-placeholder w-80"
+                            className="border-[#008DDC] h-12 border-2 p-2 my-4 rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder w-80"
                             defaultCountry="LB"
                             customLabels={{ LB: "LEBANON", AE: "UNITED ARAB EMIRATES" }}
                             id="country"
@@ -309,7 +309,7 @@ export default function Login() {
                         </pre> */}
                         <input
                             onChange={(e) => handleTabsChange({ event: e, index: MEMBER })}
-                            className="border-input h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder"
+                            className="border-input h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder"
                             style={{borderColor:"#008DDC"}}
                             placeholder="Member ID"
                             id="memberId"
@@ -332,9 +332,9 @@ export default function Login() {
                             // onSelect={(e) => handleTabsChange({ event: e, index: MOBILE })}
                             onChange={(e) => handleTabsChange({ event: { target: { value: e } }, index: MOBILE })}
                             addInternationalOption={false}
-                            placeholder="Mobile Number" className="border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" id='phone'
+                            placeholder="Mobile Number" className="border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder" id='phone'
                         />
-                        {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
+                        {/* <input onChange={(e) => handleTabsChange({ event: e, index: MOBILE })} className="border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder" placeholder="Mobile Number" id='phone' /> */}
 
                         {/* <input
                             type="input"
@@ -394,8 +394,8 @@ export default function Login() {
                             }
                             className={
                                 phoneNumberErr
-                                    ? " showError border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder"
-                                    : "border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center futura-book bg-black text-white login-placeholder"
+                                    ? " showError border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder"
+                                    : "border-[#008DDC] h-12 border-2 p-2 my-4 w-full rounded flex justify-center items-center montserrat-book bg-black text-white login-placeholder"
                             }
                         /> */}
                         {/* {phoneNumberErr && (
@@ -449,7 +449,7 @@ export default function Login() {
                         </button>
                         {isSent ? thankYouMessage : submitmsg}
                     </form>
-                    <a href="/" className="text-[#008DDC] futura-book mt-4 text-center">
+                    <a href="/" className="text-[#008DDC] montserrat-book mt-4 text-center">
                         Back to website
                     </a>
                 </div>

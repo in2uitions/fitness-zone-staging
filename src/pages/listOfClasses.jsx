@@ -317,7 +317,7 @@ export default function App() {
                         }}
                     >
                         <p
-                            className="text-[#009FE3] futura-bold lg:text-4xl md:text-4xl text-3xl"
+                            className="text-colorblue montserrat-bold lg:text-4xl md:text-4xl text-3xl"
                             style={{
                                 color: "rgb(25, 144, 223)",
                                 fontFamily: "Montserrat",
@@ -349,12 +349,12 @@ export default function App() {
                                 <img src="/filterBy.png" />
                                 <p
                                     style={{ whiteSpace: "nowrap" }}
-                                    className="futura-book text-white"
+                                    className="montserrat-book text-white"
                                 >
                                     Filter by
                                 </p>
                             </div>
-                            {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
+                            {/* <p className="text-[#009FE3] montserrat-bold text-4xl">LIST OF CLASSES</p> */}
                             <div
                                 className="relative"
                                 style={{ width: "73%", position: "relative" }}
@@ -430,9 +430,9 @@ export default function App() {
                                     style={{ width: "10px", height: "12px" }}
                                     src="/filterBy.png"
                                 />
-                                <p className="futura-book text-white">Filter by</p>
+                                <p className="montserrat-book text-white">Filter by</p>
                             </div>
-                            {/* <p className="text-[#009FE3] futura-bold text-4xl">LIST OF CLASSES</p> */}
+                            {/* <p className="text-[#009FE3] montserrat-bold text-4xl">LIST OF CLASSES</p> */}
                             <div className="relative" style={{ width: "35%" }}>
                                 <input
                                     type="text"
@@ -748,7 +748,7 @@ export default function App() {
                                                 }}
                                             >
                                                 <p
-                                                    className="text-white text-md lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book sizemobile w-1/5"
+                                                    className="text-white text-md lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 montserrat-book sizemobile w-1/5"
                                                     style={{
                                                         width: "20%",
                                                         color: "white",
@@ -759,7 +759,7 @@ export default function App() {
                                                     {item.class?.className}
                                                 </p>
                                                 <p
-                                                    className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 futura-book text-md sizemobile w-1/5"
+                                                    className="lg:border-r md:border-r border-white text-white lg:pl-5 md:pl-5 pl-5 lg:pr-3 md:pr-3 montserrat-book text-md sizemobile w-1/5"
                                                     style={{
                                                         width: "20%",
                                                         color: "white",
@@ -771,7 +771,7 @@ export default function App() {
                                                     {item.studio?.studioName}
                                                 </p>
                                                 <p
-                                                    className="text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#009FE3] w-1/5"
+                                                    className="text-white montserrat-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-[#009FE3] w-1/5"
                                                     style={{
                                                         width: "20%",
                                                         color: "white",
@@ -783,7 +783,7 @@ export default function App() {
                                                     {moment(item.classTime).format("DD MMM YYYY")}
                                                 </p>
                                                 <p
-                                                    className="text-white futura-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5"
+                                                    className="text-white montserrat-book lg:pl-5 md:pl-5 pl-5 lg:pr-5 md:pr-5 text-md sizemobile lg:border-r md:border-r border-white w-1/5"
                                                     style={{
                                                         width: "20%",
                                                         color: "white",
@@ -795,7 +795,7 @@ export default function App() {
                                                     {moment(item.classTime).format("HH:mm")}
                                                 </p>
                                                 <p
-                                                    className="text-white text-md futura-book lg:pl-5 md:pl-5 pl-5 sizemobile w-1/5"
+                                                    className="text-white text-md montserrat-book lg:pl-5 md:pl-5 pl-5 sizemobile w-1/5"
                                                     style={{
                                                         width: "20%",
                                                         color: "white",
@@ -823,21 +823,21 @@ export default function App() {
                                         style={{display:"flex", justifyContent:"space-between", width:"100%", gap:"2rem"}}>
                                             <div className="flex flex-col w-2/5" style={{display:"flex",
                                             flexDirection:"column", width:"40%"}}>
-                                                <p className="text-white futura-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]">
+                                                <p className="text-white montserrat-book text-md sizemobile lg:border-r md:border-r border-[#009FE3]">
                                                     {moment(item.classTime).format("DD MMM YYYY")}
                                                 </p>
-                                                <p className=" text-white text-md sizemobile futura-book">
+                                                <p className=" text-white text-md sizemobile montserrat-book">
                                                     {moment(item.classTime).format("HH:mm")}
                                                 </p>
                                             </div>
                                             <div className="border border-l border-[#009FE3]"></div>
                                             <div className="flex flex-col w-2/5" style={{display:"flex",
                                             flexDirection:"column", width:"40%"}}>
-                                                <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 futura-book">
+                                                <p className="text-white text-md sizemobile lg:border-r md:border-r border-[#009FE3] lg:pr-3 md:pr-3 montserrat-book">
                                                     {item.class?.className}
                                                 </p>
 
-                                                <p className="text-white futura-book text-md sizemobile lg:border-r md:border-r border-white">
+                                                <p className="text-white montserrat-book text-md sizemobile lg:border-r md:border-r border-white">
                                                     {item.location?.locationName}
                                                 </p>
                                             </div>
