@@ -91,16 +91,19 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     if (item.children) {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
-          <a
-            href={item.to}
-            className="nav-link dropdown-toggle"
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            {item.label}
-          </a>
+          {/* <div className="flex nav-link" style={{gap:"10px"}}> */}
+            {/* <a
+              // href={item.to}
+              className=""
+
+            >
+              {item.label}
+            </a> */}
+            <a className="dropdown-toggle nav-link" data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"><a href={item.to}>{item.label}</a></a>
+          {/* </div> */}
           <div className="dropdown-menu">
             {item.children.map((childItem) => (
               <Link href={childItem.to} key={childItem.id}>
@@ -212,7 +215,6 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
               {content.map((item) => renderMenuItem(item))}
             </ul>
           </div>
-          {/* <img src="/barsMenu.svg" style={{width:"40px", height:"40px"}}/> */}
           <a href="/account/login" className="loginMobileHidden" style={{
             background: "rgb(25, 144, 223)",
             padding: "5px 15px 5px 15px",
@@ -223,36 +225,6 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
         </div>
 
       </nav>
-      {/* <div style={{
-          position: "fixed",
-          right: "0",
-          top: "10rem",
-          background: "#EDC500",
-          fontWeight: "bold",
-          padding: "70px 8px 70px 8px",
-          color: "black",
-          zIndex: 10,
-          borderTopRightRadius: "50px",
-          borderBottomRightRadius: "50px",
-          display: "flex",
-          alignItems: "center",
-          writingMode: "vertical-rl",
-          textOrientation: "upright",
-          transform: "rotate(180deg)",
-      }}>
-          {'BOOK FREE TRIAL'.split('').map((char, index) => (
-              <span key={index} style={{
-                  writingMode: "vertical-rl",
-                  textOrientation: "upright",
-                  transform: "rotate(90deg)",
-                  display: "inline-block",
-                  padding: char === ' ' ? "5px 0" : "0px",
-                  letterSpacing: "-6px"
-              }}>
-                  {char}
-              </span>
-          ))}
-      </div> */}
     </>
   );
 };

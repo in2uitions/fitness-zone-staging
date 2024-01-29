@@ -54,11 +54,12 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
     return (
         <>
             {data.layout_type == 'regular' || data.layout_type == null ?
-                <div id="" style={{ "backgroundImage": `url("${image_url}${data.image?.id}")` }} className=" aboutUs-bg" >
+                <div id="" style={{ "backgroundImage": `url("${image_url}${data.image?.id}")`, position:"relative" }} className=" aboutUs-bg" >
+                <div style={{position:"absolute", right:"0", bottom:"-1px"}}><img src='/imgBg.png'/></div>
                     <div className='bannerTitleContainer' style={{ "backgroundImage": `url("${image_url}${data.bar_image?.id}")`, backgroundRepeat: "no-repeat", height: "211px", position: "absolute", top: "50%", left: "8rem" }}>
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
-                            {data.image_title ? <h1 className='banner-title' style={{ fontSize: "82px" }}>{data.image_title}</h1> : null}
-                            {data.image_subtitle ? <h3 className="banner-subtitle">{data.image_subtitle}</h3> : null}
+                            {data.image_title ? <h1 className='banner-title' style={{ fontSize: "70px" }}>{data.image_title}</h1> : null}
+                            {data.image_subtitle ? <h1 className="banner-subtitle" style={{ fontSize: "70px" }}>{data.image_subtitle}</h1> : null}
                         </div>
                     </div>
                     <div className='bannerDescription' style={{ position: "absolute", right: "10rem", top: "60%", borderRight: "2px solid #707070", paddingRight: "20px" }}>

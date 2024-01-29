@@ -1524,8 +1524,8 @@ input::placeholder{
   justify-content: flex-end;
 }
 button{
-  background-color: transparent !important;
-  border: 0px solid transparent !important;
+  background-color: transparent ;
+  border: 0px solid transparent ;
 }
 button:focus{
   border: 0px solid transparent !important;
