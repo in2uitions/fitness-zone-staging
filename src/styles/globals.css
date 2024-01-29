@@ -1405,6 +1405,49 @@ ul.metismenu-container:first-child {
   width: 100% !important;
   margin-left: 1rem !important;
 }
+.w-full{
+  width: 100%;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+.border {
+  border-width: 1px;
+}
+.border-gray-500 {
+  border-color: rgb(107 114 128) !important;
+}
+.bg-\[transparent\], .bg-transparent {
+  background-color: transparent;
+}
+.input-search {
+  color: #fff!important;
+}
+.h-10 {
+  height: 2.5rem;
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+.react-tabs__tab--selected {
+  background: #fff!important;
+  border: 1px solid grey!important;
+  color: #009fe3!important;
+  padding: 10px!important;
+  border-radius: 5px!important;
+}
+.notSelected {
+  color: #707070!important;
+  padding: 10px;
+  font-family: "Montserrat Regular";
+}
+.react-tabs__tab--selected p {
+  color: #009fe3 !important;
+  font-family: "Montserrat Bold";
+}
+.tabs-container {
+  background-color: hsla(0,0%,56%,.2);
+}
 @media (min-width:320px) and (max-width: 550px) {
   .banner-title{
     font-size:36px !important;
@@ -1604,7 +1647,9 @@ ul.metismenu-container:first-child {
     object-fit: cover !important;
   }
   .closeGallery{
-    right: 0rem !important;
+    right: -2.5rem !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   .closeVideo{
     top: -3rem !important;
@@ -1621,4 +1666,14 @@ ul.metismenu-container:first-child {
     padding-top: 1rem;
     padding-left: 1rem;
   }
+  .image-gallery-left-nav{
+    left: -2rem !important;
+  }
+  .image-gallery-right-nav{
+    right: -2rem !important;
+  }
+  .on-tabs {
+    height: 0.85rem!important;
+    width: 2rem;
+}
 }
