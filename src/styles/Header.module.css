@@ -86,6 +86,9 @@
     .navWithBg{
       padding: 20px 3%;
     }
+    .container{
+      margin-top: 1rem !important;
+    }
   }
   @media screen and (max-width:480px){
     .nav{

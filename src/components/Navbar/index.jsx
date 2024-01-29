@@ -111,6 +111,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
               </Link>
             ))}
           </div>
+          
         </li>
       );
     } else {
@@ -119,6 +120,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           <Link href={item.to}>
             <a href={item.to} className="nav-link">{item.label}</a>
           </Link>
+          
         </li>
       );
     }
@@ -213,7 +215,18 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               {content.map((item) => renderMenuItem(item))}
+              <li className="nav-item">
+              <a href="/account/login" className="webhidden nav-link" style={{
+          background: "rgb(25, 144, 223)",
+          padding: "5px 15px 5px 15px",
+          color: "white",
+          borderRadius: "5px",
+          width:"50%",
+          border: "0px solid transparent"
+        }}>Login</a>
+        </li>
             </ul>
+            
           </div>
           <a href="/account/login" className="loginMobileHidden" style={{
             background: "rgb(25, 144, 223)",

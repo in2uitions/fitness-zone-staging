@@ -79,7 +79,7 @@ export default function PrivateMenu() {
                     closeOnDocumentClick 
                     position=""
                 >
-                    <div className="w-screen h-screen flex flex-col justify-center items-center popup-overlay">
+                    <div className="popuptop w-screen h-screen flex flex-col justify-center items-center popup-overlay">
                         <a href="/account/dashboard" className=" space-x-1 border-4 border-full rounded-full w-40 h-40 items-center justify-center"
                         style={{border:"4px solid #008DDC", display:"flex"}}>
                             <p className="font-bold text-6xl text-colorblue">{data.firstName?.charAt(0)}</p>

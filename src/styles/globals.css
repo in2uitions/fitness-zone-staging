@@ -2119,6 +2119,21 @@ button:focus{
   .membership-box {
     width: 45% ;
   }
+  .popuptop{
+    margin-top: 1.5rem;}
+    .dropdown-toggle::after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 0.255em;
+      vertical-align: 0.255em;
+      content: "";
+      margin-bottom: -0.25rem !important;
+      border-top: 0.75em solid !important;
+      border-right: 0.75em solid transparent !important;
+      border-bottom: 0;
+      border-left: 0.75em solid transparent !important;
+  }
   .mtmobile{
     margin-top: 5rem !important;
   }
@@ -2203,4 +2218,10 @@ button:focus{
     height: 0.85rem!important;
     width: 2rem;
 }
+.webhidden{
+  display: block !important;
+}
+}
+.webhidden{
+  display: none;
 }
