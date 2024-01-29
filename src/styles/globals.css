@@ -1406,9 +1406,9 @@ ul.metismenu-container:first-child {
   margin-left: 1.5rem !important;
   color: white;
 }
-input:-internal-autofill-selected{
+/* input:-internal-autofill-selected{
   background: black !important;
-}
+} */
 .inputInfo:focus{
   background-color: black !important;
 }
