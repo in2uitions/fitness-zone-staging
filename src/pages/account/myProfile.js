@@ -482,7 +482,7 @@ export default function Dashboard({ style = "white", data }) {
             <PrivateMenu />
             <DarkTheme>
             <section style={{marginBottom:"2rem"}}>
-                <div className="flex flex-col justify-center items-center " style={{marginTop:"10rem"}}>
+                <div className="flex flex-col justify-center items-center mtmobile" style={{marginTop:"10rem"}}>
                     <a href="/account/dashboard" className="space-x-1 "
                     style={{border:"4px solid #008DDC", display:"flex", borderRadius:"100%", width:"10rem", height:"10rem", justifyContent:"center", alignItems:"center"}}>
                         <p className="font-bold text-6xl text-colorblue montserrat-bold">{data.firstName?.charAt(0)}</p>

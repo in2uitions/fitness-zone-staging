@@ -1910,6 +1910,9 @@ button:focus{
 }
 
 @media (min-width:320px) and (max-width: 550px) {
+  .memberbox{
+    width: 100% !important;
+  }
   .clubsTitle{
     left: 4rem !important;
     letter-spacing: 5px !important;
@@ -2114,7 +2117,52 @@ button:focus{
     font-size: 21px !important;
   }
   .membership-box {
-    width: 45% !important;
+    width: 45% ;
+  }
+  .mtmobile{
+    margin-top: 5rem !important;
+  }
+  .mobilepaddingfreez{
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  .popup-membership-content{
+    margin: 15px !important;
+  }
+  .qual{
+    margin-top: 1rem !important;
+  }
+  .boxes{
+    padding: 0px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    margin-top: 3rem;
+  }
+  .showDesktop{
+    flex-wrap: wrap;
+  }
+  .wrapContent{
+    gap: 10px;
+  }
+  .border-in{
+    height: 2.5rem !important;
+  }
+  .mobileTop{
+    width: 100%;
+    --tw-space-x-reverse: 0 !important;
+    margin-right: calc(0 * var(--tw-space-x-reverse)) !important;
+    margin-left: calc(0 * calc(1 - var(--tw-space-x-reverse))) !important;
+  }
+  .mt-40-top{
+    margin-top: 5rem ;
+  }
+  .mobile-flex-col{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .flexstart{
+    align-items: start;
   }
   .flexWrap{
     flex-wrap: wrap;

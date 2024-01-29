@@ -98,7 +98,7 @@ export default function TrainersProfile({ style = "white" }) {
                     <div className="lg:grid lg:grid-cols-12 gap-x-10 gap-y-3 items-start mt-10  lg:space-y-0 md:space-y-0">
                         {/* {data.map((item) => ( */}
                         <div className="col-span-4">
-                            <div className='flex flex-col space-y-3 membership-box p-10 items-center' style={{padding:"2.5rem"}}>
+                            <div className='flex flex-col space-y-3 membership-box p-10 items-center memberbox' style={{padding:"2.5rem"}}>
                                 <>
                                     <img className="w-20 h-20 rounded-full object-cover" style={{width:"5rem", height:"5rem", objectFit:"cover"}} src={`${image_url}${data?.image}`} />
                                     <p className='font-bold flex space-x-2 cursor-pointer text-white montserrat-bold'>{data.fullName}</p>
@@ -122,7 +122,7 @@ export default function TrainersProfile({ style = "white" }) {
                             <div className="space-y-5">
                                 {data.packageList?.map((item) => (
                                     <>
-                                        {item.isActive && !item.packageName.includes('Staff') ? <div className="membership-box p-3 rounded-md">
+                                        {item.isActive && !item.packageName.includes('Staff') ? <div className="membership-box p-3 rounded-md memberbox">
                                             <div className="flex items-center w-full">
                                                 <div className="flex flex-col w-3/4">
                                                     <p className="font-bold text-white">{item.packageName.slice(0, item.packageName.length - 1)}</p>

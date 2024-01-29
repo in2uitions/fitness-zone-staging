@@ -259,7 +259,7 @@ export default function Dashboard({ style = "white", books }) {
                 <div className="container lg:mx-auto lg:px-20 md:px-20 px-3 mt-10-top mt-20-top mb-20-bottom lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10 w-screen">
                     <div className="col-span-3"> 
                         <p className="text-colorblue montserrat-bold fontSize">Membership Details</p>
-                        <div className="flex flex-col space-y-3 mt-10-top membership-box p-10 items-center">
+                        <div className="flex flex-col space-y-3 mt-10-top membership-box memberbox p-10 items-center">
                             <img src="/gold-member.png" className="w-20 h-20" />
                             <p className="montserrat-bold text-white">{books.membershipType?.memberShipTypeName}</p>
                             <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">

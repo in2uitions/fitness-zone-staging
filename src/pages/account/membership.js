@@ -234,7 +234,7 @@ export default function Membership({ style = "white", data }) {
                             )}
                         </p>
                     </div> 
-                    <div className=" flex gap-x-1 justify-evenly items-center px-3 lg:px-0 md:px-0 mobile-flex-col" style={{marginTop:"2.5rem"}}>
+                    <div className=" flex gap-x-1 justify-evenly items-center px-3 lg:px-0 md:px-0 mobile-flex-col flexstart" style={{marginTop:"2.5rem"}}>
                         <div className="col-span-6">
                             <div className="flex flex-col">
                                 <p className="text-sm text-white ">Status</p>
