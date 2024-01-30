@@ -4419,8 +4419,9 @@ header.simpl .caption .btn-curve {
   display: inline-block;
 }
 
-.portfolio .filtering span {
+.portfolio .filtering button {
   font-weight: 500;
+  outline: none;
   font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -4429,22 +4430,22 @@ header.simpl .caption .btn-curve {
   position: relative;
 }
 
-.portfolio .filtering span.active {
-  color: #75dab4;
+.portfolio .filtering button.active {
+  color: #0090DF;
 }
 
-.portfolio .filtering span:after {
+.portfolio .filtering button:after {
   content: '';
   width: 7px;
   height: 7px;
-  background: #75dab4;
+  background: #0090DF;
   border-radius: 50%;
   position: absolute;
   right: -24px;
   top: 40%;
 }
 
-.portfolio .filtering span:last-of-type:after {
+.portfolio .filtering button:last-of-type:after {
   display: none;
 }
 
@@ -4455,7 +4456,7 @@ header.simpl .caption .btn-curve {
   display: inline-block;
 }
 
-.portfolio .filtering.smplx span {
+.portfolio .filtering.smplx button {
   font-weight: 500;
   font-size: 12px;
   letter-spacing: 1px;
@@ -4465,11 +4466,11 @@ header.simpl .caption .btn-curve {
   position: relative;
 }
 
-.portfolio .filtering.smplx span.active {
+.portfolio .filtering.smplx button.active {
   color: #75dab4;
 }
 
-.portfolio .filtering.smplx span:after {
+.portfolio .filtering.smplx button:after {
   content: '';
   width: 7px;
   height: 7px;
@@ -4480,7 +4481,7 @@ header.simpl .caption .btn-curve {
   top: 40%;
 }
 
-.portfolio .filtering.smplx span:last-of-type:after {
+.portfolio .filtering.smplx button:last-of-type:after {
   display: none;
 }
 

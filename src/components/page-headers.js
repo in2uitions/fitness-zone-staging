@@ -102,7 +102,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                 {data.slider_components.map((slide, index) => (
                                     <SwiperSlide key={slide.id} className="swiper-slide">
                                         <div className="bg-img valign" style={{ "backgroundImage": `url("${image_url}${slide.slider_images_component_id.image}")`, backgroundRepeat: "no-repeat"}}>
-                                        <div style={{position:"absolute", right:"0", top:"2px",zIndex:"3"}}><img src='/imgBg.png' style={{height:"100vh"}}/></div>
+                                        {/* <div style={{position:"absolute", right:"0", top:"2px",zIndex:"3"}}><img src='/imgBg.png' style={{height:"100vh"}}/></div> */}
                                         <div className="tint-overlay"></div>
                                             <div className="container">
                                                 <div className="row container flex-reverse" style={{ marginTop: "2rem" }}>

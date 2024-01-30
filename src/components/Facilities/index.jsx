@@ -27,7 +27,8 @@ const Facilities = ({ subBG, newHome, data = {} }) => {
                         <div className="tint"></div>
                             <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center", height:"100%", position:"absolute", inset:"0"}}>
                             <p style={{fontWeight:"bold" ,color:"white", fontFamily:"Montserrat ExtraBold"}}>{item.facilities_id.title}</p>
-                                <div style={{background:"#1990df", padding:"10px",marginTop:"1rem", borderRadius:"5px", fontWeight:"lighter"}}>
+                                <div style={{background:"#1990df", padding:"10px",marginTop:"1rem", borderRadius:"5px", fontWeight:"lighter",
+                                boxShadow:"8px 5px 20px 2px rgb(0 0 0 / 48%)"}}>
                                     <Link href="/account/login">
                                         <a className="">{item.facilities_id.button_title}</a>
                                     </Link>

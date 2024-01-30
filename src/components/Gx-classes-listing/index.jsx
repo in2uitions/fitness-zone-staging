@@ -112,6 +112,11 @@ export default function GxClasses({ data = {}, style = 'white' }) {
         }, 100);
 
     }
+    function handleCategoryyChange(event) {
+        setSelectedCategory(event.target.value);
+        console.log(event.target.value)
+
+    }
     if (ListofClasses.length == 0) {
         return <div>loading...</div>;
     }
@@ -229,6 +234,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                     {ListofClasses.filter((item) => item.value === selectedCategory).map((element, index) => (
                         <>
                             {index === 0 && (
+                                <>
                                 <div style={{
                                     display: "flex",
                                     justifyContent: "center",
@@ -243,7 +249,21 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                         {element.value}
                                     </h3>
                                 </div>
+                                <section className='portfolio' style={{marginBottom:"2rem"}}>
+                                <div
+                                className="filtering col-12 "
+                            >
+                                <div className="filter">
+                                    <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white ' onClick={handleCategoryChange} value="energy" >Energy</button>
+                                    <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white ' onClick={handleCategoryChange} value="balance" >Balance</button>
+                                    <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white ' onClick={handleCategoryChange} value="power" >Power</button>
+
+                                </div>
+                            </div>
+                            </section>
+                            </>
                             )}
+                          
                         </>
                     ))}
                     <div className="row" style={{ display: "flex", justifyContent: "center" }}>
@@ -293,7 +313,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                                             </div>
                                                             <form onSubmit={submitLebSignUp} className="col-lg-6" style={{ display: "flex", flexDirection: "column", justifyContent: "start", paddingTop: "1rem", gap: "10px" }}>
                                                                 <h6 style={{ fontWeight: "lighter", fontFamily: "Montserrat Regular" }}>REQUEST</h6>
-                                                                <div style={{display:"flex", alignItems:"center", gap:"10px"}}><h1 style={{ fontWeight: "bold", fontSize:"36px" }}>FREE TRYOUT</h1><h2 className="" style={{ fontSize: "21px", fontFamily: "Montserrat Regular", color:"rgb(25, 144, 223)" }}>/ {element.title}</h2></div>
+                                                                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}><h1 style={{ fontWeight: "bold", fontSize: "36px" }}>FREE TRYOUT</h1><h2 className="" style={{ fontSize: "21px", fontFamily: "Montserrat Regular", color: "rgb(25, 144, 223)" }}>/ {element.title}</h2></div>
                                                                 <div style={{ display: "flex", gap: "10px", width: "100%" }}>
                                                                     <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_first_name" name="pp_first_name" placeholder='FIRST NAME' />
                                                                     <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_last_name" name="pp_last_name" placeholder='LAST NAME' />
