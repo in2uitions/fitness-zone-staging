@@ -80,10 +80,10 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                         {!load ? (
                             <Swiper
                                 speed={1000}
-                                // autoplay={{
-                                //     delay: 4000,
-                                //     disableOnInteraction: true,
-                                // }}
+                                autoplay={{
+                                    delay: 4000,
+                                    disableOnInteraction: true,
+                                }}
                                 loop={true}
                                 parallax={true}
                                 navigation={{
@@ -109,7 +109,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                     <div className="col-lg-6 col-md-8 width-mobile-unset">
                                                         <div className="caption" style={{ display: "flex", justifyContent: "flex-start", alignItems: "flex-start" }}>
                                                             <div style={{ position: "relative" }}>
-                                                                {slide.slider_images_component_id.with_bar_image ? <img src="/barr.svg" style={{ height: "20rem" }} className={`bg-swipe barImage ${index === currentSlide ? 'fade-in' : ''}`} /> : null}
+                                                                {slide.slider_images_component_id.with_bar_image ? <img src="/slashImagee.png" className={`bg-swipe barImage ${index === currentSlide ? 'fade-in' : ''}`} /> : null}
 
                                                                 <div className={`words chars splitting swipe-title ${index === currentSlide ? 'fade-in' : ''}`}
                                                                     style={{
@@ -125,7 +125,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                                         opacity: "1",
                                                                         textAlign: "left"
                                                                     }}>
-                                                                    {slide.slider_images_component_id.image_title ? <h1 className='banner-title' style={{ fontSize: "82px" }}>{slide.slider_images_component_id.image_title}</h1> : null}
+                                                                    {slide.slider_images_component_id.image_title ? <h1 className='banner-title' style={{ fontSize: "50px" }}>{slide.slider_images_component_id.image_title}</h1> : null}
                                                                     {slide.slider_images_component_id.image_subtitle ? <h3 className='banner-subtitle'>{slide.slider_images_component_id.image_subtitle}</h3> : null}
                                                                 </div>
                                                             </div>
