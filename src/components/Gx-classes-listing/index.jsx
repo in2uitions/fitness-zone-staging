@@ -3,6 +3,10 @@ import parse from "html-react-parser";
 import { useEffect, useState, useMemo } from 'react';
 import { getClasses } from '../../../api/server';
 import Split from '../Split';
+import Popup from 'reactjs-popup';
+import PhoneInput from 'react-phone-input-2';
+import { useRouter } from 'next/router';
+import 'react-phone-input-2/lib/style.css';
 
 export default function GxClasses({ data = {}, style = 'white' }) {
     const [selected, setSelected] = useState(null);
@@ -26,6 +30,79 @@ export default function GxClasses({ data = {}, style = 'white' }) {
     }, [refresh, ListofClasses.length]);
 
 
+    const submitLebSignUp = async event => {
+        event.preventDefault();
+
+
+        const getTokenAPI = async () => {
+            try {
+                const res = await fetch(
+                    'https://api.fitnessclubapp.com/api/Account/Login?Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
+                    {
+                        method: 'POST'
+                    }
+                );
+
+                const tokenData = await res.json();
+
+                const submitContactForm = async () => {
+                    try {
+                        var registraitonRawData = JSON.stringify({
+                            "GuestRegisterId": 0,
+                            "FirstName": event.target.pp_first_name.value,
+                            "LastName": event.target.pp_last_name.value,
+                            "Mobile": event.target.pp_phone.value,
+                            "Email": event.target.pp_email.value,
+                            "LocationCode": parseInt(event.target.location.value),
+                            "Source": {
+                                "VisitSourceId": 9
+                            },
+                        });
+
+                        var registrationHeaders = new Headers();
+                        registrationHeaders.append("Authorization", "Bearer " + tokenData.token);
+                        registrationHeaders.append("Content-Type", "application/json");
+                        var registrationRequestOptions = {
+                            method: 'POST',
+                            headers: registrationHeaders,
+                            body: registraitonRawData
+                        };
+
+
+                        const res = await fetch(
+                            'https://api.fitnessclubapp.com/api/Crm/GuestRegister', registrationRequestOptions);
+                        const data = await res.json();
+
+                        if (data.isValid == true) {
+                            setIsSent(true)
+                            event.target.pp_first_name.value = '';
+                            event.target.pp_last_name.value = '';
+                            event.target.pp_phone.value = '';
+                            event.target.pp_email.value = '';
+                            setValue(" ")
+                        } else {
+                            setIsNotSent(true)
+                        }
+
+
+                    } catch (err) {
+                        console.log(err);
+                    }
+                };
+
+                submitContactForm();
+
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        getTokenAPI();
+
+
+    };
+    const [value, setValue] = useState();
+    const [branch, setBranch] = useState();
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
         console.log(event.target.value)
@@ -169,31 +246,113 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                             )}
                         </>
                     ))}
-                    <div className="row" style={{display:"flex", justifyContent:"center"}}>
+                    <div className="row" style={{ display: "flex", justifyContent: "center" }}>
                         {ListofClasses.filter((item) => item.value === selectedCategory).map((element, index) => (
                             <div className="col-lg-4" style={{ paddingLeft: "50px", paddingRight: "50px", marginBottom: '2rem' }}>
                                 <div className='lg:flex my-10 mx-auto items-center px-12'>
                                     <div className=" lg:w-1/2 pt-6 lg:pt-0  lg:block">
                                         <div id="wrapper" className={`main-image-center`} style={{ position: "relative" }}>
                                             <img style={{ height: "400px", objectFit: "cover" }} src={`${image_url}${element.image}`} alt={`${element.image?.title}`} />
-                                            <div style={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                textAlign: "center",
-                                                position: "absolute",
-                                                background:"#131316",
-                                                width: "100%",
-                                                left: '0',
-                                                bottom: '0',
-                                                zIndex: '22',
-                                                padding:"15px 10px",
-                                                letterSpacing:"2px",
-                                                fontFamily:"Montserrat Regular"
-                                            }}>
-                                                TRYOUT CLASS
-                                            </div>
+
+                                            <Popup trigger={
+                                                <div style={{
+                                                    display: "flex",
+                                                    flexDirection: "column",
+                                                    alignItems: "center",
+                                                    justifyContent: "center",
+                                                    textAlign: "center",
+                                                    position: "absolute",
+                                                    background: "#131316",
+                                                    width: "100%",
+                                                    left: '0',
+                                                    bottom: '0',
+                                                    zIndex: '22',
+                                                    padding: "15px 10px",
+                                                    letterSpacing: "2px",
+                                                    fontFamily: "Montserrat Regular"
+                                                }}>
+                                                    TRYOUT CLASS
+                                                </div>
+                                            } modal nested
+                                                closeOnDocumentClick
+                                                className="popupModule"
+                                                position="">
+                                                {(close) => (
+                                                    <>
+                                                        <div className="" onClick={close}>
+                                                            <img src="/closeButton.svg"
+                                                                style={{ width: "30px", height: "30px", position: "absolute", right: "0rem" }} />
+                                                        </div>
+                                                        <div className="row container" style={{ justifyContent: "space-between" }}>
+                                                            <div className="col-lg-5">
+                                                                <div className="img-mons">
+                                                                    <div className="row">
+                                                                        <img src="/layer-MC0.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <form onSubmit={submitLebSignUp} className="col-lg-6" style={{ display: "flex", flexDirection: "column", justifyContent: "start", paddingTop: "1rem", gap: "10px" }}>
+                                                                <h6 style={{ fontWeight: "lighter", fontFamily: "Montserrat Regular" }}>REQUEST</h6>
+                                                                <div style={{display:"flex", alignItems:"center", gap:"10px"}}><h1 style={{ fontWeight: "bold", fontSize:"36px" }}>FREE TRYOUT</h1><h2 className="" style={{ fontSize: "21px", fontFamily: "Montserrat Regular", color:"rgb(25, 144, 223)" }}>/ {element.title}</h2></div>
+                                                                <div style={{ display: "flex", gap: "10px", width: "100%" }}>
+                                                                    <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_first_name" name="pp_first_name" placeholder='FIRST NAME' />
+                                                                    <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_last_name" name="pp_last_name" placeholder='LAST NAME' />
+                                                                </div>
+                                                                <div style={{ display: "flex", gap: "10px", width: "100%" }}>
+                                                                    {/* <PhoneInput style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} /> */}
+                                                                    <PhoneInput
+                                                                        country={"lb"}
+                                                                        countryCodeEditable={false}
+                                                                        autoFormat={false}
+                                                                        enableAreaCodes={true}
+                                                                        placeholder='PHONE NUMBER'
+                                                                        onChange={(value) => {
+                                                                            setValue(value);
+                                                                        }}
+                                                                        required={true}
+                                                                        inputClass='PhoneNumberInputPopup'
+                                                                        inputProps={{
+                                                                            name: "pp_phone",
+                                                                            id: "pp_phone",
+                                                                            required: true,
+                                                                            // autoFocus: true,
+                                                                            maxLength: 12,
+                                                                        }}
+                                                                        excludeCountries={['us']}
+                                                                        style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }}
+                                                                        className="w-full pl-2 appearance-none block bg-transparent leading-tight py-2 "
+                                                                        value={value}
+
+                                                                    />
+                                                                    <input className='inputInfo' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_email" name="pp_email" placeholder='EMAIL' />
+                                                                </div>
+                                                                <select
+                                                                    defaultValue={branch} onChange={(value) => {
+                                                                        setBranch(value);
+                                                                    }}
+                                                                    name="branches" id="location"
+                                                                    style={{
+                                                                        width: "100%",
+                                                                        height: "3rem",
+                                                                        border: "1px solid #1990DF",
+                                                                        background: "transparent",
+                                                                        borderRadius: "5px",
+                                                                        paddingLeft: "5px",
+                                                                        color: "white"
+                                                                    }}
+                                                                >
+                                                                    <option value='1'>Hamra</option>
+                                                                    <option value='2'>Baabda</option>
+                                                                    <option value='6'>Achrafieh</option>
+                                                                    <option value='7'>Dbayeh</option>
+                                                                    <option value='9'>Manara</option>
+                                                                </select>
+                                                                <button className='submitPopup' type='submit' style={{ width: "25%", background: "#1990DF", height: "3rem", color: "white", borderRadius: "5px", border: "0px solid transparent" }}>SUBMIT REQUEST</button>
+                                                            </form>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </Popup>
                                         </div>
                                     </div>
                                     <div className=" lg:w-1/2 md:w-1/2 pt-6 lg:pt-0 lg:block sm:px-2 lg:pl-20 md:pl-0 md:px-16 lg:px-16 ">

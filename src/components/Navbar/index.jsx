@@ -32,34 +32,39 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     {
       "id": 2,
       "label": "CLUBS",
-      "to": '/about/clubs',
       "children": [
         {
           "id": 3,
+          "parentId": 2,
+          "label": "All Clubs",
+          "to": '/about/clubs',
+        },
+        {
+          "id": 4,
           "parentId": 2,
           "label": "Hamra",
           "to": '/hamra/hamra-homepage'
         },
         {
-          "id": 4,
+          "id": 5,
           "parentId": 2,
           "label": "Manara",
           "to": '/manara/manara-homepage'
         },
         {
-          "id": 5,
+          "id": 6,
           "parentId": 2,
           "label": "Dbayeh",
           "to": '/dbayeh/dbayeh-homepage'
         },
         {
-          "id": 6,
+          "id": 7,
           "parentId": 2,
           "label": "Baabda",
           "to": '/baabda/baabda-homepage'
         },
         {
-          "id": 7,
+          "id": 8,
           "parentId": 2,
           "label": "Achrafieh",
           "to": '/achrafieh/achrafieh-homepage'
@@ -91,19 +96,11 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     if (item.children) {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
-          {/* <div className="flex nav-link" style={{gap:"10px"}}> */}
-            {/* <a
-              // href={item.to}
-              className=""
-
-            >
-              {item.label}
-            </a> */}
+         
             <a className="dropdown-toggle nav-link" data-toggle="dropdown"
               role="button"
               aria-haspopup="true"
-              aria-expanded="false"><a href={item.to}>{item.label}</a></a>
-          {/* </div> */}
+              aria-expanded="false">{item.label}</a>
           <div className="dropdown-menu">
             {item.children.map((childItem) => (
               <Link href={childItem.to} key={childItem.id}>

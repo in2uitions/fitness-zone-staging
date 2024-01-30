@@ -68,40 +68,15 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                 </div>
                 : null} 
             <div className="grid grid-cols-2">
-                {/* <div className="absolute lg:left-36 md:left-36 left-2 lg:bottom-14 text-homePage">
-                    {data.image_title ? <h1 className="text-[#009FE3] font-bold montserrat-bold lg:text-5xl md:text-4xl text-3xl">{data.image_title}</h1> : null}
-                    <div className='flex lg:space-x-6 md:space-x-6 space-x-2 items-baseline'>
-                        {data.image_description ? <h1 className="font-bold lg:text-7xl md:text-6xl text-white text-2xl montserrat-bold">{data.image_description}</h1> : null}
-                        <div className=''>{data.icon_on ? <img src={`${image_url}${data.icon_on?.id}`} className="lg:h-16 md:h-16 h-5" /> : null}</div>
-                    </div>
-                    {data.button_url ? <a href={data.button_url} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 text-center rounded-md montserrat-bold">{data.button_title}
-                    </a> : null}
-                </div> */}
-
-                {/* {data.icon_sound_off ? <div className="absolute lg:right-44 lg:bottom-14 md:right-44  right-0 flex flex-row items-center sound">
-
-                    <button className="flex"
-                        onClick={() => {
-                            changeImage();
-                            unmuteVideo();
-                        }}
-                    >
-                        <p className="lg:text-3xl md:text-3xl text-2xl montserrat-book text-white">{data.sound}</p>
-                        {alternateImage && (
-                            <img src={`${image_url}${data.icon_sound_off?.id}`} className="w-9 h-6 mt-1 ml-1" />
-                        )}
-                        {!alternateImage && (
-                            <img src={`${image_url}${data.icon_sound_on?.id}`} className="w-9 h-6 mt-1 ml-1" />
-                        )}
-                    </button>
-                </div> : null} */}
+                
             </div>
             {data.layout_type == 'slider' || data.layout_type == null ?
                 <div
                     ref={sliderRef}
-                    className="slider slider-prlx text-center"
+                    className="slider slider-prlx text-center" 
+                    style={{background:"#0c0f16"}}
                 >
-                    <div className="swiper-container parallax-slider">
+                    <div className="swiper-container parallax-slider" style={{position:"relative", height:"100vh"}}>
                         {!load ? (
                             <Swiper
                                 speed={1000}
@@ -126,8 +101,9 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                             >
                                 {data.slider_components.map((slide, index) => (
                                     <SwiperSlide key={slide.id} className="swiper-slide">
-                                        <div className="bg-img valign" style={{ "backgroundImage": `url("${image_url}${slide.slider_images_component_id.image}")`, backgroundRepeat: "no-repeat" }}>
-                                            <div className="tint"></div>
+                                        <div className="bg-img valign" style={{ "backgroundImage": `url("${image_url}${slide.slider_images_component_id.image}")`, backgroundRepeat: "no-repeat"}}>
+                                        <div style={{position:"absolute", right:"0", top:"2px",zIndex:"3"}}><img src='/imgBg.png' style={{height:"100vh"}}/></div>
+                                        <div className="tint-overlay"></div>
                                             <div className="container">
                                                 <div className="row container flex-reverse" style={{ marginTop: "2rem" }}>
                                                     <div className="col-lg-6 col-md-8 width-mobile-unset">
@@ -155,7 +131,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="col-lg-6 col-md-8 text-on-mobile">
+                                                    <div className="col-lg-6 col-md-8 text-on-mobile" style={{position:"relative", zIndex:"33"}}>
                                                         <div className="caption" style={{ textAlign: "right" }}>
                                                         {slide.slider_images_component_id.image_description ?<p
                                                                 className={`words chars splitting swipe-scd-title ${index === currentSlide ? 'fade-in' : ''}`}
@@ -182,84 +158,13 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                         </div>
                                     </SwiperSlide>
                                 ))}
+                               
                             </Swiper>
                         ) : null}
-
+                       
                     </div>
                 </div>
                 : null}
-            {/* {data.button_title ?
-                <div style={{
-                    position: "fixed",
-                    right: "0",
-                    top: "10rem",
-                    background: "#EDC500",
-                    fontWeight: "bold",
-                    padding: "70px 8px 70px 8px",
-                    color: "black",
-                    zIndex: 10,
-                    borderTopRightRadius: "50px",
-                    borderBottomRightRadius: "50px",
-                    display: "flex",
-                    alignItems: "center",
-                    writingMode: "vertical-rl",
-                    textOrientation: "upright",
-                    transform: "rotate(180deg)",
-                }}>
-                    {data.button_title.split('').map((char, index) => (
-                        <span key={index} style={{
-                            writingMode: "vertical-rl",
-                            textOrientation: "upright",
-                            transform: "rotate(90deg)",
-                            display: "inline-block",
-                            padding: char === ' ' ? "5px 0" : "0px",
-                            letterSpacing: "-6px"
-                        }}>
-                            {char}
-                        </span>
-                    ))}
-                </div>
-                : null} */}
-
-            {/* {data.layout_type == 'video' || data.layout_type == null ?
-                    <div className="">
-                        <div id="" className="" >
-                            <video loop autoPlay muted playsInline className="video w-100" id="myVideo">
-                                <source src={`${image_url}${data.video?.id}`} type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                    : null}
-                <div className="grid grid-cols-2">
-                    <div className="absolute lg:left-36 md:left-36 left-2 lg:bottom-14 text-homePage">
-                        {data.image_title ? <h1 className="text-[#009FE3] font-bold montserrat-bold lg:text-5xl md:text-4xl text-3xl">{data.image_title}</h1> : null}
-                        <div className='flex lg:space-x-6 md:space-x-6 space-x-2 items-baseline'>
-                            {data.image_description ? <h1 className="font-bold lg:text-7xl md:text-6xl text-white text-2xl montserrat-bold">{data.image_description}</h1> : null}
-                            <div className=''>{data.icon_on ? <img src={`${image_url}${data.icon_on?.id}`} className="lg:h-16 md:h-16 h-5" /> : null}</div>
-                        </div>
-                        {data.button_url ? <a href={data.button_url} target="_blank" className=" bg-[#009FE3] learnMoreBtns p-2 text-center rounded-md montserrat-bold">{data.button_title}
-                        </a> : null}
-
-                    </div>
-
-                    {data.icon_sound_off ? <div className="absolute lg:right-44 lg:bottom-14 md:right-44  right-0 flex flex-row items-center sound">
-
-                        <button className="flex"
-                            onClick={() => {
-                                changeImage();
-                                unmuteVideo();
-                            }}
-                        >
-                            <p className="lg:text-3xl md:text-3xl text-2xl montserrat-book text-white">{data.sound}</p>
-                            {alternateImage && (
-                                <img src={`${image_url}${data.icon_sound_off?.id}`} className="w-9 h-6 mt-1 ml-1" />
-                            )}
-                            {!alternateImage && (
-                                <img src={`${image_url}${data.icon_sound_on?.id}`} className="w-9 h-6 mt-1 ml-1" />
-                            )}
-                        </button>
-                    </div> : null}
-                </div> */}
         </>
     )
 }

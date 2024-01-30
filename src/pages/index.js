@@ -102,7 +102,7 @@ const Homepage1 = ({ data = {} }) => {
 
   return (
     <>
-    {/* {showLoader && <LoadingScreen />} */}
+      {/* {showLoader && <LoadingScreen />} */}
       {showLeb ? (
         <DarkTheme>
           <Navbar nr={navbarRef} lr={logoRef} />
@@ -110,10 +110,9 @@ const Homepage1 = ({ data = {} }) => {
             <Header data={data.header} sliderRef={fixedSlider} />
           ) : null}
           <div ref={MainContent} className="main-content">
-          <Sections data={data}/>
+            <Sections data={data} />
             {/* <Works1Slider /> */}
             {/* <VideoWithTestimonials /> */}
-            <CallToAction subBG />
           </div>
         </DarkTheme>
       ) : null}
@@ -195,7 +194,7 @@ const Homepage1 = ({ data = {} }) => {
                       Choose your destination and embark on an extraordinary
                       journey!
                     </p>
-                    <button
+                    <a href="https://ae.fitnesszone.me/"
                       style={{
                         width: "50%",
                         animation: "fadeIn 5s",
@@ -205,11 +204,16 @@ const Homepage1 = ({ data = {} }) => {
                         borderRadius: "5px",
                         border: "none",
                         fontWeight: "bold",
-                        cursor:"pointer"
-                      }} onClick={() => { setShowLeb(false); setShowUAE(false); setShowUAEComponent(true)  }}
+                        cursor: "pointer",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "black",
+                        fontFamily: 'Montserrat-Bold'
+                      }} onClick={() => { setShowLeb(false); setShowUAE(false); setShowUAEComponent(true) }}
                     >
                       UAE
-                    </button>
+                    </a>
                     <button
                       style={{
                         width: "50%",
@@ -219,8 +223,8 @@ const Homepage1 = ({ data = {} }) => {
                         borderRadius: "5px",
                         border: "none",
                         fontWeight: "bold",
-                        cursor:"pointer"
-                      }}  onClick={() => { setShowLeb(true); setShowUAE(false);setShowUAEComponent(false)  }}
+                        cursor: "pointer"
+                      }} onClick={() => { setShowLeb(true); setShowUAE(false); setShowUAEComponent(false) }}
                     >
                       LEBANON
                     </button>
@@ -235,28 +239,37 @@ const Homepage1 = ({ data = {} }) => {
   );
 };
 
+// export async function getStaticProps() {
+//   const res = await fetch(`https://ipapi.co/json/`);
+//   const data = await res.json();
+//   const countryCode = data.country_code;
+
+//   let resData;
+//   if (countryCode === "LB") {
+//     resData = await handleApi({ url: "homepage" });
+//   } else if (countryCode === "AE") {
+//     resData = await handleApi({ url: "uaehomepage" });
+//   } else {
+//     resData = await handleApi({ url: "homepage" });
+//   }
+
+//   const responseData = resData[0];
+
+//   return {
+//     props: {
+//       data: responseData,
+//     },
+//     revalidate: 60,
+//   };
+// }
 export async function getStaticProps() {
-  const res = await fetch(`https://ipapi.co/json/`);
-  const data = await res.json();
-  const countryCode = data.country_code;
-
-  let resData;
-  if (countryCode === "LB") {
-    resData = await handleApi({ url: "homepage" });
-  } else if (countryCode === "AE") {
-    resData = await handleApi({ url: "uaehomepage" });
-  } else {
-    resData = await handleApi({ url: "homepage" });
-  }
-
-  const responseData = resData[0];
-
+  let res = await handleApi({ url: "homepage" });
+  const data = res[0];
   return {
     props: {
-      data: responseData,
+      data,
     },
     revalidate: 60,
   };
 }
-
 export default Homepage1;

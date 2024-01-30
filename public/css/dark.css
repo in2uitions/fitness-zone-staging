@@ -150,6 +150,7 @@ body.dark2 .footer-half .copyrights {
   background: #0c0f16;
   position: relative;
   z-index: 3;
+  margin-top: 0px !important;
 }
 
 img {

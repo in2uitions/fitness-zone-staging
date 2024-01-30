@@ -24,7 +24,8 @@ const Facilities = ({ subBG, newHome, data = {} }) => {
                             className={`item `}
                             style={{ backgroundImage: `url(${image_url}${item.facilities_id?.image?.id})`,height:"20rem", backgroundRepeat:"no-repeat", backgroundSize:"cover" }}
                         >
-                            <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center", height:"100%"}}>
+                        <div className="tint"></div>
+                            <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center", height:"100%", position:"absolute", inset:"0"}}>
                             <p style={{fontWeight:"bold" ,color:"white", fontFamily:"Montserrat ExtraBold"}}>{item.facilities_id.title}</p>
                                 <div style={{background:"#1990df", padding:"10px",marginTop:"1rem", borderRadius:"5px", fontWeight:"lighter"}}>
                                     <Link href="/account/login">

@@ -22,19 +22,9 @@ SwiperCore.use([Navigation, Autoplay, Pagination, Parallax, Mousewheel]);
 const ShowcasesFullScreen = ({data={}}) => {
   return (
     <section className="slider showcase-full block-sec section-padding">
-      <div className="swiper-container parallax-sliderr">
-        <Swiper
-          speed={1000}
-          className="swiper-wrapper"
-          slidesPerView={1}
-          // autoplay={{
-          //   delay: 2500,
-          //   disableOnInteraction: false,
-          // }}
-          loop={true}
-        >
+      <div className="">
+      
           {data.gx_classes_components.map((slide) => (
-            <SwiperSlide key={slide.id} className="swiper-slide">
               <div
                 className="valign"
                 // data-overlay-dark="4"
@@ -50,7 +40,7 @@ const ShowcasesFullScreen = ({data={}}) => {
                   }}
                 >
                   <div className="row" style={{ alignItems: "center" }}>
-                    <div className="col-lg-4" style={{ position: "relative" }}>
+                    <div className="col-lg-5" style={{ position: "relative" }}>
                       <div
                         className="caption"
                         style={{ position: "absolute", zIndex: "22" }}
@@ -88,7 +78,7 @@ const ShowcasesFullScreen = ({data={}}) => {
                         </p>
                       </div>
                     </div>
-                    <div className="col-lg-8 ">
+                    <div className="col-lg-6 offset-lg-1 valign">
                       <div className="caption">
                         {/* <img src={slide.image} /> */}
                         <img src={`${image_url}${slide.gx_classes_components_id.image?.id}`} alt={`${slide.gx_classes_components_id?.title}`} />
@@ -97,11 +87,9 @@ const ShowcasesFullScreen = ({data={}}) => {
                   </div>
                 </div>
               </div>
-            </SwiperSlide>
           ))}
-        </Swiper>
       </div>
-      <div style={{display:"flex", justifyContent:"center"}}><a href="/about/Gx-classes" style={{background:"#0090df", padding:"10px", borderRadius:"5px", cursor:"pointer"}}>VIEW CLASSES</a></div>
+      <div style={{display:"flex", justifyContent:"center"}}><a href="/about/Gx-classes" style={{background:"#0090df", padding:"10px", borderRadius:"5px", cursor:"pointer",marginTop:"3rem"}}>VIEW CLASSES</a></div>
     </section>
   );
 };
