@@ -94,7 +94,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
   const renderMenuItem = (item) => {
     if (item.children) {
       return (
-        <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
+        <li className="nav-item cursor-pointer dropdown" key={item.id} onClick={handleDropdown}>
           <a className="dropdown-toggle nav-linka" data-toggle="dropdown"
             role="button"
             aria-haspopup="true"
@@ -111,7 +111,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       );
     } else {
       return (
-        <li className="nav-item" key={item.id}>
+        <li className="nav-item cursor-pointer" key={item.id}>
           <Link href={item.to}>
             <a href={item.to} className="nav-link">{item.label}</a>
           </Link>
