@@ -154,8 +154,8 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                             <h6 style={{ fontWeight: "lighter", fontFamily: "Montserrat Regular" }}>REQUEST</h6>
                             <h1 style={{ fontWeight: "bold" }}>FREE TRYOUT</h1>
                             <div style={{ display: "flex", gap: "10px", width: "100%" }}>
-                                <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_first_name" name="pp_first_name" placeholder='FIRST NAME' />
-                                <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_last_name" name="pp_last_name" placeholder='LAST NAME' />
+                                <input className='inputfree' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_first_name" name="pp_first_name" placeholder='FIRST NAME' />
+                                <input className='inputfree' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_last_name" name="pp_last_name" placeholder='LAST NAME' />
                             </div>
                             <div style={{ display: "flex", gap: "10px", width: "100%" }}>
                                 {/* <PhoneInput style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} /> */}
@@ -178,12 +178,12 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                                                                 maxLength: 12,
                                                             }}
                                                             excludeCountries={['us']}
-                                                            style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }}
-                                                            className="w-full pl-2 appearance-none block bg-transparent leading-tight py-2 "
+                                                            style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px" }}
+                                                            className="w-full appearance-none block bg-transparent leading-tight "
                                                             value={value}
 
                                                         />
-                                <input className='inputInfo' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_email" name="pp_email" placeholder='EMAIL' />
+                                <input className='inputInfo inputfree' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_email" name="pp_email" placeholder='EMAIL' />
                             </div>
                             {/* <select defaultValue={branch} onChange={(value) => {
                                                         setBranch(value);

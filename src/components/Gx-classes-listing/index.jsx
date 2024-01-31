@@ -310,8 +310,8 @@ export default function GxClasses({ data = {} }) {
                                                                 <h6 style={{ fontWeight: "lighter", fontFamily: "Montserrat Regular" }}>REQUEST</h6>
                                                                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}><h1 className='mobiletitlePop' style={{ fontWeight: "bold", fontSize: "36px" }}>FREE TRYOUT</h1><h2 className="freetryoutsubtitle" style={{ fontSize: "21px", fontFamily: "Montserrat Regular", color: "rgb(25, 144, 223)" }}>/ {element.title}</h2></div>
                                                                 <div style={{ display: "flex", gap: "10px", width: "100%" }}>
-                                                                    <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_first_name" name="pp_first_name" placeholder='FIRST NAME' />
-                                                                    <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_last_name" name="pp_last_name" placeholder='LAST NAME' />
+                                                                    <input className='inputfree' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_first_name" name="pp_first_name" placeholder='FIRST NAME' />
+                                                                    <input className='inputfree' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_last_name" name="pp_last_name" placeholder='LAST NAME' />
                                                                 </div>
                                                                 <div style={{ display: "flex", gap: "10px", width: "100%" }}>
                                                                     {/* <PhoneInput style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} /> */}
@@ -334,12 +334,12 @@ export default function GxClasses({ data = {} }) {
                                                                             maxLength: 12,
                                                                         }}
                                                                         excludeCountries={['us']}
-                                                                        style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }}
-                                                                        className="w-full pl-2 appearance-none block bg-transparent leading-tight py-2 "
+                                                                        style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px" }}
+                                                                        className="w-full appearance-none block bg-transparent leading-tight"
                                                                         value={value}
 
                                                                     />
-                                                                    <input className='inputInfo' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_email" name="pp_email" placeholder='EMAIL' />
+                                                                    <input className='inputInfo inputfree' style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_email" name="pp_email" placeholder='EMAIL' />
                                                                 </div>
                                                                 <select
                                                                     defaultValue={branch} onChange={(value) => {
