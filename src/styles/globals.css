@@ -15,6 +15,14 @@
   height: 0;
 }
 
+.slick-dots li{
+  background: white ;
+  width: 15px !important;
+  height: 15px !important;
+}
+.testimonials .slick-dots li.slick-active{
+  background: transparent !important;
+}
 .slider .social-icon a {
   margin: 0 3px;
 }
@@ -61,6 +69,10 @@ section.testimonials {
 .slick-prev,
 .slick-next {
   display: none !important;
+}
+.slick-track{
+  display: flex !important;
+  gap: 25px !important;
 }
 
 body .slick-dots li button {
@@ -1936,6 +1948,12 @@ button:focus{
 }
 @media (min-width:320px) and (max-width: 550px) {
   .memberbox{
+    width: 100% !important;
+  }
+  .slick-track{
+    gap: unset !important;
+  }
+  .slick-slide{
     width: 100% !important;
   }
   .popupModuleMob-content{

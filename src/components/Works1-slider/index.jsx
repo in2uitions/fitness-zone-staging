@@ -2,80 +2,96 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 import { image_url } from "../../../global_vars";
-import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css";
+// import "swiper/css/pagination";
 SwiperCore.use([Autoplay, Pagination]);
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Split from "../Split";
+// const Works1Slider = ({ data = {} }) => {
+class Works1Slider extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  // renderArrows = () => {
+  //   return (
+  //     <div className="arrows">
+  //       <div
+  //         onClick={() => this.slider.slickNext()}
+  //         className="next cursor-pointer"
+  //       >
+  //         <span className="pe-7s-angle-right"></span>
+  //       </div>
+  //       <div
+  //         onClick={() => this.slider.slickPrev()}
+  //         className="prev cursor-pointer"
+  //       >
+  //         <span className="pe-7s-angle-left"></span>
+  //       </div>
+  //     </div>
+  //   );
+  // };
+  // componentDidMount() {
+  //   removeOverlay();
+  //   parallaxie('.testimonials.bg-img.parallaxie');
+  // }
+  render() {
+    const { data } = this.props;
+    return (
+      <section
+        className={`testimonials ${this.props.subBgLftstl ? "sub-bg lftstl" : ""} ${this.props.withBG ? "bg-img" : ""} ${this.props.parallaxie ? "parallaxie" : ""} ${!this.props.overlay ? "noOverlay" : ""}`}
+        style={{ paddingBottom: "120px" }}
 
-const Works1Slider = ({ data = {} }) => {
-  return (
-    <section
-      className="work-carousel section-padding pt-0 metro position-re"
-      style={{
-        position: 'relative',
-      }}
-    >
+      >
+        <div className=" position-re">
+          <div className="sec-head custom-font text-center">
+            <h3 className="wow words chars splitting" data-splitting>
+              {data.title}
+            </h3>
+          </div>
+          <div
+            className="row mobileRow"
+          >
+            <div className="col-lg-12 no-padding">
+              <Slider
+                className="slic-item"
+                {...{
+                  ref: (c) => (this.slider = c),
+                  dots: true,
+                  infinite: true,
+                  arrows: true,
+                  centerMode: true,
+                  centerPadding: "0",
+                  autoplay: true,
+                  rows: 1,
+                  slidesToScroll: 1,
+                  slidesToShow: 1.75,
 
-      <div className=" ontop">
-        <div className="sec-head custom-font text-center">
-          <h3 className="wow words chars splitting" data-splitting>
-            {data.title}
-          </h3>
-          {/* <h6 className="wow fadeIn subtitle" data-wow-delay=".5s">
-            {parse(`${data.subtitle}`)}
-          </h6> */}
-          {/* <span className="tbg">Services</span> */}
-        </div>
-        <div className="row mobileRow">
-          <div className="col-lg-12 no-padding">
-            <div className="swiper-container" style={{ display: "flex" }}>
-              {/* <img src="/CarouselSides.svg" style={{
-                width: "130px",
-                position: "absolute",
-                height: "100%",
-                zIndex: 99, left: "-6rem" 
-              }} /> */}
-              <Swiper
-                className="swiper-wrapper"
-                slidesPerView={3}
-                centeredSlides={true}
-                loop={true}
-                pagination={true}
-                // pagination={{ clickable: true }} // Enable pagination dots
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false,
                 }}
-                speed={1000}
-                breakpoints={{
-                  320: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
+                responsive={[
+                  {
+                    breakpoint: 768,
+                    settings: {
+                      slidesToShow: 1,
+                    }
                   },
-                  640: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                  },
-                  767: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                    centeredSlides: false,
-                  },
-                  991: {
-                    slidesPerView: 2,
-                  },
-                }}
+                ]}
               >
                 {data.carousel.map((item, i) => (
-                  <SwiperSlide key={item.id} className="swiper-slide">
+                  <div key={item.id} className="custom-slide">
                     <div
                       className="content wow noraidus fadeInUp"
                       data-wow-delay=".3s"
+                      style={{ position: "relative" }}
                     >
                       <div
                         className="item-img bg-img wow "
                         style={{
                           backgroundImage: `url(${image_url}${item.comp_carousel_items_id?.image?.id})`,
                           position: 'relative',
+                          height: "480px",
+                          width: "100%"
                         }}
                       >
                         <div
@@ -99,22 +115,19 @@ const Works1Slider = ({ data = {} }) => {
                           </p> */}
                       </div>
                     </div>
-                  </SwiperSlide>
+                  </div>
                 ))}
-              </Swiper>
-              {/* <img src="/CarouselSides.svg" style={{
-                width: "130px",
-                position: "absolute",
-                height: "100%",
-                zIndex: 99, right: "-6rem"
-              }} /> */}
+
+
+              </Slider>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
 };
 
 export default Works1Slider;
+
 

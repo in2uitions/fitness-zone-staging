@@ -310,7 +310,9 @@ span:hover {
 .inline {
   display: inline-block;
 }
-
+.slick-dots{
+  position: relative !important;
+}
 .valign {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5619,14 +5621,16 @@ header.simpl .caption .btn-curve {
 }
 
 .block-sec .testim-box .slick-dots li {
-  width: 7px;
-  height: 7px;
+  width: 10px !important;
+  height: 10px !important;
   border-radius: 50%;
+  background: #0c0f16;
   border: 1px solid #0c0f16;
 }
 
 .block-sec .testim-box .slick-dots li.slick-active {
-  background: #0c0f16;
+  background: transparent;
+  border: 1px solid #0c0f16;
 }
 
 .block-sec .testim-box .slick-dots li button {
