@@ -301,7 +301,7 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                                     <>
                                                         <div className="" onClick={close}>
                                                             <img src="/closeButton.svg"
-                                                                style={{ width: "30px", height: "30px", position: "absolute", right: "0rem" }} />
+                                                              className='closePop'  style={{ width: "30px", height: "30px", position: "absolute", right: "0rem" }} />
                                                         </div>
                                                         <div className="row container" style={{ justifyContent: "space-between" }}>
                                                             <div className="col-lg-5">
@@ -310,10 +310,10 @@ export default function GxClasses({ data = {}, style = 'white' }) {
                                                                         <img src="/layer-MC0.png" alt="" />
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> 
                                                             <form onSubmit={submitLebSignUp} className="col-lg-6" style={{ display: "flex", flexDirection: "column", justifyContent: "start", paddingTop: "1rem", gap: "10px" }}>
                                                                 <h6 style={{ fontWeight: "lighter", fontFamily: "Montserrat Regular" }}>REQUEST</h6>
-                                                                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}><h1 style={{ fontWeight: "bold", fontSize: "36px" }}>FREE TRYOUT</h1><h2 className="" style={{ fontSize: "21px", fontFamily: "Montserrat Regular", color: "rgb(25, 144, 223)" }}>/ {element.title}</h2></div>
+                                                                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}><h1 className='mobiletitlePop' style={{ fontWeight: "bold", fontSize: "36px" }}>FREE TRYOUT</h1><h2 className="freetryoutsubtitle" style={{ fontSize: "21px", fontFamily: "Montserrat Regular", color: "rgb(25, 144, 223)" }}>/ {element.title}</h2></div>
                                                                 <div style={{ display: "flex", gap: "10px", width: "100%" }}>
                                                                     <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_first_name" name="pp_first_name" placeholder='FIRST NAME' />
                                                                     <input style={{ width: "50%", height: "3rem", border: "1px solid #1990DF", background: "transparent", borderRadius: "5px", paddingLeft: "5px" }} id="pp_last_name" name="pp_last_name" placeholder='LAST NAME' />

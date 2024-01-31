@@ -1908,6 +1908,10 @@ button:focus{
 .rbc-month-header {
   border-bottom: 0.25px solid grey;
 }
+.popupModule-content{
+  background-color: #000000;
+  padding: 40px;
+}
 .tint-overlay {
   position: absolute;
   top: 0;
@@ -1927,6 +1931,15 @@ button:focus{
 @media (min-width:320px) and (max-width: 550px) {
   .memberbox{
     width: 100% !important;
+  }
+  .closePop{
+    right: 1rem !important;
+  }
+  .freetryoutsubtitle{
+    font-size: 14px !important;
+  }
+  .mobiletitlePop{
+    font-size: 21px !important;
   }
   .clubsTitle{
     left: 4rem !important;
@@ -2136,7 +2149,7 @@ button:focus{
   }
   .popuptop{
     margin-top: 1.5rem;}
-    .dropdown-toggle::after {
+    /* .dropdown-toggle::after {
       display: inline-block;
       width: 0;
       height: 0;
@@ -2148,7 +2161,7 @@ button:focus{
       border-right: 0.75em solid transparent !important;
       border-bottom: 0;
       border-left: 0.75em solid transparent !important;
-  }
+  } */
   .mtmobile{
     margin-top: 5rem !important;
   }

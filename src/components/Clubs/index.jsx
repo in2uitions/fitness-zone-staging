@@ -16,8 +16,12 @@ const Clubs = ({ data = {} }) => {
                 <div style={{ display: "flex",flexDirection:"column", justifyContent: "flex-start", alignItems: "start", gap: "20px", marginBottom: "3rem" }}>
                     <img src="/barSlash.svg" style={{width:"101px", height:"101px", position:"relative"}}/>
                
-                    <h1 className="clubsTitle" style={{ fontWeight: "bold", letterSpacing:"15px", position:"absolute", left:"10rem" }}>{data.title}</h1>
-                    <h1 className="clubssubTitle" style={{ fontWeight: "200", fontFamily: "Montserrat Regular", fontSize:"14px", position:"absolute", top:"13rem", left:"9.5rem" }}>{data.subtitle}</h1>
+                    <h1 className="clubsTitle" style={{ fontWeight: "bold", letterSpacing:"15px", position:"absolute", 
+                    // left:"10rem" 
+                    }}>{data.title}</h1>
+                    <h1 className="clubssubTitle" style={{ fontWeight: "200", fontFamily: "Montserrat Regular", fontSize:"14px", position:"absolute", top:"13rem", 
+                    // left:"9.5rem" 
+                    }}>{data.subtitle}</h1>
                 </div> 
                 <div className="row">
  
