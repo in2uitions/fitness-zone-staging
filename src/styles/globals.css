@@ -1950,6 +1950,9 @@ button:focus{
   .memberbox{
     width: 100% !important;
   }
+  .onMobileBackSlash{
+    display: none;
+  }
   .slick-track{
     gap: unset !important;
   }

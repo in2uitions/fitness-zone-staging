@@ -223,10 +223,11 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                 </div>
             </div> : null}
             {data.image_position == "left" && !data.free_trial ? <div className="about "
-            //  style={{ backgroundImage: 'url("MainSiteImg.png")', backgroundRepeat: "no-repeat" }}
+             
             >
                 <div className="container" >
-                    <div className="row"><div className="col-lg-6">
+                    <div className="row"><div className="col-lg-6" style={{position:"relative"}}>
+                    <div style={{position:"absolute", right:"-12rem"}} className='onMobileBackSlash'><img src='/Backslash-Cut.png'/></div>
                         <div className="img-mons">
                             <div className="row">
                                 <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
