@@ -31,13 +31,6 @@ const ShowcasesFullScreen = ({data={}}) => {
               >
                 <div
                   className="container"
-                  style={{
-                    width: "100%",
-                    paddingLeft: "15px",
-                    marginRight: "unset",
-                    paddingRight: "unset",
-                    marginLeft: "auto",
-                  }}
                 >
                   <div className="row" style={{ alignItems: "center" }}>
                     <div className="col-lg-5" style={{ position: "relative" }}>
