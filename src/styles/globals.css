@@ -1932,6 +1932,9 @@ button:focus{
   .memberbox{
     width: 100% !important;
   }
+  .popupModuleMob-content{
+    padding: 15px !important;
+  }
   .closePop{
     right: 1rem !important;
   }
@@ -2093,6 +2096,12 @@ button:focus{
   .booksession{
     margin-top: 2rem;
   }
+  .booksession p{
+    font-size: 16px !important;
+  }
+  .gapMob{
+    gap: 10px !important;
+  }
   .textPT{
     width: 100% !important;
     padding-left: 0px !important;
@@ -2133,7 +2142,11 @@ button:focus{
   }
   .popup{
     margin: 0px !important;
-    padding: 0 15px !important;
+    padding: 10px 15px !important;
+  }
+  .popmobClose{
+    width: 25px !important;
+    height: 25px !important;
   }
   .textAlign{
     text-align: unset !important;
@@ -2224,6 +2237,17 @@ button:focus{
   .closeVideo{
     top: -3rem !important;
     right: 1rem !important;
+    width: 25px !important;
+    height: 25px !important;
+  }
+  .banner-subtitle{
+    font-size: 26px !important;
+  }
+  .img_start h6{
+    font-size: 26px !important;
+  }
+  .portfolio .filtering button{
+    margin: 0 14px !important;
   }
   .popupMobile-content{
     left: 0px !important;
@@ -2233,6 +2257,12 @@ button:focus{
     height: 100% !important;
   }
   .new-logo{
+    width: 85px !important;
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  .new-logo-logo{
+    width: 190px !important;
     padding-top: 1rem;
     padding-left: 1rem;
   }

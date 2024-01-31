@@ -95,11 +95,10 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     if (item.children) {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
-         
-            <a className="dropdown-toggle nav-link" data-toggle="dropdown"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false">{item.label}</a>
+          <a className="dropdown-toggle nav-link" data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false">{item.label}</a>
           <div className="dropdown-menu">
             {item.children.map((childItem) => (
               <Link href={childItem.to} key={childItem.id}>
@@ -107,7 +106,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
               </Link>
             ))}
           </div>
-          
+
         </li>
       );
     } else {
@@ -116,7 +115,6 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
           <Link href={item.to}>
             <a href={item.to} className="nav-link">{item.label}</a>
           </Link>
-          
         </li>
       );
     }
@@ -177,6 +175,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
   return (
     <>
       <nav
@@ -190,7 +189,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
               {scrolling ? (
                 <img ref={lr} className="new-logo" src="/newLogo.svg" alt="logo" style={{ width: "70%" }} />
               ) : (
-                <img ref={lr} className="new-logo" src="/logo.svg" alt="logo" style={{ width: "70%" }} />
+                <img ref={lr} className="new-logo-logo" src="/logo.svg" alt="logo" style={{ width: "70%" }} />
               )}
             </a>
           </Link>
@@ -212,17 +211,17 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
             <ul className="navbar-nav ml-auto">
               {content.map((item) => renderMenuItem(item))}
               <li className="nav-item">
-              <a href="/account/login" className="webhidden nav-link" style={{
-          background: "rgb(25, 144, 223)",
-          padding: "5px 15px 5px 15px",
-          color: "white",
-          borderRadius: "5px",
-          width:"50%",
-          border: "0px solid transparent"
-        }}>Login</a>
-        </li>
+                <a href="/account/login" className="webhidden nav-link" style={{
+                  background: "rgb(25, 144, 223)",
+                  padding: "5px 15px 5px 15px",
+                  color: "white",
+                  borderRadius: "5px",
+                  width: "50%",
+                  border: "0px solid transparent"
+                }}>Login</a>
+              </li>
             </ul>
-            
+
           </div>
           <a href="/account/login" className="loginMobileHidden" style={{
             background: "rgb(25, 144, 223)",

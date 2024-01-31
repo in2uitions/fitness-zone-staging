@@ -122,7 +122,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
         <section className={`testimonials position-re`}>
             <div className="container">
                 <div
-                className="mobileFlex"
+                    className="mobileFlex"
                     style={{
                         display: "flex",
                         justifyContent: "center",
@@ -144,63 +144,63 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                 >
                     <div className="col-lg-10">
                         <BrowserView>
-                        <Slider
-                            className="slic-item"
-                            ref={sliderRef}
-                            {...{
-                                dots: true,
-                                infinite: true,
-                                arrows: true,
-                                autoplay: false,
-                                rows: 1,
-                                slidesToScroll: 1,
-                                slidesToShow: 4,
-                            }}
-                        >
-                            {data.trainer.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="item"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => handleImageClick(item)}
-                                >
-                                 <Popup trigger={
+                            <Slider
+                                className="slic-item"
+                                ref={sliderRef}
+                                {...{
+                                    dots: true,
+                                    infinite: true,
+                                    arrows: true,
+                                    autoplay: false,
+                                    rows: 1,
+                                    slidesToScroll: 1,
+                                    slidesToShow: 4,
+                                }}
+                            >
+                                {data.trainer.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="item"
+                                        style={{ cursor: "pointer" }}
+                                        onClick={() => handleImageClick(item)}
+                                    >
+                                        <Popup trigger={
                                             <div className="flex items-center space-x-2">
                                                 <img
-                                            className="pt-images"
-                                            src={`${image_url}${item.trainer_id.image?.id}`}
-                                            alt={`${data.image?.title}`}
-                                            style={{ cursor: "pointer" }}
-                                            onClick={() => handleImageClick(item)}
-                                        /> 
+                                                    className="pt-images"
+                                                    src={`${image_url}${item.trainer_id.image?.id}`}
+                                                    alt={`${data.image?.title}`}
+                                                    style={{ cursor: "pointer" }}
+                                                    onClick={() => handleImageClick(item)}
+                                                />
                                                 {/* <p className="font-bold text-white montserrat-book cursor-pointer">Menu</p> */}
                                             </div>
                                         } modal nested
-                                        closeOnDocumentClick
-                                        className="popupModule"
-                                        position="">
-                                             {(close) => (
-                          <>
-                            <div className="" onClick={close}>
-                            <img src="/closeButton.svg"
-                            style={{ width: "40px", height: "40px", position:"absolute", right:"1rem", top:"1rem" }}/>
-                            </div>
-                                 {selectedTrainer && (
-                <>
-                    <div
-                        className="popup"
-                        style={{
-                            // position: "absolute",
-                            // display: "flex",
-                            // flexDirection: "column",
-                            // justifyContent: "center",
-                            // margin: "0px 8rem",
-                            background: "#151921",
-                            // inset: "0",
-                            padding: "40px"
-                        }}
-                    >
-                        {/* <div
+                                            closeOnDocumentClick
+                                            // className="popupModule"
+                                            position="">
+                                            {(close) => (
+                                                <>
+                                                    <div className="" onClick={close}>
+                                                        <img src="/closeButton.svg"
+                                                            style={{ width: "40px", height: "40px", position: "absolute", right: "1rem", top: "1rem" }} />
+                                                    </div>
+                                                    {selectedTrainer && (
+                                                        <>
+                                                            <div
+                                                                className="popup"
+                                                                style={{
+                                                                    // position: "absolute",
+                                                                    // display: "flex",
+                                                                    // flexDirection: "column",
+                                                                    // justifyContent: "center",
+                                                                    // margin: "0px 8rem",
+                                                                    background: "#151921",
+                                                                    // inset: "0",
+                                                                    padding: "40px"
+                                                                }}
+                                                            >
+                                                                {/* <div
                             className="popup-content"
                             style={{
                                 display: "flex",
@@ -209,143 +209,146 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                 alignItems: "center",
                             }}
                         > */}
-                        <div className="mobileFlex textAlign" style={{
-                            display: "flex",
-                            flexDirection:"column",
-                            alignItems: "center",
-                            gap: "25px",
-                            // position:"absolute"
-                        }}>
-                            <div style={{display:"flex",
-                            alignItems:"center",
-                        gap:"25px"}}>
-                            <img
-                                className="pt-images"
-                                src={`${image_url}${selectedTrainer.data[0].image}`}
-                                style={{ width: "20rem", height: "20rem", objectFit: "cover" }}
-                            />
-                            <div style={{ display: "flex", flexDirection: "column" }}>
-                                <div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
-                                    <h2 className="selectedTrainerName" style={{ textTransform: "uppercase" }}>{selectedTrainer.data[0].name}</h2>
-                                    {location.packageList?.slice(0, 1).map((el, index) => (
-    <p key={index} style={{ color: "#E3B800", fontFamily: "Montserrat Italic" }}>
-        {el.category?.categoryName && `/ ${el.category.categoryName}`}
-    </p>
-))}
+                                                                <div className="mobileFlex textAlign" style={{
+                                                                    display: "flex",
+                                                                    flexDirection: "column",
+                                                                    alignItems: "center",
+                                                                    gap: "25px",
+                                                                    // position:"absolute"
+                                                                }}>
+                                                                    <div style={{
+                                                                        display: "flex",
+                                                                        alignItems: "center",
+                                                                        gap: "25px"
+                                                                    }}>
+                                                                        <img
+                                                                            className="pt-images"
+                                                                            src={`${image_url}${selectedTrainer.data[0].image}`}
+                                                                            style={{ width: "20rem", height: "20rem", objectFit: "cover" }}
+                                                                        />
+                                                                        <div style={{ display: "flex", flexDirection: "column" }}>
+                                                                            <div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
+                                                                                <h2 className="selectedTrainerName" style={{ textTransform: "uppercase" }}>{selectedTrainer.data[0].name}</h2>
+                                                                                {location.packageList?.slice(0, 1).map((el, index) => (
+                                                                                    <p key={index} style={{ color: "#E3B800", fontFamily: "Montserrat Italic" }}>
+                                                                                        {el.category?.categoryName && `/ ${el.category.categoryName}`}
+                                                                                    </p>
+                                                                                ))}
 
-                                </div>
-                                {selectedTrainer.data[0].qualifications ? <p>{parse(`${selectedTrainer.data[0].qualifications}`)}</p> : null}
-                            </div>
-</div>
+                                                                            </div>
+                                                                            {selectedTrainer.data[0].qualifications ? <p>{parse(`${selectedTrainer.data[0].qualifications}`)}</p> : null}
+                                                                        </div>
+                                                                    </div>
 
-                              <div className="flexWrap" style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem", marginBottom: "2rem", width: "100%" }}>
-                            {location.packageList?.map((item) => (
-                                <>
-                                    {item.isActive && !item.packageName.includes('Staff') ? <div style={{ background: "#000000" }} className="membership-box p-3 rounded-md">
-                                        <div className="flex items-center w-full">
-                                            <div className="flex justify-end items-end ">
-                                                <div className="flex flex-col cursor-pointer">
-                                                    <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] montserrat-book">
-                                                        ${item.sessionPrice} </p>
-                                                </div>
+                                                                    <div className="flexWrap" style={{ display: "flex", justifyContent: "space-between",gap:"10px", marginTop: "2rem", marginBottom: "2rem", width: "100%" }}>
+                                                                        {location.packageList?.map((item) => (
+                                                                            <>
+                                                                                {item.isActive && !item.packageName.includes('Staff') ? <div style={{ background: "#000000", width:"20%" }} className="membership-box p-3 rounded-md">
+                                                                                    <div className="flex flex-col items-center w-full">
+                                                                                        <div className="flex justify-end items-end ">
+                                                                                            <div className="flex flex-col cursor-pointer">
+                                                                                                <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] montserrat-book">
+                                                                                                    ${item.sessionPrice} </p>
+                                                                                            </div>
 
+                                                                                        </div>
+                                                                                        <div className="flex flex-col">
+                                                                                            <p style={{ fontFamily: "'Montserrat Regular'" }}>{item.packageName.slice(0, item.packageName.length - 1)}</p>
+
+                                                                                        </div>
+
+
+                                                                                    </div>
+
+                                                                                </div> : null}
+                                                                            </>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+
+
+
+                                                        </>
+                                                    )
+
+                                                    }
+                                                </>
+                                            )}
+                                        </Popup>
+
+
+                                        <div style={{ marginTop: "15px" }}>
+                                            <div className="cont" style={{ fontWeight: "bold", fontFamily: 'Montserrat ExtraBold' }}>
+                                                {item.trainer_id.name}
                                             </div>
-                                            <div className="flex flex-col w-3/4">
-                                                <p style={{ fontFamily: "'Montserrat Regular'" }}>{item.packageName.slice(0, item.packageName.length - 1)}</p>
-
-                                            </div>
-
-
-                                        </div>
-
-                                    </div> : null}
-                                </>
-                            ))}
-                        </div>
-                        </div>
-                      
-                    </div>
-
-
-                   
-
-                </>
-            )
-            
-                            }
-                            </>
-                            )}
-                                 </Popup>
-                                       
-
-                                    <div style={{ marginTop: "15px" }}>
-                                        <div className="cont" style={{ fontWeight: "bold", fontFamily: 'Montserrat ExtraBold' }}>
-                                            {item.trainer_id.name}
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </Slider>
+                                ))}
+                            </Slider>
                         </BrowserView>
                         <MobileView>
-                        <Slider
-                            className="slic-item"
-                            ref={sliderRef}
-                            {...{
-                                dots: true,
-                                infinite: true,
-                                arrows: true,
-                                autoplay: false,
-                                rows: 1,
-                                slidesToScroll: 1,
-                                slidesToShow: 1,
-                            }}
-                        >
-                            {data.trainer.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="item"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => handleImageClick(item)}
-                                >
-                                 
-                                 <Popup trigger={
+                            <Slider
+                                className="slic-item"
+                                ref={sliderRef}
+                                {...{
+                                    dots: true,
+                                    infinite: true,
+                                    arrows: true,
+                                    autoplay: false,
+                                    rows: 1,
+                                    slidesToScroll: 1,
+                                    slidesToShow: 1,
+                                }}
+                            >
+                                {data.trainer.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="item"
+                                        style={{ cursor: "pointer" }}
+                                        onClick={() => handleImageClick(item)}
+                                    >
+
+                                        <Popup trigger={
                                             <div className="flex items-center space-x-2">
                                                 <img
-                                            className="pt-images"
-                                            src={`${image_url}${item.trainer_id.image?.id}`}
-                                            alt={`${data.image?.title}`}
-                                            style={{ cursor: "pointer" }}
-                                            onClick={() => handleImageClick(item)}
-                                        /> 
+                                                    className="pt-images"
+                                                    src={`${image_url}${item.trainer_id.image?.id}`}
+                                                    alt={`${data.image?.title}`}
+                                                    style={{ cursor: "pointer" }}
+                                                    onClick={() => handleImageClick(item)}
+                                                />
                                                 {/* <p className="font-bold text-white montserrat-book cursor-pointer">Menu</p> */}
                                             </div>
                                         } modal nested
-                                        closeOnDocumentClick
-                                        className="popupModule"
-                                        position="">
-                                              {(close) => (
-                          <>
-                            <div className="" onClick={close}>
-                            <img src="/closeButton.svg"
-                            style={{ width: "40px", height: "40px", position:"absolute", right:"1rem", top:"1rem" }}/>
-                            </div>
-                                 {selectedTrainer && (
-                <>
-                    <div
-                        className="popup"
-                        style={{
-                            // position: "absolute",
-                            // display: "flex",
-                            // flexDirection: "column",
-                            // justifyContent: "center",
-                            // margin: "0px 8rem",
-                            background: "#151921",
-                            // inset: "0",
-                            padding: "40px"
-                        }}
-                    >
-                        {/* <div
+                                            closeOnDocumentClick
+                                            className="popupModuleMob"
+                                            position="">
+                                            {(close) => (
+                                                <>
+                                                    <div className="" onClick={close}>
+                                                        <img src="/closeButton.svg" 
+                                                        className="popmobClose"
+                                                            style={{ width: "40px", height: "40px", position: "absolute", right: "1rem", top: "1rem" }} />
+                                                    </div>
+                                                    {selectedTrainer && (
+                                                        <>
+                                                            <div
+                                                                className="popup"
+                                                                style={{
+                                                                    // position: "absolute",
+                                                                    // display: "flex",
+                                                                    // flexDirection: "column",
+                                                                    // justifyContent: "center",
+                                                                    // margin: "0px 8rem",
+                                                                    background: "#151921",
+                                                                    // inset: "0",
+                                                                    padding: "40px"
+                                                                }}
+                                                            >
+                                                                {/* <div
                             className="popup-content"
                             style={{
                                 display: "flex",
@@ -354,94 +357,96 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                 alignItems: "center",
                             }}
                         > */}
-                        <div className="mobileFlex textAlign" style={{
-                            display: "flex",
-                            flexDirection:"column",
-                            alignItems: "center",
-                            gap: "25px",
-                            // position:"absolute"
-                        }}>
-                            <div className="mobileFlex textAlign" style={{display:"flex",
-                            alignItems:"center",
-                        gap:"25px"}}>
-                            <img
-                                className="pt-images"
-                                src={`${image_url}${selectedTrainer.data[0].image}`}
-                                style={{ width: "20rem", height: "20rem", objectFit: "cover" }}
-                            />
-                            <div style={{ display: "flex", flexDirection: "column" }}>
-                                <div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
-                                    <h2 className="selectedTrainerName" style={{ textTransform: "uppercase" }}>{selectedTrainer.data[0].name}</h2>
-                                    {location.packageList?.slice(0, 1).map((el, index) => (
-    <p key={index} style={{ color: "#E3B800", fontFamily: "Montserrat Italic" }}>
-        {el.category?.categoryName && `/ ${el.category.categoryName}`}
-    </p>
-))}
+                                                                <div className="mobileFlex textAlign" style={{
+                                                                    display: "flex",
+                                                                    flexDirection: "column",
+                                                                    alignItems: "center",
+                                                                    gap: "25px",
+                                                                    // position:"absolute"
+                                                                }}>
+                                                                    <div className="mobileFlex textAlign" style={{
+                                                                        display: "flex",
+                                                                        alignItems: "center",
+                                                                        gap: "25px"
+                                                                    }}>
+                                                                        <img
+                                                                            className="pt-images"
+                                                                            src={`${image_url}${selectedTrainer.data[0].image}`}
+                                                                            style={{ width: "20rem", height: "20rem", objectFit: "cover" }}
+                                                                        />
+                                                                        <div style={{ display: "flex", flexDirection: "column" }}>
+                                                                            <div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
+                                                                                <h2 className="selectedTrainerName" style={{ textTransform: "uppercase" }}>{selectedTrainer.data[0].name}</h2>
+                                                                                {location.packageList?.slice(0, 1).map((el, index) => (
+                                                                                    <p key={index} style={{ color: "#E3B800", fontFamily: "Montserrat Italic" }}>
+                                                                                        {el.category?.categoryName && `/ ${el.category.categoryName}`}
+                                                                                    </p>
+                                                                                ))}
 
-                                </div>
-                                {selectedTrainer.data[0].qualifications ? <p>{parse(`${selectedTrainer.data[0].qualifications}`)}</p> : null}
-                            </div>
-</div>
+                                                                            </div>
+                                                                            {selectedTrainer.data[0].qualifications ? <p>{parse(`${selectedTrainer.data[0].qualifications}`)}</p> : null}
+                                                                        </div>
+                                                                    </div>
 
-                              <div className="flexWrap" style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem", marginBottom: "2rem", width: "100%" }}>
-                            {location.packageList?.map((item) => (
-                                <>
-                                    {item.isActive && !item.packageName.includes('Staff') ? <div style={{ background: "#000000" }} className="membership-box p-3 rounded-md">
-                                        <div className="flex items-center w-full">
-                                            <div className="flex justify-end items-end ">
-                                                <div className="flex flex-col cursor-pointer">
-                                                    <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] montserrat-book">
-                                                        ${item.sessionPrice} </p>
-                                                </div>
+                                                                    <div className="flexWrap" style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem", marginBottom: "2rem", width: "100%" }}>
+                                                                        {location.packageList?.map((item) => (
+                                                                            <>
+                                                                                {item.isActive && !item.packageName.includes('Staff') ? <div style={{ background: "#000000" }} className="membership-box p-3 rounded-md">
+                                                                                    <div className="flex flex-col items-center w-full">
+                                                                                        <div className="flex justify-end items-end ">
+                                                                                            <div className="flex flex-col cursor-pointer">
+                                                                                                <p style={{ color: "#1990DF", fontStyle: "italic", fontFamily: "Montserrat ExtraBold" }} className="text-base text-[#1990DF] montserrat-book">
+                                                                                                    ${item.sessionPrice} </p>
+                                                                                            </div>
 
+                                                                                        </div>
+                                                                                        <div className="flex flex-col">
+                                                                                            <p style={{ fontFamily: "'Montserrat Regular'" }}>{item.packageName.slice(0, item.packageName.length - 1)}</p>
+
+                                                                                        </div>
+
+
+                                                                                    </div>
+
+                                                                                </div> : null}
+                                                                            </>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            {/* </div> */}
+
+
+                                                        </>
+                                                    )
+
+                                                    }
+                                                </>
+                                            )}
+                                        </Popup>
+
+                                        <div style={{ marginTop: "15px" }}>
+                                            <div className="cont" style={{ fontWeight: "bold", fontFamily: 'Montserrat ExtraBold' }}>
+                                                {item.trainer_id.name}
                                             </div>
-                                            <div className="flex flex-col w-3/4">
-                                                <p style={{ fontFamily: "'Montserrat Regular'" }}>{item.packageName.slice(0, item.packageName.length - 1)}</p>
-
-                                            </div>
-
-
-                                        </div>
-
-                                    </div> : null}
-                                </>
-                            ))}
-                        </div>
-                        </div>
-                      
-                    </div>
-
-
-                    {/* </div> */}
-                   
-
-                </>
-            )
-            
-                            }
-                            </>
-                                              )}
-                                 </Popup>
-
-                                    <div style={{ marginTop: "15px" }}>
-                                        <div className="cont" style={{ fontWeight: "bold", fontFamily: 'Montserrat ExtraBold' }}>
-                                            {item.trainer_id.name}
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </Slider>
+                                ))}
+                            </Slider>
                         </MobileView>
                     </div>
                 </div>
-                 <div className="arrows">
-                <div style={{cursor:"pointer"}} onClick={() => sliderRef.current.slickNext()} className="next cursor-pointer">
-                    <span className="pe-7s-angle-right"></span>
+                <div className="arrows">
+                    <div style={{ cursor: "pointer" }} onClick={() => sliderRef.current.slickNext()} className="next cursor-pointer">
+                        <span className="pe-7s-angle-right"></span>
+                    </div>
+                    <div style={{ cursor: "pointer" }} onClick={() => sliderRef.current.slickPrev()} className="prev cursor-pointer">
+                        <span className="pe-7s-angle-left"></span>
+                    </div>
                 </div>
-                <div style={{cursor:"pointer"}} onClick={() => sliderRef.current.slickPrev()} className="prev cursor-pointer">
-                    <span className="pe-7s-angle-left"></span>
-                </div>
-            </div>
             </div>
             {/* {loading ? 
             (
@@ -451,7 +456,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
             ) : 
             ( */}
 
-        
+
         </section>
     );
 };

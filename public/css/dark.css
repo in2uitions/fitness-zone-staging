@@ -6690,6 +6690,7 @@ header.simpl .caption .btn-curve {
   .navbar .navbar-collapse {
     max-height: 340px;
     overflow: auto;
+    margin-top: 2rem;
     background: #11141b;
     text-align: center;
     padding: 10px 15px;

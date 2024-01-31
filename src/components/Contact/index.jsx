@@ -31,7 +31,7 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                     <div className="">
                         <p style={{ fontSize: "42px" }}>{data.title}</p>
                     </div>
-                    <div className="mobileFlex" style={{ display: "flex", marginTop: "2rem" }}>
+                    <div className="mobileFlex gapMob" style={{ display: "flex", marginTop: "2rem" }}>
                         <div className="">
                             <div style={{ display: "flex", flexDirection: "column" }}>
 

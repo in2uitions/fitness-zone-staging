@@ -17,11 +17,18 @@ export const handleDropdown = (e) => {
   e.target.parentElement.childNodes[1].classList.toggle("show");
 };
 
-export const handleMobileDropdown = (e) => {
-  document
-    .getElementById("navbarSupportedContent")
-    .classList.toggle("show-with-trans");
+export const handleMobileDropdown = () => {
+  const navbarContent = document.getElementById("navbarSupportedContent");
+  navbarContent.classList.toggle("show-with-trans");
+
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      navbarContent.classList.remove("show-with-trans");
+    });
+  });
 };
+
 
 // export const handleSearch = () => {
 //   let searchForm = document.querySelector(".navbar .search .search-form");
