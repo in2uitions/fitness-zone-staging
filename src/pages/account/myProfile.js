@@ -495,7 +495,7 @@ export default function Dashboard({ style = "white", data }) {
                         {/* <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0"> */}
                         <div className="w-full flex mobile-flex-col container mx-auto lg:flex lg:flex-row md:flex space-x-3 md:space-x-3 justify-center items-start lg:space-y-0 md:space-y-0 px-4 lg:px-4 md:px-4">
 
-                            <div className="flex flex-col lg:w-1/3 md:w-1/3">
+                            <div className="flex flex-col lg:w-1/3 md:w-1/3 mobileTop">
 
                                 <div className="flex flex-col space-y-2">
 

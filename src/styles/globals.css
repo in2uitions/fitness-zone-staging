@@ -1800,6 +1800,10 @@ button:focus{
 .h-20 {
   height: 5rem;
 }
+.popupVid-content{
+  left: 0 !important;
+  right: 0 !important;
+}
 .items-center{
   align-items: center;
 }
@@ -2271,8 +2275,7 @@ button:focus{
     height: 25px !important;
   }
   .closeVideo{
-    top: -3rem !important;
-    right: 1rem !important;
+    margin-bottom: 1rem;
     width: 25px !important;
     height: 25px !important;
   }

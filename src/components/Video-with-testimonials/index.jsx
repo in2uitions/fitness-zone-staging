@@ -80,21 +80,21 @@ const VideoWithTestimonials = ({ data = {} }) => {
                         onOpen={openPopup}
                         modal
                         position="center" 
-                       
                         closeOnDocumentClick={false}
                       >
-                        <div className="vid-butn">
+                        <div className="vid-butn cursor-pointer">
                           <span className="icon">
                             <img style={{ width: "80px", height: "80px" }} src="/playButton.svg" alt="Play button" />
                           </span>
                         </div>
-                      </button>} position="right center"  className="popupMobile">
+                      </button>} position="right center"  className="popupVid">
                         {(close) => (
                           <>
-                            <div className="" onClick={close}>
-                              <img src="/closeButton.svg" className="closeVideo" style={{ width: "40px", height: "40px", outline: "none", float: "right", position: "absolute", right: "-4rem", top: "-4rem" }} />
-                            </div>
+                           
                             <div className="container">
+                            <div className="" onClick={close}>
+                              <img src="/closeButton.svg" className="closeVideo" style={{ width: "40px", height: "40px", outline: "none", float:"right" }} />
+                            </div>
                             <ReactPlayer
                               url={`${image_url}${data?.video?.id}`}
                               id="thumbnail"
