@@ -262,55 +262,8 @@ export default function MySessions(Info) {
         <DarkTheme>
             <PrivateMenu />
             <section>
-                <div className="container lg:px-28 px-20 mx-auto flex flex-col justify-center items-center mt-40-top mb-20-bottom h-full">
-                    {/* <div className="flex flex-col lg:mx-auto md:max-auto justify-start lg:w-3/5 md:w-3/5 items-start px-2 lg:px-0 md:px-0 mt-10">
-                    <p className="text-[#009fe3] futura-bold text-2xl mb-3">Reserve a Session</p>
-                    {filtered.sort((a, b) => new Date(a.scheduleDateTime) - new Date(b.scheduleDateTime)).map(session => (
-                        <>
-                        {moment(session.scheduleDateTime).format("DD MMM YYYY HH:mm") >= todayTime ?<div key={session.scheduleDateTime} className="lg:w-full md:w-full">
-                            <div className="flex flex-col lg:mx-auto md:max-auto justify-start items-start mt-3 px-2 lg:px-0 md:px-0">
-                                <>
-                                    <div className="flex justify-start lg:w-full items-center classes-box mb-3 p-3 mx-auto container">
-                                        <div className="space-x-2 flex w-full">
-                                            <p className="border-r pr-1 border-[#009FE3] text-white w-1/3 flex justify-start items-start whitespace-nowrap">
-                                              
-                                            {moment(session.scheduleDateTime).format("DD MMM YYYY")}
-                                            </p>
-                                            <p className="border-r pr-1 border-[#009FE3] text-white w-1/3 flex justify-center items-start whitespace-nowrap">
-                                               
-                                            {moment(session.scheduleDateTime).format("HH:mm")}
-
-                                            </p>
-                                            <button
-                                                className="flex justify-end w-1/3"
-                                            >
-                                                {session.toggle === "Reserve Session" ? (
-                                                    <button className="flex space-x-2 items-center book-button" type="submit"
-                                                                                    onClick={(e) => reserveClass({ scheduleId: session.scheduleId, e })}>
-                                                                    <img src="/notBooked.png" />
-                                                                    <p className="futura-book text-md sizemobile">Reserve Session</p>
-                                                                </button>
-                                                ) : (
-                                                    <div className="flex space-x-2 items-baseline">
-                                                        <img src="/booked.png" />
-                                                        <p className="futura-book text-white text-md sizemobile">{session?.toggle}</p>
-                                                        <button className=" text-[#009FE3] futura-bold text-sm cancel-button" onClick={(e) => removeClass({ scheduleId: session.scheduleId, e })}>
-                                                            Cancel
-                                                            <Close className="cancel-close" />
-                                                        </button>
-                                                    </div>
-
-                                                )}
-                                            </button>
-
-                                        </div>
-                                    </div>
-                                </>
-                            </div>
-                        </div>:null}
-                        </>
-                    ))}
-                    </div> */}
+                <div className="container lg:px-28 px-20 mx-auto flex flex-col justify-center items-center mt-40-top mb-20-bottom h-full sessionspage">
+                    
                     <BrowserView className='flex flex-col w-3/5 space-y-4 mb-5'>
                     {/* <p className='text-[#009fe3] futura-bold text-2xl'>Click here to Reserve a Session with your Trainer</p> */}
                         {userValue && userValue2 ? <button onClick={() => route(userValue, userValue2)} className="futura-bold menu-member flex items-center justify-between rounded-md" style={{background:"rgba(143, 143, 143, 0.1)", width:"100%", fontSize:"1.25rem"}}>

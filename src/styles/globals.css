@@ -1950,6 +1950,10 @@ button:focus{
   .memberbox{
     width: 100% !important;
   }
+  .sessionspage{
+    padding-left: unset !important;
+    padding-right: unset !important;
+  }
   .spinner span span{
     top: 40% !important;
     left: 40% !important;

@@ -351,7 +351,7 @@ export default function Dashboard({ style = "white", books }) {
                     <div className="col-span-3">
                         <p className="text-colorblue montserrat-bold fontSize">My Training Packages</p>
                         {userValue != "undefined" && filteredPosts.slice(0, 1).map((post, index) => (
-                            <div className="flex flex-col space-y-3 mt-10-top membership-box p-10 items-center">
+                            <div className="flex flex-col space-y-3 mt-10-top membership-box memberbox p-10 items-center">
                                 <Post post={post?.post} users={post?.user} key={index} />
                                 {/* <p className="rounded-md flex space-x-2 cursor-pointer text-white p-3 active-button btnActive">
                                     <span className="text-white text-base montserrat-book">Sessions:</span>
