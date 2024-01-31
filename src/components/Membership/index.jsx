@@ -41,7 +41,7 @@ const Membership = ({ withBG, withPadding, halfBG, withOutTitle, data = {} }) =>
                                         <a style={{
                                             display: "flex",
                                             justifyContent: "center"
-                                        }} className="diagonal-button" href={service.membership_components_id.button_link}>{service.membership_components_id.button_title}</a>
+                                        }} className="diagonal-button cursor-pointer" href={service.membership_components_id.button_link}>{service.membership_components_id.button_title}</a>
                                     </div>
                                 </div>
                             </div>
