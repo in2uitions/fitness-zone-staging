@@ -1,5 +1,5 @@
 {
-  "name": "avo2-react",
+  "name": "fitnesszone-react",
   "private": true,
   "scripts": {
     "dev": "next dev",
