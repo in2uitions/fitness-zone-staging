@@ -22,13 +22,19 @@
 .navbar .navbar-nav .nav-link {
   text-transform: capitalize;
 }
-
+.navbar .navbar-nav .nav-linka {
+  text-transform: capitalize;
+}
 .navbar .navbar-nav .nav-link,
 .video .vid .vid-butn .icon,
 .video-wrapper .vid .vid-butn .icon {
   cursor: pointer;
 }
-
+.navbar .navbar-nav .nav-linka,
+.video .vid .vid-butn .icon,
+.video-wrapper .vid .vid-butn .icon {
+  cursor: pointer;
+}
 .block-sec .vid-area {
   z-index: 99;
 }

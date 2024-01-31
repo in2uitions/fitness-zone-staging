@@ -95,7 +95,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
     if (item.children) {
       return (
         <li className="nav-item dropdown" key={item.id} onClick={handleDropdown}>
-          <a className="dropdown-toggle nav-link" data-toggle="dropdown"
+          <a className="dropdown-toggle nav-linka" data-toggle="dropdown"
             role="button"
             aria-haspopup="true"
             aria-expanded="false">{item.label}</a>
