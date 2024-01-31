@@ -1,7 +1,4 @@
 import React from "react";
-import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import ShowcassesFullScreenData from "../../data/showcases-full-screen-slider.json";
 import SwiperCore, {
   Navigation,
   Autoplay,

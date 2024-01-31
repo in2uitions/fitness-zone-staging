@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field } from "formik";
 import Link from "next/link";
-import appData from "../../data/app.json";
 import {
     handleDropdown,
     handleMobileDropdown,

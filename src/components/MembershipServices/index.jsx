@@ -1,6 +1,5 @@
 import React from "react";
 import Split from "../Split";
-import membership from "../../data/sections/membershipdata.json";
 
 const MembershipServices = ({ withBG, withPadding, halfBG, withOutTitle }) => {
     return (
@@ -19,7 +18,7 @@ const MembershipServices = ({ withBG, withPadding, halfBG, withOutTitle }) => {
                     </div>
                 )}
                 <div className="row">
-                    {membership.map((item, index) => (
+                    {/* {membership.map((item, index) => (
                         <div className={`col-lg-4`} key={item.id}>
                             <div
                                 className="item wow fadeInUp"
@@ -37,7 +36,7 @@ const MembershipServices = ({ withBG, withPadding, halfBG, withOutTitle }) => {
                                 <h6 style={{position:"absolute", bottom:"0"}}>{item.title}</h6>
                             </div>
                         </div>
-                    ))}
+                    ))} */}
                 </div>
             </div>
             {halfBG && <div className="half-bg bottom"></div>}

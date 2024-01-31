@@ -1,9 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Split from '../Split';
 import { image_url } from "../../../global_vars";
 
-const Facilities = ({ subBG, newHome, data = {} }) => {
+const Facilities = ({ subBG, data = {} }) => {
     return (
         <section className={`blog-gridd section-padding ${subBG ? "sub-bg" : ""}`}>
             <div className="container">

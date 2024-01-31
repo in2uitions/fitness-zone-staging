@@ -1,8 +1,8 @@
 // components/Timeline.js
 import React from "react";
-import slides from "../../data/sections/timeline.json";
+import parse from "html-react-parser";
 
-const Timeline = ({ data }) => {
+const Timeline = ({ data }) => { 
   return (
     <div className="timelineSection">
     <div className="container mobileTimeline">
@@ -11,22 +11,20 @@ const Timeline = ({ data }) => {
           <div
           style={{display:"inline-block", width:"100%"}}>
             <ul className="timeline timeline-horizontal">
-            {slides.map((event, index) => (
+            {data.timeline_components.map((event, index) => (
               <li className="timeline-item">
                 <div className="timeline-badge primary">
                   
                 </div>
                 <div className="timeline-panel">
                   <div className="timeline-heading">
-                    <h4 className="timeline-title">{event.date}</h4>
+                    <h4 className="timeline-title">{event.timeline_components_id.date}</h4>
                   </div>
                   <div className="timeline-body">
-                    <p>
-                    {event.position}
-                    </p>
+                    {parse(`${event.timeline_components_id.brief}`)}
                   </div>
                 </div>
-                <p className="timeline-name">{event.name}</p>
+                <p className="timeline-name">{event.timeline_components_id.branch_name}</p>
               </li>
             ))}
             </ul>

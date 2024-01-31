@@ -1,15 +1,9 @@
 import React from "react";
-import works1SliderData from "../../data/sections/works1Slider.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
-import Link from "next/link";
-import parse from "html-react-parser";
 import { image_url } from "../../../global_vars";
 import "swiper/css";
 import "swiper/css/pagination";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 SwiperCore.use([Autoplay, Pagination]);
 
 const Works1Slider = ({ data = {} }) => {

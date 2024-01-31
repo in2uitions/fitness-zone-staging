@@ -6,7 +6,6 @@ import { image_url } from "../../../global_vars";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
 
 const Testimonials = ({ data = {} }) => {

@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-no-target-blank */
-import Image from 'next/image'
-// import { gsap } from "gsap";
 import { useState, useRef } from 'react';
 import parse from "html-react-parser";
 import { image_url } from '../../global_vars';
@@ -10,8 +8,6 @@ import fadeWhenScroll from '../common/fadeWhenScroll';
 import removeSlashFromPagination from '../common/removeSlashFromPagination';
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Link from "next/link";
-import SwiperCore, { Navigation, Pagination, Parallax, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";

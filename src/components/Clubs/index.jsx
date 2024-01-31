@@ -1,10 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import tooltipEffect from "../../common/tooltipEffect";
-import worksData from "../../data/sections/worksData.json";
+import React from "react";
 import { image_url } from "../../../global_vars";
-import { useRouter } from "next/router";
 import parse from "html-react-parser";
 
 const Clubs = ({ data = {} }) => {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-// import events from "./events";
 import Cookies from "js-cookie";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { getAllRecords } from "../../api/server";

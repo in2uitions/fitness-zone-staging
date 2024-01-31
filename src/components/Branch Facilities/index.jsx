@@ -1,16 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import tooltipEffect from "../../common/tooltipEffect";
-import worksData from "../../data/sections/worksData.json";
 import { image_url } from "../../../global_vars";
 
 const BranchFacilities = ({ data = {} }) => {
-    // const [data, setData] = useState([]);
 
     useEffect(() => {
         tooltipEffect();
-        // setData(worksData);
     }, []);
 
     return (

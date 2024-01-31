@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Formik, Form, Field } from "formik";
-import appData from "../../data/app.json";
 
 const Footer = ({ noSubBG }) => {
   function validateEmail(value) {

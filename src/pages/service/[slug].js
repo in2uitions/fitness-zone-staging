@@ -21,7 +21,6 @@ import { useRouter } from 'next/router'
 import DarkTheme from '../../layouts/Dark'
 import Navbar from '../../components/Navbar'
 import React, { useEffect } from "react";
-import MembershipServices from "../../components/MembershipServices";
 
 function Slug({ data = {} }) {
     const navbarRef = React.useRef(null);

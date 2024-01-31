@@ -1,19 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AboutUs1 from "../components/About-us1";
-import BlogsTwoColumnSlider from "../components/Blogs-two-column-slider";
-import CallToAction from "../components/Call-to-action";
-import Clients1 from "../components/Clients1";
-import Footer from "../components/Footer";
-import IntroWithSlider1 from "../components/Intro-with-slider1";
 import Navbar from "../components/Navbar";
-import Split from "../components/Split";
-import NavbarUAE from "../components/Navbaruae";
-import Numbers1 from "../components/Numbers";
-import Services1 from "../components/Services1";
-import SkillsCircle from "../components/Skills-circle";
-import VideoWithTestimonials from "../components/Video-with-testimonials";
-import ArcContent from "../components/Arc-content";
-import Works1Slider from "../components/Works1-slider";
 import DarkTheme from "../layouts/Dark";
 import Header from "../components/page-headers";
 import { handleApi } from "../../api/server";
@@ -116,7 +102,7 @@ const Homepage1 = ({ data = {} }) => {
           </div>
         </DarkTheme>
       ) : null}
-      {showUAEComponent ? (
+      {/* {showUAEComponent ? (
         <DarkTheme>
           <NavbarUAE nr={navbarRef} lr={logoRef} />
           {data.header ? (
@@ -127,10 +113,9 @@ const Homepage1 = ({ data = {} }) => {
             <Services1 />
             <Numbers1 />
             <VideoWithTestimonials />
-            <CallToAction subBG />
           </div>
         </DarkTheme>
-      ) : null}
+      ) : null} */}
       {showUAE ? (
         <div style={{
           backgroundImage: "url(/bg-grey.jpeg)",

@@ -1,19 +1,14 @@
 import { image_url } from '../../../global_vars';
 import parse from "html-react-parser";
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { getClasses } from '../../../api/server';
 import Split from '../Split';
 import Popup from 'reactjs-popup';
 import PhoneInput from 'react-phone-input-2';
-import { useRouter } from 'next/router';
 import 'react-phone-input-2/lib/style.css';
 
-export default function GxClasses({ data = {}, style = 'white' }) {
-    const [selected, setSelected] = useState(null);
-    const [show, setShow] = useState(null);
-    const [classes, setClasses] = useState([]);
+export default function GxClasses({ data = {} }) {
     const [classesloaded, setClassesLoaded] = useState(false);
-    const [flipped, isFlipped] = useState("false")
     const [ListofClasses, setList] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('energy');
     const [refresh, setRefresh] = useState(0)

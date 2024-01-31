@@ -1,10 +1,8 @@
 import React from "react";
-import Split from "../Split";
 import parse from "html-react-parser";
-import services4Data from "../../data/sections/services4.json";
 import { image_url } from "../../../global_vars";
 
-const PersonalTraining = ({ withBG, withPadding, halfBG, withOutTitle, data = {} }) => {
+const PersonalTraining = ({  halfBG, data = {} }) => {
     return (
         <section
             className={`services stylepadding`} style={{paddingTop:"120px"}}

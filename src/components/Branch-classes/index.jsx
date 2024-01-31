@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import tooltipEffect from "../../common/tooltipEffect";
-import worksData from "../../data/sections/worksData.json";
 import { image_url } from "../../../global_vars";
 import { useRouter } from "next/router";
 

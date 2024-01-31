@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import tooltipEffect from "../../common/tooltipEffect";
-import worksData from "../../data/sections/worksData.json";
 import { image_url } from "../../../global_vars";
 import Gallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';

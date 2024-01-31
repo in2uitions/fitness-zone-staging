@@ -1,9 +1,7 @@
-import Image from 'next/image'
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { image_url } from '../../global_vars';
 import parse from "html-react-parser";
 import Split from './Split';
-// import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
 import { useRouter } from 'next/router';
 import 'react-phone-input-2/lib/style.css';

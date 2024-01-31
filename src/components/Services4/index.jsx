@@ -1,7 +1,6 @@
 import React from "react";
 import Split from "../Split";
 import parse from "html-react-parser";
-import services4Data from "../../data/sections/services4.json";
 
 const Services4 = ({ withBG, withPadding, halfBG, withOutTitle, data={}}) => {
   const getBoxShadow = (index) => {
