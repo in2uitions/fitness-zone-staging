@@ -7,6 +7,7 @@ import axios from "axios";
 import parse from "html-react-parser";
 import Popup from "reactjs-popup";
 import { BrowserView, MobileView } from "react-device-detect";
+import { PuffLoader } from "react-spinners";
 
 const BranchPersonalTrainers = ({ data = {} }) => {
     const sliderRef = useRef(null);
@@ -30,7 +31,6 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                 });
 
                 const trainersData = await Promise.all(trainerDataPromises);
-                console.log("All trainers data:", trainersData);
                 setTrainersData(trainersData);
             } catch (error) {
                 console.error("Error fetching data from Directus:", error);
@@ -41,10 +41,6 @@ const BranchPersonalTrainers = ({ data = {} }) => {
     }, [data.trainer]);
 
 
-
-    const closePopup = () => {
-        setSelectedTrainer(null);
-    };
     const handleImageClick = (trainer) => {
         try {
             const selectedTrainerData = trainersData.find((data) =>
@@ -63,9 +59,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                 return;
             }
 
-            console.log("Clicked trainer. UserId:", userId);
 
-            // Now you can use the userId to fetch additional data
             fetchDataForUserId(userId);
         } catch (error) {
             console.error("Error handling image click:", error);
@@ -109,8 +103,6 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                     dataRes = { ...dataRes, image, qualifications };
                 }
 
-                // Use the retrieved data as needed
-                console.log(dataress);
                 setLocation(dataRes);
                 setLoading(false)
             }
@@ -173,11 +165,9 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                                     style={{ cursor: "pointer" }}
                                                     onClick={() => handleImageClick(item)}
                                                 />
-                                                {/* <p className="font-bold text-white montserrat-book cursor-pointer">Menu</p> */}
                                             </div>
                                         } modal nested
                                             closeOnDocumentClick
-                                            // className="popupModule"
                                             position="">
                                             {(close) => (
                                                 <>
@@ -187,34 +177,32 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                                     </div>
                                                     {selectedTrainer && (
                                                         <>
+                                                        {loading ? (
+                <div
+                    className="spinner"
+                    style={{
+                        display: "flex",
+                        width: "100vw",
+                        height: "100vh",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <PuffLoader style={{ width: "40px" }} />
+                </div>
+            ) : (
                                                             <div
                                                                 className="popup"
                                                                 style={{
-                                                                    // position: "absolute",
-                                                                    // display: "flex",
-                                                                    // flexDirection: "column",
-                                                                    // justifyContent: "center",
-                                                                    // margin: "0px 8rem",
                                                                     background: "#151921",
-                                                                    // inset: "0",
                                                                     padding: "40px"
                                                                 }}
                                                             >
-                                                                {/* <div
-                            className="popup-content"
-                            style={{
-                                display: "flex",
-                                flexDirection:"column",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        > */}
                                                                 <div className="mobileFlex textAlign" style={{
                                                                     display: "flex",
                                                                     flexDirection: "column",
                                                                     alignItems: "center",
-                                                                    gap: "25px",
-                                                                    // position:"absolute"
+                                                                    gap: "25px"
                                                                 }}>
                                                                     <div style={{
                                                                         display: "flex",
@@ -224,7 +212,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                                                         <img
                                                                             className="pt-images"
                                                                             src={`${image_url}${selectedTrainer.data[0].image}`}
-                                                                            style={{ width: "20rem", height: "20rem", objectFit: "cover" }}
+                                                                            style={{ width: "20rem", height: "auto", objectFit: "cover" }}
                                                                         />
                                                                         <div style={{ display: "flex", flexDirection: "column" }}>
                                                                             <div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
@@ -268,7 +256,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
 
                                                             </div>
 
-
+            )}
 
 
                                                         </>
@@ -320,7 +308,6 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                                     style={{ cursor: "pointer" }}
                                                     onClick={() => handleImageClick(item)}
                                                 />
-                                                {/* <p className="font-bold text-white montserrat-book cursor-pointer">Menu</p> */}
                                             </div>
                                         } modal nested
                                             closeOnDocumentClick
@@ -335,34 +322,32 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                                                     </div>
                                                     {selectedTrainer && (
                                                         <>
+                                                        {loading ? (
+                <div
+                    className="spinner"
+                    style={{
+                        display: "flex",
+                        width: "100vw",
+                        height: "100vh",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <PuffLoader style={{ width: "40px" }} />
+                </div>
+            ) : (
                                                             <div
                                                                 className="popup"
                                                                 style={{
-                                                                    // position: "absolute",
-                                                                    // display: "flex",
-                                                                    // flexDirection: "column",
-                                                                    // justifyContent: "center",
-                                                                    // margin: "0px 8rem",
                                                                     background: "#151921",
-                                                                    // inset: "0",
                                                                     padding: "40px"
                                                                 }}
                                                             >
-                                                                {/* <div
-                            className="popup-content"
-                            style={{
-                                display: "flex",
-                                flexDirection:"column",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        > */}
                                                                 <div className="mobileFlex textAlign" style={{
                                                                     display: "flex",
                                                                     flexDirection: "column",
                                                                     alignItems: "center",
-                                                                    gap: "25px",
-                                                                    // position:"absolute"
+                                                                    gap: "25px"
                                                                 }}>
                                                                     <div className="mobileFlex textAlign" style={{
                                                                         display: "flex",
@@ -416,10 +401,7 @@ const BranchPersonalTrainers = ({ data = {} }) => {
 
                                                             </div>
 
-
-                                                            {/* </div> */}
-
-
+            )}
                                                         </>
                                                     )
 
@@ -448,13 +430,6 @@ const BranchPersonalTrainers = ({ data = {} }) => {
                     </div>
                 </div>
             </div>
-            {/* {loading ? 
-            (
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-               <p>Loading...</p>
-               </div>
-            ) : 
-            ( */}
 
 
         </section>

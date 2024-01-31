@@ -226,7 +226,6 @@ export default function App() {
         if (event.target.id == "All") {
             setSave("");
 
-            // setFiltered(data)
             if (name == "") {
                 setFiltered(data);
             } else {
@@ -234,8 +233,6 @@ export default function App() {
                     handleClassChangeWithSearch(dt, "", name)
                 );
                 setFiltered(filteredValue);
-                // console.log(name)
-                // console.log(event.target.id)
             }
         } else {
             setSave(event.target.id);
@@ -354,7 +351,6 @@ export default function App() {
                                     Filter by
                                 </p>
                             </div>
-                            {/* <p className="text-[#009FE3] montserrat-bold text-4xl">LIST OF CLASSES</p> */}
                             <div
                                 className="relative"
                                 style={{ width: "73%", position: "relative" }}
@@ -380,10 +376,7 @@ export default function App() {
                                     onChange={handleSearch}
                                 />
                                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                    {/* <SearchOutlined
-                                className="h-4 w-4 text-gray-400"
-                                aria-hidden="true"
-                            /> */}
+                           
                                 </div>
                             </div>
                             <div className="flex justify-center items-center">
@@ -432,7 +425,6 @@ export default function App() {
                                 />
                                 <p className="montserrat-book text-white">Filter by</p>
                             </div>
-                            {/* <p className="text-[#009FE3] montserrat-bold text-4xl">LIST OF CLASSES</p> */}
                             <div className="relative" style={{ width: "35%" }}>
                                 <input
                                     type="text"
@@ -444,10 +436,7 @@ export default function App() {
                                     onChange={handleSearch}
                                 />
                                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                    {/* <SearchOutlined
-                                className="h-4 w-4 text-gray-400"
-                                aria-hidden="true"
-                            /> */}
+                               
                                 </div> 
                             </div>
                             <div className="flex justify-center items-center">

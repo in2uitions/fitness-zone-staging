@@ -1950,6 +1950,11 @@ button:focus{
   .memberbox{
     width: 100% !important;
   }
+  .spinner span span{
+    top: 40% !important;
+    left: 40% !important;
+  }
+ 
   .onMobileBackSlash{
     display: none;
   }
