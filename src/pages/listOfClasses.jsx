@@ -5,6 +5,8 @@ import { BrowserView, MobileView } from "react-device-detect";
 import DarkTheme from "../layouts/Dark";
 import { useRouter } from "next/router";
 import { PuffLoader } from "react-spinners";
+import { Main } from "next/document";
+import Navbar from "../components/Navbar";
 
 export default function App() {
     const [data, setData] = useState([]);
@@ -277,9 +279,40 @@ export default function App() {
         }
         // console.log(data)
     };
+    const navbarRef = React.useRef(null);
+    const logoRef = React.useRef(null);
+    const fixedSlider = React.useRef(null);
+    const MainContent = React.useRef(null);
+    useEffect(() => {
+                    setInterval(() => {
+                        if (fixedSlider.current) {
+                            var slidHeight = fixedSlider.current.offsetHeight;
+                        }
+                        if (MainContent.current) {
+                            MainContent.current.style.marginTop = slidHeight + "px";
+                        }
+                    }, 1000);
 
+                    var navbar = navbarRef.current;
+                    if (window.pageYOffset > 300) {
+                        navbar.classList.add("nav-scroll");
+                    } else {
+                        navbar.classList.remove("nav-scroll");
+                    }
+
+                    window.addEventListener("scroll", () => {
+                        if (window.pageYOffset > 300) {
+                            navbar.classList.add("nav-scroll");
+                        } else {
+                            navbar.classList.remove("nav-scroll");
+                        }
+                    });
+
+    }, [fixedSlider, MainContent, navbarRef]);
     return (
         <DarkTheme>
+        <main>
+        <Navbar nr={navbarRef} lr={logoRef} />
             {loading ? (
                 <div
                     className="spinner"
@@ -294,8 +327,8 @@ export default function App() {
                     <PuffLoader style={{ width: "40px" }} />
                 </div>
             ) : (
-                <div
-                    className="container mx-auto mt-40 lg:px-28 md:px-20 px-3"
+                <section
+                    className="container mx-auto mt-40-top mb-20-bottom lg:px-28 md:px-20 px-3"
                     style={{
                         width: "100%",
                         marginLeft: "auto",
@@ -836,8 +869,9 @@ export default function App() {
                             </>
                         ))}
                     </MobileView>
-                </div>
+                </section>
             )}
+            </main>
         </DarkTheme>
     );
 }
