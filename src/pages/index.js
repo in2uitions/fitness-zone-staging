@@ -16,7 +16,6 @@ const Homepage1 = ({ data = {} }) => {
   const [showLeb, setShowLeb] = useState(false);
   const [showUAE, setShowUAE] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [showUAEComponent, setShowUAEComponent] = useState(false);
   // const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
@@ -88,7 +87,7 @@ const Homepage1 = ({ data = {} }) => {
 
   return (
     <>
-      {/* {showLoader && <LoadingScreen />} */}
+    
       {showLeb ? (
         <DarkTheme>
           <Navbar nr={navbarRef} lr={logoRef} />
@@ -97,25 +96,9 @@ const Homepage1 = ({ data = {} }) => {
           ) : null}
           <div ref={MainContent} className="main-content">
             <Sections data={data} />
-            {/* <Works1Slider /> */}
-            {/* <VideoWithTestimonials /> */}
           </div>
         </DarkTheme>
       ) : null}
-      {/* {showUAEComponent ? (
-        <DarkTheme>
-          <NavbarUAE nr={navbarRef} lr={logoRef} />
-          {data.header ? (
-            <Header data={data.header} sliderRef={fixedSlider} />
-          ) : null}
-          <div ref={MainContent} className="main-content">
-            <AboutUs1 />
-            <Services1 />
-            <Numbers1 />
-            <VideoWithTestimonials />
-          </div>
-        </DarkTheme>
-      ) : null} */}
       {showUAE ? (
         <div style={{
           backgroundImage: "url(/bg-grey.jpeg)",
@@ -195,7 +178,7 @@ const Homepage1 = ({ data = {} }) => {
                         alignItems: "center",
                         color: "black",
                         fontFamily: 'Montserrat-Bold'
-                      }} onClick={() => { setShowLeb(false); setShowUAE(false); setShowUAEComponent(true) }}
+                      }} onClick={() => { setShowLeb(false); setShowUAE(false); }}
                     >
                       UAE
                     </a>
@@ -209,7 +192,7 @@ const Homepage1 = ({ data = {} }) => {
                         border: "none",
                         fontWeight: "bold",
                         cursor: "pointer"
-                      }} onClick={() => { setShowLeb(true); setShowUAE(false); setShowUAEComponent(false) }}
+                      }} onClick={() => { setShowLeb(true); setShowUAE(false);  }}
                     >
                       LEBANON
                     </button>

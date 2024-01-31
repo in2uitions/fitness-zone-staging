@@ -41,7 +41,12 @@ const VideoWithTestimonials = ({ data = {} }) => {
       videoRef.current.currentTime = 0;
     }
   };
-
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div style={{ position: "relative" }} className="pb-70" ref={ref}>
       <section
@@ -118,7 +123,7 @@ const VideoWithTestimonials = ({ data = {} }) => {
               </div>
               <div className={`col-lg-3 offset-lg-1 ${isOpen ? "z1" : ""}`}>
                 <div className="testim-box">
-                  <div className="head-box">
+                  <div onClick={() => scrollToSection('free_trial')} className="head-box cursor-pointer">
                     <p className="" style={{ color: "white" }} data-wow-delay=".5s">
                       {parse(`${data.brief}`)}
                     </p>
@@ -154,7 +159,7 @@ const VideoWithTestimonials = ({ data = {} }) => {
           right:"7rem" 
         }}>
                 <div className="testim-box">
-                  <div className="head-box">
+                  <div onClick={() => scrollToSection('free_trial')} className="head-box cursor-pointer">
                     <p className="" style={{ color: "white" }} data-wow-delay=".5s">
                       {parse(`${data.brief}`)}
                     </p>

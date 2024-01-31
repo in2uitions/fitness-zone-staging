@@ -137,7 +137,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                     </div>
                 </div>
             </div> : null}
-            {data.image_position == "left" && data.free_trial ? <div className="about section-padding"
+            {data.image_position == "left" && data.free_trial ? <div id='free_trial' className="about section-padding"
                 style={{ backgroundImage: 'url("MainSiteImg.png")', backgroundRepeat: "no-repeat" }}
             >
                 <div className="container" >
