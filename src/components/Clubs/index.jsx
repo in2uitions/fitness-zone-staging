@@ -8,14 +8,14 @@ const Clubs = ({ data = {} }) => {
     return (
         <section className="works pb-70 section-padding">
             <h2 style={{ display: 'none' }}> &nbsp; </h2>
-            <div className="container">
+            <div className="container" style={{marginTop:'2rem'}}>
                 <div style={{ display: "flex",flexDirection:"column", justifyContent: "flex-start", alignItems: "start", gap: "20px", marginBottom: "3rem" }}>
                     <img src="/barSlash.svg" style={{width:"101px", height:"101px", position:"relative"}}/>
                
                     <h1 className="clubsTitle" style={{ fontWeight: "bold", letterSpacing:"15px", position:"absolute", 
                     // left:"10rem" 
                     }}>{data.title}</h1>
-                    <h1 className="clubssubTitle" style={{ fontWeight: "200", fontFamily: "Montserrat Regular", fontSize:"14px", position:"absolute", top:"13rem", 
+                    <h1 className="clubssubTitle" style={{ fontWeight: "200", fontFamily: "Montserrat Regular", fontSize:"14px", position:"absolute", top:"15rem", 
                     // left:"9.5rem" 
                     }}>{data.subtitle}</h1>
                 </div> 
