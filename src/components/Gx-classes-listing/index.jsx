@@ -161,6 +161,7 @@ export default function GxClasses({ data = {} }) {
                             <div className="" >
                                 <div style={{ position: "relative" }}>
                                     <img className='imgFullSize' src={`${image_url}${item.listing_classes_id.image?.id}`} alt={`${data.image?.title}`} />
+                                    <div className='tint'></div>
                                     <div style={{
                                         display: "flex",
                                         flexDirection: "column",
