@@ -97,7 +97,7 @@ class Works1Slider extends React.Component {
                         <div
                           className="overlay"
                           style={{
-                            background: 'rgba(0, 0, 0, 0.5)',
+                            background: 'rgba(0, 0, 0, 0.2)',
                             position: 'absolute',
                             top: 0,
                             left: 0,

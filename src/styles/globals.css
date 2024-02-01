@@ -347,7 +347,16 @@ height: 10px !important;
 .vertical-menu>li>a::after {
   content: none;
 }
-
+.booksession{
+  margin-top: 4rem;
+}
+.closePop{
+  right: 1rem !important;
+  cursor: pointer;
+}
+.submitPopup{
+  width: 30% !important;
+}
 .vertical-menu>li:hover>ul,
 .vertical-menu>li.show>ul,
 .vertical-menu>li:hover .megamenu,
@@ -1392,8 +1401,30 @@ ul.metismenu-container:first-child {
   opacity: 0;
   transition: opacity .4s, visibility .4s;
 }
-
+.textPT {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 45px;
+  padding-left: 25px;
+  height: 450px;
+  flex-direction: column;
+  background: linear-gradient(#11141c, #11141b);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .4s, visibility .4s;
+}
+.ptsection{
+  position: unset !important;
+}
 .contact_block:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+.contact_block:hover .textPT {
   visibility: visible;
   opacity: 1;
 }
@@ -1964,6 +1995,9 @@ button:focus{
   .sessionspage{
     padding-left: unset !important;
     padding-right: unset !important;
+  }
+  .startAlignFlex{
+    align-items: start !important;
   }
   .spinner span span{
     top: 40% !important;

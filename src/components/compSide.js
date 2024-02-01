@@ -110,7 +110,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                     <div className="row">
                         <div className="col-lg-5" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div className="content">
-                                <Split>
+                                {/* <Split> */}
                                     <h3
                                         className="words chars splitting main-title wow"
                                         // style={{ fontSize: "60px" }}
@@ -118,12 +118,12 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                                     >
                                         {data.title}
                                     </h3>
-                                </Split>
-                                <Split>
+                                {/* </Split> */}
+                                {/* <Split> */}
                                     <p className="words chars splitting wow txt" data-splitting style={{ color: "white" }}>
                                         {parse(`${data.brief}`)}
                                     </p>
-                                </Split>
+                                {/* </Split> */}
                             </div>
 
                         </div>
@@ -235,7 +235,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                         </div>
                     </div><div className="col-lg-5 offset-lg-1" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div className="content">
-                                <Split>
+                                {/* <Split> */}
                                     <h3
                                         className="words chars splitting main-title wow"
                                         // style={{ fontSize: "60px" }}
@@ -243,12 +243,12 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                                     >
                                         {data.title}
                                     </h3>
-                                </Split>
-                                <Split>
+                                {/* </Split> */}
+                                {/* <Split> */}
                                     <p className="words chars splitting wow txt" data-splitting style={{ color: "white" }}>
                                         {parse(`${data.brief}`)}
                                     </p>
-                                </Split>
+                                {/* </Split> */}
                             </div>
 
                         </div>

@@ -96,20 +96,22 @@ export default function GxClasses({ data = {} }) {
 
 
     };
+    
     const [value, setValue] = useState();
     const [branch, setBranch] = useState();
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
-        console.log(event.target.value)
+        console.log(event.target.value);
         // setRefresh(refresh + 1)
         let timeout = setTimeout(() => {
-            document.getElementById('classes').scrollIntoView({ behavior: "smooth", block: 'start' });
+          document.getElementById('classes').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
-
-    }
+      }
+    console.log(selectedCategory, 'hellooo')
     function handleCategoryyChange(event) {
         setSelectedCategory(event.target.value);
-        console.log(event.target.value)
+        console.log(event.target.value);
+
 
     }
     if (ListofClasses.length == 0) {
@@ -137,11 +139,11 @@ export default function GxClasses({ data = {} }) {
                                             >
                                                 {item.listing_classes_id.title}
                                             </h3>
-                                            <Split>
+                                            {/* <Split> */}
                                                 <p className="words chars splitting wow txt-class" data-splitting style={{ color: "white" }}>
                                                     {parse(`${item.listing_classes_id.brief}`)}
                                                 </p>
-                                            </Split>
+                                            {/* </Split> */}
                                             {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
                                         </div>
 
@@ -181,11 +183,11 @@ export default function GxClasses({ data = {} }) {
                                             >
                                                 {item.listing_classes_id.title}
                                             </h3>
-                                            <Split>
+                                            {/* <Split> */}
                                                 <p className="words chars splitting wow txt-class" data-splitting style={{ color: "white" }}>
                                                     {parse(`${item.listing_classes_id.brief}`)}
                                                 </p>
-                                            </Split>
+                                            {/* </Split> */}
                                             {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
                                         </div>
                                     </div>
@@ -209,11 +211,11 @@ export default function GxClasses({ data = {} }) {
                                             >
                                                 {item.listing_classes_id.title}
                                             </h3>
-                                            <Split>
+                                            {/* <Split> */}
                                                 <p className="words chars splitting wow txt-class" data-splitting style={{ color: "white" }}>
                                                     {parse(`${item.listing_classes_id.brief}`)}
                                                 </p>
-                                            </Split>
+                                            {/* </Split> */}
                                             {item.listing_classes_id?.button_title ? <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white btn-classes' onClick={handleCategoryChange} value={item.listing_classes_id.value} >{item.listing_classes_id?.button_title}</button> : null}
                                         </div>
 
@@ -231,7 +233,7 @@ export default function GxClasses({ data = {} }) {
                         <>
                             {index === 0 && (
                                 <>
-                                <div style={{
+                                {/* <div style={{
                                     display: "flex",
                                     justifyContent: "center",
                                     marginBottom: "4rem",
@@ -244,19 +246,37 @@ export default function GxClasses({ data = {} }) {
                                     }} className="">
                                         {element.value}
                                     </h3>
-                                </div>
-                                <section className='portfolio' style={{marginBottom:"2rem"}}>
-                                <div
-                                className="filtering col-12 "
-                            >
-                                <div className="filter">
-                                    <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white ' onClick={handleCategoryChange} value="energy" >Energy</button>
-                                    <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white ' onClick={handleCategoryChange} value="balance" >Balance</button>
-                                    <button style={{ cursor: 'pointer' }} className='cursor-pointer montserrat-bold text-white ' onClick={handleCategoryChange} value="power" >Power</button>
-
-                                </div>
-                            </div>
-                            </section>
+                                </div> */}
+                               <section className='portfolio' style={{ marginBottom: '2rem' }}>
+  <div className="filtering col-12">
+    <div className="filter">
+      <button
+        style={{ cursor: 'pointer', color: selectedCategory === 'energy' ? '#0090DF' : 'white' }}
+        className='cursor-pointer montserrat-bold text-white '
+        onClick={handleCategoryChange}
+        value="energy"
+      >
+        Energy
+      </button>
+      <button
+        style={{ cursor: 'pointer', color: selectedCategory === 'balance' ? '#0090DF' : 'white' }}
+        className='cursor-pointer montserrat-bold text-white '
+        onClick={handleCategoryChange}
+        value="balance"
+      >
+        Balance
+      </button>
+      <button
+        style={{ cursor: 'pointer', color: selectedCategory === 'power' ? '#0090DF' : 'white' }}
+        className='cursor-pointer montserrat-bold text-white '
+        onClick={handleCategoryChange}
+        value="power"
+      >
+        Power
+      </button>
+    </div>
+  </div>
+</section>
                             </>
                             )}
                           

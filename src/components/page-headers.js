@@ -51,12 +51,31 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
         <>
             {data.layout_type == 'regular' || data.layout_type == null ?
                 <div id="" style={{ "backgroundImage": `url("${image_url}${data.image?.id}")`, position:"relative" }} className=" aboutUs-bg" >
-                <div style={{position:"absolute", right:"0", bottom:"-1px"}}><img src='/imgBg.png'/></div>
-                    <div className='bannerTitleContainer' style={{ "backgroundImage": `url("${image_url}${data.bar_image?.id}")`, backgroundRepeat: "no-repeat", height: "211px", position: "absolute", top: "50%", left: "8rem" }}>
-                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
-                            {data.image_title ? <h1 className='banner-title' style={{ fontSize: "70px" }}>{data.image_title}</h1> : null}
-                            {data.image_subtitle ? <h1 className="banner-subtitle" style={{ fontSize: "70px" }}>{data.image_subtitle}</h1> : null}
-                        </div>
+                {/* <div style={{position:"absolute", right:"0", bottom:"-1px"}}><img src='/imgBg.png'/></div> */}
+                <div className="tint-overlay"></div>
+                    <div className='bannerTitleContainer' style={{height: "211px", position: "absolute", top: "50%", left: "8rem" }}>
+        
+                        <div style={{ position: "relative" }}>
+                                                                {data.bar_image ? <img src={`${image_url}${data.bar_image?.id}`} /> : null}
+
+                                                                <div className={`words chars splitting swipe-title`}
+                                                                    style={{
+                                                                        fontFamily: "'Montserrat', sans-serif",
+                                                                        fontWeight: "900",
+                                                                        textTransform: "uppercase",
+                                                                        fontSize: "72px",
+                                                                        lineHeight: "72px",
+                                                                        position: "absolute",
+                                                                        whiteSpace: "pre",
+                                                                        top: "50%",
+                                                                        transform: "translate(0%, -50%)",
+                                                                        opacity: "1",
+                                                                        textAlign: "left"
+                                                                    }}>
+                                                                    {data.image_title ? <h1 className='banner-title' style={{ fontSize: "50px" }}>{data.image_title}</h1> : null}
+                                                                    {data.image_subtitle ? <h3 className='banner-subtitle'>{data.image_subtitle}</h3> : null}
+                                                                </div>
+                                                            </div>
                     </div>
                     <div className='bannerDescription' style={{ position: "absolute", right: "10rem", top: "60%", borderRight: "2px solid #707070", paddingRight: "20px" }}>
                         {data.image_description ? <h2 style={{ textAlign: "right", fontWeight: "bold", color: "white" }}>{parse(`${data.image_description}`)}</h2> : null}

@@ -63,7 +63,7 @@ const WorksStyle1 = ({ data = {} }) => {
           {data.branch_name ? <h1 className="globalTitle" style={{ fontWeight: "bold", fontFamily: "Montserrat ExtraBold" }}>{data.branch_name}</h1> : null}
           {data.title ? <h1 className="globalSubtitle" style={{ fontWeight: "200", fontFamily: "Montserrat Regular" }}>{data.title}</h1> : null}
         </div>
-        <div className="row lg-space">
+        <div className="row">
           {data.class.map((item, index) => (
             <div key={item.id} className={`col-lg-4 col-md-6 ${index % 2 !== 0 ? 'valign' : ''}`}>
               <div className="item">

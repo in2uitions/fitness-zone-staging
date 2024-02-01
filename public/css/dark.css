@@ -1748,7 +1748,7 @@ body {
 
 .navbar .navbar-nav .dropdown-item:hover {
   background: transparent;
-  color: #75dab4;
+  color: #0090df;
 }
 
 .navbar .dropdown-menu {
@@ -1788,7 +1788,7 @@ body {
   content: '';
   width: 0px;
   height: 1px;
-  background: #75dab4;
+  background: #0090df;
   position: absolute;
   left: 10px;
   top: 50%;
