@@ -38,6 +38,7 @@
     "react-player": "^2.14.1",
     "react-slick": "^0.28.1",
     "react-spinners": "^0.13.8",
+    "react-split": "^2.0.14",
     "react-tabs": "^1.0.0",
     "react-vertical-timeline-component": "^3.6.0",
     "react-visibility-sensor": "^5.1.1",

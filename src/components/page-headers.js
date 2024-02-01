@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Split from './Split';
 
 export default function Header({ color = "orange", data = {}, sliderRef }) {
     const [isSent, setIsSent] = useState(false);
@@ -148,8 +149,10 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                     </div>
                                                     <div className="col-lg-6 col-md-8 text-on-mobile" style={{position:"relative", zIndex:"33"}}>
                                                         <div className="caption" style={{ textAlign: "right" }}>
-                                                        {slide.slider_images_component_id.image_description ?<p
-                                                                className={`words chars splitting swipe-scd-title ${index === currentSlide ? 'fade-in' : ''}`}
+                                                        {slide.slider_images_component_id.image_description ?<Split><p
+                                                                className={`words wow chars splitting swipe-scd-title ${index === currentSlide ? 'fade-in' : ''}`}
+                                                                // style={{ fontSize: "60px" }}
+                                                                data-splitting
                                                                 style={{
                                                                     fontFamily: "'Montserrat', sans-serif",
                                                                     fontWeight: "bold",
@@ -165,7 +168,8 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                             >
                                                                 {parse(`${slide.slider_images_component_id.image_description}`)}
 
-                                                            </p>:null}
+                                                            </p></Split>:null}
+                                                          
                                                         </div>
                                                     </div>
                                                 </div>
