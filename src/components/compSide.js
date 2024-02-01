@@ -227,7 +227,7 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
             >
                 <div className="container" >
                     <div className="row"><div className="col-lg-6" style={{position:"relative"}}>
-                    <div style={{position:"absolute", right:"-12rem"}} className='onMobileBackSlash'><img src='/Backslash-Cut.png'/></div>
+                    <div style={{position:"absolute", right:"-10.5rem"}} className='onMobileBackSlash'><img src='/Backslash-Cut.png'/></div>
                         <div className="img-mons">
                             <div className="row">
                                 <img src={`${image_url}${data.image?.id}`} alt={`${data.image?.title}`} />
