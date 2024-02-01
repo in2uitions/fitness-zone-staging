@@ -1383,7 +1383,7 @@ ul.metismenu-container:first-child {
   left: 0;
   right: 0;
   padding-top: 45px;
-  padding-left: 95px;
+  padding-left: 25px;
   height: 450px;
   flex-direction: column;
   background: linear-gradient(rgb(0, 144, 223), #11141b);
