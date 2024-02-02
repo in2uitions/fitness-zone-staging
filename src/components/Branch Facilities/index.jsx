@@ -21,7 +21,7 @@ const BranchFacilities = ({ data = {} }) => {
 
                     {data.facility.map((item, index) => (
                         <div key={item.id} style={{ padding: "2rem", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}} className={``}>
-                                    <img src={`${image_url}${item.facilities_id.icon?.id}`} alt="" style={{ width: "80px", objectFit:"cover" }} />
+                                    <div><img src={`${image_url}${item.facilities_id.icon?.id}`} alt="" style={{ width: "80px",height:"65px", objectFit:"contain" }} /></div>
                                 <div className="image-text">
                                 <p style={{color:"white", marginTop:"2rem"}}>{item.facilities_id.title}</p>
                                 </div>
