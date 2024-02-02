@@ -149,8 +149,10 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                     </div>
                                                     <div className="col-lg-6 col-md-8 text-on-mobile" style={{position:"relative", zIndex:"33"}}>
                                                         <div className="caption" style={{ textAlign: "right" }}>
-                                                        {slide.slider_images_component_id.image_description ?<Split><p
-                                                                className={`words wow chars splitting swipe-scd-title ${index === currentSlide ? 'fade-in' : ''}`}
+                                                        <Split>
+                                                            {slide.slider_images_component_id.image_description ?<h1
+                                                                className={`words chars data-splitting swipe-scd-title 
+                                                                `}
                                                                 // style={{ fontSize: "60px" }}
                                                                 data-splitting
                                                                 style={{
@@ -168,8 +170,8 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                             >
                                                                 {parse(`${slide.slider_images_component_id.image_description}`)}
 
-                                                            </p></Split>:null}
-                                                          
+                                                            </h1>:null}
+                                                            </Split>
                                                         </div>
                                                     </div>
                                                 </div>
