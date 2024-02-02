@@ -2027,6 +2027,27 @@ button:focus{
   .memberbox{
     width: 100% !important;
   }
+
+@keyframes show_msg_first { 
+from {
+    transform: translateX(0%);
+}
+to {
+    transform: translateX(-100%); 
+}
+}
+@keyframes show_msg { 
+from {
+    transform: translateX(100%); 
+}
+to {
+    transform: translateX(-100%); 
+}
+}
+.newBand{
+  display: flex !important;
+  flex-wrap: wrap;
+}
   .sessionspage{
     padding-left: unset !important;
     padding-right: unset !important;
