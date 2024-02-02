@@ -227,6 +227,32 @@ export default function GxClasses({ data = {} }) {
                     </>
                 ))}
             </div>
+            <div className='welcome-msg container mx-auto'>
+            <section className='portfolio' style={{ marginBottom: '2rem' }}>
+  <div className="filtering filterOut col-12">
+    <div className="filter newBand">
+      <button
+        style={{ cursor: 'pointer'}}
+        className='cursor-pointer montserrat-bold text-white '
+      >
+        120 Trainers
+      </button>
+      <button
+        style={{ cursor: 'pointer'}}
+        className='cursor-pointer montserrat-bold text-white '
+      >
+        500 activities
+      </button>
+      <button
+        style={{ cursor: 'pointer'}}
+        className='cursor-pointer montserrat-bold text-white '
+      >
+        Pools, Sauna , Gyms
+      </button>
+    </div>
+  </div>
+</section>
+            </div>
             {data.show_classes ? <div className='' id="classes">
                 <div className={` container  mx-auto pt-10 relative `} >
                     {ListofClasses.filter((item) => item.value === selectedCategory).map((element, index) => (

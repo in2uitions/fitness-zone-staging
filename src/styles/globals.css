@@ -7,6 +7,41 @@
   align-items: center;
   height: 100%;
 }
+.newBand{
+  background-color: transparent !important;
+  padding: 0px !important;
+}
+.welcome-msg {
+  margin-bottom: 2rem !important;
+  margin: 0;
+  padding: 1.1rem 0;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  letter-spacing: -.0125em;
+  line-height: 1.5;
+  white-space: nowrap;
+  transform: translateX(0);
+  animation: show_msg_first 6s linear 2s 1, show_msg 12s linear 8s infinite;
+}
+
+@keyframes show_msg_first {
+  from {
+      transform: translateX(20%);
+  }
+  to {
+      transform: translateX(55%);
+  }
+}
+
+@keyframes show_msg {
+  from {
+      transform: translateX(55%);
+  }
+  to {
+      transform: translateX(0%);
+  }
+} 
 
 .block-sec .testim-box .slick-dots li button {
   display: block;

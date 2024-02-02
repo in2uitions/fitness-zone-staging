@@ -4402,7 +4402,16 @@ header.simpl .caption .btn-curve {
   right: -24px;
   top: 40%;
 }
-
+.portfolio .filterOut button:after {
+  content: '';
+  width: 3px;
+  height: 25px;
+  background: white;
+  border-radius: 0%;
+  position: absolute;
+  right: -24px;
+  top: -24%;
+}
 .portfolio .filtering button:last-of-type:after {
   display: none;
 }
