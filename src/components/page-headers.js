@@ -124,7 +124,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                 <div className="row container flex-reverse" style={{ marginTop: "2rem" }}>
                                                     <div className="col-lg-6 col-md-8 width-mobile-unset">
                                                         <div className="caption" style={{ display: "flex", justifyContent: "flex-start", alignItems: "flex-start" }}>
-                                                            <div style={{ position: "relative" }}>
+                                                        {!slide.slider_images_component_id.on_icon ? <div style={{ position: "relative" }}>
                                                                 {slide.slider_images_component_id.with_bar_image ? <img src="/slashImagee.png" className={`bg-swipe barImage ${index === currentSlide ? 'fade-in' : ''}`} /> : null}
 
                                                                 <div className={`words chars splitting swipe-title ${index === currentSlide ? 'fade-in' : ''}`}
@@ -142,9 +142,33 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                                         textAlign: "left"
                                                                     }}>
                                                                     {slide.slider_images_component_id.image_title ? <h1 className='banner-title' style={{ fontSize: "50px" }}>{slide.slider_images_component_id.image_title}</h1> : null}
-                                                                    {slide.slider_images_component_id.image_subtitle ? <h3 className='banner-subtitle'>{slide.slider_images_component_id.image_subtitle}</h3> : null}
+                                                                    {slide.slider_images_component_id.image_subtitle ? <h3 className='banner-subtitle' style={{fontFamily:"Montserrat hi"}}>{slide.slider_images_component_id.image_subtitle}</h3> : null}
                                                                 </div>
-                                                            </div>
+                                                            </div>:null}
+                                                            {slide.slider_images_component_id.on_icon ?<div style={{ position: "relative" }}>
+                                                            
+
+                                                                <div className={`words chars splitting swipe-title ${index === currentSlide ? 'fade-in' : ''}`}
+                                                                    style={{
+                                                                        fontFamily: "'Montserrat', sans-serif",
+                                                                        fontWeight: "900",
+                                                                        textTransform: "uppercase",
+                                                                        fontSize: "72px",
+                                                                        lineHeight: "72px",
+                                                                        position: "absolute",
+                                                                        whiteSpace: "pre",
+                                                                        top: "50%",
+                                                                        transform: "translate(0%, -50%)",
+                                                                        opacity: "1",
+                                                                        textAlign: "left"
+                                                                    }}>
+                                                                    {slide.slider_images_component_id.image_title ? <h1 className='banner-title' style={{ fontSize: "92px" }}>{slide.slider_images_component_id.image_title}</h1> : null}
+                                                                  
+                                                                    {slide.slider_images_component_id.on_icon ?<div style={{display:"flex", justifyContent:"start", alignItems:"center", gap:"8px"}}> <h3 className='banner-subtitle' style={{fontSize:"92px"}}>{slide.slider_images_component_id.image_subtitle}</h3>
+                                                                     <img className='' style={{height:"70px", width:"8rem"}} src={`${image_url}${slide.slider_images_component_id.on_icon}`} alt="" /></div>
+                                                                    : null}
+                                                                </div>
+                                                            </div>:null}
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-6 col-md-8 text-on-mobile" style={{position:"relative", zIndex:"33"}}>
