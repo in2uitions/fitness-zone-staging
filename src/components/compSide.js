@@ -28,11 +28,13 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
     };
 
     const locationCode = getLocationCode();
-    const submitLebSignUp = async event => {
+    const submitLebSignUp = async (event) => {
         event.preventDefault();
-
-
         const getTokenAPI = async () => {
+            try {
+                const res = await fetch(`https://ipapi.co/json/`);
+                const data = await res.json();
+                if (data.country_code == "LB") {
             try {
                 const res = await fetch(
                     'https://api.fitnessclubapp.com/api/Account/Login?Username=fzapp@fitnesszone.com.lb&Password=Fz$_@pP.%234',
@@ -57,19 +59,30 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                             },
                         });
 
+                        // console.log(registraitonRawData);
+
+
                         var registrationHeaders = new Headers();
-                        registrationHeaders.append("Authorization", "Bearer " + tokenData.token);
+                        registrationHeaders.append(
+                            "Authorization",
+                            "Bearer " + tokenData.token
+                        );
                         registrationHeaders.append("Content-Type", "application/json");
                         var registrationRequestOptions = {
-                            method: 'POST',
+                            method: "POST",
                             headers: registrationHeaders,
-                            body: registraitonRawData
+                            body: registraitonRawData,
                         };
-
-                        
+                        let param = '';
+                        Object.keys(router.query).map((key) => {
+                            param = `${param}${param == '' ? '' : '&'}${key}=${router.query[key]}`
+                        })
                         const res = await fetch(
-                            'https://api.fitnessclubapp.com/api/Crm/GuestRegister', registrationRequestOptions);
+                            `https://api.fitnessclubapp.com/api/Crm/GuestRegister?${param}`,
+                            registrationRequestOptions
+                        );
                         const data = await res.json();
+                        // console.log(data);
 
                         if (data.isValid == true) {
                             setIsSent(true)
@@ -81,23 +94,91 @@ export default function CompSide({ data = {}, isFlipped = false, style = 'white'
                         } else {
                             setIsNotSent(true)
                         }
-
-
                     } catch (err) {
                         console.log(err);
                     }
                 };
 
                 submitContactForm();
-
             } catch (err) {
                 console.log(err);
             }
+        } else if (data.country_code == 'AE') {
+            try {
+                const res = await fetch(
+                    "https://api.fitnessclubapp.com/api/account/login?Username=fzapp@fitnesszone.ME&Password=Fc@_Dubai@22.1",
+                    {
+                        method: 'POST'
+                    }
+                );
+
+                const tokenData = await res.json();
+
+                const submitContactForm = async () => {
+                    try {
+                        var registraitonRawData = JSON.stringify({
+                            "GuestRegisterId": 0,
+                            "FirstName": event.target.pp_first_name.value,
+                            "LastName": event.target.pp_last_name.value,
+                            "Mobile": event.target.pp_phone.value,
+                            "Email": event.target.pp_email.value,
+                            "LocationCode": parseInt(event.target.location.value),
+                            "Source": {
+                                "VisitSourceId": 9
+                            },
+                        });
+
+                        // console.log(registraitonRawData);
+
+
+                        var registrationHeaders = new Headers();
+                        registrationHeaders.append(
+                            "Authorization",
+                            "Bearer " + tokenData.token
+                        );
+                        registrationHeaders.append("Content-Type", "application/json");
+                        var registrationRequestOptions = {
+                            method: "POST",
+                            headers: registrationHeaders,
+                            body: registraitonRawData,
+                        };
+                        let param = '';
+                        Object.keys(router.query).map((key) => {
+                            param = `${param}${param == '' ? '' : '&'}${key}=${router.query[key]}`
+                        })
+                        const res = await fetch(
+                            `https://api.fitnessclubapp.com/api/Crm/GuestRegister?${param}`,
+                            registrationRequestOptions
+                        );
+                        const data = await res.json();
+                        // console.log(data);
+
+                        if (data.isValid == true) {
+                            setIsSent(true)
+                            event.target.pp_first_name.value = '';
+                            event.target.pp_last_name.value = '';
+                            event.target.pp_phone.value = '';
+                            event.target.pp_email.value = '';
+                            setValue(" ")
+                        } else {
+                            setIsNotSent(true)
+                        }
+                    } catch (err) {
+                        console.log(err);
+                    }
+                };
+
+                submitContactForm();
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    } catch (err) {
+        console.log(err);
+    }
         };
 
         getTokenAPI();
-
-
     };
     const [value, setValue] = useState();
     const [branch, setBranch] = useState();

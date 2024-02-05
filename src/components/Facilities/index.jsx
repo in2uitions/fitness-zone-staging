@@ -15,7 +15,7 @@ const Facilities = ({ subBG, data = {} }) => {
                         </div>
                     </div>
                 </div>
-                <div className={`row rowGap ${data.facilities.length === 1 ? 'single-item' : ''}`}>
+                <div className={`row rowGap ${data.facilities.length === 1 ? 'single-item' : ''}`} style={{justifyContent:"center"}}>
     {data.facilities.map((item, index) => (
         <div className={`col-lg-${data.facilities.length === 1 ? '12' : '4'} wow fadeInUp`} data-wow-delay=".3s">
             <div

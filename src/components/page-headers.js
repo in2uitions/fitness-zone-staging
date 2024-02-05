@@ -74,7 +74,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                                         textAlign: "left"
                                                                     }}>
                                                                     {data.image_title ? <h1 className='banner-title' style={{ fontSize: "50px" }}>{data.image_title}</h1> : null}
-                                                                    {data.image_subtitle ? <h3 className='banner-subtitle'>{data.image_subtitle}</h3> : null}
+                                                                    {data.image_subtitle ? <h3 style={{whiteSpace:"pre-wrap", fontFamily:"Montserrat hi", fontSize:"30px"}} className='banner-subtitle'>{data.image_subtitle}</h3> : null}
                                                                 </div>
                                                             </div>
                     </div>
