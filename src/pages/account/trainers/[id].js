@@ -86,8 +86,8 @@ export default function TrainersProfile({ style = "white" }) {
         <>
             <PrivateMenu />
             <DarkTheme>
-            <section style={{marginBottom:"2rem"}}>
-                <div className="container mx-auto flex flex-col justify-start mt-40-top mb-20-bottom lg:px-28 md:px-20 px-3">
+            <section style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover", backgroundRepeat:"no-repeat"}}>
+                <div className="container mx-auto flex flex-col justify-start mt-40-top pb-20-bottom lg:px-28 md:px-20 px-3">
                     <div className="flex justify-between">
                         {/* <select name="category">
                         {categoryData.map((item) =>(

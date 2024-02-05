@@ -227,8 +227,9 @@ export default function Dashboard({ style = "white", books }) {
         <>
         <DarkTheme>
             <PrivateMenu/>
+            <section className="pt-40-top" style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover", backgroundRepeat:"no-repeat"}}>
             <section> 
-                <div className="container lg:mx-auto flex flex-col justify-center mt-40-top lg:px-20 md:px-20 px-0">
+                <div className="container lg:mx-auto flex flex-col justify-center lg:px-20 md:px-20 px-0">
                     <p className="text-colorblue montserrat-bold flex space-x-2 lg:px-0 md:px-0 px-2 montserrat-bold fontSize">
                         <span>HELLO</span>
                         <span>{books.fullName}</span> 
@@ -256,7 +257,7 @@ export default function Dashboard({ style = "white", books }) {
                 </div>
             </section>
             <section> 
-                <div className="container lg:mx-auto lg:px-20 md:px-20 px-3 mt-10-top mt-20-top mb-20-bottom lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10 w-screen">
+                <div className="container lg:mx-auto lg:px-20 md:px-20 px-3 mt-10-top mt-20-top pb-20-bottom lg:grid lg:grid-cols-12 gap-x-10 lg:space-y-0 md:space-y-0 space-y-10 w-screen dashboard">
                     <div className="col-span-3"> 
                         <p className="text-colorblue montserrat-bold fontSize">Membership Details</p>
                         <div className="flex flex-col space-y-3 mt-10-top membership-box memberbox p-10 items-center">
@@ -378,6 +379,7 @@ export default function Dashboard({ style = "white", books }) {
                         </div> */}
                     </div>
                 </div>
+            </section>
             </section>
             </DarkTheme>
         </>

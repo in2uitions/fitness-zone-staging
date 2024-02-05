@@ -61,9 +61,11 @@ export default function Frezzing(books) {
         <>
             <PrivateMenu />
             <DarkTheme>
-            <div  style={{marginBottom:"2rem"}} className='container mobilepaddingfreez mx-auto px-20 mt-40-top mb-20-bottom'>
+                <section style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover"}}>
+            <div className='container mobilepaddingfreez mx-auto px-20 mt-40-top pb-20-bottom'>
                 <CalendarComponent events={events} />
             </div>
+            </section>
             </DarkTheme>
         </>
     )

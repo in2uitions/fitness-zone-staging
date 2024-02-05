@@ -481,8 +481,8 @@ export default function Dashboard({ style = "white", data }) {
         <>
             <PrivateMenu />
             <DarkTheme>
-            <section style={{marginBottom:"2rem"}}>
-                <div className="flex flex-col justify-center items-center mtmobile" style={{marginTop:"10rem"}}>
+            <section style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover", backgroundRepeat:"no-repeat"}}>
+                <div className="flex flex-col justify-center items-center mtmobile pt-40-top">
                     <a href="/account/dashboard" className="space-x-1 "
                     style={{border:"4px solid #008DDC", display:"flex", borderRadius:"100%", width:"10rem", height:"10rem", justifyContent:"center", alignItems:"center"}}>
                         <p className="font-bold text-6xl text-colorblue montserrat-bold">{data.firstName?.charAt(0)}</p>
@@ -490,7 +490,7 @@ export default function Dashboard({ style = "white", data }) {
                     </a>
                     <p className="font-bold text-colorblue montserrat-bold" style={{fontSize:"18px", marginTop:"1.25rem"}}>{data.fullName}</p>
                 </div>
-                <div className="w-full" style={{marginBottom:"5rem"}}>
+                <div className="w-full" style={{paddingBottom:"5rem"}}>
                     <form onSubmit={handleSubmit} className=" mx-auto flex flex-col justify-center items-center " style={{marginTop:"5rem"}}>
                         {/* <div className="grid lg:grid-cols-12 gap-x-3 items-start mt-10 space-y-5 lg:space-y-0 md:space-y-0"> */}
                         <div className="w-full flex mobile-flex-col container mx-auto lg:flex lg:flex-row md:flex space-x-3 md:space-x-3 justify-center items-start lg:space-y-0 md:space-y-0 px-4 lg:px-4 md:px-4">

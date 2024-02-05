@@ -223,8 +223,8 @@ export default function Membership({ style = "white", data }) {
         <>
             <PrivateMenu />
             <DarkTheme>
-            <section>
-                <div className="container lg:px-28 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40-top" style={{marginBottom:"2rem"}}>
+            <section style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover", backgroundRepeat:"no-repeat", backgroundSize:"cover"}}>
+                <div className="container lg:px-28 md:px-20 px-3 mx-auto flex flex-col justify-center mt-40-top" style={{paddingBottom:"2rem"}}>
                     <div className="flex flex-col justify-center items-center">
                         <img src="/gold-member.png" style={{width:"130px"}}/>
                         <p className="font-bold text-white montserrat-bold" style={{marginTop:"1.25rem", fontSize:"18px"}}>

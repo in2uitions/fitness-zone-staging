@@ -127,8 +127,8 @@ export default function List(info) {
         <>
            <PrivateMenu/>
            <DarkTheme>
-            <section className="">
-                <div className="mt-40-top mb-20-bottom lg:px-28 md:px-20 px-3 container mx-auto w-full h-full">
+            <section className="" style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover"}}>
+                <div className="mt-40-top pb-20-bottom lg:px-28 md:px-20 px-3 container mx-auto w-full h-full">
                 <div className="flex flex-col justify-center items-center">
                         <p className="text-colorblue montserrat-bold font-bold lg:text-4xl md:text-4xl text-3xl mb-10">Trainers List</p>
                     </div>

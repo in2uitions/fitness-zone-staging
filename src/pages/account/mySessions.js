@@ -261,8 +261,8 @@ export default function MySessions(Info) {
         <>
         <DarkTheme>
             <PrivateMenu />
-            <section>
-                <div className="container lg:px-28 px-20 mx-auto flex flex-col justify-center items-center mt-40-top mb-20-bottom h-full sessionspage">
+            <section style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover"}}>
+                <div className="container lg:px-28 px-20 mx-auto flex flex-col justify-center items-center mt-40-top pb-20-bottom h-full sessionspage">
                     
                     <BrowserView className='flex flex-col w-3/5 space-y-4 mb-5'>
                     {/* <p className='text-[#009fe3] futura-bold text-2xl'>Click here to Reserve a Session with your Trainer</p> */}

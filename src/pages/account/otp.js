@@ -107,7 +107,7 @@ const phone = Cookies.get("Phone")
     
     return (
         <DarkTheme>
-        <div style={{marginBottom:"2rem"}}>
+        <div style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover", backgroundRepeat:"no-repeat"}}>
         {/* <HeaderContent/> */}
             <div className="w-screen h-screen container mx-auto flex items-center justify-center">
             <div className="lg:w-1/2"></div>

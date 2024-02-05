@@ -448,8 +448,8 @@ export default function ClassListing(Info) {
         <>
             <PrivateMenu />
             <DarkTheme>
-            <section className="">  
-                <div className="container mx-auto mt-40-top lg:px-28 md:px-20 mb-20-bottom w-screen px-2">
+            <section className="" style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover"}}> 
+                <div className="container mx-auto mt-40-top lg:px-28 md:px-20 pb-20-bottom w-screen px-2">
                     <div className="flex flex-col justify-center items-center">
                         <p className="text-colorblue font-bold lg:text-4xl md:text-4xl text-3xl montserrat-bold">LIST OF CLASSES</p>
                     </div>

@@ -91,8 +91,8 @@ export default function CheckIns(books) {
         <>
            <PrivateMenu/>
            <DarkTheme>
-            <section style={{marginBottom:"2rem"}}>
-                <div className='flex flex-col justify-center mt-40-top mb-20-bottom' id="btnScrollToTop">
+            <section  style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover"}}>
+                <div className='flex flex-col justify-center mt-40-top pb-20-bottom' id="btnScrollToTop">
                     <div className='flex flex-col mx-auto justify-start items-start lg:w-1/3 md:w-1/3 w-full lg:px-0 md:px-0 px-3'>
                         <p className='text-colorblue fontSize montserrat-bold font-bold mb-3'>My Recent Check-ins</p>
                         {slice.map((item) => (

@@ -280,8 +280,8 @@ export default function Login() {
         <script src="https://cdn.tailwindcss.com"/>
         </Head>
             {/* <HeaderContent /> */}
-            
-            <div style={{marginBottom:"2rem"}} className="w-screen h-screen container mx-auto flex flex-col items-center justify-center"
+            <div style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover", backgroundRepeat:"no-repeat"}}>
+            <div className="w-screen h-screen container mx-auto flex flex-col items-center justify-center"
             // style={{width:"100vw", height:"100vh", marginLeft:"auto", marginRight:"auto", display:"flex", flexDirection:"column" , alignItems:"center", justifyContent:"center"}}
             >
                 <div className="flex flex-col justify-center"
@@ -453,6 +453,7 @@ export default function Login() {
                         Back to website
                     </a>
                 </div>
+            </div>
             </div>
         </div>
         </DarkTheme>

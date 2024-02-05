@@ -271,8 +271,8 @@ export default function MySessions(Info) {
         <>
         <DarkTheme>
             <PrivateMenu />
-            <section>
-                <div className="lg:container mx-auto mt-40-top mb-20-bottom lg:px-28 px-20  w-screen px-2">
+            <section style={{backgroundImage:'url("/PrivateArea.jpg")', objectFit:"cover"}}>
+                <div className="lg:container mx-auto pt-40-top pb-20-bottom lg:px-28 px-20  w-screen px-2">
                     <div className="flex flex-col justify-center items-center">
                         <p className="text-colorblue montserrat-bold lg:text-4xl md:text-4xl text-3xl mb-10">RESERVE SESSION</p>
                     </div>
