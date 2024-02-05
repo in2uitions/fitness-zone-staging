@@ -165,7 +165,7 @@ export default function Header({ color = "orange", data = {}, sliderRef }) {
                                                                     {slide.slider_images_component_id.image_title ? <h1 className='banner-title' style={{ fontSize: "92px" }}>{slide.slider_images_component_id.image_title}</h1> : null}
                                                                   
                                                                     {slide.slider_images_component_id.on_icon ?<div style={{display:"flex", justifyContent:"start", alignItems:"center", gap:"8px"}}> <h3 className='banner-subtitle' style={{fontSize:"92px"}}>{slide.slider_images_component_id.image_subtitle}</h3>
-                                                                     <img className='' style={{height:"75px", width:"8rem"}} src={`${image_url}${slide.slider_images_component_id.on_icon}`} alt="" /></div>
+                                                                     <img className='onOnMobile' style={{height:"75px", width:"8rem"}} src={`${image_url}${slide.slider_images_component_id.on_icon}`} alt="" /></div>
                                                                     : null}
                                                                 </div>
                                                             </div>:null}

@@ -2037,7 +2037,9 @@ button:focus{
   .memberbox{
     width: 100% !important;
   }
-
+.onOnMobile{
+  width: 2.5rem !important;
+}
 @keyframes show_msg_first { 
 from {
     transform: translateX(0%);
