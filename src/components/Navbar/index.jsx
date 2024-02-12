@@ -53,14 +53,14 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
         {
           "id": 6,
           "parentId": 2,
-          "label": "Dbayeh",
-          "to": '/dbayeh/dbayeh-homepage'
+          "label": "Achrafieh",
+          "to": '/achrafieh/achrafieh-homepage'
         },
         {
           "id": 7,
           "parentId": 2,
-          "label": "Achrafieh",
-          "to": '/achrafieh/achrafieh-homepage'
+          "label": "Dbayeh",
+          "to": '/dbayeh/dbayeh-homepage'
         },
         {
           "id": 8,

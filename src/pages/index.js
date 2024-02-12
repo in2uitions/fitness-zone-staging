@@ -101,7 +101,7 @@ const Homepage1 = ({ data = {} }) => {
       ) : null}
       {showUAE ? (
         <div style={{
-          backgroundImage: "url(/bg-grey.jpeg)",
+          backgroundImage: "url(/bannerPopupDuai.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover", position: "absolute", inset: "0"
         }}>
@@ -130,8 +130,9 @@ const Homepage1 = ({ data = {} }) => {
                   justifyContent: "center",
                   alignItems: "center",
                   width: "100%",
-                  background: "black",
-                  backgroundImage: "url(/popup.png)",
+                  // background: "black",
+                  // backgroundImage: "url(/popup.png)",
+                  background: "rgba(0, 0, 0, 0.5)",
                   padding: "5rem",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
@@ -153,12 +154,12 @@ const Homepage1 = ({ data = {} }) => {
                         fontSize: "2.2em",
                         fontWeight: "bold",
                         marginBottom: "10px",
-                        color: "white",
+                        color: "white", fontFamily:"Montserrat Bold"
                       }}
                     >
                       Step into a World of Possibilities
                     </p>
-                    <p style={{ textAlign: "center", color: "white" }}>
+                    <p style={{ textAlign: "center", color: "white" , fontFamily:"Montserrat Bold"}}>
                       Choose your destination and embark on an extraordinary
                       journey!
                     </p>
@@ -177,7 +178,7 @@ const Homepage1 = ({ data = {} }) => {
                         justifyContent: "center",
                         alignItems: "center",
                         color: "black",
-                        fontFamily: 'Montserrat-Bold'
+                        fontFamily: 'Montserrat Bold'
                       }} onClick={() => { setShowLeb(false); setShowUAE(false); }}
                     >
                       UAE
@@ -191,7 +192,7 @@ const Homepage1 = ({ data = {} }) => {
                         borderRadius: "5px",
                         border: "none",
                         fontWeight: "bold",
-                        cursor: "pointer"
+                        cursor: "pointer", fontFamily:"Montserrat Bold"
                       }} onClick={() => { setShowLeb(true); setShowUAE(false);  }}
                     >
                       LEBANON
