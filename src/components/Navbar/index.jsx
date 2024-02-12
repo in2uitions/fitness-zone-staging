@@ -47,8 +47,8 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
         {
           "id": 5,
           "parentId": 2,
-          "label": "Manara",
-          "to": '/manara/manara-homepage'
+          "label": "Baabda",
+          "to": '/baabda/baabda-homepage'
         },
         {
           "id": 6,
@@ -59,14 +59,14 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
         {
           "id": 7,
           "parentId": 2,
-          "label": "Baabda",
-          "to": '/baabda/baabda-homepage'
+          "label": "Achrafieh",
+          "to": '/achrafieh/achrafieh-homepage'
         },
         {
           "id": 8,
           "parentId": 2,
-          "label": "Achrafieh",
-          "to": '/achrafieh/achrafieh-homepage'
+          "label": "Manara",
+          "to": '/manara/manara-homepage'
         },
       ]
     },
