@@ -41,84 +41,147 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
         {
           "id": 4,
           "parentId": 2,
-          "label": "Hamra",
-          "to": '/hamra/hamra-homepage'
-        },
-        {
-          "id": 5,
+          "label": "Lebanon",
+          "to": '',
+          "children": [
+            {
+              "id": 5,
+              "parentId": 4,
+              "label": "Hamra",
+              "to": '/hamra/hamra-homepage'
+            }, {
+              "id": 6,
+              "parentId": 4,
+              "label": "Baabda",
+              "to": '/baabda/baabda-homepage'
+            },
+            {
+              "id": 7,
+              "parentId": 4,
+              "label": "Achrafieh",
+              "to": '/achrafieh/achrafieh-homepage'
+            },
+            {
+              "id": 8,
+              "parentId": 4,
+              "label": "Dbayeh",
+              "to": '/dbayeh/dbayeh-homepage'
+            },
+            {
+              "id": 9,
+              "parentId": 4,
+              "label": "Manara",
+              "to": '/manara/manara-homepage'
+            }
+          ]
+        },  {
+          "id": 10,
           "parentId": 2,
-          "label": "Baabda",
-          "to": '/baabda/baabda-homepage'
+          "label": "UAE",
+          "to": '',
+          "children": [
+            {
+              "id": 11,
+              "parentId": 10,
+              "label": "Dubai",
+              "to": 'https://ae.fitnesszone.me/'
+            },
+          ]
         },
-        {
-          "id": 6,
-          "parentId": 2,
-          "label": "Achrafieh",
-          "to": '/achrafieh/achrafieh-homepage'
-        },
-        {
-          "id": 7,
-          "parentId": 2,
-          "label": "Dbayeh",
-          "to": '/dbayeh/dbayeh-homepage'
-        },
-        {
-          "id": 8,
-          "parentId": 2,
-          "label": "Manara",
-          "to": '/manara/manara-homepage'
-        },
+       
       ]
     },
+  
     {
-      "id": 8,
+      "id": 12,
       "label": "MEMBERSHIP",
       "to": "/about/membership"
     },
     {
-      "id": 9,
+      "id": 13,
       "label": "CLASSES",
       "to": "/about/gx-classes"
     },
     {
-      "id": 13,
+      "id": 14,
       "label": "PERSONAL TRAINING",
       "to": '/about/personal-training'
     },
     {
-      "id": 14,
+      "id": 15,
       "label": "CONTACT",
       "to": '/about/contact-us'
     }
   ];
   const renderMenuItem = (item) => {
+    const handleDropdownToggle = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropdownMenu = e.currentTarget.nextElementSibling;
+      dropdownMenu.classList.toggle('show');
+    };
+
     if (item.children) {
       return (
-        <li className="nav-item cursor-pointer dropdown" key={item.id} onClick={handleDropdown}>
-          <a className="dropdown-toggle nav-linka" data-toggle="dropdown"
+        <li className="nav-item cursor-pointer dropdown" key={item.id}>
+          <a
+            className="dropdown-toggle nav-linka"
+            href="#"
             role="button"
             aria-haspopup="true"
-            aria-expanded="false">{item.label}</a>
+            aria-expanded="false"
+            onClick={(e) => handleDropdownToggle(e)}
+          >
+            {item.label}
+          </a>
           <div className="dropdown-menu">
             {item.children.map((childItem) => (
-              <Link href={childItem.to} key={childItem.id}>
-                <a href={childItem.to} className="dropdown-item">{childItem.label}</a>
-              </Link>
+              <React.Fragment key={childItem.id}>
+                {childItem.children && childItem.children.length !== 0 ? null : (
+                  <Link href={childItem.to} key={childItem.id}>
+                    <a className="dropdown-item">{childItem.label}</a>
+                  </Link>
+                )}
+
+                {childItem.children && childItem.children.length > 0 && (
+               <>
+                    <a
+                      className="dropdown-toggle"
+                      style={{padding: "10px 20px"}}
+                      href="#"
+                      role="button"
+                      aria-expanded="false"
+                      onClick={(e) => handleDropdownToggle(e)}
+                    >
+                      {childItem.label}
+                    </a>
+                    <div className="dropdown-menus dropdown-item">
+                      {childItem.children.map((nestedChildItem) => (
+                        <Link href={nestedChildItem.to} key={nestedChildItem.id}>
+                          <a className="dropdown-item">{nestedChildItem.label}</a>
+                        </Link>
+                      ))}
+                    </div>
+                    </>
+                )}
+              </React.Fragment>
             ))}
           </div>
-
         </li>
       );
     } else {
       return (
         <li className="nav-item cursor-pointer" key={item.id}>
           <Link href={item.to}>
-            <a href={item.to} className="nav-link">{item.label}</a>
+            <a className="nav-link">{item.label}</a>
           </Link>
         </li>
       );
     }
   };
+
+
+
   const _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       router.push('/results-page?search=' + search)
@@ -175,7 +238,7 @@ const Navbar = ({ lr, nr, theme, data = {} }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   return (
     <>
       <nav
