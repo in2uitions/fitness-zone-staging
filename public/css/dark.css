@@ -1802,9 +1802,9 @@ body {
 }
 .navbar .dropdown-menu .dropdown-item {
   color: #fff;
-  -webkit-transition: all -.0.6s;
+  /* -webkit-transition: all -.0.6s;
   -o-transition: all -.0.6s;
-  transition: all -.0.6s;
+  transition: all -.0.6s; */
   padding: 10px 25px;
   position: relative;
 }
@@ -1843,11 +1843,15 @@ body {
 .navbar .dropdown-menu .dropdown-item:hover {
   padding-left: 30px;
 }
-
-.navbar .dropdown-menu .dropdown-item:hover:after {
+.navbar .dropdown-menus .dropdown-item:hover {
+  padding-left: 30px;
+}
+.navbar .dropdown-menus .dropdown-item:hover:after {
   width: 10px;
 }
-
+.navbar .dropdown-menus .dropdown-item:hover:after {
+  width: 10px;
+}
 .navbar .search {
   color: #fff;
   padding-left: 30px;
