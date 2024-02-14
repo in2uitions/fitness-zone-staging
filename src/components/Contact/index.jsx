@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Split from "../Split";
 import Link from "next/link";
 import GoogleMapReact from 'google-map-react';
@@ -6,7 +6,7 @@ import GoogleMapReact from 'google-map-react';
 const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
     const defaultProps = {
         center: {
-            lat:  33.325721,
+            lat: 33.325721,
             lng: 44.462091
         },
         zoom: 13
@@ -17,10 +17,32 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
         position: "absolute",
         top: "0%",
         left: "0%",
-        bottom:"0%",
-        right:"0%"
+        bottom: "0%",
+        right: "0%"
         // transform: "translate(-50%, -100%)"
     };
+    const [whatsapp, setWhatsapp] = useState();
+
+    useEffect(() => {
+        const getVisitorLocationAPI = async () => {
+            try {
+                const res = await fetch(
+                    `https://ipapi.co/json/`
+                );
+                const data = await res.json();
+                if (data.country_code == 'AE') {
+                    setWhatsapp('//api.whatsapp.com/send?phone=971547274777')
+                }
+                else {
+                    setWhatsapp('//api.whatsapp.com/send?phone=9613505250')
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        getVisitorLocationAPI();
+    }, []);
     return (
         <>
             <section
@@ -78,12 +100,12 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
             <section className={` ${noSubBG ? '' : 'sub-bg'}`}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-5" style={{display:"flex", justifyContent:"center"}}>
+                        <div className="col-lg-5" style={{ display: "flex", justifyContent: "center" }}>
                             <div className="cont" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                                 <div className="con-info custom-font">
                                     <ul>
                                         <li>
-                                            <a href="//api.whatsapp.com/send?phone=971547274777" target="_blank" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                            <a href={whatsapp} target="_blank" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                                                 <img src="/WTSP.png" style={{ width: '40px', height: "40px", marginBottom: "5px" }} /><span>Instant Whatsapp </span>
                                             </a>
                                         </li>
@@ -116,20 +138,20 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                             </div>
                         </div>
                         <div className="col-lg-5 offset-lg-1">
-                                <div style={{ height: '50vh', width: '47vw', padding: '0,0,0,0' }} className="map-border ">
-                                    <GoogleMapReact
-                                        bootstrapURLKeys={{ key: "" }}
-                                        defaultCenter={defaultProps.center}
-                                        defaultZoom={defaultProps.zoom}
-                                    >
-                                                <div className='flex flex-col justify-center items-center' lat="44.462091" lng="43.462091">
+                            <div style={{ height: '50vh', width: '47vw', padding: '0,0,0,0' }} className="map-border ">
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: "" }}
+                                    defaultCenter={defaultProps.center}
+                                    defaultZoom={defaultProps.zoom}
+                                >
+                                    <div className='flex flex-col justify-center items-center' lat="44.462091" lng="43.462091">
 
-                                                    <a target="_blank" href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + 43.462091 + "," + 44.462091}>
-                                                        <img style={markerStyle} className="w-4" src={pin} alt="pin" />
-                                                    </a>
-                                                </div>
-                                            
-                                    </GoogleMapReact>
+                                        <a target="_blank" href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + 43.462091 + "," + 44.462091}>
+                                            <img style={markerStyle} className="w-4" src={pin} alt="pin" />
+                                        </a>
+                                    </div>
+
+                                </GoogleMapReact>
                             </div>
                         </div>
                     </div>

@@ -21,12 +21,12 @@ const Homepage1 = ({ data = {} }) => {
   useEffect(() => {
     const getVisitorLocationAPI = async () => {
       try {
-        const res = await fetch(`https://ipapi.co/json/`);
-        const data = await res.json();
-        if (data.country_code === "AE") {
-          setShowUAE(true);
-          setShowPopup(true);
-          setShowLeb(false);
+        // const res = await fetch(`https://ipapi.co/json/`);
+        // const data = await res.json();
+        // if (data.country_code === "AE") {
+          // setShowUAE(true);
+          // setShowPopup(true);
+          // setShowLeb(false);
           setInterval(() => {
             if (fixedSlider.current) {
               var slidHeight = fixedSlider.current.offsetHeight;
@@ -49,34 +49,35 @@ const Homepage1 = ({ data = {} }) => {
               navbar.classList.remove("nav-scroll");
             }
           });
-        } else {
-          setShowLeb(true);
-          setShowUAE(false);
-          setShowPopup(false);
-          setInterval(() => {
-            if (fixedSlider.current) {
-              var slidHeight = fixedSlider.current.offsetHeight;
-            }
-            if (MainContent.current) {
-              MainContent.current.style.marginTop = slidHeight + "px";
-            }
-          }, 1000);
+        // } 
+        // else {
+        //   // setShowLeb(true);
+        //   // setShowUAE(false);
+        //   // setShowPopup(false);
+        //   setInterval(() => {
+        //     if (fixedSlider.current) {
+        //       var slidHeight = fixedSlider.current.offsetHeight;
+        //     }
+        //     if (MainContent.current) {
+        //       MainContent.current.style.marginTop = slidHeight + "px";
+        //     }
+        //   }, 1000);
 
-          var navbar = navbarRef.current;
-          if (window.pageYOffset > 300) {
-            navbar.classList.add("nav-scroll");
-          } else {
-            navbar.classList.remove("nav-scroll");
-          }
+        //   var navbar = navbarRef.current;
+        //   if (window.pageYOffset > 300) {
+        //     navbar.classList.add("nav-scroll");
+        //   } else {
+        //     navbar.classList.remove("nav-scroll");
+        //   }
 
-          window.addEventListener("scroll", () => {
-            if (window.pageYOffset > 300) {
-              navbar.classList.add("nav-scroll");
-            } else {
-              navbar.classList.remove("nav-scroll");
-            }
-          });
-        }
+        //   window.addEventListener("scroll", () => {
+        //     if (window.pageYOffset > 300) {
+        //       navbar.classList.add("nav-scroll");
+        //     } else {
+        //       navbar.classList.remove("nav-scroll");
+        //     }
+        //   });
+        // }
       } catch (err) {
         console.log(err);
       }
@@ -88,7 +89,7 @@ const Homepage1 = ({ data = {} }) => {
   return (
     <>
     
-      {showLeb ? (
+      {/* {showLeb ? ( */}
         <DarkTheme>
           <Navbar nr={navbarRef} lr={logoRef} />
           {data.header ? (
@@ -98,8 +99,8 @@ const Homepage1 = ({ data = {} }) => {
             <Sections data={data} />
           </div>
         </DarkTheme>
-      ) : null}
-      {showUAE ? (
+      {/* ) : null} */}
+      {/* {showUAE ? (
         <div style={{
           backgroundImage: "url(/bannerPopupDuai.jpg)",
           backgroundRepeat: "no-repeat",
@@ -203,7 +204,7 @@ const Homepage1 = ({ data = {} }) => {
             </div>
           </Popup>
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 };
