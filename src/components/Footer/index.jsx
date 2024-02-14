@@ -24,7 +24,7 @@ const Footer = ({ noSubBG }) => {
                 `https://ipapi.co/json/`
             );
             const data = await res.json();
-            if (data.country_code == 'AE') {
+            if (data.country_code == 'AE') { 
                 setFaceBookLink('https://www.facebook.com/FitnessZoneUAE?mibextid=opq0tG')
                 setInstaLink('https://www.instagram.com/fitnesszoneuae?igsh=MWU1NWRvazd6b2phbw==')
                 setEmail('info@fitnesszone.me')
