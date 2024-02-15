@@ -165,8 +165,8 @@ const memberId = Cookies.get('Member');
 
                     <p className="montserrat-book text-xl mt-28 text-white" style={{marginBottom:"1.25rem"}}>We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2" style={{marginBottom:"1.25rem"}}><span className="text-white">Did not receive OTP?</span> <span className="text-[#008DDC] otpTimer"><OtpTimer
-                        // minutes={2}
-                        seconds={10}
+                        minutes={2}
+                        seconds={1}
                         text=""
                         ButtonText="Resend Now"
                         resend={resendOTP}
