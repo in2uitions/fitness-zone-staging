@@ -20,6 +20,8 @@ export default function Otp() {
     }
 }, [])
 const phone = Cookies.get("Phone")
+const notificationType = Cookies.get("notificationType")
+const memberId = Cookies.get('Member');
     const submitOTP = async event => {
         event.preventDefault();
 
@@ -36,6 +38,7 @@ const phone = Cookies.get("Phone")
                     method: 'GET',
                     headers: registrationHeaders
                 };
+                if (notificationType == "sms"){
                 const res = await fetch(
                     `https://api.fitnessclubapp.com/api/SMS/ValidateOTP?mobileNumber=${phone}&otpNumber=${event.target.otp.value}`,
                     registrationRequestOptions
@@ -51,6 +54,23 @@ const phone = Cookies.get("Phone")
                 else {
                     alert("Wrong OTP");
                 }
+            }else if (notificationType == "whatsapp"){
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/WhatsApp/ValidateOTP?memberid=${memberId}&mobilenumber=${phone}&otpNumber=${event.target.otp.value}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true) {
+                    Cookies.set("OTP", event.target.otp.value);
+                    // Cookies.set("Country", JSON.stringify(event.target.country.value));
+                    // Cookies.set("Phone", phoneNumber);
+                    // Cookies.set("Member", JSON.stringify(event.target.member.value));
+                    router.push({ pathname: "/account/dashboard" })
+                }
+                else {
+                    alert("Wrong OTP");
+                }
+            }
 
             } catch (err) {
                 console.log(err);
@@ -70,6 +90,7 @@ const phone = Cookies.get("Phone")
                     method: 'GET',
                     headers: registrationHeaders
                 };
+                if (notificationType == "sms"){
                 const res = await fetch(
                     `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phone}`,
                     registrationRequestOptions
@@ -96,6 +117,34 @@ const phone = Cookies.get("Phone")
                 else {
                     alert("Wrong OTP");
                 }
+            } else if (notificationType == "whatsapp"){
+                const res = await fetch(
+                    `https://api.fitnessclubapp.com/api/WhatsApp/SendOTPMessage?memberid=${memberId}&mobilenumber=${phone}`,
+                    registrationRequestOptions
+                );
+                const data = await res.json();
+                if (data.isValid == true) {
+                    // router.push({ pathname: "/account/dashboard" })
+                    const res = await fetch(
+                        `https://api.fitnessclubapp.com/api/WhatsApp/ValidateOTP?memberid=${memberId}&mobilenumber=${phone}&otpNumber=${event.target.otp.value}`,
+                        registrationRequestOptions
+                    );
+                    const data = await res.json();
+                if (data.isValid == true) {
+                    Cookies.set("OTP", JSON.stringify(event.target.otp.value));
+                    // Cookies.set("Country", JSON.stringify(event.target.country.value));
+                    // Cookies.set("Phone", phoneNumber);
+                    // Cookies.set("Member", JSON.stringify(event.target.member.value));
+                    router.push({ pathname: "/account/dashboard" })
+                }
+                else {
+                    alert("Wrong OTP");
+                }
+                }
+                else {
+                    alert("Wrong OTP");
+                }
+            }
 
             } catch (err) {
                 console.log(err);
@@ -116,8 +165,8 @@ const phone = Cookies.get("Phone")
 
                     <p className="montserrat-book text-xl mt-28 text-white" style={{marginBottom:"1.25rem"}}>We have sent you an OTP to proceed with your login process.</p>
                     <p className="flex items-center space-x-2" style={{marginBottom:"1.25rem"}}><span className="text-white">Did not receive OTP?</span> <span className="text-[#008DDC] otpTimer"><OtpTimer
-                        minutes={2}
-                        seconds={1}
+                        // minutes={2}
+                        seconds={10}
                         text=""
                         ButtonText="Resend Now"
                         resend={resendOTP}

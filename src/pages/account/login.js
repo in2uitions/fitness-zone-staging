@@ -62,7 +62,6 @@ export default function Login() {
         setState({ [name]: value });
 
     }
-
     const submitLogIn = async (event) => {
         event.preventDefault();
         const getTokenAPI = async () => {
@@ -78,7 +77,7 @@ export default function Login() {
                 const submitLoginForm = async () => {
                     const params = "";
                     const endPoints = "";
-
+    
                     for (const key in selectedTab) {
                         if (selectedTab[key] != 0 && selectedTab[key] != "") {
                             params = `${key}=${selectedTab[key]}`;
@@ -111,7 +110,7 @@ export default function Login() {
                             registrationRequestOptions
                         );
                         const data = await memberValidation.json();
-
+    
                         // console.log("testing", data)
                         // const phoneNumber = event.target.phoneNumber.value.replace(/-| /g, '');
                         const phoneNumber = value1;
@@ -131,7 +130,7 @@ export default function Login() {
                             );
                             const data = getMobile.data;
                             phoneNumber = data.toString();
-
+    
                             // phoneNumber = phoneNumber.replace("-", "");
                             // phoneNumber = phoneNumber.replace(" ", "");
                             const mapObj = {
@@ -152,7 +151,7 @@ export default function Login() {
                         }
                         // console.log("phoneeee" , phoneNumber)
                         // console.log("memberrrrr" ,memberId)
-
+    
                         const response = await fetch(
                             `https://api.fitnessclubapp.com/api/Membership/Member/${memberId}`,
                             registrationRequestOptions
@@ -160,9 +159,11 @@ export default function Login() {
                         const fetchedData = await response.json();
                         setBooks(fetchedData);
                         // console.log(fetchedData.status.statusDescription)
-
-
-
+    
+                        // Set a cookie to store the selected notification type
+                        const notificationType = document.getElementById("whatsapp").checked ? "whatsapp" : "sms";
+                        Cookies.set("notificationType", notificationType);
+    
                         if (data.isValid == true && phoneNumber && memberId && fetchedData.status.statusDescription != "Blocked") {
                             if (Cookies.get("Member") != null || Cookies.get("Member") != undefined) {
                                 alert("you have already submitted your otp!")
@@ -171,12 +172,22 @@ export default function Login() {
                                 });
                             }
                             else {
-                                const SendOTPMessage = await fetch(
-                                    `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`,
-                                    registrationRequestOptions
-                                );
-                                const data = await SendOTPMessage.json();
-                                setIsSent(true);
+                                if (notificationType === "whatsapp") {
+                                    const SendOTPMessage = await fetch(
+                                        `https://api.fitnessclubapp.com/api/WhatsApp/SendOTPMessage?memberid=${memberId}&mobilenumber=${phoneNumber}`,
+                                        registrationRequestOptions
+                                    );
+                                    const data = await SendOTPMessage.json();
+                                    setIsSent(true);
+                                } else if (notificationType === "sms") {
+                                    const SendOTPMessage = await fetch(
+                                        `https://api.fitnessclubapp.com/api/SMS/SendOTPMessage/${phoneNumber}`,
+                                        registrationRequestOptions
+                                    );
+                                    const data = await SendOTPMessage.json();
+                                    setIsSent(true);
+                                }
+    
                                 Cookies.remove("Country");
                                 Cookies.remove("Phone");
                                 Cookies.remove("Member");
@@ -191,11 +202,10 @@ export default function Login() {
                                     query: { phoneNumber, memberId },
                                 });
                             }
-                        }
-                        else if (fetchedData.status.statusDescription === "Blocked") {
+                            
+                        } else if (fetchedData.status.statusDescription === "Blocked") {
                             alert("Kindly note that your account is no longer active. For more info, kindly send us an email to info@fitnesszone.com.lb")
-                        }
-                        else {
+                        } else {
                             setIsNotSent(true);
                             alert(
                                 "You should contact the admin in order to register your phone number."
@@ -205,20 +215,16 @@ export default function Login() {
                         console.log(err);
                     }
                 };
-
+    
                 submitLoginForm();
             } catch (err) {
                 console.log(err);
             }
         };
         getTokenAPI();
-
-        // if (handleFormValidation()) {
-        //     // alert("You have been successfully logged in.");
-        //     setState(initialState);
-        //     event.target.value = "";
-        // }
     };
+    
+
     const [state, setState] = useState({
         phoneNumber: "",
         formErrors: {},
@@ -294,6 +300,17 @@ export default function Login() {
                             <option value={LEBANON}>Lebanon</option>
                             <option value={UAE}>UAE</option>
                         </select> */}
+                        <div className="flex mt-4 justify-between">
+                                    <label className="flex gap-3 items-center" style={{fontFamily:"Montserrat Bold"}}>
+                                        <input type="radio" id="whatsapp" name="notificationType" defaultChecked />
+                                        Whatsapp
+                                    </label>
+                                    <label className="flex gap-3 items-center" style={{fontFamily:"Montserrat Bold"}}>
+                                        <input type="radio" id="sms" name="notificationType" />
+                                        SMS
+                                    </label>
+
+                                </div>
                         <ReactFlagsSelect
                             selected={select}
                             onSelect={onSelect}
