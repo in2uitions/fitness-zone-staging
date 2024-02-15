@@ -6,22 +6,39 @@ import GoogleMapReact from 'google-map-react';
 const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
     const defaultProps = {
         center: {
-            lat: 33.325721,
-            lng: 44.462091
+            lat: 33.85290929046017,
+            lng: 35.533113284230346
         },
-        zoom: 13
+        zoom: 10
+    };
+    const defaultAEProps = {
+        center: {
+            lat: 25.207770051628184,
+            lng: 55.263979545518836
+        },
+        zoom: 18
     };
     const pin = "/location-marker.png"
 
     const markerStyle = {
         position: "absolute",
-        top: "0%",
+        top: "0%", 
         left: "0%",
         bottom: "0%",
-        right: "0%"
-        // transform: "translate(-50%, -100%)"
+        right: "0%",
+        width:"1.666666rem",
+        transform: "translate(-35%, -88%)"
     };
+    const locations = [
+        { lat: 33.85290929046017, lng: 35.533113284230346 },
+        { lat: 33.9002473, lng: 35.472562 },
+        { lat: 33.937694552709, lng: 35.59059464931414 },
+        { lat: 33.895780018596206, lng: 35.47930674005219 },
+        { lat: 33.88908092357919, lng: 35.51961005311003 },
+    ];
     const [whatsapp, setWhatsapp] = useState();
+    const [showMapLeb, setShowMapLeb]= useState(false);
+    const [showMapAE, setShowMapAE]= useState(false);
 
     useEffect(() => {
         const getVisitorLocationAPI = async () => {
@@ -32,9 +49,13 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                 const data = await res.json();
                 if (data.country_code == 'AE') {
                     setWhatsapp('//api.whatsapp.com/send?phone=971547274777')
+                    setShowMapAE(true)
+                    setShowMapLeb(false)
                 }
                 else {
                     setWhatsapp('//api.whatsapp.com/send?phone=9613505250')
+                    setShowMapAE(false)
+                    setShowMapLeb(true)
                 }
             } catch (err) {
                 console.log(err);
@@ -138,21 +159,36 @@ const ContactUs = ({ img, theme, subBG, noSubBG, data = {} }) => {
                             </div>
                         </div>
                         <div className="col-lg-5 offset-lg-1">
-                            <div style={{ height: '50vh', width: '47vw', padding: '0,0,0,0' }} className="map-border ">
+                            {showMapLeb ?<div style={{ height: '50vh', width: '47vw', padding: '0,0,0,0' }} className="map-border">
                                 <GoogleMapReact
-                                    bootstrapURLKeys={{ key: "" }}
+                                    bootstrapURLKeys={{ key: "AIzaSyBVgrAps2xAiqZikOQfiZz460IiVilQryA" }}
                                     defaultCenter={defaultProps.center}
                                     defaultZoom={defaultProps.zoom}
                                 >
-                                    <div className='flex flex-col justify-center items-center' lat="44.462091" lng="43.462091">
+                                    {locations.map((location, index) => (
+                                        <div key={index} lat={location.lat} lng={location.lng}>
+                                            <a target="_blank" rel="noopener noreferrer" href={`http://maps.google.com/maps?z=12&t=m&q=loc:${location.lat},${location.lng}`}>
+                                                <img style={markerStyle} className="w-4" src={pin} alt="pin" />
+                                            </a>
+                                        </div>
+                                    ))}
+                                </GoogleMapReact>
+                            </div>:null}
+                            {showMapAE ? <div style={{ height: '50vh', width: '47vw', padding: '0,0,0,0' }} className="map-border ">
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: "AIzaSyBVgrAps2xAiqZikOQfiZz460IiVilQryA" }}
+                                    defaultCenter={defaultAEProps.center}
+                                    defaultZoom={defaultAEProps.zoom}
+                                >
+                                    <div className='flex flex-col justify-center items-center' lat="25.207770051628184" lng="55.263979545518836">
 
-                                        <a target="_blank" href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + 43.462091 + "," + 44.462091}>
+                                        <a target="_blank" href={"http://maps.google.com/maps?z=12&t=m&q=loc:" + 25.207770051628184 + "," + 55.263979545518836}>
                                             <img style={markerStyle} className="w-4" src={pin} alt="pin" />
                                         </a>
                                     </div>
 
                                 </GoogleMapReact>
-                            </div>
+                            </div>:null}
                         </div>
                     </div>
 
